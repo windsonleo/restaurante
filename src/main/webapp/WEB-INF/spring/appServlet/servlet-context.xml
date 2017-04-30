@@ -29,13 +29,27 @@
     </bean>
 
 
-    <!-- MySQL Datasource with Commons DBCP connection pooling -->
-    <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/restaurante"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
+<!--     MySQL Datasource with Commons DBCP connection pooling -->
+<!--     <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource"> -->
+<!--         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!--         <property name="url" value="jdbc:mysql://localhost:3306/restaurante"/> -->
+<!--         <property name="username" value="root"/> -->
+<!--         <property name="password" value="123456"/> -->
 
+<!--     </bean> -->
+
+      <bean class="org.apache.commons.dbcp.BasicDataSource" 
+          destroy-method="close" id="dataSource"> 
+        <property name="driverClassName" value="org.postgresql.Driver"/> 
+        <property name="url" 
+                  value="jdbc:postgresql://ec2-50-19-95-47.compute-1.amazonaws.com:5432/dfn2bgimgfu5ar"/> 
+        <property name="username" value="gzygmwhaboqloi"/> 
+        <property name="password" value="bfdf7b5ce7cfa0ec102ad8cd180f4dc052c471829ca89e3ab5f245f2d61be3e5"/> 
+        <!--<property name="maxActive" value="10"/>--> 
+        <!--<property name="maxIdle" value="5"/>--> 
+        <!--<property name="minIdle" value="2"/>--> 
+        <!--<property name="initialSize" value="5"/>--> 
+        <property name="removeAbandoned" value="true"/> 
     </bean>
     
          <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">

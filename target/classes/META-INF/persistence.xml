@@ -5,12 +5,12 @@
 
         
     <properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/restaurante" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-50-19-95-47.compute-1.amazonaws.com:5432/dfn2bgimgfu5ar" />
+			<property name="javax.persistence.jdbc.user" value="gzygmwhaboqloi" />
+			<property name="javax.persistence.jdbc.password" value="bfdf7b5ce7cfa0ec102ad8cd180f4dc052c471829ca89e3ab5f245f2d61be3e5" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
     </properties>
   </persistence-unit>
 </persistence>
