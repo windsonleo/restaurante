@@ -68,8 +68,8 @@
 
 			      <td>${produto.id}</td>
                   <td>${produto.codebar}</td>
-                  <td ><input type="text" value="${produto.descricao}"></td>
-                  <td><input type="text" value="${produto.precovenda}"></td>
+                  <td >${produto.descricao}</td>
+                  <td>${produto.precovenda}</td>
                    <td>${produto.fornecedor}</td>
                    <td>${produto.isativo}</td>
 <%--                    <td>${produto.preferencia}</td> --%>
@@ -136,8 +136,12 @@
   
   <tr class="warning">
 
-			      <td>${produto.id}</td>
-                  <td>${produto.nome}</td>
+			     <td>${produto.id}</td>
+                  <td>${produto.codebar}</td>
+                  <td >${produto.descricao}</td>
+                  <td>${produto.precovenda}</td>
+                   <td>${produto.fornecedor}</td>
+                   <td>${produto.isativo}</td>
 <%--                   <td ><input type="tel" value="${produto.telefone}"></td> --%>
 <%--                   <td><input type="email" value="${produto.email}"></td> --%>
 <%--                    <td>${produto.datanascimento}</td> --%>
