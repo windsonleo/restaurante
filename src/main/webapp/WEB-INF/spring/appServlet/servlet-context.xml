@@ -83,7 +83,15 @@
     
         <tx:annotation-driven/>
     
-   
+   	    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="defaultContentType" value="application/json"/>
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                <!--xml=application/xml-->
+            </value>
+        </property>
+    </bean>
    
     
         <jpa:repositories base-package="com.tecsoluction.restaurante.dao"/>

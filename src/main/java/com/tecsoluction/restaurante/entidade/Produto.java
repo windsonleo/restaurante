@@ -71,9 +71,7 @@ public class Produto implements Serializable {
 //    }
     
     
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn
+    
     public Fornecedor getFornecedor() {
         return fornecedor;
     }
@@ -82,8 +80,7 @@ public class Produto implements Serializable {
         this.fornecedor = fornecedor;
     }
 
-    @ManyToOne
-    @JoinColumn
+ 
     public Categoria getCategoria() {
         return categoria;
     }

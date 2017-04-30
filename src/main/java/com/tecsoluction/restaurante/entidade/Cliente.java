@@ -25,7 +25,7 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "id")
     private long id;
 
     @Column(name = "nome")
@@ -42,10 +42,13 @@ public class Cliente implements Serializable {
     @Column(name = "data_nascimento")
     private Date datanascimento;
     
+    @Column(name = "foto")
     private String foto;
     
+    @Column(name = "genero")
     private String genero;
-        
+    
+    @Column(name = "isativo") 
 	private boolean isativo;
 	
 

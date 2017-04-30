@@ -36,7 +36,6 @@ public class Usuario implements Serializable {
     @Column(name = "isativo")
 	private boolean isativo;
 	
-	@JsonIgnore
 	private Set<Role> roles;
 	
 
