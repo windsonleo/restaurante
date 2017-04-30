@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns:security="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+
+    <security:http auto-config="true" use-expressions="true">
+        <security:form-login
+         		login-page="/"
+         		default-target-url="/home"
+                authentication-failure-url="/erro"              
+                username-parameter="username" 
+        		password-parameter="senha"/>
+        		
+<!--         		<security:custom-filter position="LAST" ref="usernamePasswordAuthenticationFilter"/> -->
+        			
+<!--     	 <security:logout logout-success-url="/" /> -->
+         <security:intercept-url pattern="/resources/**" access="permitAll" />  
+        <security:intercept-url pattern="/home**" access="hasRole('ROLE_MEMBRO')"/>
+		<security:logout logout-success-url="/"/>
+<!--         		<security:intercept-url pattern="/**" access="isAnonymous()"/> -->
+
+    </security:http>
+    
+       <b:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourcee">
+        <b:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <b:property name="url" value="jdbc:mysql://localhost:3306/restaurante"/>
+        <b:property name="username" value="root"/>
+        <b:property name="password" value="123456"/>
+        
+        </b:bean>
+
+
+    <b:bean id="usernamePasswordAuthenticationFilter"
+            
+            class="com.tecsoluction.restaurante.security.UsernamePasswordAuthenticationFilter">
+             <b:property name="authenticationManager" ref="authenticationManager" />
+			 <b:property name="authenticationFailureHandler" ref="failureHandler" />
+			 <b:property name="authenticationSuccessHandler" ref="successHandler" />
+           
+            </b:bean>
+
+
+
+	<b:bean id="successHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<b:property name="defaultTargetUrl" value="/home" />
+	</b:bean>
+	<b:bean id="failureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<b:property name="defaultFailureUrl" value="/erro" />
+	</b:bean>
+            
+            
+            
+
+<!--  <b:bean id="myAuthenticationProvider" class="com.tecsoluction.reuniao.security.MyAuthenticationProvider"></b:bean> -->
+
+
+    <security:authentication-manager alias="authenticationManager">
+
+        <security:authentication-provider >
+
+            <security:jdbc-user-service data-source-ref="dataSourcee"
+        
+        users-by-username-query="SELECT username, senha ,'true' as enable FROM usuario WHERE username=?"
+
+		authorities-by-username-query="SELECT usuario.username, role.name as authorities
+  										FROM usuario, usuario_role ,role
+   										WHERE usuario.username = ? AND usuario.id = usuario_role.idusuario AND role.id=usuario_role.idrole"/>
+
+        </security:authentication-provider>
+
+    </security:authentication-manager>
+
+</b:beans>

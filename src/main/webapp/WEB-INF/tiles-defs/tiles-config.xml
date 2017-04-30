@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        " http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="defaultTemplate" template="/WEB-INF/template/template.jsp">
+        <!--         <put-attribute name="barra_usuario_topo" value="/WEB-INF/views/barra_usuario_topo.jsp" /> -->
+        <put-attribute name="navegacao" value="/WEB-INF/views/template/navegacao.jsp"/>
+        <put-attribute name="conteudo" value=""/>
+    </definition>
+    
+
+    <definition name="TemplateB" template="/WEB-INF/template/templatelogin.jsp">
+        <put-attribute name="conteudo" value=""/>
+                <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+        
+    </definition>
+
+
+<!--     <definition name="login" extends="TemplateB"> -->
+<!--         <put-attribute name="login" value="/WEB-INF/views/login.jsp"/>  -->
+
+<!--     </definition> -->
+
+
+
+	<definition name="home" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/home.jsp" />
+
+	</definition>
+
+	<definition name="erro" extends="TemplateB">
+		<put-attribute name="conteudo" value="/WEB-INF/views/erro/erro.jsp" />
+
+	</definition>
+
+	<definition name="login" extends="TemplateB">
+		<put-attribute name="conteudo" value="/WEB-INF/views/login.jsp" />
+
+	</definition>
+
+
+    <!-- CADASTRO -->
+
+	<definition name="cadastrousuario" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/cadastro/cadastrousuario.jsp" />
+
+	</definition>
+	
+		<definition name="cadastromodelo" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/cadastro/cadastromodelo.jsp" />
+
+	</definition>
+
+	<definition name="cadastrocliente" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrocliente.jsp" />
+
+	</definition>
+	
+		<definition name="cadastrocategoria" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrocategoria.jsp" />
+
+	</definition>
+	
+			<definition name="cadastrofornecedor" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrofornecedor.jsp" />
+
+	</definition>
+	
+				<definition name="cadastrogarcon" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrogarcon.jsp" />
+
+	</definition>
+	
+				<definition name="cadastromesas" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastromesas.jsp" />
+
+	</definition>
+	
+					<definition name="cadastroproduto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroproduto.jsp" />
+
+	</definition>
+	
+
+<!-- MOVIMENTAÇÃO -->
+
+	<definition name="movimentacaousuario" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaousuario.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaocliente" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaocliente.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaocategoria" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaocategoria.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaofornecedor" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaofornecedor.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaogarcon" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaogarcon.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaomesas" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaomesas.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaoproduto" extends="defaultTemplate">
+		<put-attribute name="conteudo" value="/WEB-INF/views/movimentacao/movimentacaoproduto.jsp" />
+
+	</definition>
+
+</tiles-definitions>
+
+
+
