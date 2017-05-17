@@ -137,7 +137,7 @@
                     
                     
                           <li>
-                        <a href="${pageContext.request.contextPath}/entregas/movimentacao"><i class="fa fa-truck" style="color:red;" aria-hidden="true"></i> Entregas</a>
+                        <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="fa fa-truck" style="color:red;" aria-hidden="true"></i> Entregas</a>
                     </li>
                     
                     

@@ -31,13 +31,14 @@
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${produto.isativo}"/>
 					</label>
 					
-						 	  <div class="form-group">
-			   		<label>
-			  		<span>Foto</span>
-						<input id="foto" class="form-control" name="foto" type="text" value="${produto.foto}"/>
-					</label>
-		 	 </div>
+				 <div class="form-group">
+				   		<label>
+				  		<span>Foto</span>
+							<input id="foto" class="form-control" name="foto" type="text" value="${produto.foto}"/>
+						</label>
+			 	 </div>
 			 </div>
+			 
 
 			  <div class="form-group">
 				   <label>
@@ -125,13 +126,16 @@
 			<div class="form-group">
 			   		<label>
 			  		<span>Fornecedor</span>
-	            <select id="fornecedor" name="fornecedor" id="files" class="form-control">           
+	            <select id="fornecedor" name="fornecedor" class="form-control">           
 	                <optgroup label="Fornecedores">
+	                
+	                
+            	 			<option value=""></option>
+	                
 	           			
 	           			<c:forEach var="fornecedor" items="${fornecedorList}">
-	           			
-	           				<option value="fornecedor.id">${fornecedor.nomefantasia}</option>
-	           				</c:forEach>
+	           				<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option>
+           				</c:forEach>
 	           				
 	           				      				
 	                </optgroup>

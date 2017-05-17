@@ -1,7 +1,14 @@
 package com.tecsoluction.restaurante.entidade;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "MESA")
@@ -16,13 +23,18 @@ public class Mesa implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
+  
     @Column(name = "numero")
     private String numero;
+   
     @Column(name = "status")
     private String status;
-
-//    @OneToMany(mappedBy = "mesa")
-//    private List<PedidoVenda> pedidos;
+    
+    @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "mesa")
+    private List<PedidoVenda> pedidos;
+    
 
     public Mesa() {
         // TODO Auto-generated constructor stub
@@ -38,13 +50,14 @@ public class Mesa implements Serializable {
         this.status = status;
     }
 
-//    public List<PedidoVenda> getPedidos() {
-//        return pedidos;
-//    }
-//
-//    public void setPedidos(List<PedidoVenda> pedidos) {
-//        this.pedidos = pedidos;
-//    }
+    public List<PedidoVenda> getPedidos() {
+    	
+        return pedidos;
+    }
+
+    public void setPedidos(List<PedidoVenda> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public String getNumero() {
         return numero;

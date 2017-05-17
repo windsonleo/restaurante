@@ -19,6 +19,9 @@
 <!--     	 <security:logout logout-success-url="/" /> -->
          <security:intercept-url pattern="/resources/**" access="permitAll" />  
         <security:intercept-url pattern="/home**" access="hasRole('ROLE_MEMBRO')"/>
+        <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
+        
+        
 		<security:logout logout-success-url="/"/>
 <!--         		<security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 

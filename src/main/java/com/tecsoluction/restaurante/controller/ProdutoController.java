@@ -11,6 +11,8 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.CategoriaDAO;
 import com.tecsoluction.restaurante.dao.FornecedorDAO;
@@ -82,6 +84,22 @@ public class ProdutoController extends AbstractController<Produto> {
 
 
     }
+    
+    @RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
+    public ModelAndView NovosProdutos(HttpServletRequest request) {
+
+
+     //   long idf = Long.parseLong(request.getParameter("idpedido"));
+        ModelAndView novosprodutos = new ModelAndView("novosprodutos");
+        
+        List<Produto>produtos = dao.getAll();
+        
+        novosprodutos.addObject("produtosList", produtos);
+
+
+
+        return novosprodutos;
+    } 
 
 
 }

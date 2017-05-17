@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "GARCON")
@@ -25,10 +26,9 @@ public class Garcon implements Serializable {
     @Column(name = "isativo")
 	private boolean isativo;
 
-    
 
-//    @OneToMany(mappedBy = "garcon")
-//    private List<PedidoVenda> pedidos;
+    @OneToMany(mappedBy = "garcon")
+    private List<PedidoVenda> pedidos;
 
 
     public Garcon() {
@@ -72,14 +72,14 @@ public class Garcon implements Serializable {
 		this.isativo=valor;
 	}
 
-//    public List<PedidoVenda> gePedidos() {
-//        return pedidos;
-//    }
-//
-//
-//    public void setPedidos(List<PedidoVenda> pedidos) {
-//        this.pedidos = pedidos;
-//    }
+    public List<PedidoVenda> gePedidos() {
+        return pedidos;
+    }
+
+
+    public void setPedidos(List<PedidoVenda> pedidos) {
+        this.pedidos = pedidos;
+    }
 	
     @Override
     public String toString() {

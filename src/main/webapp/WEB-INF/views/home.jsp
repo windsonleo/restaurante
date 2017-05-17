@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/cliente/novos">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/novospedidos">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/produto/novosprodutos">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -112,7 +112,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/mesa/ocupadas">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -2,17 +2,23 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -52,17 +58,12 @@ public class Cliente implements Serializable {
 	private boolean isativo;
 	
 
-
     
-    
-
-
-    
-//    @JsonIgnore
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    // cliente pedido de venda
-//    @OneToMany(mappedBy = "cliente")
-//    private List<PedidoVenda> listaPedidoVenda;
+    @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
+    // cliente pedido de venda
+    @OneToMany(mappedBy = "cliente")
+    private List<PedidoVenda> listaPedidoVenda;
 
    
 //    @JsonIgnore

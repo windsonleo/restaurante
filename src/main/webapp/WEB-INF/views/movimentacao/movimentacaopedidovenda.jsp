@@ -10,14 +10,14 @@
                     <div class="col-lg-12">
                          
                          <h1 class="page-header">
-                            Usuarios <small>Listagem e Visão Geral</small>
+                            Pedidos de Venda  <small>Listagem e Visão Geral</small>
                             
                             
                         </h1>
                         
                         		<ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-user"></i> Usuarios
+                                <i class="fa fa-user"></i> Pedidos de Venda
                             </li>
                         </ol>
                           <div class="panel panel-default">
@@ -42,10 +42,14 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-									    <th>Username</th>
-									    <th>Senha</th>
-									    <th>Email</th>
-									    <th>Roles</th>
+									    <th>Data</th>
+									    <th>Status</th>
+									    <th>Origem</th>
+									    <th>Total</th>
+   									    <th>Cliente</th>
+   									    <th>Mesa</th>
+   									    <th>Garcon</th>
+									     <th>Itens</th>
 									     <th>Ativo</th>
 									    <th>Ação</th>
                                     </tr>
@@ -53,20 +57,24 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="usuario" items="${usuarioList}" varStatus="id">
+                                <c:forEach var="pedidovenda" items="${pedidovendaList}" varStatus="id">
 
 		<c:choose>
 		
-		  <c:when test="${usuario.id % 2 == 0}">
+		  <c:when test="${pedidovenda.id % 2 == 0}">
   
   <tr class="success">
 
-			      <td>${usuario.id}</td>
-                  <td>${usuario.username}</td>
-                  <td ><input type="password" value="${usuario.senha}"></td>
-                  <td>${usuario.email}</td>
-                   <td>${usuario.roles}</td>
-                   <td> ${usuario.isativo}</td>
+			      <td>${pedidovenda.id}</td>
+                  <td>${pedidovenda.data}</td>
+                  <td>${pedidovenda.status}</td>
+                 <td>${pedidovenda.origempedido}</td>
+                 <td>${pedidovenda.total}</td>
+                 <td>${pedidovenda.cliente}</td>
+                 <td>${pedidovenda.mesa}</td>
+                 <td>${pedidovenda.garcon}</td>
+                  <td>${pedidovenda.items}</td>
+                   <td> ${pedidovenda.isativo}</td>
 		
 <!-- 		outras opcoes -->
 
@@ -102,16 +110,20 @@
 								
 								
 								<a
-									href="${pageContext.request.contextPath}/usuario/informacao?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/informacao?id=${pedidovenda.id}"
 									title="informação" class="fa fa-info fa-2x"></a>
 									
+											<a
+									href="${pageContext.request.contextPath}/pedidovenda/additem?id=${pedidovenda.id}"
+									title="additem" class="fa fa-plus-square fa-2x"></a>
+									
 										<a
-									href="${pageContext.request.contextPath}/usuario/editar?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/editar?id=${pedidovenda.id}"
 									title="editar" class="fa fa-pencil fa-2x"></a>
 									
 									
 									 <a
-									href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/delete?id=${pedidovenda.id}"
 									title="deletar" class="fa fa-remove fa-2x" ></a>
 									
 									
@@ -123,16 +135,20 @@
 			  
 		  </c:when>
 		  
-		  		  <c:when test="${usuario.id % 2 != 0}">
+		  		  <c:when test="${pedidovenda.id % 2 != 0}">
   
   <tr class="warning">
 
-			      <td>${usuario.id}</td>
-                  <td>${usuario.username}</td>
-                  <td ><input type="password" value="${usuario.senha}"></td>
-                  <td>${usuario.email}</td>
-                   <td>${usuario.roles}</td>
-                   <td> ${usuario.isativo}</td>
+			      <td>${pedidovenda.id}</td>
+                  <td>${pedidovenda.data}</td>
+                  <td>${pedidovenda.status}</td>
+                 <td>${pedidovenda.origempedido}</td>
+                 <td>${pedidovenda.total}</td>
+                 <td>${pedidovenda.cliente}</td>
+                 <td>${pedidovenda.mesa}</td>
+                 <td>${pedidovenda.garcon}</td>
+                  <td>${pedidovenda.items}</td>
+                  <td> ${pedidovenda.isativo}</td>
 		
 <!-- 		outras opcoes -->
 
@@ -167,16 +183,20 @@
 								<td class="options-width">	
 											
 								<a
-									href="${pageContext.request.contextPath}/usuario/informacao?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/informacao?id=${pedidovenda.id}"
 									title="informação" class="fa fa-info fa-2x"></a>
 									
+											<a
+									href="${pageContext.request.contextPath}/pedidovenda/additem?id=${pedidovenda.id}"
+									title="additem" class="fa fa-plus-square fa-2x"></a>
+									
 										<a
-									href="${pageContext.request.contextPath}/usuario/editar?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/editar?id=${pedidovenda.id}"
 									title="editar" class="fa fa-pencil fa-2x"></a>
 									
 									
 									 <a
-									href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}"
+									href="${pageContext.request.contextPath}/pedidovenda/delete?id=${pedidovenda.id}"
 									title="deletar" class="fa fa-remove fa-2x" ></a>
 									
 										

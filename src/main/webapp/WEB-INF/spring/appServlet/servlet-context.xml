@@ -45,10 +45,10 @@
                   value="jdbc:postgresql://ec2-50-19-95-47.compute-1.amazonaws.com:5432/dfn2bgimgfu5ar"/> 
         <property name="username" value="gzygmwhaboqloi"/> 
         <property name="password" value="bfdf7b5ce7cfa0ec102ad8cd180f4dc052c471829ca89e3ab5f245f2d61be3e5"/> 
-        <!--<property name="maxActive" value="10"/>--> 
-        <!--<property name="maxIdle" value="5"/>--> 
-        <!--<property name="minIdle" value="2"/>--> 
-        <!--<property name="initialSize" value="5"/>--> 
+        <property name="maxActive" value="10"/> 
+        <property name="maxIdle" value="5"/> 
+        <property name="minIdle" value="2"/> 
+        <property name="initialSize" value="5"/> 
         <property name="removeAbandoned" value="true"/> 
     </bean>
     

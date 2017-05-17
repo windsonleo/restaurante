@@ -89,9 +89,9 @@ public class Produto implements Serializable {
         this.categoria = categoria;
     }
 
-    public String getNumero() {
-        return codebar;
-    }
+//    public String getNumero() {
+//        return codebar;
+//    }
 
     public long getId() {
         return id;
