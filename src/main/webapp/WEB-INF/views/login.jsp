@@ -23,7 +23,33 @@
 			</div>
 			<div class="panel-body">
 			
+
+			
 			<form id="formlogin" action="login" method="post">
+
+
+
+
+
+
+<%-- 			<c:if test="${param.error != null}"> --%>
+<!--                              <div class="alert alert-error"> -->
+<!--                                     Falha ao fazer Login. -->
+<%--                                     <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}"> --%>
+<%--                                           Motivo: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" /> --%>
+<%--                                     </c:if> --%>
+<!--                              </div> -->
+<%--                       </c:if> --%>
+                      
+<%--                       <c:if test="${param.logout != null}"> --%>
+<!--                              <div class="alert alert-success"> -->
+<!--                                     Você efetuou log out. -->
+<!--                              </div> -->
+<%--                       </c:if> --%>
+
+
+
+
 
 
 			<div class="form-group">

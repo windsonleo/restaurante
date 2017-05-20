@@ -27,7 +27,7 @@ public class PedidoVendaControllerRest {
     }
 
 
-    protected AbstractEntityDao<PedidoVenda> getDao() {
+    protected PedidoVendaDAO getDao() {
         return dao;
     }
 
@@ -56,5 +56,14 @@ public class PedidoVendaControllerRest {
         return getDao().getAll();
 
     }
+    
+    @RequestMapping(value="/pormesa/{id}",method = RequestMethod.GET)
+    public List<PedidoVenda> listarPedidoPorMesa(@PathVariable long id) {
+       
+    	return getDao().getAllPedidoPorMesa(id);
+
+    }
+    
+    
 
 }

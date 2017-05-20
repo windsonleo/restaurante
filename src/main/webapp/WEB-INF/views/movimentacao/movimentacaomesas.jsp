@@ -29,7 +29,25 @@
 
 
 						<div class="form-group input-group">
-							<input type="text" class="form-control"> <span
+<!-- 							<input type="text" class="form-control">  -->
+							
+							<input type="text" list="${mesasList}" autocomplete="on" class="form-control">
+								
+								<datalist id="${mesasList}">
+								
+							 		<c:forEach var="mesa" items="${mesasList}" varStatus="id">
+								
+								 		<option value="${mesa.id } - ${mesa.numero }">  </option>
+								  </c:forEach>
+								  
+								  
+								</datalist>
+							
+							
+							
+							
+							
+							<span
 								class="input-group-btn"><button
 									class="btn btn-lg btn-primary" type="button">
 									<i class="fa fa-search"></i>

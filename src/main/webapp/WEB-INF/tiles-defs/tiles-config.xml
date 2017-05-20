@@ -35,6 +35,11 @@
 		<put-attribute name="conteudo" value="/WEB-INF/views/erro/erro.jsp" />
 
 	</definition>
+	
+		<definition name="acessonegado" extends="TemplateB">
+		<put-attribute name="conteudo" value="/WEB-INF/views/erro/acessonegado.jsp" />
+
+	</definition>
 
 	<definition name="login" extends="TemplateB">
 		<put-attribute name="conteudo" value="/WEB-INF/views/login.jsp" />
@@ -164,6 +169,32 @@
 
 	</definition>
 	
+		<definition name="detalhesproduto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/detalhes/detalhesproduto.jsp" />
+
+	</definition>
+	
+			<definition name="detalhespedido" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/detalhes/detalhespedido.jsp" />
+
+	</definition>
+	
+			<definition name="detalhesitem" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/detalhes/detalhesitem.jsp" />
+
+	</definition>
+	
+			<definition name="detalhescliente" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/detalhes/detalhescliente.jsp" />
+
+	</definition>
+	
+	
+	
 	
 <!-- 	NOVOS -->
 
@@ -199,6 +230,17 @@
 		<definition name="additempedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/add/additempedidovenda.jsp" />
+
+	</definition>
+	
+	
+<!-- 	PROFILE -->
+
+
+
+		<definition name="profileusuario" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/profile/profileusuario.jsp" />
 
 	</definition>
 

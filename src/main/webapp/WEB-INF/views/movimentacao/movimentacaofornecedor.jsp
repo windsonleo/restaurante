@@ -29,7 +29,24 @@
                             
       							
       							 <div class="form-group input-group">
-                                <input type="text" class="form-control">
+<!--                                 <input type="text" class="form-control"> -->
+
+									
+								<input type="text" list="${fornecedorList}" autocomplete="on" class="form-control">
+								
+								<datalist id="${fornecedorList}">
+								
+							 		<c:forEach var="fornecedor" items="${fornecedorList}" varStatus="id">
+								
+								 		<option value="${fornecedor.id } - ${fornecedor.razaosocial }">  </option>
+								  </c:forEach>
+								  
+								  
+								</datalist>
+
+
+
+					
                                 <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"><i class="fa fa-search"></i></button> <button type="button" class="btn btn-lg btn-success" onClick="javascript:window.location='cadastro'">Add</button>
                                 </span>
                                 

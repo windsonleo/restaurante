@@ -28,7 +28,7 @@ public class ProdutoControllerRest {
     }
 
 
-    protected AbstractEntityDao<Produto> getDao() {
+    protected ProdutoDAO getDao() {
         return dao;
     }
 
@@ -56,12 +56,14 @@ public class ProdutoControllerRest {
     public List<Produto> listarEntity() {
         return getDao().getAll();
 
-    }   
-//    @RequestMapping(value = "/categoria/{id}" ,method = RequestMethod.GET) 
-//    public List<Produto> listarProdutoCategoria(@PathVariable long id) { 
-//        return getDao().getAllProdutosCategoria(id); 
-// 
-//    }
+    }  
+    
+    
+    @RequestMapping(value = "/porcategoria/{id}" ,method = RequestMethod.GET) 
+    public List<Produto> listarProdutoCategoria(@PathVariable long id) { 
+        return getDao().getAllProdutoPorCategoria(id); 
+ 
+    }
     
     
 

@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -16,12 +17,14 @@ import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.dao.MesaDAO;
 import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
+import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
@@ -37,6 +40,8 @@ import java.util.List;
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	
+    private final UsuarioDAO usudao;
+
 	
 	private PedidoVenda pv;
 
@@ -72,6 +77,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     GarconDAO garconDao;
 
     private List<Item> itens;
+    
+    private List<Produto> produtosList;
 
 
 //	public PedidoVendaController(PedidoVendaDAO dao, MesaDAO daomesa, GarconDAO daogarcon){
@@ -84,7 +91,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //	}
 
     @Autowired
-    public PedidoVendaController(PedidoVendaDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, ClienteDAO daocliente,MesaDAO daomesa, GarconDAO daogarcon) {
+    public PedidoVendaController(PedidoVendaDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, ClienteDAO daocliente,MesaDAO daomesa, GarconDAO daogarcon,UsuarioDAO daousu) {
 
         super("pedidovenda");
         this.pedidoVendaDao = dao;
@@ -95,6 +102,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         this.mesaDao = daomesa;
         this.garconDao = daogarcon;
+        this.usudao = daousu;
 
     }
 
@@ -145,6 +153,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         List<Garcon> garconList = garconDao.getAll();
 
         List<Mesa> mesaList = mesaDao.getAll();
+        
+        Usuario usuario = new Usuario();
+    		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+    		
+    		usuario = usudao.PegarPorNome(usuario.getUsername());
+            
+    		model.addAttribute("usuarioAtt", usuario);
+    //    
 
        
 //			
@@ -371,26 +387,38 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
          pv = pedidoVendaDao.PegarPorId(idf);
 
 
- //       List<Produto> produtoList = produtopedidovendaDao.getAll();
+       produtosList = produtopedidovendaDao.getAll();
+       
+       
+       
 //        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
 //        List<Item> itemList = itempedidovendaDao.getAll();
 
 
         //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
-  //      double totalpedido = 0;
+        double totalpedido = 0;
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (Item itempedido : itemList) {
-//
-//            totalpedido += itempedido.getTotalItem();
-//
-//        }
+        for (int i = 0; i < pv.getItems().size(); i++) {
+        	
+            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
+
+			
+		}
+        
+        pv.setTotal(totalpedido);
+        
+        pedidoVendaDao.add(pv);
+
+  
 
 
 //        additemvenda.addObject("itemList", itemList);
 //        additemvenda.addObject("produtoList", produtoList);
         additempedidovenda.addObject("pedidovenda", pv);
+        additempedidovenda.addObject("produtosList", produtosList);
+
       //  additempedidovenda.addObject("totalpedido", totalpedido);
 
 
@@ -424,10 +452,64 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
         additempedidovenda.addObject("pedidovenda", pv);
+        additempedidovenda.addObject("produtosList", produtosList);
 
 
         return additempedidovenda;
     }
+    
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView  detalhesPedidoVenda(HttpServletRequest request){
+  	
+  	
+  	long idf = Long.parseLong(request.getParameter("id"));
+  	
+  	ModelAndView detalhespedidovenda= new ModelAndView("detalhespedido");
+  	
+  	
+  	PedidoVenda pedido= pedidoVendaDao.PegarPorId(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+  	detalhespedidovenda.addObject("pedido", pedido);
+
+		
+		return detalhespedidovenda;
+	}
+	
+	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+	public ModelAndView  detalhesItem(HttpServletRequest request){
+  	
+  	
+  	Long idf = Long.parseLong(request.getParameter("id"));
+  	
+  	
+  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
+  	
+  	
+  	Item item = itempedidovendaDao.PegarPorId(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+  	detalhesitem.addObject("item", item);
+
+		
+		return detalhesitem;
+	}
 
 
 }

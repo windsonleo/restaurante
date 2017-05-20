@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class ItemControllerRest {
     }
 
 
-    protected AbstractEntityDao<Item> getDao() {
+    protected ItemDAO getDao() {
         return dao;
     }
 
@@ -54,6 +55,13 @@ public class ItemControllerRest {
     @RequestMapping(method = RequestMethod.GET)
     public List<Item> listarEntity() {
         return getDao().getAll();
+
+    }
+    
+    @RequestMapping(value="/porpedido/{id}",method = RequestMethod.GET)
+    public List<Item> listarItemsPorPedido(@PathVariable long id) {
+       
+    	return getDao().getAllItemPorPedido(id);
 
     }
 

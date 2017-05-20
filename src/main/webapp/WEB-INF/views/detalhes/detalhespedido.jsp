@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Adicionar Item ao Pedido Venda <strong>${pedidovenda.id}</strong> 
+					Detalhes da Pedido <small>${pedido.id}</small> 
 					
 <!-- 					<strong>R$:150.68</strong> -->
 
@@ -19,58 +19,29 @@
 				
 						<ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-support"></i> Adicionar Item ao Pedido Venda
+                                <i class="fa fa-support"></i> Pedido
                             </li>
                         </ol>
                         
                         
      			<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Buscar Produto</h3>
+						<h3 class="panel-title">Buscar</h3>
 					</div>
 					<div class="panel-body">
 
 
 						<div class="form-group input-group">
-							
-							
-<!-- 							<input type="text" class="form-control">  -->
-							
-							
-							<input type="text" list="${produtosList}" autocomplete="on" class="form-control">
-								
-								<datalist id="${produtosList}">
-								
-							 <c:forEach var="produto" items="${produtosList}" varStatus="id">
-								
-								  <option value="${produto.id } - ${produto.descricao }">  </option>
-								  </c:forEach>
-								  
-								  
-								</datalist>
-						
-<!-- 						 		<div class="col-lg-9"> -->
-<!-- 						            <select data-placeholder="Escolha os Itens do Pedido" class="chosen-select" multiple tabindex="18"> -->
-						             
-<!-- 						             <option value=""></option> -->
-						             
-<%-- 						             <c:forEach var="produto" items="${produtosList}" varStatus="id"> --%>
-<%-- 								 		 <option value="${produto.id }">${produto.descricao } </option> --%>
-<%-- 								  	</c:forEach> --%>
-					
-						            						   
-<!-- 						            </select> -->
-<!-- 						        </div> -->
-								
+							<input type="text" class="form-control"> 
 							
 							<span
 								class="input-group-btn">
 								<button
-									class="btn btn-lg btn-primary" type="button" method="POST" onClick="javascript:window.location='salvaritempedido'">
-									<i class="fa fa-seah"></i>
+									class="btn btn-lg btn-primary" type="button">
+									<i class="fa fa-search"></i>
 								</button>
-<!-- 								<button type="button" class="btn btn-lg btn-success" -->
-<!-- 									onClick="javascript:window.location='cadastro'">AddPedido</button> -->
+								<button type="button" class="btn btn-lg btn-success"
+									onClick="javascript:window.location='cadastro'">AddPedido</button>
 									
 							</span>
 
@@ -84,7 +55,7 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Detalhes do Pedido Venda : ${pedidovenda.id} </h3>
+						<h3 class="panel-title">Detalhes do Pedido : ${pedido.id} </h3>
 					</div>
 					<div class="panel-body">
 
@@ -98,23 +69,15 @@
 						 <div class="form-inline">
 						 
 							<label>CÓDIGO</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }"> 
-							<label>DATA</label>	
-							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }"> 
-							<label>STATUS</label>
-							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }"> 
-							<label>MESA</label>
-							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }"> 
-							<label>Garcon</label>
-							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }"> 
-							
-							<label>CLIENTE</label>
-							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
-							
-							<label>TOTAL</label>
-							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.total }" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="id" name="id" type="text" class="form-control" value="${pedido.id }"> 
+							<label>Cliente</label>	
+							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedido.cliente}"> 
+							<label>Mesa</label>
+							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedido.mesa }"> 
+<!-- 							<label>TOTAL</label> -->
+<!-- 							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px">  -->
 						
-<%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.pedidos}">  --%>
+<%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedido.pedidos}">  --%>
 								
 								</div>
 
@@ -128,7 +91,7 @@
 <!-- 										<i class="fa fa-search"></i> -->
 <!-- 									</button> -->
 <!-- 									<button type="button" class="btn btn-lg btn-success" -->
-<!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido Venda</button> -->
+<!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido</button> -->
 										
 <!-- 								</span> -->
 
@@ -143,7 +106,7 @@
 			
 		</div>
 		
-		  <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
+		  <c:forEach var="item" items="${pedido.items}" varStatus="id">
 
 		<c:choose>
 		
@@ -152,7 +115,7 @@
 		  
 		  
 		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
+                        <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -160,13 +123,13 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                          <div class="huge">${item.id}</div>
-                                        <div>${item.descricao}</div>
+                                        <div>Item</div>
                                       <div>Total: ${item.totalItem}</div>
                                         
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -189,12 +152,12 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">${item.id}</div>
-                                        <div>${item.descricao}</div>
+                                        <div>Item</div>
                                          <div>Total: ${item.totalItem}</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

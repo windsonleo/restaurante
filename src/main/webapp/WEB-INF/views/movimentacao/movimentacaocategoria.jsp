@@ -29,7 +29,23 @@
                             
       							
       						<div class="form-group input-group">
-                                <input type="text" class="form-control">
+<!--                                 <input type="text" class="form-control"> -->
+
+
+							<input type="text" list="${categoriaList}" autocomplete="on" class="form-control">
+								
+								<datalist id="${categoriaList}">
+								
+							 		<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
+								
+								 		<option value="${categoria.id } - ${categoria.nome }">  </option>
+								  </c:forEach>
+								  
+								  
+								</datalist>
+
+
+
 	                                <span class="input-group-btn">
 	                               
 		                                <button class="btn btn-lg btn-primary" type="button">

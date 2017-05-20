@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -17,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.dao.CategoriaDAO;
 import com.tecsoluction.restaurante.dao.FornecedorDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
+import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
@@ -29,22 +33,24 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @RequestMapping(value = "produto/")
 public class ProdutoController extends AbstractController<Produto> {
 
+    private final UsuarioDAO usudao;
 
     private final ProdutoDAO dao;
     private final FornecedorDAO fornecedorDao;
     private final CategoriaDAO categoriaDao;
-//    private List<Produto> produtoList;
+    private List<Produto> produtoList;
 //    private List<Fornecedor> fornecedorList;
 //    private List<Categoria> categoriaList;
 
 
     
     @Autowired
-    public ProdutoController(ProdutoDAO dao, CategoriaDAO categoriaDao, FornecedorDAO fornecedorDao) {
+    public ProdutoController(ProdutoDAO dao, CategoriaDAO categoriaDao, FornecedorDAO fornecedorDao,UsuarioDAO usudao) {
         super("produto");
         this.dao = dao;
         this.categoriaDao = categoriaDao;
         this.fornecedorDao = fornecedorDao;
+        this.usudao = usudao;
     }
     
     
@@ -75,9 +81,19 @@ public class ProdutoController extends AbstractController<Produto> {
 
         List<Categoria> categoriaList = categoriaDao.getAll();
         List<Fornecedor> fornecedorList = fornecedorDao.getAll();
+        produtoList = dao.getAll();
 
         UnidadeMedida[] umList = UnidadeMedida.values();
+        
+        Usuario usuario = new Usuario();
+      		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+      		
+      		usuario = usudao.PegarPorNome(usuario.getUsername());
+              
+      		model.addAttribute("usuarioAtt", usuario);
+//           
 
+        model.addAttribute("produtosList", produtoList);
         model.addAttribute("fornecedorList", fornecedorList);
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("umList", umList);
@@ -100,6 +116,32 @@ public class ProdutoController extends AbstractController<Produto> {
 
         return novosprodutos;
     } 
+    
+    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
+  	public ModelAndView  detalhesProduto(HttpServletRequest request){
+    	
+    	
+    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
+    	
+    	
+    	 Produto produto = dao.PegarPorId(idf);
+    	 
+    	 // mudar para trazer pelo id da mesa e pelo status da mesa
+    	// pedidos = pedidovendadao.getAll();
+    	
+    	
+   // 	List<Produto> produtoList = produtoDao.getAll();
+    //	List<Item> itemList = dao.getAll();
+    	
+    //	detalhesmesa.addObject("itemList", itemList);
+    	 detalhesproduto.addObject("produto", produto);
+    //	detalhesmesa.addObject("mesa", mesa);
+
+  		
+  		return detalhesproduto;
+  	}
 
 
 }

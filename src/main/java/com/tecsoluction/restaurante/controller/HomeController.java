@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.tecsoluction.restaurante.dao.ProdutoDAO;
+import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Usuario;
 
 /**
@@ -21,11 +22,25 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 @Controller
 public class HomeController {
 	
+	
+	
+	private final UsuarioDAO usuariodao;
+	
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
+	public HomeController(UsuarioDAO dao) {
+		// TODO Auto-generated constructor stub
+		
+		this.usuariodao = dao;
+	}
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -54,9 +69,10 @@ public class HomeController {
 
 		
 		Usuario usuario = new Usuario();
-		
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		
+		usuario = usuariodao.PegarPorNome(usuario.getUsername());
+				
 		
 		
 		ModelAndView home = new ModelAndView("home");
@@ -83,6 +99,22 @@ public class HomeController {
 		erro.addObject("serverTime", formattedDate );
 		
 		return erro;
+	}
+	
+	@RequestMapping(value = "/acessonegado", method = RequestMethod.GET)
+	public ModelAndView AcessoNegado(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		ModelAndView acessonegado = new ModelAndView("acessonegado");
+		
+		acessonegado.addObject("serverTime", formattedDate );
+		
+		return acessonegado;
 	}
 	
 }

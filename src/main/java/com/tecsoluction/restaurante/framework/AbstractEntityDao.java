@@ -3,6 +3,8 @@ package com.tecsoluction.restaurante.framework;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -111,6 +113,8 @@ public abstract class AbstractEntityDao<Entity> {
     public Entity PegarPorId(long entityId) {
         return manager.find(entityClass, entityId);
     }
+
+
 
 
 //    public Entity searchOneEntity(String entity) {

@@ -34,14 +34,14 @@ public class UsuarioDAO extends AbstractEntityDao<Usuario> {
     }
 
 
-//			@Transactional
-//			public Usuario PegarPorNome(String nome){
-//				Usuario usuario =em.createQuery("SELECT p FROM Usuario p where p.username='" + nome +"'", Usuario.class).getSingleResult();;
-//				
-//							
-//				return usuario;
-//			}
-//
-//
+	public Usuario PegarPorNome(String nome){
+		
+		Usuario usuario =manager.createQuery("SELECT p FROM Usuario p where p.username='" + nome +"'", Usuario.class).getSingleResult();;
+		
+					
+		return usuario;
+	}
+
+
 
 }

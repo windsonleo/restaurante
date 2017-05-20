@@ -26,6 +26,7 @@ public class PedidoVenda extends Pedido {
     
     @ManyToOne
     @JoinColumn
+//    @Column(name="mesa_id")
     private Mesa mesa;
    
     @ManyToOne
