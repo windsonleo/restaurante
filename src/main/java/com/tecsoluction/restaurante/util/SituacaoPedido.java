@@ -2,7 +2,7 @@ package com.tecsoluction.restaurante.util;
 
 public enum SituacaoPedido {
 
-    AGUARDANDO_PREPARAÇAO, EM_PREPARAÇAO, PRONTO, INTERROMPIDO;
+    AGUARDANDO_PREPARACAO, EM_PREPARACAO, PRONTO, INTERROMPIDO;
 
 
     SituacaoPedido() {
@@ -10,11 +10,7 @@ public enum SituacaoPedido {
 
     }
 
-//	public List<TipoUsuario> TipoUsuario() {
-//		List<Integer>TipoUsuario.values();
-//		return null;
-//		
-//	}
+
 }
 
 
