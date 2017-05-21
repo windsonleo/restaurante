@@ -29,7 +29,7 @@ public class CategoriaControllerRest {
     }
 
 
-    protected AbstractEntityDao<Categoria> getDao() {
+    protected CategoriaDAO getDao() {
         return dao;
     }
 
@@ -61,10 +61,10 @@ public class CategoriaControllerRest {
 
     }
     
-//    @RequestMapping(value="/pai/{id}",method = RequestMethod.GET)
-//    public List<Categoria> listarCategoriaPai(@PathVariable long id) {
-//        return getDao().getAllCategoriaPai(id);
-//
-//    }
+    @RequestMapping(value="/pai/",method = RequestMethod.GET)
+    public List<Categoria> listarCategoriaPai() {
+        return getDao().getCategoriaPai();
+
+    }
 
 }
