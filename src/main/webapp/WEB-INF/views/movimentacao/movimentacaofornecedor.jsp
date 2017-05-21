@@ -38,7 +38,7 @@
 								
 							 		<c:forEach var="fornecedor" items="${fornecedorList}" varStatus="id">
 								
-								 		<option value="${fornecedor.id } - ${fornecedor.razaosocial }">  </option>
+								 		<option value="${fornecedor.razaosocial }">  </option>
 								  </c:forEach>
 								  
 								  

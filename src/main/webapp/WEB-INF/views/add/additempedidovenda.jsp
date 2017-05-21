@@ -23,8 +23,9 @@
                             </li>
                         </ol>
                         
+			<form action="salvaritempedido" method="GET">		
                         
-     			<div class="panel panel-default">
+     			<div class="panel panel-green">
 					<div class="panel-heading">
 						<h3 class="panel-title">Buscar Produto</h3>
 					</div>
@@ -34,55 +35,50 @@
 						<div class="form-group input-group">
 							
 							
-<!-- 							<input type="text" class="form-control">  -->
-							
-							
-							<input type="text" list="${produtosList}" autocomplete="on" class="form-control">
-								
-								<datalist id="${produtosList}">
-								
-							 <c:forEach var="produto" items="${produtosList}" varStatus="id">
-								
-								  <option value="${produto.id } - ${produto.descricao }">  </option>
-								  </c:forEach>
-								  
-								  
-								</datalist>
 						
-<!-- 						 		<div class="col-lg-9"> -->
-<!-- 						            <select data-placeholder="Escolha os Itens do Pedido" class="chosen-select" multiple tabindex="18"> -->
-						             
-<!-- 						             <option value=""></option> -->
-						             
-<%-- 						             <c:forEach var="produto" items="${produtosList}" varStatus="id"> --%>
-<%-- 								 		 <option value="${produto.id }">${produto.descricao } </option> --%>
-<%-- 								  	</c:forEach> --%>
-					
-						            						   
-<!-- 						            </select> -->
-<!-- 						        </div> -->
+								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="on" class="form-control">
 								
+									<datalist id="${produtosList}">
+								
+									 	<c:forEach var="produto" items="${produtosList}" varStatus="id">
+										
+											  <option value="${produto.descricao }">  </option>
+										
+										  </c:forEach>
+								  
+								  
+									</datalist>
+									
+									<input type="text"  id="qtd" name="qtd"  class="form-control" value="1" placeholder="Escolha a Quantidade">
+									
+					
+
+<!-- 								onClick="javascript:window.location='salvaritempedido'" -->
 							
 							<span
 								class="input-group-btn">
 								<button
-									class="btn btn-lg btn-primary" type="button" method="POST" onClick="javascript:window.location='salvaritempedido'">
+									class="btn btn-lg btn-primary" type="submit" value="ADD" >
 									<i class="fa fa-seah"></i>
 								</button>
 <!-- 								<button type="button" class="btn btn-lg btn-success" -->
 <!-- 									onClick="javascript:window.location='cadastro'">AddPedido</button> -->
 									
 							</span>
+							
+						
 
 						</div>
 
 					</div>
 				</div>
+				
+				</form>
                         
                         
                         
 				
-				<div class="panel panel-default">
+				<div class="panel panel-green">
 					<div class="panel-heading">
 						<h3 class="panel-title">Detalhes do Pedido Venda : ${pedidovenda.id} </h3>
 					</div>
@@ -112,7 +108,10 @@
 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
 							
 							<label>TOTAL</label>
-							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.total }" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px"> 
+						
+						
+						
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.pedidos}">  --%>
 								
@@ -137,11 +136,14 @@
 					</div>
 				</div>
 
+			<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 
 			</div>
-			
+
 			
 		</div>
+		
+		
 		
 		  <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
 

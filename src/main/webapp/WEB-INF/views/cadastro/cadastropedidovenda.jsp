@@ -24,41 +24,35 @@
 					 ModelAttribute="pedidovenda" method="POST">
 
 
+		<div class="panel panel-green">
+					<div class="panel-heading">
+							<h3 class="panel-title">Cadastro de Pedido Venda </h3>
+					</div>
+					<div class="panel-body">
+
+
 					<div class="form-group">
 						<label> <span>Ativo?</span> <input id="isativo"
 							name="isativo" class="form-control" type="checkbox"
 							checked="${pedidovenda.isativo}" />
 						</label>
-					</div>
+						
+						</div>
 
-					<div class="form-group">
-						<label> <span>Id Pedido</span> <input id="id" name="id"
-							class="form-control" type="text" value="${pedidovenda.id}" />
+						<label> <input id="id" name="id"
+							class="form-control" type="text" value="${pedidovenda.id}" placeholder="Digite o Id" />
 						</label>
-					</div>
-
-
-<!-- 										<ul class="nav nav-tabs"> -->
-<!-- 					  <li class="active"><a href="#">Home</a></li> -->
-<!-- 					  <li><a href="#">Menu 1</a></li> -->
-<!-- 					  <li><a href="#">Menu 2</a></li> -->
-<!-- 					  <li><a href="#">Menu 3</a></li> -->
-<!-- 					</ul> -->
 			 
 		
 			 
-		 	  <div class="form-group">
 			   		<label>
-			  		<span>Data</span>
-						<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"/>
+						<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"placeholder="Digite a Data"/>
 					</label>
-		 	 </div>
 		 	 
 		 	
 		 	 
 		 	 
 			
-			<div class="form-group">
                 <label>
                     <span>Status Pedido</span>
                     
@@ -77,10 +71,8 @@
 <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
                     
                 </label>
-            </div>
             
             	
-			<div class="form-group">
                 <label>
                     <span>Origem Pedido</span>
                     
@@ -102,9 +94,7 @@
 <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
                     
                 </label>
-            </div>
 
-					<div class="form-group">
 						<label> 
 		                    <span>Cliente</span>
 
@@ -125,12 +115,10 @@
 						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
 
 						</label>
-					</div>
 
 
 
 
-					<div class="form-group">
 						<label> 
 						
                     <span>Mesa</span>
@@ -152,10 +140,8 @@
 						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
 
 						</label>
-					</div>
 
 
-<div class="form-group">
 						<label> 
 						
                     <span>Garcon</span>
@@ -177,64 +163,14 @@
 						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
 
 						</label>
-					</div>
 
 
 
-					<div class="form-group">
 			   		<label>
 			  		<span>Total</span>
-						<input id="total" name="total" class="form-control" type="text" value="${pedidovenda.total}"/>					
+						<input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
 					</label>
-		 	 </div>
-			
 		
-			
-<!--             <p> Tipo: -->
-<!-- 	            <select id="tipo" name="tipo" id="files" class="inp-form">            -->
-<!-- 	                <optgroup label="Tipos de Usuario"> -->
-<%-- 	           			<c:forEach var="tipo" items="${tipoList}"> --%>
-	           			
-<%-- 	           				<option value="${tipo}">${tipo}</option> --%>
-	           				      				
-	           				
-<%-- 	       				</c:forEach> --%>
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-<!-- 			</p> -->
-
-		
-<!-- 			<div class="form-group"> -->
-<!-- 			   		<label> -->
-<!-- 			  		<span>Email</span> -->
-<%-- 						<input id="email" name="email" class="form-control" type="text" value="${usuario.email}" /> --%>
-<!-- 					</label> -->
-<!-- 		 	 </div> -->
-		 	 
-		 	 
-<!-- 		 	  	 <div class="form-row"> -->
-		 	 
-		 	 
-<!-- 		 	 <fieldset> -->
-		 	 
-		 	 
-<!-- 		 	 <label>Roles do Usuario</label> -->
-<%--                 <ul id="roles" name="${usuario.roles }" path="roles" ></ul> --%>
-<!-- <!--                      <div id="roles_name" name="roles_name"></div> --> 
-
-				
-
-
-              		
-              		   
-<!--               </fieldset>                                  -->
-              
-<!--                	<input type="button" onclick="javascript:removeLinha(this);" value="Delete"> -->
-              
-              
-              
-              		
-<!--               </div> -->
               
               
            
@@ -242,13 +178,17 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
 
-	 	 
+	 	 <p></p>
+	 	 	 <p></p>
 			
-			<div class="form-group">
+			<div class="form-group" align="center">
 				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<button type="reset" class="btn btn-lg btn-info">Voltar</button>
+				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 			</div>
-										
+			
+			</div>
+			</div>
+									
 
 </form>
 </div>	

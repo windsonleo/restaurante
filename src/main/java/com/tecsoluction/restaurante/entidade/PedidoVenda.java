@@ -132,6 +132,12 @@ public class PedidoVenda extends Pedido {
 //    public void setListaDevolucao(List<DevolucaoVenda> listaDevolucao) {
 //        this.listaDevolucao = listaDevolucao;
 //    }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return super.toString().toUpperCase();
+    }
 
 
 }

@@ -22,38 +22,12 @@
                                 <i class="fa fa-support"></i> Pedido
                             </li>
                         </ol>
-                        
-                        
-     			<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Buscar</h3>
-					</div>
-					<div class="panel-body">
 
-
-						<div class="form-group input-group">
-							<input type="text" class="form-control"> 
-							
-							<span
-								class="input-group-btn">
-								<button
-									class="btn btn-lg btn-primary" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-								<button type="button" class="btn btn-lg btn-success"
-									onClick="javascript:window.location='cadastro'">AddPedido</button>
-									
-							</span>
-
-						</div>
-
-					</div>
-				</div>
                         
                         
                         
 				
-				<div class="panel panel-default">
+				<div class="panel panel-green">
 					<div class="panel-heading">
 						<h3 class="panel-title">Detalhes do Pedido : ${pedido.id} </h3>
 					</div>
@@ -103,7 +77,8 @@
 
 			</div>
 			
-			
+		<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+		<p></p>
 		</div>
 		
 		  <c:forEach var="item" items="${pedido.items}" varStatus="id">
@@ -115,7 +90,7 @@
 		  
 		  
 		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -157,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${pedido.id}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -22,7 +22,7 @@
                         </ol>
                           
                           
-                          <div class="panel panel-default">
+                          <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>
@@ -38,7 +38,7 @@
 								
 							 		<c:forEach var="cliente" items="${clienteList}" varStatus="id">
 								
-								 		<option value="${cliente.id } - ${cliente.nome }">  </option>
+								 		<option value="${cliente.nome }">  </option>
 								  </c:forEach>
 								  
 								  

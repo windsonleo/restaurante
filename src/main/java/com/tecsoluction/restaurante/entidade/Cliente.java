@@ -150,7 +150,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return nome.toUpperCase();
     }
 
 

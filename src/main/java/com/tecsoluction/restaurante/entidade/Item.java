@@ -156,7 +156,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return descricao;
+        return descricao.toUpperCase();
     }
 
 

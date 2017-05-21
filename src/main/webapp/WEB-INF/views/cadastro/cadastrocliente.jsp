@@ -21,118 +21,60 @@
  
  <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/cliente/add" ModelAttribute="cliente" method="POST">
  
- 
- 
- 
-   <!-- 				DADOS DO REGISTRO DIVIDIDOS EM DOIS PARAGRAFOS	 -->
-			
-<!-- 			<fieldset> -->
-				
-<!-- 				<legend>Dados do Registro</legend> -->
-			
-			
-<!-- 				<p>Data Criacao: -->
-<!-- 					<input name="datacriacao" type="date" class="inp-form" /> -->
-<%-- 					<fmt:formatDate type="date"  value="${registro.data}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Usuario Criou: -->
-<!-- 				<input name="usuario" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-			
-<!-- 				Data Ultima Modificacao: -->
-<!-- 				<input name="datamodificacao" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.datamodificacao}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 				</p> -->
-				
-<!-- 				<p> -->
-				
-<!-- 				Usuario Modificou: -->
-<!-- 				<input name="usuario" type="text" class="inp-form"/> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Status: -->
-<!-- 				<input name="status" type="text" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.status}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 			</p> -->
-			
-<!-- 			</fieldset> -->
-			
-			
-	    <div class="form-group">
-				   <label>
-				  	<span>Ativo?</span>
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${cliente.isativo}"/>
-					</label>
-			 </div>
-			 
-			 	    <div class="form-group">
-				   <label>
-				  	<span>Foto?</span>
-				  							
-				  		<input id="d" name="d" class="d" type="image" src="${pageContext.request.contextPath}/resources/images/${cliente.foto}.png"/>
-						<input id="foto" name="foto" class="form-control" type="text" value="${cliente.foto}"/>
-					</label>
-			 </div>
+			<div class="panel panel-primary">
+					<div class="panel-heading">
+							<h3 class="panel-title">Cadastro de Cliente </h3>
+					</div>
+					<div class="panel-body">
 
-			  <div class="form-group">
-				   <label>
-				  	<span>Id </span>
-						<input id="id" class="form-control" name="id" type="text" value="${cliente.id}" />
+						
+						
+						
+<!-- 						<div class="form-group"> -->
+						
+<!-- 						<div class="col-xs-12"> -->
+						
+<!-- 						 <div class="form-inline"> -->
+			
+						<div class="form-group" align="center">
+							<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image">
+					
+							   <label>
+							  	<span>Ativo?</span>
+									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${usuario.isativo}"/>
+								</label>
+						</div>
+			
+			 
+				   <label>				  							
+				  		<input id="d" name="d" class="form-control" type="image" src="${pageContext.request.contextPath}/resources/images/${cliente.foto}.png"/>
+						<input id="foto" name="foto" class="form-control" type="text" value="${cliente.foto}" placeholder="Caminho da Imagem"/>
 					</label>
-			 </div>
+
+				   <label>
+						<input id="id" class="form-control" name="id" type="text" value="${cliente.id}" placeholder="Digite o Id "/>
+					</label>
 			 
 		
 			 
-		 	  <div class="form-group">
 			   		<label>
-			  		<span>Nome</span>
-						<input id="nome" class="form-control" name="nome" type="text" value="${cliente.nome}"/>
+						<input id="nome" class="form-control" name="nome" type="text" value="${cliente.nome}" placeholder="Digite o Nome"/>
 					</label>
-		 	 </div>
 		 	 
-		 	
-		 	 
-		 	 
-			
-<!-- 			<div class="form-group"> -->
-<!--                 <label> -->
-                    
-<!--                          <select id="passeios"name="passeios" multiple="multiple" class="form-control"> -->
-<!-- 	                                  <optgroup label="Tipos de Passeios do cliente"> -->
-<%-- 		           					<c:forEach var="passeio" items="${passeioList}"> --%>
-		           			
-<%-- 		           				<option value="${passeio.id}">${passeio.name}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-<!-- 		                </optgroup> -->
-<!-- 	                    </select> -->
-	                    
-	                    
-<!--                    		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> --> 
-                    
-<!--                 </label> -->
-<!--             </div> -->
                        
              
 			
-			<div class="form-group">
+			
 			   		<label>
-			  		<span>Telefone</span>
-						<input id="telefone" class="form-control" name="telefone" type="text" value="${cliente.telefone}"/>					
+						<input id="telefone" class="form-control" name="telefone" type="text" value="${cliente.telefone}" placeholder="Digite o Telefone"/>					
 					</label>
-		 	 </div>
+		 	 
 			
 		
-			<div class="form-group">
+			
 			   		<label>
-			  		<span>Genero</span>
-	            <select id="genero" name="genero" id="genero" class="form-group">           
+<!-- 			  		<span>Genero</span> -->
+	            <select id="genero" name="genero" id="genero" class="form-control">           
 	                <optgroup label="Genero do Usuario">
 	           			
 	           				<option value="MASCULINO">MASCULINO</option>
@@ -141,63 +83,22 @@
 	                </optgroup>
 	            </select>
 			</label>
-			</div>
 			
-<!-- 			         <div class="form-group"> -->
-<!-- 			   		<label> -->
-<!-- 			  		<span>Preferencia</span> -->
-<!-- 	            <select id="preferencia" name="preferencia" id="files" class="inp-form">            -->
-<!-- 	                <optgroup label="oRIENTAÇÃO do Usuario"> -->
-	           			
-<!-- 	           				<option value="HETERO">HETERO</option> -->
-<!-- 	           				<option value="GAY">GAY</option> -->
-<!-- 	           				<option value="BISEXUAL">BISEXUAL</option> -->
-	           				
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-<!-- 			</label> -->
-<!-- 			</div> -->
+			
+			
 
 		
-			<div class="form-row">
+			
 			   		<label>
-			  		<span>Email</span>
-						<input id="email" class="form-control" name="email" type="text" value="${cliente.email}" />
+						<input id="email" class="form-control" name="email" type="text" value="${cliente.email}" placeholder="Digite o Email"/>
 					</label>
-		 	 </div>
+		 
 		 	 
-		 	 		<div class="form-row">
+		 	 		
 			   		<label>
-			  		<span>Data de Nascimento</span>
-						<input id="datanascimento" class="form-control" name="datanascimento" type="datetime" value="${cliente.datanascimento}" />
+						<input id="datanascimento" class="form-control" name="datanascimento" type="datetime" value="${cliente.datanascimento}" placeholder="Digite a Data Nascimento"/>
 					</label>
-		 	 </div>
 		 	 
-		 	 
-<!-- 		 	  	 <div class="form-row"> -->
-		 	 
-		 	 
-<!-- 		 	 <fieldset> -->
-		 	 
-		 	 
-<!-- 		 	 <label>Roles do Usuario</label> -->
-<%--                 <ul id="roles" name="${usuario.roles }" path="roles" ></ul> --%>
-<!-- <!--                      <div id="roles_name" name="roles_name"></div> --> 
-
-				
-
-
-              		
-              		   
-<!--               </fieldset>                                  -->
-              
-<!--                	<input type="button" onclick="javascript:removeLinha(this);" value="Delete"> -->
-              
-              
-              
-              		
-<!--               </div> -->
               
               
            
@@ -205,13 +106,15 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
 
-		 	 
+		 	 <p></p>
 			
-			<div class="form-group">
+			<div class="form-group" align="center" >
 			<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<button type="reset" class="btn btn-lg btn-info">Voltar</button>
+				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 			</div>
 										
+</div>
+</div>
 
 </form>
 </div>

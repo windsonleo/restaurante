@@ -21,83 +21,60 @@
  
  <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/usuario/editar" ModelAttribute="usuario" method="POST">
  
+ 				<div class="panel panel-default">
+					<div class="panel-heading">
+							<h3 class="panel-title">Profile</h3>
+					</div>
+					<div class="panel-body">
+ 				
  
- 
-   <!-- 				DADOS DO REGISTRO DIVIDIDOS EM DOIS PARAGRAFOS	 -->
-			
-<!-- 			<fieldset> -->
-				
-<!-- 				<legend>Dados do Registro</legend> -->
-			
-			
-<!-- 				<p>Data Criacao: -->
-<!-- 					<input name="datacriacao" type="date" class="inp-form" /> -->
-<%-- 					<fmt:formatDate type="date"  value="${registro.data}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Usuario Criou: -->
-<!-- 				<input name="usuario" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-			
-<!-- 				Data Ultima Modificacao: -->
-<!-- 				<input name="datamodificacao" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.datamodificacao}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 				</p> -->
-				
-<!-- 				<p> -->
-				
-<!-- 				Usuario Modificou: -->
-<!-- 				<input name="usuario" type="text" class="inp-form"/> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Status: -->
-<!-- 				<input name="status" type="text" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.status}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 			</p> -->
-			
-<!-- 			</fieldset> -->
+		
 
 
-				 		  <div class="form-group">
-						<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image">
+				 <div class="form-group" align="center">
+							<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image">
 					
-			 </div>
+							   <label>
+							  	<span>Ativo?</span>
+									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${usuario.isativo}"/>
+								</label>
+						</div>
 			
-			
-				 		  <div class="form-group">
-				   <label>
-				  	<span>Ativo?</span>
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${usuario.isativo}"/>
-					</label>
-			 </div>
+		
+			 
+			 
 
-			  <div class="form-group">
-				   <label>
-				  	<span>Id Usuario</span>
-						<input id="id" name="id" class="form-control" type="text" value="${usuario.id}" />
+			  <label>
+						<input id="id" name="id" class="form-control" type="text" value="${usuario.id}" placeholder="Digite o Id "/>
 					</label>
-			 </div>
 			 
 		
 			 
-		 	  <div class="form-group">
 			   		<label>
-			  		<span>UserName</span>
-						<input id="username" name="username" class="form-control" type="text" value="${usuario.username}"/>
+						<input id="username" name="username" class="form-control" type="text" value="${usuario.username}" placeholder="Digite o UserName"/>
 					</label>
-		 	 </div>
 		 	 
 		 	
 		 	 
 		 	 
 			
-			<div class="form-group">
-                <label>
-<!--                     <span>Tipo de Usuario</span> -->
+     
+            
+             
+             
+			
+			   		<label>
+						<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}" placeholder="Digite a Senha"/>					
+					</label>
+			
+
+
+		
+			   		<label>
+						<input id="email" name="email" class="form-control" type="text" value="${usuario.email}" placeholder="Digite o Email" />
+					</label>
+              
+                         <label>
                     
                          <select id="roles"name="roles" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Tipos de Permissoes do usuario">
@@ -110,70 +87,10 @@
 		                </optgroup>
 	                    </select>
 	                    
-	                    
-<!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-                    
+	                                        
                 </label>
-            </div>
-            
-             
-             
-			
-			<div class="form-group">
-			   		<label>
-			  		<span>Senha</span>
-						<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}"/>					
-					</label>
-		 	 </div>
-			
-		
-			
-<!--             <p> Tipo: -->
-<!-- 	            <select id="tipo" name="tipo" id="files" class="inp-form">            -->
-<!-- 	                <optgroup label="Tipos de Usuario"> -->
-<%-- 	           			<c:forEach var="tipo" items="${tipoList}"> --%>
-	           			
-<%-- 	           				<option value="${tipo}">${tipo}</option> --%>
-	           				      				
-	           				
-<%-- 	       				</c:forEach> --%>
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-<!-- 			</p> -->
-
-		
-			<div class="form-group">
-			   		<label>
-			  		<span>Email</span>
-						<input id="email" name="email" class="form-control" type="text" value="${usuario.email}" />
-					</label>
-		 	 </div>
-		 	 
-		 	 
-<!-- 		 	  	 <div class="form-row"> -->
-		 	 
-		 	 
-<!-- 		 	 <fieldset> -->
-		 	 
-		 	 
-<!-- 		 	 <label>Roles do Usuario</label> -->
-<%--                 <ul id="roles" name="${usuario.roles }" path="roles" ></ul> --%>
-<!-- <!--                      <div id="roles_name" name="roles_name"></div> --> 
-
-				
-
-
-              		
-              		   
-<!--               </fieldset>                                  -->
-              
-<!--                	<input type="button" onclick="javascript:removeLinha(this);" value="Delete"> -->
-              
-              
-              
-              		
-<!--               </div> -->
-              
+           
+		 	
               
            
 		 	 
@@ -184,8 +101,10 @@
 			
 			<div class="form-group">
 				<button type="submit"class="btn btn-lg btn-primary">Alterar</button>
-				<button type="reset" class="btn btn-lg btn-info">Voltar</button>
+			<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 			</div>
+			</div>
+
 										
 
 </form>

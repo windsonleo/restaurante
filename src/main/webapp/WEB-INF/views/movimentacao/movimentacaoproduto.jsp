@@ -20,7 +20,7 @@
                             </li>
                         </ol>
 
-                          <div class="panel panel-default">
+                          <div class="panel panel-yellow">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>

@@ -83,7 +83,7 @@ public class Garcon implements Serializable {
 	
     @Override
     public String toString() {
-        return nome;
+        return nome.toUpperCase();
     }
 
 }

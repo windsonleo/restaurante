@@ -43,9 +43,18 @@ public class ProdutoDAO extends AbstractEntityDao<Produto> {
 		
     List<Produto> result = manager.createQuery("SELECT p FROM Produto p where p.categoria=" + idcategoria, Produto.class).getResultList();
    
-    return result;
-		    
+    return result;	    
 
 	}
 
+	
+	public Produto getProdutoPorDescricao(String descricao) {
+		// TODO Auto-generated method stub
+		
+    Produto result = manager.createQuery("SELECT p FROM Produto p where p.descricao=" + "'"+descricao+"'", Produto.class).getSingleResult();
+   
+    return result;
+		   	
+}
+	
 }

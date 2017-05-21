@@ -27,178 +27,60 @@
  
  
  
-   <!-- 				DADOS DO REGISTRO DIVIDIDOS EM DOIS PARAGRAFOS	 -->
+ 			<div class="panel panel-default">
+ 			
+					<div class="panel-heading">
+							<h3 class="panel-title">Cadastro de Fornecedor </h3>
+					</div>
+					<div class="panel-body">
+
+						
+						
+						
+<!-- 						<div class="form-group"> -->
+						
+<!-- 						<div class="col-xs-12"> -->
+						
+<!-- 						 <div class="form-inline"> -->
 			
-<!-- 			<fieldset> -->
-				
-<!-- 				<legend>Dados do Registro</legend> -->
+ 
+ 
+			<div class="form-group">
 			
-			
-<!-- 				<p>Data Criacao: -->
-<!-- 					<input name="datacriacao" type="date" class="inp-form" /> -->
-<%-- 					<fmt:formatDate type="date"  value="${registro.data}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Usuario Criou: -->
-<!-- 				<input name="usuario" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-			
-<!-- 				Data Ultima Modificacao: -->
-<!-- 				<input name="datamodificacao" type="date" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.datamodificacao}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 				</p> -->
-				
-<!-- 				<p> -->
-				
-<!-- 				Usuario Modificou: -->
-<!-- 				<input name="usuario" type="text" class="inp-form"/> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.usuario}" pattern="dd/MM/yyyy"/> --%>
-				
-				
-<!-- 				Status: -->
-<!-- 				<input name="status" type="text" class="inp-form" /> -->
-<%-- 				<fmt:formatDate type="date"  value="${registro.status}" pattern="dd/MM/yyyy"/> --%>
-				
-<!-- 			</p> -->
-			
-<!-- 			</fieldset> -->
-			
-		 	 <div class="form-group">
 				   <label>
 				  	<span>Ativo?</span>
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${fornecedor.isativo}"/>
 					</label>
-			 </div>
+					
+			</div>
 
-			  <div class="form-group">
 				   <label>
-				  	<span>Id </span>
-						<input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}" />
+						<input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}" placeholder="Digite o Id " />
 					</label>
-			 </div>
 			 
 		
 			 
-		 	  <div class="form-group">
 			   		<label>
-			  		<span>Nome Fantasia</span>
-						<input id="nomefantasia" class="form-control" name="nomefantasia" type="text" value="${fornecedor.nomefantasia}"/>
+						<input id="nomefantasia" class="form-control" name="nomefantasia" type="text" value="${fornecedor.nomefantasia}" placeholder="Digite o Nome Fantasia"/>
 					</label>
-		 	 </div>
 		 	 
 		 	
-		 	 
-		 	 
-			
-<!-- 			<div class="form-group"> -->
-<!--                 <label> -->
-                    
-<!--                          <select id="passeios"name="passeios" multiple="multiple" class="form-control"> -->
-<!-- 	                                  <optgroup label="Tipos de Passeios do fornecedor"> -->
-<%-- 		           					<c:forEach var="passeio" items="${passeioList}"> --%>
-		           			
-<%-- 		           				<option value="${passeio.id}">${passeio.name}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-<!-- 		                </optgroup> -->
-<!-- 	                    </select> -->
-	                    
-	                    
-<!--                    		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> --> 
-                    
-<!--                 </label> -->
-<!--             </div> -->
                        
              
 			
-			<div class="form-group">
 			   		<label>
-			  		<span>Razão Social</span>
-						<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}"/>					
+						<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}" placeholder="Digite o Razão Social"/>					
 					</label>
-		 	 </div>
 			
 		
-<!-- 			<div class="form-group"> -->
-<!-- 			   		<label> -->
-<!-- 			  		<span>Genero</span> -->
-<!-- 	            <select id="genero" name="genero" id="files" class="inp-form">            -->
-<!-- 	                <optgroup label="Genero do Usuario"> -->
-	           			
-<!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
-<!-- 	           				<option value="FEMININO">FEMININO</option> -->
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-<!-- 			</label> -->
-<!-- 			</div> -->
-			
-<!-- 			         <div class="form-group"> -->
-<!-- 			   		<label> -->
-<!-- 			  		<span>CNPJ</span> -->
-<!-- 	            <select id="preferencia" name="preferencia" id="files" class="inp-form">            -->
-<!-- 	                <optgroup label="oRIENTAÇÃO do Usuario"> -->
-	           			
-<!-- 	           				<option value="HETERO">HETERO</option> -->
-<!-- 	           				<option value="GAY">GAY</option> -->
-<!-- 	           				<option value="BISEXUAL">BISEXUAL</option> -->
-	           				
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-<!-- 			</label> -->
-<!-- 			</div> -->
-
 		
-			<div class="form-row">
 			   		<label>
-			  		<span>CNPJ</span>
-						<input id="cnpj" class="form-control" name="cnpj" type="text" value="${fornecedor.cnpj}" />
+						<input id="cnpj" class="form-control" name="cnpj" type="text" value="${fornecedor.cnpj}" placeholder="Digite o Cnpj" />
 					</label>
-		 	 </div>
 		 	 
-		 	 		<div class="form-row">
 			   		<label>
-			  		<span>Inscricao Estadual</span>
-						<input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text" value="${fornecedor.inscricaoestadual}" />
+						<input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text" value="${fornecedor.inscricaoestadual}" placeholder="Digite o IE" />
 					</label>
-		 	 </div>
-		 	 
-<!-- 		 	 	 		<div class="form-row"> -->
-<!-- 			   		<label> -->
-<!-- 			  		<span>Observações</span> -->
-<%-- 						<input id="obs" class="form-control" name="obs" type="text" value="${fornecedor.obs}" /> --%>
-<!-- 					</label> -->
-<!-- 		 	 </div> -->
-		 	 
-		 	 
-<!-- 		 	  	 <div class="form-row"> -->
-		 	 
-		 	 
-<!-- 		 	 <fieldset> -->
-		 	 
-		 	 
-<!-- 		 	 <label>Roles do Usuario</label> -->
-<%--                 <ul id="roles" name="${usuario.roles }" path="roles" ></ul> --%>
-<!-- <!--                      <div id="roles_name" name="roles_name"></div> --> 
-
-				
-
-
-              		
-              		   
-<!--               </fieldset>                                  -->
-              
-<!--                	<input type="button" onclick="javascript:removeLinha(this);" value="Delete"> -->
-              
-              
-              
-              		
-<!--               </div> -->
-              
               
            
 		 	 
@@ -206,10 +88,13 @@
 
 
             
-            			<div class="form-group">
+            	<div class="form-group">
 				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<button type="reset" class="btn btn-lg btn-info">Voltar</button>
+				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 			</div> 
+			
+			</div>
+			</div>
 										
 
 </form>

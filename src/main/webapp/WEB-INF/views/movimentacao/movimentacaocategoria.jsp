@@ -38,7 +38,7 @@
 								
 							 		<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 								
-								 		<option value="${categoria.id } - ${categoria.nome }">  </option>
+								 		<option value="${categoria.nome }">  </option>
 								  </c:forEach>
 								  
 								  

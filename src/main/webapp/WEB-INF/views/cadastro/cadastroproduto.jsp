@@ -23,6 +23,15 @@
  <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/produto/add" ModelAttribute="produto" method="POST">
  
  
+ 			<div class="panel panel-yellow">
+					<div class="panel-heading">
+							<h3 class="panel-title">Cadastro de Produto </h3>
+					</div>
+					<div class="panel-body">
+
+ 
+ 
+ 
 
 			
 		 	 <div class="form-group">
@@ -31,44 +40,32 @@
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${produto.isativo}"/>
 					</label>
 					
-				 <div class="form-group">
+					</div>
+					
 				   		<label>
-				  		<span>Foto</span>
-							<input id="foto" class="form-control" name="foto" type="text" value="${produto.foto}"/>
+							<input id="foto" class="form-control" name="foto" type="text" value="${produto.foto}" placeholder="Digite o Caminho da Foto"/>
 						</label>
-			 	 </div>
-			 </div>
 			 
 
-			  <div class="form-group">
 				   <label>
-				  	<span>Id </span>
-						<input id="id" class="form-control" name="id" type="text" value="${produto.id}" />
+						<input id="id" class="form-control" name="id" type="text" value="${produto.id}" placeholder="Digite o Id"/>
 					</label>
-			 </div>
 			 
 			 
-			  <div class="form-group">
 				   <label>
-				  	<span>CodeBar </span>
-						<input id="codebar" class="form-control" name="codebar" type="text" value="${produto.codebar}" />
+						<input id="codebar" class="form-control" name="codebar" type="text" value="${produto.codebar}" placeholder="Digite o CodeBar"/>
 					</label>
-			 </div>
 			 
 		
 			 
 	
 		 	 
-		 	 		 	  <div class="form-group">
 			   		<label>
-			  		<span>Descricao</span>
-						<input id="descricao" class="form-control" name="descricao" type="text" value="${produto.descricao}"/>
+						<input id="descricao" class="form-control" name="descricao" type="text" value="${produto.descricao}" placeholder="Digite a Descrição"/>
 					</label>
-		 	 </div>
 		 	 
 		 	 
 		 	 
-		 	 			<div class="form-group">
                 <label> Categoria
                     
                          <select id="categoria"name="categoria" class="form-control">
@@ -83,13 +80,11 @@
 	                    </select>
 	                                        
                 </label>
-            </div>
 		 	 
 		 	
 		 	 
 		 	 
 			
-			<div class="form-group">
                 <label> Unidade Medidas
                     
                          <select id="un_medida"name="un_medida" class="form-control">
@@ -104,26 +99,18 @@
 	                    </select>
 	                                        
                 </label>
-            </div>
                        
              
 			
-			<div class="form-group">
 			   		<label>
-			  		<span>Preço de Custo</span>
-						<input id="precocusto" class="form-control" name="precocusto" type="text" value="${produto.precocusto}"/>					
+						<input id="precocusto" class="form-control" name="precocusto" type="text" value="${produto.precocusto}" placeholder="Digite o Preco de Custo"/>					
 					</label>
-		 	 </div>
 		 	 
-		 	 			<div class="form-group">
 			   		<label>
-			  		<span>Preço de Venda</span>
-						<input id="precovenda" class="form-control" name="precovenda" type="text" value="${produto.precovenda}"/>					
+						<input id="precovenda" class="form-control" name="precovenda" type="text" value="${produto.precovenda}" placeholder="Digite o Preco de Venda"/>					
 					</label>
-		 	 </div>
 			
 		
-			<div class="form-group">
 			   		<label>
 			  		<span>Fornecedor</span>
 	            <select id="fornecedor" name="fornecedor" class="form-control">           
@@ -151,9 +138,14 @@
             
             <div class="form-group">
 				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<button type="reset" class="btn btn-lg btn-info">Voltar</button>
+				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			</div> 
+			
+			</div>
+			
+		
+			
 										
 
 </form>

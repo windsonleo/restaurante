@@ -1,11 +1,11 @@
 package com.tecsoluction.restaurante.util;
 
-public enum StatusPedido {
+public enum SituacaoPedido {
 
-    ABERTO, PENDENTE, FECHADO, CANCELADO;
+    AGUARDANDO_PREPARAÇÃO, EM_PREPARAÇÃO, PRONTO, INTERROMPIDO;
 
 
-    StatusPedido() {
+    SituacaoPedido() {
         // TODO Auto-generated constructor stub
 
     }

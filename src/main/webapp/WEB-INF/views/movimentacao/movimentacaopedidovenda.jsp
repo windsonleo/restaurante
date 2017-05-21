@@ -20,7 +20,7 @@
                                 <i class="fa fa-user"></i> Pedidos de Venda
                             </li>
                         </ol>
-                          <div class="panel panel-default">
+                          <div class="panel panel-green">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>
@@ -28,7 +28,22 @@
                             
       							
       							 <div class="form-group input-group">
-                                <input type="text" class="form-control">
+
+							<input type="text" list="${pedidovendaList}" autocomplete="on" class="form-control">
+								
+								<datalist id="${pedidovendaList}">
+								
+							 		<c:forEach var="pedidovenda" items="${pedidovendaList}" varStatus="id">
+								
+								 		<option value="${pedidovenda.id }">  </option>
+								  </c:forEach>
+								  
+								  
+								</datalist>
+
+
+
+
                                 <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"><i class="fa fa-search"></i></button> <button type="button" class="btn btn-lg btn-success" onClick="javascript:window.location='cadastro'">Add</button>
                                 </span>
                                 

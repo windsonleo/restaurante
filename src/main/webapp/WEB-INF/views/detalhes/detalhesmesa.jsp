@@ -24,36 +24,10 @@
                         </ol>
                         
                         
-     			<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Buscar</h3>
-					</div>
-					<div class="panel-body">
-
-
-						<div class="form-group input-group">
-							<input type="text" class="form-control"> 
-							
-							<span
-								class="input-group-btn">
-								<button
-									class="btn btn-lg btn-primary" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-								<button type="button" class="btn btn-lg btn-success"
-									onClick="javascript:window.location='cadastro'">AddPedido</button>
-									
-							</span>
-
-						</div>
-
-					</div>
-				</div>
-                        
-                        
+          
                         
 				
-				<div class="panel panel-default">
+				<div class="panel panel-red">
 					<div class="panel-heading">
 						<h3 class="panel-title">Detalhes da Mesa : ${mesa.numero} </h3>
 					</div>
@@ -102,7 +76,8 @@
 
 
 			</div>
-			
+			<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+		<p></p>	
 			
 		</div>
 		

@@ -78,7 +78,7 @@ public class Mesa implements Serializable {
 
     @Override
     public String toString() {
-        return numero;
+        return numero.toUpperCase();
     }
 
 

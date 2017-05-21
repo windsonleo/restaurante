@@ -41,7 +41,7 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
+                                        <div class="huge">${clientesnovos.size()}</div>
                                         <div>Novos Clientes</div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">${pedidovendasnovos.size()}</div>
                                         <div>Novos Pedidos</div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                         <i class="fa fa-briefcase fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                        <div class="huge">${produtosnovos.size()}</div>
                                         <div>Novos Produtos</div>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                         <i class="fa fa-support fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
+                                        <div class="huge">${mesasocupadas.size()}</div>
                                         <div>Mesas Ocupadas</div>
                                     </div>
                                 </div>

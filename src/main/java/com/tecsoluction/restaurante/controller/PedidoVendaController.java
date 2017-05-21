@@ -382,6 +382,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
         Long idf = Long.parseLong(request.getParameter("id"));
+        
+//        String prodesc = request.getParameter("produtoescolhido");
+//        
+//        System.out.println(prodesc);
+
+        
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
          pv = pedidoVendaDao.PegarPorId(idf);
@@ -407,9 +413,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 			
 		}
         
-        pv.setTotal(totalpedido);
+    //    pv.setTotal(totalpedido);
         
-        pedidoVendaDao.add(pv);
+     //   pedidoVendaDao.add(pv);
 
   
 
@@ -418,6 +424,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //        additemvenda.addObject("produtoList", produtoList);
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
+        additempedidovenda.addObject("totalpedido", totalpedido);
 
       //  additempedidovenda.addObject("totalpedido", totalpedido);
 
@@ -432,16 +439,21 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
       //  Long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	 String prodesc = request.getParameter("produtoescolhido");
+    	 
+    	 int  prodqtd =Integer.parseInt(request.getParameter("qtd"));
+    	 
         
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
        
         Produto produto = new Produto();
         
-        produto = produtopedidovendaDao.PegarPorId(14L);
+        produto = produtopedidovendaDao.getProdutoPorDescricao(prodesc);
         
         Item item = new Item(produto, pv);
         
-        item.setQtd(2);
+        item.setQtd(prodqtd);
         item.setTotalItem(item.getTotalItem());
         
         itempedidovendaDao.add(item);
@@ -449,13 +461,28 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         pv.getItems().add(item);
         
        // pedidoVendaDao.add(pv);
+        
+        double totalpedido = 0;
+
+
+        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+        for (int i = 0; i < pv.getItems().size(); i++) {
+        	
+            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
+
+			
+		}
+        
+        pv.setTotal(totalpedido);
+        
+        pedidoVendaDao.add(pv);
 
 
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
 
 
-        return additempedidovenda;
+        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
     }
     
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)

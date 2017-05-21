@@ -103,7 +103,7 @@
 
 			</div>
 			
-			
+			<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 		</div>
 		
 <%-- 		  <c:forEach var="pedido" items="${pedidoList}" varStatus="id"> --%>

@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Detalhes da Cliente <small>${cliente.id}</small> 
+					Detalhes do Cliente <small>${cliente.id}</small> 
 					
 <!-- 					<strong>R$:150.68</strong> -->
 
@@ -23,48 +23,18 @@
                             </li>
                         </ol>
                         
-                        
-<!--      			<div class="panel panel-default"> -->
-<!-- 					<div class="panel-heading"> -->
-<!-- 						<h3 class="panel-title">Buscar</h3> -->
-<!-- 					</div> -->
-<!-- 					<div class="panel-body"> -->
-
-
-<!-- 						<div class="form-group input-group"> -->
-<!-- 							<input type="text" class="form-control">  -->
-							
-<!-- 							<span -->
-<!-- 								class="input-group-btn"> -->
-<!-- 								<button -->
-<!-- 									class="btn btn-lg btn-primary" type="button"> -->
-<!-- 									<i class="fa fa-search"></i> -->
-<!-- 								</button> -->
-<!-- 								<button type="button" class="btn btn-lg btn-success" -->
-<!-- 									onClick="javascript:window.location='cadastro'">AddPedido</button> -->
-									
-<!-- 							</span> -->
-
-<!-- 						</div> -->
-
-<!-- 					</div> -->
-<!-- 				</div> -->
-                        
-                        
-                        
+          
 				
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Detalhes do Cliente : ${cliente.id} </h3>
-					</div>
-					<div class="panel-body">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Detalhes do Cliente : ${cliente.id} </h3>
+	</div>
+			<div class="panel-body">
 
 						
-						
-						
-						<div class="form-group">
-						
-						<div class="col-xs-12">
+				<div class="form-group">
+												
+					<div class="col-xs-12">
 						
 						 <div class="form-inline">
 						 
@@ -79,9 +49,11 @@
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${cliente.pedidos}">  --%>
 								
-								</div>
+						</div>
+								
+					</div>
 
-							</div>
+				</div>
 
 
 <!-- 								<span 	class="input-group-btn"> -->
@@ -98,14 +70,13 @@
 						</div>
 
 					</div>
+					
+				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+					
 				</div>
 
-
-			</div>
 			
-			
-		</div>
-		
+					
 		  <c:forEach var="pedido" items="${pedidoList}" varStatus="id">
 
 		<c:choose>

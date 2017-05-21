@@ -37,7 +37,7 @@
 								
 							 		<c:forEach var="mesa" items="${mesasList}" varStatus="id">
 								
-								 		<option value="${mesa.id } - ${mesa.numero }">  </option>
+								 		<option value="${mesa.numero }">  </option>
 								  </c:forEach>
 								  
 								  
