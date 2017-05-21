@@ -38,7 +38,7 @@ public class CategoriaDAO extends AbstractEntityDao<Categoria>{
 	public List<Categoria> getCategoriaPai() {
 		// TODO Auto-generated method stub
 		
-    List<Categoria> result = manager.createQuery("SELECT p FROM Categoria p where p.catpai="+"(select id from categoria where nome='PAI')",Categoria.class).getResultList();
+    List<Categoria> result = manager.createQuery("SELECT p FROM Categoria p where p.catpai="+"(SELECT id FROM Categoria m  where m.nome='PAI')",Categoria.class).getResultList();
    
     return result;
 
