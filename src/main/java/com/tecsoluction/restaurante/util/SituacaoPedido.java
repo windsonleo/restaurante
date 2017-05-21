@@ -2,7 +2,7 @@ package com.tecsoluction.restaurante.util;
 
 public enum SituacaoPedido {
 
-    AGUARDANDO_PREPARAÇÃO, EM_PREPARAÇÃO, PRONTO, INTERROMPIDO;
+    AGUARDANDO_PREPARAÇÃO, EM_PREPARAÇAO, PRONTO, INTERROMPIDO;
 
 
     SituacaoPedido() {
