@@ -32,7 +32,7 @@
 <!--                                 <input type="text" class="form-control"> -->
 
 
-							<input type="text" list="${categoriaList}" autocomplete="on" class="form-control">
+							<input type="text" list="${categoriaList}" autocomplete="off" class="form-control">
 								
 								<datalist id="${categoriaList}">
 								

@@ -48,7 +48,7 @@ public class Produto implements Serializable {
     // @OneToMany(mappedBy = "produto")
     // private List<Item> items;
 
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = true)
     private Categoria categoria;

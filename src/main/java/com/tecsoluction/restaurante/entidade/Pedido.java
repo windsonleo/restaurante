@@ -116,4 +116,24 @@ public boolean getIsativo(){
 
         return String.valueOf(id);
     }
+    
+    
+    
+    
+    public double CalcularTotal(List<Item> itens){
+    	
+      double totalpedido = 0;
+
+
+      //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+      for (int i = 0; i < itens.size(); i++) {
+      	
+          totalpedido += totalpedido + itens.get(i).getTotalItem();
+
+			
+		}
+
+    	
+    	return totalpedido;
+    }
 }

@@ -79,6 +79,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private List<Item> itens;
     
     private List<Produto> produtosList;
+    
+    private double totalpedido;
 
 
 //	public PedidoVendaController(PedidoVendaDAO dao, MesaDAO daomesa, GarconDAO daogarcon){
@@ -402,13 +404,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
         //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
-        double totalpedido = 0;
+       totalpedido = 0;
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
         for (int i = 0; i < pv.getItems().size(); i++) {
         	
-            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
+            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
 
 			
 		}
@@ -445,7 +447,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	 int  prodqtd =Integer.parseInt(request.getParameter("qtd"));
     	 
         
-        ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+     //   ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
        
         Produto produto = new Produto();
         
@@ -460,31 +462,40 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         pv.getItems().add(item);
         
-       // pedidoVendaDao.add(pv);
+   //     pedidoVendaDao.add(pv);
         
-        double totalpedido = 0;
-
-
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-        for (int i = 0; i < pv.getItems().size(); i++) {
-        	
-            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
-
-			
-		}
-        
+//        double totalpedido = 0;
+//
+//
+//        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+//        for (int i = 0; i < pv.getItems().size(); i++) {
+//        	
+//            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
+//
+//			
+//		}
+//        
         pv.setTotal(totalpedido);
         
+        System.out.println(pv.getItems().toString());
+        System.out.println(pv.getTotal());
+//        System.out.println(pv);
+
+        
+        
+//        
         pedidoVendaDao.add(pv);
 
-
-        additempedidovenda.addObject("pedidovenda", pv);
-        additempedidovenda.addObject("produtosList", produtosList);
+//
+//        additempedidovenda.addObject("pedidovenda", pv);
+//        additempedidovenda.addObject("produtosList", produtosList);
 
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
     }
     
+
+
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
 	public ModelAndView  detalhesPedidoVenda(HttpServletRequest request){
   	

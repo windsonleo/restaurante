@@ -36,7 +36,7 @@
 							
 							
 						
-								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="on" class="form-control">
+								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="off" class="form-control">
 								
 									<datalist id="${produtosList}">
 								
