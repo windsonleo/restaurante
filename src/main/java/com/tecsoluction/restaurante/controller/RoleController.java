@@ -32,12 +32,12 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "usuario/")
-public class UsuarioController extends AbstractController<Usuario> {
+@RequestMapping(value = "role/")
+public class RoleController extends AbstractController<Role> {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+	private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 	
-    private final UsuarioDAO usudao;
+//    private final UsuarioDAO usudao;
 
 
     private
@@ -51,23 +51,23 @@ public class UsuarioController extends AbstractController<Usuario> {
     
 
     @Autowired
-    public UsuarioController(UsuarioDAO dao,RoleDAO rdao,UsuarioDAO usudao) {
-        super("usuario");
+    public RoleController(UsuarioDAO dao,RoleDAO rdao) {
+        super("role");
         this.dao = dao;
         this.rdao =rdao;
-        this.usudao =usudao;
+//        this.usudao =usudao;
     }
     
     
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-
-        binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.rdao) {
-        });
-     
-
-
-    }
+//    @InitBinder
+//    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+//
+//        binder.registerCustomEditor(Usuario.class, new AbstractEditor<Usuario>(this.dao) {
+//        });
+//     
+//
+//
+//    }
 
 	
 	/**
@@ -91,61 +91,61 @@ public class UsuarioController extends AbstractController<Usuario> {
 	
 	
 	
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-        List<Role> roleList = rdao.getAll();
-        List<Usuario> usuarioList = dao.getAll();
+//    @ModelAttribute
+//    public void addAttributes(Model model) {
 //
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-        
-        Usuario usuario = new Usuario();
-  		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-  		
-  		usuario = usudao.PegarPorNome(usuario.getUsername());
-          
-  		model.addAttribute("usuarioAtt", usuario);
+//        List<Role> roleList = rdao.getAll();
+//        List<Usuario> usuarioList = dao.getAll();
+////
+////        UnidadeMedida[] umList = UnidadeMedida.values();
+//        
+//        Usuario usuario = new Usuario();
+//  		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//  		
+//  		usuario = usudao.PegarPorNome(usuario.getUsername());
+//          
+//  		model.addAttribute("usuarioAtt", usuario);
+////
 //
-
-        model.addAttribute("roleList", roleList);
-        model.addAttribute("usuarioList", usuarioList);
-//        model.addAttribute("umList", umList);
-
-
-    }
+//        model.addAttribute("roleList", roleList);
+//        model.addAttribute("usuarioList", usuarioList);
+////        model.addAttribute("umList", umList);
+//
+//
+//    }
 
 	@Override
-	protected UsuarioDAO getDao() {
+	protected RoleDAO getDao() {
 		// TODO Auto-generated method stub
-		return dao;
+		return rdao;
 	}
 	
 	
-	  @RequestMapping(value = "profile", method = RequestMethod.GET)
-	  	public ModelAndView  profileUsuario(HttpServletRequest request){
-	    	
-	    	
-	    	long idf = Long.parseLong(request.getParameter("id"));
-	    	
-	    	ModelAndView profileusuario = new ModelAndView("profileusuario");
-	    	
-	    	
-	    	 Usuario usuario = dao.PegarPorId(idf);
-	    	 
-	    	 // mudar para trazer pelo id da mesa e pelo status da mesa
-	    	// pedidos = pedidovendadao.getAll();
-	    	
-	    	
-	   // 	List<Produto> produtoList = produtoDao.getAll();
-	    //	List<Item> itemList = dao.getAll();
-	    	
-	    //	detalhesmesa.addObject("itemList", itemList);
-	    	 profileusuario.addObject("usuario", usuario);
-	    //	detalhesmesa.addObject("mesa", mesa);
-
-	  		
-	  		return profileusuario;
-	  	}
+//	  @RequestMapping(value = "profile", method = RequestMethod.GET)
+//	  	public ModelAndView  profileUsuario(HttpServletRequest request){
+//	    	
+//	    	
+//	    	long idf = Long.parseLong(request.getParameter("id"));
+//	    	
+//	    	ModelAndView profileusuario = new ModelAndView("profileusuario");
+//	    	
+//	    	
+//	    	 Usuario usuario = dao.PegarPorId(idf);
+//	    	 
+//	    	 // mudar para trazer pelo id da mesa e pelo status da mesa
+//	    	// pedidos = pedidovendadao.getAll();
+//	    	
+//	    	
+//	   // 	List<Produto> produtoList = produtoDao.getAll();
+//	    //	List<Item> itemList = dao.getAll();
+//	    	
+//	    //	detalhesmesa.addObject("itemList", itemList);
+//	    	 profileusuario.addObject("usuario", usuario);
+//	    //	detalhesmesa.addObject("mesa", mesa);
+//
+//	  		
+//	  		return profileusuario;
+//	  	}
 
 	
 }

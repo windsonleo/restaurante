@@ -42,7 +42,7 @@ public class Fornecedor implements Serializable {
     
     @JsonIgnore
   	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy="fornecedor")
+    @OneToMany(mappedBy="fornecedor",fetch=FetchType.LAZY)
     private List<Produto> produtos;
     
     
@@ -56,9 +56,9 @@ public class Fornecedor implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public String getNomefantasia() {
         return nomefantasia;

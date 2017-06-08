@@ -40,7 +40,7 @@ public class CategoriaController extends AbstractController<Categoria> {
     }
 
     @Override
-    protected AbstractEntityDao<Categoria> getDao() {
+    protected CategoriaDAO getDao() {
         return dao;
     }
 
@@ -48,7 +48,7 @@ public class CategoriaController extends AbstractController<Categoria> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(getDao()) {
+        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
 
         });
         

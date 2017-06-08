@@ -36,23 +36,23 @@ public class Categoria implements Serializable {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", nullable = true)
     private String nome;
 
+
     
-    @JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "cat_pai", nullable = true)
+//    (cascade = { CascadeType.ALL })
+	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Categoria.class,optional=true)
+	@JoinColumn(name = "catpai_id", nullable = true)
     private Categoria catpai;
     
     
     @Column(name = "isativo")
 	private boolean isativo;
     
-
     @JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria" ,cascade={CascadeType.REFRESH})
     private List<Produto> produtos;
 
 
@@ -62,11 +62,22 @@ public class Categoria implements Serializable {
         // TODO Auto-generated constructor stub
     }
 
-//    public Categoria(Categoria cat) {
-//        // TODO Auto-generated constructor stub
-//    	this.catpai=cat;
-//    }
+    
+    public Categoria(long id, String nome,Categoria catpai,boolean isativo) {
+        // TODO Auto-generated constructor stub
+    	this.id = id;
+    	this.nome = nome;
+    	this.catpai=catpai;
+    	this.isativo = isativo;
+    }
+    
 
+    public Categoria(long id, String nome,boolean isativo) {
+        // TODO Auto-generated constructor stub
+    	this.id = id;
+    	this.nome = nome;
+    	this.isativo = isativo;
+    }
 
     //GETTERS AND SETTERS
 
@@ -84,10 +95,10 @@ public class Categoria implements Serializable {
         return id;
     }
     
-    public void setId(long id){
-    	
-    	this.id = id;
-    }
+//    public void setId(long id){
+//    	
+//    	this.id = id;
+//    }
 
 
     @Override

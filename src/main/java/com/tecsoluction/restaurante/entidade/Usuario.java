@@ -15,6 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.engine.profile.Fetch;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -22,20 +26,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="USUARIO")
 public class Usuario implements Serializable {
 
-	private static final long serialVersionUID = 1L;
 	
-    @Column(name = "id")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	private long idusuario;
 
-    @Column(name = "username")
 	private String username;
-    @Column(name = "senha")
 	private String senha;
-    @Column(name = "email")
 	private String email;
-    @Column(name = "isativo")
 	private boolean isativo;
-	
+
 	private Set<Role> roles;
 	
 
@@ -46,6 +50,7 @@ public class Usuario implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	public long getId(){
 		
 		return idusuario;
@@ -56,6 +61,7 @@ public class Usuario implements Serializable {
 		this.idusuario=id;
 	}
 	
+    @Column(name = "username")
 	public String getUsername(){
 		
 		return username;
@@ -65,7 +71,7 @@ public class Usuario implements Serializable {
 		
 		this.username=nome;
 	}
-	
+    @Column(name = "senha")
 	public String getSenha(){
 		
 		return senha;
@@ -76,6 +82,7 @@ public class Usuario implements Serializable {
 		this.senha=senha;
 	}
 	
+    @Column(name = "email")
 	public String getEmail(){
 		
 		return email;
@@ -85,7 +92,7 @@ public class Usuario implements Serializable {
 		
 		this.email=email;
 	}
-	
+    @Column(name = "isativo")
 	public boolean getIsativo(){
 		
 		return isativo;
@@ -96,10 +103,10 @@ public class Usuario implements Serializable {
 		this.isativo=valor;
 	}
 	
-
-		@JsonIgnore
-	 	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
-	    @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "idusuario"), inverseJoinColumns = @JoinColumn(name = "idrole"))
+//	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonIgnore
+ 	@ManyToMany()
+    @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "idusuario"), inverseJoinColumns = @JoinColumn(name = "idrole"))
 	    public Set<Role> getRoles() {
 	        return roles;
 	    }

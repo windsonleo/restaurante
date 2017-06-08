@@ -457,10 +457,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         item.setQtd(prodqtd);
         item.setTotalItem(item.getTotalItem());
+        item.setPedido(pv);
         
         itempedidovendaDao.add(item);
         
-        pv.getItems().add(item);
+   //     pv.getItems().add(item);
         
    //     pedidoVendaDao.add(pv);
         
@@ -475,7 +476,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //			
 //		}
 //        
-        pv.setTotal(totalpedido);
+     //   pv.setTotal(totalpedido);
         
         System.out.println(pv.getItems().toString());
         System.out.println(pv.getTotal());
@@ -484,7 +485,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         
 //        
-        pedidoVendaDao.add(pv);
+    //    pedidoVendaDao.add(pv);
 
 //
 //        additempedidovenda.addObject("pedidovenda", pv);

@@ -34,7 +34,7 @@
 					
 							   <label>
 							  	<span>Ativo?</span>
-									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${usuario.isativo}"/>
+									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${garcon.isativo}"/>
 								</label>
 						</div>
 

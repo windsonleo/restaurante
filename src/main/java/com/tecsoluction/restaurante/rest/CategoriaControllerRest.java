@@ -4,7 +4,9 @@ package com.tecsoluction.restaurante.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,15 +45,16 @@ public class CategoriaControllerRest {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(Categoria entity) {
+    @RequestMapping(value="/salvar",method = RequestMethod.POST)
+    public ResponseEntity<Categoria> AdicionarEntity(@RequestBody Categoria entity) {
+    	
 
-        try {
-            getDao().add(entity);
-            return new ResponseEntity<>(entity, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
-        }
+    	
+       getDao().add(entity);
+       
+
+            return new ResponseEntity<Categoria>(entity, HttpStatus.OK);
+
     }
     
 
@@ -63,7 +66,9 @@ public class CategoriaControllerRest {
     
     @RequestMapping(value="/pai/",method = RequestMethod.GET)
     public List<Categoria> listarCategoriaPai() {
-        return getDao().getCategoriaPai();
+        
+    	return null;
+    			//getDao().getCategoriaPai();
 
     }
 

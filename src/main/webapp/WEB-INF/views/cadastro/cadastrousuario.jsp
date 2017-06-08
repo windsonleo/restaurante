@@ -45,7 +45,7 @@
 			 </div>
 
 				   <label>
-						<input id="id" name="id" class="form-control" type="text" value="${usuario.id}" placeholder="Digite o Id "/>
+						<input id="idusuario" name="idusuario" class="form-control" type="text" value="${usuario.idusuario}" placeholder="Digite o Id "/>
 					</label>
 			 
 		

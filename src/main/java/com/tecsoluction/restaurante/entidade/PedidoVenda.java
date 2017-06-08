@@ -5,6 +5,8 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,22 +17,28 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "PEDIDO_VENDA")
-public class PedidoVenda extends Pedido {
+public class PedidoVenda extends Pedido implements Serializable {
 
     //CLIENTE DO PEDIDO DE VENDA
 
-    @ManyToOne
-    @JoinColumn
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	@ManyToOne
+    @JoinColumn(name="cliente_id")
     private Cliente cliente;
     
     
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="mesa_id")
 //    @Column(name="mesa_id")
     private Mesa mesa;
    
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="garcon_id")
     private Garcon garcon;
 
 
@@ -61,10 +69,14 @@ public class PedidoVenda extends Pedido {
 
     //CONSTRUTOR PADRÃO
     public PedidoVenda() {
+    	super();
 
      //   listaDevolucao = new ArrayList<>();
       //  tipo.VENDA.values();
     }
+    
+    
+    
 
 
 //    public TipoPedido getTipo() {
@@ -77,7 +89,19 @@ public class PedidoVenda extends Pedido {
 //    }
 
 
-    public OrigemPedido getOrigempedido() {
+    public PedidoVenda(Cliente cliente, Mesa mesa, Garcon garcon, OrigemPedido origempedido) {
+		super();
+    	this.cliente = cliente;
+		this.mesa = mesa;
+		this.garcon = garcon;
+		this.origempedido = origempedido;
+	}
+
+
+
+
+
+	public OrigemPedido getOrigempedido() {
 
         return origempedido;
     }

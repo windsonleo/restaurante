@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.entidade.Usuario;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -29,13 +26,13 @@ public abstract class AbstractController<Entity> {
     
     
     
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        
-    	Usuario usuarioAtt = (Usuario) getDao().PegarPorId(100L);
-       
-        model.addAttribute("usuarioAtt", usuarioAtt);
-    }
+//    @ModelAttribute
+//    public void addAttributes(Model model) {
+//        
+//    	Usuario usuarioAtt = (Usuario) getDao().PegarPorId(100L);
+//       
+//        model.addAttribute("usuarioAtt", usuarioAtt);
+//    }
     
 
     @RequestMapping(value = "cadastro", method = RequestMethod.GET)

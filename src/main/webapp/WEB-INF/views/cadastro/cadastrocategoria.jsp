@@ -66,6 +66,9 @@
                     
                          <select id="catpai"name="catpai"  class="form-control">
 	                                  <optgroup label="Tipos de Catgeoria Pai">
+		           				
+		           					<option value=""></option>
+		           				
 		           					<c:forEach var="categoria" items="${categoriaList}">
 		           			
 		           				<option value="${categoria.id}">${categoria.nome}</option>

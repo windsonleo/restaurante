@@ -49,7 +49,7 @@
 							<label>STATUS</label>
 							<input id="status" name="status" type="text" class="form-control" value="${mesa.status }"> 
 <!-- 							<label>TOTAL</label> -->
-							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="total" name="total" type="text" class="form-control" value="" size="20px" style="color: blue; font-size: 15px"> 
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${mesa.pedidos}">  --%>
 								

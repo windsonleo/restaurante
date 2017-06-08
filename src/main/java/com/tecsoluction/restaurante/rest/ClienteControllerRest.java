@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsoluction.restaurante.dao.ClienteDAO;
+import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
@@ -41,16 +43,16 @@ public class ClienteControllerRest {
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(Cliente entity) {
+    @RequestMapping(value="/salvar",method = RequestMethod.POST)
+    public ResponseEntity<Cliente> AdicionarEntity(@RequestBody Cliente entity) {
 
-        try {
-            getDao().add(entity);
-            return new ResponseEntity<>(entity, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
-        }
-    }
+    	
+        getDao().add(entity);
+        
+
+             return new ResponseEntity<Cliente>(entity, HttpStatus.OK);
+
+     }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Cliente> listarEntity() {

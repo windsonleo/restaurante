@@ -3,11 +3,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsoluction.restaurante.dao.ItemDAO;
+import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
@@ -42,14 +44,20 @@ public class ItemControllerRest {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(Item	 entity) {
+    public ResponseEntity<Item> AdicionarEntity(@RequestBody Item entity) {
+    	
+    	
+        getDao().add(entity);
+        
 
-        try {
-            getDao().add(entity);
-            return new ResponseEntity<>(entity, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
-        }
+        return new ResponseEntity<Item>(entity, HttpStatus.OK);
+
+//        try {
+//            getDao().add(entity);
+//            return new ResponseEntity<>(entity, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
+//        }
     }
 
     @RequestMapping(method = RequestMethod.GET)

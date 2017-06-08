@@ -2,9 +2,6 @@ package com.tecsoluction.restaurante.framework;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,9 +15,9 @@ import java.util.List;
 @Component
 public abstract class AbstractEntityDao<Entity> {
 
-    protected
+   
     @PersistenceContext
-    EntityManager manager;
+    protected EntityManager manager;
 
     private Class<Entity> entityClass;
     private String entityAlias;
@@ -39,7 +36,13 @@ public abstract class AbstractEntityDao<Entity> {
 
     @Transactional
     public void add(Entity entity) {
-        manager.merge(entity);
+    	
+  
+    	
+       manager.persist(entity);
+       
+     
+
     }
 
 //    public int searchEntityCount() {
@@ -110,7 +113,7 @@ public abstract class AbstractEntityDao<Entity> {
     }
 
     @Transactional
-    public Entity PegarPorId(long entityId) {
+    public Entity PegarPorId(long entityId){
         return manager.find(entityClass, entityId);
     }
 

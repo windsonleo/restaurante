@@ -1,6 +1,5 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.hibernate.annotations.LazyCollection;
@@ -8,7 +7,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,9 +53,9 @@ public abstract class Pedido {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public Date getData() {
         return data;
@@ -122,7 +120,7 @@ public boolean getIsativo(){
     
     public double CalcularTotal(List<Item> itens){
     	
-      double totalpedido = 0;
+      double totalpedido = 0.0;
 
 
       //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL

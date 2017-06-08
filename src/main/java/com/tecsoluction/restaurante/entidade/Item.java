@@ -7,14 +7,20 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "ITEM")
-public class Item {
+public class Item  implements Serializable{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
@@ -28,10 +34,11 @@ public class Item {
     private double precoUnitario;
 
     private double totalItem;
+    
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne()
+    @JoinColumn(name="pedido_ID",referencedColumnName = "ID")
     private Pedido pedido;
 
 //    @ManyToOne
@@ -152,6 +159,11 @@ public class Item {
     public long getId() {
         return id;
     }
+    
+//    public void setId(long id){
+//    	
+//    	this.id = id;
+//    }
 
 
     @Override

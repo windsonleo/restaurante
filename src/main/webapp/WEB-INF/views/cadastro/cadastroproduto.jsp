@@ -70,6 +70,10 @@
                     
                          <select id="categoria"name="categoria" class="form-control">
 	                                  <optgroup label="Categoria">
+	                                  
+	                                <option value=""></option>
+	                                  
+		           					
 		           					<c:forEach var="categoria" items="${categoriaList}">
 		           			
 		           				<option value="${categoria.id}">${categoria.nome}</option>

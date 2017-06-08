@@ -59,7 +59,7 @@
 									    <th>Username</th>
 									    <th>Senha</th>
 									    <th>Email</th>
-									    <th>Roles</th>
+<!-- 									    <th>Roles</th> -->
 									     <th>Ativo</th>
 									    <th>Ação</th>
                                     </tr>
@@ -79,7 +79,7 @@
                   <td>${usuario.username}</td>
                   <td ><input type="password" value="${usuario.senha}"></td>
                   <td>${usuario.email}</td>
-                   <td>${usuario.roles}</td>
+<%--                    <td>${usuario.roles}</td> --%>
                    <td> ${usuario.isativo}</td>
 		
 <!-- 		outras opcoes -->
@@ -145,7 +145,7 @@
                   <td>${usuario.username}</td>
                   <td ><input type="password" value="${usuario.senha}"></td>
                   <td>${usuario.email}</td>
-                   <td>${usuario.roles}</td>
+<%--                    <td>${usuario.roles}</td> --%>
                    <td> ${usuario.isativo}</td>
 		
 <!-- 		outras opcoes -->

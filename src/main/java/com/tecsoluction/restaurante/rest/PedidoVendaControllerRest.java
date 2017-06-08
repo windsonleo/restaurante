@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,15 +41,13 @@ public class PedidoVendaControllerRest {
         return new ResponseEntity<>(pedidovenda	, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(PedidoVenda entity) {
+    @RequestMapping(value = "/salvar",method = RequestMethod.POST)
+    public ResponseEntity<PedidoVenda> AdicionarEntity(@RequestBody PedidoVenda entity) {
 
-        try {
+
             getDao().add(entity);
-            return new ResponseEntity<>(entity, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
-        }
+            return new ResponseEntity<PedidoVenda>(entity, HttpStatus.OK);
+    
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -64,6 +63,15 @@ public class PedidoVendaControllerRest {
 
     }
     
-    
+//    @RequestMapping(value = "/enviar",method = RequestMethod.POST)
+//    public ResponseEntity EnviarEntity(PedidoVenda entity) {
+//
+//        try {
+//            getDao().add(entity);
+//            return new ResponseEntity<>(entity, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
+//        }
+//    }
 
 }

@@ -2,18 +2,17 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -25,12 +24,12 @@ public class Role  implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
   
-    @Column(name = "idrole")
+
 	private long idrole;
-    @Column(name = "name")
+    
     private String name;
     
-    @JsonIgnore
+ 
     private Set<Usuario> users;
     
     
@@ -40,16 +39,21 @@ public class Role  implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public Long getId() {
         return idrole;
     }
+    
 
     public void setId(Long id) {
         this.idrole = id;
     }
-
+    
+    
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -57,8 +61,10 @@ public class Role  implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
+//    @LazyCollection(LazyCollectionOption.FALSE)
     public Set<Usuario> getUsers() {
         return users;
     }

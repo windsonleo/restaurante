@@ -1,6 +1,9 @@
 package com.tecsoluction.restaurante.entidade;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class Garcon implements Serializable {
     @Column(name = "isativo")
 	private boolean isativo;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "garcon")
     private List<PedidoVenda> pedidos;
 
@@ -35,8 +38,22 @@ public class Garcon implements Serializable {
         // TODO Auto-generated constructor stub
 //        pedidos = new ArrayList<>();
     }
+    
+    
+    
 
-    public String getNome() {
+    public Garcon(long id, String nome, String foto, boolean isativo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.foto = foto;
+		this.isativo = isativo;
+	}
+
+
+
+
+	public String getNome() {
         return nome;
     }
 
@@ -48,9 +65,9 @@ public class Garcon implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
 
 
@@ -72,7 +89,7 @@ public class Garcon implements Serializable {
 		this.isativo=valor;
 	}
 
-    public List<PedidoVenda> gePedidos() {
+    public List<PedidoVenda> getPedidos() {
         return pedidos;
     }
 

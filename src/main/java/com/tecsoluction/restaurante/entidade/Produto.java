@@ -42,15 +42,15 @@ public class Produto implements Serializable {
     
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "fornecedor_id", nullable = true)
+    @JoinColumn(name="fornecedor_id")
     private Fornecedor fornecedor;
 
     // @OneToMany(mappedBy = "produto")
     // private List<Item> items;
 
     
-    @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = true)
+    @ManyToOne(cascade={CascadeType.REFRESH})
+    @JoinColumn(name="categoria_id",nullable=true)
     private Categoria categoria;
     
     
@@ -97,10 +97,10 @@ public class Produto implements Serializable {
         return id;
     }
     
-    public void setId(long id){
-    	
-    	this.id =id;
-    }
+//    public void setId(long id){
+//    	
+//    	this.id =id;
+//    }
 
     public String getDescricao() {
         return descricao;
