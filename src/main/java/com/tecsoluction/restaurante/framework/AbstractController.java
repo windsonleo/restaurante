@@ -82,12 +82,12 @@ public abstract class AbstractController<Entity> {
     }
 
     @Transactional
-    @RequestMapping(value = "edicao", method = RequestMethod.GET)
+    @RequestMapping(value = "editar", method = RequestMethod.GET)
     public ModelAndView editarEntityForm(HttpServletRequest request) {
 
         Entity entity;
         long idf = Long.parseLong(request.getParameter("id"));
-        ModelAndView edicao = new ModelAndView("edicao" + entityAlias);
+        ModelAndView edicao = new ModelAndView("cadastro" + entityAlias);
         entity = getDao().PegarPorId(idf);
         edicao.addObject(entityAlias, entity);
         edicao.addObject("acao", "edicao");

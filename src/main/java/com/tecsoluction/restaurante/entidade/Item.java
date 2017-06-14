@@ -4,8 +4,11 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.engine.profile.Fetch;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,11 +38,10 @@ public class Item  implements Serializable{
 
     private double totalItem;
     
-
-    @JsonIgnore
-    @ManyToOne()
-    @JoinColumn(name="pedido_ID",referencedColumnName = "ID")
-    private Pedido pedido;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="pedido_ID")
+	@JsonBackReference(value="items")
+	private Pedido pedido;
 
 //    @ManyToOne
 //    @JoinColumn

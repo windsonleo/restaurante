@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -132,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${pedido.id}">
+                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

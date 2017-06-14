@@ -1,5 +1,6 @@
 package com.tecsoluction.restaurante.entidade;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.hibernate.annotations.LazyCollection;
@@ -35,7 +36,7 @@ public abstract class Pedido {
 
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido",targetEntity=Item.class,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Item> items;
     
     

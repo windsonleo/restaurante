@@ -59,6 +59,7 @@ public class ItemControllerRest {
 //            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
 //        }
     }
+    
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Item> listarEntity() {
