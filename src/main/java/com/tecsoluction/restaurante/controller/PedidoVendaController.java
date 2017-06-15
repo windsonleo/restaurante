@@ -392,7 +392,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-         pv = pedidoVendaDao.PegarPorId(idf);
+        this.pv = pedidoVendaDao.PegarPorId(idf);
 
 
        produtosList = produtopedidovendaDao.getAll();
@@ -453,17 +453,29 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         produto = produtopedidovendaDao.getProdutoPorDescricao(prodesc);
         
-        Item item = new Item(produto, pv);
+        PedidoVenda pedidov = pedidoVendaDao.PegarPorId(pv.getId());
+        
+       // System.out.println("windson ped"+pedidov.toString());
+        
+        Item item = new Item(produto,pedidov);
+        
+        
         
         item.setQtd(prodqtd);
         item.setTotalItem(item.getTotalItem());
-        item.setPedido(pv);
+        item.setPedido(pedidov);
+       
+      //  pedidov.getItems().add(item);
+        
         
         itempedidovendaDao.add(item);
         
+      //  pedidoVendaDao.add(pedidov);
+        
+        
    //     pv.getItems().add(item);
         
-   //     pedidoVendaDao.add(pv);
+     //   pedidoVendaDao.add(pedidov);
         
 //        double totalpedido = 0;
 //

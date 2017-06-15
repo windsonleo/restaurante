@@ -1,5 +1,6 @@
 package com.tecsoluction.restaurante.entidade;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
@@ -8,6 +9,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,9 +37,9 @@ public abstract class Pedido {
 //    @OneToMany(mappedBy = "pedido")
 //    private List<Pagamento> pagamentos;
 
-
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "pedido",targetEntity=Item.class,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="pedido",orphanRemoval=true)
+   @JsonManagedReference
     private List<Item> items;
     
     
@@ -46,7 +49,7 @@ public abstract class Pedido {
 
     public Pedido() {
         // TODO Auto-generated constructor stub
-//        items = new ArrayList<>();
+        items = new ArrayList<>();
 //        pagamentos = new ArrayList<>();
     }
 

@@ -8,6 +8,7 @@ import org.hibernate.engine.profile.Fetch;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.io.Serializable;
@@ -38,10 +39,9 @@ public class Item  implements Serializable{
 
     private double totalItem;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="pedido_ID")
-	@JsonBackReference
-	private Pedido pedido;
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Pedido.class)
+    @JsonBackReference
+	private PedidoVenda pedido;
 
 //    @ManyToOne
 //    @JoinColumn
@@ -62,7 +62,7 @@ public class Item  implements Serializable{
     }
 
 
-    public Item(Produto produto, Pedido pedido) {
+    public Item(Produto produto, PedidoVenda pedido) {
 
         this.codigo = produto.getCodebar();
         this.descricao = produto.getDescricao();
@@ -73,7 +73,7 @@ public class Item  implements Serializable{
     
 
 
-    public Pedido getPedido() {
+    public PedidoVenda getPedido() {
         return pedido;
     }
 
@@ -87,7 +87,7 @@ public class Item  implements Serializable{
 //    }
 
 
-    public void setPedido(Pedido pedido) {
+    public void setPedido(PedidoVenda pedido) {
         this.pedido = pedido;
     }
 
