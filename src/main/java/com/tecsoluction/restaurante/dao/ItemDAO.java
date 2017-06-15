@@ -37,7 +37,7 @@ public class ItemDAO extends AbstractEntityDao<Item> {
 	public List<Item> getAllItemPorPedido(long idpedido) {
 		// TODO Auto-generated method stub
 		
-    List<Item> result = manager.createQuery("SELECT p FROM Item p where p.pedido_ID=" + idpedido, Item.class).getResultList();
+    List<Item> result = manager.createQuery("SELECT p FROM Item p where p.pedido=" + idpedido, Item.class).getResultList();
    
     return result;
 		    

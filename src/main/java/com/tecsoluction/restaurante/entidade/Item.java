@@ -40,7 +40,7 @@ public class Item  implements Serializable{
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="pedido_ID")
-	@JsonBackReference(value="items")
+	@JsonBackReference
 	private Pedido pedido;
 
 //    @ManyToOne
