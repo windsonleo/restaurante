@@ -40,7 +40,7 @@ public class Categoria implements Serializable {
     private String nome;
     
 //    (cascade = { CascadeType.ALL })
-	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Categoria.class,optional=true)
+	@ManyToOne(fetch =FetchType.LAZY,targetEntity=Categoria.class,optional=true)
 	@JoinColumn(name = "catpai_id", nullable = true)
     private Categoria catpai;
     
