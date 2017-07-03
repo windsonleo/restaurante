@@ -20,7 +20,7 @@
                                 <i class="fa fa-user"></i> Pedidos de Venda
                             </li>
                         </ol>
-                          <div class="panel panel-green">
+                          <div class="panel panel-red">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>

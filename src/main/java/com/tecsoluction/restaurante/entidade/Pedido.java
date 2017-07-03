@@ -85,7 +85,8 @@ public abstract class Pedido {
     }
 
     public double getTotal() {
-        return total;
+    	
+        return CalcularTotal(items);
     }
 
     public void setTotal(double total) {
@@ -100,6 +101,7 @@ public abstract class Pedido {
 //        this.pagamentos = pagamentos;
 //    }
 
+     
     public List<Item> getItems() {
         return items;
     }

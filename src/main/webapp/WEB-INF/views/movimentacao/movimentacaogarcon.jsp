@@ -18,7 +18,7 @@
                                 <i class="fa fa-user"></i> Garcon
                             </li>
                         </ol>
-                          <div class="panel panel-default">
+                          <div class="panel panel-red">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>
@@ -152,7 +152,7 @@
 			          <td>${garcon.id}</td>
                   <td>${garcon.nome}</td>
                   <td ><input type="text" value="${garcon.foto}"></td>
-                  <td>value="${garcon.isativo}"</td>
+                  <td>${garcon.isativo}</td>
 		
 <!-- 		outras opcoes -->
 
