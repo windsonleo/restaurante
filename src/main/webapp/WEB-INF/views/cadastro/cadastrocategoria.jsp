@@ -19,7 +19,7 @@
                             </li>
                         </ol>
  
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/categoria/add" ModelAttribute="categoria" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/categoria/${acao}" ModelAttribute="categoria" method="POST">
  
  						
  						
@@ -47,6 +47,9 @@
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${categoria.isativo}"/>
 					</label>
 			 </div>
+			 
+<%-- 			<input type="hidden" name="id" value="${categoria.id}"> --%>
+			 
 
 				   <label>
 						<input id="id" class="form-control" name="id" type="text" value="${categoria.id}" placeholder="Digite o id" />
@@ -67,7 +70,7 @@
                          <select id="catpai"name="catpai"  class="form-control">
 	                                  <optgroup label="Tipos de Catgeoria Pai">
 		           				
-		           					<option value=""></option>
+		           					<option value="${categoria.catpai}">${categoria.catpai}</option>
 		           				
 		           					<c:forEach var="categoria" items="${categoriaList}">
 		           			

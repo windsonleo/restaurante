@@ -97,10 +97,19 @@ public abstract class AbstractEntityDao<Entity> {
 //    	manager.find(entityClass, id);
     	
 //    	Entity entityant = manager.find(entityClass, id);
-//    	entityant.= entity;
+//    	entityant = entity;
  //   	manager.remove(entityant);
-    	
+    //	manager.remove(entity);
     	 manager.merge(entity);
+    	 manager.flush();
+    	 
+    	System.out.println("valor entity:"+entity.toString());
+    	 
+//    	Entity entity2 = new Entity();
+//    	
+//        Long idf = Long.parseLong(request.getParameter("id"));
+//        entity2 = getDao().PegarPorId(idf);
+//    	entity2= getDao().editar(entity);
     	
     }
 

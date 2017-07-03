@@ -19,7 +19,7 @@
                             </li>
                         </ol>
  
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/garcon/add" ModelAttribute="garcon" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/garcon/${acao}" ModelAttribute="garcon" method="POST">
  
  			<div class="panel panel-default">
 					<div class="panel-heading">

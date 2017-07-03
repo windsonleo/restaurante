@@ -2,7 +2,6 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.engine.profile.Fetch;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -104,8 +99,8 @@ public class Usuario implements Serializable {
 	}
 	
 //	@LazyCollection(LazyCollectionOption.FALSE)
-	@JsonIgnore
- 	@ManyToMany()
+    @JsonIgnore 
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "idusuario"), inverseJoinColumns = @JoinColumn(name = "idrole"))
 	    public Set<Role> getRoles() {
 	        return roles;

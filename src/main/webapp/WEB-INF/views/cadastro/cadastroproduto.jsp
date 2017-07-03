@@ -20,7 +20,7 @@
                         </ol>
                         
  
- <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/produto/add" ModelAttribute="produto" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/produto/${acao}" ModelAttribute="produto" method="POST">
  
  
  			<div class="panel panel-yellow">

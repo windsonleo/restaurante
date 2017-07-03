@@ -20,7 +20,7 @@
                         </ol>
                         
  
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/mesa/add" ModelAttribute="mesa" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/mesa/${acao}" ModelAttribute="mesa" method="POST">
  
  				<div class="panel panel-red">
 					<div class="panel-heading">

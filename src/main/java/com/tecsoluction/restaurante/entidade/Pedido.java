@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.hibernate.annotations.LazyCollection;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public abstract class Pedido {
 
     @Id
@@ -27,8 +29,13 @@ public abstract class Pedido {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
+    //aberto,pendente,fechado,cancelado
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+    
+    //AGUARDANDO_PREPARACAO, EM_PREPARACAO, PRONTO, INTERROMPIDO;
+    @Enumerated(EnumType.STRING)
+    private SituacaoPedido situacao;
 
     private double total;
     
@@ -37,7 +44,7 @@ public abstract class Pedido {
 //    @OneToMany(mappedBy = "pedido")
 //    private List<Pagamento> pagamentos;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
+//    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="pedido",orphanRemoval=true)
    @JsonManagedReference
     private List<Item> items;
@@ -49,7 +56,7 @@ public abstract class Pedido {
 
     public Pedido() {
         // TODO Auto-generated constructor stub
-        items = new ArrayList<>();
+    //    items = new ArrayList<>();
 //        pagamentos = new ArrayList<>();
     }
 
@@ -57,9 +64,9 @@ public abstract class Pedido {
         return id;
     }
 
-//    public void setId(long id) {
-//        this.id = id;
-//    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Date getData() {
         return data;
@@ -110,7 +117,15 @@ public boolean getIsativo(){
 		
 		this.isativo=valor;
 	}
+	
+	
+    public SituacaoPedido getSituacaoPedido () {
+        return situacao;
+    }
 
+    public void setSituacaoPedido(SituacaoPedido status) {
+        this.situacao = status;
+    }
 
 
     @Override

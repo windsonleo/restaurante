@@ -19,7 +19,7 @@
                             </li>
                         </ol>
  
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/usuario/add" ModelAttribute="usuario" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/usuario/${acao}" ModelAttribute="usuario" method="POST">
  
 	<div class="panel panel-default">
 					<div class="panel-heading">
@@ -45,7 +45,7 @@
 			 </div>
 
 				   <label>
-						<input id="idusuario" name="idusuario" class="form-control" type="text" value="${usuario.idusuario}" placeholder="Digite o Id "/>
+						<input id="id" name="id " class="form-control" type="text" value="${usuario.id}" placeholder="Digite o Id"/>
 					</label>
 			 
 		
@@ -78,6 +78,10 @@
                     
                          <select id="roles"name="roles" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Tipos de Permissoes do usuario">
+		           				
+		           					<option value="${usuario.roles}">${usuario.roles}</option>
+		           				
+		           				
 		           					<c:forEach var="role" items="${roleList}">
 		           			
 		           				<option value="${role.id}">${role.name}</option>

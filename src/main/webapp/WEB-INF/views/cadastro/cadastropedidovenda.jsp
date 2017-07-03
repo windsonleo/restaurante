@@ -20,7 +20,7 @@
                         </ol>
 					 
 					 <form  role="form" id="ds" class="form-labels-on-top"
-					 action="${pageContext.request.contextPath}/pedidovenda/add"
+					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
 

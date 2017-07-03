@@ -11,10 +11,19 @@
 					</div>
 				<form id="formlogin" action="home" method="post">
 						<h6>lalalalalalalalala</h6>
+						
+						
+						
+						
+						
 					</div>	
+					
+							<h2>Código do Erro ${errCode}</h2>
+							<h1>Mensagem de Erro: ${errMsg}</h1>
+					
 					<p><a href="#">Forgot Password ?</a></p>
-					       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-				</form>
+					       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				
 			</div>
 			<!--//End-login-form-->
 			 <!-----start-copyright---->
@@ -22,5 +31,4 @@
 						<p>Copyright (c) . All rights reserved. <a href="http://w3layouts.com"> Designed by TecSolution for Sistemas</a></p> 
 					</div>
 				<!-----//end-copyright---->
-		</div>
 

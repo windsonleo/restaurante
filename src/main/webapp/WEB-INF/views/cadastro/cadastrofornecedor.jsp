@@ -22,7 +22,7 @@
                         
                         
  
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/fornecedor/add" ModelAttribute="fornecedor" method="POST">
+ <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/fornecedor/${acao}" ModelAttribute="fornecedor" method="POST">
  
  
  

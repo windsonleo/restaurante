@@ -42,7 +42,10 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    
+<!--                     class="active" -->
+                    
+                    <li >
                         <a href="${pageContext.request.contextPath}/home"><i class="fa fa-tachometer" style="color:red;" aria-hidden="true"></i> Home</a>
                     </li>
                     
@@ -56,7 +59,7 @@
                     </li>
                     
                     
-                          <li>
+                      <li>
                         <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="fa fa-truck" style="color:red;" aria-hidden="true"></i> Entregas</a>
                     </li>
                     

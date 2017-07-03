@@ -38,8 +38,6 @@ public class Categoria implements Serializable {
 
     @Column(name = "nome", nullable = true)
     private String nome;
-
-
     
 //    (cascade = { CascadeType.ALL })
 	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Categoria.class,optional=true)
@@ -95,10 +93,10 @@ public class Categoria implements Serializable {
         return id;
     }
     
-//    public void setId(long id){
-//    	
-//    	this.id = id;
-//    }
+    public void setId(long id){
+    	
+    	this.id = id;
+    }
 
 
     @Override
