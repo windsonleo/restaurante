@@ -152,7 +152,7 @@
 			          <td>${garcon.id}</td>
                   <td>${garcon.nome}</td>
                   <td ><input type="text" value="${garcon.foto}"></td>
-                  <td><input type="checkbox" value="${garcon.isativo}"></td>
+                  <td>value="${garcon.isativo}"</td>
 		
 <!-- 		outras opcoes -->
 
