@@ -82,7 +82,7 @@
 			      <td>${garcon.id}</td>
                   <td>${garcon.nome}</td>
                   <td ><input type="text" value="${garcon.foto}"></td>
-                  <td><input type="checkbox" value="${garcon.isativo}"></td>
+                  <td>${garcon.isativo}</td>
 <%--                    <td>${garcon.datanascimento}</td> --%>
 <%--                    <td>${garcon.genero}</td> --%>
 <%--                    <td>${garcon.preferencia}</td> --%>
