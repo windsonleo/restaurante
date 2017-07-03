@@ -45,7 +45,7 @@ public abstract class Pedido {
 //    private List<Pagamento> pagamentos;
 
 //    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="pedido",orphanRemoval=true)
+    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="pedido")
    @JsonManagedReference
     private List<Item> items;
     
