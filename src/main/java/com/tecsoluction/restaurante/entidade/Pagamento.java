@@ -47,6 +47,7 @@ public class Pagamento implements Serializable {
     private double valorPago;
     
     @ManyToOne
+    @JoinColumn(name="caixa_id")
     private Caixa caixa;
     
     
