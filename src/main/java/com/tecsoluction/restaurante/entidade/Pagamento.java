@@ -16,6 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "PAGAMENTO")
@@ -30,11 +34,13 @@ public class Pagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
-     
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
     @OneToMany(fetch=FetchType.EAGER)
-    private List<Pedido> pedidos;
+    private List<PedidoVenda> pedidos;
     
     @ManyToMany
     private Set<FormaPagamento> formaPagamentos;
@@ -97,7 +103,7 @@ public class Pagamento implements Serializable {
 	/**
 	 * @return the pedidos
 	 */
-	public List<Pedido> getPedidos() {
+	public List<PedidoVenda> getPedidos() {
 		return pedidos;
 	}
 
@@ -160,7 +166,7 @@ public class Pagamento implements Serializable {
 	/**
 	 * @param pedidos the pedidos to set
 	 */
-	public void setPedidos(List<Pedido> pedidos) {
+	public void setPedidos(List<PedidoVenda> pedidos) {
 		this.pedidos = pedidos;
 	}
 

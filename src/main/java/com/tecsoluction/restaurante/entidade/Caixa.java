@@ -52,7 +52,7 @@ public class Caixa implements Serializable {
     @JsonIgnore
 	@LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(mappedBy="caixa")
-    private Set<Pagamento> pagamentos;
+    private List<Pagamento> pagamentos;
 
 
     //CONSTRUTOR PADRAO
@@ -98,7 +98,7 @@ public class Caixa implements Serializable {
 	/**
 	 * @return the pagamentos
 	 */
-	public Set<Pagamento> getPagamentos() {
+	public List<Pagamento> getPagamentos() {
 		return pagamentos;
 	}
 
@@ -108,7 +108,7 @@ public class Caixa implements Serializable {
 	/**
 	 * @param pagamentos the pagamentos to set
 	 */
-	public void setPagamentos(Set<Pagamento> pagamentos) {
+	public void setPagamentos(List<Pagamento> pagamentos) {
 		this.pagamentos = pagamentos;
 	}
 
