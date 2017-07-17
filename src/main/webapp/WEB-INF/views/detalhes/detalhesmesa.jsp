@@ -54,6 +54,15 @@
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${mesa.pedidos}">  --%>
 								
 								</div>
+								
+								<span>
+								<button type="button" class="btn btn-lg btn-success"
+									onClick="javascript:window.location='../pedidovenda/cadastro'">AddPedido</button> </span>
+									
+									<span>
+								<button type="button" class="btn btn-lg btn-success"
+									onClick="javascript:window.location='../pagamento/cadastro'">AddPagamento</button> </span>
+								
 
 							</div>
 
@@ -90,7 +99,7 @@
 		  
 		  
 		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
+                        <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">

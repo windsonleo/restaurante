@@ -29,6 +29,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
@@ -149,6 +150,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         StatusPedido[] tipoStatusList = StatusPedido.values();
 
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
+        
+        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+
 
         List<Cliente> clienteList = clienteDao.getAll();       
         
@@ -170,7 +174,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         model.addAttribute("origemPedidoList", origemPedidoList);
         model.addAttribute("garconList", garconList);
         model.addAttribute("mesaList", mesaList);
-       // model.addAttribute("garconList", garconList);        
+        model.addAttribute("situacaoPedidoList", situacaoPedidoList);        
         model.addAttribute("tipoStatusList", tipoStatusList);
         model.addAttribute("clienteList", clienteList);
 
@@ -561,6 +565,67 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		
 		return detalhesitem;
 	}
+	
+	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
+	public ModelAndView  deleteItemPedidoVenda(HttpServletRequest request){
+  	
+  	
+  	Long idf = Long.parseLong(request.getParameter("id"));
+  	
+  	
+//  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
+  	
+  	
+  	 itempedidovendaDao.delete(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+//  	detalhesitem.addObject("item", item);
+
+		
+  	return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());	
+  	
+	}
+	
+	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
+	public ModelAndView  entregasPedidoVenda(HttpServletRequest request){
+  	
+  	
+//  	Long idf = Long.parseLong(request.getParameter("id"));
+		
+        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
+
+  	
+  	
+  	ModelAndView entregas= new ModelAndView("movimentacaopedidovendaentregas");
+  	entregas.addObject("pedidovendaList",pedidoVendaList);
+  	
+  	
+//  	 itempedidovendaDao.delete(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+//  	detalhesitem.addObject("item", item);
+
+		
+  	return entregas;	
+  	
+	}
+
 
 
 }

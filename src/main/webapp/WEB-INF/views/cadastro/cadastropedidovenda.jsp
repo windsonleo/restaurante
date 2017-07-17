@@ -50,6 +50,27 @@
 					</label>
 		 	 
 		 	
+		 	           <label>
+                    <span>Situacao Pedido</span>
+                    
+                         <select id="situacao"name="situacao"  class="form-control" >
+	                                  <optgroup label="Situação do Pedido">
+		           					
+		           					
+		           			<c:forEach var="situacao" items="${situacaoPedidoList}">
+		           			
+		           				<option value="${situacao}">${situacao}</option>
+		           				      				
+		           				
+		       				</c:forEach>
+		       				
+		                </optgroup>
+	                    </select>
+	                    
+	                    
+<!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
+                    
+                </label>
 		 	 
 		 	 
 			

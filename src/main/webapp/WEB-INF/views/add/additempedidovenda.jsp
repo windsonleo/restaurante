@@ -155,15 +155,21 @@
 		  
 		                   <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
+                                    <a href="${pageContext.request.contextPath}/pedidovenda/item/delete?id=${item.id}" title="deletar" class="fa fa-remove">
+                              
+                             		 </a>
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <i class="fa fa-shopping-cart fa-5x"></i>
                                     </div>
+                           
+                                    
                                     <div class="col-xs-9 text-right">
                                          <div class="huge">${item.id}</div>
                                         <div>${item.descricao}</div>
                                       <div>Total: ${item.totalItem}</div>
+                             
                                         
                                     </div>
                                 </div>
@@ -184,6 +190,9 @@
                     
                                      <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
+                                <a href="${pageContext.request.contextPath}/pedidovenda/item/delete?id=${item.id}" title="deletar" class="fa fa-remove">
+                              
+                             		 </a>
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">

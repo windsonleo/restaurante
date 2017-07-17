@@ -2,8 +2,9 @@
 <%@ page session="false" %>
 
 
-
  <div id="page-wrapper">
+ 
+
 
             <div class="container-fluid">
 
@@ -68,13 +69,17 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                             <div class="panel-footer">
                             <a href="${pageContext.request.contextPath}/pedidovenda/novospedidos">
-                                <div class="panel-footer">
+                               
                                     <span class="pull-left">Detalhes</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -139,6 +144,7 @@
                 <!-- /.row -->
 
 <!--                 <div class="row"> -->
+
 <!--                     <div class="col-lg-4"> -->
 <!--                         <div class="panel panel-default"> -->
 <!--                             <div class="panel-heading"> -->

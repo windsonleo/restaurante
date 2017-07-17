@@ -2,7 +2,7 @@ package com.tecsoluction.restaurante.util;
 
 public enum OrigemPedido {
 
-    BALCAO, MESA, INTERNET, TELEVENDAS;
+    BALCAO,MESA,INTERNET,TELEVENDAS;
 
 
     OrigemPedido() {

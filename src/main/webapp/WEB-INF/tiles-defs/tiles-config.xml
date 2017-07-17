@@ -70,10 +70,22 @@
 			value="/WEB-INF/views/cadastro/cadastrocategoria.jsp" />
 
 	</definition>
+	
+		<definition name="cadastrocaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrocaixa.jsp" />
+
+	</definition>
 
 	<definition name="cadastrofornecedor" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastrofornecedor.jsp" />
+
+	</definition>
+	
+		<definition name="cadastroformapagamento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroformapagamento.jsp" />
 
 	</definition>
 
@@ -86,6 +98,12 @@
 	<definition name="cadastromesas" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastromesas.jsp" />
+
+	</definition>
+	
+		<definition name="cadastropagamento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastropagamento.jsp" />
 
 	</definition>
 
@@ -129,10 +147,22 @@
 			value="/WEB-INF/views/movimentacao/movimentacaocategoria.jsp" />
 
 	</definition>
+	
+		<definition name="movimentacaocaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaocaixa.jsp" />
+
+	</definition>
 
 	<definition name="movimentacaofornecedor" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/movimentacao/movimentacaofornecedor.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaoformapagamento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaoformapagamento.jsp" />
 
 	</definition>
 
@@ -147,6 +177,12 @@
 			value="/WEB-INF/views/movimentacao/movimentacaomesas.jsp" />
 
 	</definition>
+	
+		<definition name="movimentacaopagamento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaopagamento.jsp" />
+
+	</definition>
 
 	<definition name="movimentacaoproduto" extends="defaultTemplate">
 		<put-attribute name="conteudo"
@@ -157,6 +193,12 @@
 		<definition name="movimentacaopedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/movimentacao/movimentacaopedidovenda.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaopedidovendaentregas" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaopedidovendaentregas.jsp" />
 
 	</definition>
 	
@@ -243,6 +285,20 @@
 			value="/WEB-INF/views/profile/profileusuario.jsp" />
 
 	</definition>
+	
+	
+		<definition name="fecharcaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/caixa/fecharcaixa.jsp" />
+
+	</definition>
+	
+			<definition name="fecharcaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/caixa/fecharcaixa.jsp" />
+
+	</definition>
+	
 
 </tiles-definitions>
 

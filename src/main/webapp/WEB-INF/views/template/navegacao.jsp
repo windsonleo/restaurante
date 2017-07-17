@@ -50,6 +50,10 @@
                     </li>
                     
                          <li>
+                        <a href="${pageContext.request.contextPath}/caixa/movimentacao"><i class="fa fa-institution" style="color:red;" aria-hidden="true"></i> Caixa</a>
+                    </li>
+                    
+                         <li>
                         <a href="${pageContext.request.contextPath}/categoria/movimentacao"><i class="fa fa-institution" style="color:red;" aria-hidden="true"></i> Categoria</a>
                     </li>
                     
@@ -60,7 +64,11 @@
                     
                     
                       <li>
-                        <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="fa fa-truck" style="color:red;" aria-hidden="true"></i> Entregas</a>
+                        <a href="${pageContext.request.contextPath}/pedidovenda/entregas"><i class="fa fa-truck" style="color:red;" aria-hidden="true"></i> Entregas</a>
+                    </li>
+                    
+                           <li>
+                        <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:red;" aria-hidden="true"></i> FormaPagamento</a>
                     </li>
                     
                     
@@ -76,6 +84,9 @@
                         <a href="${pageContext.request.contextPath}/mesa/movimentacao"><i class="fa fa-table" style="color:red;" aria-hidden="true"></i> Mesas</a>
                     </li>
                     
+                            <li>
+                        <a href="${pageContext.request.contextPath}/pagamento/movimentacao"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:red;"></i> Pagamentos</a>
+                    </li>
                     
                       <li>
                         <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:red;"></i> Pedidos de Venda</a>

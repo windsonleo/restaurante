@@ -58,6 +58,8 @@
                                     <tr>
                                         <th>Id</th>
 									    <th>Data</th>
+									    <th>Situação</th>
+									    
 									    <th>Status</th>
 									    <th>Origem</th>
 									    <th>Total</th>
@@ -82,6 +84,7 @@
 
 			      <td>${pedidovenda.id}</td>
                   <td>${pedidovenda.data}</td>
+				<td>${pedidovenda.situacao}</td>
                   <td>${pedidovenda.status}</td>
                  <td>${pedidovenda.origempedido}</td>
                  <td>${pedidovenda.total}</td>
@@ -156,7 +159,8 @@
 
 			      <td>${pedidovenda.id}</td>
                   <td>${pedidovenda.data}</td>
-                  <td>${pedidovenda.status}</td>
+				 <td>${pedidovenda.situacao}</td>
+                 <td>${pedidovenda.status}</td>
                  <td>${pedidovenda.origempedido}</td>
                  <td>${pedidovenda.total}</td>
                  <td>${pedidovenda.cliente}</td>

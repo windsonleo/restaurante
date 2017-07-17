@@ -9,14 +9,14 @@
 <html>
 <head>
 
-<meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/screen.css" type="text/css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" type="text/css" />
 
  <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +35,12 @@
  	
  	  <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+    
+  
+       	    <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+  
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -44,22 +50,23 @@
     <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris-data.js"></script>
  	
- 	
- 	
-<!--  	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
-<!--     <script src="http://harvesthq.github.io/chosen/chosen.jquery.js"></script> -->
-    
-    
+  
+
  
 </head>
+
+
 <body>
 
-
+ 
+ 	
 		
 		<tiles:insertAttribute name="navegacao" />
 
 
 		<tiles:insertAttribute name="conteudo" />
+			
+
 
 
 </body>

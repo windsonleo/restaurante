@@ -16,7 +16,8 @@
     <meta name="author" content="">
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/screen.css" type="text/css" />
+
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/screen.css" type="text/css" /> --%>
 
  <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -31,10 +32,12 @@
     <link href="${pageContext.request.contextPath}/resources/font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
  	
  	
- 	
+<%--  	 	<script src="${pageContext.request.contextPath}/resources/js/jquery/jquery-1.4.1.min.js" --%>
+<!-- 	type="text/javascript"></script> -->
  	
  	  <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+     <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -45,6 +48,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris-data.js"></script>
  	
  	
+ 
  	
 
 	</head>

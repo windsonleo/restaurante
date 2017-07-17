@@ -1,0 +1,13 @@
+.progress {
+    height: 1px;
+    background: none;
+    box-shadow: none;
+}
+
+.progress-bar {
+    background: black;
+}
+
+.progress-element {
+    text-align: left;
+}

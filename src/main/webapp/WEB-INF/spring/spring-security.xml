@@ -25,6 +25,9 @@
      	 <security:intercept-url pattern="/login**" access="permitAll" />  
         <security:intercept-url pattern="/home**" access="hasRole('ROLE_MEMBRO')"/>
         <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
+        <security:intercept-url pattern="/caixa/movimentacao" access="hasRole('ROLE_ADM')"/>
+        <security:intercept-url pattern="/pagamento/movimentacao" access="hasRole('ROLE_ADM')"/>
+        <security:intercept-url pattern="/formapagamento/movimentacao" access="hasRole('ROLE_ADM')"/>
         
         
 		<security:logout logout-success-url="/"  invalidate-session="true" delete-cookies="true"/>

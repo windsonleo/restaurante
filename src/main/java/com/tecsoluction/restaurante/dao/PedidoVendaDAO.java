@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -47,6 +48,15 @@ public class PedidoVendaDAO extends AbstractEntityDao<PedidoVenda> {
 		// TODO Auto-generated method stub
 		
     List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.mesa=" + idmesa, PedidoVenda.class).getResultList();
+    return result;
+		    
+
+	}
+	
+	public List<PedidoVenda> getAllPedidoPorData(String dataini) {
+		// TODO Auto-generated method stub
+		
+    List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.data='" +dataini+"'", PedidoVenda.class).getResultList();
     return result;
 		    
 

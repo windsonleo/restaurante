@@ -49,7 +49,8 @@ public abstract class Pedido {
    @JsonManagedReference
     private List<Item> items;
     
-    
+    @ManyToOne(cascade={CascadeType.REFRESH})
+    private Pagamento pagamento;
     
     @Column(name = "isativo")
 	private boolean isativo;
@@ -128,9 +129,39 @@ public boolean getIsativo(){
     public void setSituacaoPedido(SituacaoPedido status) {
         this.situacao = status;
     }
+    
+    
 
 
-    @Override
+    /**
+	 * @return the situacao
+	 */
+	public SituacaoPedido getSituacao() {
+		return situacao;
+	}
+
+	/**
+	 * @return the pagamento
+	 */
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	/**
+	 * @param situacao the situacao to set
+	 */
+	public void setSituacao(SituacaoPedido situacao) {
+		this.situacao = situacao;
+	}
+
+	/**
+	 * @param pagamento the pagamento to set
+	 */
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	@Override
     public String toString() {
 
         return String.valueOf(id);
