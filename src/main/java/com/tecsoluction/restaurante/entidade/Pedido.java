@@ -60,9 +60,8 @@ public abstract class Pedido {
    @JsonManagedReference
     private List<Item> items;
     
-    @ManyToOne(cascade={CascadeType.REFRESH})
-    @JoinColumn(name="pagamento_id")
-    private Pagamento pagamento;
+    @OneToMany(mappedBy="pedidos")
+    private List<Pagamento> pagamento;
     
     @Column(name = "isativo")
 	private boolean isativo;
@@ -155,7 +154,7 @@ public boolean getIsativo(){
 	/**
 	 * @return the pagamento
 	 */
-	public Pagamento getPagamento() {
+	public List<Pagamento> getPagamento() {
 		return pagamento;
 	}
 
@@ -169,7 +168,7 @@ public boolean getIsativo(){
 	/**
 	 * @param pagamento the pagamento to set
 	 */
-	public void setPagamento(Pagamento pagamento) {
+	public void setPagamento(List<Pagamento> pagamento) {
 		this.pagamento = pagamento;
 	}
 

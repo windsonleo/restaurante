@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Pagamento implements Serializable {
      
     private Date datapagamento;
 
-    @OneToMany(mappedBy="pagamento")
+    @OneToMany(fetch=FetchType.EAGER)
     private List<Pedido> pedidos;
     
     @ManyToMany
