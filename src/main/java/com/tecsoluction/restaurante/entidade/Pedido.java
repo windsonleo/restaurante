@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -60,7 +61,7 @@ public abstract class Pedido {
    @JsonManagedReference
     private List<Item> items;
     
-    @OneToMany(mappedBy="pedidos")
+    @ManyToMany(mappedBy="pedidos")
     private List<Pagamento> pagamento;
     
     @Column(name = "isativo")

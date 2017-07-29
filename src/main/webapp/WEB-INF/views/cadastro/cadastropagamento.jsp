@@ -19,11 +19,18 @@
                             </li>
                         </ol>
                         
- 
+                                      <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> 
+                        </div>
+                    </div>
+                </div>
  <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
  
  
- 			<div class="panel panel-yellow">
+ 			<div class="panel panel-primary">
 					<div class="panel-heading">
 							<h3 class="panel-title">Cadastro de Pagamento </h3>
 					</div>
@@ -134,6 +141,197 @@
 					</label>
 		 	 				
 					
+					<div class="panel panel-yellow">
+					<div class="panel-heading">
+							<h3 class="panel-title">Formas de Pagamento </h3>
+					</div>
+					<div class="panel-body">
+					
+					                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+									    <th>Nome</th>
+<!-- 									    <th>Telefone</th> -->
+<!-- 									    <th>Email</th> -->
+<!-- 									    <th>Data Nasciemnto</th> -->
+<!-- 									     <th>Genero</th> -->
+									     <th>Tipo</th>
+									     <th>Valor</th>
+<!-- 									     <th>Obs</th> -->
+									    <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                
+                                <c:forEach var="formapagamento" items="${pagamento.formaPagamentos}" varStatus="id">
+
+		<c:choose>
+		
+		  <c:when test="${formapagamento.id % 2 == 0}">
+  
+  <tr class="success">
+
+			      <td>${pagamento.formapagamento.id}</td>
+                  <td>${formapagamento.nome}</td>
+<%--                   <td ><input type="tel" value="${caixa.telefone}"></td> --%>
+<%--                   <td><input type="email" value="${caixa.email}"></td> --%>
+<%--                    <td>${caixa.datanascimento}</td> --%>
+<%--                    <td>${caixa.genero}</td> --%>
+                   <td>${formapagamento.tipo}</td>
+                   <td> <input type="text"></input></td>
+<%--                    <td> ${caixa.obs}</td> --%>
+                   
+		
+<!-- 		outras opcoes -->
+
+<!--  										<tr class="success"> -->
+<!--                                         <td>/about.html</td> -->
+<!--                                         <td>261</td> -->
+<!--                                         <td>33.3%</td> -->
+<!--                                         <td>$234.12</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr class="warning"> -->
+<!--                                         <td>/sales.html</td> -->
+<!--                                         <td>665</td> -->
+<!--                                         <td>21.3%</td> -->
+<!--                                         <td>$16.34</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr class="danger"> -->
+<!--                                         <td>/blog.html</td> -->
+<!--                                         <td>9516</td> -->
+<!--                                         <td>89.3%</td> -->
+<!--                                         <td>$1644.43</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr> -->
+<!--                                         <td>/404.html</td> -->
+<!--                                         <td>23</td> -->
+<!--                                         <td>34.3%</td> -->
+<!--                                         <td>$23.52</td> -->
+<!--                                     </tr> -->
+
+
+
+
+								<td class="options-width">
+								
+							 
+							
+      								
+      								<a
+									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
+									title="informação" class="fa fa-info fa-2x"></a>
+									
+										<a
+									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
+									title="editar" class="fa fa-pencil fa-2x"></a>
+									
+									
+									 <a
+									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}"
+									title="deletar" class="fa fa-remove fa-2x"></a>
+									
+									
+									 <a
+									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
+									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
+										
+								</td>
+								
+								</tr>
+			  
+			  
+		  </c:when>
+		  
+		  		  <c:when test="${formapagamento.id % 2 != 0}">
+  
+  <tr class="warning">
+
+			      <td>${formapagamento.id}</td>
+                  <td>${formapagamento.nome}</td>
+<%--                   <td ><input type="tel" value="${caixa.telefone}"></td> --%>
+<%--                   <td><input type="email" value="${caixa.email}"></td> --%>
+<%--                    <td>${caixa.datanascimento}</td> --%>
+<%--                    <td>${caixa.genero}</td> --%>
+                   <td>${formapagamento.tipo}</td>
+                   <td> <input type="text"></input></td>
+<%--                    <td> ${caixa.obs}</td> --%>
+		
+<!-- 		outras opcoes -->
+
+<!--  										<tr class="success"> -->
+<!--                                         <td>/about.html</td> -->
+<!--                                         <td>261</td> -->
+<!--                                         <td>33.3%</td> -->
+<!--                                         <td>$234.12</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr class="warning"> -->
+<!--                                         <td>/sales.html</td> -->
+<!--                                         <td>665</td> -->
+<!--                                         <td>21.3%</td> -->
+<!--                                         <td>$16.34</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr class="danger"> -->
+<!--                                         <td>/blog.html</td> -->
+<!--                                         <td>9516</td> -->
+<!--                                         <td>89.3%</td> -->
+<!--                                         <td>$1644.43</td> -->
+<!--                                     </tr> -->
+<!--                                     <tr> -->
+<!--                                         <td>/404.html</td> -->
+<!--                                         <td>23</td> -->
+<!--                                         <td>34.3%</td> -->
+<!--                                         <td>$23.52</td> -->
+<!--                                     </tr> -->
+
+
+
+
+								<td class="options-widt">      								
+								
+								<a
+									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
+									title="informação" class="fa fa-info fa-2x"></a>
+									
+										<a
+									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
+									title="editar" class="fa fa-pencil fa-2x"></a>
+									
+									
+									 <a
+									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}"
+									title="deletar" class="fa fa-remove fa-2x"></a>
+									
+										 <a
+									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
+									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
+										
+								</td>
+								
+								</tr>
+			  
+			  
+		  </c:when>
+	
+
+
+</c:choose>
+
+                </c:forEach>                    
+                                
+                                
+                                
+                                
+                                
+                           
+                                </tbody>
+                            </table>
+                        </div>
+					
+					</div>
+					</div>
 						    
                     
    
@@ -155,6 +353,8 @@
 				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			</div> 
+			
+			</div>
 			
 			</div>
 			

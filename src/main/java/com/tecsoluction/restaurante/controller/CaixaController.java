@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -36,6 +37,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Controller
 @RequestMapping(value = "caixa/")
@@ -61,8 +63,6 @@ public class CaixaController extends AbstractController<Caixa> {
     
     List<PedidoVenda> pedidoVendaLista;
     
-
-
 
 
 
@@ -199,20 +199,26 @@ public class CaixaController extends AbstractController<Caixa> {
 	@SuppressWarnings("null")
 	@RequestMapping(value = "/fechamentocaixa", method = RequestMethod.GET)
 	public ModelAndView  FechamentoCaixa(HttpServletRequest request){
-		
-	    List<PedidoVenda> pedidoVendaListamesa=null;
-	    
-	    List<PedidoVenda> pedidoVendaListainternet=null;
-	    
-	    List<PedidoVenda> pedidoVendaListabalcao=null;
 
-	    List<PedidoVenda> pedidoVendaListatelevendas=null;
-	    
-	    List<PedidoVenda> pedidoVendaListacancelados=null;
   	
-  		String mesa=OrigemPedido.MESA.toString();
+//  		String mesa=OrigemPedido.MESA.toString();
+//  		
+//  			OrigemPedido origem;
+//  		
+//  		StatusPedido status = StatusPedido.CANCELADO;
+		
+		List<PedidoVenda> pedidoVendaListamesa = new ArrayList<>();
+	    
+	    List<PedidoVenda> pedidoVendaListainternet= new ArrayList<>();
+	    
+	    List<PedidoVenda> pedidoVendaListabalcao= new ArrayList<>();
+
+	    List<PedidoVenda> pedidoVendaListatelevendas= new ArrayList<>();
+	    
+	    List<PedidoVenda> pedidoVendaListacancelados= new ArrayList<>();
+	    
+	    Double total = 0.0;
   		
-  		OrigemPedido origem = OrigemPedido.MESA;
   		
 		String Dti = (String) request.getParameter("dataini");
 		
@@ -220,36 +226,50 @@ public class CaixaController extends AbstractController<Caixa> {
 		
 		List<PedidoVenda> pvListData = dao.getAllPedidoPorData(Dti);
 		
+		
+		
 		for(int i = 0;i < pvListData.size();i++){
+			
 			
 			PedidoVenda pv = new PedidoVenda();
 			
 			pv = pvListData.get(i);
 			
-			if(pv.getOrigempedido().equals("MESA")){
+			OrigemPedido origem = pv.getOrigempedido();
+			StatusPedido status = pv.getStatus();
+			total = total + pv.getTotal();
+			
+			
+			
+			
+			
+			if(origem == OrigemPedido.MESA){
+				
+				
 				
 				pedidoVendaListamesa.add(pv);
-			}
 			
-			if(pv.getOrigempedido().equals("INTERNET")){
+			}
+//			
+			else if(origem==OrigemPedido.INTERNET){
 				
 				pedidoVendaListainternet.add(pv);
 				
 			}
 			
-			if(pv.getOrigempedido().equals("BALCAO")){
+			else if(origem==OrigemPedido.BALCAO){
 				
 				pedidoVendaListabalcao.add(pv);
 				
 				
 			}
-			if(pv.getOrigempedido().equals("TELEVENDAS")){
+			else if(origem==OrigemPedido.TELEVENDAS){
 				
 				pedidoVendaListatelevendas.add(pv);
 				
 			}
 			
-			if(pv.getStatus().equals("CANCELADO")){
+			else if(status==StatusPedido.CANCELADO){
 				
 				pedidoVendaListacancelados.add(pv);
 				
@@ -276,6 +296,9 @@ public class CaixaController extends AbstractController<Caixa> {
 		fecharcaixa.addObject("pedidoVendaListainternet", pedidoVendaListainternet);
 
 		fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
+		
+		fecharcaixa.addObject("total", total);
+
 
 
 

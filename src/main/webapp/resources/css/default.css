@@ -11,3 +11,69 @@
 .progress-element {
     text-align: left;
 }
+
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: block;
+}
+ 
+::-webkit-scrollbar-button:end:increment {
+    background-image: url("../images/scroll_cntrl_dwn.png");
+}
+ 
+::-webkit-scrollbar-button:start:decrement {
+    background-image: url("../images/scroll_cntrl_up.png");
+}
+ 
+::-webkit-scrollbar-track-piece:vertical:start {
+    background-image: url("../images/scroll_gutter_top.png"), url("../images/scroll_gutter_mid.png");
+    background-repeat: no-repeat, repeat-y;
+}
+ 
+::-webkit-scrollbar-track-piece:vertical:end {
+    background-image: url("../images/scroll_gutter_btm.png"), url("../images/scroll_gutter_mid.png");
+    background-repeat: no-repeat, repeat-y;
+    background-position: bottom left, 0 0;
+}
+ 
+::-webkit-scrollbar-thumb:vertical {
+    height: 56px;
+    -webkit-border-image: url("../images/scroll_thumb.png") 8 0 8 0 stretch stretch;
+    border-width: 8 0 8 0;
+}
+
+pre {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  white-space: nowrap; 
+  overflow: scroll;
+  padding: 5px;
+  width: 550px;
+}
+ 
+pre::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  padding: 18px;
+  -webkit-border-radius: 1ex;
+}
+ 
+pre::-webkit-scrollbar-thumb {
+  background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(240, 240, 240)), to(rgb(210, 210, 210)));
+  padding: 8px;
+  width: 6px;
+  height: 6px;
+  -webkit-border-radius: 1ex;
+}
+ 
+pre::-webkit-scrollbar-button:start:decrement,pre::-webkit-scrollbar-button:end:increment {
+  display: none;
+}
+ 
+pre::-webkit-scrollbar-thumb:vertical, pre::-webkit-scrollbar-thumb:horizontal {
+  height: 3px;
+  width: 3px;
+  margin: 3px;
+}
+

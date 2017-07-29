@@ -46,7 +46,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 	
 	  private
 	    final
-	    PedidoDAO peddao;
+	    PedidoVendaDAO peddao;
 	    
 	    private
 	    final
@@ -66,7 +66,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
     
 
     @Autowired
-    public PagamentoController(PagamentoDAO dao, UsuarioDAO daousu,CaixaDAO CDAO,PedidoDAO peddao,FormaPagamentoDAO formdao) {
+    public PagamentoController(PagamentoDAO dao, UsuarioDAO daousu,CaixaDAO CDAO,PedidoVendaDAO peddao,FormaPagamentoDAO formdao) {
         super("pagamento");
         this.dao = dao;
         this.usudao = daousu;
@@ -86,7 +86,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         });
         
         
-        binder.registerCustomEditor(Pedido.class, new AbstractEditor<Pedido>(this.peddao) {
+        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.peddao) {
 
         });
         
@@ -116,7 +116,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 		usuario = usudao.PegarPorNome(usuario.getUsername());
 		 List<FormaPagamento> formapagamentoList = fdao.getAll();
 	        
-	        List<Pedido> pedidoList = peddao.getAll();
+	        List<PedidoVenda> pedidoList = peddao.getAll();
 	        
 	        List<Caixa> caixaList = cdao.getAll();
 

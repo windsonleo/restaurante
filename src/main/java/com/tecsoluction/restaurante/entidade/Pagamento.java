@@ -39,7 +39,7 @@ public class Pagamento implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER)
     private List<PedidoVenda> pedidos;
     
     @ManyToMany

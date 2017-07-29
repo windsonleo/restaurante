@@ -18,13 +18,22 @@
                                 <i class="fa fa-user"></i> Pedidos de Venda
                             </li>
                         </ol>
+                        
+                                                   <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> 
+                        </div>
+                    </div>
+                </div>
 					 
 					 <form  role="form" id="ds" class="form-labels-on-top"
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
 
-		<div class="panel panel-green">
+		<div class="panel panel-primary">
 					<div class="panel-heading">
 							<h3 class="panel-title">Cadastro de Pedido Venda </h3>
 					</div>

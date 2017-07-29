@@ -18,12 +18,21 @@
                                 <i class="fa fa-support"></i> Categoria
                             </li>
                         </ol>
+                        
+                                                             <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> 
+                        </div>
+                    </div>
+                </div>
  
  <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/categoria/${acao}" ModelAttribute="categoria" method="POST">
  
  						
  						
- 					<div class="panel panel-default">
+ 					<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Cadastro de Categoria </h3>
 					</div>

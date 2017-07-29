@@ -18,7 +18,18 @@
                                 <i class="fa fa-user"></i> Garcon
                             </li>
                         </ol>
-                          <div class="panel panel-red">
+                        
+                                                   <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> 
+                        </div>
+                    </div>
+                </div>
+                        
+                        
+                          <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Buscar</h3>
                             </div>

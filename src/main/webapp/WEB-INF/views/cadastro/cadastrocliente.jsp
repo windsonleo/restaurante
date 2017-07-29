@@ -18,6 +18,15 @@
                                 <i class="fa fa-user"></i> Clientes
                             </li>
                         </ol>
+                        
+                                                             <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i> 
+                        </div>
+                    </div>
+                </div>
  
  <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/cliente/${acao}" ModelAttribute="cliente" method="POST">
  

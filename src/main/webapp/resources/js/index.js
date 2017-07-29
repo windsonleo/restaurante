@@ -1,6 +1,9 @@
 
 		$(document).ready(function () {
 			
+			 $('li a').addClass('active');
+			 
+			
 //			alert("index");
 
   			
@@ -30,5 +33,21 @@
 			     }, 500); // WAIT 1 seconds
 			 }, 500); // WAIT 1 second
   				  			
-  					
-  			});
+				 
+		
+
+				});
+		
+		 $('.nav navbar-nav side-nav li').click(function(e) {
+		        $('.navbar li.active').removeClass('active');
+		        var $this = $(this);
+		        if (!$this.hasClass('active')) {
+		            $this.addClass('active');
+		        }
+
+		    });
+			 
+	
+				
+	
+	

@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brad" href="index.html"><img src="${pageContext.request.contextPath}/resources/images/logonome.png" /></a>
+                <img src="${pageContext.request.contextPath}/resources/images/logonome.png" /></a>
             </div>
             
             <!-- Top Menu Items -->
@@ -45,11 +45,11 @@
                     
 <!--                     class="active" -->
                     
-                    <li >
-                        <a href="${pageContext.request.contextPath}/home"><i class="fa fa-tachometer" style="color:red;" aria-hidden="true"></i> Home</a>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/home" ><i class="fa fa-tachometer" style="color:red;" aria-hidden="true"></i> Home</a>
                     </li>
                     
-                         <li>
+                      <li >
                         <a href="${pageContext.request.contextPath}/caixa/movimentacao"><i class="fa fa-institution" style="color:red;" aria-hidden="true"></i> Caixa</a>
                     </li>
                     
@@ -129,3 +129,7 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+        
+   
+        
+        
