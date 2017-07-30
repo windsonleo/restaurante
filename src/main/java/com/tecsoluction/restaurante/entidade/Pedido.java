@@ -21,8 +21,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
@@ -62,6 +65,8 @@ public abstract class Pedido {
     private List<Item> items;
     
     @ManyToMany(mappedBy="pedidos")
+    @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pagamento> pagamento;
     
     @Column(name = "isativo")
