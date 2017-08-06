@@ -2,6 +2,8 @@ package com.tecsoluction.restaurante.rest;
 	
 import java.util.List;
 
+import javax.persistence.CascadeType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,11 +47,12 @@ public class ClienteControllerRest {
     @RequestMapping(value="/salvar",method = RequestMethod.POST)
     public ResponseEntity<Cliente> AdicionarEntity(@RequestBody Cliente entity) {
 
-    	
-        getDao().add(entity);
+    	Cliente cli = new Cliente();
+    	cli = entity;
+        getDao().add(cli);
         
 
-             return new ResponseEntity<Cliente>(entity, HttpStatus.OK);
+             return new ResponseEntity<Cliente>(cli, HttpStatus.OK);
 
      }
 

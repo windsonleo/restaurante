@@ -24,17 +24,17 @@ public class PedidoVenda extends Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-	@ManyToOne(cascade={CascadeType.PERSIST})
+	@ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
     
     
-    @ManyToOne(cascade={CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name="mesa_id")
 //    @Column(name="mesa_id")
     private Mesa mesa;
    
-    @ManyToOne(cascade={CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name="garcon_id")
     private Garcon garcon;
 
