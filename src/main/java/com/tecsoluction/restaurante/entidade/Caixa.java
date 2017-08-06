@@ -52,7 +52,7 @@ public class Caixa implements Serializable {
     
     @JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany
+    @OneToMany(mappedBy="caixa")
     private List<Despesa> despesas;
     
     
