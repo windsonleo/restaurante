@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -29,9 +30,9 @@ public class Despesa implements Serializable {
     private String nome;
     
 ////    (cascade = { CascadeType.ALL })
-//	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Caixa.class,optional=true)
+	@ManyToOne
 //	@JoinColumn(name = "catpai_id", nullable = true)
-//    private Caixa catpai;
+    private Caixa caixa;
     
     
     @Column(name = "isativo")
