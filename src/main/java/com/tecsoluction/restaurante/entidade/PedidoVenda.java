@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,17 +24,17 @@ public class PedidoVenda extends Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-	@ManyToOne()
+	@ManyToOne(cascade={CascadeType.PERSIST})
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
     
     
-    @ManyToOne()
+    @ManyToOne(cascade={CascadeType.PERSIST})
     @JoinColumn(name="mesa_id")
 //    @Column(name="mesa_id")
     private Mesa mesa;
    
-    @ManyToOne()
+    @ManyToOne(cascade={CascadeType.PERSIST})
     @JoinColumn(name="garcon_id")
     private Garcon garcon;
 
