@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<h1 class="page-header">
 					Detalhes da Produto <small>${produto.codebar}</small> 
 					
@@ -61,10 +61,10 @@
 <!-- 								<span 	class="input-group-btn"> -->
 									
 <!-- 									<button -->
-<!-- 										class="btn btn-lg btn-primary" type="button"> -->
+<!-- 										class="btn btn-sm btn-primary" type="button"> -->
 <!-- 										<i class="fa fa-search"></i> -->
 <!-- 									</button> -->
-<!-- 									<button type="button" class="btn btn-lg btn-success" -->
+<!-- 									<button type="button" class="btn btn-sm btn-success" -->
 <!-- 										onClick="javascript:window.location='cadastro'">AddItemProduto</button> -->
 										
 <!-- 								</span> -->
@@ -77,7 +77,7 @@
 
 			</div>
 			
-				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 		<p></p>
 		</div>
 		
@@ -89,7 +89,7 @@
 		  
 		  
 		  
-		                   <div class="col-lg-3 col-md-6">
+		                   <div class="col-sm-3 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
@@ -118,7 +118,7 @@
                     
                     <c:when test="${pedido.id % 2 != 0}">
                     
-                                     <div class="col-lg-3 col-md-6">
+                                     <div class="col-sm-3 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">

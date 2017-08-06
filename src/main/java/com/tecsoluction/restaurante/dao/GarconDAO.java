@@ -1,8 +1,8 @@
 package com.tecsoluction.restaurante.dao;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Service;
+
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 

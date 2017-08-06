@@ -1,11 +1,11 @@
 package com.tecsoluction.restaurante.dao;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
-
-import javax.persistence.TypedQuery;
 
 @Repository
 public class PedidoDAO extends AbstractEntityDao<Pedido> {

@@ -58,6 +58,24 @@
 		<put-attribute name="conteudo" value="/WEB-INF/views/cadastro/cadastromodelo.jsp" />
 
 	</definition>
+	
+		<definition name="cadastrobanco" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrobanco.jsp" />
+
+	</definition>
+	
+		<definition name="cadastroestoque" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroestoque.jsp" />
+
+	</definition>
+	
+			<definition name="cadastroempresa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroempresa.jsp" />
+
+	</definition>
 
 	<definition name="cadastrocliente" extends="defaultTemplate">
 		<put-attribute name="conteudo"
@@ -74,6 +92,12 @@
 		<definition name="cadastrocaixa" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastrocaixa.jsp" />
+
+	</definition>
+	
+			<definition name="cadastrodespesa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrodespesa.jsp" />
 
 	</definition>
 
@@ -135,6 +159,24 @@
 			value="/WEB-INF/views/movimentacao/movimentacaousuario.jsp" />
 
 	</definition>
+	
+		<definition name="movimentacaobanco" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaobanco.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaoempresa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaoempresa.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaoestoque" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaoestoque.jsp" />
+
+	</definition>
 
 	<definition name="movimentacaocliente" extends="defaultTemplate">
 		<put-attribute name="conteudo"
@@ -151,6 +193,12 @@
 		<definition name="movimentacaocaixa" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/movimentacao/movimentacaocaixa.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaodespesa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaodespesa.jsp" />
 
 	</definition>
 
@@ -272,6 +320,12 @@
 		<definition name="additempedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/add/additempedidovenda.jsp" />
+
+	</definition>
+	
+			<definition name="adddespesacaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/add/adddespesacaixa.jsp" />
 
 	</definition>
 	

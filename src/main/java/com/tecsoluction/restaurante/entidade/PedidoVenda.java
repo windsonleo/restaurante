@@ -1,19 +1,15 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tecsoluction.restaurante.util.OrigemPedido;
-import com.tecsoluction.restaurante.util.TipoPedido;
-
-import javax.persistence.*;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.tecsoluction.restaurante.util.OrigemPedido;
 
 @Entity
 @Table(name = "PEDIDO_VENDA")
@@ -56,7 +52,7 @@ public class PedidoVenda extends Pedido implements Serializable {
 //    @OneToMany
 //    private List<Item> listaItensVenda;
 
-
+    private boolean ispago = false;
 
 
 
@@ -67,7 +63,29 @@ public class PedidoVenda extends Pedido implements Serializable {
 //    private List<DevolucaoVenda> listaDevolucao;
 
 
-    //CONSTRUTOR PADRÃO
+    /**
+	 * @return the ispago
+	 */
+	public boolean isIspago() {
+		return ispago;
+	}
+
+
+
+
+
+	/**
+	 * @param ispago the ispago to set
+	 */
+	public void setIspago(boolean ispago) {
+		this.ispago = ispago;
+	}
+
+
+
+
+
+	//CONSTRUTOR PADRÃO
     public PedidoVenda() {
     	super();
 

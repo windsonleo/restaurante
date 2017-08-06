@@ -1,14 +1,8 @@
 package com.tecsoluction.restaurante.framework;
 
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.tecsoluction.restaurante.entidade.Categoria;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Cleberson on 04/07/2016.

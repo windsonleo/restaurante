@@ -1,30 +1,15 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.RoleDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Role;
-import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
 

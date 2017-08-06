@@ -1,5 +1,9 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -32,9 +36,6 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 
 @Controller
@@ -419,9 +420,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 			
 		}
         
-    //    pv.setTotal(totalpedido);
+        pv.setTotal(totalpedido);
         
-     //   pedidoVendaDao.add(pv);
+        
+      //  pedidoVendaDao.editar(pv);
 
   
 

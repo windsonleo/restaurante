@@ -14,11 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -43,11 +45,22 @@ public class Pagamento implements Serializable {
     private List<PedidoVenda> pedidos;
     
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Set<FormaPagamento> formaPagamentos;
     
     private double valorTotalPagamento;
     
-    // REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Pagamento [valorPago=" + valorPago + "]";
+	}
+
+
+
+	// REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
     private String status;
     
     private double valorPago;

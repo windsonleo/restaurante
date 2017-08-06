@@ -6,7 +6,7 @@
             <div class="container-fluid">
 
                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                          
                          <h1 class="page-header">
                             Forma de Pagamento <small>Cadastro e Visão Geral</small>
@@ -19,7 +19,7 @@
                             </li>
                         </ol>
                                       <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -108,8 +108,8 @@
 
             
             <div class="form-group">
-				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 			</div> 
 			
 			</div>

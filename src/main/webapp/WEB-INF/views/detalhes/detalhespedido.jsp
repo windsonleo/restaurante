@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<h1 class="page-header">
 					Detalhes da Pedido <small>${pedido.id}</small> 
 					
@@ -27,7 +27,7 @@
                         
                         
 				
-				<div class="panel panel-green">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Detalhes do Pedido : ${pedido.id} </h3>
 					</div>
@@ -61,10 +61,10 @@
 <!-- 								<span 	class="input-group-btn"> -->
 									
 <!-- 									<button -->
-<!-- 										class="btn btn-lg btn-primary" type="button"> -->
+<!-- 										class="btn btn-sm btn-primary" type="button"> -->
 <!-- 										<i class="fa fa-search"></i> -->
 <!-- 									</button> -->
-<!-- 									<button type="button" class="btn btn-lg btn-success" -->
+<!-- 									<button type="button" class="btn btn-sm btn-success" -->
 <!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido</button> -->
 										
 <!-- 								</span> -->
@@ -77,7 +77,7 @@
 
 			</div>
 			
-		<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+		<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 		<p></p>
 		</div>
 		
@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                          <div class="huge">${item.id}</div>
-                                        <div>Item</div>
+                                        <div>${item.descricao}</div>
                                       <div>Total: ${item.totalItem}</div>
                                         
                                     </div>
@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">${item.id}</div>
-                                        <div>Item</div>
+                                        <div>${item.descricao}</div>
                                          <div>Total: ${item.totalItem}</div>
                                     </div>
                                 </div>

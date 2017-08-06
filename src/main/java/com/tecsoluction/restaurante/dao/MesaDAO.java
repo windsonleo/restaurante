@@ -1,16 +1,10 @@
 package com.tecsoluction.restaurante.dao;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.TypedQuery;
 
-import com.tecsoluction.restaurante.entidade.Categoria;
+import org.springframework.stereotype.Service;
+
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 
 @Service

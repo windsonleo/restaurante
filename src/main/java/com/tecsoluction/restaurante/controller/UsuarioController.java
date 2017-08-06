@@ -19,12 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.RoleDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Role;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
 

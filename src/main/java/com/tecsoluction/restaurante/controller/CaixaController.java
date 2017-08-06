@@ -1,11 +1,9 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,16 +19,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.CaixaDAO;
-import com.tecsoluction.restaurante.dao.CategoriaDAO;
+import com.tecsoluction.restaurante.dao.DespesaDAO;
 import com.tecsoluction.restaurante.dao.FormaPagamentoDAO;
 import com.tecsoluction.restaurante.dao.PagamentoDAO;
 import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Caixa;
-import com.tecsoluction.restaurante.entidade.Categoria;
+import com.tecsoluction.restaurante.entidade.Despesa;
 import com.tecsoluction.restaurante.entidade.FormaPagamento;
 import com.tecsoluction.restaurante.entidade.Pagamento;
-import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
@@ -59,6 +56,12 @@ public class CaixaController extends AbstractController<Caixa> {
     final
     PagamentoDAO pdao;
     
+    
+    private 
+    final
+    DespesaDAO despdao;
+    
+    
     private final UsuarioDAO usudao;
     
     List<PedidoVenda> pedidoVendaLista;
@@ -76,13 +79,14 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
     @Autowired
-    public CaixaController(CaixaDAO CDAO,PedidoVendaDAO dao,UsuarioDAO daousu,FormaPagamentoDAO formdao,PagamentoDAO pdao) {
+    public CaixaController(CaixaDAO CDAO,PedidoVendaDAO dao,DespesaDAO despdao,UsuarioDAO daousu,FormaPagamentoDAO formdao,PagamentoDAO pdao) {
     	 super("caixa");
     	this.dao = dao;
         this.usudao = daousu;
         this.cdao = CDAO;
         this.fdao = formdao;
         this.pdao = pdao;
+        this.despdao = despdao;
     }
 
 
@@ -103,7 +107,9 @@ public class CaixaController extends AbstractController<Caixa> {
 
         });
         
-        
+        binder.registerCustomEditor(Despesa.class, new AbstractEditor<Despesa>(this.despdao) {
+
+        });
         
 
     }
@@ -120,6 +126,9 @@ public class CaixaController extends AbstractController<Caixa> {
         List<PedidoVenda> pedidoList = dao.getAll();
         
         List<Caixa> caixaList = cdao.getAll();
+        
+        List<Despesa> despesaList = despdao.getAll();
+
 
 
         
@@ -127,6 +136,9 @@ public class CaixaController extends AbstractController<Caixa> {
         model.addAttribute("pedidoList", pedidoList);
         model.addAttribute("formapagamentoList", formapagamentoList);
         model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("despesaList", despesaList);
+
+        
 
     }
     
@@ -200,7 +212,7 @@ public class CaixaController extends AbstractController<Caixa> {
 	@RequestMapping(value = "/fechamentocaixa", method = RequestMethod.GET)
 	public ModelAndView  FechamentoCaixa(HttpServletRequest request){
 
-  	
+		formapagamentoLista = fdao.getAll();
 //  		String mesa=OrigemPedido.MESA.toString();
 //  		
 //  			OrigemPedido origem;
@@ -216,6 +228,12 @@ public class CaixaController extends AbstractController<Caixa> {
 	    List<PedidoVenda> pedidoVendaListatelevendas= new ArrayList<>();
 	    
 	    List<PedidoVenda> pedidoVendaListacancelados= new ArrayList<>();
+	    
+		List<FormaPagamento> pagdinheiro = new ArrayList<>();
+		
+		List<FormaPagamento> pagcartaocredito = new ArrayList<>();;
+		
+		List<FormaPagamento> pagcartaodebito = new ArrayList<>();;
 	    
 	    Double total = 0.0;
   		
@@ -233,11 +251,15 @@ public class CaixaController extends AbstractController<Caixa> {
 			
 			PedidoVenda pv = new PedidoVenda();
 			
+	
+
+			
 			pv = pvListData.get(i);
+			
 			
 			OrigemPedido origem = pv.getOrigempedido();
 			StatusPedido status = pv.getStatus();
-			total = total + pv.getTotal();
+//			total = total + pv.getTotal();
 			
 			
 			
@@ -279,6 +301,79 @@ public class CaixaController extends AbstractController<Caixa> {
 
 			
 		}
+		
+		
+		for(int i=0;i < pvListData.size();i++){
+			
+//			List<FormaPagamento> pagdinheiro = new ArrayList<>();
+//			
+//			List<FormaPagamento> pagcartaocredito = new ArrayList<>();;
+//			
+//			List<FormaPagamento> pagcartaodebito = new ArrayList<>();;
+
+
+			
+			PedidoVenda pv = pvListData.get(i);
+			
+			List<Pagamento> pags = pv.getPagamento();
+			
+			for(int j = 0 ; j < pags.size();j++){
+				
+				
+				Pagamento pagamento = pags.get(j);
+				
+				Set<FormaPagamento> formapag = pags.get(j).getFormaPagamentos();
+				
+				
+
+				
+			    for(FormaPagamento valor : formapag){
+
+			    	
+			    	if(valor.getTipo() == "AVISTA"){
+			    		
+			    		pagdinheiro.add(valor);
+			    		
+			    		
+			    		
+			    	}
+			    	
+			    	
+			    	if(valor.getTipo() == "CCREDITO"){
+			    		
+			    		pagcartaocredito.add(valor);
+			    		
+			    	}
+			    	
+			    	
+			    	if(valor.getTipo() == "CDEBITO"){
+			    		
+			    		pagcartaodebito.add(valor);
+			    		
+			    	}
+			    
+					total = total + pagamento.getValorPago();
+
+			    
+			    }
+
+				
+				
+//				for(int k = 0 ; k < formapag.size();k++){
+//					
+//					FormaPagamento  forpag = formapag.get(k);
+//					
+//					if(forpag.getNome() == formapag.)
+//					
+//					
+//					
+//					
+//				}
+				
+			
+			}
+			
+		}
 
   	
 		ModelAndView fecharcaixa= new ModelAndView("fecharcaixa");
@@ -298,6 +393,11 @@ public class CaixaController extends AbstractController<Caixa> {
 		fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
 		
 		fecharcaixa.addObject("total", total);
+		
+		
+		fecharcaixa.addObject("pagdinheiro", pagdinheiro);
+		fecharcaixa.addObject("pagcartaocredito", pagcartaocredito);
+		fecharcaixa.addObject("pagcartaodebito", pagcartaodebito);
 
 
 
@@ -345,6 +445,87 @@ public class CaixaController extends AbstractController<Caixa> {
 		
 	
 	}
+	
+	@RequestMapping(value = "/inserirdespesas", method = RequestMethod.GET)
+	public ModelAndView  AddDespesaCaixaForm(HttpServletRequest request){
+  	
+  	
+  	Long idf = Long.parseLong(request.getParameter("id"));
+		
+//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
+  	
+  
+  	
+  	Caixa caixa = cdao.PegarPorId(idf);
+
+  	
+  	
+  	ModelAndView adddespesacaixa= new ModelAndView("adddespesacaixa");
+//  	entregas.addObject("pedidovendaList",pedidoVendaList);
+  	
+  	
+//  	 itempedidovendaDao.delete(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  	adddespesacaixa.addObject("caixa", caixa);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+//  	detalhesitem.addObject("item", item);
+
+		
+  	return adddespesacaixa;	
+  	
+	}
+	@RequestMapping(value = "/inserirdespesacaixa", method = RequestMethod.GET)
+	public ModelAndView  AddDespesaCaixa(HttpServletRequest request){
+  	
+  	
+  	Long idf = Long.parseLong(request.getParameter("despesaescolhido"));
+  	
+  	Long idfc = Long.parseLong(request.getParameter("caixa"));
+
+		
+//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
+  	
+  
+  		Despesa desp = despdao.PegarPorId(idf);
+  	
+  		Caixa caixa = cdao.PegarPorId(idfc);
+
+  	
+  	
+  	ModelAndView adddespesacaixa= new ModelAndView("adddespesacaixa");
+  	
+  	caixa.getDespesas().add(desp);
+  	
+  	cdao.editar(caixa);
+//  	entregas.addObject("pedidovendaList",pedidoVendaList);
+  	
+  	
+//  	 itempedidovendaDao.delete(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  		adddespesacaixa.addObject("caixa", caixa);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+//  	detalhesitem.addObject("item", item);
+
+		
+  	return adddespesacaixa;	
+  	
+	}
+	
+	
 
 }
 

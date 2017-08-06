@@ -1,96 +1,149 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
+
 
 <div id="page-wrapper">
 
-            <div class="container-fluid">
+	<div class="container-fluid">
 
-               <div class="row">
-                    <div class="col-lg-12">
-                         
-                         <h1 class="page-header">
-                            Pagamento <small>Cadastro e Visão Geral</small>
-                                                        
-                        </h1>
-                        
-                        		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Pagamento
-                            </li>
-                        </ol>
-                        
-                                      <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
- 
- 
- 			<div class="panel panel-primary">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="page-header">
+					Efetuar Pagamento <small>Pagamentos</small>
+
+
+				</h1>
+				
+				
+
+<!-- 				<ol class="breadcrumb"> -->
+<!-- 					<li class="active"><i class="fa fa-support"></i> Pagamentos</li> -->
+<!-- 				</ol> -->
+<!--                            <div class="row"> -->
+<!--                     <div class="col-sm-12"> -->
+<!--                         <div class="alert alert-info alert-dismissable"> -->
+<!--                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+<!--                             <i class="fa fa-info-circle"></i>  -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+
+				<div class="panel panel-primary" align="center">
 					<div class="panel-heading">
-							<h3 class="panel-title">Cadastro de Pagamento </h3>
+						<h3 class="panel-title">Digite o Pedido</h3>
+					</div>
+					<div class="panel-body">
+					
+					<form action="${pageContext.request.contextPath}/pagamento/localizarpedido" method="get" >
+
+						<label> <input id="id" name="id" class="form-control"
+							type="text" value="${pedidovenda.id }"
+							placeholder="Digite o Número do Pedido de Venda" />
+						</label> 
+						
+<!-- 						<label> <input id="datafim" name="datafim" class="form-control" -->
+<!-- 							type="date" value="" -->
+<!-- 							placeholder="Digite a Data Final" /> -->
+<!-- 						</label> -->
+						
+									<button type="submit"class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Localizar</button>
+<!-- 									<button type="button"class="btn btn-sm btn-success">Imprimir Caixa</button> -->
+						
+						</form>
+
+<!--                     		<input type="button" onclick="javascript:adiciona();" value="Fechar" /> -->
+
+		
+					
+
+					</div>
+				</div>
+
+
+			</div>
+
+
+
+		</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Detalhes do Pedido Venda : ${pedidovenda.id} </h3>
 					</div>
 					<div class="panel-body">
 
- 
- 
- 
+						
+						
+						
+						<div class="form-group">
+						
+						<div class="col-xs-12">
+						
+						 <div class="form-inline">
+						 
+							<label>CÓDIGO</label>	
+							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }"> 
+							<label>DATA</label>	
+							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }"> 
+							<label>STATUS</label>
+							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }"> 
+							<label>MESA</label>
+							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }"> 
+							<label>Garcon</label>
+							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }"> 
+							
+							<label>CLIENTE</label>
+							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
+							
+							<label>TOTAL</label>
+							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.total}" size="20px" style="color: blue; font-size: 15px"> 
+						
+						
+						
+						
+<%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.pedidos}">  --%>
+								
+								</div>
 
-			
-		 	 <div class="form-group">
-<!-- 				   <label> -->
-<!-- 				  	<span>Ativo?</span> -->
-<%-- 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${pagamento.isativo}"/> --%>
-<!-- 					</label> -->
-					
-<!-- 					</div> -->
-					
-<!-- 				   		<label> -->
-<%-- 							<input id="foto" class="form-control" name="foto" type="text" value="${pagamento.foto}" placeholder="Digite o Caminho da Foto"/> --%>
-<!-- 						</label> -->
-			 
+							</div>
 
-				   <label>
-						<input id="id" class="form-control" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
-					</label>
-			 
-			 
-				   <label>
-						<input id="datapagamento" class="form-control" name="datapagamento" type="datetime" value="${pagamento.datapagamento}" placeholder="Digite o Data"/>
-					</label>
+
+<!-- 								<span 	class="input-group-btn"> -->
+									
+<!-- 									<button -->
+<!-- 										class="btn btn-sm btn-primary" type="button"> -->
+<!-- 										<i class="fa fa-search"></i> -->
+<!-- 									</button> -->
+<!-- 									<button type="button" class="btn btn-sm btn-success" -->
+<!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido Venda</button> -->
+										
+<!-- 								</span> -->
+
+						</div>
+
+					</div>
 					
 					
-						     <label>
-                    
-                         <select id="pedidos"name="pedidos" multiple="multiple" class="form-control" >
-	                                  <optgroup label="Selecione os Pedidos">
-		           				
-<%-- 		           					<option value="${pagamento.pedidos}">${pagamento.pedidos}</option> --%>
-		           				
-		           				
-		           					<c:forEach var="pedido" items="${pedidoList}">
-		           			
-		           				<option value="${pedido.id}">${pedido.id}</option>
-		           				      				
-		           				
-		       				</c:forEach>
-		                </optgroup>
-	                    </select>
-	                    
-	                                        
-                </label>
-			 
+
+					
+					
+					
+				</div>
 		
-			     <label>
+		
+				<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Adicionar Forma de Pagamento</h3>
+			</div>
+			<div class="panel-body">
+			
+			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="get" >
+			 		    
                     
                          <select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Formas de Pagamento">
 		           				
-		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option>
+<%-- 		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option> --%>
 		           				
 		           				
 		           					<c:forEach var="formapagamento" items="${formapagamentoList}">
@@ -102,63 +155,32 @@
 		                </optgroup>
 	                    </select>
 	                    
-	                    </label>
 	                    
+<!-- 	                    onClick="javascript:window.location='adicionarformapagamentopagamento'" -->
 	                    <label>
-	                    
-	                                          <select id="caixa"name="caixa" multiple="multiple" class="form-control" >
-	                                  <optgroup label="Selecione o Caixa">
-		           				
-		           					<option value="${pagamento.caixa}">${pagamento.caixa}</option>
-		           				
-		           				
-		           					<c:forEach var="caixa" items="${caixaList}">
-		           			
-		           				<option value="${caixa.id}">${caixa.nome}</option>
-		           				      				
-		           				
-		       				</c:forEach>
-		                </optgroup>
-	                    </select>
-	                    
-	                                        
-                </label>
-	
-		 	 
-			   		<label>
-						<input id="valorTotalPagamento" class="form-control" name="valorTotalPagamento" type="text" value="${pagamento.valorTotalPagamento}" placeholder="Digite a Total"/>
-					</label>
-					
-					   		<label>
-						<input id="status" class="form-control" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
-					</label>
-		 	 
-		                       
-             
+	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='adicionarformapagamentopagamento'">AddFomaPag</button>
+							
+							</label>
+							
+							</form>	
+							
+									
 			
-			   		<label>
-						<input id="valorPago" class="form-control" name="valorPago" type="text" value="${pagamento.valorPago}" placeholder="valor pago"/>					
-					</label>
-		 	 				
-					
-					<div class="panel panel-yellow">
-					<div class="panel-heading">
-							<h3 class="panel-title">Formas de Pagamento </h3>
-					</div>
-					<div class="panel-body">
-					
-					                        <div class="table-responsive">
+										 <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
+                            
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+<!--                                         <th>Id</th> -->
 									    <th>Nome</th>
-<!-- 									    <th>Telefone</th> -->
-<!-- 									    <th>Email</th> -->
-<!-- 									    <th>Data Nasciemnto</th> -->
-<!-- 									     <th>Genero</th> -->
-									     <th>Tipo</th>
-									     <th>Valor</th>
+									    <th>Tipo</th>
+									    <th>Parcela</th>
+									    <th>% Desconto</th>
+									    <th>Valor</th>
+									    
+									     <th>Ativo?</th>
+<!-- 									     <th>Pagamentos</th> -->
+<!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
 									    <th>Ação</th>
                                     </tr>
@@ -166,51 +188,22 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="formapagamento" items="${pagamento.formaPagamentos}" varStatus="id">
+                                <c:forEach var="formapagamento" items="${formas}" varStatus="id">
 
-		<c:choose>
+<%-- 		<c:choose> --%>
 		
-		  <c:when test="${formapagamento.id % 2 == 0}">
+<%-- 		  <c:when test="${formapagamento.id % 2 == 0}"> --%>
   
   <tr class="success">
 
-			      <td>${pagamento.formapagamento.id}</td>
+<%-- 			      <td>${pagamento.formapagamento.id}</td> --%>
                   <td>${formapagamento.nome}</td>
-<%--                   <td ><input type="tel" value="${caixa.telefone}"></td> --%>
-<%--                   <td><input type="email" value="${caixa.email}"></td> --%>
-<%--                    <td>${caixa.datanascimento}</td> --%>
-<%--                    <td>${caixa.genero}</td> --%>
-                   <td>${formapagamento.tipo}</td>
-                   <td> <input type="text"></input></td>
-<%--                    <td> ${caixa.obs}</td> --%>
-                   
-		
-<!-- 		outras opcoes -->
+                  <td ><input type="text" value="${formapagamento.tipo}"></td>
+                  <td><input type="text" value="${formapagamento.parcelas}"></td>
+                   <td>${formapagamento.percdesconto}</td>
+                    <td><input name="valorpagoform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calcula();"/></td>
+                   <td>${formapagamento.isativo}</td>
 
-<!--  										<tr class="success"> -->
-<!--                                         <td>/about.html</td> -->
-<!--                                         <td>261</td> -->
-<!--                                         <td>33.3%</td> -->
-<!--                                         <td>$234.12</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr class="warning"> -->
-<!--                                         <td>/sales.html</td> -->
-<!--                                         <td>665</td> -->
-<!--                                         <td>21.3%</td> -->
-<!--                                         <td>$16.34</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr class="danger"> -->
-<!--                                         <td>/blog.html</td> -->
-<!--                                         <td>9516</td> -->
-<!--                                         <td>89.3%</td> -->
-<!--                                         <td>$1644.43</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr> -->
-<!--                                         <td>/404.html</td> -->
-<!--                                         <td>23</td> -->
-<!--                                         <td>34.3%</td> -->
-<!--                                         <td>$23.52</td> -->
-<!--                                     </tr> -->
 
 
 
@@ -221,103 +214,23 @@
 							
       								
       								<a
-									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
+									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}"
 									title="informação" class="fa fa-info fa-2x"></a>
 									
 										<a
-									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
+									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}"
 									title="editar" class="fa fa-pencil fa-2x"></a>
 									
 									
 									 <a
-									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}"
+									href="${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}"
 									title="deletar" class="fa fa-remove fa-2x"></a>
-									
-									
-									 <a
-									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
-									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
 										
 								</td>
 								
 								</tr>
 			  
-			  
-		  </c:when>
-		  
-		  		  <c:when test="${formapagamento.id % 2 != 0}">
-  
-  <tr class="warning">
-
-			      <td>${formapagamento.id}</td>
-                  <td>${formapagamento.nome}</td>
-<%--                   <td ><input type="tel" value="${caixa.telefone}"></td> --%>
-<%--                   <td><input type="email" value="${caixa.email}"></td> --%>
-<%--                    <td>${caixa.datanascimento}</td> --%>
-<%--                    <td>${caixa.genero}</td> --%>
-                   <td>${formapagamento.tipo}</td>
-                   <td> <input type="text"></input></td>
-<%--                    <td> ${caixa.obs}</td> --%>
-		
-<!-- 		outras opcoes -->
-
-<!--  										<tr class="success"> -->
-<!--                                         <td>/about.html</td> -->
-<!--                                         <td>261</td> -->
-<!--                                         <td>33.3%</td> -->
-<!--                                         <td>$234.12</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr class="warning"> -->
-<!--                                         <td>/sales.html</td> -->
-<!--                                         <td>665</td> -->
-<!--                                         <td>21.3%</td> -->
-<!--                                         <td>$16.34</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr class="danger"> -->
-<!--                                         <td>/blog.html</td> -->
-<!--                                         <td>9516</td> -->
-<!--                                         <td>89.3%</td> -->
-<!--                                         <td>$1644.43</td> -->
-<!--                                     </tr> -->
-<!--                                     <tr> -->
-<!--                                         <td>/404.html</td> -->
-<!--                                         <td>23</td> -->
-<!--                                         <td>34.3%</td> -->
-<!--                                         <td>$23.52</td> -->
-<!--                                     </tr> -->
-
-
-
-
-								<td class="options-widt">      								
-								
-								<a
-									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
-									title="informação" class="fa fa-info fa-2x"></a>
-									
-										<a
-									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
-									title="editar" class="fa fa-pencil fa-2x"></a>
-									
-									
-									 <a
-									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}"
-									title="deletar" class="fa fa-remove fa-2x"></a>
-									
-										 <a
-									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
-									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
-										
-								</td>
-								
-								</tr>
-			  
-			  
-		  </c:when>
-	
-
-
-</c:choose>
+			 
 
                 </c:forEach>                    
                                 
@@ -329,43 +242,123 @@
                                 </tbody>
                             </table>
                         </div>
+			
+			
+			</div>
+		</div>
+		
+		
+		
+		
+						<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Detalhes do Pagamento</h3>
+			</div>
+			<div class="panel-body">
+			
+			 <form  role="form" id="ds" class="form-labels-on-top" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
+			
+									<label>
+						<input id="pedidos" class="form-control" name="pedidos" type="text" value="${pedidovenda}" placeholder="Digite o Pedido de Venda"/>
+					</label>
+				
+				
+					<label>
+						<input id="id" class="form-control" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
+					</label>
+			 
+			 
+				   <label>
+						<input id="datapagamento" class="form-control" name="datapagamento" type="datetime" value="${pagamento.datapagamento}" placeholder="Digite o Data"/>
+					</label> 
 					
-					</div>
-					</div>
-						    
+					
+					 <select id="caixa" name="caixa"
+					multiple="multiple" class="form-control">
+						<optgroup label="Selecione o Caixa">
+
+							<option value="${pagamento.caixa}">${pagamento.caixa}</option>
+
+
+							<c:forEach var="caixa" items="${caixaList}">
+
+								<option value="${caixa.id}">${caixa.nome}</option>
+
+
+							</c:forEach>
+						</optgroup>
+				</select>
+				
+									 <select id="formaPagamentos" name="formaPagamentos"
+					multiple="multiple" class="form-control">
+						<optgroup label="Confira as Formas de Pagamento">
+
+							<c:forEach var="f" items="${formas}">
+
+								<option value="${f.id}" selected="selected">${f.nome}</option>
+
+
+							</c:forEach>
+						</optgroup>
+				</select>
+
+
+					<label>
+						<input id="status" class="form-control" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
+					</label>
+				
+				
+				<label> valor total
+						<input id="valorTotalPagamento" class="form-control" name="valorTotalPagamento" type="text" value="${pedidovenda.total}" placeholder="Digite a Total"/>
+					</label>
+					
+
+			   		<label>valor pago
+						<input id="valorPago" class="effect" name="valorPago" type="text" value="${pagamento.valorPago}" placeholder="valor pago"/>					
+					</label>
+					
+					<label>restante
+						<input id="restante" class="effect" name="restante" type="text" value="" placeholder="restante" />					
+					</label>
+		 	 				
+
+
+				<!-- 			  <div class="progress-element"> -->
+			 
+<%-- 			   <c:forEach var="formapagamento" items="${formapagamentoList}" varStatus="id"> --%>
+			     
+<%-- 			      <label>${formapagamento.nome} ${total }</label> --%>
+<!-- 			     <div class="progress progress-striped"> -->
+			    
+<%--                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total Forma de Pagamento : ${formapagamento.nome} ${total }</span> --%>
+<!--                     </div> -->
                     
-   
-	                    
-	       
+<!--                 </div> -->
+                
+               			  
+<%-- 			  </c:forEach> --%>
+			  
+<!-- 			   </div> -->
 			
-		
-		
-			</div>
-              
-              
-           
-               
-
-
-            
-            <div class="form-group">
-				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+				      <div class="form-group">
+				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			</div> 
-			
 			</div>
 			
-			</div>
+			</form>
 			
+			</div>
+		</div>
 		
-			
-										
+	
 
-</form>
+	</div>
+
+      
+
 </div>
-</div>
-</div>
-</div>
+
+
 
 

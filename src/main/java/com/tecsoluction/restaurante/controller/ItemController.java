@@ -11,10 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
-import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;

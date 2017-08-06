@@ -1,11 +1,11 @@
 package com.tecsoluction.restaurante.framework;
 
+import java.beans.PropertyEditorSupport;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
-import java.beans.PropertyEditorSupport;
-import java.util.List;
 
 /**
  * Created by clebr on 17/07/2016.

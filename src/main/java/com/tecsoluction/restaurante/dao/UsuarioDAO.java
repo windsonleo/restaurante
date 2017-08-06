@@ -1,7 +1,9 @@
 package com.tecsoluction.restaurante.dao;
 
 import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Service;
+
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 

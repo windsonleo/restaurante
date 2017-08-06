@@ -1,7 +1,5 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.sql.Date;
-import java.text.DateFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.dao.ClienteDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;

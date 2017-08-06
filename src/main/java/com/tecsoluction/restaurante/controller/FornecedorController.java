@@ -1,8 +1,6 @@
 package com.tecsoluction.restaurante.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tecsoluction.restaurante.dao.FornecedorDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
-import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;

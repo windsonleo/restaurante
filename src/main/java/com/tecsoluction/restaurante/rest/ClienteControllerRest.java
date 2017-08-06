@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 

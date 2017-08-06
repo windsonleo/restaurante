@@ -35,6 +35,8 @@
   				  			
 				 
 		
+			 
+			 $("#valorPago")
 
 				});
 		
@@ -46,8 +48,17 @@
 		        }
 
 		    });
+		 
+		 
 			 
-	
+		   function calcula(){
+		       var valor = 0; 
+		       $('.valorpagoform').each(function(i){ 
+
+		           valor = parseInt($(this).val()) + valor ;
+		       }); 
+		       $('#valorPago').val( valor ); //fora do loop
+		   }
 				
 	
 	

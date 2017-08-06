@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tecsoluction.restaurante.dao.GarconDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;

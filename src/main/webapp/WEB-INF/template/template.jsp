@@ -50,14 +50,31 @@
     <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris-data.js"></script>
  	
-<!-- <script type="text/javascript"> -->
-<!-- // 		$(document).ready(function() { -->
-<!-- // 		$('li').click(function() { -->
-<!-- //         $('li.active').removeClass("active"); //aqui removemos a class do item anteriormente clicado para que possamos adicionar ao item clicado -->
-<!-- //         $(this).addClass("active"); //aqui adicionamos a class ao item clicado -->
-<!-- // 		}); -->
-<!-- // 		}); -->
-<!-- </script> -->
+<script type="text/javascript">
+// 		$('li').click(function() { 
+//        $('li.active').removeClass("active"); //aqui removemos a class do item anteriormente clicado para que possamos adicionar ao item clicado -->
+//         $(this).addClass("active"); //aqui adicionamos a class ao item clicado -->
+// 		}); 
+		
+		   function calcula(){
+		       var valor = 0; 
+		       $('.soma').each(function(i){ 
+
+		           valor = parseInt($(this).val()) + valor ;
+		       }); 
+		      
+		       $('#valorPago').val( valor ); //fora do loop
+		       
+		       var total = $('#valorTotalPagamento').val()
+		       
+		       $('#restante').val( total-valor ); //fora do loop
+
+		   }
+ 		 
+ 		
+ 		
+ 		
+ </script> 
 
  
 </head>

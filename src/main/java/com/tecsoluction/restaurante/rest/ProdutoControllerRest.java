@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 @RestController
 @RequestMapping(value = "produto")

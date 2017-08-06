@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<h1 class="page-header">
 					Adicionar Item ao Pedido Venda <strong>${pedidovenda.id}</strong> 
 					
@@ -24,7 +24,7 @@
                         </ol>
                         
                                                              <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -34,7 +34,7 @@
                         
 			<form action="salvaritempedido" method="GET">		
                         
-     			<div class="panel panel-green">
+     			<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Buscar Produto</h3>
 					</div>
@@ -60,34 +60,45 @@
 									
 									<input type="text"  id="qtd" name="qtd"  class="form-control" value="1" placeholder="Escolha a Quantidade">
 									
-					
+									<span class="input-group-btn">
+			 							<button class="btn btn-sm btn-primary" type="submit" value="ADD">
+			 								<i class="fa fa-search">
+			 								</i>
+	 									</button> 
+                                </span>
 
 <!-- 								onClick="javascript:window.location='salvaritempedido'" -->
 							
-							<span
-								class="input-group-btn">
-								<button
-									class="btn btn-lg btn-primary" type="submit" value="ADD" >
-									<i class="fa fa-seah"></i>
-								</button>
-<!-- 								<button type="button" class="btn btn-lg btn-success" -->
-<!-- 									onClick="javascript:window.location='cadastro'">AddPedido</button> -->
-									
-							</span>
+			 		
+                                
+<!--                                               <span  -->
+<!--                 class="input-group-btn">  -->
+<!--                 <button  -->
+<!--                   class="btn btn-lg btn-primary" type="submit" value="ADD" >  -->
+<!--                   <i class="fa fa-seah"></i>  -->
+<!--                 </button>  -->
+<!--                 <button type="button" class="btn btn-lg btn-success" --> 
+<!--                   onClick="javascript:window.location='cadastro'">AddPedido</button> --> 
+                   
+<!--               </span> -->
 							
 						
 
 						</div>
 
 					</div>
+					
+					
 				</div>
+				
+			
 				
 				</form>
                         
                         
                         
 				
-				<div class="panel panel-green">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Detalhes do Pedido Venda : ${pedidovenda.id} </h3>
 					</div>
@@ -132,10 +143,10 @@
 <!-- 								<span 	class="input-group-btn"> -->
 									
 <!-- 									<button -->
-<!-- 										class="btn btn-lg btn-primary" type="button"> -->
+<!-- 										class="btn btn-sm btn-primary" type="button"> -->
 <!-- 										<i class="fa fa-search"></i> -->
 <!-- 									</button> -->
-<!-- 									<button type="button" class="btn btn-lg btn-success" -->
+<!-- 									<button type="button" class="btn btn-sm btn-success" -->
 <!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido Venda</button> -->
 										
 <!-- 								</span> -->
@@ -145,7 +156,7 @@
 					</div>
 				</div>
 
-			<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+			<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 
 			</div>
 

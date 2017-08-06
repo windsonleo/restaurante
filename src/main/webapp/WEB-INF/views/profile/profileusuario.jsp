@@ -54,14 +54,7 @@
 						<input id="username" name="username" class="form-control" type="text" value="${usuario.username}" placeholder="Digite o UserName"/>
 					</label>
 		 	 
-		 	
-		 	 
-		 	 
-			
-     
-            
-             
-             
+
 			
 			   		<label>
 						<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}" placeholder="Digite a Senha"/>					

@@ -6,7 +6,7 @@
             <div class="container-fluid">
 
                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                          
                          <h1 class="page-header">
                             Usuarios <small>Cadastro e Visão Geral</small>
@@ -20,7 +20,7 @@
                         </ol>
                         
                                                    <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -30,22 +30,13 @@
  
  <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/usuario/${acao}" ModelAttribute="usuario" method="POST">
  
-	<div class="panel panel-primary">
+		<div class="panel panel-primary">
 					<div class="panel-heading">
 							<h3 class="panel-title">Cadastro de Usuario </h3>
 					</div>
 					<div class="panel-body">
 
-						
-						
-						
-<!-- 						<div class="form-group"> -->
-						
-<!-- 						<div class="col-xs-12"> -->
-						
-<!-- 						 <div class="form-inline"> -->
-			
-			
+	
 				 		  <div class="form-group">
 				   <label>
 				  	<span>Ativo?</span>
@@ -110,8 +101,8 @@
 	 	 
 			
 			<div class="form-group">
-				<button type="submit"class="btn btn-lg btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-lg btn-info" >Voltar</a>
+				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 			</div>
 			
 			</div>

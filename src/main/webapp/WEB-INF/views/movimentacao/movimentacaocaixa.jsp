@@ -7,7 +7,7 @@
             <div class="container-fluid">
 
                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                                  <h1 class="page-header">
                             Caixa <small>Listagem e Visão Geral</small>
                             
@@ -23,7 +23,7 @@
                         </ol>
                         
                                                              <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -59,10 +59,10 @@
 
 	                                <span class="input-group-btn">
 	                               
-		                                <button class="btn btn-lg btn-primary" type="button">
+		                                <button class="btn btn-sm btn-primary" type="button">
 		                                	<i class="fa fa-search"></i></button> 
 		                                	
-		                                <button type="button" class="btn btn-lg btn-success" 
+		                                <button type="button" class="btn btn-sm btn-success" 
 		                                onClick="javascript:window.location='cadastro'">Add </button>
 	                                </span>
                                 
@@ -159,9 +159,17 @@
 									title="deletar" class="fa fa-remove fa-2x"></a>
 									
 									
+													 <a
+									href="${pageContext.request.contextPath}/caixa/inserirdespesas?id=${caixa.id}"
+									title="inserirdespesas" class="fa fa-remove fa-2x"></a>
+									
+									
 									 <a
 									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
 									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
+									
+									
+								
 										
 								</td>
 								
@@ -229,7 +237,13 @@
 									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}"
 									title="deletar" class="fa fa-remove fa-2x"></a>
 									
-										 <a
+							
+													 <a
+									href="${pageContext.request.contextPath}/caixa/inserirdespesas?id=${caixa.id}"
+									title="inserirdespesas" class="fa fa-remove fa-2x"></a>
+									
+									
+									 <a
 									href="${pageContext.request.contextPath}/caixa/fecharcaixa"
 									title="fecharcaixa" class="fa fa-remove fa-2x"></a>
 										
@@ -255,7 +269,7 @@
                             </table>
                         </div>
                     </div>
-<!--                     <div class="col-lg-6"> -->
+<!--                     <div class="col-sm-6"> -->
 <!--                         <h2>Bootstrap Docs</h2> -->
 <!--                         <p>For complete documentation, please visit <a target="_blank" href="http://getbootstrap.com/css/#tables">Bootstrap's Tables Documentation</a>.</p> -->
 <!--                     </div> -->

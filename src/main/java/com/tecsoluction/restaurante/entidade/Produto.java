@@ -1,10 +1,23 @@
 package com.tecsoluction.restaurante.entidade;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
-
-import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUTO")
@@ -52,6 +65,11 @@ public class Produto implements Serializable {
     @ManyToOne(cascade={CascadeType.REFRESH})
     @JoinColumn(name="categoria_id",nullable=true)
     private Categoria categoria;
+    
+    
+//    @ManyToOne(cascade={CascadeType.REFRESH})
+//    @JoinColumn(name="estoque_id",nullable=true)
+//    private Estoque estoque;
     
     
     @Column(name = "isativo")

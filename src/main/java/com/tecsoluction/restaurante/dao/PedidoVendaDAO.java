@@ -1,14 +1,13 @@
 package com.tecsoluction.restaurante.dao;
 
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
-
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.TypedQuery;
 
 
 @Repository

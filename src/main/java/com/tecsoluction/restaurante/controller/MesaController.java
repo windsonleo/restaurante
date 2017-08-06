@@ -18,8 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.dao.MesaDAO;
 import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
-import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;

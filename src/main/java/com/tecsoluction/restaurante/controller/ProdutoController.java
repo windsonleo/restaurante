@@ -21,7 +21,6 @@ import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
-import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;

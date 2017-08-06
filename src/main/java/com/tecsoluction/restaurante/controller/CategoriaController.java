@@ -19,7 +19,6 @@ import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 @Controller
 @RequestMapping(value = "categoria/")

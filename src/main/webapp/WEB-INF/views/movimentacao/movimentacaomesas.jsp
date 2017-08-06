@@ -7,7 +7,7 @@
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-sm-12">
 				<h1 class="page-header">
 					Mesas <small>Listagem e Visão Geral</small>
 
@@ -22,7 +22,7 @@
                         </ol>
                         
                                                    <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -60,10 +60,10 @@
 							
 							<span
 								class="input-group-btn"><button
-									class="btn btn-lg btn-primary" type="button">
+									class="btn btn-sm btn-primary" type="button">
 									<i class="fa fa-search"></i>
 								</button>
-								<button type="button" class="btn btn-lg btn-success"
+								<button type="button" class="btn btn-sm btn-success"
 									onClick="javascript:window.location='cadastro'">Add</button> </span>
 
 						</div>

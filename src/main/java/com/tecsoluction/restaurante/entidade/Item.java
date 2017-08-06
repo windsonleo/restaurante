@@ -1,19 +1,18 @@
 package com.tecsoluction.restaurante.entidade;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.engine.profile.Fetch;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "ITEM")
@@ -42,6 +41,11 @@ public class Item  implements Serializable{
     @ManyToOne(fetch=FetchType.EAGER,targetEntity=Pedido.class)
     @JsonBackReference
 	private PedidoVenda pedido;
+    
+    
+    @ManyToOne()
+    @JoinColumn
+    private Estoque estoque;
 
 //    @ManyToOne
 //    @JoinColumn
@@ -73,7 +77,23 @@ public class Item  implements Serializable{
     
 
 
-    public PedidoVenda getPedido() {
+    /**
+	 * @return the estoque
+	 */
+	public Estoque getEstoque() {
+		return estoque;
+	}
+
+
+	/**
+	 * @param estoque the estoque to set
+	 */
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
+	}
+
+
+	public PedidoVenda getPedido() {
         return pedido;
     }
 

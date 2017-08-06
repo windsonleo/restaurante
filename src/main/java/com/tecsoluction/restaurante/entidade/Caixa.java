@@ -3,17 +3,12 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -53,11 +48,40 @@ public class Caixa implements Serializable {
 	@LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(mappedBy="caixa")
     private List<Pagamento> pagamentos;
+    
+    
+    @JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany
+    private List<Despesa> despesas;
+    
+    
+    
 
 
     //CONSTRUTOR PADRAO
 
-    public Caixa() {
+    /**
+	 * @return the despesas
+	 */
+	public List<Despesa> getDespesas() {
+		return despesas;
+	}
+
+
+
+
+	/**
+	 * @param despesas the despesas to set
+	 */
+	public void setDespesas(List<Despesa> despesas) {
+		this.despesas = despesas;
+	}
+
+
+
+
+	public Caixa() {
         // TODO Auto-generated constructor stub
     }
 

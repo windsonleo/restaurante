@@ -7,7 +7,7 @@
             <div class="container-fluid">
 
                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                                  <h1 class="page-header">
                             Produto <small>Listagem e Visão Geral</small>
                             
@@ -22,7 +22,7 @@
                         
                         
                                                    <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i> 
@@ -52,7 +52,7 @@
 								  
 								</datalist>
 								
-                                <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"><i class="fa fa-search"></i></button> <button type="button" class="btn btn-lg btn-success" onClick="javascript:window.location='cadastro'">Add</button>
+                                <span class="input-group-btn"><button class="btn btn-sm btn-primary" type="button"><i class="fa fa-search"></i></button> <button type="button" class="btn btn-sm btn-success" onClick="javascript:window.location='cadastro'">Add</button>
                                 </span>
                                 
                             </div>
@@ -240,7 +240,7 @@
                             </table>
                         </div>
                     </div>
-<!--                     <div class="col-lg-6"> -->
+<!--                     <div class="col-sm-6"> -->
 <!--                         <h2>Bootstrap Docs</h2> -->
 <!--                         <p>For complete documentation, please visit <a target="_blank" href="http://getbootstrap.com/css/#tables">Bootstrap's Tables Documentation</a>.</p> -->
 <!--                     </div> -->
