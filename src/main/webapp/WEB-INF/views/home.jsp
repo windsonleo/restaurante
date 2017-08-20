@@ -1,287 +1,95 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
+<!--main-container-part-->
 
- <div id="page-wrapper">
- 
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+<!--End-breadcrumbs-->
 
+<!--Action boxes-->
+  <div class="container-fluid">
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/"> <i class="icon-dashboard"></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
+        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/"> <i class="icon-signal"></i> Produtos</a> </li>
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/"> <i class="icon-inbox"></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedidos </a> </li>
+        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-th"></i> Mesas</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/"> <i class="icon-fullscreen"></i> Garçon</a> </li>
+        <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-th-list"></i> Pagamentos</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"> <i class="icon-tint"></i> Fornecedor</a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-pencil"></i>Estoque</a> </li>
+<!--         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li> -->
+<!--         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
 
-            <div class="container-fluid">
+      </ul>
+    </div>
+<!--End-Action boxes-->    
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Home <small>Estatistica e Visão Geral</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  Bem-Vindo ,<strong><label>${usuarioAtt.username}</label></strong> Ultimo Acesso em 25/03/2017
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-user fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${clientesnovos.size()}</div>
-                                        <div>Novos Clientes</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/cliente/novos">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${pedidovendasnovos.size()}</div>
-                                        <div>Novos Pedidos</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                             <div class="panel-footer">
-                            <a href="${pageContext.request.contextPath}/pedidovenda/novospedidos">
-                               
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    
-                                    </a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-briefcase fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${produtosnovos.size()}</div>
-                                        <div>Novos Produtos</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/produto/novosprodutos">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${mesasocupadas.size()}</div>
-                                        <div>Mesas Ocupadas</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/mesa/ocupadas">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-area-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-<!--                 <div class="row"> -->
-
-<!--                     <div class="col-lg-4"> -->
-<!--                         <div class="panel panel-default"> -->
-<!--                             <div class="panel-heading"> -->
-<!--                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3> -->
-<!--                             </div> -->
-<!--                             <div class="panel-body"> -->
-<!--                                 <div id="morris-donut-chart"></div> -->
-<!--                                 <div class="text-right"> -->
-<!--                                     <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-lg-4"> -->
-<!--                         <div class="panel panel-default"> -->
-<!--                             <div class="panel-heading"> -->
-<!--                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3> -->
-<!--                             </div> -->
-<!--                             <div class="panel-body"> -->
-<!--                                 <div class="list-group"> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">just now</span> -->
-<!--                                         <i class="fa fa-fw fa-calendar"></i> Calendar updated -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">4 minutes ago</span> -->
-<!--                                         <i class="fa fa-fw fa-comment"></i> Commented on a post -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">23 minutes ago</span> -->
-<!--                                         <i class="fa fa-fw fa-truck"></i> Order 392 shipped -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">46 minutes ago</span> -->
-<!--                                         <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">1 hour ago</span> -->
-<!--                                         <i class="fa fa-fw fa-user"></i> A new user has been added -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">2 hours ago</span> -->
-<!--                                         <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning" -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">yesterday</span> -->
-<!--                                         <i class="fa fa-fw fa-globe"></i> Saved the world -->
-<!--                                     </a> -->
-<!--                                     <a href="#" class="list-group-item"> -->
-<!--                                         <span class="badge">two days ago</span> -->
-<!--                                         <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page" -->
-<!--                                     </a> -->
-<!--                                 </div> -->
-<!--                                 <div class="text-right"> -->
-<!--                                     <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-lg-4"> -->
-<!--                         <div class="panel panel-default"> -->
-<!--                             <div class="panel-heading"> -->
-<!--                                 <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3> -->
-<!--                             </div> -->
-<!--                             <div class="panel-body"> -->
-<!--                                 <div class="table-responsive"> -->
-<!--                                     <table class="table table-bordered table-hover table-striped"> -->
-<!--                                         <thead> -->
-<!--                                             <tr> -->
-<!--                                                 <th>Order #</th> -->
-<!--                                                 <th>Order Date</th> -->
-<!--                                                 <th>Order Time</th> -->
-<!--                                                 <th>Amount (USD)</th> -->
-<!--                                             </tr> -->
-<!--                                         </thead> -->
-<!--                                         <tbody> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3326</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>3:29 PM</td> -->
-<!--                                                 <td>$321.33</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3325</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>3:20 PM</td> -->
-<!--                                                 <td>$234.34</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3324</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>3:03 PM</td> -->
-<!--                                                 <td>$724.17</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3323</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>3:00 PM</td> -->
-<!--                                                 <td>$23.71</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3322</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>2:49 PM</td> -->
-<!--                                                 <td>$8345.23</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3321</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>2:23 PM</td> -->
-<!--                                                 <td>$245.12</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3320</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>2:15 PM</td> -->
-<!--                                                 <td>$5663.54</td> -->
-<!--                                             </tr> -->
-<!--                                             <tr> -->
-<!--                                                 <td>3319</td> -->
-<!--                                                 <td>10/21/2013</td> -->
-<!--                                                 <td>2:13 PM</td> -->
-<!--                                                 <td>$943.45</td> -->
-<!--                                             </tr> -->
-<!--                                         </tbody> -->
-<!--                                     </table> -->
-<!--                                 </div> -->
-<!--                                 <div class="text-right"> -->
-<!--                                     <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
-
+<!--Chart-box-->    
+    <div class="row-fluid">
+      <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Site Analytics</h5>
         </div>
+        <div class="widget-content" >
+          <div class="row-fluid">
+            <div class="span9">
+              <div class="chart"></div>
+            </div>
+            <div class="span3">
+              <ul class="site-stats">
+                <li class="bg_lh"><i class="icon-user"></i> <strong>${usuarios.size() }</strong> <small>Total Users</small></li>
+                <li class="bg_lh"><i class="icon-plus"></i> <strong>${usuarios.size() }</strong> <small>New Users </small></li>
+                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>${pedidovendasnovos.size() }</strong> <small>Total Shop</small></li>
+                <li class="bg_lh"><i class="icon-tag"></i> <strong>${pedidovendasnovos.size() }</strong> <small>Total Orders</small></li>
+                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
+                <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+            
+       <div class="widget-box">
+          
+          <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
+            <h5>Progresso das Metas </h5>
+          </div>
+            <ul class="unstyled">
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% Meta de Pedido de Vendas <span class="pull-right strong">567</span>
+                <div class="progress progress-striped ">
+                  <div style="width: 81%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 72% Metas de Clientes Novos <span class="pull-right strong">507</span>
+                <div class="progress progress-success progress-striped ">
+                  <div style="width: 72%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-down-2 red"></span> 53% Meta de Pagamentos <span class="pull-right strong">457</span>
+                <div class="progress progress-warning progress-striped ">
+                  <div style="width: 53%;" class="bar"></div>
+                </div>
+              </li>
+              <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% Meta de Pedidos Delivery <span class="pull-right strong">8</span>
+                <div class="progress progress-danger progress-striped ">
+                  <div style="width: 3%;" class="bar"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        
+        
+        </div>
+        </div>
+
+
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+</div>

@@ -3,29 +3,7 @@
 
 <%@ page session="false"%>
 
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-        
-
-<div class="row">
-     
-     <div class="col-lg-12">
-
-
-	<p>
-		Copyright (c)
-		<fmt:formatDate pattern="yyyy" value="${empresaAtt.dataabertura}" />
-		${empresaAtt.nomefantasia}. All rights reserved. Designed by <a
-			href="http://www.nodethirtythree.com/">TecSolution</a> for <a
-			href="http://www.freecsstemplates.org/">Sistemas</a>.
-	</p>
-	
-	</div>
-	
-</div>
-
-</div>
+        <div class="row-fluid">
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
 

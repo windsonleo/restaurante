@@ -140,5 +140,21 @@ public class MesaController extends AbstractController<Mesa> {
 		
 		return mesasocupadas;
 	}
+  
+  @RequestMapping(value = "salao", method = RequestMethod.GET)
+	public ModelAndView  MesasSalao(HttpServletRequest request){
+  	
+  	
+  	//Long idf = Long.parseLong(request.getParameter("id"));
+  	ModelAndView mesassalao = new ModelAndView("salao");
+  	
+  	List<Mesa> mesas = dao.getAll();
+  	
+
+  	mesassalao.addObject("mesasList", mesas);
+  	
+		
+		return mesassalao;
+	}
     
 }

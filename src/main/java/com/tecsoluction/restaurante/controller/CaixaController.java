@@ -146,7 +146,9 @@ public class CaixaController extends AbstractController<Caixa> {
 	public ModelAndView  FecharCaixaForm(HttpServletRequest request){
   	
   	
-//  	Long idf = Long.parseLong(request.getParameter("id"));
+  	Long idf = Long.parseLong(request.getParameter("id"));
+  	
+  	Caixa cx = cdao.PegarPorId(idf);
 		
 //        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
 
@@ -165,7 +167,7 @@ public class CaixaController extends AbstractController<Caixa> {
  // 	List<Produto> produtoList = produtoDao.getAll();
   //	List<Item> itemList = dao.getAll();
   	
-  //	detalhesmesa.addObject("itemList", itemList);
+  	fecharcaixa.addObject("caixa", cx);
 //  	detalhescliente.addObject("pedidoList", pedidos);
 //  	detalhesitem.addObject("item", item);
 

@@ -2,51 +2,30 @@
 <%@ page session="true" %>
 
 
-<div id="page-wrapper">
-
-	<div class="container-fluid">
-
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="page-header">
-					Adicionar Item ao Pedido Venda <strong>${pedidovenda.id}</strong> 
-					
-<!-- 					<strong>R$:150.68</strong> -->
-
-
-				</h1>
-
-				
-						<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Adicionar Item ao Pedido Venda
-                            </li>
-                        </ol>
-                        
-                                                             <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
-                        
-			<form action="salvaritempedido" method="GET">		
-                        
-     			<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Buscar Produto</h3>
-					</div>
-					<div class="panel-body">
-
-
-						<div class="form-group input-group">
-							
-							
-						
-								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="off" class="form-control">
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
+    <h1>Add Item ao Pedido de Venda <strong> ${pedidovenda.id }</strong></h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Buscar Produto</h5>
+           
+          </div>
+          <div class="widget-content nopadding">               
+			<form action="salvaritempedido" method="GET" class="form-horizontal">		
+  
+				<div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+			   <div class="form-inline"> 
+			
+								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="off" class="form-horizontal">
 								
+									
 									<datalist id="${produtosList}">
 								
 									 	<c:forEach var="produto" items="${produtosList}" varStatus="id">
@@ -58,194 +37,128 @@
 								  
 									</datalist>
 									
-									<input type="text"  id="qtd" name="qtd"  class="form-control" value="1" placeholder="Escolha a Quantidade">
+										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
+
+					
+							
+								<input type="submit" class="btn btn-lg btn-success"
+										value="ADD">
+											
+			   
+			    </div>
+              </div>
+
+
 									
-									<span class="input-group-btn">
-			 							<button class="btn btn-sm btn-primary" type="submit" value="ADD">
-			 								<i class="fa fa-search">
-			 								</i>
-	 									</button> 
-                                </span>
-
-<!-- 								onClick="javascript:window.location='salvaritempedido'" -->
-							
-			 		
+									
+									
+								
+              </div>
+              
+              
                                 
-<!--                                               <span  -->
-<!--                 class="input-group-btn">  -->
-<!--                 <button  -->
-<!--                   class="btn btn-lg btn-primary" type="submit" value="ADD" >  -->
-<!--                   <i class="fa fa-seah"></i>  -->
-<!--                 </button>  -->
-<!--                 <button type="button" class="btn btn-lg btn-success" --> 
-<!--                   onClick="javascript:window.location='cadastro'">AddPedido</button> --> 
-                   
-<!--               </span> -->
+							</form>
 							
-						
-
-						</div>
-
-					</div>
-					
-					
-				</div>
-				
-			
-				
-				</form>
+			 							 
+			 		
+					 
+                        </div>
                         
                         
                         
-				
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Detalhes do Pedido Venda : ${pedidovenda.id} </h3>
-					</div>
-					<div class="panel-body">
-
-						
-						
-						
-						<div class="form-group">
-						
-						<div class="col-xs-12">
-						
-						 <div class="form-inline">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes do Pedido Venda : ${pedidovenda.id} <strong> ${pedidovenda.id }</strong></h5>
+           
+          </div>
+                    <div class="widget-content nopadding">               
+          
+          					<div class="form-inline"> 
+          
+          			<div class="control-group">
+          
+          			<div class="controls">
 						 
-							<label>CÓDIGO</label>	
+							<label>Código</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }"> 
-							<label>DATA</label>	
+							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }"> 
-							<label>STATUS</label>
+							<label>Status</label>
 							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }"> 
-							<label>MESA</label>
+							<label>Mesa</label>
 							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }"> 
 							<label>Garcon</label>
 							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }"> 
 							
-							<label>CLIENTE</label>
+							<label>Cliente</label>
 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
 							
-							<label>TOTAL</label>
+							<label>Total</label>
 							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px"> 
 						
-						
-						
-						
-<%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.pedidos}">  --%>
-								
-								</div>
-
-							</div>
-
-
-<!-- 								<span 	class="input-group-btn"> -->
-									
-<!-- 									<button -->
-<!-- 										class="btn btn-sm btn-primary" type="button"> -->
-<!-- 										<i class="fa fa-search"></i> -->
-<!-- 									</button> -->
-<!-- 									<button type="button" class="btn btn-sm btn-success" -->
-<!-- 										onClick="javascript:window.location='cadastro'">AddItemPedido Venda</button> -->
-										
-<!-- 								</span> -->
-
+						</div>
+</div>
+						</div>
 						</div>
 
-					</div>
-				</div>
-
-			<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-
+<!-- 			<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a> -->
+			
 			</div>
 
-			
-		</div>
-		
-		
-		
+ <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5>
+           
+          </div>
+     
+     <div class="widget-content nopadding">               
+       <div class="container-fluid">
+     
+		  <ul class="quick-actions">
+
 		  <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
 
 		<c:choose>
 		
-		  <c:when test="${item.id % 2 == 0}">
+		  <c:when test="${item.id != null}">
 		  
-		  
-		  
-		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                                    <a href="${pageContext.request.contextPath}/pedidovenda/item/delete?id=${item.id}" title="deletar" class="fa fa-remove">
-                              
-                             		 </a>
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                           
-                                    
-                                    <div class="col-xs-9 text-right">
-                                         <div class="huge">${item.id}</div>
-                                        <div>${item.descricao}</div>
-                                      <div>Total: ${item.totalItem}</div>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/item/">
+         <i class="icon-dashboard"></i> <div class="huge">${item.id}</div>
+                                       <div>${item.descricao}</div>
+                                      <div>Total: ${item.totalItem}</div> 
+                                      <div>Qtd: ${item.qtd}</div>
+                                      
+                                      </a> 
+                                      
+                                      </li>
+       
+     
+		                              
                              
                                         
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                     
-                    </c:when>
                     
-                    <c:when test="${item.id % 2 != 0}">
-                    
-                                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                                <a href="${pageContext.request.contextPath}/pedidovenda/item/delete?id=${item.id}" title="deletar" class="fa fa-remove">
-                              
-                             		 </a>
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${item.id}</div>
-                                        <div>${item.descricao}</div>
-                                         <div>Total: ${item.totalItem}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
+                        
                     </c:when>
                     
                     </c:choose>
                     
                     </c:forEach>
-                   	
+                    	            </ul> 
+                    	            
+                    	            </div>      	
+                    
 		
 	</div>
+	
+	</div>
+	</div>
+	</div>
+	
 
 </div>
-
+</div>
+</div>
 
 
 

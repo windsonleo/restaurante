@@ -1,68 +1,54 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
- <div id="page-wrapper">
+ <div id="content">
+ 
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Banco</a> >> <a href="#">Movimentação Banco </a>>> <a href="#" class="current">Cadastro Banco</a> </div>
+    <h1>Cadastro de Pedido Venda</h1>
+  </div>
 
             <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Pedidos de Venda <small>Cadastro e Visão Geral</small>
-                                                        
-                        </h1>
-                        
-                                    		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-user"></i> Pedidos de Venda
-                            </li>
-                        </ol>
-                        
-                                                   <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
+<div class="row-fluid">
+      <div class="span12">
+               <div class="widget-box">
+     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Cadastro de Pedido de Vneda</h5>
+          </div>                         
 					 
-					 <form  role="form" id="ds" class="form-labels-on-top"
+					 <form  role="form" id="ds" class="form-horizontal"
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
-
-		<div class="panel panel-primary">
-					<div class="panel-heading">
-							<h3 class="panel-title">Cadastro de Pedido Venda </h3>
-					</div>
-					<div class="panel-body">
-
-
-					<div class="form-group">
-						<label> <span>Ativo?</span> <input id="isativo"
-							name="isativo" class="form-control" type="checkbox"
-							checked="${pedidovenda.isativo}" />
-						</label>
-						
-						</div>
-
-						<label> <input id="id" name="id"
-							class="form-control" type="text" value="${pedidovenda.id}" placeholder="Digite o Id" />
-						</label>
+					<div class="control-group">
+                <label class="control-label">Ativo?</label>
+                <div class="controls">
+				<input id="isativo" name="isativo"  type="checkbox" checked="${pedidovenda.isativo}"/>
+                </div>
+              </div>
+              
+              
+              <div class="control-group">
+                <label class="control-label">Id</label>
+                <div class="controls">
+						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
+                </div>
+              </div>
 			 
-		
-			 
-			   		<label>
-						<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"placeholder="Digite a Data"/>
-					</label>
-		 	 
-		 	
-		 	           <label>
-                    <span>Situacao Pedido</span>
-                    
-                         <select id="situacao"name="situacao"  class="form-control" >
+              <div class="control-group">
+                <label class="control-label">Data </label>
+                <div class="controls">
+				
+				<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"placeholder="Digite a Data"/>
+				
+				
+                </div>
+              </div>
+              
+               <div class="control-group">
+                <label class="control-label">Situacao Pedido</label>
+                <div class="controls">
+         <select id="situacao"name="situacao"  class="form-control" >
 	                                  <optgroup label="Situação do Pedido">
 		           					
 		           					
@@ -74,18 +60,14 @@
 		       				</c:forEach>
 		       				
 		                </optgroup>
-	                    </select>
-	                    
-	                    
-<!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-                    
-                </label>
-		 	 
-		 	 
-			
-                <label>
-                    <span>Status Pedido</span>
-                    
+	                    </select>				
+				
+                </div>
+              </div>             			 
+		
+              <div class="control-group">
+                <label class="control-label">Status Pedido</label>
+                <div class="controls">
                          <select id="status"name="status"  class="form-control" >
 	                                  <optgroup label="Status do Pedido">
 		           					<c:forEach var="status" items="${tipoStatusList}">
@@ -95,17 +77,15 @@
 		           				
 		       				</c:forEach>
 		                </optgroup>
-	                    </select>
-	                    
-	                    
-<!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-                    
-                </label>
-            
-            	
-                <label>
-                    <span>Origem Pedido</span>
-                    
+	                    </select>				
+				
+                </div>
+              </div>
+              
+              
+               <div class="control-group">
+                <label class="control-label">Origem Pedido</label>
+                <div class="controls">
                          <select id="origempedido"name="origempedido"  class="form-control" >
 	                                  <optgroup label="Origem do Pedido">
 		           					
@@ -118,17 +98,16 @@
 		       				</c:forEach>
 		       				
 		                </optgroup>
-	                    </select>
-	                    
-	                    
-<!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-                    
-                </label>
-
-						<label> 
-		                    <span>Cliente</span>
-
-							<select id="cliente" name="cliente" class="form-control">
+	                    </select>				
+				
+                </div>
+              </div>
+              
+              
+                <div class="control-group">
+                <label class="control-label">Cliente</label>
+                <div class="controls">
+					<select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
 
 
@@ -142,18 +121,15 @@
 
 									</c:forEach>
 								</optgroup>
-						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-
-						</label>
-
-
-
-
-						<label> 
-						
-                    <span>Mesa</span>
-
-							<select id="mesa" name="mesa" class="form-control">
+						</select>				
+				
+                </div>
+              </div>
+              
+              <div class="control-group">
+                <label class="control-label">Mesa</label>
+                <div class="controls">
+<select id="mesa" name="mesa" class="form-control">
 								<optgroup label="Mesa">
 
 
@@ -167,16 +143,15 @@
 
 									</c:forEach>
 								</optgroup>
-						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-
-						</label>
-
-
-						<label> 
-						
-                    <span>Garcon</span>
-
-							<select id="garcon" name="garcon" class="form-control">
+						</select> 				
+				
+                </div>
+              </div>
+              
+                 <div class="control-group">
+                <label class="control-label">Garcon</label>
+                <div class="controls">
+<select id="garcon" name="garcon" class="form-control">
 								<optgroup label="Garcon">
 
 
@@ -190,39 +165,38 @@
 
 									</c:forEach>
 								</optgroup>
-						</select> <!--                     		<input type="button" onclick="javascript:adiciona();" value="Adicionar" /> -->
-
-						</label>
-
-
-
-			   		<label>
-			  		<span>Total</span>
+						</select>				
+				
+                </div>
+              </div> 
+              
+               <div class="control-group">
+                <label class="control-label">Total</label>
+                <div class="controls">
 						<input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
-					</label>
-		
+				
+				
+                </div>
+              </div>             
               
-              
-           
-		 	 
+                                                  
+                           			 
+			  
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-
-	 	 <p></p>
-	 	 	 <p></p>
 			
-			<div class="form-group" align="center">
-				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
+			<div class="form-actions" align="center">
+				<button type="submit"class="btn btn-success">Cadastrar</button>
 			</div>
 			
+</form>
+</div>
+</div>
+
 			</div>
 			</div>
 									
 
-</form>
 </div>	
-</div>
-</div>
-</div>
+
 

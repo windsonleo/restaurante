@@ -1,98 +1,49 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<%@page pageEncoding="UTF-8" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@page session="FALSE"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 
-<!-- </div> -->
 
-<div id="login" class="login">
-
- <div class="row">
- 
-      <div class="col-lg-4">
- 	</div>
-     <div class="col-lg-4">
-       
-       <div class="page-header">
-                    <img src="resources/images/logologin.png" alt="" />
+        <div id="loginbox">  
+        				 <div class="control-group normal_text"> <h2><img src="${pageContext.request.contextPath}/resources/images/logologin.png" alt="Logo" /></h2></div>
+                  
+            <form id="loginform" class="form-vertical" action="login" method="post">
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" id="username" name="username" placeholder="Username" />
+                        </div>
+                    </div>
                 </div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">AUTENTICAÇÃO</h3>
-			</div>
-			<div class="panel-body">
-			
-
-			
-			<form id="formlogin" action="login" method="post">
-
-
-
-
-
-
-<%-- 			<c:if test="${param.error != null}"> --%>
-<!--                              <div class="alert alert-error"> -->
-<!--                                     Falha ao fazer Login. -->
-<%--                                     <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}"> --%>
-<%--                                           Motivo: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" /> --%>
-<%--                                     </c:if> --%>
-<!--                              </div> -->
-<%--                       </c:if> --%>
-                      
-<%--                       <c:if test="${param.logout != null}"> --%>
-<!--                              <div class="alert alert-success"> -->
-<!--                                     Você efetuou log out. -->
-<!--                              </div> -->
-<%--                       </c:if> --%>
-
-
-
-
-
-
-			<div class="form-group">
-				<label>Usuario</label> 
-				<input class="form-control" type="text" id="username" name="username">
-				<p class="help-block">insira o nome de usuario.</p>
-			</div>
-			
-				<div class="form-group">
-				<label>Senha</label> 
-				<input class="form-control" type="password" id="senha" name="senha">
-				<p class="help-block">insira sua senha..</p>
-			</div>
-
-
-			<div class="submit">
-				<button type="submit" class="btn btn-lg btn-primary" value=login >Entrar</button>
-				<button type="reset" class="btn btn-lg btn-danger">Apagar</button>
-				<button type="reset" class="btn btn-lg btn-warning">Esqueci Senha</button>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="Password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
+                    <span class="pull-right"><button type="submit" class="btn btn-success" > Login</button></span>
+                	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                
+                </div>
+            </form>
+            
+            
+            <form id="recoverform" action="#" class="form-vertical">
+				<p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
 				
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<p>
-						<a href="#">Solicitar Acesso</a>
-					</p>
-			</div>
-
-
-		</form>
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                        </div>
+                    </div>
+               
+                <div class="form-actions">
+                    <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
+                    <span class="pull-right"><a class="btn btn-info">Reecover</a></span>
+                </div>
+            </form>
+        </div>
         
-			
-			
-			
-			
-			
-			
-			</div>
-		</div>
-
-		
-    </div>
-    </div>
-    
-    </div>
-    
 
 

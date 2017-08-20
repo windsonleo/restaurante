@@ -1,387 +1,120 @@
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
-  
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="${pageContext.request.contextPath}/resources/images/logonomenova.png" /></a>
-            </div>
-            
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-            
-            
-                             <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Compra<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-<li>
-                                <a href="${pageContext.request.contextPath}/banco/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Pedido Compra</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Recebimento </a>
-                            </li>
-                            
-                          <li>
-                        <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Devolução</a>
-                    </li>
-                            
-<!--                              <li> -->
-<!--                                 <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Contas a Pagar</a> -->
-<!--                             </li> -->
-                            
-<!--                                         <li> -->
-<!--                                 <a href="#"> <i class="fa fa-user" style="color:"";" aria-hidden="true"></i>Contas a Receber</a> -->
-<!--                             </li> -->
-                    </ul>
-                </li>
-            
-            
-            
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Empresa<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-<li>
-                                <a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Sobre</a>
-                            </li>
-                            
-                            <li>
-                                <a href="${pageContext.request.contextPath}/empresa/metas"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Metas </a>
-                            </li>
-                            
-<!--                           <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Formas de Pagamento</a> --%>
-<!--                     </li> -->
-                            
-<!--                              <li> -->
-<!--                                 <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Contas a Pagar</a> -->
-<!--                             </li> -->
-                            
-<!--                                         <li> -->
-<!--                                 <a href="#"> <i class="fa fa-user" style="color:"";" aria-hidden="true"></i>Contas a Receber</a> -->
-<!--                             </li> -->
-                    </ul>
-                </li>
-            
-            
-            
-            
-                            <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Financeiro<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-<li>
-                                <a href="${pageContext.request.contextPath}/banco/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Banco</a>
-                            </li>
-                            
-                                <li >
-                        <a href="${pageContext.request.contextPath}/caixa/movimentacao"><i class="fa fa-institution" style="color:"";" aria-hidden="true"></i> Caixa</a>
-                    </li>
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Conta </a>
-                            </li>
-                            
-                          <li>
-                        <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Formas Pag</a>
-                    </li>
-                            
-                             <li>
-                                <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> À Pagar</a>
-                            </li>
-                            
-                                        <li>
-                                <a href="#"> <i class="fa fa-user" style="color:"";" aria-hidden="true"></i>À Receber</a>
-                            </li>
-                            
-                                      <li>
-                        <a href="${pageContext.request.contextPath}/despesa/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Despesas</a>
-                        
-                                                    <li>
-                        <a href="${pageContext.request.contextPath}/pagamento/movimentacao"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:"";"></i> Pagamentos</a>
-                    </li>
-                    </li>
-                    </ul>
-                </li>
-                
-                                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Estoque<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                         <li>
-                                <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Balanço</a>
-                            </li>
-                            
-                            <li>
-                                <a href="${pageContext.request.contextPath}/estoque/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Movimentacao </a>
-                            </li>
-                            
-                          <li>
-                        <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Relatório</a>
-                    </li>
-                    </ul>
-                </li>
-                
-                                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Relatórios <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                           <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Categoria</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Cliente</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Compras</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Empresa</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Entregas</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Fornecedor</a>
-                        </li>
-                        
-                               <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Financeiro</a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Fornecedor</a>
-                        </li>
-                        
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Garcon</a>
-                        </li>
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Mesa</a>
-                        </li>
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Produto</a>
-                        </li>
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Usuario</a>
-                        </li>
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Venda</a>
-                        </li>
-                                                <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Cliente</a>
-                        </li>
-<!--                         <li> -->
-<!--                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a> -->
-<!--                         </li> -->
-                        <li class="divider"></li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${usuarioAtt.username} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-<!--                         <li> -->
-<!--                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a> -->
-<!--                         </li> -->
-<!--                         <li> -->
-<!--                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a> -->
-<!--                         </li> -->
-                        <li class="divider"></li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            
-            
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    
-<!--                     class="active" -->
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/home" ><i class="fa fa-tachometer" style="color:white;" aria-hidden="true"></i> Home</a>
-                    </li>
-                    
-<!--                       <li > -->
-<%--                         <a href="${pageContext.request.contextPath}/caixa/movimentacao"><i class="fa fa-institution" style="color:"";" aria-hidden="true"></i> Caixa</a> --%>
-<!--                     </li> -->
-                    
-                         <li>
-                        <a href="${pageContext.request.contextPath}/categoria/movimentacao"><i class="fa fa-institution" style="color:white;" aria-hidden="true"></i> Categoria</a>
-                    </li>
-                    
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/cliente/movimentacao"><i class="fa fa-user" style="color:white;" aria-hidden="true"></i> Clientes</a>
-                    </li>
-                    
-<!--                      <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/despesa/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Despesas</a> --%>
-<!--                     </li> -->
-                    
-<!--                                <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="fa fa-truck" style="color:"";" aria-hidden="true"></i> Empresa</a> --%>
-<!--                     </li> -->
-                    
-                    
-                      <li>
-                        <a href="${pageContext.request.contextPath}/pedidovenda/entregas"><i class="fa fa-truck" style="color:white;" aria-hidden="true"></i> Entregas</a>
-                    </li>
-                    
-                    
-<!--                                        <li> -->
-<!--                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Estoque <i class="fa fa-fw fa-caret-down"></i></a> -->
-<!--                         <ul id="demo" class="collapse"> -->
-                        
-<!--                            <li> -->
-<!--                                 <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Balanço</a> -->
-<!--                             </li> -->
-                            
-<!--                             <li> -->
-<%--                                 <a href="${pageContext.request.contextPath}/estoque/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Movimentacao </a> --%>
-<!--                             </li> -->
-                            
-<!--                           <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Relatório</a> --%>
-<!--                     </li> -->
-                            
-
-                            
-<!--                         </ul> -->
-                        
-<!--                     </li> -->
-                    
-                    
-                    
-                    
-<!--                             <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/financeiro/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Financeiro</a> --%>
-<!--                     </li> -->
-                    
-<!--                    <li> -->
-<!--                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Financeiro <i class="fa fa-fw fa-caret-down"></i></a> -->
-<!--                         <ul id="demo2" class="collapse"> -->
-                        
-<!--                            <li> -->
-<%--                                 <a href="${pageContext.request.contextPath}/banco/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Banco</a> --%>
-<!--                             </li> -->
-                            
-<!--                             <li> -->
-<!--                                 <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Conta </a> -->
-<!--                             </li> -->
-                            
-<!--                           <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Formas de Pagamento</a> --%>
-<!--                     </li> -->
-                            
-<!--                              <li> -->
-<!--                                 <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Contas a Pagar</a> -->
-<!--                             </li> -->
-                            
-<!--                                         <li> -->
-<!--                                 <a href="#"> <i class="fa fa-user" style="color:"";" aria-hidden="true"></i>Contas a Receber</a> -->
-<!--                             </li> -->
-                            
-<!--                         </ul> -->
-                        
-<!--                     </li> -->
-                    
-                       
-                    
-                    
-                         <li>
-                        <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i class="fa fa-user" style="color:white;" aria-hidden="true"></i> Fornecedor</a>
-                    </li>
-                    
-                         <li>
-                        <a href="${pageContext.request.contextPath}/garcon/movimentacao"><i class="fa fa-user" style="color:white;" aria-hidden="true"></i> Garçon</a>
-                    </li>
-                    
-                          <li>
-                        <a href="${pageContext.request.contextPath}/mesa/movimentacao"><i class="fa fa-table" style="color:white;" aria-hidden="true"></i> Mesas</a>
-                    </li>
-                    
-
-                    
-                                
-                    <li>
-                        <a href="${pageContext.request.contextPath}/produto/movimentacao"><i class="fa fa-briefcase" aria-hidden="true" style="color:white;"></i> Produtos</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/usuario/movimentacao"><i class="fa fa-user" style="color:white;" aria-hidden="true"></i> Usuarios</a>
-                    </li>
-                    
-                  <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Vendas <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo2" class="collapse">
-                        
-                                     <li>
-                        <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:"";"></i> Pedidos de Venda</a>
-                    </li>
-                            <li>
-                                <a href="#"><i class="fa fa-user" style="color:"";" aria-hidden="true"></i> Devolução de Venda </a>
-                            </li>
-                            
-                            
-                        </ul>
-                        
-                    </li>
-                    
-<!--                        <li> -->
-<%--                         <a href="${pageContext.request.contextPath}/passeio/movimentacao"><i class="fa fa-anchor"></i> Programas</a> --%>
-<!--                     </li> -->
-<!--                     <li> -->
-<!--                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a> -->
-<!--                     </li> -->
-<!--                     <li> -->
-<!--                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a> -->
-<!--                     </li> -->
-<!--                     <li> -->
-<!--                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a> -->
-<!--                         <ul id="demo" class="collapse"> -->
-<!--                             <li> -->
-<!--                                 <a href="#">Dropdown Item</a> -->
-<!--                             </li> -->
-<!--                             <li> -->
-<!--                                 <a href="#">Dropdown Item</a> -->
-<!--                             </li> -->
-<!--                         </ul> -->
-<!--                     </li> -->
-<!--                     <li> -->
-<!--                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a> -->
-<!--                     </li> -->
-<!--                     <li> -->
-<!--                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a> -->
-<!--                     </li> -->
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-        
+<%@ page session="false" %>
    
+<div id="header">
+  <h3><a href="dashboard.html"><img src="${pageContext.request.contextPath}/resources/images/logologinn.png"></img></a></h3>
+</div>
+
+<!--top-Header-menu-->
+
+	<div id="user-nav" class="navbar navbar-inverse">
+	
+	  <ul class="nav">
+		    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Bem - Vindo  ${usuarioAtt}</span><b class="caret"></b></a>
+			      <ul class="dropdown-menu">
+			        <li><a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id }"><i class="icon-user"></i>Meu Perfil</a></li>
+			        <li class="divider"></li>
+			        <li><a href="${pageContext.request.contextPath}/usuario/tarefas"><i class="icon-check"></i> Minhas Tarefas</a></li>
+			        <li class="divider"></li>
+			        <li><a href="${pageContext.request.contextPath}/"><i class="icon-key"></i> Sair</a></li>
+			    
+
+			      </ul>
+		    </li>
+		    
+		    
+ 					<li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messagess" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Empresa</span><b class="caret"></b></a>
+			      <ul class="dropdown-menu">
+		        	<li><a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="icon-check"></i> Sobre</a></li>
+		        	 <li class="divider"></li>
+		        	
+			        <li ><a href="${pageContext.request.contextPath}/empresa/metas"><i class="icon-check">Metas</i></a></li>
+		    
+		    </ul>
+		    </li>
+		    
+<!-- 		    <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a> -->
+<!-- 			      <ul class="dropdown-menu"> -->
+<!-- 			        <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> new message</a></li> -->
+<!-- 			        <li class="divider"></li> -->
+<!-- 			        <li><a class="sInbox" title="" href="#"><i class="icon-envelope"></i> inbox</a></li> -->
+<!-- 			        <li class="divider"></li> -->
+<!-- 			        <li><a class="sOutbox" title="" href="#"><i class="icon-arrow-up"></i> outbox</a></li> -->
+<!-- 			        <li class="divider"></li> -->
+<!-- 			        <li><a class="sTrash" title="" href="#"><i class="icon-trash"></i> trash</a></li> -->
+<!-- 			      </ul> -->
+<!-- 		    </li> -->
+<!-- 		    <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li> -->
+		    <li class=""><a title="" href="${pageContext.request.contextPath}/"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+	  </ul>
+	</div>
+<!--close-top-Header-menu-->
+
+
+<!--start-top-serch-->
+	<div id="search">
+	  <input type="text" placeholder="Pesquise Aqui..."/>
+	  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+	</div>
+<!--close-top-serch-->
+
+    <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+  <ul>
+        <li class="active"><a href="${pageContext.request.contextPath}/home"><i class="icon icon-home"></i> <span>Home</span></a> </li>
+  
+  
+      <li class=""><a href="${pageContext.request.contextPath}/categoria/movimentacao"><i class="icon icon-home"></i> <span>Categoria</span></a> </li>
+  
+      <li class=""><a href="${pageContext.request.contextPath}/cliente/movimentacao"><i class="icon icon-home"></i> <span>Cliente</span></a> </li>
+      
+          <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Compras</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">Pedido Compra</a></li>
+        <li><a href="form-validation.html">Recebimento</a></li>
+        <li><a href="form-wizard.html">Devolução</a></li>
+      </ul>
+    </li>
+      
+      
+  
+    <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="icon icon-signal"></i> <span>Entregas</span></a> </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Financeiro</span> <span class="label label-important">5</span></a>
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/banco/movimentacao">Banco</a></li>
+        <li><a href="${pageContext.request.contextPath}/caixa/movimentacao"">Caixa</a></li>
+        <li><a href="${pageContext.request.contextPath}/conta/movimentacao"">Conta</a></li>
+        <li><a href="${pageContext.request.contextPath}/formapagamento/movimentacao"">Forma de Pagamento</a></li>
+        <li><a href="chat.html">Á Pagar</a></li>
+        <li><a href="chat.html">Á Receber</a></li>
+        <li><a href="${pageContext.request.contextPath}/despesa/movimentacao"">Despesa</a></li>
+        <li><a href="${pageContext.request.contextPath}/pagamento/movimentacao"">Pagamento</a></li>
         
+      </ul>
+    </li>
+    <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i class="icon icon-th"></i> <span>Fornecedor</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i class="icon icon-fullscreen"></i> <span>Garçon</span></a></li>
+
+    <li><a href="${pageContext.request.contextPath}/mesa/movimentacao"><i class="icon icon-tint"></i> <span>Mesa</span></a></li>
+    
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Produto</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/produto/movimentacao">Produto</a></li>
+        <li><a href="form-validation.html">Produto Composto</a></li>
+        <li><a href="form-wizard.html">Conf. Produto</a></li>
+      </ul>
+    </li>
+    
+            <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Venda</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/pedidovenda/movimentacao">Pedido Venda</a></li>
+        <li><a href="form-validation.html">Devolução Venda</a></li>
+        <li><a href="form-wizard.html">Conf. Produto</a></li>
+      </ul>
+    </li>
+    
+    
+    <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i class="icon icon-pencil"></i> <span>Usuario</span></a></li>
+
+  </ul>
+</div>      
         

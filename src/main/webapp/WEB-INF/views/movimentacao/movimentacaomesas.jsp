@@ -1,151 +1,92 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
+<div id="content">
 
-<div id="page-wrapper">
-
-	<div class="container-fluid">
-
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="page-header">
-					Mesas <small>Listagem e Visão Geral</small>
-
-
-				</h1>
-
-				
-				<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Mesas
-                            </li>
-                        </ol>
-                        
-                                                   <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
-                        
-                        
-				
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Buscar</h3>
-					</div>
-					<div class="panel-body">
-
-
-						<div class="form-group input-group">
-<!-- 							<input type="text" class="form-control">  -->
-							
-							<input type="text" list="${mesasList}" autocomplete="on" class="form-control">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Mesa</a> >> <a href="#" class="current">Movimentação de Mesa</a> </div>
+    <h1>Listagem e Visão Geral</h1>
+  </div>
+  
+  
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+      
+   <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>Movimentação Mesa</h5>
+          
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/mesa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+         
+            </div>
+          </div>
+          
+          
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Numero</th>
+                  <th>Status</th>
+                  
+                  <th>Ação(s)</th>
+                  
+                  
+                  
+                </tr>
+              </thead>
+              <tbody>
+              
+           		<c:forEach var="mesa" items="${mesasList}" varStatus="id">
+              
+                <tr class="gradeX">
+                  <td>${mesa.id }</td>
+                  <td>${mesa.numero }</td>
+                  <td>${mesa.status}</td>
+                 <td class="options-widt">
 								
-								<datalist id="${mesasList}">
 								
-							 		<c:forEach var="mesa" items="${mesasList}" varStatus="id">
-								
-								 		<option value="${mesa.numero }">  </option>
-								  </c:forEach>
-								  
-								  
-								</datalist>
-							
-							
-							
-							
-							
-							<span
-								class="input-group-btn"><button
-									class="btn btn-sm btn-primary" type="button">
-									<i class="fa fa-search"></i>
-								</button>
-								<button type="button" class="btn btn-sm btn-success"
-									onClick="javascript:window.location='cadastro'">Add</button> </span>
+								<a
+									href="${pageContext.request.contextPath}/mesa/editar?id=${mesa.id}"
+									title="Editar"><i class="icon-edit"></i> </a>
+									
+										<a
+									href="${pageContext.request.contextPath}/mesa/informacoes?id=${mesa.id}"
+									title="Informações" ><i class="icon-info-sign"></i></a>
+									
+									
+									 <a
+									href="${pageContext.request.contextPath}/mesa/delete?id=${mesa.id}"
+									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a>
+									
+									
+									
+									
+									
+										
+					</td>
+                  
+                  
+                </tr>
+                
+                </c:forEach>
 
-						</div>
-
-					</div>
-				</div>
-
-
-			</div>
-			
-			
-		</div>
-		
-		  <c:forEach var="mesa" items="${mesasList}" varStatus="id">
-
-		<c:choose>
-		
-		  <c:when test="${mesa.id % 2 == 0}">
-		  
-		  
-		  
-		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                         <div class="huge">${mesa.numero}</div>
-                                        <div>Mesa</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/mesa/detalhes?id=${mesa.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    </c:when>
-                    
-                    <c:when test="${mesa.id % 2 != 0}">
-                    
-                                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${mesa.numero}</div>
-                                        <div>Mesa</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/mesa/detalhes?id=${mesa.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    </c:when>
-                    
-                    </c:choose>
-                    
-                    </c:forEach>
-                   	
-		
-	</div>
-
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+<!--         <div class="pagination alternate"> </div> -->
+        
+        
+        </div>
+        
+        <div class="row-fluid">
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
-
-
-
-

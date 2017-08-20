@@ -9,6 +9,8 @@
         <!--         <put-attribute name="barra_usuario_topo" value="/WEB-INF/views/barra_usuario_topo.jsp" /> -->
         <put-attribute name="navegacao" value="/WEB-INF/views/template/navegacao.jsp"/>
         <put-attribute name="conteudo" value=""/>
+<!--         <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/> -->
+        
     </definition>
     
 
@@ -350,6 +352,12 @@
 			<definition name="fecharcaixa" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/caixa/fecharcaixa.jsp" />
+
+	</definition>
+	
+				<definition name="salao" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/salao.jsp" />
 
 	</definition>
 	

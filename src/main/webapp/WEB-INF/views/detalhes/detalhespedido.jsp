@@ -2,37 +2,20 @@
 <%@ page session="true" %>
 
 
-<div id="page-wrapper">
-
-	<div class="container-fluid">
-
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="page-header">
-					Detalhes da Pedido <small>${pedido.id}</small> 
-					
-<!-- 					<strong>R$:150.68</strong> -->
-
-
-				</h1>
-
-				
-						<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Pedido
-                            </li>
-                        </ol>
-
-                        
-                        
-                        
-				
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Detalhes do Pedido : ${pedido.id} </h3>
-					</div>
-					<div class="panel-body">
-
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido</a>>> <a href="#">Movimentação Pedido</a> >><a href="#" class="current">Detalhes Pedido</a> </div>
+    <h1>Detalhes da Pedido ${pedido.id }</h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes da Pedido</h5>
+          </div>
+          <div class="widget-content nopadding">
+  
 						
 						
 						
@@ -42,14 +25,14 @@
 						
 						 <div class="form-inline">
 						 
-							<label>CÓDIGO</label>	
+							<label>Código</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedido.id }"> 
 							<label>Cliente</label>	
 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedido.cliente}"> 
 							<label>Mesa</label>
 							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedido.mesa }"> 
-<!-- 							<label>TOTAL</label> -->
-<!-- 							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px">  -->
+							<label>Total</label>
+							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px"> 
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedido.pedidos}">  --%>
 								
@@ -79,74 +62,54 @@
 			
 		<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 		<p></p>
-		</div>
+
+	<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Itens do Pedido</h5>
+          </div>
+          <div class="widget-content nopadding">
+  
+			
+			       <div class="container-fluid">
+			
+			
+				  <ul class="quick-actions">
+				
+		
 		
 		  <c:forEach var="item" items="${pedido.items}" varStatus="id">
 
 		<c:choose>
 		
-		  <c:when test="${item.id % 2 == 0}">
+		  <c:when test="${item.id  != null}">
 		  
 		  
-		  
-		                   <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                         <div class="huge">${item.id}</div>
+		  <li class="bg_lb span2"> <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
+         		<i class="icon-dashboard"></i>
+         	
+                   <div class="huge">${item.id}</div>
                                         <div>${item.descricao}</div>
                                       <div>Total: ${item.totalItem}</div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                  
+                                     	<span class="label label-success">${pedidoList.size()}</span> 
+                                      </a> 
+                                      
+                                      </li>
+          
+		                 
                     
                     </c:when>
                     
-                    <c:when test="${item.id % 2 != 0}">
-                    
-                                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">${item.id}</div>
-                                        <div>${item.descricao}</div>
-                                         <div>Total: ${item.totalItem}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Detalhes</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    </c:when>
                     
                     </c:choose>
                     
                     </c:forEach>
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
                    	
 		
 	</div>

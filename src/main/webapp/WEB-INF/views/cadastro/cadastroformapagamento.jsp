@@ -1,78 +1,42 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
-<div id="page-wrapper">
 
-            <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Forma de Pagamento <small>Cadastro e Visão Geral</small>
-                                                        
-                        </h1>
-                        
-                                  		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Forma de Pagamento
-                            </li>
-                        </ol>
-                                      <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/formapagamento/${acao}" ModelAttribute="formapagamento" method="POST">
- 
- 						
- 						
- 					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Cadastro de Formas de Pagamento </h3>
-					</div>
-					<div class="panel-body">
-
-						
-						
-						
-<!-- 						<div class="form-group"> -->
-						
-<!-- 						<div class="col-xs-12"> -->
-						
-<!-- 						 <div class="form-inline"> -->
-						
-
-
-			
-		 	 <div class="form-group">
-				   <label>
-				  	<span>Ativo?</span>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a>>> <a href="#">Movimentação Forma de Pagamento</a> >><a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
+    <h1>Cadastro de Forma de Pagamento</h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Cadastro de Forma de Pagamento</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+              
+               <div class="control-group">
+                <label class="control-label">Ativo?</label>
+                <div class="controls">
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${formapagamento.isativo}"/>
-					</label>
-			 </div>
-			 
-<%-- 			<input type="hidden" name="id" value="${formapagamento.id}"> --%>
-			 
-
-				   <label>
+                </div>
+              </div>
+              
+              
+              <div class="control-group">
+                <label class="control-label">Id</label>
+                <div class="controls">
 						<input id="id" class="form-control" name="id" type="text" value="${formapagamento.id}" placeholder="Digite o id" />
-					</label>
-			 
-		
-			 
-			   		<label>
-						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder="Digite o Nome"/>
-					</label>
-		 	 
-		 	
-		 	 
-		 	 
-			
-                <label>Tipo
+                </div>
+              </div>
+              
+                <div class="control-group">
+                <label class="control-label">Tipo</label>
+                <div class="controls">
+
+
                     
                          <select id="tipo"name="tipo"  class="form-control">
 	                                  <optgroup label="Tipos de Formas de Pagamento">
@@ -87,42 +51,80 @@
 		                </optgroup>
 	                    </select>
 	                    
+	                                
+
+
+                </div>
+              </div>                
+              
+              
+              
+              
+              
+              <div class="control-group">
+                <label class="control-label">Nome</label>
+                <div class="controls">
+						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder="Digite o Nome da Forma de Pagamento"/>
+                </div>
+              </div>
+
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Genero</label> -->
+<!--                 <div class="controls"> -->
+                    
+<!--                  <select id="genero" name="genero" id="genero" class="form-control">            -->
+<!-- 	                <optgroup label="Genero do Usuario"> -->
+	           			
+<!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
+<!-- 	           				<option value="FEMININO">FEMININO</option> -->
+	           				      				
+<!-- 	                </optgroup> -->
+<!-- 	            </select> -->
+	                    
 	                                        
-                </label>
-                
-                
-                	<label>
+<!--                 </div> -->
+<!--               </div> -->
+              
+              
+              
+            <div class="control-group">
+                <label class="control-label">Parcelas</label>
+                <div class="controls">
 						<input id="parcelas" class="form-control" name="parcelas" type="text" value="${formapagamento.parcelas}" placeholder="Digite a Quant. Parcelas"/>
-					</label>
-					
-						<label>
+                </div>
+              </div>
+
+            <div class="control-group">
+                <label class="control-label">% Desc</label>
+                <div class="controls">
 						<input id="percdesconto" class="form-control" name="percdesconto" type="text" value="${formapagamento.percdesconto}" placeholder="Digite o % de Desconto"/>
-					</label>
-                       
+                </div>
+              </div>              
+              
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label">Data de Nascimento</label> -->
+<!--                 <div class="controls"> -->
+<%--              <input id="telefone" class="form-control" name="datanascimento" type="date" value="${formapagamento.telefone}" placeholder="Digite o Telefone"/>					 --%>
+<!--                 </div> -->
+<!--               </div>       -->
               
               
-           
-		 	 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+       
+              
+              
+              
+              <div class="form-actions">
+                <input type="submit" value="Inserir" class="btn btn-success">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+            </div>
+          </div>
 
 
-            
-            <div class="form-group">
-				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-			</div> 
-			
-			</div>
-			</div>
-	
-			
-										
-
-</form>
-
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
-</div>
-</div>
-</div>
-
-

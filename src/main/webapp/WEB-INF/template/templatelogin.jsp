@@ -9,54 +9,41 @@
 <html>
 	<head>
 
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/screen.css" type="text/css" /> --%>
-
- <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/resources/font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	  <title>Restaurante Sushi Senpai</title>
+	  <meta charset="UTF-8" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-login.css" />
+        <link href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>  
+        <script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script>
+         	<script src="${pageContext.request.contextPath}/resources/js/joint.min.js"></script>
+ 	
+ 	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
  	
  	
-<%--  	 	<script src="${pageContext.request.contextPath}/resources/js/jquery/jquery-1.4.1.min.js" --%>
-<!-- 	type="text/javascript"></script> -->
+ 	 	<script src="${pageContext.request.contextPath}/resources/js/joint.shapes.devs.min.js"></script>
  	
- 	  <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-     <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+<%--   	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> --%>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/raphael.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/morris/morris-data.js"></script>
- 	
- 	
- 
+  	<script src="${pageContext.request.contextPath}/resources/js/backbone.min.js"></script>
+  	
+  	<script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
  	
 
 	</head>
     <body>
 
     	
-			<tiles:insertAttribute name="conteudo" />
-<%-- 			<tiles:insertAttribute name="footer" /> --%>
+							<tiles:insertAttribute name="conteudo" />
+			
+							<tiles:insertAttribute name="footer" />
+			
 
 
 	</body>

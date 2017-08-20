@@ -47,6 +47,7 @@ public class HomeController {
 	private List<PedidoVenda>pedidovendasnovos;
 	private List<Mesa>mesasocupadas;
 	private List<Produto>produtosnovos;
+	private List<Usuario>usuarios;
 
 	
 	
@@ -75,12 +76,13 @@ public class HomeController {
     	pedidovendasnovos = pedidovendadao.getAll();
     	mesasocupadas = mesadao.getAll();
     	produtosnovos = produtodao.getAll();
-        
+        usuarios = usuariodao.getAll();
        
 			model.addAttribute("clientesnovos", clientesnovos);
 			model.addAttribute("pedidovendasnovos", pedidovendasnovos);
 			model.addAttribute("mesasocupadas", mesasocupadas);
 			model.addAttribute("produtosnovos", produtosnovos);
+			model.addAttribute("usuarios", usuarios);
 
 
 

@@ -1,122 +1,121 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Caixa <small>Cadastro e Visão Geral</small>
-                                                        
-                        </h1>
-                        
-                                  		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-support"></i> Caixa
-                            </li>
-                        </ol>
-                        
-                                                             <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- 
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/caixa/${acao}" ModelAttribute="caixa" method="POST">
- 
- 						
- 						
- 					<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Cadastro de Caixa </h3>
-					</div>
-					<div class="panel-body">
-
-						
-						
-						
-<!-- 						<div class="form-group"> -->
-						
-<!-- 						<div class="col-xs-12"> -->
-						
-<!-- 						 <div class="form-inline"> -->
-						
 
 
-			
-		 	 <div class="form-group">
-				   <label>
-				  	<span>Ativo?</span>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> >><a href="#">Movimentação Caixa</a> >><a href="#" class="current">Cadastro Caixa</a> </div>
+    <h1>Cadastro de Caixa</h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Cadastro de Caixa</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/caixa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+              
+               <div class="control-group">
+                <label class="control-label">Ativo?</label>
+                <div class="controls">
 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${caixa.isativo}"/>
-					</label>
-			 </div>
-			 
-<%-- 			<input type="hidden" name="id" value="${caixa.id}"> --%>
-			 
-
-				   <label>
+                </div>
+              </div>
+              
+              
+              <div class="control-group">
+                <label class="control-label">Id</label>
+                <div class="controls">
 						<input id="id" class="form-control" name="id" type="text" value="${caixa.id}" placeholder="Digite o id" />
-					</label>
-			 
-		
-			 
-			   		<label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Nome</label>
+                <div class="controls">
 						<input id="nome" class="form-control" name="nome" type="text" value="${caixa.nome}" placeholder="Digite o Nome da Caixa"/>
-					</label>
-		 	 
-		 	
-		 	 
-		 	 
-			
-<!--                 <label>Caixa Pai -->
-                    
-<!--                          <select id="catpai"name="catpai"  class="form-control"> -->
-<!-- 	                                  <optgroup label="Tipos de Catgeoria Pai"> -->
-		           				
-<%-- 		           					<option value="${caixa.catpai}">${caixa.catpai}</option> --%>
-		           				
-<%-- 		           					<c:forEach var="caixa" items="${caixaList}"> --%>
-		           			
-<%-- 		           				<option value="${caixa.id}">${caixa.nome}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-<!-- 		                </optgroup> -->
-<!-- 	                    </select> -->
-	                    
-	                                        
-<!--                 </label> -->
-                       
-              
-              
-           
-		 	 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                </div>
+              </div>
 
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">URL (Start with http://)</label> -->
+<!--                 <div class="controls"> -->
+<!--                   <input type="text" name="url" id="url"> -->
+<!--                 </div> -->
+<!--               </div> -->
+              <div class="form-actions">
+                <input type="submit" value="Inserir" class="btn btn-success">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--     <div class="row-fluid"> -->
+<!--       <div class="span12"> -->
+<!--         <div class="widget-box"> -->
+<!--           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
+<!--             <h5>Numeric validation</h5> -->
+<!--           </div> -->
+<!--           <div class="widget-content nopadding"> -->
+<!--             <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate"> -->
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Minimal Salary</label> -->
+<!--                 <div class="controls"> -->
+<!--                   <input type="text" name="min" id="min" /> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Maximum Salary</label> -->
+<!--                 <div class="controls"> -->
+<!--                   <input type="text" name="max" id="max" /> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Only digit</label> -->
+<!--                 <div class="controls"> -->
+<!--                   <input type="text" name="number" id="number" /> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="form-actions"> -->
+<!--                 <input type="submit" value="Validate" class="btn btn-success"> -->
+<!--               </div> -->
+<!--             </form> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--       <div class="row-fluid"> -->
+<!--         <div class="span12"> -->
+<!--           <div class="widget-box"> -->
+<!--             <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
+<!--               <h5>Security validation</h5> -->
+<!--             </div> -->
+<!--             <div class="widget-content nopadding"> -->
+<!--               <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate"> -->
+<!--                 <div class="control-group"> -->
+<!--                   <label class="control-label">Password</label> -->
+<!--                   <div class="controls"> -->
+<!--                     <input type="password" name="pwd" id="pwd" /> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--                 <div class="control-group"> -->
+<!--                   <label class="control-label">Confirm password</label> -->
+<!--                   <div class="controls"> -->
+<!--                     <input type="password" name="pwd2" id="pwd2" /> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--                 <div class="form-actions"> -->
+<!--                   <input type="submit" value="Validate" class="btn btn-success"> -->
+<!--                 </div> -->
+<!--               </form> -->
+            </div>
+          </div>
+      
 
-            
-            <div class="form-group">
-				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-			</div> 
-			
-			</div>
-			</div>
-	
-			
-										
-
-</form>
-
-</div>
-</div>
-</div>
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
 
 

@@ -2,226 +2,184 @@
 <%@ page session="true"%>
 
 
-<div id="page-wrapper">
-
-	<div class="container-fluid">
-
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="page-header">
-					Caixa <small>Fechar Caixa</small>
-
-
-				</h1>
-
-				<ol class="breadcrumb">
-					<li class="active"><i class="fa fa-support"></i> Caixa</li>
-				</ol>
-                           <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
-
-				<div class="panel panel-primary" align="center">
-					<div class="panel-heading">
-						<h3 class="panel-title">Digite a Data</h3>
-					</div>
-					<div class="panel-body">
-					
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> >> <a href="#">Movimentação Caixa </a>>> <a href="#" class="current">Fechar Caixa</a> </div>
+    <h1>Fechamento de Caixa ${caixa.id}</h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Fechar Caixa</h5>
+          </div>
+          
+          
+          <div class="widget-content nopadding">
+          		
 					<form action="${pageContext.request.contextPath}/caixa/fechamentocaixa" method="get" >
 
-						<label> <input id="dataini" name="dataini" class="form-control"
+               <div class="control-group" align="center">
+                <label class="control-label"></label>
+                <div class="controls">
+							<input id="dataini" name="dataini" class="form-control"
 							type="date" value="${pedidovenda.data }"
 							placeholder="Digite a Data" />
-						</label> 
+							
+				
+							
+				 </div>
+				 
+				 	<button type="submit"class="btn btn-sm btn-success" onClick="javascript:window.location='fechamentocaixa'">Fechar Caixa</button>
+					<button type="button"class="btn btn-sm btn-success">Imprimir Caixa</button>
+              </div>
 						
-<!-- 						<label> <input id="datafim" name="datafim" class="form-control" -->
-<!-- 							type="date" value="" -->
-<!-- 							placeholder="Digite a Data Final" /> -->
-<!-- 						</label> -->
+
 						
-									<button type="submit"class="btn btn-sm btn-success" onClick="javascript:window.location='fechamentocaixa'">Fechar Caixa</button>
-									<button type="button"class="btn btn-sm btn-success">Imprimir Caixa</button>
+								
 						
-						</form>
+						</form>			
 
-<!--                     		<input type="button" onclick="javascript:adiciona();" value="Fechar" /> -->
-
-		
-					
-
-					</div>
+				
 				</div>
 
 
-			</div>
 
 
 
-		</div>
 
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Detalhes dos Pedidos</h3>
-			</div>
-			<div class="panel-body">
-			
-			<div class="progress-striped-element">
-			
-			 <label> Quantidade Pedidos ${pedidovendaList.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="${pedidovendaList.size()}" style="width: 0%"><span >Total de Pedidos de Venda : ${pedidovendaList.size()}</span>
-                    </div>
-                    
-                </div>
-                
-                	 <label>Quantidade Pedidos Cancelados ${pedidoVendaListacancelados.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span >Total de Pedidos de Venda Cancelados : ${pedidoVendaListacancelados.size()}</span>
-                    </div>
-                    
-                </div>
-                
-                       	 <label>Quantidade Pedidos Internet ${pedidoVendaListainternet.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total de Pedidos de Venda Internet : ${pedidoVendaListainternet.size()}</span>
-                    </div>
-                    
-                </div>
-                
-                            	 <label>Quantidade Pedidos Mesa ${pedidoVendaListamesa.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total de Pedidos de Venda Mesa : ${pedidoVendaListamesa.size()}</span>
-                    </div>
-                    
-                </div>
-                
-                                       	 <label>Quantidade Pedidos Balcão${pedidoVendaListabalcao.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total de Pedidos de Venda Balcão : ${pedidoVendaListabalcao.size()}</span>
-                    </div>
-                    
-                </div>
-                
-                   <label>Quantidade Pedidos Televendas ${pedidoVendaListatelevendas.size()}</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total de Pedidos de Venda Televendas : ${pedidoVendaListatelevendas.size()}</span>
-                    </div>
-                    
-                </div>
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes dos Pedidos</h5>
+          </div>
+        <ul> 
+          
+     <li class="content"> <span>Quantidade Pedidos ${pedidovendaList.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+         <li class="content"> <span>Quantidade Pedidos Cancelados ${pedidoVendaListacancelados.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+             <li class="content"> <span>Quantidade Pedidos Internet ${pedidoVendaListainternet.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+                 <li class="content"> <span>Quantidade Pedidos Mesa ${pedidoVendaListamesa.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+                 <li class="content"> <span>Quantidade Pedidos Balcão${pedidoVendaListabalcao.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+                 <li class="content"> <span>Quantidade Pedidos Televendas ${pedidoVendaListatelevendas.size()}</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+    
+    
+    
+    </ul> 
+          
 			
 			
 			</div>
-			</div>
-		</div>
+			
+	
 		
-		
-				<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Detalhes do Pagamento  Total ${total }</h3>
-			</div>
-			<div class="panel-body">
-			
-			 
-			  
-			  <div class="progress-element">
+		<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes do Pagamento  Total ${total }</h5>
+          </div>
+				 	  
+			  <ul>
 			 
 			   <c:forEach var="formapagamento" items="${formapagamentoList}" varStatus="id">
 			     
-			      <label>${formapagamento.nome} ${formapagamento.pagamentos }</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total Forma de Pagamento : ${formapagamento.nome} ${formapagamento.pagamentos }</span>
-                    </div>
-                    
-                </div>
+			     
+	<li class="content"> <span>${formapagamento.nome} ${formapagamento.pagamentos }</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+			     
                 
                			  
 			  </c:forEach>
 			  
-			   </div>
-			
-			
-			
-			</div>
-		</div>
-		
-		
-						<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Detalhes das Despesas</h3>
-			</div>
-			<div class="panel-body">
-			
-			 
+			  </ul>
 			  
-			  <div class="progress-element">
-			 
+			   </div>
+		
+		
+		
+		<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes das Despesas</h5>
+          </div>
+				
+		 <ul>
 			   <c:forEach var="despesa" items="${despesaList}" varStatus="id">
 			     
-			      <label>${despesa.nome} ${total }</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total Forma de Pagamento : ${despesa.nome} ${total }</span>
-                    </div>
-                    
-                </div>
-                
+	<li class="content"> <span>${despesa.nome} ${total }</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>
+			                     
                			  
 			  </c:forEach>
 			  
+			  </ul>
 			   </div>
-			
-			
-			
-			</div>
-		</div>
 		
 		
-						<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Detalhes dos Descontos</h3>
-			</div>
-			<div class="panel-body">
-			
-			 
-			  
-			  <div class="progress-element">
-			 
+		
+		<div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Detalhes dos Descontos</h5>
+          </div>
+
+			 <ul>
 			   <c:forEach var="formapagamento" items="${formapagamentoList}" varStatus="id">
 			     
-			      <label>${formapagamento.nome} ${total }</label>
-			     <div class="progress progress-striped">
-			    
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span>Total Forma de Pagamento : ${formapagamento.nome} ${total }</span>
-                    </div>
-                    
-                </div>
+			     
+	<li class="content"> <span>${formapagamento.nome} ${total }</span>
+      <div class="progress progress-mini progress-primary active progress-striped">
+        <div style="width: 77%;" class="bar"></div>
+      </div>
+    </li>			     
+			     
+			     
+			     
                 
                			  
 			  </c:forEach>
-			  
+			  </ul>
 			   </div>
+			   
+			   
 			
-			
-			
-			</div>
 		</div>
 
-	</div>
-
-
-
+	
+</div>
+</div>
+</div>
 </div>
 
 
