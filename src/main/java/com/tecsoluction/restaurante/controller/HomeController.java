@@ -171,55 +171,55 @@ public class HomeController {
 	}
 	
 	
-	public List<Object> SearchInData(String sugestion) {
-		
-		logger.info("Welcome SearchInData! The Susgestão is {}.", sugestion);
-		
-		List<Object> listAllobjetos = new ArrayList<Object>();
-		resultsearch = new ArrayList<Object>();
-		
-		listAllobjetos.add(clientedao.getAll());
-		//listAllobjetos.add(pedidovendadao.getAll());
-		listAllobjetos.add(produtodao.getAll());
-		
-		
-		for (int i = 0; i < listAllobjetos.size(); i++) {
-			
-			if(listAllobjetos.get(i).equals(sugestion)){
-				
-				resultsearch.add(listAllobjetos.get(i));
-				
-			}
-			
-		}
-		
+//	public List<Object> SearchInData(String sugestion) {
+//		
+//		logger.info("Welcome SearchInData! The Susgestão is {}.", sugestion);
+//		
+//		List<Object> listAllobjetos = new ArrayList<Object>();
+//		resultsearch = new ArrayList<Object>();
+//		
+//		listAllobjetos.add(clientedao.getAll());
+//		//listAllobjetos.add(pedidovendadao.getAll());
+//		listAllobjetos.add(produtodao.getAll());
+//		
+//		
+//		for (int i = 0; i < listAllobjetos.size(); i++) {
+//			
+//			if(listAllobjetos.get(i).equals(sugestion)){
+//				
+//				resultsearch.add(listAllobjetos.get(i));
+//				
+//			}
+//			
+//		}
+//		
 //		
 //		ModelAndView resultsearch = new ModelAndView("acessonegado");
 //		
 //		resultsearch.addObject("result", resultsearch );
 		
-		return resultsearch;
-	}
+//		return resultsearch;
+//	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView ResultSearch(Locale locale, Model model) {
-		
-		logger.info("Welcome ResultSearch! The client locale is {}.", locale);
-		
-		
-		List<Object> listobjetos = null;
-		
-		listobjetos.add(clientedao.getAll());
-		listobjetos.add(pedidovendadao.getAll());
-		listobjetos.add(produtodao.getAll());
-
-		
-		ModelAndView resultsearch = new ModelAndView("search");
-		
-		resultsearch.addObject("result", listobjetos );
-		
-		return resultsearch;
-	}
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public ModelAndView ResultSearch(Locale locale, Model model) {
+//		
+//		logger.info("Welcome ResultSearch! The client locale is {}.", locale);
+//		
+//		
+//		List<Object> listobjetos = null;
+//		
+//		listobjetos.add(clientedao.getAll());
+//		listobjetos.add(pedidovendadao.getAll());
+//		listobjetos.add(produtodao.getAll());
+//
+//		
+//		ModelAndView resultsearch = new ModelAndView("search");
+//		
+//		resultsearch.addObject("result", listobjetos );
+//		
+//		return resultsearch;
+//	}
 	
 //	@RequestMapping(value = "/getResults", method = RequestMethod.GET)
 //	public @ResponseBody
