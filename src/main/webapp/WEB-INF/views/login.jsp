@@ -16,12 +16,12 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="Password" />
+                            <span class="add-on bg_lg"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="Password" />
                         </div>
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link btn btn bg_ly" id="to-recover">Lost password?</a></span>
                     <span class="pull-right"><button type="submit" class="btn btn-success" > Login</button></span>
                 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 
@@ -34,13 +34,13 @@
 				
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                            <span class="add-on bg_lg"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
                         </div>
                     </div>
                
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><a class="btn btn-info">Reecover</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link btn btn bg_ly" id="to-login">&laquo; Back to login</a></span>
+                    <span class="pull-right"><a class="btn btn-success">Reecover</a></span>
                 </div>
             </form>
         </div>

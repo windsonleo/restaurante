@@ -16,7 +16,7 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Produto</h5>
           
-                     <div class="widget-titlee"> <span class="icon"><a href="${pageContext.request.contextPath}/produto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/produto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>
@@ -28,6 +28,8 @@
                <tr>
                                         <th>Id</th>
    									    <th>Codebar</th>
+   									   <th>Nome</th>
+   									    
    									    <th>Descrição</th>
 									    <th>Preço Venda</th>
 									    <th>Fornecedor</th>
@@ -48,14 +50,15 @@
 		
 		  <c:when test="${produto.id != null}">
   
-  <tr class="success">
+  <tr class="gradeX">
 
 			      <td>${produto.id}</td>
                   <td>${produto.codebar}</td>
-                  <td >${produto.descricao}</td>
+                    <td>${produto.nome}</td>
+                  <td>${produto.descricao}</td>
                   <td>${produto.precovenda}</td>
                    <td>${produto.fornecedor}</td>
-                   <td>${produto.isativo}</td>
+                   <td><span class="label label bg_lb">${produto.isativo}</span></td>
                  <td class="options-widt">
 								
 								
@@ -94,9 +97,7 @@
         </div>
         </div>
         </div>
-        
-<!--         <div class="pagination alternate"> </div> -->
-        
+                
         
         </div>
         

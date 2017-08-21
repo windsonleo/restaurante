@@ -64,7 +64,16 @@
 				
                 </div>
               </div>
-
+              
+              <div class="control-group">
+                <label class="control-label">Nome</label>
+                <div class="controls">
+	<input id="nome" class="form-control"
+						name="nome" type="text" value="${produto.nome}"
+						placeholder="Digite a Nome" />			
+				
+                </div>
+              </div>
               <div class="control-group">
                 <label class="control-label">Descrição</label>
                 <div class="controls">

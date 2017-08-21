@@ -10,7 +10,7 @@
 	<div id="user-nav" class="navbar navbar-inverse">
 	
 	  <ul class="nav">
-		    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Bem - Vindo  ${usuarioAtt}</span><b class="caret"></b></a>
+		    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user" color="blue"></i>  <span class="text">Bem - Vindo  ${usuarioAtt}</span><b class="caret"></b></a>
 			      <ul class="dropdown-menu">
 			        <li><a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id }"><i class="icon-user"></i>Meu Perfil</a></li>
 			        <li class="divider"></li>
@@ -53,12 +53,12 @@
 
 <!--start-top-serch-->
 	<div id="search">
-	  <input type="text" placeholder="Pesquise Aqui..."/>
-	  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+	  <input id="searchnow" type="text" placeholder="Pesquise Aqui..." value="" name="sugestion"/>
+	  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
 	</div>
 <!--close-top-serch-->
 
-    <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+    <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Home</a>
   <ul>
         <li class="active"><a href="${pageContext.request.contextPath}/home"><i class="icon icon-home"></i> <span>Home</span></a> </li>
   
@@ -67,7 +67,7 @@
   
       <li class=""><a href="${pageContext.request.contextPath}/cliente/movimentacao"><i class="icon icon-home"></i> <span>Cliente</span></a> </li>
       
-          <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Compras</span> <span class="label label-important">3</span></a>
+          <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Compras</span> <span class="label label-primary">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">Pedido Compra</a></li>
         <li><a href="form-validation.html">Recebimento</a></li>
@@ -78,7 +78,7 @@
       
   
     <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="icon icon-signal"></i> <span>Entregas</span></a> </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Financeiro</span> <span class="label label-important">5</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Financeiro</span> <span class="label label-primary">5</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/banco/movimentacao">Banco</a></li>
         <li><a href="${pageContext.request.contextPath}/caixa/movimentacao"">Caixa</a></li>

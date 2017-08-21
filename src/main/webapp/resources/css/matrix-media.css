@@ -7,7 +7,7 @@ body {
    margin-top:10px;
 }
 #search input[type=text], #search button {
-	background-color: #28b779;
+	background-color: #B22222;
 }
 #search input[type=text]:focus {
 	color: #777777;
@@ -17,15 +17,15 @@ body {
 	border-top: 1px solid #37414b; border-bottom: 1px solid #1f262d;
 }
 #sidebar > ul > li.active {
-    background-color: #27a9e3; border-bottom: 1px solid #27a9e3;  border-top: 1px solid #27a9e3;
+    background-color: #B22222; border-bottom: 1px solid #B22222;  border-top: 1px solid #B22222;
 }
 #sidebar > ul > li.active a{ color:#fff; text-decoration:none;}
 
 #sidebar > ul > li > a > .label {
-	background-color:#F66;
+	background-color:#00BFFF;
 }
 #sidebar > ul > li > a:hover {
-	background-color: #27a9e3; color:#fff;
+	background-color: #B22222; color:#fff;
 }
 #sidebar > ul li ul {
 	background-color: #1e242b;

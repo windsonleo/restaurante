@@ -15,85 +15,97 @@
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Usuario</h5>
+            
+            <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
           
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+<%--                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i class="icon-plus" color="blue"></i></a> </span> --%>
          
-            </div>
+<!--             		</div> -->
           </div>
           
           
+    
+          
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
-              <thead>
-                  <tr>
+<!--              <div  class="table-responsive">            	 -->
+            	<table class="table table-hover table-bordered data-table" >
+              		<thead>
+                  			<tr>
                                         <th>Id</th>
 									    <th>Username</th>
 									    <th>Senha</th>
 									    <th>Email</th>
 <!-- 									    <th>Roles</th> -->
-									     <th>Ativo</th>
+<!-- 									     <th>Ativo</th> -->
 									    <th>Ação</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                          	  </tr>
+                    </thead>
+                    
+            
+            
+            					<tbody>
                                 
                                 
                                 <c:forEach var="usuario" items="${usuarioList}" varStatus="id">
 
-		<c:choose>
+								<c:choose>
 		
-		  <c:when test="${usuario.id != null}">
+		 							 <c:when test="${usuario.id != null}">
   
-  <tr class="gradeX">
+  											<tr class="gradeX">
 
-			      <td>${usuario.id}</td>
-                  <td>${usuario.username}</td>
-                  <td ><input type="password" value="${usuario.senha}"></td>
-                  <td>${usuario.email}</td>
-<%--                    <td>${usuario.roles}</td> --%>
-                   <td> ${usuario.isativo}</td>
-                 <td class="options-widt">
+											      <td>${usuario.id}</td>
+								                  <td>${usuario.username}</td>
+								                  <td >${usuario.senha}</td>
+								                  <td>${usuario.email}</td>
+								<%--                    <td>${usuario.roles}</td> --%>
+								<%--                    <td> ${usuario.isativo}</td> --%>
+								                 	<td class="options-widt">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/usuario/editar?id=${usuario.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
-									
-										<a
-									href="${pageContext.request.contextPath}/usuario/informacoes?id=${usuario.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
-									
-									
-									 <a
-									href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}"
-									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a>
-									
+													<a
+														href="${pageContext.request.contextPath}/usuario/editar?id=${usuario.id}"
+														title="Editar"><i class="icon-edit"></i> </a>
+														
+															<a
+														href="${pageContext.request.contextPath}/usuario/informacoes?id=${usuario.id}"
+														title="Informações" ><i class="icon-info-sign"></i></a>
+														
+														
+														 <a
+														href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}"
+														title="deletar" class="fa fa-remove" ><i class="icon-minus-sign"></i> </a>
+														
 									
 									
 									
 									
 										
-					</td>
+													</td>
                   
                   
-                </tr>
+                								</tr>
                 
-                </c:when>
-                </c:choose>
-                </c:forEach>
+                						</c:when>
+                			</c:choose>
+                			</c:forEach>
 
-              </tbody>
-            </table>
+              			</tbody>
+            	</table>
+            </div>
           </div>
         </div>
         </div>
-        </div>
-        </div>
+        
+</div>
+</div>
+
         
 <!--         <div class="pagination alternate"> </div> -->
         
         
-        </div>
+<!--         </div> -->
+        
         
         <div class="row-fluid">
   <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>

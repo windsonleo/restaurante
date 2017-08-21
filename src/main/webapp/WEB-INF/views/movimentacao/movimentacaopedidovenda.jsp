@@ -16,7 +16,7 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Pedidovenda</h5>
           
-                     <div class="widget-titlee"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>
@@ -55,7 +55,7 @@
 			      <td>${pedidovenda.id}</td>
                   <td>${pedidovenda.data}</td>
 				<td>${pedidovenda.situacao}</td>
-                  <td>${pedidovenda.status}</td>
+                  <td><span class="label label-info">${pedidovenda.status}</span></td>
                  <td>${pedidovenda.origempedido}</td>
                  <td>${pedidovenda.total}</td>
                  <td>${pedidovenda.cliente}</td>

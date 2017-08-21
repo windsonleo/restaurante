@@ -6,13 +6,15 @@
 
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-<html>
+<html lang="pt-br">
 <head>
 
 	  <title>Restaurante Sushi Senpai</title>
+	  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo.png.ico" type="image/x-icon" />
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" />
@@ -90,6 +92,31 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
   
+  </script>
+<!--   #w-input-search -->
+    <script>
+  $(document).ready(function() {
+
+	$('#searchnow').autocomplete({
+		serviceUrl: '${pageContext.request.contextPath}/getResult',
+		paramName: "sugestion",
+		delimiter: ",",
+	   transformResult: function(response) {
+
+		return {
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+
+		      return { value: item.nome, data: item.id };
+		   })
+
+		 };
+
+            }
+
+	 });
+
+  });
   </script>
   
  

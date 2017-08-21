@@ -23,13 +23,13 @@
 						 <div class="form-inline">
 						 
 							<label>Código</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${item.id }"> 
+							<input id="id" name="id" type="text" class="form-control" value="${item.id }" disabled="disabled"> 
 							<label>Descrição</label>	
-							<input id="descricao" name="descricao" type="text" class="form-control" value="${item.descricao }"> 
+							<input id="descricao" name="descricao" type="text" class="form-control" value="${item.descricao }" disabled="disabled"> 
 							<label>Qtd</label>
-							<input id="qtd" name="qtd" type="text" class="form-control" value="${item.qtd }"> 
+							<input id="qtd" name="qtd" type="text" class="form-control" value="${item.qtd }" disabled="disabled"> 
 							<label>Total</label>
-							<input id="totalItem" name="totalItem" type="text" class="form-control" value="${item.totalItem }" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="totalItem" name="totalItem" type="text" class="form-control" value="${item.totalItem }" size="20px" style="color: blue; font-size: 15px" disabled="disabled"> 
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${item.pedidos}">  --%>
 								

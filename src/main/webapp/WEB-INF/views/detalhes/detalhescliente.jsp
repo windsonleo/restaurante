@@ -39,11 +39,11 @@
 						 <div class="form-inline">
 						 
 							<label>CÓDIGO</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${cliente.id }"> 
+							<input id="id" name="id" type="text" class="form-control" value="${cliente.id }" disabled="disabled"> 
 							<label>Nome</label>	
-							<input id="numero" name="numero" type="text" class="form-control" value="${cliente.nome }"> 
+							<input id="numero" name="numero" type="text" class="form-control" value="${cliente.nome }" disabled="disabled"> 
 							<label>Data Nascimento</label>
-							<input id="datanascimento" name="datanascimento" type="text" class="form-control" value="${cliente.datanascimento }"> 
+							<input id="datanascimento" name="datanascimento" type="text" class="form-control" value="${cliente.datanascimento }" disabled="disabled"> 
 <!-- 							<label>TOTAL</label> -->
 <!-- 							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px">  -->
 						

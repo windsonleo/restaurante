@@ -21,7 +21,7 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Empresa</h5>
           
-                     <div class="widget-titlee"> <span class="icon"><a href="${pageContext.request.contextPath}/empresa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/empresa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>

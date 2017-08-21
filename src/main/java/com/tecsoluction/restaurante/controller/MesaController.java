@@ -108,11 +108,19 @@ public class MesaController extends AbstractController<Mesa> {
   	
   	 Mesa mesa = dao.PegarPorId(idf);
   	 
+  	 double total=0.0;
   	 
+
   	 
   	 // mudar para trazer pelo id da mesa e pelo status da mesa
   	 pedidos = pedidovendadao.getAllPedidoPorMesa(idf);
   	
+  	 
+  	 for (PedidoVenda pedidoVenda : pedidos) {
+  		 
+  		 total = total+ pedidoVenda.getTotal();
+ 		
+	}
   	
  // 	List<Produto> produtoList = produtoDao.getAll();
   //	List<Item> itemList = dao.getAll();
@@ -120,6 +128,7 @@ public class MesaController extends AbstractController<Mesa> {
   //	detalhesmesa.addObject("itemList", itemList);
   	detalhesmesa.addObject("pedidoList", pedidos);
   	detalhesmesa.addObject("mesa", mesa);
+  	detalhesmesa.addObject("totalall", total);
 
 		
 		return detalhesmesa;

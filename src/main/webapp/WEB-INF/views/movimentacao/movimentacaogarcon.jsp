@@ -15,7 +15,7 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Garcon</h5>
           
-                     <div class="widget-titlee"> <span class="icon"><a href="${pageContext.request.contextPath}/garcon/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/garcon/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>
@@ -50,7 +50,7 @@
 
 			      <td>${garcon.id}</td>
                   <td>${garcon.nome}</td>
-                  <td ><input type="text" value="${garcon.foto}"></td>
+                  <td >${garcon.foto}</td>
                   <td>${garcon.isativo}</td>
                  <td class="options-widt">
 								
@@ -92,7 +92,6 @@
         </div>
         </div>
         
-<!--         <div class="pagination alternate"> </div> -->
         
         
         </div>

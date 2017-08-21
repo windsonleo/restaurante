@@ -36,8 +36,12 @@ public class Produto implements Serializable {
    
     @Column(name = "foto")
     private String foto;
+    
+    @Column(name = "nome")
+    private String nome;
 
-    @Column(name = "codebar")
+  
+	@Column(name = "codebar")
     private String codebar;
 
     @Column(name = "descricao")
@@ -120,6 +124,22 @@ public class Produto implements Serializable {
     	this.id =id;
     }
 
+    
+    /**
+  	 * @return the nome
+  	 */
+  	public String getNome() {
+  		return nome;
+  	}
+
+  	/**
+  	 * @param nome the nome to set
+  	 */
+  	public void setNome(String nome) {
+  		this.nome = nome;
+  	}
+
+    
     public String getDescricao() {
         return descricao;
     }

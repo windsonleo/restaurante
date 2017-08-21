@@ -257,7 +257,8 @@ hr{ border-top-color:#dadada;}
 }
 #breadcrumb a.current {
 	font-weight: bold;
-	color: #444444;
+	color: #B22222;
+text-decoration: underline;
 }
 #breadcrumb a i {
 	margin-right: 5px;

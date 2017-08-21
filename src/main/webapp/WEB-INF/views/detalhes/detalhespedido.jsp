@@ -23,17 +23,17 @@
 						
 						<div class="col-xs-12">
 						
-						 <div class="form-inline">
-						 
+						 <div class="form-inline" >
+						 <div class="imput">
 							<label>Código</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${pedido.id }"> 
+							<input id="id" name="id" type="text" class="form-controll" value="${pedido.id }" disabled="disabled"> 
 							<label>Cliente</label>	
-							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedido.cliente}"> 
+							<input id="cliente" name="cliente" type="text" class="form-controll" value="${pedido.cliente}" disabled="disabled"> 
 							<label>Mesa</label>
-							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedido.mesa }"> 
+							<input id="mesa" name="mesa" type="text" class="form-controll" value="${pedido.mesa }" disabled="disabled"> 
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px"> 
-						
+							<input id="total" name="total" type="text" class="form-controll" value="${pedido.total }" size="20px" style="color: blue; font-size: 15px" disabled="disabled"> 
+						</div>
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${pedido.pedidos}">  --%>
 								
 								</div>
@@ -84,7 +84,7 @@
 		  <c:when test="${item.id  != null}">
 		  
 		  
-		  <li class="bg_lb span2"> <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
+		  <li class="bg_lb span4"> <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${item.id}">
          		<i class="icon-dashboard"></i>
          	
                    <div class="huge">${item.id}</div>

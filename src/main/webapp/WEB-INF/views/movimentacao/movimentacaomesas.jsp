@@ -45,7 +45,7 @@
                 <tr class="gradeX">
                   <td>${mesa.id }</td>
                   <td>${mesa.numero }</td>
-                  <td>${mesa.status}</td>
+                  <td><span class="label label bg_lb">${mesa.status}</span></td>
                  <td class="options-widt">
 								
 								

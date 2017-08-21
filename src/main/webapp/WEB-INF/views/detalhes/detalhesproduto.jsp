@@ -43,11 +43,11 @@
 						 <div class="form-inline">
 						 
 							<label>CÓDIGO</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${produto.id }"> 
+							<input id="id" name="id" type="text" class="form-control" value="${produto.id }" disabled="disabled"> 
 							<label>Codigo Barra</label>	
-							<input id="numero" name="numero" type="text" class="form-control" value="${produto.codebar }"> 
+							<input id="numero" name="numero" type="text" class="form-control" value="${produto.codebar }" disabled="disabled"> 
 							<label>DESCRIÇÃO</label>
-							<input id="status" name="status" type="text" class="form-control" value="${produto.descricao }"> 
+							<input id="descricao" name="descricao" type="text" class="form-control" value="${produto.descricao }" disabled="disabled"> 
 <!-- 							<label>TOTAL</label> -->
 <!-- 							<input id="total" name="total" type="text" class="form-control" value="158.99" size="20px" style="color: blue; font-size: 15px">  -->
 						

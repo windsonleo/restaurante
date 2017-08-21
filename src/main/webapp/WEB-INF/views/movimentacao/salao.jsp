@@ -34,7 +34,7 @@
          		 <div class="huge">${mesa.id}</div>
                  <div>${mesa.numero}</div>
                   <div> ${mesa.status}</div> 
-                                     	<span class="label label-success">${mesasList.size()}</span> 
+                                     	<span class="label label-success">${mesa.pedidos.size()}</span> 
                                       </a> 
                                       
                                       </li>
