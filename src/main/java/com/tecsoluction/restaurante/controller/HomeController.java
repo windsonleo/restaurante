@@ -173,7 +173,7 @@ public class HomeController {
 	
 //	public List<Object> SearchInData(String sugestion) {
 //		
-//		logger.info("Welcome SearchInData! The Susgestão is {}.", sugestion);
+//		logger.info("Welcome SearchInData! The Susgestao is {}.", sugestion);
 //		
 //		List<Object> listAllobjetos = new ArrayList<Object>();
 //		resultsearch = new ArrayList<Object>();
