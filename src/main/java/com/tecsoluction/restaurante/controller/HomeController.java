@@ -221,12 +221,12 @@ public class HomeController {
 		return resultsearch;
 	}
 	
-	@RequestMapping(value = "/getResults", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Object> getResult(@RequestParam String sugestion) {
-
-		return SearchInData(sugestion);
-
-	}
+//	@RequestMapping(value = "/getResults", method = RequestMethod.GET)
+//	public @ResponseBody
+//	List<Object> getResult(@RequestParam String sugestion) {
+//
+//		return SearchInData(sugestion);
+//
+//	}
 	
 }
