@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -57,6 +59,7 @@ public class Usuario implements Serializable {
 	}
 	
     @Column(name = "username")
+    @NotBlank
 	public String getUsername(){
 		
 		return username;
@@ -67,6 +70,7 @@ public class Usuario implements Serializable {
 		this.username=nome;
 	}
     @Column(name = "senha")
+    @NotBlank
 	public String getSenha(){
 		
 		return senha;

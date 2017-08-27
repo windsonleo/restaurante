@@ -22,7 +22,7 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+            <table class="table table-hover table-bordered">
               <thead>
  					<tr>
                        <th>Id</th>
@@ -67,10 +67,26 @@
 									href="${pageContext.request.contextPath}/categoria/informacoes?id=${categoria.id}"
 									title="Informações" ><i class="icon-info-sign"></i></a>
 									
+
+
+	<a href="#myAlert${categoria.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
-									 <a
-									href="${pageContext.request.contextPath}/categoria/delete?id=${categoria.id}"
-									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a>
+			<div id="myAlert${categoria.id}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Alerta de Exclusão</h3>
+              </div>
+              <div class="modal-body">
+                <p>Deseja Realmente Excluir esse Registro</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/categoria/delete?id=${categoria.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>	
+
+									
+<!-- 									 <a -->
+<%-- 									href="${pageContext.request.contextPath}/categoria/delete?id=${categoria.id}" --%>
+<!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 									
 									
 									

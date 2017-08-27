@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "FORMAPAGAMENTO")
@@ -28,11 +29,14 @@ public class FormaPagamento implements Serializable {
     @Column(name = "ID")
     private long id;
 
+    @NotBlank
     private String nome;
 
     // avista,cartao credito, cartao debito,boleto,crediario
+    @NotBlank
     private String tipo;
 
+    
     private int parcelas;
 
     

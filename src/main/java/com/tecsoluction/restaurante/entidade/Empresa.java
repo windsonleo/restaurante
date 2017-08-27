@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -27,6 +29,7 @@ public class Empresa implements Serializable {
     @Column(name = "id")
     private long id;
 
+    @NotBlank
     @Column(name = "nome", nullable = true)
     private String nome;
     
@@ -34,7 +37,7 @@ public class Empresa implements Serializable {
 //	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Estoque.class,optional=true)
 //	@JoinColumn(name = "catpai_id", nullable = true)
 //    private Estoque catpai;
-    
+    @NotBlank
     private String logo;
     
     

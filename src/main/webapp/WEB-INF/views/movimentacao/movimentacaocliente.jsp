@@ -26,7 +26,7 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-striped data-table">
+            <table class="table table-hover table-bordered">
               <thead>
                <tr>
 		             <th>Id</th>
@@ -74,10 +74,27 @@
 									href="${pageContext.request.contextPath}/cliente/informacoes?id=${cliente.id}"
 									title="Informações" ><i class="icon-info-sign"></i></a>
 									
+
+
+	<a href="#myAlert${cliente.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
-									 <a
-									href="${pageContext.request.contextPath}/cliente/delete?id=${cliente.id}"
-									title="deletar"  ><i class="icon-minus-sign"></i> </a>
+			<div id="myAlert${cliente.id}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Alerta de Exclusão</h3>
+              </div>
+              <div class="modal-body">
+                <p>Deseja Realmente Excluir esse Registro</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/cliente/delete?id=${cliente.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>	
+
+
+									
+<!-- 									 <a -->
+<%-- 									href="${pageContext.request.contextPath}/cliente/delete?id=${cliente.id}" --%>
+<!-- 									title="deletar"  ><i class="icon-minus-sign"></i> </a> -->
 									
 									
 									
@@ -100,11 +117,18 @@
         </div>
         </div>
         </div>
+        
+        
+
                 
         
         </div>
         
- <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+
+
 </div>
+
+     <div class="row-fluid">
+  		<div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+	</div>
         

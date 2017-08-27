@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
@@ -36,11 +38,11 @@ public class Produto implements Serializable {
    
     @Column(name = "foto")
     private String foto;
-    
+    @NotBlank
     @Column(name = "nome")
     private String nome;
 
-  
+    @NotBlank
 	@Column(name = "codebar")
     private String codebar;
 
@@ -50,10 +52,10 @@ public class Produto implements Serializable {
     @Column(name = "un_medida")
     @Enumerated(EnumType.STRING)
     private UnidadeMedida un_medida;
-
+    @NotBlank
     @Column(name = "preco_custo")
     private double precocusto;
-
+    @NotBlank
     @Column(name = "preco_venda")
     private double precovenda;
     
@@ -65,9 +67,9 @@ public class Produto implements Serializable {
     // @OneToMany(mappedBy = "produto")
     // private List<Item> items;
 
-    
+    @NotBlank
     @ManyToOne(cascade={CascadeType.REFRESH})
-    @JoinColumn(name="categoria_id",nullable=true)
+    @JoinColumn(name="categoria_id",nullable=false)
     private Categoria categoria;
     
     

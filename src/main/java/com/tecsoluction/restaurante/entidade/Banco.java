@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "BANCO")
 //@XmlRootElement(name = "garcon")
@@ -23,11 +25,13 @@ public class Banco implements Serializable {
     private long id;
 
     @Column(name = "nome")
+	@NotBlank(message = "Nome do Banco é obrigatório")
     private String nome;
        
     @Column(name = "isativo")
 	private boolean isativo;
 
+	@NotBlank(message = "Número do Banco é obrigatório")
     private String numero;
 
 

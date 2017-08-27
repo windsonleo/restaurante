@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,10 +35,12 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
-
+   
+    @NotBlank
     @Column(name = "nome")
     private String nome;
 
+    @NotBlank
     @Column(name = "email")
     private String email;
 
@@ -51,7 +54,7 @@ public class Cliente implements Serializable {
     
     @Column(name = "foto")
     private String foto;
-    
+    @NotBlank
     @Column(name = "genero")
     private String genero;
     

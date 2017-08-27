@@ -1,4 +1,6 @@
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+  
 <%@ page session="false" %>
    
 <div id="header">
@@ -22,8 +24,10 @@
 			      </ul>
 		    </li>
 		    
-		    
+		      <sec:authorize access="hasRole('ROLE_ADM')">
+		      <tt>GrantedAuthority</tt>s.
  					<li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messagess" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Empresa</span><b class="caret"></b></a>
+			     
 			      <ul class="dropdown-menu">
 		        	<li><a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="icon-check"></i> Sobre</a></li>
 		        	 <li class="divider"></li>
@@ -32,6 +36,9 @@
 		    
 		    </ul>
 		    </li>
+		        
+		    
+		    </sec:authorize>
 		    
 <!-- 		    <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a> -->
 <!-- 			      <ul class="dropdown-menu"> -->
@@ -78,6 +85,10 @@
       
   
     <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="icon icon-signal"></i> <span>Entregas</span></a> </li>
+        
+         <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
+        
+        
         <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Financeiro</span> <span class="label label-primary">5</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/banco/movimentacao">Banco</a></li>
@@ -91,6 +102,11 @@
         
       </ul>
     </li>
+     <tt>GrantedAuthority</tt>s.
+    
+    </sec:authorize>
+    
+    
     <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i class="icon icon-th"></i> <span>Fornecedor</span></a></li>
     <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i class="icon icon-fullscreen"></i> <span>Garçon</span></a></li>
 
@@ -112,9 +128,13 @@
       </ul>
     </li>
     
+      <sec:authorize access="hasRole('ROLE_ADM')">
+    
     
     <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i class="icon icon-pencil"></i> <span>Usuario</span></a></li>
+ <tt>GrantedAuthority</tt>s.
 
+</sec:authorize>
   </ul>
 </div>      
         

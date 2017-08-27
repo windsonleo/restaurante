@@ -3,12 +3,15 @@ package com.tecsoluction.restaurante.framework;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 public abstract class AbstractController<Entity> {
@@ -55,16 +58,32 @@ public abstract class AbstractController<Entity> {
 
     @Transactional
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String AdicionarEntity(@ModelAttribute Entity entity) {
+    public String AdicionarEntity( @ModelAttribute @Valid Entity entity,BindingResult result
+			, RedirectAttributes attributes) {
 
 //        ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
-        getDao().add(entity);
+    	if (result.hasErrors()) {
+			
+        
+        System.out.println("erro ao add:"+ entityAlias);
+        attributes.addFlashAttribute("erros", "Erro ao Salvar.");
+//        attributes.a
+        
+    	}else{
+    		
+            getDao().add(entity);
+            System.out.println("add:"+ entityAlias);
+            attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
+
+
+
+    	}
 //        getDao().PegarPorId(entity);
 
 //        cadastroEntity.addObject("entity", entity);
 
-        System.out.println(entityAlias);
+      
         
         return "redirect:cadastro"; //cadastroEntity;
        
