@@ -25,13 +25,13 @@ public class Banco implements Serializable {
     private long id;
 
     @Column(name = "nome")
-	@NotBlank(message = "Nome do Banco é obrigatório")
+	@NotBlank(message = "Nome do Banco obrigatorio")
     private String nome;
        
     @Column(name = "isativo")
 	private boolean isativo;
 
-	@NotBlank(message = "Número do Banco é obrigatório")
+	@NotBlank(message = "Número do Banco  obrigatorio")
     private String numero;
 
 
