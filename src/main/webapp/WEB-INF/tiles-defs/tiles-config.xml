@@ -139,9 +139,27 @@
 
 	</definition>
 	
+		<definition name="cadastroprodutocomposto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroprodutocomposto.jsp" />
+
+	</definition>
+	
 		<definition name="cadastropedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastropedidovenda.jsp" />
+
+	</definition>
+	
+			<definition name="cadastropedidocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastropedidocompra.jsp" />
+
+	</definition>
+	
+			<definition name="cadastrorecebimento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrorecebimento.jsp" />
 
 	</definition>
 	
@@ -240,9 +258,27 @@
 
 	</definition>
 	
+		<definition name="movimentacaoprodutocomposto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaoprodutocomposto.jsp" />
+
+	</definition>
+	
 		<definition name="movimentacaopedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/movimentacao/movimentacaopedidovenda.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaopedidocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaopedidocompra.jsp" />
+
+	</definition>
+	
+				<definition name="movimentacaorecebimento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaorecebimento.jsp" />
 
 	</definition>
 	
@@ -264,6 +300,12 @@
 		<definition name="detalhesproduto" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/detalhes/detalhesproduto.jsp" />
+
+	</definition>
+	
+			<definition name="detalhesprodutocomposto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/detalhes/detalhesprodutocomposto.jsp" />
 
 	</definition>
 	
@@ -304,6 +346,12 @@
 
 	</definition>
 	
+			<definition name="novosprodutoscompostos" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/novo/novosprodutoscompostos.jsp" />
+
+	</definition>
+	
 		<definition name="novospedidos" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/novo/novospedidos.jsp" />
@@ -322,6 +370,24 @@
 		<definition name="additempedidovenda" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/add/additempedidovenda.jsp" />
+
+	</definition>
+	
+			<definition name="additemprodutocomposto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/add/additemprodutocomposto.jsp" />
+
+	</definition>
+	
+				<definition name="additempedidocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/add/additempedidocompra.jsp" />
+
+	</definition>
+	
+				<definition name="additemrecebimento" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/add/additemrecebimento.jsp" />
 
 	</definition>
 	

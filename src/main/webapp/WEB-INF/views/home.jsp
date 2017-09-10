@@ -23,29 +23,29 @@
             <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
               <canvas width="50" height="24"></canvas>
               </span>+10%</div>
-            <div class="right"> <strong>15598</strong> Visits </div>
+            <div class="right"> <strong>15598</strong>Compras </div>
           </li>
           <li>
             <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
               <canvas width="50" height="24"></canvas>
               </span>10%</div>
-            <div class="right"> <strong>150</strong> New Users </div>
+            <div class="right"> <strong>150</strong> Recebimentos</div>
           </li>
           <li>
             <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
               <canvas width="50" height="24"></canvas>
               </span>-40%</div>
-            <div class="right"> <strong>4560</strong> Orders</div>
+            <div class="right"> <strong>4560</strong> Vendas</div>
           </li>
           <li>
             <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
               <canvas width="50" height="24"></canvas>
               </span>+60%</div>
-            <div class="right"> <strong>5672</strong> Active Users </div>
+            <div class="right"> <strong>5672</strong> Clientes</div>
           </li>
           <li>
             <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%</div>
-            <div class="right"> <strong>2560</strong> Register</div>
+            <div class="right"> <strong>2560</strong> Vendas Cancelados</div>
           </li>
         </ul>
       </div>

@@ -215,7 +215,7 @@
                   <td ><input type="text" value="${formapagamento.tipo}"></td>
                   <td><input type="text" value="${formapagamento.parcelas}"></td>
                    <td>${formapagamento.percdesconto}</td>
-                    <td><input name="valorpagoform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calcula();"/></td>
+                    <td><input name="valorpagoform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculapagamento();"/></td>
                    <td>${formapagamento.isativo}</td>
 
 

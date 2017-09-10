@@ -11,16 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Entity
 @Table(name = "PEDIDO_VENDA")
 public class PedidoVenda extends Pedido implements Serializable {
 
-    //CLIENTE DO PEDIDO DE VENDA
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 
@@ -55,6 +53,13 @@ public class PedidoVenda extends Pedido implements Serializable {
 
     private boolean ispago = false;
 
+    //aberto,pendente,fechado,cancelado
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
+    
+    //AGUARDANDO_PREPARACAO, EM_PREPARACAO, PRONTO, INTERROMPIDO;
+    @Enumerated(EnumType.STRING)
+    private SituacaoPedido situacao;
 
 
 	//lista de devolucoes de compra
@@ -176,7 +181,51 @@ public class PedidoVenda extends Pedido implements Serializable {
 //        this.listaDevolucao = listaDevolucao;
 //    }
     
-    @Override
+    /**
+	 * @return the status
+	 */
+	public StatusPedido getStatus() {
+		return status;
+	}
+
+
+
+
+
+	/**
+	 * @return the situacao
+	 */
+	public SituacaoPedido getSituacao() {
+		return situacao;
+	}
+
+
+
+
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
+
+
+
+
+
+	/**
+	 * @param situacao the situacao to set
+	 */
+	public void setSituacao(SituacaoPedido situacao) {
+		this.situacao = situacao;
+	}
+
+
+
+
+
+	@Override
     public String toString() {
     	// TODO Auto-generated method stub
     	return super.toString().toUpperCase();

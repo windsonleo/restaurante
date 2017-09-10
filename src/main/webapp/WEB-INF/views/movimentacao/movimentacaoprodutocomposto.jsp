@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Produto</a> >> <a href="#" class="current">Movimentação de Produto</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> ProdutoComposto</a> >> <a href="#" class="current">Movimentação de ProdutoComposto</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -14,16 +14,16 @@
       
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Movimentação Produto</h5>
+            <h5>Movimentação ProdutoComposto</h5>
           
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/produto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/produtocomposto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>
           
           
           <div class="widget-content nopadding">
-            <table class="table table-hover table-bordered">
+            <table class="table table-striped data-table">
               <thead>
                <tr>
                                         <th>Id</th>
@@ -33,6 +33,8 @@
    									    <th>Descrição</th>
 									    <th>Preço Venda</th>
 									    <th>Fornecedor</th>
+									    <th>Itens</th>
+									    
 									    <th>Ativo?</th>
 <!-- 									     <th>Genero</th> -->
 <!-- 									     <th>Preferencia</th> -->
@@ -44,37 +46,42 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="produto" items="${produtoList}" varStatus="id">
+                                <c:forEach var="produtocomposto" items="${produtocompostoList}" varStatus="id">
 
 		<c:choose>
 		
-		  <c:when test="${produto.id != null}">
+		  <c:when test="${produtocomposto.id != null}">
   
   <tr class="gradeX">
 
-			      <td>${produto.id}</td>
-                  <td>${produto.codebar}</td>
-                    <td>${produto.nome}</td>
-                  <td>${produto.descricao}</td>
-                  <td>${produto.precovenda}</td>
-                   <td>${produto.fornecedor}</td>
-                   <td><span class="label label bg_lb">${produto.isativo}</span></td>
+			      <td>${produtocomposto.id}</td>
+                  <td>${produtocomposto.codebar}</td>
+                    <td>${produtocomposto.nome}</td>
+                  <td>${produtocomposto.descricao}</td>
+                  <td>${produtocomposto.precovenda}</td>
+                   <td>${produtocomposto.fornecedor}</td>
+                  <td>${produtocomposto.itens}</td>
+                   
+                   <td><span class="label label bg_lb">${produtocomposto.isativo}</span></td>
                  <td class="options-widt">
 								
+									<a
+									href="${pageContext.request.contextPath}/produtocomposto/additem?id=${produtocomposto.id}"
+									title="Add Item"><i class="icon-edit"></i> </a>
 								
 								<a
-									href="${pageContext.request.contextPath}/produto/editar?id=${produto.id}"
+									href="${pageContext.request.contextPath}/produtocomposto/editar?id=${produtocomposto.id}"
 									title="Editar"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/produto/informacoes?id=${produto.id}"
+									href="${pageContext.request.contextPath}/produtocomposto/informacoes?id=${produtocomposto.id}"
 									title="Informações" ><i class="icon-info-sign"></i></a>
 
 
 
-	<a href="#myAlert${produto.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+	<a href="#myAlert${produtocomposto.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
-			<div id="myAlert${produto.id}" class="modal hide">
+			<div id="myAlert${produtocomposto.id}" class="modal hide">
               <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button">×</button>
                 <h3>Alerta de Exclusão</h3>
@@ -82,7 +89,7 @@
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/produto/delete?id=${produto.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/produtocomposto/delete?id=${produtocomposto.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
            
             </div>
 
@@ -90,7 +97,7 @@
 									
 									
 <!-- 									 <a -->
-<%-- 									href="${pageContext.request.contextPath}/produto/delete?id=${produto.id}" --%>
+<%-- 									href="${pageContext.request.contextPath}/produtocomposto/delete?id=${produtocomposto.id}" --%>
 <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 									
 									

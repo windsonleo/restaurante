@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 
 @Entity
 @Table(name = "DESPESA")
@@ -28,16 +26,13 @@ public class Despesa implements Serializable {
     @Column(name = "id")
     private long id;
 
-    @NotBlank
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", nullable = true)
     private String nome;
     
 ////    (cascade = { CascadeType.ALL })
 	@ManyToOne
 //	@JoinColumn(name = "catpai_id", nullable = true)
     private Caixa caixa;
-    
-    
     @Column(name = "isativo")
 	private boolean isativo;
     
@@ -142,3 +137,4 @@ public class Despesa implements Serializable {
 		this.isativo=valor;
 	}
 }
+

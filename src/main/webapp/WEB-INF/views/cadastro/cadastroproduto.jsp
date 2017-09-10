@@ -50,7 +50,7 @@
 								<div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-				<input id="isativo" name="isativo"  type="checkbox" checked="${pedidovenda.isativo}"/>
+				<input id="isativo" name="isativo"  type="checkbox" checked="${produto.isativo}"/>
                 </div>
               </div>
               
@@ -58,7 +58,7 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
+						<input id="id"  name="id" type="text" value="${produto.id}" placeholder="Digite o Id"/>
                 </div>
               </div>
 
@@ -167,7 +167,7 @@
                <div class="control-group">
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
-<select id="fornecedor"
+					<select id="fornecedor"
 						name="fornecedor" class="form-control">
 							<optgroup label="Fornecedores">
 

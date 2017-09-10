@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,180 +22,44 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
-//@Entity
-//@Table(name = "PRODUTOCOMPOSTO")
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class ProdutoComposto extends Produto implements Serializable {
+@Entity
+public class ProdutoComposto  extends Produto implements Serializable {
 
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -5401174413867896341L;
-
-//	@Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "id")
-    private long id;
 	
 	
-//	@OneToMany
+	
+	@OneToMany(mappedBy="produtocomposto",fetch=FetchType.EAGER)
 	private List<Item> itens;
    
-//    @Column(name = "foto")
-//    private String foto;
-//
-//    @Column(name = "codebar")
-//    private String codebar;
-//
-//    @Column(name = "descricao")
-//    private String descricao;
-//
-//    @Column(name = "un_medida")
-//    @Enumerated(EnumType.STRING)
-//    private UnidadeMedida un_medida;
-//
-//    @Column(name = "preco_custo")
-//    private double precocusto;
-//
-//    @Column(name = "preco_venda")
-//    private double precovenda;
-//    
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name="fornecedor_id")
-//    private Fornecedor fornecedor;
-//
-//    // @OneToMany(mappedBy = "produto")
-//    // private List<Item> items;
-//
-//    
-//    @ManyToOne(cascade={CascadeType.REFRESH})
-//    @JoinColumn(name="categoria_id",nullable=true)
-//    private Categoria categoria;
-//    
-//    
-////    @ManyToOne(cascade={CascadeType.REFRESH})
-////    @JoinColumn(name="estoque_id",nullable=true)
-////    private Estoque estoque;
-//    
-//    
-//    @Column(name = "isativo")
-//	private boolean isativo;
-//	
+
+	
 
     public ProdutoComposto() {
         // TODO Auto-generated constructor stub
         // items = new ArrayList<Item>();
+    	super();
     }
     
-//    public Produto(Categoria cat, Fornecedor forn) {
-//      
-//    	this.categoria = cat;
-//    	this.fornecedor = forn;
-//    	
-//    }
-    
-//    
-//    
-//    public Fornecedor getFornecedor() {
-//        return fornecedor;
-//    }
-//
-//    public void setFornecedor(Fornecedor fornecedor) {
-//        this.fornecedor = fornecedor;
-//    }
-//
-// 
-//    public Categoria getCategoria() {
-//        return categoria;
-//    }
-//
-//    public void setCategoria(Categoria categoria) {
-//        this.categoria = categoria;
-//    }
 
-//    public String getNumero() {
-//        return codebar;
-//    }
-
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id){
+    public ProdutoComposto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo,List<Item> itens ) {
+     
+    	super(id,foto,nome,codebar,descricao,un,precocusto,precocusto,fornecedor,cat,ativo);
     	
-    	this.id =id;
+    	this.itens = itens;
     }
 
-//    public String getDescricao() {
-//        return descricao;
-//    }
-//
-//    public void setDescricao(String descricao) {
-//        this.descricao = descricao;
-//    }
-//
-//    public UnidadeMedida getUn_medida() {
-//        return un_medida;
-//    }
-//
-//    public void setUn_medida(UnidadeMedida un_medida) {
-//        this.un_medida = un_medida;
-//    }
-//
-//    public double getPrecocusto() {
-//        return precocusto;
-//    }
-//
-//    public void setPrecocusto(double preco) {
-//        this.precocusto = preco;
-//    }
-//
-//    public double getPrecovenda() {
-//        return precovenda;
-//    }
-//
-//    public void setPrecovenda(double precoVenda) {
-//        this.precovenda = precoVenda;
-//    }
-//
-//    public String getCodebar() {
-//        return codebar;
-//    }
-//
-//    public void setCodebar(String codebar) {
-//        this.codebar = codebar;
-//    }
-//    
-//    
-//    public String getFoto() {
-//        return foto;
-//    }
-//
-//    public void setFoto(String foto) {
-//        this.foto = foto;
-//    }
-//    
-//    
-//	public boolean getIsativo(){
-//		
-//		return isativo;
-//	}
-//	
-//	public void setIsativo(boolean valor){
-//		
-//		this.isativo=valor;
-//	}
 
-    // public List<Item> getItems() {
-    // return items;
-    // }
-    //
-    //
-    // public void setItems(List<Item> items) {
-    // this.items = items;
-    // }
+	public List<Item> getItens() {
+		return itens;
+	}
 
+public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
+    
+    
     @Override
     public String toString() {
         return getNome().toUpperCase();

@@ -1,4 +1,4 @@
-package com.tecsoluction.restaurante.entidade;
+ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 @Entity
-@Table(name = "PRODUTO")
+@Table
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Produto implements Serializable {
 
@@ -52,10 +52,10 @@ public class Produto implements Serializable {
     @Column(name = "un_medida")
     @Enumerated(EnumType.STRING)
     private UnidadeMedida un_medida;
-    @NotBlank
+    
     @Column(name = "preco_custo")
     private double precocusto;
-    @NotBlank
+    
     @Column(name = "preco_venda")
     private double precovenda;
     
@@ -67,7 +67,7 @@ public class Produto implements Serializable {
     // @OneToMany(mappedBy = "produto")
     // private List<Item> items;
 
-    @NotBlank
+    
     @ManyToOne(cascade={CascadeType.REFRESH})
     @JoinColumn(name="categoria_id",nullable=false)
     private Categoria categoria;
@@ -78,13 +78,34 @@ public class Produto implements Serializable {
 //    private Estoque estoque;
     
     
+    
+    
+    
     @Column(name = "isativo")
 	private boolean isativo;
 	
 
+    public Produto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo ) {
+    	super();
+    	this.id=id;
+    	this.foto = foto;
+    	this.nome = nome;
+    	this.codebar = codebar;
+    	this.descricao = descricao;
+    	this.un_medida = un;
+    	this.precocusto = precocusto;
+    	this.precovenda= precovenda;
+    	this.fornecedor =fornecedor;
+    	this.categoria = cat;
+    	this.isativo = ativo;
+    	
+    	
+    }
+    
     public Produto() {
-        // TODO Auto-generated constructor stub
-        // items = new ArrayList<Item>();
+    	super();
+    	
+    	
     }
     
 //    public Produto(Categoria cat, Fornecedor forn) {

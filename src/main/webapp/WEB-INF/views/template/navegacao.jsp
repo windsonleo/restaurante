@@ -77,7 +77,7 @@
           <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Compras</span> <span class="label label-primary">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">Pedido Compra</a></li>
-        <li><a href="form-validation.html">Recebimento</a></li>
+        <li><a href="${pageContext.request.contextPath}/recebimento/movimentacao">Recebimento</a></li>
         <li><a href="form-wizard.html">Devolução</a></li>
       </ul>
     </li>
@@ -115,7 +115,7 @@
         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Produto</span> <span class="label label-important">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/produto/movimentacao">Produto</a></li>
-        <li><a href="form-validation.html">Produto Composto</a></li>
+        <li><a href="${pageContext.request.contextPath}/produtocomposto/movimentacao">Produto Composto</a></li>
         <li><a href="form-wizard.html">Conf. Produto</a></li>
       </ul>
     </li>

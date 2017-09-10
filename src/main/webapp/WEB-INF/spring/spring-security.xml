@@ -35,22 +35,22 @@
 
     </security:http>
     
-<!--        <b:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourcee"> -->
-<!--         <b:property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
-<!--         <b:property name="url" value="jdbc:mysql://localhost:3306/restaurante"/> -->
-<!--         <b:property name="username" value="root"/> -->
-<!--         <b:property name="password" value="123456"/> -->
-        
-<!--         </b:bean> -->
-
-    <b:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourcee">
-        <b:property name="driverClassName" value="org.postgresql.Driver"/>
-        <b:property name="url" value="jdbc:postgresql://ec2-50-19-95-47.compute-1.amazonaws.com:5432/dfn2bgimgfu5ar"/> 
-
-        <b:property name="username" value="gzygmwhaboqloi"/>
-        <b:property name="password" value="bfdf7b5ce7cfa0ec102ad8cd180f4dc052c471829ca89e3ab5f245f2d61be3e5"/>
+       <b:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourcee">
+        <b:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <b:property name="url" value="jdbc:mysql://localhost:3306/restaurante"/>
+        <b:property name="username" value="root"/>
+        <b:property name="password" value="123456"/>
         
         </b:bean>
+
+<!--     <b:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourcee"> -->
+<!--         <b:property name="driverClassName" value="org.postgresql.Driver"/> -->
+<!--         <b:property name="url" value="jdbc:postgresql://ec2-50-19-95-47.compute-1.amazonaws.com:5432/dfn2bgimgfu5ar"/>  -->
+
+<!--         <b:property name="username" value="gzygmwhaboqloi"/> -->
+<!--         <b:property name="password" value="bfdf7b5ce7cfa0ec102ad8cd180f4dc052c471829ca89e3ab5f245f2d61be3e5"/> -->
+        
+<!--         </b:bean> -->
 
 
     <b:bean id="usernamePasswordAuthenticationFilter"

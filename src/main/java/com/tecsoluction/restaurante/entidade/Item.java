@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -40,12 +41,19 @@ public class Item  implements Serializable{
     
     @ManyToOne(fetch=FetchType.EAGER,targetEntity=Pedido.class)
     @JsonBackReference
-	private PedidoVenda pedido;
+	private Pedido pedido;
     
+    @ManyToOne(optional=true)
+	private Produto produtocomposto;
     
     @ManyToOne()
     @JoinColumn
     private Estoque estoque;
+    
+    
+    @ManyToOne()
+    @JoinColumn(name="recebimento_id")
+    private Recebimento recebimento;
 
 //    @ManyToOne
 //    @JoinColumn
@@ -66,7 +74,7 @@ public class Item  implements Serializable{
     }
 
 
-    public Item(Produto produto, PedidoVenda pedido) {
+    public Item(Produto produto, Pedido pedido) {
 
         this.codigo = produto.getCodebar();
         this.descricao = produto.getDescricao();
@@ -74,10 +82,41 @@ public class Item  implements Serializable{
         this.pedido = pedido;
     }
     
+    public Item(Produto produto) {
+
+        this.codigo = produto.getCodebar();
+        this.descricao = produto.getNome();
+        this.precoUnitario = produto.getPrecovenda();
+        this.produtocomposto = produto;
+    }
     
+    public Item(Produto produto,Recebimento rec) {
+
+        this.codigo = produto.getCodebar();
+        this.descricao = produto.getNome();
+        this.precoUnitario = produto.getPrecovenda();
+        this.produtocomposto = produto;
+        this.recebimento = rec;
+    }
 
 
     /**
+	 * @return the recebimento
+	 */
+	public Recebimento getRecebimento() {
+		return recebimento;
+	}
+
+
+	/**
+	 * @param recebimento the recebimento to set
+	 */
+	public void setRecebimento(Recebimento recebimento) {
+		this.recebimento = recebimento;
+	}
+
+
+	/**
 	 * @return the estoque
 	 */
 	public Estoque getEstoque() {
@@ -93,10 +132,27 @@ public class Item  implements Serializable{
 	}
 
 
-	public PedidoVenda getPedido() {
+	public Pedido getPedido() {
         return pedido;
     }
 
+    
+    /**
+	 * @return the produtocomposto
+	 */
+	public Produto getProdutocomposto() {
+		
+		
+		return produtocomposto;
+	}
+
+
+	/**
+	 * @param produtocomposto the produtocomposto to set
+	 */
+	public void setProdutocomposto(Produto produtocomposto) {
+		this.produtocomposto = produtocomposto;
+	}
 
 //    public void setProduto(Produto produto) {
 //        this.produto = produto;
@@ -107,7 +163,7 @@ public class Item  implements Serializable{
 //    }
 
 
-    public void setPedido(PedidoVenda pedido) {
+    public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
 

@@ -29,7 +29,6 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public abstract class Pedido {
 
     @Id
@@ -41,13 +40,7 @@ public abstract class Pedido {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
-    //aberto,pendente,fechado,cancelado
-    @Enumerated(EnumType.STRING)
-    private StatusPedido status;
-    
-    //AGUARDANDO_PREPARACAO, EM_PREPARACAO, PRONTO, INTERROMPIDO;
-    @Enumerated(EnumType.STRING)
-    private SituacaoPedido situacao;
+
 
     private double total;
     
@@ -66,8 +59,14 @@ public abstract class Pedido {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pagamento> pagamento;
     
+   
+    
     @Column(name = "isativo")
 	private boolean isativo;
+    
+    //aberto,pendente,fechado,cancelado
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
 
     public Pedido() {
         // TODO Auto-generated constructor stub
@@ -87,17 +86,25 @@ public abstract class Pedido {
         return data;
     }
 
-    public void setData(Date data) {
+    /**
+	 * @return the status
+	 */
+	public StatusPedido getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
+
+	public void setData(Date data) {
         this.data = data;
     }
 
-    public StatusPedido getStatus() {
-        return status;
-    }
 
-    public void setStatus(StatusPedido status) {
-        this.status = status;
-    }
 
     public double getTotal() {
     	
@@ -134,25 +141,8 @@ public boolean getIsativo(){
 		
 		this.isativo=valor;
 	}
-	
-	
-    public SituacaoPedido getSituacaoPedido () {
-        return situacao;
-    }
-
-    public void setSituacaoPedido(SituacaoPedido status) {
-        this.situacao = status;
-    }
-    
     
 
-
-    /**
-	 * @return the situacao
-	 */
-	public SituacaoPedido getSituacao() {
-		return situacao;
-	}
 
 	/**
 	 * @return the pagamento
@@ -161,12 +151,6 @@ public boolean getIsativo(){
 		return pagamento;
 	}
 
-	/**
-	 * @param situacao the situacao to set
-	 */
-	public void setSituacao(SituacaoPedido situacao) {
-		this.situacao = situacao;
-	}
 
 	/**
 	 * @param pagamento the pagamento to set
