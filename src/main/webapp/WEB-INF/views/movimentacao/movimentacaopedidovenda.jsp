@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedidovenda</a> >> <a href="#" class="current">Movimentação de Pedidovenda</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Pedidovenda</a> >> <a href="#" class="current">Movimentação de Pedidovenda</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -13,7 +13,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" ></i></span>
             <h5>Movimentação Pedidovenda</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
