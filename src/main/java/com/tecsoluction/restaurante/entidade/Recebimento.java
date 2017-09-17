@@ -2,10 +2,14 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -44,34 +49,28 @@ public class Recebimento  implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
-    @ManyToOne()
-   @JoinColumn(name="pedidocompra_id")
-    private Pedido pedidocompra;
+    @ManyToOne(optional=true,targetEntity=PedidoCompra.class)
+    @JoinColumn(name="pedidocompra_id")
+    private PedidoCompra pedidocompra;
 
-	@ManyToOne
+	@ManyToOne(optional=true,targetEntity=Fornecedor.class)
     @JoinColumn(name="fornecedor_id")
     private Fornecedor fornecedor;
     
 	
-    @OneToMany(targetEntity=Item.class,fetch=FetchType.LAZY)
-   @JsonManagedReference
-    private List<Item> items;
+//    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="recebimento")
+//    @JsonManagedReference
+//    @JoinColumn(name="fornecedor_id")
+//    private List<Item> items;
     
-
-
-//    // VENDA OOU COMPRA
-//    @Enumerated(EnumType.ORDINAL)
-//    private TipoPedido tipo;
-
-
-    // VENDA OOU COMPRA
-//    @Enumerated(EnumType.STRING)
-//    private OrigemPedido origempedido;
-
-
-    //LISTA DE ITENS DO PEDIDO DE VENDA
-//    @OneToMany
-//    private List<Item> listaItensVenda;
+	//@OneToMany(mappedBy="recebimento")
+    @ElementCollection(fetch=FetchType.EAGER)
+    @MapKeyColumn(name = "ID")
+    @Column(name="qtd")
+    @CollectionTable(name="itens_recebimento",joinColumns=@JoinColumn(name="id"))
+    @JsonManagedReference
+    private Map<Item,Double> items= new HashMap<>();
+    
 
     private boolean ispago = false;
 
@@ -79,43 +78,27 @@ public class Recebimento  implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
     
-    //AGUARDANDO_PREPARACAO, EM_PREPARACAO, PRONTO, INTERROMPIDO;
-//    @Enumerated(EnumType.STRING)
-//    private SituacaoPedido situacao;
-
-
-	//lista de devolucoes de compra
-//    @JsonIgnore
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @OneToMany(mappedBy="pedidoVenda")
-//    private List<DevolucaoVenda> listaDevolucao;
-
-
-
 
 
 
 	//CONSTRUTOR PADRÃO
     public Recebimento() {
-    	super();
+    
 
      //   listaDevolucao = new ArrayList<>();
       //  tipo.VENDA.values();
     }
     
-    public Recebimento(Pedido pedidoompra) {
-    	super();
+    public Recebimento(PedidoCompra pedidoompra) {
 
      //   listaDevolucao = new ArrayList<>();
       //  tipo.VENDA.values();
+    	
+    	this.pedidocompra = pedidoompra;
+    	this.fornecedor =pedidoompra.getFornecedor();
+    	this.items = pedidoompra.getItems();
+//    	this.fornecedor=pedidoompra.
     }
-    
-
-
-
-
-
-
 
 
 	/**
@@ -135,7 +118,7 @@ public class Recebimento  implements Serializable {
 	/**
 	 * @return the pedidocompra
 	 */
-	public Pedido getPedidocompra() {
+	public PedidoCompra getPedidocompra() {
 		return pedidocompra;
 	}
 
@@ -143,22 +126,21 @@ public class Recebimento  implements Serializable {
 	 * @return the fornecedor
 	 */
 	public Fornecedor getFornecedor() {
+		if(pedidocompra!=null){
+			
+			this.fornecedor = pedidocompra.getFornecedor();
+		}
+		
 		return fornecedor;
 	}
 
 	/**
 	 * @return the items
 	 */
-	public List<Item> getItems() {
+	public Map<Item,Double> getItems() {
 		return items;
 	}
 
-	/**
-	 * @return the origempedido
-	 */
-//	public OrigemPedido getOrigempedido() {
-//		return origempedido;
-//	}
 
 	/**
 	 * @return the ispago
@@ -193,7 +175,7 @@ public class Recebimento  implements Serializable {
 	/**
 	 * @param pedidocompra the pedidocompra to set
 	 */
-	public void setPedidocompra(Pedido pedidocompra) {
+	public void setPedidocompra(PedidoCompra pedidocompra) {
 		this.pedidocompra = pedidocompra;
 	}
 
@@ -207,7 +189,7 @@ public class Recebimento  implements Serializable {
 	/**
 	 * @param items the items to set
 	 */
-	public void setItems(List<Item> items) {
+	public void setItems(Map<Item,Double> items) {
 		this.items = items;
 	}
 

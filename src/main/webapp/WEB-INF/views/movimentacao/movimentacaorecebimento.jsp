@@ -28,16 +28,16 @@
                <tr>
                                         <th>Id</th>
 									    <th>Data</th>
-									    <th>Situação</th>
+<!-- 									    <th>Situação</th> -->
 									    
 									    <th>Status</th>
-									    <th>Origem</th>
-									    <th>Total</th>
-   									    <th>Cliente</th>
-   									    <th>Mesa</th>
-   									    <th>Garcon</th>
+<!-- 									    <th>Origem</th> -->
+<!-- 									    <th>Total</th> -->
+   									    <th>Fornecedor</th>
+<!--    									    <th>Mesa</th> -->
+<!--    									    <th>Garcon</th> -->
 									     <th>Itens</th>
-									     <th>Ativo</th>
+									     <th>Pago</th>
 									    <th>Ação</th>
                                     </tr>
                                 </thead>
@@ -54,15 +54,15 @@
 
 			      <td>${recebimento.id}</td>
                   <td>${recebimento.data}</td>
-				<td>${recebimento.situacao}</td>
+<%-- 				<td>${recebimento.situacao}</td> --%>
                   <td><span class="label label-info">${recebimento.status}</span></td>
-                 <td>${recebimento.origempedido}</td>
-                 <td>${recebimento.total}</td>
-                 <td>${recebimento.cliente}</td>
-                 <td>${recebimento.mesa}</td>
-                 <td>${recebimento.garcon}</td>
+<%--                  <td>${recebimento.origempedido}</td> --%>
+<%--                  <td>${recebimento.total}</td> --%>
+                 <td>${recebimento.fornecedor}</td>
+<%--                  <td>${recebimento.mesa}</td> --%>
+<%--                  <td>${recebimento.garcon}</td> --%>
                   <td>${recebimento.items}</td>
-                   <td> ${recebimento.isativo}</td>
+                   <td> ${recebimento.ispago}</td>
                  <td class="options-widt">
 								
 								

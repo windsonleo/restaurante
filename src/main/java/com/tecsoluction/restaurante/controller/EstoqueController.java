@@ -1,16 +1,25 @@
 package com.tecsoluction.restaurante.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tecsoluction.restaurante.dao.EstoqueDAO;
+import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
+import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Estoque;
+import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 @Controller
@@ -22,13 +31,27 @@ public class EstoqueController extends AbstractController<Estoque> {
     AbstractEntityDao<Estoque> dao;
     
     private final UsuarioDAO usudao;
+    
+    private final ItemDAO itdao;
 
 
     @Autowired
-    public EstoqueController(AbstractEntityDao<Estoque> dao,UsuarioDAO daousu) {
+    public EstoqueController(AbstractEntityDao<Estoque> dao,UsuarioDAO daousu,ItemDAO itdao) {
         super("estoque");
         this.dao = dao;
         this.usudao = daousu;
+        this.itdao= itdao;
+    }
+    
+    
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itdao) {
+
+        });
+        
+
     }
     
     

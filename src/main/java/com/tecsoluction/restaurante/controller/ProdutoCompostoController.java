@@ -1,8 +1,10 @@
 package com.tecsoluction.restaurante.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +54,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     
     private final ItemDAO itdao;
     
-    private List<Item> items = new ArrayList<>();
+    private Map<Item,Double> items = new HashMap<>();
 
     private ProdutoComposto produtocomposto;
     
@@ -270,13 +272,13 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-        for (int i = 0; i < produtocomposto.getItens().size(); i++) {
-        	
-        	totalitem = totalitem + produtocomposto.getItens().get(i).getTotalItem();
-
-			
-		}
-        
+//        for (int i = 0; i < produtocomposto.getItens().size(); i++) {
+//        	
+//        	totalitem = totalitem + produtocomposto.getItens().get(i).getTotalItem();
+//
+//			
+//		}
+//        
         produtocomposto.setPrecocusto(totalitem);
         
         
@@ -313,7 +315,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
        
-        Produto produto = new Produto();
+        Produto produto ;
         
         produto = daoprod.PegarPorId(idf);
         
@@ -322,16 +324,22 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         produtocomposto = dao.PegarPorId(idfprodcomp);
        
         
-        Item  item  = new Item(produto);
+        Item  item  = new Item(produtocomposto);
         
-        item.setProdutocomposto(produtocomposto);
+       // item.setProdutocomposto(produtocomposto);
         
         
            itdao.add(item);
            
            items = produtocomposto.getItens();
-           items.add(item);
+           
+           items.put(item,item.getQtd());
+         
            produtocomposto.setItens(items);
+           
+           dao.editar(produtocomposto);
+           
+           ProdutoComposto pc = dao.PegarPorId(idfprodcomp);
            
 //           items.clear();
       //     dao.add(produtocomposto);
@@ -395,7 +403,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     //    pedidoVendaDao.add(pv);
 
 //
-           additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+           additemprodutocomposto.addObject("produtocomposto", pc);
            additemprodutocomposto.addObject("produtosList", produtosList);
 
            

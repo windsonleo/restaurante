@@ -14,3 +14,27 @@ text-align: center;
 color: green;
 }
 
+#cardapio {
+	
+	font-size: 1em;
+	font-family: sans-serif;
+/* 	color: black; */
+
+	background: url(../resources/images/bg_red.gif) repeat-y;
+	
+}
+
+.cardapio tr td {
+	
+	font-size: 1.5em;
+	font-family: sans-serif;
+	color: yellow;
+	
+}
+
+/* #cardapio.td.lb_nome_produto{ */
+	
+/* 		font-size: 0.5em; */
+/* 	font-family: sans-serif; */
+/* 	color: green; */
+/* } */

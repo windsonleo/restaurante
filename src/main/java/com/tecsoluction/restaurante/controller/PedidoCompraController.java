@@ -1,9 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -83,7 +85,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     final
     GarconDAO garconDao;
 
-    private List<Item> itens;
+    private Map<Item,Double> itens = new HashedMap();
     
     private List<Produto> produtosList;
     
@@ -420,14 +422,14 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-        for (int i = 0; i < pv.getItems().size(); i++) {
-        	
-            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-
-			
-		}
+//        for (int i = 0; i < pv.getItems().size(); i++) {
+//        	
+//            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
+//
+//			
+//		}
         
-        pv.setTotal(totalpedido);
+//        pv.setTotal(totalpedido);
         
         
       //  pedidoVendaDao.editar(pv);
@@ -464,23 +466,31 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         ModelAndView additempedidocompra = new ModelAndView("additempedidocompra");
        
-        Produto produto = new Produto();
+        Produto produto;
         
         produto = produtopedidovendaDao.PegarPorId(idf);
         
-        Pedido pedidov = new PedidoCompra();
-        pedidov = pedidoCompraDao.PegarPorId(pv.getId());
+        //Pedido pedidov = new PedidoCompra();
+        pv = pedidoCompraDao.PegarPorId(pv.getId());
         
        // System.out.println("windson ped"+pedidov.toString());
         
-        Item item = new Item(produto,pedidov);
+        Item item = new Item(produto,pv);
         
-       // pedidov.getItems().add(item);
+      
+       // Item item = itempedidovendaDao.getItemPorCodigo(produto.getCodebar());
+        pv.getItems().put(item,item.getQtd());
         
+        itens = pv.getItems();
+        itens.put(item,item.getQtd());
+        pv.setItems(itens);
         
-        itens = pedidov.getItems();
-        itens.add(item);
-        pedidov.setItems(itens);
+
+          itempedidovendaDao.add(item);
+          
+
+          pedidoCompraDao.editar(pv);
+
 //        
 //        item.setQtd(prodqtd);
 //        item.setTotalItem(item.getTotalItem());
@@ -489,7 +499,6 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
       //  pedidov.getItems().add(item);
         
         
-        itempedidovendaDao.add(item);
         
       //  pedidoVendaDao.add(pedidov);
         
@@ -521,7 +530,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     //    pedidoVendaDao.add(pv);
         
 //
-        additempedidocompra.addObject("pedidocompra", pedidov);
+        additempedidocompra.addObject("pedidocompra", pv);
         additempedidocompra.addObject("produtosList", produtosList);
 
 

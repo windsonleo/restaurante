@@ -1,21 +1,29 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 
 @Entity
@@ -40,7 +48,12 @@ public class PedidoCompra extends Pedido implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Recebimento> recebimentos;  
 
-
+    @ElementCollection(fetch=FetchType.EAGER)
+    @MapKeyColumn(name = "id")
+    @Column(name="qtd")
+    @CollectionTable(name="itens_pedidocompra",joinColumns=@JoinColumn(name="id"))
+    @JsonManagedReference
+    private Map<Item,Double> items = new HashMap<>();
 
     /**
 	 * @return the ispago
@@ -80,6 +93,34 @@ public class PedidoCompra extends Pedido implements Serializable {
 	 */
 	public List<Recebimento> getRecebimentos() {
 		return recebimentos;
+	}
+
+
+
+
+
+	/**
+	 * @return the items
+	 */
+	
+    @ElementCollection(fetch=FetchType.EAGER)
+    @MapKeyColumn(name = "id")
+    @Column(name="qtd")
+    @CollectionTable(name="itens_pedidocompra",joinColumns=@JoinColumn(name="id"))
+    @JsonManagedReference
+	public Map<Item, Double> getItems() {
+		return items;
+	}
+
+
+
+
+
+	/**
+	 * @param items the items to set
+	 */
+	public void setItems(Map<Item, Double> items) {
+		this.items = items;
 	}
 
 

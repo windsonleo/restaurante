@@ -19,6 +19,15 @@
                 <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
         
     </definition>
+    
+    
+    <definition name="TemplateC" template="/WEB-INF/template/templatecardapio.jsp">
+        <put-attribute name="conteudo" value=""/>
+                <put-attribute name="navegacaocardapio" value="/WEB-INF/views/template/navegacaocardapio.jsp"/>
+        
+                <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+        
+    </definition>
 
 
 <!--     <definition name="login" extends="TemplateB"> -->
@@ -45,6 +54,11 @@
 
 	<definition name="login" extends="TemplateB">
 		<put-attribute name="conteudo" value="/WEB-INF/views/login.jsp" />
+
+	</definition>
+	
+		<definition name="cardapio" extends="TemplateC">
+		<put-attribute name="conteudo" value="/WEB-INF/views/cardapio/cardapio.jsp" />
 
 	</definition>
 
@@ -426,6 +440,41 @@
 			value="/WEB-INF/views/movimentacao/salao.jsp" />
 
 	</definition>
+	
+					<definition name="produtoporcategoria" extends="TemplateC">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cardapio/produtoporcategoria.jsp" />
+
+	</definition>
+	
+						<definition name="finalizacaovenda" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/finalizacao/finalizacaovenda.jsp" />
+
+	</definition>
+	
+							<definition name="finalizacaorecebimento" extends="defaultTemplate"> 
+							 
+							 
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/finalizacao/finalizacaorecebimento.jsp" />
+			
+			</definition>
+			
+									<definition name="finalizacaocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/finalizacao/finalizacaocompra.jsp" />
+
+	</definition>
+	
+			
+									<definition name="finalizacaodevolucao" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/finalizacao/finalizacaodevolucao.jsp" />
+
+	</definition>
+
+	
 	
 
 </tiles-definitions>

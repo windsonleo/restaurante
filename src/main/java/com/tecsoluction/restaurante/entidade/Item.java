@@ -19,9 +19,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "ITEM")
 public class Item  implements Serializable{
 
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,29 +27,37 @@ public class Item  implements Serializable{
     @Column(name = "ID")
     private long id;
 
+
+//	@JoinColumn(name="produto_id", nullable=true)
+//	private Produto produto;
+
+	@Column(name = "codigo")
     private String codigo;
 
+	 @Column(name = "descricao")
     private String descricao;
-
-    private int qtd;
-
+	 @Column(name = "qtd")
+    private double qtd;
+	 @Column(name = "precounitario")
     private double precoUnitario;
-
+	 @Column(name = "totalitem")
     private double totalItem;
     
-    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Pedido.class)
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Pedido.class,optional=true)
     @JsonBackReference
+    @JoinColumn(name="pedido_id")
 	private Pedido pedido;
     
-    @ManyToOne(optional=true)
-	private Produto produtocomposto;
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Produto.class,optional=true)
+    @JoinColumn(name="produtocomposto_id",nullable=true)
+    private Produto produtocomposto;
     
-    @ManyToOne()
-    @JoinColumn
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Estoque.class,optional=true)
+    @JoinColumn(name="estoque_id")
     private Estoque estoque;
     
     
-    @ManyToOne()
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity=Recebimento.class,optional=true)
     @JoinColumn(name="recebimento_id")
     private Recebimento recebimento;
 
@@ -71,23 +77,38 @@ public class Item  implements Serializable{
 
     public Item() {
     //    cotacoes = new ArrayList<>();
+    
     }
 
 
-    public Item(Produto produto, Pedido pedido) {
+    public Item(Produto produto, PedidoVenda pedido) {
 
         this.codigo = produto.getCodebar();
         this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
         this.pedido = pedido;
+//        this.produto = produto;
+       this.produtocomposto = produto;
+    }
+    
+    public Item(Produto produto, PedidoCompra pedido) {
+
+        this.codigo = produto.getCodebar();
+        this.descricao = produto.getDescricao();
+        this.precoUnitario = produto.getPrecovenda();
+        this.pedido = pedido;
+//        this.produto = produto;
+       this.produtocomposto = produto;
     }
     
     public Item(Produto produto) {
 
         this.codigo = produto.getCodebar();
-        this.descricao = produto.getNome();
+        this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
         this.produtocomposto = produto;
+//        this.produto = produto;
+
     }
     
     public Item(Produto produto,Recebimento rec) {
@@ -97,12 +118,40 @@ public class Item  implements Serializable{
         this.precoUnitario = produto.getPrecovenda();
         this.produtocomposto = produto;
         this.recebimento = rec;
+//        this.produto = produto;
+
+    }
+    
+    public Item(ProdutoComposto produto) {
+
+        this.codigo = produto.getCodebar();
+        this.descricao = produto.getNome();
+        this.precoUnitario = produto.getPrecovenda();
+        this.produtocomposto = produto;
+        //this.recebimento = rec;
+//        this.produto = produto;
+
+    }
+
+    public Item(Recebimento rec) {
+
+        this.recebimento = rec;
     }
 
 
-    /**
-	 * @return the recebimento
-	 */
+    
+//	public Produto getProduto() {
+//		return produto;
+//	}
+//
+//
+//	/**
+//	 * @param produto the produto to set
+//	 */
+//	public void setProduto(Produto produto) {
+//		this.produto = produto;
+//	}
+
 	public Recebimento getRecebimento() {
 		return recebimento;
 	}
@@ -188,12 +237,12 @@ public class Item  implements Serializable{
     }
 
 
-    public int getQtd() {
+    public double getQtd() {
         return qtd;
     }
 
 
-    public void setQtd(int qtd) {
+    public void setQtd(double qtd) {
         this.qtd = qtd;
     }
 

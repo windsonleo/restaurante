@@ -100,6 +100,7 @@ public class Produto implements Serializable {
     	this.isativo = ativo;
     	
     	
+    	
     }
     
     public Produto() {

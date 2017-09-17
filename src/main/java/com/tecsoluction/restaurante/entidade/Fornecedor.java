@@ -47,15 +47,36 @@ public class Fornecedor implements Serializable {
     @Column(name = "isativo")
 	private boolean isativo;
     
+    
     @JsonIgnore
   	@LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy="fornecedor",fetch=FetchType.LAZY)
     private List<Produto> produtos;
     
     
+    @JsonIgnore
+  	@LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy="fornecedor",fetch=FetchType.LAZY)
+    private List<Recebimento> recebimento;
+    
+    
     
 
-    public Fornecedor() {
+    /**
+	 * @return the recebimento
+	 */
+	public List<Recebimento> getRecebimento() {
+		return recebimento;
+	}
+
+	/**
+	 * @param recebimento the recebimento to set
+	 */
+	public void setRecebimento(List<Recebimento> recebimento) {
+		this.recebimento = recebimento;
+	}
+
+	public Fornecedor() {
     //    produtos = new ArrayList<>();
     }
 

@@ -59,10 +59,21 @@
 
 
 <!--start-top-serch-->
-	<div id="search">
-	  <input id="searchnow" type="text" placeholder="Pesquise Aqui..." value="" name="sugestion"/>
-	  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
-	</div>
+<!-- 	<div id="search"> -->
+<!-- 	  <input id="searchnow" type="text" placeholder="Pesquise Aqui..." value="" name="sugestion"/> -->
+<!-- 	  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button> -->
+<!-- 	</div> -->
+
+<div id="search">
+  <input type="text" placeholder="Search here..." name="sugestion" id="sugestion"/>
+  <button id="seila"  nome="seila"type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+
+<!--     <div class="col-sm-2 col-md-2"> -->
+<!--              <form class="navbar-form navbar-right" role="search"> -->
+<!--               <div class="input-group"><a href="#" class="btn btn-warning">Post Your Ads</a></div> -->
+<!--              </form> -->
+<!--             </div> -->
 <!--close-top-serch-->
 
     <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Home</a>

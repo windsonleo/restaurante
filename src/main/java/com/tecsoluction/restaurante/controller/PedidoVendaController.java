@@ -1,6 +1,8 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +28,7 @@ import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
@@ -78,7 +81,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     final
     GarconDAO garconDao;
 
-    private List<Item> itens;
+    private Map<Item,Double> itens = new HashMap<>();
     
     private List<Produto> produtosList;
     
@@ -413,12 +416,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-        for (int i = 0; i < pv.getItems().size(); i++) {
-        	
-            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-
-			
-		}
+//        for (int i = 0; i < pv.getItems().size(); i++) {
+//        	
+//            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
+//
+//			
+//		}
         
         pv.setTotal(totalpedido);
         
@@ -455,13 +458,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
      //   ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
        
-        Produto produto = new Produto();
+        Produto produto;
         
         produto = produtopedidovendaDao.getProdutoPorDescricao(prodesc);
         
         PedidoVenda pedidov = pedidoVendaDao.PegarPorId(pv.getId());
         
-       // System.out.println("windson ped"+pedidov.toString());
+        System.out.println("windson ped"+pedidov.toString());
         
         Item item = new Item(produto,pedidov);
         
@@ -473,8 +476,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
       //  pedidov.getItems().add(item);
         
+        itens.put(item, item.getQtd());
         
         itempedidovendaDao.add(item);
+        pedidov.setItems(itens);
+        pedidoVendaDao.editar(pedidov);
         
       //  pedidoVendaDao.add(pedidov);
         

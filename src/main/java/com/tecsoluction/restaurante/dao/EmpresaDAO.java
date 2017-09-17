@@ -3,17 +3,18 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 
+import com.tecsoluction.restaurante.entidade.Empresa;
 import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
 @Service
-public class EmpresaDAO extends AbstractEntityDao<Estoque>{
+public class EmpresaDAO extends AbstractEntityDao<Empresa>{
 
 
 
     public EmpresaDAO() {
-        super(Estoque.class, "Estoque");
+        super(Empresa.class, "Empresa");
     }
 
     @Override

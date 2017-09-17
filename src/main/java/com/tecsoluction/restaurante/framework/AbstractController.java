@@ -66,8 +66,8 @@ public abstract class AbstractController<Entity> {
     	if (result.hasErrors()) {
 			
         
-        System.out.println("erro ao add:"+ entityAlias);
-        attributes.addFlashAttribute("erros", "Erro ao Salvar.");
+        System.out.println("erro ao add:"+ entityAlias+"erro:"+result.getObjectName());
+        attributes.addFlashAttribute("erros", "Erro ao Salvar."+result.getFieldError());
 //        attributes.a
         
     	}else{

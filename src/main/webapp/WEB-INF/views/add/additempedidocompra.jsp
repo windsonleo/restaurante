@@ -118,15 +118,15 @@
 
 		  <c:forEach var="item" items="${pedidocompra.items}" varStatus="id">
 
-		<c:choose>
+<%-- 		<c:choose> --%>
 		
-		  <c:when test="${item.id != null}">
+<%-- 		  <c:when test="${item.id != null}"> --%>
 		  
         <li class="bg_lb"> <a href="${pageContext.request.contextPath}/item/">
-         <i class="icon-dashboard"></i> <div class="huge">${item.id}</div>
-                                       <div>${item.descricao}</div>
-                                      <div>Total: ${item.totalItem}</div> 
-                                      <div>Qtd: ${item.qtd}</div>
+         <i class="icon-dashboard"></i> <div class="huge">${item.key}</div>
+                                       <div>${item.value}</div>
+<%--                                       <div>Total: ${item.totalItem}</div>  --%>
+<%--                                       <div>Qtd: ${item.qtd}</div> --%>
                                       
                                       </a> 
                                       
@@ -139,9 +139,9 @@
                     
                     
                         
-                    </c:when>
+<%--                     </c:when> --%>
                     
-                    </c:choose>
+<%--                     </c:choose> --%>
                     
                     </c:forEach>
                     	            </ul> 

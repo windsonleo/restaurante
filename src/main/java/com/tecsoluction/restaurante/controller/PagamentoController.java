@@ -174,12 +174,12 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
 
 	        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-	        for (int i = 0; i < pv.getItems().size(); i++) {
-	        	
-	            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-
-				
-			}
+//	        for (int i = 0; i < pv.getItems().size(); i++) {
+//	        	
+//	            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
+//
+//				
+//			}
 	        
 	        pv.setTotal(totalpedido);
 	    	

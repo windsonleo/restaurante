@@ -18,12 +18,12 @@
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/banco/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
-            </div>
+<!--             </div> -->
           </div>
           
           
           <div class="widget-content nopadding">
-            <table class="table table-hover table-bordered">
+            <table class="table table-bordered data-table">
                             <thead>
                                     <tr>
                                         <th>Id</th>
@@ -91,15 +91,20 @@
               </tbody>
             </table>
           </div>
+        
+
+        
         </div>
         </div>
         </div>
         </div>
         
-<!--         <div class="pagination alternate"> </div> -->
+        <div class="pagination alternate"> </div>
         
         
         </div>
+        
+
         
         <div class="row-fluid">
   <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>

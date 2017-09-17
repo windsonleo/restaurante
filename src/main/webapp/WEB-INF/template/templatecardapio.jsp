@@ -68,7 +68,6 @@
   	
   	<script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
  
- <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
  
  
  <script type="text/javascript">
@@ -306,15 +305,7 @@ $(function () {
      
  }
  
- $(function () {
-	    $( '.table table-bordered data-table' ).searchable({
-	        striped: true,
-	        oddRow: { 'background-color': '#f5f5f5' },
-	        evenRow: { 'background-color': '#fff' },
-	        searchType: 'fuzzy'
-	    });
-	    
- });
+ 
  
  
  </script>
@@ -329,7 +320,7 @@ $(function () {
 <body>
 
 		
-		<tiles:insertAttribute name="navegacao" />
+		<tiles:insertAttribute name="navegacaocardapio" />
 
 
 		<tiles:insertAttribute name="conteudo" />

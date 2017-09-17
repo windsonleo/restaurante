@@ -2,13 +2,21 @@ package com.tecsoluction.restaurante.entidade;
 
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,10 +54,21 @@ public class Estoque implements Serializable {
     @Column(name = "isativo")
 	private boolean isativo;
     
-    @JsonIgnore
-@LazyCollection(LazyCollectionOption.FALSE) 
-    @OneToMany(mappedBy="estoque")
-    private List<Item> itens;
+//    @JsonIgnore
+//    @LazyCollection(LazyCollectionOption.FALSE) 
+//    @OneToMany(mappedBy="estoque")
+//    private List<Item> itens;
+    
+    
+//    @OneToMany(mappedBy = "estoque",fetch = FetchType.LAZY)
+    
+    @ElementCollection(fetch=FetchType.EAGER)
+    @MapKeyColumn(name = "ID")
+    @Column(name="qtd")
+    @CollectionTable(name="itens_estoque",joinColumns=@JoinColumn(name="id"))
+    private Map<Item, Double> items= new HashMap<>();
+    
+//    private ArrayList<int> qtds;
 
     
 //    public Estoque(long id, String nome,Estoque catpai,boolean isativo) {
@@ -64,6 +83,12 @@ public class Estoque implements Serializable {
     public Estoque() {
         // TODO Auto-generated constructor stub
 
+    }
+    
+    public Estoque( Map<Double, Item> itens) {
+        // TODO Auto-generated constructor stub
+
+    	this.items = new HashMap<Item,Double>();
     }
 
     //GETTERS AND SETTERS
@@ -94,15 +119,31 @@ public class Estoque implements Serializable {
     }
 
 
-
-    public List<Item> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<Item> produtos) {
-        this.itens = produtos;
-    }
     
+    
+
+//    public List<Item> getItens() {
+//        return itens;
+//    }
+//
+//    public void setItens(List<Item> produtos) {
+//        this.itens = produtos;
+//    }
+    
+	/**
+	 * @return the itens
+	 */
+	public Map<Item,Double > getItens() {
+		return items;
+	}
+
+	/**
+	 * @param itemsmap the itens to set
+	 */
+	public void setItens(Map<Item,Double > itemsmap) {
+		this.items = itemsmap;
+	}
+
 	public boolean getIsativo(){
 		
 		return isativo;

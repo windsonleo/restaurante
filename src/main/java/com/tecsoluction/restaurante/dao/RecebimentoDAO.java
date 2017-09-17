@@ -5,7 +5,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Service;
 
 import com.tecsoluction.restaurante.entidade.Recebimento;
-import com.tecsoluction.restaurante.entidade.Role;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
@@ -17,7 +16,7 @@ public class RecebimentoDAO extends AbstractEntityDao<Recebimento> {
 
 
     public RecebimentoDAO() {
-        super(Recebimento.class, "Recebimento");
+        super(Recebimento.class,"Recebimento");
     }
 
     @Override

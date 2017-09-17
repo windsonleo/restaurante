@@ -1,9 +1,15 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,11 +19,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,7 +50,7 @@ public abstract class Pedido {
     private Date data;
 
 
-
+    @Column(name = "total")
     private double total;
     
 //    @JsonIgnore
@@ -50,9 +59,12 @@ public abstract class Pedido {
 //    private List<Pagamento> pagamentos;
 
 //    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="pedido")
-   @JsonManagedReference
-    private List<Item> items;
+//    @ElementCollection(fetch=FetchType.EAGER)
+//    @MapKeyColumn(name = "id")
+//    @Column(name="qtd")
+//    @CollectionTable(name="itens_pedido",joinColumns=@JoinColumn(name="id"))
+//    @JsonManagedReference
+//    private Map<Item,Double> items = new HashMap<>();
     
     @ManyToMany(mappedBy="pedidos")
     @JsonIgnore
@@ -108,7 +120,9 @@ public abstract class Pedido {
 
     public double getTotal() {
     	
-        return CalcularTotal(items);
+//        return CalcularTotal(items);
+    	
+    	return total;
     }
 
     public void setTotal(double total) {
@@ -124,13 +138,13 @@ public abstract class Pedido {
 //    }
 
      
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
+//    public Map<Item,Double> getItems() {
+//        return items;
+//    }
+//
+//    public void setItems(Map<Item,Double> items) {
+//        this.items = items;
+//    }
     
 public boolean getIsativo(){
 		
@@ -168,18 +182,28 @@ public boolean getIsativo(){
     
     
     
-    public double CalcularTotal(List<Item> itens){
+    public double CalcularTotal( Map<Item,Double> itens){
     	
       double totalpedido = 0.0;
 
+   	Set<Item> keys = itens.keySet();
+	
+	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
+	
+	for (Item item : keysorder) {
+		
+		totalpedido =+ totalpedido+item.getTotalItem();
+      
+		
+	}
 
       //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-      for (int i = 0; i < itens.size(); i++) {
-      	
-          totalpedido += totalpedido + itens.get(i).getTotalItem();
-
-			
-		}
+//      for (int i = 0; i < itens.size(); i++) {
+//      	
+//          totalpedido += totalpedido + itens.get(i).getTotalItem();
+//
+//			
+//		}
 
     	
     	return totalpedido;

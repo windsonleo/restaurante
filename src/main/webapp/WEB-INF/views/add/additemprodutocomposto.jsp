@@ -163,7 +163,7 @@
                 <label class="control-label">Preço de Venda</label>
                 <div class="controls">
 						<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="${totalitem }"
+						name="precovenda" type="text" value="${produtocomposto.precovenda }"
 						placeholder="Digite o Preco de Venda" />				
 				
                 </div>
@@ -200,12 +200,12 @@
                             
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-									    <th>Código</th>
-									    <th>Descrição</th>
+                                        <th>Descrição</th>
+<!-- 									    <th>Código</th> -->
+<!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
-									    <th>Preço Custo</th>
-									    <th>Total Item</th>
+<!-- 									    <th>Preço Custo</th> -->
+<!-- 									    <th>Total Item</th> -->
 <!-- 									    <th>Total Item</th> -->
 									    
 <!-- 									     <th>Ativo?</th> -->
@@ -226,12 +226,20 @@
   
   <tr class="gradeX">
 
-			      <td>${item.id}</td>
-                  <td>${item.codigo}</td>
-                  <td>${item.descricao}</td>
-                  <td><input name="qtd"type="text" value="${item.qtd}" class="effect soma" onkeyup="up(this)" onBlur="calculaitem();"></td>
-                   <td> <input name="precounit" type="text" value="${item.precoUnitario}" /></td>
-                    <td><input id="valoritemform"name="valoritemform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculatotalitem();"/></td>
+<%--  					 <td>${item.id}</td> --%>
+			      <td>${item.key}</td>
+			    
+			    
+			    
+			     <td>${item.value}</td>
+			      
+<%--                   <td>${item.codigo}</td> --%>
+<%--                   <td>${item.descricao}</td> --%>
+<%--                   <td><input name="qtd"type="text" value="${item.qtd}" class="effect soma" onkeyup="up(this)" onBlur="calculaitem();"></td> --%>
+<%--                    <td> <input name="precounit" type="text" value="${item.precoUnitario}" /></td> --%>
+<%--                     <td> <input name="precounit" type="text" value="${item.totalItem}" /></td> --%>
+                    
+<!--                     <td><input id="valoritemform"name="valoritemform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculatotalitem();"/></td> -->
 <%--                    <td>${item.isativo}</td> --%>
 
 
@@ -244,17 +252,17 @@
 							
       								
       								<a
-									href="${pageContext.request.contextPath}/item/informacao?id=${item.id}"
+									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
 									title="informação" class="fa fa-info fa-2x"></a>
 									
 										<a
-									href="${pageContext.request.contextPath}/item/editar?id=${item.id}"
+									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
 									title="editar" class="fa fa-pencil fa-2x"></a>
 									
 									
-									<a href="#myAlert${item.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
-			<div id="myAlert${item.id}" class="modal hide">
+			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button">×</button>
                 <h3>Alerta de Exclusão</h3>
@@ -262,7 +270,7 @@
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
            
             </div>		
 								

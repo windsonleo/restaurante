@@ -32,69 +32,69 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Pedido de Compra</h5>
+            <h5>Recebimento</h5>
           </div>
           
           
-          <div class="widget-content nopadding">
+<!--           <div class="widget-content nopadding"> -->
           
           
-                   <form action="${pageContext.request.contextPath}/recebimento/localizarpedido?id=${pedidocompra.id}" method="get" class="form-horizontal">
+<%--                    <form action="${pageContext.request.contextPath}/recebimento/localizarpedido?id=${pedidocompra.id}" method="get" class="form-horizontal"> --%>
               
-               <div class="control-group">
-                <label class="control-label">Número do Pedido Compra</label>
-                <div class="controls">
-							<input id="id" name="id" class="form-control"
-							type="text" value="${pedidocompra.id }"
-							placeholder="Digite o Número do Pedido de Compra" />                </div>
-              </div>
+<!--                <div class="control-group"> -->
+<!--                 <label class="control-label">Número do Pedido Compra</label> -->
+<!--                 <div class="controls"> -->
+<!-- 							<input id="id" name="id" class="form-control" -->
+<%-- 							type="text" value="${pedidocompra.id }" --%>
+<!-- 							placeholder="Digite o Número do Pedido de Compra" />                </div> -->
+<!--               </div> -->
               
-                             <div class="control-group">
-                <label class="control-label"></label>
-                <div class="controls">
- 	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
+<!--                              <div class="control-group"> -->
+<!--                 <label class="control-label"></label> -->
+<!--                 <div class="controls"> -->
+<!--  	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button> -->
                
                
-               </div>
-              </div>
-              </form>
+<!--                </div> -->
+<!--               </div> -->
+<!--               </form> -->
           
           
           
-          <div class="widget-content nopadding">
+<!--           <div class="widget-content nopadding"> -->
           
-                  <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Pedido Compra : ${pedidocompra.id}</h5>
-          </div>
+<!--                   <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
+<%--             <h5>Detalhes do Pedido Compra : ${pedidocompra.id}</h5> --%>
+<!--           </div> -->
           
 		
-						<div class="control-group">
-							<label class="control-label">Código</label>
-							<div class="controls">
-							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${pedidocompra.id }"> 
+<!-- 						<div class="control-group"> -->
+<!-- 							<label class="control-label">Código</label> -->
+<!-- 							<div class="controls"> -->
+<%-- 							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${pedidocompra.id }">  --%>
 							
 							
-							</div>
-						</div>
+<!-- 							</div> -->
+<!-- 						</div> -->
 
-             <div class="control-group">
-                <label class="control-label">Data</label>
-                <div class="controls">
-				<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }"> 
+<!--              <div class="control-group"> -->
+<!--                 <label class="control-label">Data</label> -->
+<!--                 <div class="controls"> -->
+<%-- 				<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }">  --%>
 				
 				
-                </div>
-              </div>			
+<!--                 </div> -->
+<!--               </div>			 -->
               
               
-              <div class="control-group">
-                <label class="control-label">Status</label>
-                <div class="controls">
-				<input id="status" name="status" type="text" class="form-control" value="${pedidocompra.status }"> 
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Status</label> -->
+<!--                 <div class="controls"> -->
+<%-- 				<input id="status" name="status" type="text" class="form-control" value="${pedidocompra.status }">  --%>
 				
 				
-                </div>
-              </div>             						
+<!--                 </div> -->
+<!--               </div>             						 -->
 
 
 <!--               <div class="control-group"> -->
@@ -124,45 +124,45 @@
 				
 <!--                 </div> -->
 <!--               </div>							 -->
-              <div class="control-group">
-                <label class="control-label">Total</label>
-                <div class="controls">
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Total</label> -->
+<!--                 <div class="controls"> -->
 				
-					<input id="total" name="total" type="text" class="form-control" value="${pedidocompra.total}" size="20px" style="color: blue; font-size: 15px"> 
+<%-- 					<input id="total" name="total" type="text" class="form-control" value="${pedidocompra.total}" size="20px" style="color: blue; font-size: 15px">  --%>
 				
-                </div>
-              </div>
+<!--                 </div> -->
+<!--               </div> -->
               
-              	   <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
-              </div>						
+<!--               	   <div class="form-actions"> -->
+<!--                 <input type="submit" value="Inserir" class="btn btn-success"> -->
+<!--               </div>						 -->
 		
- <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5>
+<!--  <div class="widget-box"> -->
+<!--           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
+<%--             <h5>Itens do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5> --%>
            
-          </div>
+<!--           </div> -->
      
-     <div class="widget-content nopadding">               
-       <div class="container-fluid">
+<!--      <div class="widget-content nopadding">                -->
+<!--        <div class="container-fluid"> -->
      
-		  <ul id="items" name="items"class="quick-actions">
+<!-- 		  <ul id="items" name="items"class="quick-actions"> -->
 
-		  <c:forEach var="item" items="${pedidocompra.items}" varStatus="id">
+<%-- 		  <c:forEach var="item" items="${pedidocompra.items}" varStatus="id"> --%>
 
-		<c:choose>
+<%-- 		<c:choose> --%>
 		
-		  <c:when test="${item.id != null}">
+<%-- 		  <c:when test="${item.id != null}"> --%>
 		  
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/item/">
-         <i class="icon-dashboard"></i> <div class="huge">${item.id}</div>
-                                       <div>${item.descricao}</div>
-                                      <div>Total: ${item.totalItem}</div> 
-                                      <div>Qtd: ${item.qtd}</div>
+<%--         <li class="bg_lb"> <a href="${pageContext.request.contextPath}/item/"> --%>
+<%--          <i class="icon-dashboard"></i> <div class="huge">${item.id}</div> --%>
+<%--                                        <div>${item.descricao}</div> --%>
+<%--                                       <div>Total: ${item.totalItem}</div>  --%>
+<%--                                       <div>Qtd: ${item.qtd}</div> --%>
                                       
-                                      </a> 
+<!--                                       </a>  -->
                                       
-                                      </li>
+<!--                                       </li> -->
        
      
 		                              
@@ -171,20 +171,20 @@
                     
                     
                         
-                    </c:when>
+<%--                     </c:when> --%>
                     
-                    </c:choose>
+<%--                     </c:choose> --%>
                     
-                    </c:forEach>
-                    	            </ul> 
+<%--                     </c:forEach> --%>
+<!--                     	            </ul>  -->
                     	            
-                    	            </div>      	
+<!--                     	            </div>      	 -->
                     
 		
-	</div>
+<!-- 	</div> -->
 	 	 
 		
-	</div>
+<!-- 	</div> -->
 			
 				
 		              				
@@ -219,27 +219,45 @@
                           <div class="control-group">
 							<label class="control-label">Pedido Compra</label>
 							<div class="controls">
-							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${pedidocompra.id }"> 
+							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra }"> 
 							
 							
 							</div>
 						</div>			
               
               
-              <div class="control-group">
-                <label class="control-label">Status</label>
+                 <div class="control-group">
+                <label class="control-label">Status Pedido</label>
                 <div class="controls">
-				<input id="status" name="status" type="text" class="form-control" value="${recebimento.status }"> 
-				
+                         <select id="status"name="status"  class="form-control" >
+	                                  <optgroup label="Status do Recebimento">
+		           					<c:forEach var="status" items="${tipoStatusList}">
+		           			
+		           				<option value="${status}">${status}</option>
+		           				      				
+		           				
+		       				</c:forEach>
+		                </optgroup>
+	                    </select>				
 				
                 </div>
-              </div>             						
+              </div>           						
 
 
               <div class="control-group">
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
-					<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${pedidocompra.fornecedor }"> 
+					<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${recebimento.fornecedor }"> 
+				
+				
+                </div>
+                
+              </div>
+              
+                          <div class="control-group">
+                <label class="control-label">isPago</label>
+                <div class="controls">
+					<input id="ispago" name="ispago" type="checkbox" class="form-control" value="false"> 
 				
 				
                 </div>
@@ -274,13 +292,13 @@
 <!--               </div> -->
 
               <div class="control-group">
-                <label class="control-label">Roles</label>
+                <label class="control-label">Items</label>
                 <div class="controls">
 	 <select id="items"name="items" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Items">
 		           						           				
 		           				
-		           					<c:forEach var="item" items="${pedidocompra.items}">
+		           					<c:forEach var="item" items="${recebimento.items}">
 		           			
 		           				<option value="${item.id}">${item.descricao}</option>
 		           				      				
