@@ -16,7 +16,7 @@
 			      <ul class="dropdown-menu">
 			        <li><a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id }"><i class="icon-user"></i>Meu Perfil</a></li>
 			        <li class="divider"></li>
-			        <li><a href="${pageContext.request.contextPath}/usuario/tarefas"><i class="icon-check"></i> Minhas Tarefas</a></li>
+			        <li><a href="${pageContext.request.contextPath}/usuario/tarefas"><i class="icon-tasks"></i> Minhas Tarefas</a></li>
 			        <li class="divider"></li>
 			        <li><a href="${pageContext.request.contextPath}/"><i class="icon-key"></i> Sair</a></li>
 			    
@@ -26,13 +26,13 @@
 		    
 		      <sec:authorize access="hasRole('ROLE_ADM')">
 		      <tt>GrantedAuthority</tt>s.
- 					<li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messagess" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Empresa</span><b class="caret"></b></a>
+ 					<li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messagess" class="dropdown-toggle"><i class="icon-group"></i>  <span class="text">Empresa</span><b class="caret"></b></a>
 			     
 			      <ul class="dropdown-menu">
-		        	<li><a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="icon-check"></i> Sobre</a></li>
+		        	<li><a href="${pageContext.request.contextPath}/empresa/movimentacao"><i class="icon-book"></i> Sobre</a></li>
 		        	 <li class="divider"></li>
 		        	
-			        <li ><a href="${pageContext.request.contextPath}/empresa/metas"><i class="icon-check">Metas</i></a></li>
+			        <li ><a href="${pageContext.request.contextPath}/empresa/metas"><i class="icon-list-ul"></i> Metas</a></li>
 		    
 		    </ul>
 		    </li>
@@ -81,11 +81,11 @@
         <li class="active"><a href="${pageContext.request.contextPath}/home"><i class="icon icon-home"></i> <span>Home</span></a> </li>
   
   
-      <li class=""><a href="${pageContext.request.contextPath}/categoria/movimentacao"><i class="icon icon-home"></i> <span>Categoria</span></a> </li>
+      <li class=""><a href="${pageContext.request.contextPath}/categoria/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png" /></i> <span>Categoria</span></a> </li>
   
-      <li class=""><a href="${pageContext.request.contextPath}/cliente/movimentacao"><i class="icon icon-home"></i> <span>Cliente</span></a> </li>
+      <li class=""><a href="${pageContext.request.contextPath}/cliente/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png" /></i> <span>Cliente</span></a> </li>
       
-          <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Compras</span> <span class="label label-primary">3</span></a>
+          <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> <span>Compras</span> <span class="label label-primary">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">Pedido Compra</a></li>
         <li><a href="${pageContext.request.contextPath}/recebimento/movimentacao">Recebimento</a></li>
@@ -95,12 +95,12 @@
       
       
   
-    <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="icon icon-signal"></i> <span>Entregas</span></a> </li>
+    <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> <span>Entregas</span></a> </li>
         
          <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
         
         
-        <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Financeiro</span> <span class="label label-primary">5</span></a>
+        <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" /></i> <span>Financeiro</span> <span class="label label-primary">5</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/banco/movimentacao">Banco</a></li>
         <li><a href="${pageContext.request.contextPath}/caixa/movimentacao"">Caixa</a></li>
@@ -118,12 +118,12 @@
     </sec:authorize>
     
     
-    <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i class="icon icon-th"></i> <span>Fornecedor</span></a></li>
-    <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i class="icon icon-fullscreen"></i> <span>Garçon</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/fornecedor.png" /></i> <span>Fornecedor</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" /></i> <span>Garçon</span></a></li>
 
-    <li><a href="${pageContext.request.contextPath}/mesa/movimentacao"><i class="icon icon-tint"></i> <span>Mesa</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/mesa/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png" /></i> <span>Mesa</span></a></li>
     
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Produto</span> <span class="label label-important">3</span></a>
+        <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" /></i> <span>Produto</span> <span class="label label-important">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/produto/movimentacao">Produto</a></li>
         <li><a href="${pageContext.request.contextPath}/produtocomposto/movimentacao">Produto Composto</a></li>
@@ -131,7 +131,7 @@
       </ul>
     </li>
     
-            <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Venda</span> <span class="label label-important">3</span></a>
+            <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/venda.png" /></i> <span>Venda</span> <span class="label label-important">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/pedidovenda/movimentacao">Pedido Venda</a></li>
         <li><a href="form-validation.html">Devolução Venda</a></li>
@@ -142,7 +142,7 @@
       <sec:authorize access="hasRole('ROLE_ADM')">
     
     
-    <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i class="icon icon-pencil"></i> <span>Usuario</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuário.png" /></i> <span>Usuario</span></a></li>
  <tt>GrantedAuthority</tt>s.
 
 </sec:authorize>

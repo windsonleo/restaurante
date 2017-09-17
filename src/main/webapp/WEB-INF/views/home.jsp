@@ -61,14 +61,14 @@
   
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/"> <i class="icon-dashboard"></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
-        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/"> <i class="icon-signal"></i> Produtos</a> </li>
-        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/"> <i class="icon-inbox"></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedidos </a> </li>
-        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-th"></i> Mesas</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/"> <i class="icon-fullscreen"></i> Garçon</a> </li>
-        <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-th-list"></i> Pagamentos</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"> <i class="icon-tint"></i> Fornecedor</a> </li>
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-pencil"></i>Estoque</a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
+        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda </a> </li>
+        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garçon.png" ></i> Garçon</a> </li>
+        <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
 <!--         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li> -->
 <!--         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
 
