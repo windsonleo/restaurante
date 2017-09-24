@@ -60,8 +60,6 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     
     private double totalitem;
 
-//    private List<Fornecedor> fornecedorList;
-//    private List<Categoria> categoriaList;
 
 
     
@@ -121,7 +119,6 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
       		usuario = usudao.PegarPorNome(usuario.getUsername());
               
       		model.addAttribute("usuarioAtt", usuario);
-//           
 
       		if(produtocomposto == null){
       			produtocomposto = new ProdutoComposto();
@@ -143,7 +140,6 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView NovosProdutos(HttpServletRequest request) {
 
 
-     //   long idf = Long.parseLong(request.getParameter("idpedido"));
         ModelAndView novosprodutos = new ModelAndView("novosprodutos");
         
         List<ProdutoComposto>produtos = dao.getAll();
@@ -166,16 +162,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	
     	ProdutoComposto produto = dao.PegarPorId(idf);
     	 
-    	 // mudar para trazer pelo id da mesa e pelo status da mesa
-    	// pedidos = pedidovendadao.getAll();
-    	
-    	
-   // 	List<Produto> produtoList = produtoDao.getAll();
-    //	List<Item> itemList = dao.getAll();
-    	
-    //	detalhesmesa.addObject("itemList", itemList);
-    	 detalhesproduto.addObject("produto", produto);
-    //	detalhesmesa.addObject("mesa", mesa);
+       	 detalhesproduto.addObject("produto", produto);
 
   		
   		return detalhesproduto;
@@ -189,9 +176,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	if(produtocomposto != null){
     		
     		produtocomposto.setItens(items);
-    		
-//    		dao.add(produtocomposto);
-    		
+    		    		
     	}else{
     		
     		produtocomposto = new  ProdutoComposto();
@@ -205,22 +190,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	
         Produto produto = daoprod.PegarPorId(idf);
     	
-//        Item  item  = new Item(produto);
-       
-     //   itdao.add(item);
-        
-     //   items.add(item);
-        
-//        produtocomposto.getItens().add(item);
-//        produtocomposto.setItens(items);
-        
-     //   produtocomposto.setItens(items);
-        //dao.add(produtocomposto);
-//        dao.add(produtocomposto);
-    	    	
-//    	System.out.println("item"+item.toString());
     	System.out.println("produto"+produto.toString());
-  //  	System.out.println("produtocomposto"+produtocomposto.toString());
 
     	
 
@@ -228,13 +198,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
 
 
-//        cadastroprodutocomposto.addObject("pedidovenda", pv);
-//        cadastroprodutocomposto.addObject("produtocomposto", pagamento);
         cadastroprodutocomposto.addObject("items", items);
         cadastroprodutocomposto.addObject("produtocomposto", produtocomposto);
-
-//	    	System.out.println("pedidovenda methodo add:"+pv.toString());
-//	    	System.out.println("pagamento method add:"+pagamento.toString());
 
 
         return cadastroprodutocomposto;
@@ -248,13 +213,6 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	
 
         Long idf = Long.parseLong(request.getParameter("id"));
-     //   Long idfprodcomp = Long.parseLong(request.getParameter("idprocomp"));
-  
-//        String prodesc = request.getParameter("produtoescolhido");
-//        
-//        System.out.println(prodesc);
-
-        
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
         this.produtocomposto = dao.PegarPorId(idf);
@@ -264,37 +222,16 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
        
        
        
-//        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//        List<Item> itemList = itempedidovendaDao.getAll();
+      totalitem = 0;
 
 
-        //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
-       totalitem = 0;
-
-
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (int i = 0; i < produtocomposto.getItens().size(); i++) {
-//        	
-//        	totalitem = totalitem + produtocomposto.getItens().get(i).getTotalItem();
-//
-//			
-//		}
-//        
         produtocomposto.setPrecocusto(totalitem);
         
         
-      //  pedidoVendaDao.editar(pv);
-
-  
-
-
-//        additemvenda.addObject("itemList", itemList);
-//        additemvenda.addObject("produtoList", produtoList);
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+         additemprodutocomposto.addObject("produtocomposto", produtocomposto);
         additemprodutocomposto.addObject("produtosList", produtosList);
         additemprodutocomposto.addObject("totalitem", totalitem);
 
-      //  additempedidovenda.addObject("totalpedido", totalpedido);
 
 
         return additemprodutocomposto;
@@ -308,11 +245,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         Long idfprodcomp = Long.parseLong(request.getParameter("idprocomp"));
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
         
-    	
-//    	 String prodesc = request.getParameter("produtoescolhido");
-    	 
-//    	 int  prodqtd =Integer.parseInt(request.getParameter("qtd"));
-    	 
+    	    	 
         
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
        
@@ -322,7 +255,6 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
     	if(produto == null){
     		
-//          ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
 
   		String erros = "Não Existe esse Produto";
   		
@@ -353,68 +285,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
            
            ProdutoComposto pc = dao.PegarPorId(idfprodcomp);
            
-//           items.clear();
-      //     dao.add(produtocomposto);
-           
-          // items.add(item);
-           
-       
-//     
-//           prodcomp.getItens().add(item);
-//           
-//           dao.add(prodcomp);
-           
-      //     dao.add(prodcomp);
-//           produtocomposto = dao.PegarPorId(entityId)
-        //   produtocomposto.setItens(items);
-        
-       // PedidoVenda pedidov = pedidoVendaDao.PegarPorId(pv.getId());
-        
-       // System.out.println("windson ped"+pedidov.toString());
-        
-       
-        
-        
-//        
-//        item.setQtd(prodqtd);
-//        item.setTotalItem(item.getTotalItem());
-//        item.setPedido(pedidov);
-//       
-      //  pedidov.getItems().add(item);
-        
-        
-//        itempedidovendaDao.add(item);
-        
-      //  pedidoVendaDao.add(pedidov);
-        
-        
-   //     pv.getItems().add(item);
-        
-     //   pedidoVendaDao.add(pedidov);
-        
-//        double totalpedido = 0;
-//
-//
-//        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (int i = 0; i < pv.getItems().size(); i++) {
-//        	
-//            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
-//
-//			
-//		}
-//        
-     //   pv.setTotal(totalpedido);
-        
-//        System.out.println(pv.getItems().toString());
-//        System.out.println(pv.getTotal());
-//        System.out.println(pv);
 
-        
-        
-//        
-    //    pedidoVendaDao.add(pv);
-
-//
            additemprodutocomposto.addObject("produtocomposto", pc);
            additemprodutocomposto.addObject("produtosList", produtosList);
 

@@ -84,10 +84,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     final
     ProdutoDAO produtopedidovendaDao;
     
-//
-//    private
-//    final
-//    AbstractEntityDao<Pagamento> pagamentopedidovendaDao;
+
 	private
 	final
 	FornecedorDAO fornecedorDao;
@@ -104,14 +101,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     private Recebimento recebimento = new Recebimento();
 
 
-//	public PedidoVendaController(PedidoVendaDAO dao, MesaDAO daomesa, GarconDAO daogarcon){
-//		
-//		super("pedidovenda");
-//		
-//		this.pedidoDao= dao;
-//		this.garconDao= daogarcon;
-//		this.mesaDao = daomesa;
-//	}
 
     @Autowired
     public RecebimentoController(RecebimentoDAO daorec,PedidoCompraDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, FornecedorDAO fdao,UsuarioDAO daousu,EstoqueDAO estdao) {
@@ -120,7 +109,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         this.pedidoCompraDao = dao;
         this.itempedidovendaDao = daoitem;
         this.produtopedidovendaDao = produtodao;
-       // this.pagamentopedidovendaDao = pagamentodao;
         this.fornecedorDao = fdao;
         this.usudao = daousu;
         this.recebimentoDao = daorec;
@@ -153,17 +141,13 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     @Override
     protected AbstractEntityDao<Recebimento> getDao() {
-        // TODO Auto-generated method stub
         return recebimentoDao;
     }
 
 
     @ModelAttribute
     public void addAttributes(Model model) {
-//
         List<Recebimento> RecebimentoList = recebimentoDao.getAll();
-//	        List<Mesa> mesaList =mesaDao.getAll();
-//	       
         TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
 
@@ -172,11 +156,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
 
-//        List<Cliente> clienteList = clienteDao.getAll();       
-//        
-//        List<Garcon> garconList = garconDao.getAll();
-//
-//        List<Mesa> mesaList = mesaDao.getAll();
+
         
         Usuario usuario = new Usuario();
     		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -184,23 +164,16 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     		usuario = usudao.PegarPorNome(usuario.getUsername());
             
     		model.addAttribute("usuarioAtt", usuario);
-    //    
-
-       
-//			
+			
         model.addAttribute("RecebimentoList", RecebimentoList);
         model.addAttribute("origemPedidoList", origemPedidoList);
-//        model.addAttribute("garconList", garconList);
-//        model.addAttribute("mesaList", mesaList);
         model.addAttribute("situacaoPedidoList", situacaoPedidoList);        
         model.addAttribute("tipoStatusList", tipoStatusList);
-//        model.addAttribute("clienteList", clienteList);
 
     }
 
 
 
-    // salva  forma pagamento
     @RequestMapping(value = "finalizarrecebimento", method = RequestMethod.GET)
     public ModelAndView FinalizarRecebimento(HttpServletRequest request) {
 
@@ -208,33 +181,16 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
     	estoque = estdao.PegarPorId(49L);
 
-//    	
         ModelAndView finalizacaorecebimento = new ModelAndView("finalizacaorecebimento");
         
-       // Map<Item,Double > itemsmap =  estoque.getItens();
-        
-//        if(itensRecebimentoCorfirmados == null){
-//        	
-//        	itensRecebimentoCorfirmados = new ArrayList<>();
-//        	itensRecebimentoCorfirmados = recebimento.getItems();
-//        }
+
         
         System.out.println("estoque "+estoque.getItens());
         System.out.println("itens rec "+ recebimento.getItems());
         System.out.println("itens rec conf "+ itensRecebimentoCorfirmados);
 
         System.out.println("recebimento "+ recebimento);
-        
-//       for (int i=0; i < recebimento.getItems().size();i++){
-//       	Item item = recebimento.getItems().get(i);
-//    	item.setEstoque(estoque);
-//        itempedidovendaDao.editar(item);
-//   	 	itemsmap.put(item,item.getQtd());
-//
-//       
-//       }
-        	
-//        	Item item = recebimento.getItems().get(i);
+
         
         	Set<Item> keys = recebimento.getItems().keySet();
         	
@@ -242,7 +198,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         	
         	for (Item item : keysorder) {
 				
-//        		Item itemv = recebimento.getItems().get(item.getId());
 
             	Produto produto = produtopedidovendaDao.getProdutoPorCodebar(item.getCodigo());
             	Double qtd = item.getQtd();
@@ -315,37 +270,16 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		    		return additempedidovenda;
 		    	}
 		    	
-//		    	
-		    	
-//		    	if(recebimento == null){
-//		    		
-//		    	 recebimento = new Recebimento();
-//		    	 itensRecebimentoCorfirmados.clear();
-//		    	 
-//		    	 
-//		    	}
-		    	
-		    	// LocalDate dataDeInscricao = LocalDate.now();
-		    	
-//		    	this.pagamento.setDatapagamento(new Date ());
+
 		    	
 		        totalpedido = 0;
 
 
-		        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//		        for (int i = 0; i < pv.getItems().size(); i++) {
-//		        	
-//		            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-//
-//					
-//				}
 		        
 		        pv.setTotal(totalpedido);
 		        
 		        pv.setIspago(false);
-		        
-//		        itens = pv.getItems();
-		        
+		        		        
 		        
 		        pv.getRecebimentos().add(recebimento);
 		        
@@ -355,7 +289,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		        pedidoCompraDao.editar(pv);
 		        
 		        recebimentoDao.editar(recebimento);
-		       // recebimento.setItems(itens);
 		    	
 		        ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
@@ -367,9 +300,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		        additemrecebimento.addObject("recebimento",recebimento);
 		        additemrecebimento.addObject("itens",itens);
 
-//		    	System.out.println("pedidovenda:"+pv.toString());
-//		    	System.out.println("pagamento:"+pagamento.toString());
-//		    	
+		    	
 		    	itensRecebimentoCorfirmados.clear();
 
 
@@ -398,8 +329,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	        System.out.println("itens it:"+ it);
 	        
 	        recebimento = recebimentoDao.PegarPorId(idfrec);
-	       // recebimento.setPedidocompra(pv);
-	      //  recebimentoDao.editar(recebimento);
+
 	        
 	        
 	        
@@ -426,7 +356,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	        		
 	        		itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtd());
 	        		
-//	        		recebimento.getItems().put(itemvar, itemvar.getQtd());
 	        		recebimento.setItems(itensRecebimentoCorfirmados);
 	        		
 	        		
@@ -444,12 +373,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 			}
 
 
-	        
-//	        pv = recebimento.getPedidocompra();
-//	        pv.getRecebimentos().add(recebimento);
-	     //   recebimento.setPedidocompra(pv);
-          //  pedidoCompraDao.editar(pv);
-	     //   recebimento.setItems(itensRecebimentoCorfirmados);
+
 	        recebimentoDao.editar(recebimento);
 	        
 	    	System.out.println("pedidovenda:"+pv.toString());
@@ -473,10 +397,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		        additemrecebimento.addObject("recebimento",recebimento);
 		        additemrecebimento.addObject("itens",itens);
 
-//		    	System.out.println("pedidovenda:"+pv.toString());
-//		    	System.out.println("pagamento:"+pagamento.toString());
-//		    	
-//		    	formas.clear();
+
 
 
 	        return additemrecebimento;
