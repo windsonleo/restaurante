@@ -263,7 +263,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		    		
 		            ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
 
-		    		String erros = "Não Existe esse pEDIDO";
+		    		String erros = "Nao Existe esse pEDIDO";
 		    		
 		    		additempedidovenda.addObject("erros",erros);
 		    		

@@ -242,7 +242,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     	if(produto == null){
     		
 
-    		String erros = "Não Existe esse Produto";
+    		String erros = "Nao Existe esse Produto";
     		
     		additempedidocompra.addObject("erros",erros);
             additempedidocompra.addObject("pedidocompra", pv);

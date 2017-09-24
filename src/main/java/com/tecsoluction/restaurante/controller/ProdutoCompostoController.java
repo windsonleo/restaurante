@@ -256,7 +256,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	if(produto == null){
     		
 
-  		String erros = "Não Existe esse Produto";
+  		String erros = "Nao Existe esse Produto";
   		
   		additemprodutocomposto.addObject("erros",erros);
   		additemprodutocomposto.addObject("produtocomposto",produtocomposto = dao.PegarPorId(idfprodcomp));

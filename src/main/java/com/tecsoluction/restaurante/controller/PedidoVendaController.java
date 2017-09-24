@@ -28,7 +28,6 @@ import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
@@ -95,7 +94,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.itempedidovendaDao = daoitem;
         this.produtopedidovendaDao = produtodao;
         this.clienteDao = daocliente;
-        
         this.mesaDao = daomesa;
         this.garconDao = daogarcon;
         this.usudao = daousu;
@@ -249,7 +247,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     		
           ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-  		String erros = "Não Existe esse Produto";
+  		String erros = "Nao Existe esse Produto";
   		
   		additempedidovenda.addObject("erros",erros);
   		additempedidovenda.addObject("pv",pv);
