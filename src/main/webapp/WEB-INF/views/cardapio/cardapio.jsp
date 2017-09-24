@@ -5,7 +5,7 @@
 
 
 
-<div id="content" >
+<div id="contenttt" class="contentcardapio">
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Sushi Senpai</a> >> <a href="#" class="current">Cardápio </a></div>
     
@@ -60,48 +60,41 @@
 
 
 		<div id="cardapio" class="cardapio">
-				<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
-				                    <tr class="">
-				                  <td class="lb_nome_cardapio">${categoria.nome}</td> </br>
-				
-				<c:forEach var="produto" items="${categoria.produtos}" varStatus="id">
-
-<%-- 		<c:choose> --%>
+		<ul class="">
 		
-<%-- 		  <c:when test="${categoria.id != null}"> --%>
-              
-             
-                  
-<%-- 			      <td>${categoria.id}</td> --%>
-<%--                   <td class="lb_nome_cardapio" >${categoria.nome}</td> </br> --%>
-                  
-                  <td class="lb_nome_produto" >${produto.nome} .................................................R$ : ${produto.precovenda}</td> </br>
-                  <td class="lb_produto_descricao">(${produto.descricao})</td></br>
-                 
-                 </c:forEach> 
-                  </tr>
-                  
-                  <tr>
+		<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
+		
+		<li class="lb_nome_cardapio"> ${categoria.nome}  </li>
+		
+			<c:forEach var="produto" items="${categoria.produtos}" varStatus="id">
+		
+				  <li class="lb_nome_produto" >${produto.nome} .....................................................................................................................................................................................................<label class="preco"> R$ :${produto.precovenda}</label></li>
+                  <p class="lb_produto_descricao">(${produto.descricao}) <i class="icon icon-picture"></i></p>
                   
                   
-                  </tr>
-								
-								
 
-									
-<!-- 									 <a -->
-<%-- 									href="${pageContext.request.contextPath}/categoria/delete?id=${categoria.id}" --%>
-<!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
-									
-									
-									
-									
+			<div id="myAlert${produto.id}" class="modal hide">
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close" type="button">×</button>
+					<h3>Alerta de Exclusão</h3>
+				</div>
+				<div class="modal-body">
+					<p>Deseja Realmente Excluir esse Registro</p>
+				</div>
+				<div class="modal-footer">
+					<a data-dismiss="" class="btn btn-danger"
+						href="${pageContext.request.contextPath}/produto/delete?id=${produto.id}">Confirma</a>
+					<a data-dismiss="modal" class="btn" href="#">Cancela</a>
+				</div>
+
+			</div>
+			
+			</c:forEach> 
+             
+			</c:forEach>
+		
+		</ul>
 				
-                
-<%--                 </c:when> --%>
-                
-<%--                 </c:choose> --%>
-                </c:forEach>
 
 </div>
 

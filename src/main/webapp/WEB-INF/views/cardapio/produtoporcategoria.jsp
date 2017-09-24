@@ -5,7 +5,7 @@
 
 
 
-<div id="content" >
+<div id="contenttt" class="contentcardapio" >
   <div id="content-header">
     <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/sushisenpai/cardapio" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Sushi Senpai</a> >> <a href="#" class="current">Cardápio </a></div>
     
@@ -62,7 +62,7 @@
 		<div id="cardapio" class="cardapio">
 
 				                    <ul class="">
-				                  <li class="lb_nome_cardapio">${produtos.size()}</li>
+				                  <li class="lb_nome_cardapio">${categoria.nome}</li>
 				
 				<c:forEach var="produto" items="${produtos}" varStatus="id">
 
@@ -75,9 +75,9 @@
 <%-- 			      <td>${categoria.id}</td> --%>
 <%--                   <td class="lb_nome_cardapio" >${categoria.nome}</td> </br> --%>
                   
-                  <li class="lb_nome_produto" >${produto.nome} .................................................R$ : ${produto.precovenda}</li> </br>
-                  <li class="lb_produto_descricao">(${produto.descricao})</li></br>
-                 
+                  <li class="lb_nome_produto" >${produto.nome} ..........................................................................................................................................................................................<label class="preco"> R$ :${produto.precovenda}</label></li>
+                  <p class="lb_produto_descricao">(${produto.descricao}) <i class="icon icon-picture"></i></p>
+                 	
                  </c:forEach> 
                   </ul>
             

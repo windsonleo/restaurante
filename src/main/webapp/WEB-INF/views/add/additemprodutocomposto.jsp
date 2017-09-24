@@ -8,6 +8,8 @@
     <h1>Add Item ao Produto Composto <strong> ${produtocomposto.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
+  
+  
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
@@ -36,6 +38,8 @@
 								  
 								  
 									</datalist>
+									
+									<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
 									
 										<input type="text"  id="idprocomp" name="idprocomp"  class="form-horizontal" value="${produtocomposto.id }" placeholder="Escolha a Quantidade">
 
@@ -73,11 +77,11 @@
           </div>
                     <div class="widget-content nopadding">               
           
-          					<div class="form-inline"> 
-          
           			<div class="control-group">
           
           			<div class="controls">
+          			
+          			 <div class="form-inline"> 
 						 
 <!-- 							<label>Código</label>	 -->
 <%-- 							<input id="id" name="id" type="text" class="form-control" value="${produtocomposto.id }">  --%>

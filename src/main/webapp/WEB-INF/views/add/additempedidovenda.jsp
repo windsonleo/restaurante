@@ -8,6 +8,24 @@
     <h1>Add Item ao Pedido de Venda <strong> ${pedidovenda.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
+  
+   <c:if test="${erros != null }">
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+              <h4 class="alert-heading">Erros!</h4>
+              
+              ${erros}
+            </div>
+            
+    </c:if>
+    
+      <c:if test="${mensagem != null }">
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+              <h4 class="alert-heading">Sucesso!</h4>
+              
+              ${mensagem}
+            </div>
+            
+    </c:if>
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
@@ -30,7 +48,7 @@
 								
 									 	<c:forEach var="produto" items="${produtosList}" varStatus="id">
 										
-											  <option value="${produto.descricao }">  </option>
+											  <option value="${produto.id }"> ${produto.nome } </option>
 										
 										  </c:forEach>
 								  

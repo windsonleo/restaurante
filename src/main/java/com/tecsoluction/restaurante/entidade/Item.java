@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "ITEM")
-public class Item  implements Serializable{
+public class Item  implements Serializable, Comparable<Item>{
 
 
 	private static final long serialVersionUID = 1L;
@@ -84,7 +84,7 @@ public class Item  implements Serializable{
     public Item(Produto produto, PedidoVenda pedido) {
 
         this.codigo = produto.getCodebar();
-        this.descricao = produto.getDescricao();
+        this.descricao = produto.getNome();
         this.precoUnitario = produto.getPrecovenda();
         this.pedido = pedido;
 //        this.produto = produto;
@@ -297,6 +297,13 @@ public class Item  implements Serializable{
     public String toString() {
         return descricao.toUpperCase();
     }
+
+
+	@Override
+	public int compareTo(Item arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 }

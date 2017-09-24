@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a>>> <a href="#">Movimentação Forma de Pagamento</a> >><a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/formapagamento/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a>>> <a href="#">Movimentação Forma de Pagamento</a> >><a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
     <h1>Cadastro de Forma de Pagamento</h1>
   </div>
   <div class="container-fluid"><hr>

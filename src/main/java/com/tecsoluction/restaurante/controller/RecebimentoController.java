@@ -95,7 +95,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     private List<Item> itens = new ArrayList<>();
     
-    private Map<Item,Double> itensRecebimentoCorfirmados;
+    private Map<Item,Double> itensRecebimentoCorfirmados = new HashMap<>();
     
     private List<Produto> produtosList = new ArrayList<>();
     
@@ -199,184 +199,19 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     }
 
 
-//    @RequestMapping(value = "additempedidovenda", method = RequestMethod.GET)
-//    public ModelAndView additemvenda(HttpServletRequest request) {
-//
-//
-//        Long idf = Long.parseLong(request.getParameter("id"));
-//        ModelAndView additemvenda = new ModelAndView("additempedidovenda");
-//
-//        PedidoVenda pv = pedidoVendaDao.PegarPorId(idf);
-//
-//
-//        List<Produto> produtoList = produtopedidovendaDao.getAll();
-////        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//        List<Item> itemList = itempedidovendaDao.getAll();
-//
-//
-//        //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
-//        double totalpedido = 0;
-//
-//
-//        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (Item itempedido : itemList) {
-//
-//            totalpedido += itempedido.getTotalItem();
-//
-//        }
-//
-//
-//        additemvenda.addObject("itemList", itemList);
-//        additemvenda.addObject("produtoList", produtoList);
-//        additemvenda.addObject("pv", pv);
-//        additemvenda.addObject("totalpedido", totalpedido);
-//
-//
-//        return additemvenda;
-//    }
-
-
-//    @RequestMapping(value = "AddItemVenda", method = RequestMethod.POST)
-//    public ModelAndView additemvendaa(HttpServletRequest request) {
-//
-//
-////	    	long idf = Long.parseLong(request.getParameter("idpedidovenda"));
-//        ModelAndView additemvenda = new ModelAndView("additemvenda");
-//
-//
-//        //conversoes
-//        long idfprod = Long.parseLong(request.getParameter("codigo"));
-//        long idf = Long.parseLong(request.getParameter("idpedidovenda"));
-//        double total = Double.parseDouble(request.getParameter("valor"));
-//        int qtd = Integer.parseInt(request.getParameter("quantidade"));
-//        double precounitario = Double.parseDouble(request.getParameter("valor"));
-//
-//        PedidoVenda pv = pedidoVendaDao.PegarPorId(idf);
-//
-//        Item item = new Item();
-//
-//        //setando os valores dos itens
-//        item.setDescricao(request.getParameter("descricao"));
-//        item.setCodigo(request.getParameter("codigo"));
-//        item.setPrecoUnitario(precounitario);
-//        item.setQtd(qtd);
-//        item.setTotalItem(precounitario * qtd);
-//        pv.setTotal(pv.getTotal() + item.getTotalItem());
-//
-//
-//        item.setPedido(pv);
-//
-//        itempedidovendaDao.add(item);
-//
-//        List<Produto> produtoList = produtopedidovendaDao.getAll();
-////        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//        List<Item> itemList = itempedidovendaDao.getAll();
-//
-//
-//        //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
-//        double totalpedido = 0;
-//
-//
-//        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (Item itempedido : itemList) {
-//
-//            totalpedido += itempedido.getTotalItem();
-//
-//        }
-//
-//        additemvenda.addObject("itemList", itemList);
-//        additemvenda.addObject("produtoList", produtoList);
-//        additemvenda.addObject("pv", pv);
-//        additemvenda.addObject("totalpedido", totalpedido);
-//
-//
-//        return additemvenda;
-//    }
-
-    // carrega a pagina de add forma
-//    @RequestMapping(value = "addformapagamento", method = RequestMethod.GET)
-//    public ModelAndView addFormaPagamento(HttpServletRequest request) {
-//
-//
-//        Long idf = Long.parseLong(request.getParameter("id"));
-//        ModelAndView addformapagamento = new ModelAndView("addformapagamento");
-//
-//        PedidoVenda pv = pedidoVendaDao.PegarPorId(idf);
-//
-//
-//        List<Produto> produtoList = produtopedidovendaDao.getAll();
-//        List<Item> itemList = itempedidovendaDao.getAll();
-//
-////        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//      //  List<Pagamento> pagamentoList = pagamentopedidovendaDao.getAllPagamento(idf);
-//
-//
-//        addformapagamento.addObject("itemList", itemList);
-//        addformapagamento.addObject("produtoList", produtoList);
-//     //   addformapagamento.addObject("pagamentoList", pagamentoList);
-//
-//        addformapagamento.addObject("pv", pv);
-//
-//
-//        return addformapagamento;
-//    }
-
-    // salva  forma pagamento
-//    @RequestMapping(value = "AddPagamentoVenda", method = RequestMethod.POST)
-//    public ModelAndView SalvarFormaPagamento(HttpServletRequest request) {
-//
-//
-//        long idf = Long.parseLong(request.getParameter("idpedido"));
-//        ModelAndView addformapagamento = new ModelAndView("addformapagamento");
-//
-//        PedidoVenda pv = pedidoVendaDao.PegarPorId(idf);
-//
-//        Pagamento pg = new Pagamento();
-//        pg.setPedido(pv);
-//
-//
-//        pagamentopedidovendaDao.add(pg);
-//
-//
-//        List<Produto> produtoList = produtopedidovendaDao.getAll();
-//        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//        List<Pagamento> pagamentoList = pagamentopedidovendaDao.getAllPagamento(idf);
-//
-//
-//        addformapagamento.addObject("itemList", itemList);
-//        addformapagamento.addObject("produtoList", produtoList);
-//        addformapagamento.addObject("pagamentoList", pagamentoList);
-//
-//        addformapagamento.addObject("pv", pv);
-//
-//
-//        return addformapagamento;
-//    }
-
 
     // salva  forma pagamento
     @RequestMapping(value = "finalizarrecebimento", method = RequestMethod.GET)
     public ModelAndView FinalizarRecebimento(HttpServletRequest request) {
 
 
-       // long idf = Long.parseLong(request.getParameter("id"));
         
-    	estoque = estdao.PegarPorId(247L);
-    	//recebimento =recebimentoDao.PegarPorId(idf);
-    	
+    	estoque = estdao.PegarPorId(49L);
 
-
-
-        //estoque.getItens().put(, arg1);
-//        if(recebimento == null){
-//        	
-//        	recebimento = new Recebimento();
-////        	recebimento.setItems(items);
-//        }
 //    	
         ModelAndView finalizacaorecebimento = new ModelAndView("finalizacaorecebimento");
         
-        Map<Item,Double > itemsmap =  estoque.getItens();
+       // Map<Item,Double > itemsmap =  estoque.getItens();
         
 //        if(itensRecebimentoCorfirmados == null){
 //        	
@@ -409,68 +244,29 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 				
 //        		Item itemv = recebimento.getItems().get(item.getId());
 
+            	Produto produto = produtopedidovendaDao.getProdutoPorCodebar(item.getCodigo());
+            	Double qtd = item.getQtd();
             	
             	item.setEstoque(estoque);
+            	estoque.AddProdutoEstoque(produto, qtd);
             	
-            	estoque.getItens().put( item,item.getQtd());
-            	
-                itempedidovendaDao.editar(item);
+                recebimentoDao.editar(recebimento);
 
+                estdao.editar(estoque);
             	
-            	 itemsmap.put(item,item.getQtd());
             	
         	
         	}
         	
-        	
-//        }
-        
-        //estoque.setItens(itemsmap);
        
         
-        recebimentoDao.editar(recebimento);
-        
-        
-        estdao.editar(estoque);
 
-//	    	PedidoVenda pv = pedidoVendaDao.PegarPorId(idf);
-//	    	
-//	    	Pagamento pg = new Pagamento();
-//	    	pg.setPedido(pv);
-
-
-//	    	pagamentopedidovendaDao.add(pg);
-//	    	
-//	    	
-//	    	List<Produto> produtoList = produtopedidovendaDao.getAll();
-//	    	List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//	    	List<Pagamento>pagamentoList = pagamentopedidovendaDao.getAllPagamento(idf);
-//
-//	    	
-//	    	finalizacaovenda.addObject("itemList", itemList);
-//	    	finalizacaovenda.addObject("produtoList", produtoList);
-//	    	finalizacaovenda.addObject("pagamentoList", pagamentoList);
-
-//	    	finalizacaovenda.addObject("pv", pv);
 
 
         return finalizacaorecebimento;
     }
     
- 
-    @RequestMapping(value = "novospedidos", method = RequestMethod.GET)
-    public ModelAndView NovosPedidos(HttpServletRequest request) {
 
-
-        ModelAndView novospedidos = new ModelAndView("novospedidos");
-
-        	List<PedidoCompra> vendas = pedidoCompraDao.getAll();
-        	
-        	novospedidos.addObject("pedidovendasList", vendas);
-
-        return novospedidos;
-    } 
-    
     
     @RequestMapping(value = "additem", method = RequestMethod.GET)
     public ModelAndView additemRecebimentoForm(HttpServletRequest request) {
@@ -478,9 +274,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         Long idf = Long.parseLong(request.getParameter("id"));
         
-//        String prodesc = request.getParameter("produtoescolhido");
-//        
-//        System.out.println(prodesc);
 
         
         ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
@@ -488,41 +281,13 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         recebimento = recebimentoDao.PegarPorId(idf);
 
 
-       // produtosList = produtopedidovendaDao.getAll();
-       
-       
-       
-//        List<Item> itemList = itempedidovendaDao.getAllItens(idf);
-//        List<Item> itemList = itempedidovendaDao.getAll();
-
-
-        //VARIAVEL QUE RECEBERA O VALOR TOTAL DE CADA ITEM
        totalpedido = 0;
 
 
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (int i = 0; i < recebimento.getItems().size(); i++) {
-//        	
-//            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-//
-//			
-//		}
-//        
-//        pv.setTotal(totalpedido);
-        
-        
-      //  pedidoVendaDao.editar(pv);
-
-  
-
-
-//        additemvenda.addObject("itemList", itemList);
-//        additemvenda.addObject("produtoList", produtoList);
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("recebimento", recebimento);
         additempedidovenda.addObject("totalpedido", totalpedido);
 
-      //  additempedidovenda.addObject("totalpedido", totalpedido);
 
 
         return additempedidovenda;
@@ -530,192 +295,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     
     
     
-//    @RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
-//    public ModelAndView salvaritempedido(HttpServletRequest request) {
-//
-//
-//      //  Long idf = Long.parseLong(request.getParameter("id"));
-//    	
-//    	 String prodesc = request.getParameter("produtoescolhido");
-//    	 
-//    	 int  prodqtd =Integer.parseInt(request.getParameter("qtd"));
-//    	 
-//        
-//     //   ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
-//       
-//        Produto produto = new Produto();
-//        
-//        produto = produtopedidovendaDao.getProdutoPorDescricao(prodesc);
-//        
-//        PedidoCompra pedidov = pedidoCompraDao.PegarPorId(pv.getId());
-//        
-//       // System.out.println("windson ped"+pedidov.toString());
-//        
-//        Item item = new Item(produto,pedidov);
-//        
-//        
-//        
-//        item.setQtd(prodqtd);
-//        item.setTotalItem(item.getTotalItem());
-//        item.setPedido(pedidov);
-//       
-//      //  pedidov.getItems().add(item);
-//        
-//        
-//        itempedidovendaDao.add(item);
-//        
-//      //  pedidoVendaDao.add(pedidov);
-//        
-//        
-//   //     pv.getItems().add(item);
-//        
-//     //   pedidoVendaDao.add(pedidov);
-//        
-////        double totalpedido = 0;
-////
-////
-////        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-////        for (int i = 0; i < pv.getItems().size(); i++) {
-////        	
-////            totalpedido += totalpedido + pv.getItems().get(i).getTotalItem();
-////
-////			
-////		}
-////        
-//     //   pv.setTotal(totalpedido);
-//        
-//        System.out.println(pv.getItems().toString());
-//        System.out.println(pv.getTotal());
-////        System.out.println(pv);
-//
-//        
-//        
-////        
-//    //    pedidoVendaDao.add(pv);
-//
-////
-////        additempedidovenda.addObject("pedidovenda", pv);
-////        additempedidovenda.addObject("produtosList", produtosList);
-//
-//
-//        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
-//    }
-    
-
-
-//	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
-//	public ModelAndView  detalhesPedidoVenda(HttpServletRequest request){
-//  	
-//  	
-//  	long idf = Long.parseLong(request.getParameter("id"));
-//  	
-//  	ModelAndView detalhespedidovenda= new ModelAndView("detalhespedido");
-//  	
-//  	
-//  	PedidoCompra pedido= pedidoCompraDao.PegarPorId(idf);
-//  	 
-//  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-//  //	 pedidos = pedidovendadao.getAll();
-//  	
-//  	
-// // 	List<Produto> produtoList = produtoDao.getAll();
-//  //	List<Item> itemList = dao.getAll();
-//  	
-//  //	detalhesmesa.addObject("itemList", itemList);
-////  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhespedidovenda.addObject("pedido", pedido);
-//
-//		
-//		return detalhespedidovenda;
-//	}
-	
-//	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-//	public ModelAndView  detalhesItem(HttpServletRequest request){
-//  	
-//  	
-//  	Long idf = Long.parseLong(request.getParameter("id"));
-//  	
-//  	
-//  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
-//  	
-//  	
-//  	Item item = itempedidovendaDao.PegarPorId(idf);
-//  	 
-//  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-//  //	 pedidos = pedidovendadao.getAll();
-//  	
-//  	
-// // 	List<Produto> produtoList = produtoDao.getAll();
-//  //	List<Item> itemList = dao.getAll();
-//  	
-//  //	detalhesmesa.addObject("itemList", itemList);
-////  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhesitem.addObject("item", item);
-//
-//		
-//		return detalhesitem;
-//	}
-	
-//	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
-//	public ModelAndView  deleteItemPedidoVenda(HttpServletRequest request){
-//  	
-//  	
-//  	Long idf = Long.parseLong(request.getParameter("id"));
-//  	
-//  	
-////  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
-//  	
-//  	
-//  	 itempedidovendaDao.delete(idf);
-//  	 
-//  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-//  //	 pedidos = pedidovendadao.getAll();
-//  	
-//  	
-// // 	List<Produto> produtoList = produtoDao.getAll();
-//  //	List<Item> itemList = dao.getAll();
-//  	
-//  //	detalhesmesa.addObject("itemList", itemList);
-////  	detalhescliente.addObject("pedidoList", pedidos);
-////  	detalhesitem.addObject("item", item);
-//
-//		
-//  	return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());	
-//  	
-//	}
-	
-//	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
-//	public ModelAndView  entregasPedidoVenda(HttpServletRequest request){
-//  	
-//  	
-////  	Long idf = Long.parseLong(request.getParameter("id"));
-//		
-//        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
-//
-//  	
-//  	
-//  	ModelAndView entregas= new ModelAndView("movimentacaopedidovendaentregas");
-//  	entregas.addObject("pedidocompraList",pedidoCompraList);
-//  	
-//  	
-////  	 itempedidovendaDao.delete(idf);
-//  	 
-//  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-//  //	 pedidos = pedidovendadao.getAll();
-//  	
-//  	
-// // 	List<Produto> produtoList = produtoDao.getAll();
-//  //	List<Item> itemList = dao.getAll();
-//  	
-//  //	detalhesmesa.addObject("itemList", itemList);
-////  	detalhescliente.addObject("pedidoList", pedidos);
-////  	detalhesitem.addObject("item", item);
-//
-//		
-//  	return entregas;	
-//  	
-//	}
-
 	 @RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
 	    public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
@@ -724,6 +303,17 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	        
 
 		    	this.pv = pedidoCompraDao.PegarPorId(idf);
+		    	
+		    	if(pv == null){
+		    		
+		            ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
+
+		    		String erros = "Não Existe esse pEDIDO";
+		    		
+		    		additempedidovenda.addObject("erros",erros);
+		    		
+		    		return additempedidovenda;
+		    	}
 		    	
 //		    	
 		    	
@@ -780,7 +370,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //		    	System.out.println("pedidovenda:"+pv.toString());
 //		    	System.out.println("pagamento:"+pagamento.toString());
 //		    	
-//		    	formas.clear();
+		    	itensRecebimentoCorfirmados.clear();
 
 
 	        return additemrecebimento;
@@ -790,92 +380,87 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	    public ModelAndView ConfirmarItem(HttpServletRequest request) {
 
 
+		 
+		 if(itensRecebimentoCorfirmados == null){
+			 
+			 itensRecebimentoCorfirmados = new HashMap<>();
+			 
+		 }
+		 
+		 itensRecebimentoCorfirmados = recebimento.getItems();
+		 
 	        String idf = request.getParameter("id");
 	        
 	        long idfrec = Long.parseLong(request.getParameter("idrec"));
 
-	        	
-	        
-	        
 	        List<Item> it = itempedidovendaDao.getItemPorDescricao(idf);
 	        
+	        System.out.println("itens it:"+ it);
+	        
 	        recebimento = recebimentoDao.PegarPorId(idfrec);
+	       // recebimento.setPedidocompra(pv);
+	      //  recebimentoDao.editar(recebimento);
 	        
-
-	        	Item ite = it.get(1);
-	        	ite.setCodigo(it.get(1).getCodigo());
-	        	ite.setDescricao(it.get(1).getDescricao());
-	        	ite.setPedido(pv);
-	        	ite.setPrecoUnitario(it.get(1).getPrecoUnitario());
-	        	ite.setQtd(it.get(1).getQtd());
-	        //	ite.setRecebimento(recebimento);
-	     
+	        
+	        
+	        
+	        for (int i = 0; i < it.size(); i++) {
 	        	
-		    	//this.pv = pedidoCompraDao.PegarPorId(idf);
-//		    	
-		    	
-//		    	if(recebimento == null){
-//		    		
-//		    	 this.recebimento = new Recebimento();
-//		    	 
-//		    	 
-//		    	}
-		    	
-		    	// LocalDate dataDeInscricao = LocalDate.now();
-		    	
-//		    	this.pagamento.setDatapagamento(new Date ());
-		    	
-		//        totalpedido = 0;
+	        	Item itemv = it.get(i);
+	        	
+	        	if(itemv.getPedido().getId() == recebimento.getPedidocompra().getId()){
+	        		
+	    	        System.out.println("if: id pedido item"+ itemv.getPedido().getId());
+	    	        System.out.println("if: id pedido recebimento"+ recebimento.getPedidocompra().getId());
 
 
-		        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//		        for (int i = 0; i < pv.getItems().size(); i++) {
-//		        	
-//		            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-//
-//					
-//				}
-//		        
-//		        pv.setTotal(totalpedido);
-//		        
-//		        pv.setIspago(false);
-//		        
-//		        if(itensRecebimentoCorfirmados == null){
-//		        	
-//		        	itensRecebimentoCorfirmados = new ArrayList<Item>();
-//		        	
-//		        }
+	        		Item itemvar = new Item();
+	        		itemvar.setCodigo(itemv.getCodigo());
+	        		itemvar.setQtd(itemv.getQtd());
+	        		itemvar.setPrecoUnitario(itemv.getPrecoUnitario());
+	        		itemvar.setPedido(recebimento.getPedidocompra());
+	        		itemvar.setRecebimento(recebimento);
+	        		itemvar.setDescricao(itemv.getDescricao());
+	        		itemvar.setProdutocomposto(itemv.getProdutocomposto());
+	        		itemvar.setTotalItem(itemv.getTotalItem());
+	        		
+	        		itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtd());
+	        		
+//	        		recebimento.getItems().put(itemvar, itemvar.getQtd());
+	        		recebimento.setItems(itensRecebimentoCorfirmados);
+	        		
+	        		
+	        		
+	        		itempedidovendaDao.add(itemvar);
+	        		
+	        		recebimentoDao.editar(recebimento);
+	        		
+	        	
+
+	        	}
+	        	
+	        	
+				
+			}
+
+
 	        
-	        this.pv = recebimento.getPedidocompra();
+//	        pv = recebimento.getPedidocompra();
+//	        pv.getRecebimentos().add(recebimento);
+	     //   recebimento.setPedidocompra(pv);
+          //  pedidoCompraDao.editar(pv);
+	     //   recebimento.setItems(itensRecebimentoCorfirmados);
+	        recebimentoDao.editar(recebimento);
 	        
 	    	System.out.println("pedidovenda:"+pv.toString());
 	    	System.out.println("recebimento:"+recebimento);
 		        
-		        recebimento.setPedidocompra(pv);
-	            pv.getRecebimentos().add(recebimento);
-//		        
-//		        Item item = new Item(recebimento);
-//        		item.setDescricao(it.getDescricao());
-//        		item.setCodigo(it.getCodigo());
-//        		item.setRecebimento(recebimento);
-//        		item.setPrecoUnitario(it.getPrecoUnitario());
-//        		item.setQtd(it.getQtd());
-//        		item.setTotalItem(it.getTotalItem());
-        		
-        		ite.setRecebimento(recebimento);
-        		
-        		
-        		itempedidovendaDao.editar(ite);
-			    itensRecebimentoCorfirmados.put(ite,ite.getQtd());
-//			    estoque = estdao.PegarPorId(57);
-//			    estoque.getItens().put(item.getQtd(), item);
-//			    estdao.editar(estoque);
+		        
+	         
+	            
+	            
 
-		        recebimento.setItems(itensRecebimentoCorfirmados);
 		        
-		        recebimentoDao.editar(recebimento);
-		        
-		       // recebimento.getItems().add(it);
 		        
 		    	
 		        ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");

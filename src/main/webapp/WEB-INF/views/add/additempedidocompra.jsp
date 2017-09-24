@@ -8,6 +8,27 @@
     <h1>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
+  
+   <c:if test="${erros != null }">
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+              <h4 class="alert-heading">Erros!</h4>
+              
+              ${erros}
+            </div>
+            
+    </c:if>
+    
+      <c:if test="${mensagem != null }">
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+              <h4 class="alert-heading">Sucesso!</h4>
+              
+              ${mensagem}
+            </div>
+            
+    </c:if>
+  
+  
+  
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
@@ -16,7 +37,7 @@
            
           </div>
           <div class="widget-content nopadding">               
-			<form action="salvaritempedidocompra" method="GET" class="form-horizontal">		
+			<form action="salvaritempedidocompra" method="POST" class="form-horizontal">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
@@ -37,7 +58,7 @@
 								  
 									</datalist>
 									
-<!-- 										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade"> -->
+										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
 
 					
 							

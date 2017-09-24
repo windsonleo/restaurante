@@ -67,6 +67,7 @@ public class CardapioController   {
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		
         List<Categoria> categoriaList = dao.getAll();
+        categoriaList.remove(0);
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("usuarioAtt", usuario);
 
@@ -107,6 +108,8 @@ public class CardapioController   {
 
 		
 	  	Long idf = Long.parseLong(request.getParameter("id"));
+	  	
+	  	Categoria cat = dao.PegarPorId(idf);
 		
 		ModelAndView cardapio = new ModelAndView("produtoporcategoria");
 		
@@ -115,6 +118,8 @@ public class CardapioController   {
 		produtoss = produtoDao.getAllProdutoPorCategoria(idf);
 		
 		cardapio.addObject("produtos", produtoss );
+		cardapio.addObject("categoria", cat );
+
 		
 		return cardapio;
 	}

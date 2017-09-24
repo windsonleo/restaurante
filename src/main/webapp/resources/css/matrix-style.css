@@ -1588,3 +1588,11 @@ div.dataTables_wrapper .ui-widget-header {
 }
 #sidebar .content{ display:none;}
 }
+
+.lb_nome_cardapio{
+	
+font-family: sans-serif;
+font-size: 2em;
+color: orange;	
+	
+}

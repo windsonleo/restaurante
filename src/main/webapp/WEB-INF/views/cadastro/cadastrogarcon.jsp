@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Garcon</a>>> <a href="#">Movimentação Garcon</a> >><a href="#" class="current">Cadastro Garcon</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Garcon</a>>> <a href="#">Movimentação Garcon</a> >><a href="#" class="current">Cadastro Garcon</a> </div>
     <h1>Cadastro de Garcon</h1>
   </div>
   <div class="container-fluid"><hr>

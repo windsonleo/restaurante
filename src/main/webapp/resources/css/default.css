@@ -14,23 +14,31 @@ text-align: center;
 color: green;
 }
 
-#cardapio {
+/* #cardapio { */
 	
-	font-size: 1em;
-	font-family: sans-serif;
-/* 	color: black; */
+/* 	font-size: 1em; */
+/* 	font-family: sans-serif; */
+/* /* 	color: black; */ */
 
-	background: url(../resources/images/bg_red.gif) repeat-y;
+/* 	background: url(../resources/images/bg_red.gif) repeat-y; */
 	
-}
+/* } */
 
-.cardapio tr td {
+/* .cardapio tr td { */
 	
-	font-size: 1.5em;
-	font-family: sans-serif;
-	color: yellow;
+/* 	font-size: 1.5em; */
+/* 	font-family: sans-serif; */
+/* 	color: yellow; */
 	
-}
+/* } */
+
+/* .container-fluid cardapio.lb_nome_cardapio { */
+/* 	background-color:black; */
+/* font-family: sans-serif; */
+/* font-size: 2em; */
+/* color: orange;	 */
+	
+/* }  */
 
 /* #cardapio.td.lb_nome_produto{ */
 	

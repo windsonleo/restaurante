@@ -81,6 +81,9 @@
         <li class="active"><a href="${pageContext.request.contextPath}/home"><i class="icon icon-home"></i> <span>Home</span></a> </li>
   
   
+  	<sec:authorize access="hasRole('ROLE_COMPRA')">
+  
+  		
       <li class=""><a href="${pageContext.request.contextPath}/categoria/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png" /></i> <span>Categoria</span></a> </li>
   
       <li class=""><a href="${pageContext.request.contextPath}/cliente/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png" /></i> <span>Cliente</span></a> </li>
@@ -96,6 +99,7 @@
       
   
     <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> <span>Entregas</span></a> </li>
+  </sec:authorize>
         
          <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
         
@@ -117,6 +121,7 @@
     
     </sec:authorize>
     
+      	<sec:authorize access="hasRole('ROLE_COMPRA')">
     
     <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/fornecedor.png" /></i> <span>Fornecedor</span></a></li>
     <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" /></i> <span>Garçon</span></a></li>
@@ -131,13 +136,19 @@
       </ul>
     </li>
     
+    </sec:authorize>
+    
+          	<sec:authorize access="hasRole('ROLE_VENDA')">
+    
+    
             <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/venda.png" /></i> <span>Venda</span> <span class="label label-important">3</span></a>
       <ul>
         <li><a href="${pageContext.request.contextPath}/pedidovenda/movimentacao">Pedido Venda</a></li>
         <li><a href="form-validation.html">Devolução Venda</a></li>
-        <li><a href="form-wizard.html">Conf. Produto</a></li>
+        <li><a href="#">Conf. Venda</a></li>
       </ul>
     </li>
+        </sec:authorize>
     
       <sec:authorize access="hasRole('ROLE_ADM')">
     

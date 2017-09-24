@@ -201,6 +201,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     	
     	
     	Long idf = Long.parseLong(request.getParameter("itenss"));
+    	Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
     	
         Produto produto = daoprod.PegarPorId(idf);
     	
@@ -305,7 +306,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         Long idf = Long.parseLong(request.getParameter("id"));
         Long idfprodcomp = Long.parseLong(request.getParameter("idprocomp"));
-        
+        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
         
     	
 //    	 String prodesc = request.getParameter("produtoescolhido");
@@ -319,14 +320,25 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
         produto = daoprod.PegarPorId(idf);
         
-       
+    	if(produto == null){
+    		
+//          ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
+
+  		String erros = "Não Existe esse Produto";
+  		
+  		additemprodutocomposto.addObject("erros",erros);
+  		additemprodutocomposto.addObject("produtocomposto",produtocomposto = dao.PegarPorId(idfprodcomp));
+  		additemprodutocomposto.addObject("produtosList", produtosList);
+          
+  		return additemprodutocomposto;
+  	}
         
         produtocomposto = dao.PegarPorId(idfprodcomp);
        
         
-        Item  item  = new Item(produtocomposto);
+        Item  item  = new Item(produto);
         
-       // item.setProdutocomposto(produtocomposto);
+        item.setQtd(prodqtd);
         
         
            itdao.add(item);

@@ -20,13 +20,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.ClienteDAO;
 import com.tecsoluction.restaurante.dao.MesaDAO;
+import com.tecsoluction.restaurante.dao.PedidoCompraDAO;
 import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
+import com.tecsoluction.restaurante.dao.RecebimentoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.entidade.Usuario;
 
 /**
@@ -43,6 +47,11 @@ public class HomeController {
 	private final ClienteDAO clientedao;
 	private final MesaDAO mesadao;
 	private final ProdutoDAO produtodao;
+	private final PedidoCompraDAO pedidocompradao;
+	private final RecebimentoDAO recebimentodao;
+
+
+	
 
 	
 	
@@ -51,6 +60,11 @@ public class HomeController {
 	private List<Mesa>mesasocupadas;
 	private List<Produto>produtosnovos;
 	private List<Usuario>usuarios;
+	private List<PedidoCompra>pedidocomprasnovos;
+	private List<Recebimento>recebimentosnovos;
+
+
+	
 	
 	private List<Cliente> resultsearch;
 
@@ -63,7 +77,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	public HomeController(UsuarioDAO dao,PedidoVendaDAO vendadao,ClienteDAO clientedao,MesaDAO mesadao,ProdutoDAO proddao) {
+	public HomeController(PedidoCompraDAO compradao,RecebimentoDAO recdao,UsuarioDAO dao,PedidoVendaDAO vendadao,ClienteDAO clientedao,MesaDAO mesadao,ProdutoDAO proddao) {
 		// TODO Auto-generated constructor stub
 		
 		this.usuariodao = dao;
@@ -71,24 +85,37 @@ public class HomeController {
 		this.clientedao = clientedao;
 		this.mesadao = mesadao;
 		this.produtodao = proddao;
+		this.pedidocompradao = compradao;
+		this.recebimentodao = recdao;
 	}
 	
 	
     @ModelAttribute
     public void addAttributes(Model model) {
 
+    	List<Mesa> mesas = mesadao.getAll();
+    	
     	clientesnovos =clientedao.getAll();
     	pedidovendasnovos = pedidovendadao.getAll();
     	mesasocupadas = mesadao.getAll();
     	produtosnovos = produtodao.getAll();
         usuarios = usuariodao.getAll();
+        
+        pedidocomprasnovos = pedidocompradao.getAll();
+        
+        recebimentosnovos = recebimentodao.getAll();
        
 			model.addAttribute("clientesnovos", clientesnovos);
 			model.addAttribute("pedidovendasnovos", pedidovendasnovos);
+			model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
+			model.addAttribute("recebimentosnovos", recebimentosnovos);
+
 			model.addAttribute("mesasocupadas", mesasocupadas);
 			model.addAttribute("produtosnovos", produtosnovos);
 			model.addAttribute("usuarios", usuarios);
+			model.addAttribute("mesas", mesas);
 
+			
 
 
     }

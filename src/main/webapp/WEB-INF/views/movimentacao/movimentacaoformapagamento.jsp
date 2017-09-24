@@ -59,7 +59,7 @@
 
 			      <td>${formapagamento.id}</td>
                   <td>${formapagamento.nome}</td>
-                  <td >${formapagamento.tipo}></td>
+                  <td >${formapagamento.tipo}</td>
                   <td>${formapagamento.parcelas}</td>
                    <td>${formapagamento.percdesconto}</td>
                    <td>${formapagamento.isativo}</td>

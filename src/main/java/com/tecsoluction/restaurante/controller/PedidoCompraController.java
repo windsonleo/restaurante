@@ -451,14 +451,16 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     
     
     
-    @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.GET)
+    @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
     public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
 
+    	
+    	
 
         Long idf = Long.parseLong(request.getParameter("id"));
 //        Long idf = Long.parseLong(request.getParameter("id"));
+        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-    	
     //	 String prodesc = request.getParameter("produtoescolhido");
     	 
     //	 int  prodqtd =Integer.parseInt(request.getParameter("qtd"));
@@ -470,13 +472,26 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         produto = produtopedidovendaDao.PegarPorId(idf);
         
+    	if(produto == null){
+    		
+//            ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
+
+    		String erros = "Não Existe esse Produto";
+    		
+    		additempedidocompra.addObject("erros",erros);
+            additempedidocompra.addObject("pedidocompra", pv);
+            additempedidocompra.addObject("produtosList", produtosList);
+            
+    		return additempedidocompra;
+    	}
+        
         //Pedido pedidov = new PedidoCompra();
         pv = pedidoCompraDao.PegarPorId(pv.getId());
         
        // System.out.println("windson ped"+pedidov.toString());
         
         Item item = new Item(produto,pv);
-        
+        item.setQtd(prodqtd);
       
        // Item item = itempedidovendaDao.getItemPorCodigo(produto.getCodebar());
         pv.getItems().put(item,item.getQtd());

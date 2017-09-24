@@ -54,4 +54,22 @@ public class ProdutoDAO extends AbstractEntityDao<Produto> {
 		   	
 }
 	
+	public Produto getProdutoPorCodebar(String descricao) {
+		// TODO Auto-generated method stub
+		
+    Produto result = manager.createQuery("SELECT p FROM Produto p where p.codebar=" + "'"+descricao+"'", Produto.class).getSingleResult();
+   
+    return result;
+		   	
+}
+	
+	public Produto getProdutoPorNome(String descricao) {
+		// TODO Auto-generated method stub
+		
+    Produto result = manager.createQuery("SELECT p FROM Produto p where p.nome=" + "'"+descricao+"'", Produto.class).getSingleResult();
+   
+    return result;
+		   	
+}
+	
 }

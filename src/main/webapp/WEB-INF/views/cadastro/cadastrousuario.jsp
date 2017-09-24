@@ -5,7 +5,7 @@
 
 <div id="content-header">
 	<div id="breadcrumb">
-		<a href="index.html" title="Go to Home" class="tip-bottom"><i
+		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Home" class="tip-bottom"><i
 			class="icon-home"></i> Usuario</a> >> <a href="#">Movimentação Usuario </a>>>
 		<a href="#" class="current">Cadastro Usuario</a>
 	</div>

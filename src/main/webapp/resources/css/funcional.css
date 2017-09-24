@@ -79,3 +79,53 @@
     color: white;
     font-size: 10px;
 }
+
+
+.lb_nome_cardapio{
+	
+font-family: sans-serif;
+font-size: 2em;
+color: orange;
+list-style: none;
+text-align: center; 
+	
+	
+}
+
+.lb_nome_produto {
+	
+font-family: sans-serif;
+font-size: 1.3em;
+color: white;
+	
+}
+
+.lb_produto_descricao {
+	
+font-family: sans-serif;
+font-size: 0.9em;
+color: white;	
+	
+}
+
+
+.contentcardapio{
+	
+   background: #B22222 none repeat scroll 0 0;
+    margin-left: 220px;
+    margin-right: 0;
+    min-height: 100%;
+    padding-bottom: 25px;
+    position: relative;
+    width: auto;
+    
+}
+
+.preco {
+	
+font-family: sans-serif;
+font-size: 1.5em;
+color: orange;
+float:right;
+	
+}

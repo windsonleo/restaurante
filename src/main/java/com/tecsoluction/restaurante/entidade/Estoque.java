@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -62,22 +63,18 @@ public class Estoque implements Serializable {
     
 //    @OneToMany(mappedBy = "estoque",fetch = FetchType.LAZY)
     
+//    @ElementCollection(fetch=FetchType.EAGER)
+//    @MapKeyColumn(name = "ID")
+//    @Column(name="qtd")
+//    @CollectionTable(name="itens_estoque",joinColumns=@JoinColumn(name="id"))
+//    private Map<Item, Double> items= new HashMap<>();
+    
     @ElementCollection(fetch=FetchType.EAGER)
     @MapKeyColumn(name = "ID")
     @Column(name="qtd")
-    @CollectionTable(name="itens_estoque",joinColumns=@JoinColumn(name="id"))
-    private Map<Item, Double> items= new HashMap<>();
+    @CollectionTable(name="produtos_estoque",joinColumns=@JoinColumn(name="id"))
+    private final  Map<Produto, Double> items= new HashMap<>();
     
-//    private ArrayList<int> qtds;
-
-    
-//    public Estoque(long id, String nome,Estoque catpai,boolean isativo) {
-//        // TODO Auto-generated constructor stub
-//    	this.id = id;
-//    	this.nome = nome;
-//    	this.catpai=catpai;
-//    	this.isativo = isativo;
-//    }
     
 
     public Estoque() {
@@ -88,7 +85,7 @@ public class Estoque implements Serializable {
     public Estoque( Map<Double, Item> itens) {
         // TODO Auto-generated constructor stub
 
-    	this.items = new HashMap<Item,Double>();
+    	//this.items = new HashMap<Produto,Double>();
     }
 
     //GETTERS AND SETTERS
@@ -120,30 +117,18 @@ public class Estoque implements Serializable {
 
 
     
-    
-
-//    public List<Item> getItens() {
-//        return itens;
-//    }
-//
-//    public void setItens(List<Item> produtos) {
-//        this.itens = produtos;
-//    }
-    
 	/**
 	 * @return the itens
 	 */
-	public Map<Item,Double > getItens() {
+	public Map<Produto,Double > getItens() {
 		return items;
 	}
 
 	/**
 	 * @param itemsmap the itens to set
 	 */
-	public void setItens(Map<Item,Double > itemsmap) {
-		this.items = itemsmap;
-	}
-
+	
+	
 	public boolean getIsativo(){
 		
 		return isativo;
@@ -152,5 +137,34 @@ public class Estoque implements Serializable {
 	public void setIsativo(boolean valor){
 		
 		this.isativo=valor;
+	
 	}
+	
+	public void AddProdutoEstoque(Produto produto, Double qtd){
+		
+//		for (int i = 0; i < itens.size(); i++) {
+//			
+//			
+//			
+//		
+//		}
+		Double qtdant = items.get(produto).doubleValue();
+		
+		items.put(produto, qtdant+qtd);
+		
+		
+	
+	}
+	
+	public void RetirarProdutoEstoque(Produto produto, Double qtd){
+		
+		
+		Double qtdant = items.get(produto).doubleValue();
+
+		items.replace(produto, qtdant - qtd);
+		
+		
+	}
+	
+	
 }
