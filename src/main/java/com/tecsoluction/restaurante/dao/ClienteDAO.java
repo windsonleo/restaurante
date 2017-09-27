@@ -1,10 +1,13 @@
 package com.tecsoluction.restaurante.dao;
 
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 
 import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
@@ -35,5 +38,13 @@ public class ClienteDAO extends AbstractEntityDao<Cliente> {
 
     }
 
+	public Cliente getClienteporTelefone(String tel) {
+		
+		Cliente cliente = manager.createQuery("SELECT p FROM Cliente p where p.telefone='"+tel+"'", Cliente.class).getSingleResult();
+    
+		return cliente;
+		    
+
+	}
 
 }

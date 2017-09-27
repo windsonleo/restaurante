@@ -1318,6 +1318,13 @@ form {
 	border-top-left-radius: 0;
 	margin-top:0px;
 }
+
+#contenttt {
+	margin-left: 0 !important;
+	border-top-left-radius: 0;
+	margin-top:0px;
+}
+
 #content-header {
 	margin-top: 0;
 	text-align: center;
@@ -1533,8 +1540,21 @@ body {
 #content {
 	margin-left: 43px;
 }
-#sidebar .content{ display:none;}
+#sidebar .content{ 
+	
+	display:none;
+
+
 }
+#sidebar .contentcardapio{ 
+	
+	display:none;
+
+
+}
+
+}
+
 @media (max-width: 600px) {
 .widget-title .buttons {
 	float: left;
@@ -1551,9 +1571,20 @@ body {
 	height: auto;
 	width: auto;
 }
-#sidebar .content{ display:none;}
+#sidebar .content{
+	
+	display:none;
+	
+	}
+
+#sidebar .contentcardapio{
+	
+	display:none;
+	
+	}
 }
 @media (max-width: 767px) {
+	
 body {
 	padding: 0 !important;
 }
@@ -1568,6 +1599,11 @@ body {
 	display: none;
 }
 #sidebar .content{ display:none;}
+#sidebar .contentcardapio{
+	
+	display:none;
+	
+	}
 }
 @media (min-width: 768px) and (max-width: 979px) {
  [class*="span"], .row-fluid [class*="span"] {

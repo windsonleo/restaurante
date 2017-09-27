@@ -7,7 +7,7 @@
 
 <div id="contenttt" class="contentcardapio" >
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/sushisenpai/cardapio" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Sushi Senpai</a> >> <a href="#" class="current">Cardápio </a></div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/sushisenpai/cardapio" title="Go to Cardápio" class="tip-bottom"><i class="icon-home"></i> Sushi Senpai</a> >> <a href="#">Cardápio </a> >> <a href="#" class="current">Produto por Categoria >> ${categoria.nome}</a> </div>
     
 <%--     <c:if test="${mensagem}"> --%>
 <!--     	<div class="alert alert-success" > -->
@@ -76,8 +76,21 @@
 <%--                   <td class="lb_nome_cardapio" >${categoria.nome}</td> </br> --%>
                   
                   <li class="lb_nome_produto" >${produto.nome} ..........................................................................................................................................................................................<label class="preco"> R$ :${produto.precovenda}</label></li>
-                  <p class="lb_produto_descricao">(${produto.descricao}) <i class="icon icon-picture"></i></p>
-                 	
+                  <p class="lb_produto_descricao">(${produto.descricao}) <a href="#myModal${produto.id}" data-toggle="modal" class="lb_produto_descricao"> <i class="icon icon-picture"> </i> </a></p>
+                  
+                  
+                  
+                  
+            <div id="myModal${produto.id}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>${produto.nome}</h3>
+              </div>
+              <div class="modal-body">
+                <p>${produto.descricao}</p>
+                <p><img src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg"></p>
+              </div>
+            </div>
                  </c:forEach> 
                   </ul>
             

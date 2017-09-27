@@ -76,21 +76,21 @@
 
     <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>Sushi Senpai</a>
   <ul>
+       
         <li class="active"><a href="${pageContext.request.contextPath}/sushisenpai/cardapio"><i class="icon icon-home"></i> <span>Cardápio</span></a> </li>
   
-  
-      
-    
-    
+
           <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Categoria</span> <span class="label label-primary">${categoriaList.size()}</span></a>
+      		<ul>
 
-      <ul>
-
-		<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
-
-    <li><a href="${pageContext.request.contextPath}/sushisenpai/cardapio/produtoporcategoria?id=${categoria.id}"><i class="icon icon-pencil"></i> <span>${categoria.nome}</span></a></li>
+				<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 	
-	</c:forEach>
-  </ul>
+	    			<li><a href="${pageContext.request.contextPath}/sushisenpai/cardapio/produtoporcategoria?id=${categoria.id}"><i class="icon icon-pencil"></i> <span>${categoria.nome}</span></a></li>
+		
+				</c:forEach>
+  			</ul>
+  
+  		</li>
+  		</ul>
 </div>      
         

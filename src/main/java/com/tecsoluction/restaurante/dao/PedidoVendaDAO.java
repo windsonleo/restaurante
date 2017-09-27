@@ -13,12 +13,7 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 @Repository
 public class PedidoVendaDAO extends AbstractEntityDao<PedidoVenda> {
 
- 
-	
-	
-	
-	
-	
+
 	public PedidoVendaDAO() {
         // TODO Auto-generated constructor stub
         super(PedidoVenda.class, "PedidoVenda");
@@ -46,7 +41,7 @@ public class PedidoVendaDAO extends AbstractEntityDao<PedidoVenda> {
 	public List<PedidoVenda> getAllPedidoPorMesa(long idmesa) {
 		// TODO Auto-generated method stub
 		
-    List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.mesa=" + idmesa, PedidoVenda.class).getResultList();
+    List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.mesa=" + idmesa +"AND p.status <> 'FINALIZADO' AND p.status <> 'CANCELADO' ", PedidoVenda.class).getResultList();
     return result;
 		    
 
@@ -56,6 +51,15 @@ public class PedidoVendaDAO extends AbstractEntityDao<PedidoVenda> {
 		// TODO Auto-generated method stub
 		
     List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.data='" +dataini+"'", PedidoVenda.class).getResultList();
+    return result;
+		    
+
+	}
+	
+	public List<PedidoVenda> getAllPedidoDelivery() {
+		// TODO Auto-generated method stub
+		
+    List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.origempedido='INTERNET' OR p.origempedido='TELEVENDAS' ", PedidoVenda.class).getResultList();
     return result;
 		    
 

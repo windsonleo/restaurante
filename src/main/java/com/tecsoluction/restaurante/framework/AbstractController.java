@@ -45,8 +45,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastro = new ModelAndView("cadastro" + entityAlias);
 //        cadastro.addObject("acao", "add");
 
-        List<Entity> entityList = getDao().getAll();
-        
+        List<Entity> entityList = getDao().getAll();        
         cadastro.addObject("acao","add");
 //    	 
 //    	 cadastro.addObject("entityList", entityList);
@@ -72,9 +71,11 @@ public abstract class AbstractController<Entity> {
         
     	}else{
     		
-            getDao().add(entity);
+           getDao().add(entity);
             System.out.println("add:"+ entityAlias);
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
+            attributes.addFlashAttribute("entity", entity.toString());
+
 
 
 

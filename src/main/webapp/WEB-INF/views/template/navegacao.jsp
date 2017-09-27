@@ -98,7 +98,7 @@
       
       
   
-    <li> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> <span>Entregas</span></a> </li>
+    <li> <a href="${pageContext.request.contextPath}/delivery/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> <span>Entregas</span></a> </li>
   </sec:authorize>
         
          <sec:authorize access="hasRole('ROLE_FINANCEIRO')">

@@ -34,27 +34,23 @@
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/garcon/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${garcon.isativo}"/>
-                </div>
-              </div>
               
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="form-control" name="id" type="text" value="${garcon.id}" placeholder="Digite o id" />
+               			<input id="isativo" name="isativo" class="span8" type="checkbox" checked="${garcon.isativo}"/>
+               
+               
                 </div>
               </div>
               
-                <div class="control-group">
-                <label class="control-label">Foto</label>
-                <div class="controls">
-             <input id="foto" class="form-control" name="foto" type="image" value="${garcon.foto}" placeholder="Digite o Foto"/>					
-                </div>
-              </div>                
+<!--                 <div class="control-group"> -->
+<!--                 <label class="control-label">Foto</label> -->
+<!--                 <div class="controls"> -->
+<!--                 </div> -->
+<!--               </div>                 -->
               
               
               
@@ -63,7 +59,9 @@
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${garcon.nome}" placeholder="Digite o Nome da Garcon"/>
+						<input id="nome" class="span8" name="nome" type="text" value="${garcon.nome}" placeholder="Digite o Nome da Garcon"/>
+                            <input id="foto" class="form-control" name="foto" type="text" value="${garcon.foto}" placeholder="Digite o Foto"/>					
+               
                 </div>
               </div>
 

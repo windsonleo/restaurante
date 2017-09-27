@@ -37,7 +37,6 @@
                <div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${fornecedor.isativo}"/>
                 </div>
               </div>
               
@@ -46,15 +45,17 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}" placeholder="Digite o id" />
+               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${fornecedor.isativo}"/>
+               
                 </div>
               </div>
               
-                <div class="control-group">
-                <label class="control-label">Foto</label>
-                <div class="controls">
-             <input id="foto" class="form-control" name="foto" type="image" value="${fornecedor.foto}" placeholder="Digite o Foto"/>					
-                </div>
-              </div>                
+<!--                 <div class="control-group"> -->
+<!--                 <label class="control-label">Foto</label> -->
+<!--                 <div class="controls"> -->
+<%--              <input id="foto" class="form-control" name="foto" type="image" value="${fornecedor.foto}" placeholder="Digite o Foto"/>					 --%>
+<!--                 </div> -->
+<!--               </div>                 -->
               
               
               
@@ -64,6 +65,9 @@
                 <label class="control-label">Nome Fantasia</label>
                 <div class="controls">
 						<input id="nomefantasia" class="form-control" name="nomefantasia" type="text" value="${fornecedor.nomefantasia}" placeholder="Digite o Nome da Fornecedor"/>
+               			<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}" placeholder="Digite o Razão Social"/>					
+               
+               
                 </div>
               </div>
 
@@ -85,42 +89,26 @@
 <!--               </div> -->
               
               
-              
-              
-              <label>
-					</label>
-			
-		
-		
-			   		<label>
-					</label>
-		 	 
-			   		<label>
-					</label>
+
               
               
               
-              
-            <div class="control-group">
-                <label class="control-label">Razao Social</label>
-                <div class="controls">
-						<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}" placeholder="Digite o Razão Social"/>					
-                </div>
-              </div>
+        
 
             <div class="control-group">
                 <label class="control-label">Cnpj</label>
                 <div class="controls">
 						<input id="cnpj" class="form-control" name="cnpj" type="text" value="${fornecedor.cnpj}" placeholder="Digite o Cnpj" />
+          				<input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text" value="${fornecedor.inscricaoestadual}" placeholder="Digite o IE" />
+          
                 </div>
               </div>              
               
-            <div class="control-group">
-                <label class="control-label">I.E</label>
-                <div class="controls">
-						<input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text" value="${fornecedor.inscricaoestadual}" placeholder="Digite o IE" />
-                </div>
-              </div>      
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label">I.E</label> -->
+<!--                 <div class="controls"> -->
+<!--                 </div> -->
+<!--               </div>       -->
               
               
        

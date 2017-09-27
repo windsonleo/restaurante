@@ -2,7 +2,7 @@ package com.tecsoluction.restaurante.util;
 
 public enum StatusPedido {
 
-    ABERTO, PENDENTE, FECHADO, CANCELADO;
+    ABERTO, PENDENTE,PRONTO, FECHADO, CANCELADO;
 
 
     StatusPedido() {

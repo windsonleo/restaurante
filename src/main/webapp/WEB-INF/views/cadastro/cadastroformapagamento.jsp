@@ -25,6 +25,7 @@
               ${mensagem}
             </div>
             
+            
     </c:if>
     <div class="row-fluid">
       <div class="span12">
@@ -33,30 +34,25 @@
             <h5>Cadastro de Forma de Pagamento</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
-              
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${formapagamento.isativo}"/>
-                </div>
-              </div>
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}">
               
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${formapagamento.id}" placeholder="Digite o id" />
+						<input id="id" class="span2 m-wrap" name="id" type="text" value="${formapagamento.id}" placeholder="Digite o id" />
+               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${formapagamento.isativo}"/>
+               
                 </div>
               </div>
               
-                <div class="control-group">
-                <label class="control-label">Tipo</label>
+    
+              <div class="control-group">
+                <label class="control-label">Nome</label>
                 <div class="controls">
-
-
-                    
-                         <select id="tipo"name="tipo"  class="form-control">
+						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder="Digite o Nome da Forma de Pagamento"/>
+               
+                                    <select id="tipo"name="tipo"  class="form-control">
 	                                  <optgroup label="Tipos de Formas de Pagamento">
 		           				
 		           					<option value="${formapagamento.tipo}">${formapagamento.tipo}</option>
@@ -68,40 +64,11 @@
 		           			
 		                </optgroup>
 	                    </select>
-	                    
-	                                
-
-
-                </div>
-              </div>                
-              
-              
-              
-              
-              
-              <div class="control-group">
-                <label class="control-label">Nome</label>
-                <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder="Digite o Nome da Forma de Pagamento"/>
+               
+               
                 </div>
               </div>
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Genero</label> -->
-<!--                 <div class="controls"> -->
-                    
-<!--                  <select id="genero" name="genero" id="genero" class="form-control">            -->
-<!-- 	                <optgroup label="Genero do Usuario"> -->
-	           			
-<!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
-<!-- 	           				<option value="FEMININO">FEMININO</option> -->
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-	                    
-	                                        
-<!--                 </div> -->
-<!--               </div> -->
               
               
               
@@ -109,28 +76,15 @@
                 <label class="control-label">Parcelas</label>
                 <div class="controls">
 						<input id="parcelas" class="form-control" name="parcelas" type="text" value="${formapagamento.parcelas}" placeholder="Digite a Quant. Parcelas"/>
+              			<input id="percdesconto" class="form-control" name="percdesconto" type="text" value="${formapagamento.percdesconto}" placeholder="Digite o % de Desconto"/>
+              
                 </div>
+            
+                
               </div>
-
-            <div class="control-group">
-                <label class="control-label">% Desc</label>
-                <div class="controls">
-						<input id="percdesconto" class="form-control" name="percdesconto" type="text" value="${formapagamento.percdesconto}" placeholder="Digite o % de Desconto"/>
-                </div>
-              </div>              
+             
               
-<!--             <div class="control-group"> -->
-<!--                 <label class="control-label">Data de Nascimento</label> -->
-<!--                 <div class="controls"> -->
-<%--              <input id="telefone" class="form-control" name="datanascimento" type="date" value="${formapagamento.telefone}" placeholder="Digite o Telefone"/>					 --%>
-<!--                 </div> -->
-<!--               </div>       -->
-              
-              
-       
-              
-              
-              
+      
               <div class="form-actions">
                 <input type="submit" value="Inserir" class="btn btn-success">
               </div>

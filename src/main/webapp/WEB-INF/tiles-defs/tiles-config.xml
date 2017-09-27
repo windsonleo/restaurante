@@ -81,6 +81,13 @@
 
 	</definition>
 	
+	
+			<definition name="cadastrodelivery" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrodelivery.jsp" />
+
+	</definition>
+	
 		<definition name="cadastroestoque" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastroestoque.jsp" />
@@ -90,6 +97,12 @@
 			<definition name="cadastroempresa" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cadastro/cadastroempresa.jsp" />
+
+	</definition>
+	
+				<definition name="cadastroendereco" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroendereco.jsp" />
 
 	</definition>
 

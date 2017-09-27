@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,9 +61,11 @@ public class Cliente implements Serializable {
     
     @Column(name = "isativo") 
 	private boolean isativo;
+    
+    @OneToOne(cascade={CascadeType.PERSIST})
+    private Endereco endereco;
 	
 
-    
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     // cliente pedido de venda
@@ -79,13 +82,51 @@ public class Cliente implements Serializable {
     public Cliente() {
         // TODO Auto-generated constructor stub
     }
+    
+    public Cliente(Endereco endereco) {
+        // TODO Auto-generated constructor stub
+    	
+    	this.endereco=endereco;
+    }
 
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    /**
+	 * @return the endereco
+	 */
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+	/**
+	 * @return the listaPedidoVenda
+	 */
+	public List<PedidoVenda> getListaPedidoVenda() {
+		return listaPedidoVenda;
+	}
+
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+
+	/**
+	 * @param listaPedidoVenda the listaPedidoVenda to set
+	 */
+	public void setListaPedidoVenda(List<PedidoVenda> listaPedidoVenda) {
+		this.listaPedidoVenda = listaPedidoVenda;
+	}
+
+
+	public void setNome(String nome) {
         this.nome = nome;
     }
 

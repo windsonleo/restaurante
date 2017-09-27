@@ -44,19 +44,17 @@
                <div class="control-group">
                 <label class="control-label">Número do Pedido</label>
                 <div class="controls">
-							<input id="id" name="id" class="form-control"
+							<input id="id" name="id" class="span4"
 							type="text" value="${pedidovenda.id }"
-							placeholder="Digite o Número do Pedido de Venda" />                </div>
+							placeholder="Digite o Número do Pedido de Venda" />                
+              
+               	            <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
+              
               </div>
               
-                             <div class="control-group">
-                <label class="control-label"></label>
-                <div class="controls">
- 	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
-               
-               
-               </div>
               </div>
+              
+
               </form>
           
           
@@ -70,66 +68,34 @@
 <%-- 		     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/pagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate"> --%>
 		
 						<div class="control-group">
-							<label class="control-label">Código</label>
+							<label class="control-labe">Código</label>
 							<div class="controls">
-							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }"> 
+							<input id="id" name="id" type="text" class="span2" value="${pedidovenda.id }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="span2" value="${pedidovenda.data }" readonly="readonly"> 
+							<input id="status" name="status" type="text" class="span3" value="${pedidovenda.status }" readonly="readonly"> 
 							
 							
 							</div>
 						</div>
 
-             <div class="control-group">
-                <label class="control-label">Data</label>
-                <div class="controls">
-				<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }"> 
-				
-				
-                </div>
-              </div>			
-              
-              
-              <div class="control-group">
-                <label class="control-label">Status</label>
-                <div class="controls">
-				<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }"> 
-				
-				
-                </div>
-              </div>             						
-
-
-              <div class="control-group">
-                <label class="control-label">Mesa</label>
-                <div class="controls">
-					<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }"> 
-				
-				
-                </div>
-              </div>
-              
-               <div class="control-group">
-                <label class="control-label">Garcon</label>
-                <div class="controls">
-				
-					<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }"> 
-				
-                </div>
-              </div>
               
               
               <div class="control-group">
                 <label class="control-label">Cliente</label>
                 <div class="controls">
-				<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
+				<input id="cliente" name="cliente" type="text" class="span4" value="${pedidovenda.cliente }" readonly="readonly"> 
+				<input id="mesa" name="mesa" type="text" class="span2" value="${pedidovenda.mesa }" readonly="readonly"> 
+				<input id="garcon" name="garcon" type="text" class="span3" value="${pedidovenda.garcon }" readonly="readonly"> 
 				
 				
                 </div>
               </div>							
+            
               <div class="control-group">
                 <label class="control-label">Total</label>
                 <div class="controls">
 				
-					<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.total}" size="20px" style="color: blue; font-size: 15px"> 
+					<input id="total" name="total" type="text" class="form-control" value="${pedidovenda.total}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 				
                 </div>
               </div>							
@@ -141,16 +107,16 @@
 				
 		          <div class="widget-content nopadding">
           
-                  <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
             <h5>Adicionar Forma de Pagamento</h5>
           </div>
 			
-			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="get" class="form-horizontal">
+			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizontal">
 			 		    
           <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-     				<select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="form-control" >
+     				<select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="span6" >
 	                                  <optgroup label="Formas de Pagamento">
 		           				
 <%-- 		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option> --%>
@@ -164,13 +130,9 @@
 		       				</c:forEach>
 		                </optgroup>
 	                    </select>	
+	                    	                    <button type="submit" class="btn  btn-success" onClick="javascript:window.location='adicionarformapagamentopagamento'">Add</button>
 	                    
-	                    
-	                    <!-- 	                    onClick="javascript:window.location='adicionarformapagamentopagamento'" -->
-	                    <label>
-	                    <button type="submit" class="btn  btn-success" onClick="javascript:window.location='adicionarformapagamentopagamento'">AddFomaPag</button>
-							
-							</label>			
+	         		
 				
                 </div>
               </div>
@@ -180,8 +142,8 @@
 							
 									
 			
-										 <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
+					<div class="table-responsive">
+                            <table class="table table-bordered data-table">
                             
                                 <thead>
                                     <tr>
@@ -275,30 +237,17 @@
                 <label class="control-label">Id do Pedido</label>
                 <div class="controls">
 				
-				<input id="pedidos" class="form-control" name="pedidos" type="text" value="${pedidovenda}" placeholder="Digite o Pedido de Venda"/>
+				<input id="pedidos" class="span2" name="pedidos" type="text" value="${pedidovenda}" placeholder="Digite o Pedido de Venda"/>
+				<input id="id" class="span2" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
+				
+				<input id="datapagamento" class="span4" name="datapagamento" type="datetime" value="${pagamento.datapagamento}" placeholder="Digite o Data"/>
+				
+				<input id="status" class="span4" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
+				
 				
                 </div>
               </div>
 			
-					
-				              <div class="control-group">
-                <label class="control-label">Id Pagamento</label>
-                <div class="controls">
-				
-						<input id="id" class="form-control" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
-				
-                </div>
-              </div>
-			
-			 
-			               <div class="control-group">
-                <label class="control-label">Data Pagameento</label>
-                <div class="controls">
-				
-						<input id="datapagamento" class="form-control" name="datapagamento" type="datetime" value="${pagamento.datapagamento}" placeholder="Digite o Data"/>
-				
-                </div>
-              </div>
 		
 					
 					
@@ -320,18 +269,8 @@
 							</c:forEach>
 						</optgroup>
 				</select>
-								
-				
-                </div>
-              </div>
 					
-					
-				
-				
-              <div class="control-group">
-                <label class="control-label"></label>
-                <div class="controls">
- <select id="formaPagamentos" name="formaPagamentos"
+<select id="formaPagamentos" name="formaPagamentos"
 					multiple="multiple" class="form-control">
 						<optgroup label="Confira as Formas de Pagamento">
 
@@ -343,51 +282,24 @@
 							</c:forEach>
 						</optgroup>
 				</select>				
-				
-                </div>
-              </div>				
-									
-
-
-              <div class="control-group">
-                <label class="control-label">Status</label>
-                <div class="controls">
-				
-				<input id="status" class="form-control" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
-				
+										
 				
                 </div>
               </div>
+					
 				
               <div class="control-group">
                 <label class="control-label">Valor Total</label>
                 <div class="controls">
 						<input id="valorTotalPagamento" class="form-control" name="valorTotalPagamento" type="text" value="${pedidovenda.total}" placeholder="Digite a Total"/>
-				
-				
-                </div>
-              </div>
-              
-              
-              
-               <div class="control-group">
-                <label class="control-label">Valor Pago</label>
-                <div class="controls">
-				
 						<input id="valorPago" class="effect" name="valorPago" type="text" value="${pagamento.valorPago}" placeholder="valor pago"/>					
-				
-                </div>
-              </div>
-              
-               <div class="control-group">
-                <label class="control-label">Restante</label>
-                <div class="controls">
 						<input id="restante" class="effect" name="restante" type="text" value="" placeholder="restante" />					
 				
 				
                 </div>
-              </div>             				
-		 	 	
+              </div>
+              
+              	 	 	
 		 	 	   <div class="form-actions">
                 <input type="submit" value="Inserir" class="btn btn-success">
               </div>						

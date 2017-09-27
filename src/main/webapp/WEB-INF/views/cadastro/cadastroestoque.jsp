@@ -38,7 +38,6 @@
                <div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${estoque.isativo}"/>
                 </div>
               </div>
               
@@ -46,16 +45,18 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
+						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
+               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${estoque.isativo}"/>
+               
                 </div>
               </div>
               
-                <div class="control-group">
-                <label class="control-label">Logo</label>
-                <div class="controls">
-             <input id="foto" class="form-control" name="foto" type="image" value="${estoque.logo}" placeholder="Digite o Foto"/>					
-                </div>
-              </div>                
+<!--                 <div class="control-group"> -->
+<!--                 <label class="control-label">Logo</label> -->
+<!--                 <div class="controls"> -->
+<%--              <input id="foto" class="form-control" name="foto" type="image" value="${estoque.logo}" placeholder="Digite o Foto"/>					 --%>
+<!--                 </div> -->
+<!--               </div>                 -->
               
               
               

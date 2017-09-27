@@ -38,18 +38,15 @@
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
-					<div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-				<input id="isativo" name="isativo"  type="checkbox" checked="${pedidovenda.isativo}"/>
-                </div>
-              </div>
               
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
+                		<input id="isativo" name="isativo" class="span4"  type="checkbox" checked="${pedidovenda.isativo}"/>
+                
+                
                 </div>
               </div>
 			 
@@ -59,73 +56,7 @@
 				
 				<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"placeholder="Digite a Data"/>
 				
-				
-                </div>
-              </div>
-              
-               <div class="control-group">
-                <label class="control-label">Situacao Pedido</label>
-                <div class="controls">
-         <select id="situacao"name="situacao"  class="form-control" >
-	                                  <optgroup label="Situação do Pedido">
-		           					
-		           					
-		           			<c:forEach var="situacao" items="${situacaoPedidoList}">
-		           			
-		           				<option value="${situacao}">${situacao}</option>
-		           				      				
-		           				
-		       				</c:forEach>
-		       				
-		                </optgroup>
-	                    </select>				
-				
-                </div>
-              </div>             			 
-		
-              <div class="control-group">
-                <label class="control-label">Status Pedido</label>
-                <div class="controls">
-                         <select id="status"name="status"  class="form-control" >
-	                                  <optgroup label="Status do Pedido">
-		           					<c:forEach var="status" items="${tipoStatusList}">
-		           			
-		           				<option value="${status}">${status}</option>
-		           				      				
-		           				
-		       				</c:forEach>
-		                </optgroup>
-	                    </select>				
-				
-                </div>
-              </div>
-              
-              
-               <div class="control-group">
-                <label class="control-label">Origem Pedido</label>
-                <div class="controls">
-                         <select id="origempedido"name="origempedido"  class="form-control" >
-	                                  <optgroup label="Origem do Pedido">
-		           					
-		           					
-		           			<c:forEach var="origem" items="${origemPedidoList}">
-		           			
-		           				<option value="${origem}">${origem}</option>
-		           				      				
-		           				
-		       				</c:forEach>
-		       				
-		                </optgroup>
-	                    </select>				
-				
-                </div>
-              </div>
-              
-              
-                <div class="control-group">
-                <label class="control-label">Cliente</label>
-                <div class="controls">
-					<select id="cliente" name="cliente" class="form-control">
+									<select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
 
 
@@ -139,12 +70,13 @@
 
 									</c:forEach>
 								</optgroup>
-						</select>				
+						</select>
 				
                 </div>
               </div>
               
-              <div class="control-group">
+              
+                  <div class="control-group">
                 <label class="control-label">Mesa</label>
                 <div class="controls">
 <select id="mesa" name="mesa" class="form-control">
@@ -161,41 +93,85 @@
 
 									</c:forEach>
 								</optgroup>
-						</select> 				
+						</select> 
+						
+	<select id="garcon" name="garcon" class="form-control">
+			<optgroup label="Garcon">
+
+
+				<option value=""></option>
+
+
+				<c:forEach var="garcon" items="${garconList}">
+
+					<option value="${garcon.id}">${garcon.nome}</option>
+
+
+				</c:forEach>
+			</optgroup>
+	</select>				
+										
 				
                 </div>
               </div>
               
-                 <div class="control-group">
-                <label class="control-label">Garcon</label>
-                <div class="controls">
-<select id="garcon" name="garcon" class="form-control">
-								<optgroup label="Garcon">
-
-
-									<option value=""></option>
-
-
-									<c:forEach var="garcon" items="${garconList}">
-
-										<option value="${garcon.id}">${garcon.nome}</option>
-
-
-									</c:forEach>
-								</optgroup>
-						</select>				
-				
-                </div>
-              </div> 
+              
               
                <div class="control-group">
-                <label class="control-label">Total</label>
+                <label class="control-label">Situacao Pedido</label>
                 <div class="controls">
-						<input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
-				
+         <select id="situacao"name="situacao"  class="form-control" >
+	                                  <optgroup label="Situação do Pedido">
+		           					
+		           					
+		           			<c:forEach var="situacao" items="${situacaoPedidoList}">
+		           			
+		           				<option value="${situacao}">${situacao}</option>
+		           				      				
+		           				
+		       				</c:forEach>
+		       				
+		                </optgroup>
+	                    </select>
+	                    
+         <select id="status"name="status"  class="form-control" >
+                <optgroup label="Status do Pedido">
+ 					<c:forEach var="status" items="${tipoStatusList}">
+ 			
+ 						<option value="${status}">${status}</option>
+ 				      				
+ 				
+					</c:forEach>
+      			</optgroup>
+         </select>			
 				
                 </div>
-              </div>             
+              </div>             			 
+		             
+              
+               <div class="control-group">
+                <label class="control-label">Origem Pedido</label>
+                <div class="controls">
+                         <select id="origempedido"name="origempedido"  class="form-control" >
+	                                  <optgroup label="Origem do Pedido">
+		           					
+		           					
+		           			<c:forEach var="origem" items="${origemPedidoList}">
+		           			
+		           				<option value="${origem}">${origem}</option>
+		           				      				
+		           				
+		       				</c:forEach>
+		       				
+		                </optgroup>
+	                    </select>
+	                    
+	               <input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
+	                    				
+				
+                </div>
+              </div>
+                    
               
                                                   
                            			 

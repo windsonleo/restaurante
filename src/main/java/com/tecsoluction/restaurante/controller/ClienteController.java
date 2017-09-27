@@ -11,16 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.ClienteDAO;
+import com.tecsoluction.restaurante.dao.EnderecoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.Endereco;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
@@ -40,6 +45,8 @@ public class ClienteController extends AbstractController<Cliente> {
     final
     ClienteDAO dao;
     
+    private final EnderecoDAO enddao;
+    
     private List<Cliente> clientes;
     
 //    private
@@ -52,23 +59,23 @@ public class ClienteController extends AbstractController<Cliente> {
     
 
     @Autowired
-    public ClienteController(ClienteDAO dao,UsuarioDAO daousu) {
+    public ClienteController(ClienteDAO dao,UsuarioDAO daousu,EnderecoDAO enddao) {
         super("cliente");
         this.dao = dao;
         this.usudao = daousu;
-//        this.rdao =rdao;
+        this.enddao =enddao;
     }
     
     
-//    @InitBinder
-//    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-//
-//        binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.rdao) {
-//        });
-//     
-//
-//
-//    }
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+
+        binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enddao) {
+        });
+     
+
+
+    }
 
 	
 	/**
@@ -159,5 +166,8 @@ public class ClienteController extends AbstractController<Cliente> {
 		
 		return detalhescliente;
 	}
+	
+	
+	
 	
 }

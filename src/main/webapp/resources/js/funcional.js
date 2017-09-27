@@ -90,5 +90,12 @@
 		        }
 		    })
 		});
+	      
 
   });
+ 
+ $(document).ready(function() {
+	 
+
+   
+ });

@@ -34,36 +34,28 @@
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/empresa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${empresa.isativo}"/>
-                </div>
-              </div>
               
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${empresa.id}" placeholder="Digite o id" />
+						<input id="id" class="span3 m-wrap" name="id" type="text" value="${empresa.id}" placeholder="Digite o id" />
+                		                		
+                		<input id="isativo" name="isativo" class="span2 m-wrap" type="checkbox" checked="${empresa.isativo}"/>
+                
+                
                 </div>
-              </div>
-              
-                <div class="control-group">
-                <label class="control-label">Logo</label>
-                <div class="controls">
-             <input id="foto" class="form-control" name="foto" type="image" value="${empresa.logo}" placeholder="Digite o Foto"/>					
-                </div>
-              </div>                
-              
-              
+              </div>           
               
               
               
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome da Empresa"/>
+						<input id="nome" class="span7 m-wrap" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome da Empresa"/>
+                        
+                         <input id="logo" class="span5 m-wrap" name="logo" type="text" value="${empresa.logo}" placeholder="Inclua Sua Logomarca"/>					
+               
                 </div>
               </div>
 

@@ -69,25 +69,37 @@
 			<c:forEach var="produto" items="${categoria.produtos}" varStatus="id">
 		
 				  <li class="lb_nome_produto" >${produto.nome} .....................................................................................................................................................................................................<label class="preco"> R$ :${produto.precovenda}</label></li>
-                  <p class="lb_produto_descricao">(${produto.descricao}) <i class="icon icon-picture"></i></p>
+                  <p class="lb_produto_descricao">(${produto.descricao})<a href="#myModal${produto.id}" data-toggle="modal" class="lb_produto_descricao"> <i class="icon icon-picture"> </i> </a></p>
                   
                   
+                  
+                  
+            <div id="myModal${produto.id}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>${produto.nome}</h3>
+              </div>
+              <div class="modal-body">
+					<p>${produto.descricao}</p>               
+ 					<p><img src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="img-responsive"></p>
+              </div>
+            </div>
 
-			<div id="myAlert${produto.id}" class="modal hide">
-				<div class="modal-header">
-					<button data-dismiss="modal" class="close" type="button">×</button>
-					<h3>Alerta de Exclusão</h3>
-				</div>
-				<div class="modal-body">
-					<p>Deseja Realmente Excluir esse Registro</p>
-				</div>
-				<div class="modal-footer">
-					<a data-dismiss="" class="btn btn-danger"
-						href="${pageContext.request.contextPath}/produto/delete?id=${produto.id}">Confirma</a>
-					<a data-dismiss="modal" class="btn" href="#">Cancela</a>
-				</div>
+<%-- 			<div id="myAlert${produto.id}" class="modal hide"> --%>
+<!-- 				<div class="modal-header"> -->
+<!-- 					<button data-dismiss="modal" class="close" type="button">×</button> -->
+<!-- 					<h3>Alerta de Exclusão</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					<p>Deseja Realmente Excluir esse Registro</p> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-footer"> -->
+<!-- 					<a data-dismiss="" class="btn btn-danger" -->
+<%-- 						href="${pageContext.request.contextPath}/produto/delete?id=${produto.id}">Confirma</a> --%>
+<!-- 					<a data-dismiss="modal" class="btn" href="#">Cancela</a> -->
+<!-- 				</div> -->
 
-			</div>
+<!-- 			</div> -->
 			
 			</c:forEach> 
              
