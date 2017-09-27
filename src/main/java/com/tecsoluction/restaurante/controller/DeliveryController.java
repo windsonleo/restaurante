@@ -153,7 +153,7 @@ public class DeliveryController {
     	
     	if(cli == null){
     		
-    		String Erros = "Não Exte esse Cliente";
+    		String Erros = "Nao Exte esse Cliente";
     		delivery.addObject("erros",Erros);
     		
     		return delivery;
