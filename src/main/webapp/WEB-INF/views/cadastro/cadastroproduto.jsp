@@ -41,10 +41,45 @@
 					</span>
 					<h5>Cadastro de Produto</h5>
 				</div>
-
+				
+					<form method="post" action="salvarfoto" enctype="multipart/form-data" class="form-horizonta">  		
+							
+							
+				<div class="control-group">
+                <label class="control-label">Carregar Foto</label>
+                <div class="controls">
+			<div class="span3">
+				<div id="uniform-undefined" class="uploader">
+						<input id="file" size="30" style="opacity: 0;" type="file"  name="file" >
+						<span class="filename" style="-moz-user-select: none;"><p>${filename}</p></span>
+						<span class="action" style="-moz-user-select: none;">Choose File</span>
+				
+				
+				
+				</div>
+				
+			</div>
+				
+				<div class="span2"><input type="submit" value="Upload" class="btn btn-info"></div>
+							
+<!-- 							<input id="file" class="span4 m-wrap" name="file" -->
+<!-- 						type="file" value="" -->
+<!-- 						placeholder="Localizea foto"   /> -->
+					
+					 
+					
+					
+				<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
+					</div>
+					
+					</div>
+					
+					</form>
+					
+					
 				<form role="form" id="ds" class="form-horizontal"
 					action="${pageContext.request.contextPath}/produto/${acao}"
-					ModelAttribute="produto" method="POST">            
+					ModelAttribute="produto" method="POST"  enctype="application/x-www-form-urlencoded">            
               
               <div class="control-group">
                 <label class="control-label">Id</label>
@@ -84,8 +119,9 @@
 	<input id="descricao" class="span5 m-wrap"
 						name="descricao" type="text" value="${produto.descricao}"
 						placeholder="Digite a Descrição" />	
-						
-	<input id="foto" class="span4 m-wrap" name="foto"
+				
+
+							<input id="foto" class="span4 m-wrap" name="foto"
 						type="text" value="${produto.foto}"
 						placeholder="Digite o Caminho da Foto" />			
 				
@@ -190,7 +226,7 @@
 					value="${_csrf.token}">
 			</div>
 
-
+</form>
 		</div>
 
 

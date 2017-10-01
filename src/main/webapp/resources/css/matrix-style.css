@@ -1329,9 +1329,31 @@ form {
 	margin-top: 0;
 	text-align: center;
 }
+
+
+#contenttt-header {
+	margin-top: 0;
+	text-align: center;
+}
+
+
 #content-header h1, #content-header .btn-group {
 	float: none;
 }
+
+#contenttt-header h1, #content-header .btn-group {
+	float: none;
+}
+
+#contenttt-header h1 {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-top: 0;
+	padding-top: 15px;
+	width: 100%;
+}
+
 #content-header h1 {
 	display: block;
 	text-align: center;
@@ -1340,12 +1362,21 @@ form {
 	padding-top: 15px;
 	width: 100%;
 }
+
+#contenttt--header .btn-group {
+	margin-top: 70px;
+	margin-bottom: 0;
+	margin-right: 0;
+	left: 30%;
+}
+
 #content-header .btn-group {
 	margin-top: 70px;
 	margin-bottom: 0;
 	margin-right: 0;
 	left: 30%;
 }
+
 #sidebar {
 	float: none;
 	width: 100% !important;
@@ -1485,6 +1516,10 @@ body {
 	display:block;
 }
 #content {
+	margin-top:0px;
+}
+
+#contenttt {
 	margin-top:0px;
 }
 #sidebar > ul > li {

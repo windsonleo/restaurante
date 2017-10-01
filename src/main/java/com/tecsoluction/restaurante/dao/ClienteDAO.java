@@ -40,8 +40,22 @@ public class ClienteDAO extends AbstractEntityDao<Cliente> {
 
 	public Cliente getClienteporTelefone(String tel) {
 		
-		Cliente cliente = manager.createQuery("SELECT p FROM Cliente p where p.telefone='"+tel+"'", Cliente.class).getSingleResult();
-    
+		Cliente cliente = new Cliente();
+		try {
+			
+		 cliente = manager.createQuery("SELECT p FROM Cliente p where p.telefone='"+tel+"'", Cliente.class).getSingleResult();
+
+			
+		} catch (Exception e) {
+
+		//String mensagem = e + "Erro na Busca do Cliente pelo Telefone";
+		cliente = new Cliente();
+		cliente.setTelefone(tel);
+		
+		}
+		
+		
+		
 		return cliente;
 		    
 

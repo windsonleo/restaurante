@@ -33,131 +33,119 @@
             <h5>Cadastro de Cliente</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/cliente/${acao}">
-         
-              
-              
-              <div class="control-group">
-                <label class="control-label">Id</label>
-                <div class="controls">
-						<input id="id" class="span2 m-wrap" name="id" type="text" value="${cliente.id}" placeholder="Digite o id" />
-               			<input id="isativo" name="isativo" class="span2 m-wrap" type="checkbox" checked="${cliente.isativo}"/>
-               			<input id="endereco" name="endereco" class="span2 m-wrap" type="text" checked="${cliente.endereco}"  placeholder="Digite o id do endereco"/>
-
-<!-- 						<span class="help-block span4">Ativo?</span>                -->
+          
+          
+              <form id="form-wizard" class="form-horizontal" method="post">
+              <div id="form-wizard-1" class="step">
+                <div class="control-group">
+                  <label class="control-label">Id</label>
+                  <div class="controls">
+                   
+                   <input id="id" class="span2 m-wrap" name="id" type="text" value="${cliente.id}" placeholder="Digite o id" /> 
+               		
+               		
+              		
+              		<input id="foto" class="span4 m-wrap" name="foto" type="text" value="${cliente.foto}" placeholder="Digite o Foto"/>
+                   
+                  <input id="isativo" name="isativo" class="span2 m-wrap" type="checkbox" checked="${cliente.isativo}"/>
+                   
+                  </div>
                 </div>
-              </div>
-              
-                   <div class="control-group">
-              <label class="control-label">Foto</label>
-              <div class="controls">
-             <input id="foto" class="span4 m-wrap" name="foto" type="text" value="${cliente.foto}" placeholder="Digite o Foto"/>					
-              </div>
-            </div>
-                         
-
-              <div class="control-group">
-                <label class="control-label">Nome</label>
-                <div class="controls">
-						<input id="nome" class="span6 m-wrap" name="nome" type="text" value="${cliente.nome}" placeholder="Digite o Nome da Cliente"/>
-		               
-		               <select id="genero" name="genero" id="genero" class="span3 m-wrap">           
-			                <optgroup label="Genero do Cliente">
-			           			
-			           				<option value="MASCULINO">MASCULINO</option>
-			           				<option value="FEMININO">FEMININO</option>
-			           				      				
-			                </optgroup>
-			            </select>
-               
-                </div>
-              </div>
-              
-              
-              
-            <div class="control-group">
-                <label class="control-label">Telefone</label>
-                <div class="controls">
-             <input id="mask-phone" class="span6 mask text" name="telefone" type="text" value="${cliente.telefone}" placeholder="Digite o Telefone"/>					
-               <span class="help-block blue span8">(999) 999-9999</span>
-               
-           <input id="mask-date"type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy" value="${cliente.datanascimento}" class="datepicker span3" name="datanascimento" placeholder="Digite a Data de NAscimento">
-               
-               
-                </div>
-              </div>
-
-            <div class="control-group">
-                <label class="control-label">Email</label>
-                <div class="controls">
-                  <input id="mask-mail" class="span6 mask text" name="email" type="text" value="${cliente.email}" placeholder="Digite o Email"/>					
-               <span class="help-block">xxx@dominio.com</span>
-               
-               
                 
+                
+                
+                <div class="control-group">
+                  <label class="control-label">Nome</label>
+                  <div class="controls">
+					<input id="nome" class="span6 m-wrap" name="nome" type="text" value="${cliente.nome}" placeholder="Digite o Nome da Cliente"/>                  
+				
+				
+				
+				   <select id="genero" name="genero" id="genero" class="span3 m-wrap">        
+			                <optgroup label="Genero do Cliente"> 
+			           			
+			           				<option value="MASCULINO">MASCULINO</option> 
+			           				<option value="FEMININO">FEMININO</option> 
+			           				      				
+			                </optgroup> 
+			            </select>
+			            
+			            
+			            <input id="mask-phone" class="span6 mask text" name="telefone" type="text" value="${cliente.telefone}" placeholder="Digite o Telefone"/>
+               				<span class="help-block blue span8">(999) 999-9999</span>
+               
+           				<input id="mask-date"type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy" value="${cliente.datanascimento}" class="datepicker span3" name="datanascimento" placeholder="Digite a Data de NAscimento">
+               
+				 	<input id="mask-mail" class="span6 mask text" name="email" type="text" value="${cliente.email}" placeholder="Digite o Email"/>
+				
+				</div>
+                
+                
+                
+                </div>
+      
+      
                  </div>
                  
-                 </div>
-                 
-                 
-                             <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
+                       
+              
+              <div id="form-wizard-2" class="step">
+                <div class="control-group">
+                  <label class="control-label">Endereco</label>
+                  <div class="controls">
+                  
+                  
+                  <input id="id" class="span4 mask text" name="logradouro"
+											type="text" value="${endereco.id}"
+											placeholder="Digite o Id Logradouro" /> <input
+											id="logradouro" class="span4 mask text" name="logradouro"
+											type="text" value="${endereco.logradouro}"
+											placeholder="Digite o Logradouro" /> <input id="numero"
+											class="span1 mask text" name="numero" type="text"
+											value="${endereco.numero}" placeholder="Nº" /> <input
+											id="bairro" class="span3 mask text" name="bairro" type="text"
+											value="${endereco.bairro}" placeholder="Digite o Bairro" />
+										<input id="cidade" class="span3 mask text" name="cidade"
+											type="text" value="${endereco.cidade}"
+											placeholder="Digite a Cidade" /> <input id="uf"
+											class="span3 mask text" name="uf" type="text"
+											value="${endereco.uf}" placeholder="Digite a UF" /> <input
+											id="cep" class="span2 mask text" name="cep" type="text"
+											value="${endereco.cep}" placeholder="Digite o Cep"
+											onblur="pesquisacep(this.value);" /> <input
+											id="pontoreferencia" class="span5 mask text"
+											name="logradouro" type="text"
+											value="${endereco.pontoreferencia}"
+											placeholder="Digite o Ponto de Referencia" /> <input
+											id="complemento" class="span10 mask text" name="complemento"
+											type="text" value="${endereco.complemento}"
+											placeholder="Digite o Complemneto" /> <input id="cliente"
+											name="cliente" class="span2 m-wrap" type="text"
+											value="${entity}" /> <input id="ibge" name="ibge"
+											class="span2 m-wrap" type="text" value="" />
+                  
+                  
+                  
+                  
+                  </div>
+                </div>
+         
+         
               </div>
-                 
-                 
-                 </form>
+              
+              <div class="form-actions">
+                <input id="back" class="btn btn-primary" type="reset" value="Back" />
+                <input id="next" class="btn btn-primary" type="submit" value="Next" />
+                <div id="status"></div>
+              </div>
+              <div id="submitted"></div>
+            </form>
+          
+          
                  </div>
                  </div>
                              
-                  <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro Endereco</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/endereco/${acao}">
- 
-                             <div class="control-group">
-                <label class="control-label">Endereco</label>
-                <div class="controls">
-                   <input id="id" class="span4 mask text" name="logradouro" type="text" value="${endereco.id}" placeholder="Digite o Id Logradouro"/>					
-                  <input id="logradouro" class="span4 mask text" name="logradouro" type="text" value="${endereco.logradouro}" placeholder="Digite o Logradouro"/>					
-                  <input id="numero" class="span1 mask text" name="numero" type="text" value="${endereco.numero}" placeholder="Nº"/>					
-                  <input id="bairro" class="span3 mask text" name="bairro" type="text" value="${endereco.bairro}" placeholder="Digite o Bairro"/>					
-                  <input id="cidade" class="span3 mask text" name="cidade" type="text" value="${endereco.cidade}" placeholder="Digite a Cidade"/>					
-                   <input id="uf" class="span3 mask text" name="uf" type="text" value="${endereco.uf}" placeholder="Digite a UF"/>					
                  
-               
-                
-                 </div>
-                 
-                 </div>
-                 
-                 
-                 
-                 
-                 <div class="control-group">
-		                <label class="control-label"></label>
-				                <div class="controls">
-				                   
-				                   
-				                   <input id="cep" class="span2 mask text" name="cep" type="text" value="${endereco.cep}" placeholder="Digite o Cep" onblur="pesquisacep(this.value);"/>					
-				  			      <input id="pontoreferencia" class="span5 mask text" name="logradouro" type="text" value="${endereco.pontoreferencia}" placeholder="Digite o Ponto de Referencia"/>					
-				                  <input id="complemento" class="span10 mask text" name="complemento" type="text" value="${endereco.complemento}" placeholder="Digite o Complemneto"/>					
-				                  <input id="cliente" name="cliente" class="span2 m-wrap" type="text" value="${entity}"/>
-				                   <input id="ibge" name="ibge" class="span2 m-wrap" type="text" value=""/>
-				             		                
-		                	 </div>
-		                 
-                 </div>
-            
-                          
-                          
-              <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
             </div>

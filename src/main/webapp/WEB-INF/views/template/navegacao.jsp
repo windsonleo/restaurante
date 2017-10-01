@@ -25,7 +25,6 @@
 		    </li>
 		    
 		      <sec:authorize access="hasRole('ROLE_ADM')">
-		      <tt>GrantedAuthority</tt>s.
  					<li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messagess" class="dropdown-toggle"><i class="icon-group"></i>  <span class="text">Empresa</span><b class="caret"></b></a>
 			     
 			      <ul class="dropdown-menu">
@@ -117,7 +116,6 @@
         
       </ul>
     </li>
-     <tt>GrantedAuthority</tt>s.
     
     </sec:authorize>
     
@@ -154,7 +152,6 @@
     
     
     <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuário.png" /></i> <span>Usuario</span></a></li>
- <tt>GrantedAuthority</tt>s.
 
 </sec:authorize>
   </ul>

@@ -207,12 +207,15 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
        
        
        
-       totalpedido = 0;
-
+       totalpedido = pv.CalcularTotal(pv.getItems());
+       
+       pv.setTotal(totalpedido);
+       
+      pedidoCompraDao.editar(pv);
 
         additempedidovenda.addObject("pedidocompra", pv);
         additempedidovenda.addObject("produtosList", produtosList);
-        additempedidovenda.addObject("totalpedidocompra", totalpedido);
+        additempedidovenda.addObject("totalpedidocompra", pv.CalcularTotal(pv.getItems()));
 
 
 
@@ -256,12 +259,13 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         Item item = new Item(produto,pv);
         item.setQtd(prodqtd);
-      
-        pv.getItems().put(item,item.getQtd());
+
+       // pv.getItems().put(item,item.getQtd());
         
         itens = pv.getItems();
         itens.put(item,item.getQtd());
         pv.setItems(itens);
+        pv.CalcularTotal(itens);
         
 
           itempedidovendaDao.add(item);

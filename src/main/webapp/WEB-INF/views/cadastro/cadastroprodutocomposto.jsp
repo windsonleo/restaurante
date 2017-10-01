@@ -42,6 +42,40 @@
 					</span>
 					<h5>Cadastro de ProdutoComposto</h5>
 				</div>
+				
+			<form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizonta">  		
+							
+							
+				<div class="control-group">
+                  <label class="control-label">Carregar Foto</label>
+                <div class="controls">
+			<div class="span3">
+				<div id="uniform-undefined" class="uploader">
+						<input id="file" size="30" style="opacity: 0;" type="file"  name="file" >
+						<span class="filename" style="-moz-user-select: none;"><p>${filename}</p></span>
+						<span class="action" style="-moz-user-select: none;">Choose File</span>
+				
+				
+				
+				</div>
+				
+			</div>
+				
+				<div class="span2"><input type="submit" value="Upload" class="btn btn-info"></div>
+							
+<!-- 							<input id="file" class="span4 m-wrap" name="file" -->
+<!-- 						type="file" value="" -->
+<!-- 						placeholder="Localizea foto"   /> -->
+					
+					 
+					
+					
+				<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
+					</div>
+					
+					</div>
+					
+					</form>
 
 			<form role="form" id="ds" class="form-horizontal"
 					action="${pageContext.request.contextPath}/produtocomposto/${acao}"
@@ -81,7 +115,15 @@
 						
 					<input id="foto" class="form-control" name="foto"
 						type="text" value="${produtocomposto.foto}"
-						placeholder="Digite o Caminho da Foto" />		
+						placeholder="Digite o Caminho da Foto" />	
+						
+<!-- 						            <div class="control-group"> -->
+<!--               <label class="control-label">File upload input</label> -->
+<!--               <div class="controls"> -->
+<!--                 <input id="foto" name="foto" type="file" /> -->
+<!--               </div> -->
+<!--             </div> -->
+							
 				
                 </div>
               </div>

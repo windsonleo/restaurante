@@ -22,10 +22,9 @@
     
     
     <definition name="TemplateC" template="/WEB-INF/template/templatecardapio.jsp">
-        <put-attribute name="conteudo" value=""/>
                 <put-attribute name="navegacaocardapio" value="/WEB-INF/views/template/navegacaocardapio.jsp"/>
-        
-                <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+                <put-attribute name="conteudo" value=""/>
+<!--                 <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/> -->
         
     </definition>
 

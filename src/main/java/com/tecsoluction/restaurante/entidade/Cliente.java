@@ -62,7 +62,7 @@ public class Cliente implements Serializable {
     @Column(name = "isativo") 
 	private boolean isativo;
     
-    @OneToOne(cascade={CascadeType.PERSIST})
+    @OneToOne(cascade={CascadeType.ALL})
     private Endereco endereco;
 	
 
@@ -81,6 +81,8 @@ public class Cliente implements Serializable {
 
     public Cliente() {
         // TODO Auto-generated constructor stub
+    	
+    	this.endereco = new Endereco();
     }
     
     public Cliente(Endereco endereco) {

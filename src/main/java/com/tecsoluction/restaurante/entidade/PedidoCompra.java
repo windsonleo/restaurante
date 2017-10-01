@@ -102,12 +102,7 @@ public class PedidoCompra extends Pedido implements Serializable {
 	/**
 	 * @return the items
 	 */
-	
-    @ElementCollection(fetch=FetchType.EAGER)
-    @MapKeyColumn(name = "id")
-    @Column(name="qtd")
-    @CollectionTable(name="itens_pedidocompra",joinColumns=@JoinColumn(name="id"))
-    @JsonManagedReference
+
 	public Map<Item, Double> getItems() {
 		return items;
 	}

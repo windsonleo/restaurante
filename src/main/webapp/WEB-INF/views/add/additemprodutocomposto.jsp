@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produtocomposto/movimentacao"  title="Go to " class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
     <h1>Add Item ao Produto Composto <strong> ${produtocomposto.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
@@ -39,7 +39,6 @@
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-			   <div class="form-inline"> 
 			
 								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-horizontal">
 								
@@ -65,7 +64,6 @@
 										value="ADD">
 											
 			   
-			    </div>
               </div>
 
 
@@ -91,60 +89,27 @@
             <h5>Detalhes do Produto Composto : ${produtocomposto.id} <strong> ${produtocomposto.id }</strong></h5>
            
           </div>
-                    <div class="widget-content nopadding">               
-          
-          			<div class="control-group">
-          
-          			<div class="controls">
-          			
-          			 <div class="form-inline"> 
-						 
-<!-- 							<label>Código</label>	 -->
-<%-- 							<input id="id" name="id" type="text" class="form-control" value="${produtocomposto.id }">  --%>
-<!-- 							<label>Data</label>	 -->
-<%-- 							<input id="data" name="data" type="text" class="form-control" value="${produtocomposto.data }">  --%>
-<!-- 							<label>Status</label> -->
-<%-- 							<input id="status" name="status" type="text" class="form-control" value="${produtocomposto.status }">  --%>
-<!-- 							<label>Mesa</label> -->
-<%-- 							<input id="mesa" name="mesa" type="text" class="form-control" value="${produtocomposto.mesa }">  --%>
-<!-- 							<label>Garcon</label> -->
-<%-- 							<input id="garcon" name="garcon" type="text" class="form-control" value="${produtocomposto.garcon }">  --%>
-							
-<!-- 							<label>Cliente</label> -->
-<%-- 							<input id="cliente" name="cliente" type="text" class="form-control" value="${produtocomposto.cliente }">  --%>
-							
-<!-- 							<label>Total</label> -->
-<%-- 							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px">  --%>
+                    <div class="widget-content nopadding">               			 						
 						
-						
-						     <div class="control-group">
+			 <div class="control-group">
                 <label class="control-label">CodeBar</label>
                 <div class="controls">
 					<input id="codebar" class="form-control"
 						name="codebar" type="text" value="${produtocomposto.codebar}"
-						placeholder="Digite o CodeBar" />			
+						placeholder="Digite o CodeBar" readonly="readonly"/>
+						
+					<input id="nome" class="form-control"
+						name="nome" type="text" value="${produtocomposto.nome}"
+						placeholder="Digite a Nome"  readonly="readonly"/>
+						
+					<input id="descricao" class="form-control"
+						name="descricao" type="text" value="${produtocomposto.descricao}"
+						placeholder="Digite a Descrição" readonly="readonly" />		
+								
 				
                 </div>
               </div>
               
-              <div class="control-group">
-                <label class="control-label">Nome</label>
-                <div class="controls">
-					<input id="nome" class="form-control"
-						name="nome" type="text" value="${produtocomposto.nome}"
-						placeholder="Digite a Nome" />			
-				
-                </div>
-              </div>
-              <div class="control-group">
-                    </div><label class="control-label">Descrição</label>
-                <div class="controls">
-					<input id="descricao" class="form-control"
-						name="descricao" type="text" value="${produtocomposto.descricao}"
-						placeholder="Digite a Descrição" />			
-				
-            
-              </div>
 
 
               <div class="control-group">
@@ -156,48 +121,25 @@
 
 <%-- 								<option value="${produtocomposto.categoria}"></option> --%>
 
-
-								<c:forEach var="categoria" items="${categoriaList}">
-
-									<option value="${categoria.id}">${categoria.nome}</option>
+									<option value="${produtocomposto.categoria.id}" >${produtocomposto.categoria.nome}</option>
 
 
-								</c:forEach>
 							</optgroup>
-					</select>				
+					</select>
+					
+					<input id="precocusto" class="form-control"
+						name="precocusto" type="text" value="${produtocomposto.precocusto}"
+						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
+						
+					<input id="precovenda" class="form-control"
+						name="precovenda" type="text" value="${produtocomposto.precovenda }"
+						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
 				
                 </div>
               </div>
-
-					         <div class="control-group">
-                <label class="control-label">Preço de Custo</label>
-                <div class="controls">
-						<input id="precocusto" class="form-control"
-						name="precocusto" type="text" value="${produtocomposto.precocusto}"
-						placeholder="Digite o Preco de Custo" />			
-				
-                </div>
-              </div>          
-              
-              <div class="control-group">
-                <label class="control-label">Preço de Venda</label>
-                <div class="controls">
-						<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="${produtocomposto.precovenda }"
-						placeholder="Digite o Preco de Venda" />				
-				
-                </div>
-              </div>              
-              
-        	
+             						
 						
 						
-						
-						
-						
-						
-						
-						</div>
 </div>
 						</div>
 						</div>
@@ -240,27 +182,13 @@
                                 
                                 <c:forEach var="item" items="${produtocomposto.itens}" varStatus="id">
 
-<%-- 		<c:choose> --%>
-		
-<%-- 		  <c:when test="${formapagamento.id % 2 == 0}"> --%>
   
   <tr class="gradeX">
 
-<%--  					 <td>${item.id}</td> --%>
 			      <td>${item.key}</td>
-			    
-			    
-			    
+
 			     <td>${item.value}</td>
 			      
-<%--                   <td>${item.codigo}</td> --%>
-<%--                   <td>${item.descricao}</td> --%>
-<%--                   <td><input name="qtd"type="text" value="${item.qtd}" class="effect soma" onkeyup="up(this)" onBlur="calculaitem();"></td> --%>
-<%--                    <td> <input name="precounit" type="text" value="${item.precoUnitario}" /></td> --%>
-<%--                     <td> <input name="precounit" type="text" value="${item.totalItem}" /></td> --%>
-                    
-<!--                     <td><input id="valoritemform"name="valoritemform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculatotalitem();"/></td> -->
-<%--                    <td>${item.isativo}</td> --%>
 
 
 

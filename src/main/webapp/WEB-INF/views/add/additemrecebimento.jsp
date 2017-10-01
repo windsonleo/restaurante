@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> >> <a href="#">Movimentação Recebimento</a>>> <a href="#" class="current">Add Item ao Recebimento </a> </div>
     <h1>Add Item ao Recebimento <strong> ${recebimento.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
@@ -48,17 +48,11 @@
 							type="text" value="${recebimento.pedidocompra.id }"
 							placeholder="Digite o Número do Pedido de Compra" />  
 							
+							<button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
+							
+							
 							              </div>
-<!--               </div> -->
-              
-             <div class="control-group">
-                <label class="control-label"></label>
-                <div class="controls">
- 	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
-               
-               
-               </div>
-               </div>
+
               </form>
               </div>
             
@@ -70,67 +64,26 @@
 						<div class="control-group">
 							<label class="control-label">Código</label>
 							<div class="controls">
-							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra.id }"> 
+							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra.id }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="form-control" value="${recebimento.pedidocompra.data }" readonly="readonly"> 
+						    <input id="status" name="status" type="text" class="form-control" value="${recebimento.pedidocompra.status }" readonly="readonly"> 
 							
 							
 							</div>
 						</div>
-
-             <div class="control-group">
-                <label class="control-label">Data</label>
-                <div class="controls">
-				<input id="data" name="data" type="text" class="form-control" value="${recebimento.pedidocompra.data }"> 
-				
-				
-                </div>
-              </div>			
-              
-              
-              <div class="control-group">
-                <label class="control-label">Status</label>
-                <div class="controls">
-				<input id="status" name="status" type="text" class="form-control" value="${recebimento.pedidocompra.status }"> 
-				
-				
-                </div>
-              </div>             						
-
-
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Mesa</label> -->
-<!--                 <div class="controls"> -->
-<%-- 					<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidocompra.mesa }">  --%>
-				
-				
-<!--                 </div> -->
-<!--               </div> -->
-              
-<!--                <div class="control-group"> -->
-<!--                 <label class="control-label">Garcon</label> -->
-<!--                 <div class="controls"> -->
-				
-<%-- 					<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidocompra.garcon }">  --%>
-				
-<!--                 </div> -->
-<!--               </div> -->
-              
+           						
+        
               
               <div class="control-group">
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
-				<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${recebimento.pedidocompra.fornecedor }"> 
+				<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${recebimento.pedidocompra.fornecedor }" readonly="readonly"> 
+				<input id="totalpc" name="total" type="text" class="form-control" value="${recebimento.pedidocompra.total}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 				
 				
                 </div>
               </div>							
-              <div class="control-group">
-                <label class="control-label">Total</label>
-                <div class="controls">
-				
-					<input id="total" name="total" type="text" class="form-control" value="${recebimento.pedidocompra.total}" size="20px" style="color: blue; font-size: 15px"> 
-				
-                </div>
-              </div>
+     
                <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
             <h5>Itens do Pedido de Compra  : <strong> ${recebimento.pedidocompra.id }</strong></h5>

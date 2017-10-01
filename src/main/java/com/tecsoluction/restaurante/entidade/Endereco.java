@@ -55,7 +55,7 @@ public class Endereco implements Serializable {
     @Column(name = "uf")
     private String uf;
     
-    @OneToOne(mappedBy="endereco",cascade={CascadeType.PERSIST})
+    @OneToOne(mappedBy="endereco",cascade={CascadeType.ALL})
     private Cliente cliente;
 
 

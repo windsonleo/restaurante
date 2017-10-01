@@ -142,26 +142,46 @@ public class Estoque implements Serializable {
 	
 	public void AddProdutoEstoque(Produto produto, Double qtd){
 		
-//		for (int i = 0; i < itens.size(); i++) {
-//			
-//			
-//			
-//		
-//		}
-		Double qtdant = items.get(produto).doubleValue();
 		
-		items.put(produto, qtdant+qtd);
+		if(items.get(produto) != null){
 		
+			Double qtdant = items.get(produto).doubleValue();
+			items.put(produto, qtdant+qtd);
+			
+            System.out.println("produto no estoque add if "+produto.getNome());
+
 		
+		}else
+			
+		{
+			items.put(produto,qtd);
+            System.out.println("produto no estoque add else "+produto.getNome());
+
+			
+		}
+		
+	
 	
 	}
 	
 	public void RetirarProdutoEstoque(Produto produto, Double qtd){
 		
 		
-		Double qtdant = items.get(produto).doubleValue();
+		
+		if(items.get(produto) != null){
+			
+			Double qtdant = items.get(produto).doubleValue();
 
-		items.replace(produto, qtdant - qtd);
+			items.replace(produto, qtdant - qtd);
+			
+			
+		}else
+			
+		{
+			items.put(produto,qtd);
+
+			
+		}
 		
 		
 	}

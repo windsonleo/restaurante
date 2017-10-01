@@ -29,7 +29,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 
 @Controller
-@RequestMapping(value = "sushisenpai/")
+@RequestMapping(value = "cardapio/")
 public class CardapioController   {
 
     private
@@ -63,18 +63,19 @@ public class CardapioController   {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-    	Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-        List<Categoria> categoriaList = dao.getAll();
-        categoriaList.remove(0);
-        model.addAttribute("categoriaList", categoriaList);
-        model.addAttribute("usuarioAtt", usuario);
+//    	Usuario usuario = new Usuario();
+//		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//		
+//        List<Categoria> categoriaList = dao.getAll();
+//        categoriaList.remove(0);
+//        
+//        model.addAttribute("categoriaList", categoriaList);
+//        model.addAttribute("usuarioAtt", usuario);
 
     }
     
     
-	@RequestMapping(value = "/cardapio", method = RequestMethod.GET)
+	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public ModelAndView Cardapio(Locale locale, Model model,HttpServletRequest request) {
 		
 //		Date date = new Date();
@@ -107,18 +108,18 @@ public class CardapioController   {
 		
 
 		
-	  	Long idf = Long.parseLong(request.getParameter("id"));
-	  	
-	  	Categoria cat = dao.PegarPorId(idf);
-		
+//	  	Long idf = Long.parseLong(request.getParameter("id"));
+//	  	
+//	  	Categoria cat = dao.PegarPorId(idf);
+//		
 		ModelAndView cardapio = new ModelAndView("produtoporcategoria");
-		
-		List<Produto> produtoss = new ArrayList();
-		
-		produtoss = produtoDao.getAllProdutoPorCategoria(idf);
-		
-		cardapio.addObject("produtos", produtoss );
-		cardapio.addObject("categoria", cat );
+//		
+//		List<Produto> produtoss = new ArrayList();
+//		
+//		produtoss = produtoDao.getAllProdutoPorCategoria(idf);
+//		
+//		cardapio.addObject("produtos", produtoss );
+//		cardapio.addObject("categoria", cat );
 
 		
 		return cardapio;

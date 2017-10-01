@@ -33,7 +33,7 @@
 							<label>Status</label>
 							<input id="status" name="status" type="text" class="form-control" value="${mesa.status }" disabled="disabled"> 
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="${totalall}" size="20px" style="color: blue; font-size: 15px" disabled="disabled"> 
+							<input id="total" name="total" type="text" class="form-control" value="${total}" size="20px" style="color: blue; font-size: 15px" disabled="disabled"> 
 						
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${mesa.pedidos}">  --%>
 								

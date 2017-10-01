@@ -149,13 +149,15 @@ public class DeliveryController {
 
     	
     	
-    	Cliente cli = clidao.getClienteporTelefone(telefone);
+    	Cliente cli = new Cliente();
+    	cli = clidao.getClienteporTelefone(telefone);
     	
-    	if(cli == null){
+    	if(cli.getNome() == null){
     		
-    		String Erros = "Nao Exte esse Cliente";
-    		delivery.addObject("erros",Erros);
-    		
+    		String mensagem = "Nao Existe esse Cliente,Caddastre-o Agora";
+    		delivery.addObject("mensagem",mensagem);
+    		delivery.addObject("cliente",cli);
+
     		return delivery;
     	}
     	
@@ -166,12 +168,6 @@ public class DeliveryController {
     	pedido.setOrigempedido(OrigemPedido.TELEVENDAS);
     	pedido.setStatus(StatusPedido.ABERTO);
     	pedido.setSituacao(SituacaoPedido.AGUARDANDO_PREPARACAO);
-    	
-    	
-    	
-    	
-    	
-
     	delivery.addObject("cliente", cli);
     	delivery.addObject("pedidovenda", pedido);
 

@@ -183,40 +183,73 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         ModelAndView finalizacaorecebimento = new ModelAndView("finalizacaorecebimento");
         
-
-        
         System.out.println("estoque "+estoque.getItens());
         System.out.println("itens rec "+ recebimento.getItems());
         System.out.println("itens rec conf "+ itensRecebimentoCorfirmados);
 
         System.out.println("recebimento "+ recebimento);
+        
+        
+        
+        // Iterate over all vehicles, using the keySet method.
+        
+              for(Item key: recebimento.getItems().keySet()) {
+       
+             //  System.out.println(key + "wind - " + recebimento.getItems().get(key));
+               Produto produto = produtopedidovendaDao.getProdutoPorCodebar(key.getCodigo());
+               Double qtd = key.getQtd();
+               
+               key.setEstoque(estoque);
+               
+               estoque.AddProdutoEstoque(produto, qtd);
+               
+//            System.out.println(key + "produto - " + produto.getNome());
+
+               estdao.editar(estoque);
+               itempedidovendaDao.editar(key);
+             
+              }
+  
+        
+//        for(Map.Entry m : recebimento.getItems().entrySet()){ 
+//        	
+//        	   System.out.println( "wind teste"+m.getKey()+" "+m.getValue());  
+//        	  } 
 
         
-        	Set<Item> keys = recebimento.getItems().keySet();
-        	
-        	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
-        	
-        	for (Item item : keysorder) {
-				
-
-            	Produto produto = produtopedidovendaDao.getProdutoPorCodebar(item.getCodigo());
-            	Double qtd = item.getQtd();
-            	
-            	item.setEstoque(estoque);
-            	estoque.AddProdutoEstoque(produto, qtd);
-            	
-                recebimentoDao.editar(recebimento);
-
-                estdao.editar(estoque);
-            	
-            	
-        	
-        	}
+        
+//        	Set<Item> keys = recebimento.getItems().keySet();
+//        	
+//        	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
+//        	
+//        	for (Item item : keysorder) {
+//				
+//
+//            	Produto produto = produtopedidovendaDao.getProdutoPorCodebar(item.getCodigo());
+//            	
+//                System.out.println("produto "+produto.getNome());
+//
+//                System.out.println("keysorder "+keysorder.toString());
+//
+//            	
+//            	Double qtd = item.getQtd();
+//            	
+//            	item.setEstoque(estoque);
+//            	
+//            	estoque.AddProdutoEstoque(produto, qtd);
+//            	
+//                recebimentoDao.editar(recebimento);
+//
+//                estdao.editar(estoque);
+//            	
+//            	
+//        	
+//        	}
         	
        
         
 
-
+        	itensRecebimentoCorfirmados.clear();
 
         return finalizacaorecebimento;
     }
@@ -236,15 +269,23 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         recebimento = recebimentoDao.PegarPorId(idf);
 
 
-       totalpedido = 0;
-
+     //  totalpedido = recebimento.CalcularTotal(recebimento.getItems());
+       
+//       if(totalpedido == null){
+//    	   
+    	   totalpedido = 0.1;
+//       }
+       
+       recebimento.setTotal(totalpedido);
+      
 
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("recebimento", recebimento);
         additempedidovenda.addObject("totalpedido", totalpedido);
 
 
-
+        itensRecebimentoCorfirmados.clear();
+        
         return additempedidovenda;
     }
     
@@ -281,7 +322,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		        pv.setIspago(false);
 		        		        
 		        
-		        pv.getRecebimentos().add(recebimento);
+		       // pv.getRecebimentos().add(recebimento);
 		        
 		        recebimento.setPedidocompra(pv);
 		        recebimento.setFornecedor(pv.getFornecedor());
@@ -312,27 +353,25 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 
 		 
-		 if(itensRecebimentoCorfirmados == null){
-			 
-			 itensRecebimentoCorfirmados = new HashMap<>();
-			 
-		 }
+//		 if(itensRecebimentoCorfirmados == null){
+//			 
+//			 itensRecebimentoCorfirmados = new HashMap<>();
+//			 
+//		 }
 		 
-		 itensRecebimentoCorfirmados = recebimento.getItems();
 		 
 	        String idf = request.getParameter("id");
 	        
-	        long idfrec = Long.parseLong(request.getParameter("idrec"));
+	        Long idfrec = Long.parseLong(request.getParameter("idrec"));
 
-	        List<Item> it = itempedidovendaDao.getItemPorDescricao(idf);
+	        List<Item> it = itempedidovendaDao.getItemPorNome(idf);
 	        
 	        System.out.println("itens it:"+ it);
 	        
 	        recebimento = recebimentoDao.PegarPorId(idfrec);
 
-	        
-	        
-	        
+			 itensRecebimentoCorfirmados = recebimento.getItems();
+
 	        
 	        for (int i = 0; i < it.size(); i++) {
 	        	
@@ -342,9 +381,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	        		
 	    	        System.out.println("if: id pedido item"+ itemv.getPedido().getId());
 	    	        System.out.println("if: id pedido recebimento"+ recebimento.getPedidocompra().getId());
+	    	        System.out.println("if: id pedido recebimento"+ itensRecebimentoCorfirmados.toString());
 
 
 	        		Item itemvar = new Item();
+	        		itemvar.setNome(itemv.getNome());
 	        		itemvar.setCodigo(itemv.getCodigo());
 	        		itemvar.setQtd(itemv.getQtd());
 	        		itemvar.setPrecoUnitario(itemv.getPrecoUnitario());
@@ -356,24 +397,24 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 	        		
 	        		itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtd());
 	        		
-	        		recebimento.setItems(itensRecebimentoCorfirmados);
-	        		
-	        		
+	        		//recebimento.setItems(itensRecebimentoCorfirmados);
 	        		
 	        		itempedidovendaDao.add(itemvar);
 	        		
-	        		recebimentoDao.editar(recebimento);
+	        		//recebimentoDao.editar(recebimento);
 	        		
 	        	
 
 	        	}
 	        	
-	        	
+//        		recebimento.setItems(itensRecebimentoCorfirmados);
+//        		recebimentoDao.editar(recebimento);
+
 				
 			}
 
 
-
+    		recebimento.setItems(itensRecebimentoCorfirmados);
 	        recebimentoDao.editar(recebimento);
 	        
 	    	System.out.println("pedidovenda:"+pv.toString());

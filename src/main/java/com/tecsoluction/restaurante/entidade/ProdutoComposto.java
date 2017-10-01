@@ -64,7 +64,7 @@ public class ProdutoComposto  extends Produto implements Serializable {
 		return itens;
 	}
 
-public void setItens(Map<Item,Double> itens) {
+	public void setItens(Map<Item,Double> itens) {
 		this.itens = itens;
 	}
     
@@ -75,5 +75,34 @@ public void setItens(Map<Item,Double> itens) {
     public String toString() {
         return getNome().toUpperCase();
     }
+    
+    
+    
+    public double CalcularTotal( Map<Item,Double> pitens){
+    	
+        double totalpedido = 0.0;
+
+//     	Set<Item> keys = itens.keySet();
+  //	
+//  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
+  	
+      for(Item key: pitens.keySet()) {
+  		
+  		totalpedido = + totalpedido+key.getTotalItem();
+        
+  		
+  	}
+
+        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+//        for (int i = 0; i < itens.size(); i++) {
+//        	
+//            totalpedido += totalpedido + itens.get(i).getTotalItem();
+  //
+//  			
+//  		}
+
+      	
+      	return totalpedido;
+      }
 
 }

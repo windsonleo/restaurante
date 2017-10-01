@@ -44,14 +44,16 @@
             <div class="right"> <strong>${clientesnovos.size()}</strong> Clientes</div>
           </li>
           <li>
-            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%</div>
-            <div class="right"> <strong>2560</strong> Vendas Cancelados</div>
+            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
+            
+            </div>
+            
+            <div class="right"> <strong>${pedidovendascancelado.size()}</strong> Vendas Cancelados</div>
           </li>
         </ul>
       </div>
     </div>
 
- <tt>GrantedAuthority</tt>s.
 
 
 
@@ -156,7 +158,6 @@
 <!--           </div> -->
 <!--         </div> -->
         
-         <tt>GrantedAuthority</tt>s.
                 </sec:authorize>
                 
                 

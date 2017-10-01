@@ -33,13 +33,19 @@ public class Item  implements Serializable, Comparable<Item>{
 
 	@Column(name = "codigo")
     private String codigo;
+	
+	 @Column(name = "nome")
+	    private String nome;
 
 	 @Column(name = "descricao")
     private String descricao;
+	 
 	 @Column(name = "qtd")
     private double qtd;
+	 
 	 @Column(name = "precounitario")
     private double precoUnitario;
+	 
 	 @Column(name = "totalitem")
     private double totalItem;
     
@@ -84,16 +90,34 @@ public class Item  implements Serializable, Comparable<Item>{
     public Item(Produto produto, PedidoVenda pedido) {
 
         this.codigo = produto.getCodebar();
-        this.descricao = produto.getNome();
+        this.nome=produto.getNome();
+        this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
         this.pedido = pedido;
 //        this.produto = produto;
        this.produtocomposto = produto;
     }
     
-    public Item(Produto produto, PedidoCompra pedido) {
+    /**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+
+	/**
+	 * @param nome the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public Item(Produto produto, PedidoCompra pedido) {
 
         this.codigo = produto.getCodebar();
+        this.nome=produto.getNome();
         this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
         this.pedido = pedido;
@@ -104,6 +128,7 @@ public class Item  implements Serializable, Comparable<Item>{
     public Item(Produto produto) {
 
         this.codigo = produto.getCodebar();
+        this.nome=produto.getNome();
         this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
         this.produtocomposto = produto;
@@ -295,7 +320,7 @@ public class Item  implements Serializable, Comparable<Item>{
 
     @Override
     public String toString() {
-        return descricao.toUpperCase();
+        return nome.toUpperCase();
     }
 
 

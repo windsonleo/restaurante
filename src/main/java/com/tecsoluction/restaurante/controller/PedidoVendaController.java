@@ -212,14 +212,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
 
 
-       totalpedido = 0;
+       
         
-        pv.setTotal(totalpedido);
+        pv.setTotal(pv.CalcularTotal(pv.getItems()));
         
         
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
-        additempedidovenda.addObject("totalpedido", totalpedido);
+        additempedidovenda.addObject("totalpedido", pv.CalcularTotal(pv.getItems()));
 
 
         return additempedidovenda;
@@ -232,14 +232,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
     	
-    	 String prodesc = request.getParameter("produtoescolhido");
+    	 long prodid = Long.parseLong(request.getParameter("produtoescolhido"));
     	 
     	 
     	 Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
     	        
         Produto produto;
         
-        produto = produtopedidovendaDao.getProdutoPorNome(prodesc);
+        produto = produtopedidovendaDao.PegarPorId(prodid);
         
         
         
@@ -263,8 +263,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         System.out.println("windson ped"+pedidov.toString());
         
         Item item = new Item(produto,pedidov);
-        
-        
         
         item.setQtd(prodqtd);
         item.setTotalItem(item.getTotalItem());

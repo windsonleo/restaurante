@@ -10,7 +10,7 @@
 
             <div class="container-fluid">
             
-              <c:if test="${erros != null }">
+    <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
               <h4 class="alert-heading">Erros!</h4>
               
@@ -35,7 +35,6 @@
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-			   <div class="form-inline"> 
 			
 								<input type="text" list="${clientesList}" id="telefone" placeholder="Digite o Telefone" name="telefone" autocomplete="off" class="form-horizontal">
 								
@@ -60,7 +59,6 @@
 										value="Localizar">
 											
 			   
-			    </div>
               </div>
 
 
@@ -89,7 +87,7 @@
  <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome"  name="nome" type="text" class="span6" value="${cliente.nome}" placeholder="Digite o nome" readonly="readonly" />
+						<input id="nome"  name="nome" type="text" class="span6" value="${cliente.nome}" placeholder="Digite o nome" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
                 		<input id="telefone" name="telefone" class="span4"  type="text" value="${cliente.telefone}" readonly="readonly"/>
                 
                 
@@ -100,15 +98,25 @@
                 <label class="control-label">Endereco </label>
                 <div class="controls">
 				
-				<input id="rua" name="rua" class="span4" type="text" value="${cliente.telefone}"placeholder="Digite a Data" readonly="readonly"/>
+				<input id="id" name="id"class="span2" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
 				
-           		<input id="bairro" name="bairro" class="span2"  type="text" value="${cliente.telefone}" readonly="readonly"/>
+				<input id="cep" name="cep"class="span2" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
+				
+				<input id="logradouro" name="logradouro"class="span4" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
+				<input id="numero" name="numero"class="span2" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+				
+				
+           		<input id="bairro" name="bairro" class="span2"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
 
-           		<input id="cidade" name="cidade" class="span2"  type="text" value="${cliente.telefone}" readonly="readonly"/>
+           		<input id="cidade" name="cidade" class="span2"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
 
-           		<input id="pontoreferencia" name="pontoreferencia" class="span4"  type="text" value="${cliente.telefone}" readonly="readonly"/>
+           		<input id="uf" name="uf"class="span2" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/>
+           		
+           		<input id="pontoreferencia" name="pontoreferencia" class="span4"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
 				
+				<input id="complemento" name="complemento" class="span4"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
 				
+				 <input id="ibge" name="ibge" class="span2 m-wrap" type="text" value=""/>
 								
 				
                 </div>

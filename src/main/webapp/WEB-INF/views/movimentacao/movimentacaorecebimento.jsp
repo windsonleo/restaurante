@@ -67,6 +67,8 @@
 <%--                  <td>${recebimento.garcon}</td> --%>
                   <td>${recebimento.items}</td>
                    <td> ${recebimento.ispago}</td>
+                
+                
                  <td class="options-widt">
 								
 								

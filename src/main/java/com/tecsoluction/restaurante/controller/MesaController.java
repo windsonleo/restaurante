@@ -128,7 +128,7 @@ public class MesaController extends AbstractController<Mesa> {
   //	detalhesmesa.addObject("itemList", itemList);
   	detalhesmesa.addObject("pedidoList", pedidos);
   	detalhesmesa.addObject("mesa", mesa);
-  	detalhesmesa.addObject("totalall", total);
+  	detalhesmesa.addObject("total", total);
 
 		
 		return detalhesmesa;

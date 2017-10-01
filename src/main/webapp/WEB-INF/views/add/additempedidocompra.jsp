@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> >> <a href="#">Movimentação Pedido Compra </a>>> <a href="#" class="current">Add Item ao Pedido Compra </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> >> <a href="#">Movimentação Pedido Compra </a>>> <a href="#" class="current">Add Item ao Pedido Compra </a> </div>
     <h1>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
@@ -42,7 +42,6 @@
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-			   <div class="form-inline"> 
 			
 								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-horizontal">
 								
@@ -67,12 +66,7 @@
 											
 			   
 			    </div>
-              </div>
-
-
-									
-									
-									
+					
 								
               </div>
               
@@ -101,13 +95,13 @@
           			<div class="controls">
 						 
 							<label>Código</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }"> 
+							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }" readonly="readonly"> 
 							<label>Data</label>	
-							<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }"> 
+							<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }" readonly="readonly"> 
 							<label>Status</label>
-							<input id="status" name="status" type="text" class="form-control" value="${pedidocompra.status }"> 
+							<input id="status" name="status" type="text" class="form-control" value="${pedidocompra.status }" readonly="readonly"> 
 							<label>Fornecedor</label>
-							<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${pedidocompra.fornecedor }"> 
+							<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${pedidocompra.fornecedor }" readonly="readonly"> 
 <!-- 							<label>Garcon</label> -->
 <%-- 							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }">  --%>
 							
@@ -115,7 +109,7 @@
 <%-- 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }">  --%>
 							
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="${pedidocompra.total}" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="total" name="total" type="text" class="form-control" value="${pedidocompra.total}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 						
 						</div>
 </div>

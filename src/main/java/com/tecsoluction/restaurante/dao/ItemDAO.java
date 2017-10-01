@@ -62,4 +62,14 @@ public class ItemDAO extends AbstractEntityDao<Item> {
     return result;
 		   	
 }
+	
+	public List<Item> getItemPorNome(String descricao) {
+		// TODO Auto-generated method stub
+		
+		 List<Item>  result = manager.createQuery("SELECT p FROM Item p where p.nome= '" + descricao+"'", Item.class).getResultList();
+   
+    return result;
+		   	
+}
+	
 }

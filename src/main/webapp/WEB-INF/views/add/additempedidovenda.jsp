@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"  title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> >> <a href="#">Movimentação Pedido Venda </a>>> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
     <h1>Add Item ao Pedido de Venda <strong> ${pedidovenda.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
@@ -98,21 +98,21 @@
           			<div class="controls">
 						 
 							<label>Código</label>	
-							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }"> 
+							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }" readonly="readonly"> 
 							<label>Data</label>	
-							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }"> 
+							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }" readonly="readonly"> 
 							<label>Status</label>
-							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }"> 
+							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }" readonly="readonly"> 
 							<label>Mesa</label>
-							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }"> 
+							<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }" readonly="readonly"> 
 							<label>Garcon</label>
-							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }"> 
+							<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }" readonly="readonly"> 
 							
 							<label>Cliente</label>
-							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }"> 
+							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }" readonly="readonly"> 
 							
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px"> 
+							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 						
 						</div>
 </div>

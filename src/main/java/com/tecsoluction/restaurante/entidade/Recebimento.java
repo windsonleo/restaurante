@@ -78,8 +78,23 @@ public class Recebimento  implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
     
+    @Column(name="total")
+    private double total = 0.0;
 
 
+	/**
+	 * @return the total
+	 */
+	public Double getTotal() {
+		return total;
+	}
+
+	/**
+	 * @param total the total to set
+	 */
+	public void setTotal(double total) {
+		this.total = total;
+	}
 
 	//CONSTRUTOR PADRÃO
     public Recebimento() {
@@ -215,6 +230,34 @@ public class Recebimento  implements Serializable {
     	// TODO Auto-generated method stub
     	return super.toString().toUpperCase();
     }
+	
+	
+    public double CalcularTotal( Map<Item,Double> itens){
+    	
+        double totalpedido = 0.0;
+
+//     	Set<Item> keys = itens.keySet();
+  //	
+//  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
+  	
+      for(Item key: itens.keySet()) {
+  		
+  		totalpedido = + totalpedido+key.getTotalItem();
+        
+  		
+  	}
+
+        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+//        for (int i = 0; i < itens.size(); i++) {
+//        	
+//            totalpedido += totalpedido + itens.get(i).getTotalItem();
+  //
+//  			
+//  		}
+
+      	
+      	return totalpedido;
+      }
 
 
 }

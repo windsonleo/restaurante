@@ -32,6 +32,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 /**
  * Handles requests for the application home page.
@@ -115,7 +116,8 @@ public class HomeController {
 			model.addAttribute("usuarios", usuarios);
 			model.addAttribute("mesas", mesas);
 
-			
+			model.addAttribute("pedidovendascancelado", buscarVendaCancelada(pedidovendasnovos));
+
 
 
     }
@@ -257,5 +259,31 @@ public class HomeController {
 		return SearchInData(sugestion);
 
 	}
+	
+	public List<PedidoVenda> buscarVendaCancelada(List<PedidoVenda> vendas) {
+				
+		
+		List<PedidoVenda> listcanceladas = null;
+		
+
+		for (int i = 0; i < vendas.size(); i++) {
+			
+			PedidoVenda v = vendas.get(i);
+			
+			if(v.getStatus() == StatusPedido.CANCELADO){
+				
+				listcanceladas.add(v);
+				
+				
+			}
+			
+			
+		}
+		
+
+		
+		return listcanceladas;
+	}
+	
 	
 }

@@ -57,10 +57,10 @@ public abstract class AbstractController<Entity> {
 
     @Transactional
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String AdicionarEntity( @ModelAttribute @Valid Entity entity,BindingResult result
+    public ModelAndView AdicionarEntity( @ModelAttribute @Valid Entity entity,BindingResult result
 			, RedirectAttributes attributes) {
 
-//        ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
+        ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
     	if (result.hasErrors()) {
 			
@@ -82,11 +82,11 @@ public abstract class AbstractController<Entity> {
     	}
 //        getDao().PegarPorId(entity);
 
-//        cadastroEntity.addObject("entity", entity);
+        cadastroEntity.addObject("entity", entity);
 
       
         
-        return "redirect:cadastro"; //cadastroEntity;
+        return cadastroEntity;  //cadastroEntity;
        
 //        return new ModelAndView("redirect:/" + entityAlias + "/cadastro");
     }

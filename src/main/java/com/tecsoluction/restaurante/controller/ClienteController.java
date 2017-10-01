@@ -167,7 +167,31 @@ public class ClienteController extends AbstractController<Cliente> {
 		return detalhescliente;
 	}
 	
-	
+	@RequestMapping(value = "addEnderecoCliente", method = RequestMethod.POST)
+	public ModelAndView  addEnderecoCliente(HttpServletRequest request){
+  	
+  	
+  	long idf = Long.parseLong(request.getParameter("id"));
+  	
+  	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
+  	
+  	
+  	Cliente cliente = dao.PegarPorId(idf);
+  	 
+  	 // mudar para trazer pelo id da mesa e pelo status da mesa
+  //	 pedidos = pedidovendadao.getAll();
+  	
+  	
+ // 	List<Produto> produtoList = produtoDao.getAll();
+  //	List<Item> itemList = dao.getAll();
+  	
+  //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+  	cadastrocliente.addObject("cliente", cliente);
+
+		
+		return cadastrocliente;
+	}
 	
 	
 }

@@ -186,13 +186,13 @@ public boolean getIsativo(){
     	
       double totalpedido = 0.0;
 
-   	Set<Item> keys = itens.keySet();
+//   	Set<Item> keys = itens.keySet();
+//	
+//	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
 	
-	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
-	
-	for (Item item : keysorder) {
+    for(Item key: itens.keySet()) {
 		
-		totalpedido =+ totalpedido+item.getTotalItem();
+		totalpedido = + totalpedido+key.getTotalItem();
       
 		
 	}
