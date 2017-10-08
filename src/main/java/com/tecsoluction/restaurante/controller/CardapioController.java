@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.CategoriaDAO;
+import com.tecsoluction.restaurante.dao.ProdutoCompostoDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.ProdutoComposto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
@@ -41,11 +43,13 @@ public class CardapioController   {
     
     private List<Produto> produtos;
 
-
+    private final ProdutoCompostoDAO produtoCompostoDao;
+    
     @Autowired
-    public CardapioController(CategoriaDAO dao,ProdutoDAO proddao) {
+    public CardapioController(CategoriaDAO dao,ProdutoDAO proddao,ProdutoCompostoDAO comp) {
         this.dao = dao;
         this.produtoDao = proddao;
+        this.produtoCompostoDao = comp;
     }
 
 
@@ -68,6 +72,8 @@ public class CardapioController   {
 //		
     	
         List<Produto> sugestaoList = produtoDao.getProdutoSugestao();
+        
+        List<ProdutoComposto> sugestaoListComposto = produtoCompostoDao.getProdutoCompostoSugestao();
 
         List<Categoria> categoriaList = dao.getAll();
         
@@ -110,6 +116,7 @@ public class CardapioController   {
         
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("sugestaoList", sugestaoList);
+//        model.addAttribute("sugestaoListComposto", sugestaoListComposto);
 
     }
     

@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 
+import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.ProdutoComposto;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
@@ -49,6 +50,15 @@ public class ProdutoCompostoDAO extends AbstractEntityDao<ProdutoComposto> {
 		// TODO Auto-generated method stub
 		
 		ProdutoComposto result = manager.createQuery("SELECT p FROM ProdutoComposto p where p.descricao=" + "'"+descricao+"'", ProdutoComposto.class).getSingleResult();
+   
+    return result;
+		   	
+}
+	
+	public List<ProdutoComposto> getProdutoCompostoSugestao() {
+		// TODO Auto-generated method stub
+		
+    List<ProdutoComposto> result = manager.createQuery("SELECT p FROM ProdutoComposto p where p.esugestao=TRUE", ProdutoComposto.class).getResultList();
    
     return result;
 		   	
