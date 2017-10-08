@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Garcon</a>>> <a href="#">Movimentação Garcon</a> >><a href="#" class="current">Cadastro Garcon</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Garcon" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" ></i> Garcon</a> <a href="#">Movimentação Garcon</a><a href="#" class="current">Cadastro Garcon</a> </div>
     <h1>Cadastro de Garcon</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -28,7 +28,7 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" ></i> </span>
             <h5>Cadastro de Garcon</h5>
           </div>
           <div class="widget-content nopadding">

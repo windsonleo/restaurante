@@ -5,8 +5,8 @@
 
 <div id="content-header">
 	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Home" class="tip-bottom"><i
-			class="icon-home"></i> Usuario</a> >> <a href="#">Movimentação Usuario </a>>>
+		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Usuario" class="tip-bottom"><i
+			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuário.png" ></i> Usuario</a> <a href="#">Movimentação Usuario </a>
 		<a href="#" class="current">Cadastro Usuario</a>
 	</div>
 	<h1>Cadastro de Usuario</h1>
@@ -34,7 +34,7 @@
 		<div class="span12">
 			<div class="widget-box">
 				<div class="widget-title">
-					<span class="icon"> <i class="icon-info-sign"></i>
+					<span class="icon-icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuário.png" ></i>
 					</span>
 					<h5>Cadastro de Usuario</h5>
 				</div>

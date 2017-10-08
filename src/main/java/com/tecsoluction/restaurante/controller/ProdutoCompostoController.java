@@ -126,14 +126,14 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
       		model.addAttribute("usuarioAtt", usuario);
 
       		if(produtocomposto == null){
-      			produtocomposto = new ProdutoComposto();
+//      			produtocomposto = new ProdutoComposto();
       			items.clear();
       			
       		}
       		
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("itensList", produtosList);
-        model.addAttribute("produtocomposto", produtocomposto);
+//        model.addAttribute("produtocomposto", produtocomposto);
         model.addAttribute("fornecedorList", fornecedorList);
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("umList", umList);
@@ -288,6 +288,10 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
          
            produtocomposto.setItens(items);
            
+           produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items));
+           
+           produtocomposto.setPrecovenda(produtocomposto.getPrecocusto()*2);
+           
            dao.editar(produtocomposto);
            
          //  ProdutoComposto pc = dao.PegarPorId(idfprodcomp);
@@ -336,6 +340,9 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
         cadastro.addObject("mensagem", mensagem);
         cadastro.addObject("filename", filename);
+        cadastro.addObject("produto", produtocomposto);
+        cadastro.addObject("acao", "add");
+
 
           
         }catch(Exception e){

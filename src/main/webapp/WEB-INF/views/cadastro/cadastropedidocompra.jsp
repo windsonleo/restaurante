@@ -4,7 +4,7 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> >> <a href="#">Movimentação Pedido Compra </a>>> <a href="#" class="current">Cadastro Pedido Compra</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" title="Go to Pedido Compra" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Pedido Compra</a> <a href="#">Movimentação Pedido Compra </a><a href="#" class="current">Cadastro Pedido Compra</a> </div>
     <h1>Cadastro de Pedido Compra</h1>
   </div>
 
@@ -30,7 +30,7 @@
 <div class="row-fluid">
       <div class="span12">
                <div class="widget-box">
-     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+     <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> </span>
             <h5>Cadastro de Pedido de Compra</h5>
           </div>                         
 					 
@@ -57,8 +57,17 @@
                 <label class="control-label">Data </label>
                 <div class="controls">
 				
-				<input id="data" name="data" class="form-control" type="datetime" value="${pedidocompra.data}"placeholder="Digite a Data"/>
+<%-- 				<input id="data" name="data" class="form-control" type="datetime" value="${pedidocompra.data}"placeholder="Digite a Data"/> --%>
 				
+					<div  data-date="12-02-2012" class="input-append date datepicker">
+		                  <input type="text" value="${pedidocompra.data}" id="data" name="data" data-date-format="dd-mm-yyyy" class="span11" >
+		                  <span class="add-on"><i class="icon-th"></i></span> 
+                  
+                  </div>
+
+                
+                
+                </div>
 				
                 </div>
               </div>

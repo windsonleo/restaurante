@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Categoria</a>>> <a href="#">Movimentação Categoria</a> >><a href="#" class="current">Cadastro Categoria</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Categoria" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png" /></i> Categoria</a> <a href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a> </div>
     <h1>Cadastro de Categoria</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -29,7 +29,7 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png" /></i> </span>
             <h5>Cadastro de Categoria</h5>
           </div>
           <div class="widget-content nopadding">
@@ -46,13 +46,13 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${categoria.id}" placeholder="Digite o id" />
+						<input id="id" class="span2" name="id" type="text" value="${categoria.id}" placeholder="Digite o id" />
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${categoria.nome}" placeholder="Digite o Nome da Categoria"/>
+						<input id="nome" class="span4" name="nome" type="text" value="${categoria.nome}" placeholder="Digite o Nome da Categoria"/>
                 </div>
               </div>
 
@@ -60,7 +60,7 @@
                 <label class="control-label">Categoria Pai</label>
                 <div class="controls">
                     
-                         <select id="catpai"name="catpai"  class="form-control">
+                         <select id="catpai"name="catpai"  class="span3">
 	                                  <optgroup label="Tipos de Catgeoria Pai">
 		           				
 		           					<option value="${categoria.catpai}">${categoria.catpai}</option>

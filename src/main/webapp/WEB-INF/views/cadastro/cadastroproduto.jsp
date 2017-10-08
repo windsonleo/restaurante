@@ -7,8 +7,8 @@
 
 <div id="content-header">
 	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/produto/movimentacao" title="Go to Home" class="tip-bottom"><i
-			class="icon-home"></i> Produto</a> >> <a href="#">Movimentação Produto </a>>>
+		<a href="${pageContext.request.contextPath}/produto/movimentacao" title="Go to Produto" class="tip-bottom"><i
+			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> Produto</a>  <a href="#">Movimentação Produto </a>
 		<a href="#" class="current">Cadastro Produto</a>
 	</div>
 	<h1>Cadastro de Produto</h1>
@@ -37,7 +37,7 @@
 		<div class="span12">
 			<div class="widget-box">
 				<div class="widget-title">
-					<span class="icon"> <i class="icon-info-sign"></i>
+					<span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png"></i>
 					</span>
 					<h5>Cadastro de Produto</h5>
 				</div>

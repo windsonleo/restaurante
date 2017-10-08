@@ -44,4 +44,26 @@ public class CategoriaDAO extends AbstractEntityDao<Categoria>{
 
 
 }
+	
+	public Categoria getOnlyCategoriaPai() {
+		// TODO Auto-generated method stub
+		
+    Categoria result = manager.createQuery("SELECT p FROM Categoria p where p.nome='"+"PAI"+"'",Categoria.class).getSingleResult();
+   
+    return result;
+
+
+}
+	
+	public Categoria getOnlyCategoriaExcludeCardapio() {
+		// TODO Auto-generated method stub
+		
+    Categoria result = manager.createQuery("SELECT p FROM Categoria p where p.nome='"+"INSUMOS"+"'",Categoria.class).getSingleResult();
+   
+    return result;
+
+
+}
+	
+	
 }

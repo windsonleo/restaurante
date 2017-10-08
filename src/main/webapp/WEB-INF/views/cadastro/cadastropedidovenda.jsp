@@ -4,7 +4,7 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Banco</a> >> <a href="#">Movimentação Banco </a>>> <a href="#" class="current">Cadastro Banco</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao" title="Go to Pedido Venda" class="tip-bottom"><i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /> </i> Pedido Venda</a> <a href="#">Movimentação Pedido Venda </a> <a href="#" class="current">Cadastro Pedido Venda</a> </div>
     <h1>Cadastro de Pedido Venda</h1>
   </div>
 
@@ -30,33 +30,31 @@
 <div class="row-fluid">
       <div class="span12">
                <div class="widget-box">
-     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro de Pedido de Vneda</h5>
+     <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /> </i> </span>
+            <h5>Cadastro de Pedido de Venda</h5>
           </div>                         
 					 
-					 <form  role="form" id="ds" class="form-horizontal"
+					 <form  role="form" id="ds" class="form-inline"
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
-              
-              
-              <div class="control-group">
-                <label class="control-label">Id</label>
-                <div class="controls">
-						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
-                		<input id="isativo" name="isativo" class="span4"  type="checkbox" checked="${pedidovenda.isativo}"/>
+
+
+
+						<div class="form-group">
+						
+						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder="Digite o Id"/>
+                		
+                		
+                		<label><input id="isativo" name="isativo" class="form-control"  type="checkbox" checked="checked" />Ativo?</label>
+                		
+						
+						
+										<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="datepicker span3" type="text" value="${pedidovenda.data}"placeholder="Digite a Data"/>
+<!--                 <span class="help-block">Data com Formato  (dd-mm-yy)</span> -->
                 
                 
-                </div>
-              </div>
-			 
-              <div class="control-group">
-                <label class="control-label">Data </label>
-                <div class="controls">
-				
-				<input id="data" name="data" class="form-control" type="datetime" value="${pedidovenda.data}"placeholder="Digite a Data"/>
-				
-									<select id="cliente" name="cliente" class="form-control">
+                <select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
 
 
@@ -71,15 +69,13 @@
 									</c:forEach>
 								</optgroup>
 						</select>
-				
-                </div>
-              </div>
-              
-              
-                  <div class="control-group">
-                <label class="control-label">Mesa</label>
-                <div class="controls">
-<select id="mesa" name="mesa" class="form-control">
+						
+<!-- 					 <span class="help-block">Escolha o Cliente</span> -->
+
+
+
+						
+						<select id="mesa" name="mesa" class="form-control">
 								<optgroup label="Mesa">
 
 
@@ -93,9 +89,11 @@
 
 									</c:forEach>
 								</optgroup>
-						</select> 
+						</select>   
 						
-	<select id="garcon" name="garcon" class="form-control">
+						
+						
+						<select id="garcon" name="garcon" class="form-control">
 			<optgroup label="Garcon">
 
 
@@ -109,18 +107,11 @@
 
 				</c:forEach>
 			</optgroup>
-	</select>				
-										
-				
-                </div>
-              </div>
-              
-              
-              
-               <div class="control-group">
-                <label class="control-label">Situacao Pedido</label>
-                <div class="controls">
-         <select id="situacao"name="situacao"  class="form-control" >
+	</select>		
+	
+	
+	
+  						<select id="situacao"name="situacao"  class="form-control" >
 	                                  <optgroup label="Situação do Pedido">
 		           					
 		           					
@@ -132,9 +123,12 @@
 		       				</c:forEach>
 		       				
 		                </optgroup>
-	                    </select>
+	                    </select>	
 	                    
-         <select id="status"name="status"  class="form-control" >
+	                    
+	                    
+	                    
+	                  <select id="status"name="status"  class="form-control" >
                 <optgroup label="Status do Pedido">
  					<c:forEach var="status" items="${tipoStatusList}">
  			
@@ -143,16 +137,12 @@
  				
 					</c:forEach>
       			</optgroup>
-         </select>			
-				
-                </div>
-              </div>             			 
-		             
-              
-               <div class="control-group">
-                <label class="control-label">Origem Pedido</label>
-                <div class="controls">
-                         <select id="origempedido"name="origempedido"  class="form-control" >
+         </select>		   
+	                    
+	
+	
+	
+	 <select id="origempedido"name="origempedido"  class="form-control" >
 	                                  <optgroup label="Origem do Pedido">
 		           					
 		           					
@@ -166,31 +156,28 @@
 		                </optgroup>
 	                    </select>
 	                    
-	               <input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
-	                    				
-				
-                </div>
-              </div>
-                    
-              
-                                                  
-                           			 
-			  
+	                      			 <input id="total" name="total" class="form-control" type="text" value="0.00" readonly="readonly"/>					
+						
+						
+						
+						
+						
+						
+						
+						</div>
+
+									
+		  
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
 			
 			<div class="form-actions" align="center">
 				<button type="submit"class="btn btn-success">Cadastrar</button>
 			</div>
-			
-</form>
+		</form>		
 </div>
 </div>
-
-			</div>
-			</div>
-									
-
-</div>	
+</div>
+</div>
 
 

@@ -3,7 +3,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" ></i> Garcon</a> >> <a href="#" class="current">Movimentação de Garcon</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Garcon" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" ></i> Garcon</a> <a href="#" class="current">Movimentação de Garcon</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -23,9 +23,7 @@
           
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
-          <div class="col-lg-4 col-lg-offset-4">
-            <input type="search" id="search" value="" class="form-control" placeholder="Search using Fuzzy searching">
-        </div>
+
               <thead>
                 <tr>
                                         <th>Id</th>

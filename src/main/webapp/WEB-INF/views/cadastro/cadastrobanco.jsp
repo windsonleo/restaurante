@@ -7,7 +7,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/banco/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Banco</a> >> <a href="#">Movimentação Banco </a>>> <a href="#" class="current">Cadastro Banco</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/banco/movimentacao" title="Go to Banco" class="tip-bottom"><i class="icon-home"></i> Banco</a> <a href="#">Movimentação Banco </a> <a href="#" class="current">Cadastro Banco</a> </div>
     
 <%--     <c:if test="${mensagem}"> --%>
 <!--     	<div class="alert alert-success" > -->

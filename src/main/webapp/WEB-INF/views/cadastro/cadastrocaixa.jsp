@@ -5,7 +5,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/caixa/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> >><a href="#">Movimentação Caixa</a> >><a href="#" class="current">Cadastro Caixa</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/caixa/movimentacao" title="Go to Caixa" class="tip-bottom"><i class="icon-money"></i> Caixa</a> <a href="#">Movimentação Caixa</a> <a href="#" class="current">Cadastro Caixa</a> </div>
     <h1>Cadastro de Caixa</h1>
   </div>
   <div class="container-fluid"><hr>

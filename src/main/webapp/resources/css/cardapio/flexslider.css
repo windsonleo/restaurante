@@ -48,7 +48,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 
 /* Direction Nav */
 .flex-direction-nav {*height: 0;} /*fix for IE 7 */
-.flex-direction-nav li a {width: 52px; height: 52px; margin: -13px 0 0; display: block; background: url(../images/a17.png) no-repeat 0 0; position: absolute; top: 50%; cursor: pointer; text-indent: -9999px;}
+.flex-direction-nav li a {width: 52px; height: 52px; margin: -13px 0 0; display: block; background: url(/restaurante/resources/images/cardapio/a17.png) no-repeat 0 0; position: absolute; top: 50%; cursor: pointer; text-indent: -9999px;}
 .flex-direction-nav li .next {background-position: -52px 0; right: -24px;}
 .flex-direction-nav li .prev {left: -17px;}
 .flex-direction-nav li .disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}

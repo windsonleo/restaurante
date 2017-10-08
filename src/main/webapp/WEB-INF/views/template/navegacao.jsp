@@ -4,7 +4,7 @@
 <%@ page session="false" %>
    
 <div id="header">
-  <h3><a href="dashboard.html"><img src="${pageContext.request.contextPath}/resources/images/logologinn.png"></img></a></h3>
+  <h3><a href="dashboard.html"><img src="${pageContext.request.contextPath}/resources/images/logonew.png"></img></a></h3>
 </div>
 
 <!--top-Header-menu-->

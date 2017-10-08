@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Pedidovenda</a> >> <a href="#" class="current">Movimentação de Pedidovenda</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Pedidovenda</a> <a href="#" class="current">Movimentação de Pedidovenda</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -23,10 +23,8 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-striped data-table">
-         <div class="col-lg-4 col-lg-offset-4">
-            <input type="search" id="search" value="" class="form-control" placeholder="Search using Fuzzy searching">
-        </div>
+            <table class="table table-bordered data-table">
+
               <thead>
                <tr>
                                         <th>Id</th>

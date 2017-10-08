@@ -268,11 +268,15 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         item.setTotalItem(item.getTotalItem());
         item.setPedido(pedidov);
        
+        itens = pedidov.getItems();
         
         itens.put(item, item.getQtd());
         
         itempedidovendaDao.add(item);
+        
         pedidov.setItems(itens);
+        pedidov.setTotal(pedidov.CalcularTotal(itens));
+        
         pedidoVendaDao.editar(pedidov);
         
         
@@ -283,7 +287,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
 
-        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
+        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
     }
     
 

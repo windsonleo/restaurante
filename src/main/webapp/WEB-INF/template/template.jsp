@@ -15,7 +15,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" />
@@ -29,57 +28,117 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.gritter.css" />
 	   	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800">
  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-wysihtml5.css" />
- 	
- 	
- 	 	
-		 <script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> 
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
+
+
+
+
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
+			
+								
+				<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script> 
+			
+		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+			
+		<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>				
+	
+			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
+			
+			
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
+			
+				<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
+				<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
+				<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
+				<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 
+				
+								
+ 
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>
+			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
+						
+
+				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+				<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
+				<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
+			
+		
+			
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/joint.min.js"></script>	
+		
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/joint.shapes.devs.min.js"></script>		
+				
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/backbone-min.js"></script>
+							
+				
+		<script
+			src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
+				
+			
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.min.js"></script> 
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.resize.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/fullcalendar.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script> 
+
+			
+ 
 		
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script> 
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script>
+			
+			
+		
+		
+		<script
+			 src="${pageContext.request.contextPath}/resources/js/fullcalendar.min.js"></script>
+		
+				
 
-<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script> 
 
- 	
- 	<script src="${pageContext.request.contextPath}/resources/js/joint.min.js"></script>
+
+			
+			
+			
+					 	
  	
  	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
  	
  	
- 	 	<script src="${pageContext.request.contextPath}/resources/js/joint.shapes.devs.min.js"></script>
  	
 <%--   	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> --%>
 
 
-  	<script src="${pageContext.request.contextPath}/resources/js/backbone-min.js"></script>
-  	
-  	<script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
+	
  
    	<script src="${pageContext.request.contextPath}/resources/js/wysihtml5-0.3.0.js"></script>
- 
-   	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+   	
+ <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>		
+				<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
+		 
 
  
- <script type="text/javascript" src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+<!--  <script type="text/javascript" src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script> -->
  
  
  <script type="text/javascript">

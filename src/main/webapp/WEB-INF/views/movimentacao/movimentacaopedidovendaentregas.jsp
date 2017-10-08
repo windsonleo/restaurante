@@ -26,12 +26,8 @@
           <div class="widget-content nopadding">
             <table class="table table-striped data-table">
             
-         <div class="col-lg-4 col-lg-offset-4">
  	     <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button>
-         
-            <input type="search" id="search" value="" class="form-control" placeholder="Search using Fuzzy searching">
-            
-        </div>
+                     
               <thead>
                <tr>
                                         <th>Id</th>

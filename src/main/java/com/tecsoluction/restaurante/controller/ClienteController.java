@@ -1,5 +1,9 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,6 +58,8 @@ public class ClienteController extends AbstractController<Cliente> {
 //    RoleDAO rdao;
     
     private final UsuarioDAO usudao;
+    
+    private Cliente cliente;
 
     
     
@@ -168,15 +174,55 @@ public class ClienteController extends AbstractController<Cliente> {
 	}
 	
 	@RequestMapping(value = "addEnderecoCliente", method = RequestMethod.POST)
-	public ModelAndView  addEnderecoCliente(HttpServletRequest request){
+	public ModelAndView  addEnderecoCliente(HttpServletRequest request,Model model){
+		
+		
+		Endereco endereco = new Endereco();
+		
+		endereco.setLogradouro(request.getParameter("logradouro"));
+		endereco.setNumero(request.getParameter("numero"));
+		endereco.setBairro(request.getParameter("bairro"));
+		endereco.setCidade(request.getParameter("cidade"));
+		endereco.setUf(request.getParameter("uf"));
+		endereco.setPontoreferencia(request.getParameter("pontoreferencia"));
+		endereco.setComplemento(request.getParameter("complemento"));
+		
+		String datanascimento = request.getParameter("datanascimento");
+		
+		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+		
+		Date data = null;
+		
+		try {
+			data = df.parse(datanascimento);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+							
+			cliente = new Cliente();
+			cliente.setNome(request.getParameter("nome"));
+			cliente.setTelefone(request.getParameter("telefone"));
+			cliente.setDatanascimento(data);
+			cliente.setEmail(request.getParameter("email"));
+			cliente.setFoto(request.getParameter("foto"));
+			cliente.setGenero(request.getParameter("genero"));
+			cliente.setIsativo(true);
+			
+			cliente.setEndereco(endereco); 
+		
+		
+			dao.add(cliente);
+		
   	
-  	
-  	long idf = Long.parseLong(request.getParameter("id"));
-  	
+//  	long idf = Long.parseLong(request.getParameter("id"));
+//  	
+//  	
   	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
+		
   	
   	
-  	Cliente cliente = dao.PegarPorId(idf);
+//  	Cliente cliente = dao.PegarPorId(idf);
   	 
   	 // mudar para trazer pelo id da mesa e pelo status da mesa
   //	 pedidos = pedidovendadao.getAll();
@@ -187,7 +233,9 @@ public class ClienteController extends AbstractController<Cliente> {
   	
   //	detalhesmesa.addObject("itemList", itemList);
 //  	detalhescliente.addObject("pedidoList", pedidos);
-  	cadastrocliente.addObject("cliente", cliente);
+//  	cadastrocliente.addObject("cliente", cliente);
+		
+  	cadastrocliente.addObject("cliente",cliente);
 
 		
 		return cadastrocliente;

@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Recebimento</a> >> <a href="#" class="current">Movimentação de Recebimento</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Recebimento" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Recebimento</a> <a href="#" class="current">Movimentação de Recebimento</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -13,7 +13,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i></span>
+          <div class="widget-title"> <span class="icon-icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i></span>
             <h5>Movimentação Recebimento</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
@@ -25,9 +25,6 @@
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
                  
-                 <div class="col-lg-4 col-lg-offset-4">
-            <input type="search" id="search" value="" class="form-control" placeholder="Search using Fuzzy searching">
-        </div>
               <thead>
                <tr>
                                         <th>Id</th>

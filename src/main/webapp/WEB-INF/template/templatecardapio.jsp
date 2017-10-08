@@ -28,11 +28,11 @@
 
  	
  	 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jquery-1.11.2.min.js"></script> 
- 	 	
+
  	 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jquery.flexslider.min.js"></script> 
  	 	
 		 <script src="${pageContext.request.contextPath}/resources/js/cardapio/bootstrap.min.js"></script> 
-				<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jssor.core.js"></script> 
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jssor.core.js"></script> 
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jssor.slider.js"></script> 
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jssor.utils.js"></script> 
 		<script src="${pageContext.request.contextPath}/resources/js/cardapio/owl.carousel.min.js"></script> 
@@ -43,12 +43,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cardapio/jQuery.scrollSpeed.js"></script> 
 		<script src="${pageContext.request.contextPath}/resources/js/cardapio/script.js"></script> 
 		
-		
-		
 
-
- 
- 
          <script type="text/javascript">
             $(window).load(function() {
                 $('.flexslider').flexslider({
@@ -60,6 +55,24 @@
         
          <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
        
+<script type="text/javascript">
+$(document).ready(function(){
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+            $("#logo").attr("src", "${pageContext.request.contextPath}/resources/images/cardapio/Logo_stick.png")
+        }
+        else {
+             $("#logo").attr("src", "${pageContext.request.contextPath}/resources/images/cardapio/Logo_main.png")
+        }
+    });
+
+
+});
+
+
+</script>
+
+
         <script>
             function initialize() {
                 var mapCanvas = document.getElementById('map-canvas');
@@ -70,145 +83,17 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 var map = new google.maps.Map(mapCanvas, mapOptions)
-
+                               
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(24.909439, 91.833800),
-                    title:"Sushi Senpai Cardápio"
+                    position: new google.maps.LatLng(-8.2189288, -34.9318343),
+                    title:"Sushi Senpai"
                 });
 
                 // To add the marker to the map, call setMap();
                 marker.setMap(map);
             }
             google.maps.event.addDomListener(window, 'load', initialize);
-            
-            
-            $("#header-slider").owlCarousel({
-
-                navigation : true, // Show next and prev buttons
-                slideSpeed : 100,
-                paginationSpeed : 400,
-                singleItem: true,
-                autoPlay: true,
-                pagination: false,
-
-                // "singleItem:true" is a shortcut for:
-                // items : 1, 
-                // itemsDesktop : false,
-                // itemsDesktopSmall : false,
-                // itemsTablet: false,
-                // itemsMobile : false
-
-            });
-
-        /*=================================
-        ||          WOW
-        ==================================*/
-        wow = new WOW(
-            {
-              boxClass:     'wow',      // default
-              animateClass: 'animated', // default
-              offset:       0,          // default
-              mobile:       true,       // default
-              live:         true        // default
-            }
-          )
-        wow.init();
-
-        /*=================================
-        ||          Smooth Scrooling
-        ==================================*/
-            $(function() {
-                $('a[href*=#]:not([href=#])').click(function() {
-                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                        var target = $(this.hash);
-                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                        if (target.length) {
-                            $('html,body').animate({
-                                scrollTop: (target.offset().top - 9)//top navigation height
-                            }, 1000);
-                            return false;
-                        }
-                    }
-                });
-            });
-
-            
-        /*====================================================================
-                    Navbar shrink script
-        ======================================================================*/
-        $(document).ready(function() {
-            $(window).scroll(function() {
-                if ($(document).scrollTop() > 50) {
-                    $('nav').addClass('shrink');
-                } 
-                else {
-                    $('nav').removeClass('shrink');
-                }
-            });
-        });
-
-
-        $(document).ready(function(){
-            $(window).scroll(function() {
-                if ($(document).scrollTop() > 50) {
-                    $("#logo").attr("src", "/restaurante/resources/images/cardapio/Logo_stick.png")
-                }
-                else {
-                     $("#logo").attr("src", "/restaurante/resources/images/cardapio/Logo_main.png")
-                }
-            });
-        });
-        /*=================================================================
-                    Load more button
-        ===================================================================*/
-
-        $(document).ready(function () {
-            $("#loadMenuContent").click(function(event) {
-                
-                $.get("php/ajax_menu.html", function(data){
-                    $('#moreMenuContent').append(data);
-                });
-                event.preventDefault();
-                $(this).hide();
-            }) ;
-        });
-
-        $(document).ready(function () {
-
-            var $menuPricing = $('#menu-pricing');
-            $menuPricing.mixItUp({
-                selectors: {
-                    target: 'li'
-                }
-            });
-
-        });
-
-
-        /*=================================================
-                Showing Icon in placeholder
-        =====================================================*/
-
-        $('.iconified').on('keyup', function() {
-            var input = $(this);
-            if(input.val().length === 0) {
-                input.addClass('empty');
-            } else {
-                input.removeClass('empty');
-            }
-        });
-
-        /*=========================================================
-                        Scroll  Speed
-        =======================================================*/
-
-        $(function() {  
-            jQuery.scrollSpeed(100, 1000);
-        });
         </script>
- 
- 
-</head>
 
 
 <body data-spy="scroll" data-target="#template-navbar">
@@ -218,6 +103,7 @@
 
 
 		<tiles:insertAttribute name="conteudo" />
+
 </body>			
 			
 </html>

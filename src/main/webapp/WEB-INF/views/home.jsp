@@ -7,7 +7,7 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
   </div>
 <!--End-breadcrumbs-->
 
@@ -53,13 +53,14 @@
         </ul>
       </div>
     </div>
-
+		</sec:authorize>
 
 
 
   
   
   
+    <sec:authorize access="hasRole('ROLE_ADM')">
   
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
@@ -71,16 +72,25 @@
         <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
         <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
         <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
-        <li class="bg_lg span2"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
-
+        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
+		<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/movimentacao"> <i class="icon icon-money" ></i>Caixa</a> </li>
+		 
+		 </ul>
+		</div>
+	</sec:authorize>
+		 
+		        
 
 
 <!--         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li> -->
 <!--         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
-
-      </ul>
-    </div>
+<!--       		</div> -->
+      		
+      
+    
 <!--End-Action boxes-->    
+
+        <sec:authorize access="hasRole('ROLE_ADM')">
 
 <!--Chart-box-->    
     <div class="row-fluid">
@@ -88,41 +98,29 @@
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
           <h5>Site Analytics</h5>
         </div>
-<!--            <div class="widget-content"> -->
-<!--             <div id="placeholder2"></div> -->
-<!--             <p>Time between updates: -->
-<!--               <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> -->
-<!--               milliseconds</p> -->
-<!--           </div> -->
-<!--         </div> -->
-          <div class="row-fluid">
-            <div class="span12">
-              <div class="chart"></div>
-            </div>
-<!--             <div class="span3"> -->
-<!--               <ul class="site-stats"> -->
-<%--                 <li class="bg_lh"><i class="icon-user"></i> <strong>${usuarios.size() }</strong> <small>Total Users</small></li> --%>
-<%--                 <li class="bg_lh"><i class="icon-plus"></i> <strong>${usuarios.size() }</strong> <small>New Users </small></li> --%>
-<%--                 <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>${pedidovendasnovos.size() }</strong> <small>Total Shop</small></li> --%>
-<%--                 <li class="bg_lh"><i class="icon-tag"></i> <strong>${pedidovendasnovos.size() }</strong> <small>Total Orders</small></li> --%>
-<!--                 <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li> -->
-<!--                 <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li> -->
-<!--               </ul> -->
-<!--             </div> -->
+
+ 			<div class="widget-content nopadding">
+          
+				<div class="container-fluid">
+		              <div class="chart"></div>
+		            </div>
+
+           </div>
+           
+           </div>
+          
           </div>
-        </div>
-      </div>
-            
+        
+    <div class="row-fluid">
+                   
        <div class="widget-box">
           
           <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
              <h5>Progresso das Metas </h5>
              
              </div>
-                     <div class="widget-content">
+             <div class="widget-content">
           
-         
-          </div>
             <ul class="unstyled">
               <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% Meta de Pedido de Vendas <span class="pull-right strong">567</span>
                 <div class="progress progress-striped ">
@@ -147,52 +145,92 @@
             </ul>
           </div>
           
-<!--           <div class="widget-title"> <span class="icon"> <i class="icon-signal"></i> </span> -->
-<!--             <h5>Real Time chart</h5> -->
-<!--           </div> -->
-<!--            <div class="widget-content"> -->
-<!--             <div id="placeholder2"></div> -->
-<!--             <p>Time between updates: -->
-<!--               <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> -->
-<!--               milliseconds</p> -->
-<!--           </div> -->
-<!--         </div> -->
-        
-                </sec:authorize>
+          </div>
+          </div>
+          
+          </sec:authorize>
+ 
+ <sec:authorize access="hasRole('ROLE_GARCON')">
+          
+    <div class="row-fluid">
+         		<div class="widget-box">
+          
+	          <div class="widget-title"><span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png"></img></i></span>
+	             <h5>Salão </h5>
+	             
+	             </div>
+	             
+          <div class="widget-content nopadding">
+          
+			   <div class="container-fluid">
+                   <div class="quick-actions_homepage">
+                
+	                	<ul class="quick-actions">
+			
+			              
+			           		<c:forEach var="mesa" items="${mesas}" varStatus="id">
+			              
+			                <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/detalhes?id=${mesa.id}">
+			         		<i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i>
+			         	
+			         		 <div class="huge">${mesa.id}</div>
+			                 <div>${mesa.numero}</div>
+			                  <div> ${mesa.status}</div> 
+			                                     	<span class="label label-success">${mesa.pedidos.size()}</span> 
+			                                      </a> 
+			                                      
+			                 </li>
+			       
+			                
+			                </c:forEach>
+			
+						</ul>
                 
                 
-         <sec:authorize access="hasRole('ROLE_GARCON')">
+                </div>
                 
+                </div>
+                </div>
                 
-              <ul class="quick-actions">
-
-              
-           		<c:forEach var="mesa" items="${mesas}" varStatus="id">
-              
-                <li class="bg_lb span1"> <a href="${pageContext.request.contextPath}/mesa/detalhes?id=${mesa.id}">
-         		<i class="icon-dashboard"></i>
-         	
-         		 <div class="huge">${mesa.id}</div>
-                 <div>${mesa.numero}</div>
-                  <div> ${mesa.status}</div> 
-                                     	<span class="label label-success">${mesa.pedidos.size()}</span> 
-                                      </a> 
-                                      
-                                      </li>
+                </div>
+                
+                </div>
+                
+       </sec:authorize>
        
-                
-                </c:forEach>
+       
+       
+     <sec:authorize access="hasRole('ROLE_CAIXA')">
+       
+<div class="row-fluid">
+    <div class="widget-box">
+	      <div class="widget-title"> <span class="icon"><i class="icon-money"></i></span>
+	             <h5>Caixa </h5>
+	             
+	             </div>
+	             
+          <div class="widget-content nopadding">
+          
+	<div class="container-fluid">
+       <div class="quick-actions_homepage">
+      	<ul class="quick-actions">
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/movimentacao"> <i class="icon icon-money" ></i>Caixa</a> </li>
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	
 
-			</ul>
-			
 	</sec:authorize>
-			
                 
-        </div>
-        
-        </div>
+                
+                </div>
+                
+				</div>
 
-
+                
 
 <div class="row-fluid">
   <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>

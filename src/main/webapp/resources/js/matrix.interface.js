@@ -41,9 +41,9 @@ $(document).ready(function(){
 	
 	// === jQeury Gritter, a growl-like notifications === //
 	$.gritter.add({
-		title:	'Important Unread messages',
-		text:	'You have 12 unread messages.',
-		image: 	'img/demo/envelope.png',
+		title:	'Mensagens Não Lidas',
+		text:	'Voce tem 12 mensagens não lidas.',
+		image: 	'resources/images/demo/envelope.png',
 		sticky: false
 	});	
 	$('#gritter-notify .normal').click(function(){
@@ -65,8 +65,8 @@ $(document).ready(function(){
 	$('#gritter-notify .image').click(function(){
 		var imgsrc = $(this).attr('data-image');
 		$.gritter.add({
-			title:	'Important Unread messages',
-			text:	'You have 12 unread messages.',
+			title:	'Mensagens Não Lidas',
+			text:	'Voce tem 12 mensagens não lidas.',
 			image: imgsrc,
 			sticky: false
 		});		

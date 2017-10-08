@@ -6,7 +6,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pagamento</a> >> <a href="#">Movimentação Pagamento </a>>> <a href="#" class="current">Cadastro Pagamento</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao" title="Go to Pagamento" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Pagamento</a> <a href="#">Movimentação Pagamento </a><a href="#" class="current">Cadastro Pagamento</a> </div>
     <h1>Cadastro de Pagamento</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -31,7 +31,7 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> </span>
             <h5>Cadastro de Pagamento</h5>
           </div>
           

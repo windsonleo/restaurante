@@ -66,10 +66,46 @@ public class CardapioController   {
 //    	Usuario usuario = new Usuario();
 //		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 //		
-//        List<Categoria> categoriaList = dao.getAll();
-//        categoriaList.remove(0);
+        List<Categoria> categoriaList = dao.getAll();
+        
+        
+        for (int i = 0; i < categoriaList.size(); i++) {
+        	
+        	Categoria cat = categoriaList.get(i);
+        	
+        	if(cat.getNome()=="PAI"){
+        		
+        		categoriaList.remove(cat);
+        	}
+        	
+        	if(cat.getNome()=="INSUMOS"){
+        		
+        		categoriaList.remove(i);
+        	}
+        	
+        	
+			
+		}
+        
+//        Categoria catpai = dao.getOnlyCategoriaPai();
+//        Categoria insumos = dao.getOnlyCategoriaExcludeCardapio();
 //        
-//        model.addAttribute("categoriaList", categoriaList);
+//        int paiid = categoriaList.indexOf(catpai);
+//        int insumoid = categoriaList.indexOf(insumos);
+//        
+//        System.out.println("Id pai:"+ paiid );
+//        
+//        System.out.println("Id insumos:"+ insumoid );
+//
+        categoriaList.remove(0);
+       
+        categoriaList.remove(4);
+//        
+//       
+        
+        
+        
+        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("usuarioAtt", usuario);
 
     }

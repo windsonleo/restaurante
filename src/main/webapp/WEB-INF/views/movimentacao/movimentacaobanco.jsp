@@ -21,12 +21,11 @@
 <!--             </div> -->
           </div>
           
+          </div>
+          
           
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
-          <div class="col-lg-4 col-lg-offset-4">
-            <input type="search" id="search" value="" class="form-control" placeholder="Search using Fuzzy searching">
-        </div>
                             <thead>
                                     <tr>
                                         <th>Id</th>

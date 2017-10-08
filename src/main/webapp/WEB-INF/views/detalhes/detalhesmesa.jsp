@@ -17,14 +17,14 @@
           <div class="widget-content nopadding">
   
 						
+<!-- 						<div class=""> -->
 						
-						
-						<div class="form-groupp">
 						
 						<div class="col-xs-12" align="left">
 						
 						 <div class="form-inline" >
-						 	 <div class="imput">
+						<div class="form-group">
+
 						 
 							<label>Código</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${mesa.id }" disabled="disabled"> 
@@ -38,7 +38,8 @@
 <%-- 							<input id="total" name="total" type="text" class="form-control" value="${mesa.pedidos}">  --%>
 								
 								</div>
-								</div>
+								
+							</div>
 								
 								
 								<div class="control-group">

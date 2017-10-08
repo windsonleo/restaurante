@@ -7,8 +7,8 @@
 
 <div id="content-header">
 	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/produtocomposto/movimentacao" title="Go to Home" class="tip-bottom"><i
-			class="icon-home"></i> ProdutoComposto</a> >> <a href="#">Movimentação ProdutoComposto </a> >>
+		<a href="${pageContext.request.contextPath}/produtocomposto/movimentacao" title="Ir para Produto Composto" class="tip-bottom"><i
+			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> ProdutoComposto</a> <a href="#">Movimentação ProdutoComposto </a>
 		<a href="#" class="current">Cadastro ProdutoComposto</a>
 	</div>
 	<h1>Cadastro de ProdutoComposto</h1>
@@ -38,22 +38,22 @@
 			<div class="widget-box">
          
 				<div class="widget-title">
-					<span class="icon"> <i class="icon-info-sign"></i>
+					<span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i>
 					</span>
 					<h5>Cadastro de ProdutoComposto</h5>
 				</div>
 				
-			<form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizonta">  		
+			<form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizontal">  		
 							
 							
 				<div class="control-group">
-                  <label class="control-label">Carregar Foto</label>
+<!--                   <label class="control-label">Carregar Foto</label> -->
                 <div class="controls">
 			<div class="span3">
 				<div id="uniform-undefined" class="uploader">
 						<input id="file" size="30" style="opacity: 0;" type="file"  name="file" >
 						<span class="filename" style="-moz-user-select: none;"><p>${filename}</p></span>
-						<span class="action" style="-moz-user-select: none;">Choose File</span>
+						<span class="action" style="-moz-user-select: none;">Escolha Arquivo</span>
 				
 				
 				

@@ -43,12 +43,10 @@ public abstract class AbstractController<Entity> {
     public ModelAndView cadastrarEntity() {
 
         ModelAndView cadastro = new ModelAndView("cadastro" + entityAlias);
-//        cadastro.addObject("acao", "add");
-
+        
         List<Entity> entityList = getDao().getAll();        
         cadastro.addObject("acao","add");
-//    	 
-//    	 cadastro.addObject("entityList", entityList);
+
 
         return cadastro;
 
