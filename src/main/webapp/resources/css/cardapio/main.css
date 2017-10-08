@@ -97,7 +97,7 @@ body
 
 .btn-send,
 .btn-reservation {
-	background-color: #8bc34a;
+	background-color: black;
 	padding: 10px 50px;
 	box-shadow: 0px 2px 5px #948E8E;
 	color: #fff;
@@ -517,7 +517,7 @@ nav.shrink .navbar-toggle {
 
 .opening-time 
 {
-	background-color: rgb(139, 195, 74);
+	background-color: rgb(0, 0, 0);
 	color: #fff;
 	margin-top: -50px;
 	padding: 20px 40px;
@@ -570,7 +570,7 @@ nav.shrink .navbar-toggle {
 	margin-right: 10px;
 }
 
-.fb, .twit, .g-plus, .link
+.fb, .twit, .g-plus, .link,.inst
 {
 	float: left;
 	height: 126px;
@@ -584,12 +584,12 @@ nav.shrink .navbar-toggle {
 
 .fb
 {
-	background: url('/restaurante/resources/images/cardapio/social/facebook_color.png');
+	background: url('/restaurante/resources/images/cardapio/social/facebook_black.png');
 }
 
 .fb:hover
 {
-	background: url("/restaurante/resources/images/cardapio/social/facebook_black.png");
+	background: url("/restaurante/resources/images/cardapio/social/facebook_color.png");
 }
 
 .twit {
@@ -606,6 +606,14 @@ nav.shrink .navbar-toggle {
 
 .g-plus:hover {
 	background: url(/restaurante/resources/images/cardapio/social/g-plus_black.png);
+}
+
+.inst {
+	background: url("/restaurante/resources/images/cardapio/social/instagram_black.png");
+}
+
+.inst:hover {
+	background: url('/restaurante/resources/images/cardapio/social/instagram_color.png');
 }
 
 .link {

@@ -79,13 +79,15 @@ public class Produto implements Serializable {
     
     
     
-    
+    @Column(name = "esugestao",nullable=true)
+	private boolean esugestao;
+	
     
     @Column(name = "isativo")
 	private boolean isativo;
 	
 
-    public Produto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo ) {
+    public Produto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo, boolean esugestao ) {
     	super();
     	this.id=id;
     	this.foto = foto;
@@ -98,6 +100,7 @@ public class Produto implements Serializable {
     	this.fornecedor =fornecedor;
     	this.categoria = cat;
     	this.isativo = ativo;
+    	this.esugestao =esugestao;
     	
     	
     	
@@ -105,7 +108,7 @@ public class Produto implements Serializable {
     
     public Produto() {
     	super();
-    	
+    	this.esugestao= false;
     	
     }
     
@@ -127,7 +130,21 @@ public class Produto implements Serializable {
     }
 
  
-    public Categoria getCategoria() {
+    /**
+	 * @return the esugestao
+	 */
+	public boolean isEsugestao() {
+		return esugestao;
+	}
+
+	/**
+	 * @param esugestao the esugestao to set
+	 */
+	public void setEsugestao(boolean esugestao) {
+		this.esugestao = esugestao;
+	}
+
+	public Categoria getCategoria() {
         return categoria;
     }
 
@@ -235,7 +252,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return descricao.toUpperCase();
+        return nome.toUpperCase();
     }
 
 }

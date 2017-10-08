@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Pedidovenda</a> >> <a href="#" class="current">Movimentação de Pedidovenda</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Delivery" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Delivery</a> <a href="#" class="current">Movimentação de  Delivery</a> </div>
     <h1>Listagem e Visão Geral</h1>
     
   </div>
@@ -14,19 +14,19 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+          <div class="widget-title"> <span class="icon"><i class="icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
+          </span>
             <h5>Movimentação Delivery</h5>
-          
-             <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+          <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button>
+<%--              <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon" color="blue"></i></a> </span> --%>
          
-            </div>
+<!--             </div> -->
           </div>
           
           
           <div class="widget-content nopadding">
             <table class="table table-striped data-table">
             
- 	     <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button>
                      
               <thead>
                <tr>

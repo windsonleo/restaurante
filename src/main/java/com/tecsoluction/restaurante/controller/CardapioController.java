@@ -66,6 +66,9 @@ public class CardapioController   {
 //    	Usuario usuario = new Usuario();
 //		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 //		
+    	
+        List<Produto> sugestaoList = produtoDao.getProdutoSugestao();
+
         List<Categoria> categoriaList = dao.getAll();
         
         
@@ -106,7 +109,7 @@ public class CardapioController   {
         
         
         model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("sugestaoList", sugestaoList);
 
     }
     

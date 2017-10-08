@@ -86,6 +86,7 @@
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${produto.id}" placeholder="Digite o Id"/>
                			<input id="isativo" class="span3"name="isativo"  type="checkbox" checked="${produto.isativo}"/>
+                         <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produto.esugestao}"/>
                
                 </div>
               </div>

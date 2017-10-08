@@ -13,10 +13,10 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon-icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i></span>
+          <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i></span>
             <h5>Movimentação Produto Composto</h5>
           
-                     <div class="widget-title"> <span class="icon-icon"><a href="${pageContext.request.contextPath}/produtocomposto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/produtocomposto/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>

@@ -28,7 +28,7 @@
                         <li><a href="#about">Sushi Senpai</a></li>
                         <li><a href="#pricing">O Cardápio</a></li>
                         <li><a href="#great-place-to-enjoy"> O Chef</a></li>
-                        <li><a href="#breakfast">O Sushi</a></li>
+<!--                         <li><a href="#breakfast">O Sushi</a></li> -->
                         <li><a href="#featured-dish">Sugestões do Chef</a></li>
                         <li><a href="#reserve">Reservas</a></li>
                         <li><a href="#contact">Contato</a></li>

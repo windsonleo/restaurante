@@ -72,4 +72,13 @@ public class ProdutoDAO extends AbstractEntityDao<Produto> {
 		   	
 }
 	
+	public List<Produto> getProdutoSugestao() {
+		// TODO Auto-generated method stub
+		
+    List<Produto> result = manager.createQuery("SELECT p FROM Produto p where p.esugestao=TRUE", Produto.class).getResultList();
+   
+    return result;
+		   	
+}
+	
 }

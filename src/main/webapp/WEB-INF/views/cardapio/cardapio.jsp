@@ -23,12 +23,12 @@
                                     <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/3.jpg" alt="dfdfsdfsd">
                                 </div>
                             </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
+<!--                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> -->
+<!--                                 <span class="glyphicon glyphicon-chevron-left"></span> -->
+<!--                             </a> -->
+<!--                             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> -->
+<!--                                 <span class="glyphicon glyphicon-chevron-right"></span> -->
+<!--                             </a> -->
                         </div>
                    
 
@@ -80,9 +80,6 @@
                                              	</c:forEach>
                                             
                                             
-<!--                                             <li class="filter" data-filter=".special">Special</li> -->
-<!--                                             <li class="filter" data-filter=".desert">Desert</li> -->
-<!--                                             <li class="filter" data-filter=".dinner">Dinner</li> -->
 
                                         </ul>  <!-- @end #filter-list -->
                                     </div>
@@ -123,133 +120,10 @@
 										
 										
 									</c:forEach>
-									
-									
-	                            
-
-<!--                                 <li class="item breakfast"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food2.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Prawn Dish</h3> -->
-<!--                                                 Lorem ipsum dolor sit amet -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-                                        
-<!--                                     <h2 class="white">$20</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item desert"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food3.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Salad Dish</h3> -->
-<!--                                                 Consectetur adipisicing elit, sed do eiusmod -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-                                        
-<!--                                     <h2 class="white">$18</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item breakfast special"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food4.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Prawn Dish</h3> -->
-<!--                                                 Tempor incididunt ut labore et dolore -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-                                        
-<!--                                     <h2 class="white">$15</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item breakfast"> -->
-<!--                                     	<a href="#"> -->
-<%--                                     	     <img src="${pageContext.request.contextPath}/resources/images/cardapio/food5.jpg" class="img-responsive" alt="Food" > --%>
-                                    	
-<!--                                  			<div class="menu-desc"> -->
-                                    	
-                                        
-<!--                                             <span> -->
-<!--                                                 <h3>Vegetable Dish</h3> -->
-<!--                                                 Magna aliqua. Ut enim ad minim veniam -->
-<!--                                             </span> -->
-<!--                                             </div> -->
-                                            
-<!--                        					</a> -->
-                                            
-                                        
-<!--                                     <h2 class="white">$20</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item dinner special"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food6.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Chicken Dish</h3> -->
-<!--                                                 Quis nostrud exercitation ullamco laboris -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-
-<!--                                     <h2 class="white">$22</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item desert"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food7.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Vegetable Noodles</h3> -->
-<!--                                                 Nisi ut aliquip ex ea commodo -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-
-<!--                                     <h2 class="white">$32</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item dinner"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food8.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Special Salad</h3> -->
-<!--                                                 Duis aute irure dolor in reprehenderit -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-
-<!--                                     <h2 class="white">$38</h2> -->
-<!--                                 </li> -->
-<!--                                 <li class="item desert special"> -->
-
-<!--                                     <a href="#"> -->
-<%--                                         <img src="${pageContext.request.contextPath}/resources/images/cardapio/food9.jpg" class="img-responsive" alt="Food" > --%>
-<!--                                         <div class="menu-desc"> -->
-<!--                                             <span> -->
-<!--                                                 <h3>Ice-cream</h3> -->
-<!--                                                 Excepteur sint occaecat cupidatat non -->
-<!--                                             </span> -->
-<!--                                         </div> -->
-<!--                                     </a> -->
-                                    
-<!--                                     <h2 class="white">$38</h2> -->
-<!--                                 </li>   -->
-<!--                             </ul> -->
 
 </ul>
 
-                            <!-- <div class="text-center">
-                                    <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
-                            </div> -->
+  
 
                         </div>   
                     </div>
@@ -306,50 +180,50 @@
 
 
         <!--== 10. Our Breakfast Menu ==-->
-        <section id="breakfast" class="breakfast">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/bread_black.png">
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class="row dis-table">
-                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                            <h3 class="section-title">Nosso Sushi</h3>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+<!--         <section id="breakfast" class="breakfast"> -->
+<%--             <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/bread_black.png"> --%>
+<!--             <div class="wrapper"> -->
+<!--                 <div class="container-fluid"> -->
+<!--                     <div class="row dis-table"> -->
+<!--                         <div class="col-xs-6 col-sm-6 dis-table-cell color-bg"> -->
+<!--                             <h3 class="section-title">Nosso Sushi</h3> -->
+<!--                         </div> -->
+<!--                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg"> -->
                             
-                        </div>
-                    </div> <!-- /.dis-table -->
-                </div> <!-- /.row -->
-            </div> <!-- /.wrapper -->
-        </section> <!-- /#breakfast -->
+<!--                         </div> -->
+<!--                     </div> /.dis-table -->
+<!--                 </div> /.row -->
+<!--             </div> /.wrapper -->
+<!--         </section> /#breakfast -->
 
 
 
-        <!--== 11. Our Bread ==-->
-        <section id="bread" class="bread">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/bread_color.png">
-            <div class="container-fluid">
-                <div class="row dis-table">
-                    <div class="hidden-xs col-sm-6 dis-table-cell section-bg">
+<!--         == 11. Our Bread == -->
+<!--         <section id="bread" class="bread"> -->
+<%--             <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/bread_color.png"> --%>
+<!--             <div class="container-fluid"> -->
+<!--                 <div class="row dis-table"> -->
+<!--                     <div class="hidden-xs col-sm-6 dis-table-cell section-bg"> -->
 
-                    </div>
-                    <div class="col-xs-12 col-sm-6 dis-table-cell">
-                        <div class="section-content">
-                            <h2 class="section-content-title">
-                                Sushi Samba
-                            </h2>
-                            <div class="section-description">
-                                <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
-                                <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!--                     </div> -->
+<!--                     <div class="col-xs-12 col-sm-6 dis-table-cell"> -->
+<!--                         <div class="section-content"> -->
+<!--                             <h2 class="section-content-title"> -->
+<!--                                 Sushi Samba -->
+<!--                             </h2> -->
+<!--                             <div class="section-description"> -->
+<!--                                 <p class="section-content-para"> -->
+<!--                                     Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size. -->
+<!--                                 </p> -->
+<!--                                 <p class="section-content-para"> -->
+<!--                                     beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination. -->
+<!--                                 </p> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </section> -->
 
 
 
@@ -372,24 +246,33 @@
         </section> <!-- /#featured-dish -->
 
 
-
-
-        <!--== 13. Menu List ==-->
+  <!--== 13. Menu List ==-->
         <section id="menu-list" class="menu-list">
             <div class="container">
                 <div class="row menu">
                     <div class="col-md-10 col-md-offset-1 col-sm-9 col-sm-offset-2 col-xs-12">
-                        <div class="row">
+                       <div class="row">
+
+ <c:forEach var="produto" items="${sugestaoList}" varStatus="id">
+ 
+  					
                             <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
+
+  								<div class="row">
+
                                     <div class="menu-catagory">
-                                        <h2>Pão</h2>
+                                        <h3>${produto.categoria.nome}</h3>
                                     </div>
                                 </div>
+                            
+                             
+<!--                               <div class="col-md-3 col-sm-6 col-xs-12"> -->
+                              
+                              <div class="col-md-12">
                                 <div class="row">
                                     <div class="menu-item">
-                                        <h3 class="menu-title">French Pão</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+                                        <h4 class="menu-title">${produto.nome}</h4>
+                                        <p class="menu-about">${produto.descricao}</p>
 
                                         <div class="menu-system">
                                             <div class="half">
@@ -398,295 +281,34 @@
                                                 </p>
                                             </div>
                                             <div class="half">
-                                                <p class="price">$149.00</p>
+                                                <p class="price">R$ ${produto.precovenda}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Italian Pão</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                 </div> -->
                                 </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Pao Chines</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+							</div>
+							
 
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="menu-catagory">
-                                        <h2>Bebidas</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Regular Chá</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+</c:forEach>
 
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$20.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Garlic Chá</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+							</div>
+							</div>
 
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$30.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Black Café</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
 
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$40.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="menu-catagory">
-                                        <h2>Meat</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Bacon</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$70.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Linguiça</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$50.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Chicken Bolas</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$90.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="menu-catagory">
-                                        <h2>Special</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Chicken Bolas</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$90.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Bacon</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$70.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Linguiça</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$50.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div id="moreMenuContent"></div>
                         <div class="text-center">
                             <a id="loadMenuContent" class="btn btn-middle hidden-sm hidden-xs">Carregar Mais <span class="caret"></span></a>
                         </div>
                     </div>
-                </div>
-            </div>
+
         </section>
 
 
-
-        <!--== 14. Have a look to our dishes ==-->
-
-        <section id="have-a-look" class="have-a-look hidden-xs">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/food_color.png">
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-
-                        <div class="menu-gallery" style="width: 50%; float:left;">
-                            <div class="flexslider-container">
-                                <div class="flexslider">
-                                    <ul class="slides">
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu1.png" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu2.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu3.png" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu4.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu5.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu6.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu7.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu8.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu9.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu10.jpg" />
-                                        </li>
-                                        <li>
-                                            <img src="${pageContext.request.contextPath}/resources/images/cardapio/menu-gallery/menu11.jpg" />
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="gallery-heading hidden-xs color-bg" style="width: 50%; float:right;">
-                            <h2 class="section-title">Já deu uma Olhada Ai ?</h2>
-                        </div>
-                        
-
-                    </div> <!-- /.row -->
-                </div> <!-- /.container-fluid -->
-            </div> <!-- /.wrapper -->
-        </section>
+ 
 
 
 
@@ -801,9 +423,9 @@
                         <div class="col-md-6 col-md-offset-3">
                             <ul class="center-block">
                                 <li><a href="#" class="fb"></a></li>
-                                <li><a href="#" class="twit"></a></li>
-                                <li><a href="#" class="g-plus"></a></li>
-                                <li><a href="#" class="link"></a></li>
+                                <li><a href="#" class="inst"></a></li>
+<!--                                 <li><a href="#" class="g-plus"></a></li> -->
+<!--                                 <li><a href="#" class="link"></a></li> -->
                             </ul>
                         </div>
                     </div>

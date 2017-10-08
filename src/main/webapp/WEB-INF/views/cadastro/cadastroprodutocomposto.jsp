@@ -9,7 +9,7 @@
 	<div id="breadcrumb">
 		<a href="${pageContext.request.contextPath}/produtocomposto/movimentacao" title="Ir para Produto Composto" class="tip-bottom"><i
 			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> ProdutoComposto</a> <a href="#">Movimentação ProdutoComposto </a>
-		<a href="#" class="current">Cadastro ProdutoComposto</a>
+		<a href="#" class="current">Cadastro Produto Composto</a>
 	</div>
 	<h1>Cadastro de ProdutoComposto</h1>
 </div>
@@ -40,7 +40,7 @@
 				<div class="widget-title">
 					<span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i>
 					</span>
-					<h5>Cadastro de ProdutoComposto</h5>
+					<h5>Cadastro de Produto Composto</h5>
 				</div>
 				
 			<form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizontal">  		
@@ -87,6 +87,7 @@
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${produtocomposto.id}" placeholder="Digite o Id"/>
                			<input id="isativo" name="isativo" class="span6" type="checkbox" checked="${produtocomposto.isativo}"/>
+                         <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produtocomposto.esugestao}"/>
                
                 </div>
               </div>

@@ -49,12 +49,13 @@ public class ProdutoComposto  extends Produto implements Serializable {
         // TODO Auto-generated constructor stub
         // items = new ArrayList<Item>();
     	super();
+    	
     }
     
 
-    public ProdutoComposto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo,Map<Item,Double> itens ) {
+    public ProdutoComposto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo,Map<Item,Double> itens,boolean esugestao ) {
      
-    	super(id,foto,nome,codebar,descricao,un,precocusto,precocusto,fornecedor,cat,ativo);
+    	super(id,foto,nome,codebar,descricao,un,precocusto,precocusto,fornecedor,cat,ativo,esugestao);
     	
     	this.itens = itens;
     }
