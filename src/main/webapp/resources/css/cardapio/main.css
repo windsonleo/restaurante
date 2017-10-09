@@ -381,7 +381,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .about-bg
 {
-	background: url('/restaurante/resources/images/cardapio/About-C-bg.jpg');
+	background: url("/restaurante/resources/images/cardapio/About-C-bg.jpg");
 	background-repeat: no-repeat;
 	background-size: 85%;
   	background-position-x: 15%;
@@ -399,7 +399,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .great-place-to-enjoy .section-bg
 {
-	background-image: url('/restaurante/resources/images/cardapio/GPtE-bg.jpg');
+	background-image: url("/restaurante/resources/images/cardapio/GPtE-bg.jpg");
 }
 /*=================================================
 ||				9. Our Beer
@@ -412,7 +412,7 @@ nav.shrink .navbar-toggle {
 	background-repeat: no-repeat, no-repeat;
 	background-size: 300px,240px;*/
 
-    background: url('/restaurante/resources/images/cardapio/beer-bg1.png'), url('/restaurante/resources/images/cardapio/beer-bg2.png');
+    background: url("/restaurante/resources/images/cardapio/beer-bg1.png"), url("/restaurante/resources/images/cardapio/beer-bg2.png");
     background-repeat: no-repeat, no-repeat;
 	
     background-position: 51% 58%, 75% 58%;
@@ -502,7 +502,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .reserve .section-bg
 {
-	background-image: url('/restaurante/resources/images/cardapio/RaT-bg.jpg');
+	background-image: url("/restaurante/resources/images/cardapio/RaT-bg.jpg");
 }
 
 .reservation .section-content
@@ -584,7 +584,7 @@ nav.shrink .navbar-toggle {
 
 .fb
 {
-	background: url('/restaurante/resources/images/cardapio/social/facebook_black.png');
+	background: url("/restaurante/resources/images/cardapio/social/facebook_black.png");
 }
 
 .fb:hover
@@ -613,11 +613,11 @@ nav.shrink .navbar-toggle {
 }
 
 .inst:hover {
-	background: url('/restaurante/resources/images/cardapio/social/instagram_color.png');
+	background: url("/restaurante/resources/images/cardapio/social/instagram_color.png");
 }
 
 .link {
-	background: url(/restaurante/resources/images/cardapio/social/linkedin_color.png);
+	background: url("/restaurante/resources/images/cardapio/social/linkedin_color.png");
 }
 
 .link:hover {
