@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Service;
 
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.ProdutoComposto;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
 
@@ -75,7 +76,18 @@ public class ProdutoDAO extends AbstractEntityDao<Produto> {
 	public List<Produto> getProdutoSugestao() {
 		// TODO Auto-generated method stub
 		
-    List<Produto> result = manager.createQuery("SELECT p FROM Produto p where p.esugestao=TRUE", Produto.class).getResultList();
+		List<Produto> result =null;
+		
+		try {
+			 
+			 result = manager.createQuery("SELECT p FROM Produto p where p.esugestao=TRUE", Produto.class).getResultList();
+
+			
+		} catch (Exception e)
+		
+		{
+			System.out.println("Erro no metodo getprodutosugestao"+e);
+		}	
    
     return result;
 		   	

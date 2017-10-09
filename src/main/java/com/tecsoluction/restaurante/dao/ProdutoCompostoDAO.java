@@ -58,8 +58,18 @@ public class ProdutoCompostoDAO extends AbstractEntityDao<ProdutoComposto> {
 	public List<ProdutoComposto> getProdutoCompostoSugestao() {
 		// TODO Auto-generated method stub
 		
-    List<ProdutoComposto> result = manager.createQuery("SELECT p FROM ProdutoComposto p where p.esugestao=TRUE", ProdutoComposto.class).getResultList();
-   
+		List<ProdutoComposto> result=null;
+		try {
+		 
+			 result = manager.createQuery("SELECT p FROM ProdutoComposto p where p.esugestao=TRUE", ProdutoComposto.class).getResultList();
+
+			
+		} catch (Exception e)
+		
+		{
+			System.out.println("Erro no metodo getprodutocompostosugestao"+e);
+		}
+	
     return result;
 		   	
 }
