@@ -58,8 +58,15 @@ public class CardapioController   {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
         binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
-
         });
+        	
+        	binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(this.produtoDao) {
+        
+        });
+        	
+        	binder.registerCustomEditor(ProdutoComposto.class, new AbstractEditor<ProdutoComposto>(this.produtoCompostoDao) {
+                
+            });
         
 
     }
@@ -78,23 +85,23 @@ public class CardapioController   {
         List<Categoria> categoriaList = dao.getAll();
         
         
-        for (int i = 0; i < categoriaList.size(); i++) {
-        	
-        	Categoria cat = categoriaList.get(i);
-        	
-        	if(cat.getNome()=="PAI"){
-        		
-        		categoriaList.remove(cat);
-        	}
-        	
-        	if(cat.getNome()=="INSUMOS"){
-        		
-        		categoriaList.remove(i);
-        	}
-        	
-        	
-			
-		}
+//        for (int i = 0; i < categoriaList.size(); i++) {
+//        	
+//        	Categoria cat = categoriaList.get(i);
+//        	
+//        	if(cat.getNome()=="PAI"){
+//        		
+//        		categoriaList.remove(cat);
+//        	}
+//        	
+//        	if(cat.getNome()=="INSUMOS"){
+//        		
+//        		categoriaList.remove(i);
+//        	}
+//        	
+//        	
+//			
+//		}
         
 //        Categoria catpai = dao.getOnlyCategoriaPai();
 //        Categoria insumos = dao.getOnlyCategoriaExcludeCardapio();
@@ -106,9 +113,9 @@ public class CardapioController   {
 //        
 //        System.out.println("Id insumos:"+ insumoid );
 //
-        categoriaList.remove(0);
-       
-        categoriaList.remove(4);
+//        categoriaList.remove(0);
+//       
+//        categoriaList.remove(4);
 //        
 //       
         
@@ -116,7 +123,7 @@ public class CardapioController   {
         
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("sugestaoList", sugestaoList);
-//        model.addAttribute("sugestaoListComposto", sugestaoListComposto);
+        model.addAttribute("sugestaoListComposto", sugestaoListComposto);
 
     }
     
