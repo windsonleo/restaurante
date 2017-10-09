@@ -23,12 +23,12 @@
                                     <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/3.jpg" alt="dfdfsdfsd">
                                 </div>
                             </div>
-<!--                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> -->
-<!--                                 <span class="glyphicon glyphicon-chevron-left"></span> -->
-<!--                             </a> -->
-<!--                             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> -->
-<!--                                 <span class="glyphicon glyphicon-chevron-right"></span> -->
-<!--                             </a> -->
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
                         </div>
                    
 
@@ -304,6 +304,8 @@
                             <a id="loadMenuContent" class="btn btn-middle hidden-sm hidden-xs">Carregar Mais <span class="caret"></span></a>
                         </div>
                     </div>
+                    </div>
+                    
 
         </section>
 
