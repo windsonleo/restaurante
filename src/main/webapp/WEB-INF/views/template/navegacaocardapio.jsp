@@ -25,13 +25,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="Food-fair-toggle">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#about">Sushi Senpai</a></li>
+<!--                         <li><a href="#about">Sushi Senpai</a></li> -->
                         <li><a href="#pricing">O Cardápio</a></li>
                         <li><a href="#great-place-to-enjoy"> O Chef</a></li>
 <!--                         <li><a href="#breakfast">O Sushi</a></li> -->
                         <li><a href="#featured-dish">Sugestões do Chef</a></li>
-                        <li><a href="#reserve">Reservas</a></li>
-                        <li><a href="#contact">Contato</a></li>
+<!--                         <li><a href="#reserve">Reservas</a></li> -->
+<!--                         <li><a href="#contact">Contato</a></li> -->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.row -->

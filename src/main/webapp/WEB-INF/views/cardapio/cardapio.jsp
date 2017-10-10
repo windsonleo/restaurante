@@ -2,61 +2,61 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="true" %>
 
-                <div class="row carousel-holder">
+<!--                 <div class="row carousel-holder"> -->
 
-<!--                     <div class="col-md-12"> -->
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+<!-- <!--                     <div class="col-md-12"> --> 
+<!--                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> -->
+<!--                             <ol class="carousel-indicators"> -->
+<!--                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li> -->
+<!--                                 <li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
+<!--                                 <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
                                 
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/1.jpg" alt="dasad">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/2.jpg" alt="fddgfd">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/3.jpg" alt="dfdfsdfsd">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
+<!--                             </ol> -->
+<!--                             <div class="carousel-inner"> -->
+<!--                                 <div class="item active"> -->
+<%--                                     <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/1.jpg" alt="dasad"> --%>
+<!--                                 </div> -->
+<!--                                 <div class="item"> -->
+<%--                                     <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/2.jpg" alt="fddgfd"> --%>
+<!--                                 </div> -->
+<!--                                 <div class="item"> -->
+<%--                                     <img class="slide-image" src="${pageContext.request.contextPath}/resources/images/cardapio/3.jpg" alt="dfdfsdfsd"> --%>
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> -->
+<!--                                 <span class="glyphicon glyphicon-chevron-left"></span> -->
+<!--                             </a> -->
+<!--                             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> -->
+<!--                                 <span class="glyphicon glyphicon-chevron-right"></span> -->
+<!--                             </a> -->
+<!--                         </div> -->
                    
 
-                </div>
+<!--                 </div> -->
     
-        <section id="about" class="about">
-<!--             <img src="../resources/images/cardapio/icons/about_colorr.png" class="img-responsive section-icon hidden-sm hidden-xs"> -->
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class="row dis-table">
-                        <div class="hidden-xs col-sm-6 section-bg about-bg dis-table-cell">
+<!--         <section id="about" class="about"> -->
+<!-- <!--             <img src="../resources/images/cardapio/icons/about_colorr.png" class="img-responsive section-icon hidden-sm hidden-xs"> --> 
+<!--             <div class="wrapper"> -->
+<!--                 <div class="container-fluid"> -->
+<!--                     <div class="row dis-table"> -->
+<!--                         <div class="hidden-xs col-sm-6 section-bg about-bg dis-table-cell"> -->
 
-                        </div>
-                        <div class="col-xs-12 col-sm-6 dis-table-cell">
-                            <div class="section-content">
-                                <h2 class="section-content-title">Sushi Senpai</h2>
-                                <p class="section-content-para">
-                                    O Restaurante Sushi Senpai foi Fundado em Outubro de 2015 pelo então Chef ..... compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
-                                <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
-                                </p>
-                            </div> <!-- /.section-content -->
-                        </div>
-                    </div> <!-- /.row -->
-                </div> <!-- /.container-fluid -->
-            </div> <!-- /.wrapper -->
-        </section> <!-- /#about -->
+<!--                         </div> -->
+<!--                         <div class="col-xs-12 col-sm-6 dis-table-cell"> -->
+<!--                             <div class="section-content"> -->
+<!--                                 <h2 class="section-content-title">Sushi Senpai</h2> -->
+<!--                                 <p class="section-content-para"> -->
+<!--                                     O Restaurante Sushi Senpai foi Fundado em Outubro de 2015 pelo então Chef ..... compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size. -->
+<!--                                 </p> -->
+<!--                                 <p class="section-content-para"> -->
+<!--                                     beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination. -->
+<!--                                 </p> -->
+<!--                             </div> /.section-content -->
+<!--                         </div> -->
+<!--                     </div> /.row -->
+<!--                 </div> /.container-fluid -->
+<!--             </div> /.wrapper -->
+<!--         </section> /#about -->
         
         
          <section id="pricing" class="pricing">
@@ -352,167 +352,167 @@
 
 
         <!--== 15. Reserve A Table! ==-->
-        <section id="reserve" class="reserve">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/reserve_black.png">
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class="row dis-table">
-                        <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                            <h3 class="section-title">Reserve uma Mesa.</h3>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
+<!--         <section id="reserve" class="reserve"> -->
+<%--             <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/reserve_black.png"> --%>
+<!--             <div class="wrapper"> -->
+<!--                 <div class="container-fluid"> -->
+<!--                     <div class="row dis-table"> -->
+<!--                         <div class="col-xs-6 col-sm-6 dis-table-cell color-bg"> -->
+<!--                             <h3 class="section-title">Reserve uma Mesa.</h3> -->
+<!--                         </div> -->
+<!--                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg"> -->
                             
-                        </div>
-                    </div> <!-- /.dis-table -->
-                </div> <!-- /.row -->
-            </div> <!-- /.wrapper -->
-        </section> <!-- /#reserve -->
+<!--                         </div> -->
+<!--                     </div> /.dis-table -->
+<!--                 </div> /.row -->
+<!--             </div> /.wrapper -->
+<!--         </section> /#reserve -->
 
 
 
-        <section class="reservation">
-            <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/reserve_color.png">
-            <div class="wrapper">
-                <div class="container-fluid">
-                    <div class=" section-content">
-                        <div class="row">
-                            <div class="col-md-5 col-sm-6">
-                                <form class="reservation-form" method="post" action="reserve.php">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
-                                            </div>
-                                        </div>
+<!--         <section class="reservation"> -->
+<%--             <img class="img-responsive section-icon hidden-sm hidden-xs" src="${pageContext.request.contextPath}/resources/images/cardapio/icons/reserve_color.png"> --%>
+<!--             <div class="wrapper"> -->
+<!--                 <div class="container-fluid"> -->
+<!--                     <div class=" section-content"> -->
+<!--                         <div class="row"> -->
+<!--                             <div class="col-md-5 col-sm-6"> -->
+<%--                                 <form class="reservation-form" method="post" action="reserve.php"> --%>
+<!--                                     <div class="row"> -->
+<!--                                         <div class="col-md-6 col-sm-6"> -->
+<!--                                             <div class="form-group"> -->
+<!--                                                 <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name"> -->
+<!--                                             </div> -->
+<!--                                             <div class="form-group"> -->
+<!--                                                 <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail"> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
 
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time">
-                                            </div>
-                                        </div>
+<!--                                         <div class="col-md-6 col-sm-6"> -->
+<!--                                             <div class="form-group"> -->
+<!--                                                 <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone"> -->
+<!--                                             </div> -->
+<!--                                             <div class="form-group"> -->
+<!--                                                 <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time"> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
 
-                                        <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
-                                        </div>
+<!--                                         <div class="col-md-12 col-sm-12"> -->
+<!--                                             <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea> -->
+<!--                                         </div> -->
 
-                                        <div class="col-md-12 col-sm-12">
-                                            <button type="submit" id="submit" name="submit" class="btn btn-reservation">
-                                                <span><i class="fa fa-check-circle-o"></i></span>
-                                                Efetuar Reserva
-                                            </button>
-                                        </div>
+<!--                                         <div class="col-md-12 col-sm-12"> -->
+<!--                                             <button type="submit" id="submit" name="submit" class="btn btn-reservation"> -->
+<!--                                                 <span><i class="fa fa-check-circle-o"></i></span> -->
+<!--                                                 Efetuar Reserva -->
+<!--                                             </button> -->
+<!--                                         </div> -->
                                             
-                                    </div>
-                                </form>
-                            </div>
+<!--                                     </div> -->
+<%--                                 </form> --%>
+<!--                             </div> -->
 
-                            <div class="col-md-2 hidden-sm hidden-xs"></div>
+<!--                             <div class="col-md-2 hidden-sm hidden-xs"></div> -->
 
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="opening-time">
-                                    <h4 class="opening-time-title">Salão</h4>
-                                     <p>Seg a Quinta: 18:00 PM - 00:00 AM</p>
-                                     <p>Sab & Dom: 18:00 AM - 1:00 AM</p>
+<!--                             <div class="col-md-4 col-sm-6 col-xs-12"> -->
+<!--                                 <div class="opening-time"> -->
+<!--                                     <h4 class="opening-time-title">Salão</h4> -->
+<!--                                      <p>Seg a Quinta: 18:00 PM - 00:00 AM</p> -->
+<!--                                      <p>Sab & Dom: 18:00 AM - 1:00 AM</p> -->
 
-                                    <div class="launch">
-                                        <h4>Entregas</h4>
-                                        <p>Seg to Quinta: 18:00 PM - 00:00 AM</p>
-                                        <p>Sab & Dom: 18:00 AM - 1:00 AM</p>
-                                    </div>
+<!--                                     <div class="launch"> -->
+<!--                                         <h4>Entregas</h4> -->
+<!--                                         <p>Seg to Quinta: 18:00 PM - 00:00 AM</p> -->
+<!--                                         <p>Sab & Dom: 18:00 AM - 1:00 AM</p> -->
+<!--                                     </div> -->
 
 <!--                                     <div class="dinner"> -->
 <!--                                         <h4>Dinner</h4> -->
 <!--                                         <p>Mon to Sat: 6:00 PM - 1:00 AM</p> -->
 <!--                                     </div> -->
-                                </div>
-                            </div>
-                        </div>
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
 
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-        <section id="contact" class="contact">
-            <div class="container-fluid color-bg">
-                <div class="row dis-table">
-                    <div class="hidden-xs col-sm-6 dis-table-cell">
-                        <h3 class="section-title">Contato</h3>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 dis-table-cell">
-                        <div class="section-content">
-                   			<p>R. Dois Irmão nº33 Barra de Jangada</p>
-                            <p>+55 81 98715-0653</p>
-                            <p>sushisenpai@sushisenpai.com </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="social-media">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <ul class="center-block">
-                                <li><a href="#" class="fb"></a></li>
-                                <li><a href="#" class="inst"></a></li>
-<!--                                 <li><a href="#" class="g-plus"></a></li> -->
-<!--                                 <li><a href="#" class="link"></a></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div id="map-canvas"></div>
-            </div>
-        </div>
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </section> -->
 
 
 
-        <section class="contact-form">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-                        <div class="row">
-                             <form class="contact-form" method="post" action="contact.php">
+
+<!--         <section id="contact" class="contact"> -->
+<!--             <div class="container-fluid color-bg"> -->
+<!--                 <div class="row dis-table"> -->
+<!--                     <div class="hidden-xs col-sm-6 dis-table-cell"> -->
+<!--                         <h3 class="section-title">Contato</h3> -->
+<!--                     </div> -->
+<!--                     <div class="col-xs-6 col-sm-6 dis-table-cell"> -->
+<!--                         <div class="section-content"> -->
+<!--                    			<p>R. Dois Irmão nº33 Barra de Jangada</p> -->
+<!--                             <p>+55 81 98715-0653</p> -->
+<!--                             <p>sushisenpai@sushisenpai.com </p> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--                 <div class="social-media"> -->
+<!--                     <div class="row"> -->
+<!--                         <div class="col-md-6 col-md-offset-3"> -->
+<!--                             <ul class="center-block"> -->
+<!--                                 <li><a href="#" class="fb"></a></li> -->
+<!--                                 <li><a href="#" class="inst"></a></li> -->
+<!-- <!--                                 <li><a href="#" class="g-plus"></a></li> --> -->
+<!-- <!--                                 <li><a href="#" class="link"></a></li> --> -->
+<!--                             </ul> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </section> -->
+
+<!--         <div class="container-fluid"> -->
+<!--             <div class="row"> -->
+<!--                 <div id="map-canvas"></div> -->
+<!--             </div> -->
+<!--         </div> -->
+
+
+
+<!--         <section class="contact-form"> -->
+<!--             <div class="container"> -->
+<!--                 <div class="row"> -->
+<!--                     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1"> -->
+<!--                         <div class="row"> -->
+<%--                              <form class="contact-form" method="post" action="contact.php"> --%>
                                 
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  Subject">
-                                    </div>
-                                </div>
+<!--                                 <div class="col-md-6 col-sm-6"> -->
+<!--                                     <div class="form-group"> -->
+<!--                                         <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="  Name"> -->
+<!--                                     </div> -->
+<!--                                     <div class="form-group"> -->
+<!--                                         <input name="email" type="email" class="form-control" id="email" required="required" placeholder="  Email"> -->
+<!--                                     </div> -->
+<!--                                     <div class="form-group"> -->
+<!--                                         <input name="subject" type="text" class="form-control" id="subject" required="required" placeholder="  Subject"> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                                <div class="col-md-6 col-sm-6">
-                                    <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  Message"></textarea>
-                                </div>
+<!--                                 <div class="col-md-6 col-sm-6"> -->
+<!--                                     <textarea name="message" type="text" class="form-control" id="message" rows="7" required="required" placeholder="  Message"></textarea> -->
+<!--                                 </div> -->
 
-                                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                                    <div class="text-center">
-                                        <button type="submit" id="submit" name="submit" class="btn btn-send">Enviar </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!--                                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> -->
+<!--                                     <div class="text-center"> -->
+<!--                                         <button type="submit" id="submit" name="submit" class="btn btn-send">Enviar </button> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<%--                             </form> --%>
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </section> -->
 
 
         <footer>

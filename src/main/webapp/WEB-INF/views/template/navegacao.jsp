@@ -122,7 +122,7 @@
       	<sec:authorize access="hasRole('ROLE_COMPRA')">
     
     <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/fornecedor.png" /></i> <span>Fornecedor</span></a></li>
-    <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garçon.png" /></i> <span>Garçon</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garcon.png" /></i> <span>Garçon</span></a></li>
 
     <li><a href="${pageContext.request.contextPath}/mesa/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png" /></i> <span>Mesa</span></a></li>
     
@@ -151,7 +151,7 @@
       <sec:authorize access="hasRole('ROLE_ADM')">
     
     
-    <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuário.png" /></i> <span>Usuario</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/usuario/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png" /></i> <span>Usuario</span></a></li>
 
 </sec:authorize>
   </ul>

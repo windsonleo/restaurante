@@ -31,7 +31,7 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-striped data-table">
+            <table class="table table-hover table-bordered data-table">
 
               <thead>
                <tr>
