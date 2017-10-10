@@ -147,7 +147,7 @@
                 <div class="container-fluid">
                     <div class="row dis-table">
                         <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                            <h3 class="section-title">Nosso Chef:</h3>
+                            <h3 class="section-title">Nosso Chef: Barbosa</h3>
                         </div>
                         <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
                             
