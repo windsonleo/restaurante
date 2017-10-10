@@ -160,7 +160,7 @@ body
 }
 .color-bg
 {
-	background: #b22222;
+	background: black;
 }
 .section-bg
 {
@@ -639,7 +639,7 @@ nav.shrink .navbar-toggle {
 
 footer
 {
-	background-color: #b22222;
+	background-color: black;
 	color: #ffffff;
 	padding: 30px 0px;
 }
