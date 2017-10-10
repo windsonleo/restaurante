@@ -6,6 +6,8 @@
 <br>
 <br>
 <br>
+<br>
+<br>
 
 <!--                 <div class="row carousel-holder"> -->
 
