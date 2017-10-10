@@ -37,7 +37,7 @@
                <tr>
                                         <th>Id</th>
 									    <th>Nome</th>
-									    <th>Itens</th>
+									    <th>Qtd Itens</th>
 									    <th>Ativo?</th>
 									    
 <!-- 									    <th>Data Nasciemnto</th> -->
@@ -61,7 +61,7 @@
 
 			      <td>${estoque.id}</td>
                   <td>${estoque.nome}</td>
-                  <td >${estoque.itens}</td>
+                  <td >${estoque.itens.size()}</td>
                   <td>${estoque.isativo}</td>
                  <td class="options-widt">
 								

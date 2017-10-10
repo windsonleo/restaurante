@@ -59,9 +59,9 @@
 									title="Informações" ><i class="icon-info-sign"></i></a>
 									
 
-	<a href="#myAlert${caixa.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+	<a href="#myAlert${mesa.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
-			<div id="myAlert${caixa.id}" class="modal hide">
+			<div id="myAlert${mesa.id}" class="modal hide">
               <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button">×</button>
                 <h3>Alerta de Exclusão</h3>
@@ -69,7 +69,7 @@
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/fornecedor/delete?id=${caixa.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/mesa/delete?id=${mesa.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
            
             </div>
 
