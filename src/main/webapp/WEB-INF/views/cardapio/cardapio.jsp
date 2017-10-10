@@ -4,6 +4,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 <!--                 <div class="row carousel-holder"> -->
 
@@ -465,8 +467,8 @@
 <!--                             <ul class="center-block"> -->
 <!--                                 <li><a href="#" class="fb"></a></li> -->
 <!--                                 <li><a href="#" class="inst"></a></li> -->
-<!-- <!--                                 <li><a href="#" class="g-plus"></a></li> --> -->
-<!-- <!--                                 <li><a href="#" class="link"></a></li> --> -->
+<!-- <!--                                 <li><a href="#" class="g-plus"></a></li> -->
+<!-- <!--                                 <li><a href="#" class="link"></a></li> --> 
 <!--                             </ul> -->
 <!--                         </div> -->
 <!--                     </div> -->
