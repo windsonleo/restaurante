@@ -118,12 +118,10 @@
 																${produto.descricao}
 															</span>
 														</div>
-													
 
-													<h2 class="white">R$:${produto.precovenda}</h2>
-                                					
                                 					</a>
-                                					<i class="icon icon-eye">Detalhes</i>
+                                					<h2 class="white">R$:${produto.precovenda}</h2>
+                                					<i class="icon-eye-open">Detalhes</i>
                                 					</li>
 												
 												</c:forEach>
