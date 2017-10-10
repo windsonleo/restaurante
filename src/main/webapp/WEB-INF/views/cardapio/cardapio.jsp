@@ -2,6 +2,9 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="true" %>
 
+<br>
+<br>
+
 <!--                 <div class="row carousel-holder"> -->
 
 <!-- <!--                     <div class="col-md-12"> --> 
