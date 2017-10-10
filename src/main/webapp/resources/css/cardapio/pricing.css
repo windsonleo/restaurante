@@ -9,7 +9,7 @@
 }*/
 
 .pricing-filter {
-	background: url("../cardapio/pricing_bg.jpg");
+	background: url("/resources/images/cardapio/pricing_bg.jpg");
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;

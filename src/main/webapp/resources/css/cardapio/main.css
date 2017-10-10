@@ -438,7 +438,7 @@ nav.shrink .navbar-toggle {
 	background-repeat: no-repeat, no-repeat;
 	background-size: 300px,240px;*/
 
-	background: url("/restaurante/resources/images/cardapio/bread-bg1.png"), url("/restaurante/resources/images/cardapio/bread-bg2.png");
+	background: url("/resources/images/cardapio/bread-bg1.png"), url("resources/images/cardapio/bread-bg2.png");
     background-repeat: no-repeat, no-repeat;
     background-position: 51% 58%, 75% 58%;
     background-size: 300px 300px, 240px 240px;
