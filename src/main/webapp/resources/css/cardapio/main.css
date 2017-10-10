@@ -381,7 +381,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .about-bg
 {
-	background: url("/restaurante/resources/images/cardapio/About-C-bg.jpg");
+	background: url("/resources/images/cardapio/About-C-bg.jpg");
 	background-repeat: no-repeat;
 	background-size: 85%;
   	background-position-x: 15%;
@@ -399,7 +399,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .great-place-to-enjoy .section-bg
 {
-	background-image: url("/restaurante/resources/images/cardapio/GPtE-bg.jpg");
+	background-image: url("/resources/images/cardapio/GPtE-bg.jpg");
 }
 /*=================================================
 ||				9. Our Beer
@@ -412,7 +412,7 @@ nav.shrink .navbar-toggle {
 	background-repeat: no-repeat, no-repeat;
 	background-size: 300px,240px;*/
 
-    background: url("/restaurante/resources/images/cardapio/beer-bg1.png"), url("/restaurante/resources/images/cardapio/beer-bg2.png");
+    background: url("/resources/images/cardapio/beer-bg1.png"), url("/resources/images/cardapio/beer-bg2.png");
     background-repeat: no-repeat, no-repeat;
 	
     background-position: 51% 58%, 75% 58%;
@@ -424,7 +424,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .breakfast .section-bg
 {
-	background-image: url("/restaurante/resources/images/cardapio/OBM-bg.jpg");
+	background-image: url("/resources/images/cardapio/OBM-bg.jpg");
 }
 /*=================================================
 ||				11. Our Bread
@@ -438,7 +438,7 @@ nav.shrink .navbar-toggle {
 	background-repeat: no-repeat, no-repeat;
 	background-size: 300px,240px;*/
 
-	background: url("/resources/images/cardapio/bread-bg1.png"), url("resources/images/cardapio/bread-bg2.png");
+	background: url("/resources/images/cardapio/bread-bg1.png"), url("/resources/images/cardapio/bread-bg2.png");
     background-repeat: no-repeat, no-repeat;
     background-position: 51% 58%, 75% 58%;
     background-size: 300px 300px, 240px 240px;
@@ -490,7 +490,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .featured-dish .section-bg
 {
-	background-image: url('/restaurante/resources/images/cardapio/OFDM-bg.jpg');
+	background-image: url('/resources/images/cardapio/OFDM-bg.jpg');
 }
 /*=================================================
 ||				14. Have a look to our dishes
@@ -502,7 +502,7 @@ nav.shrink .navbar-toggle {
 ==================================================*/
 .reserve .section-bg
 {
-	background-image: url("/restaurante/resources/images/cardapio/RaT-bg.jpg");
+	background-image: url("/resources/images/cardapio/RaT-bg.jpg");
 }
 
 .reservation .section-content
@@ -584,44 +584,44 @@ nav.shrink .navbar-toggle {
 
 .fb
 {
-	background: url("/restaurante/resources/images/cardapio/social/facebook_black.png");
+	background: url("/resources/images/cardapio/social/facebook_black.png");
 }
 
 .fb:hover
 {
-	background: url("/restaurante/resources/images/cardapio/social/facebook_color.png");
+	background: url("/resources/images/cardapio/social/facebook_color.png");
 }
 
 .twit {
-	background: url("/restaurante/resources/images/cardapio/social/twitter_color.png");
+	background: url("/resources/images/cardapio/social/twitter_color.png");
 }
 
 .twit:hover {
-	background: url('/restaurante/resources/images/cardapio/social/twitter_black.png');
+	background: url('/resources/images/cardapio/social/twitter_black.png');
 }
 
 .g-plus {
-	background: url(/restaurante/resources/images/cardapio/social/g-plus_color.png);
+	background: url(/resources/images/cardapio/social/g-plus_color.png);
 }
 
 .g-plus:hover {
-	background: url(/restaurante/resources/images/cardapio/social/g-plus_black.png);
+	background: url(/resources/images/cardapio/social/g-plus_black.png);
 }
 
 .inst {
-	background: url("/restaurante/resources/images/cardapio/social/instagram_black.png");
+	background: url("/resources/images/cardapio/social/instagram_black.png");
 }
 
 .inst:hover {
-	background: url("/restaurante/resources/images/cardapio/social/instagram_color.png");
+	background: url("/resources/images/cardapio/social/instagram_color.png");
 }
 
 .link {
-	background: url("/restaurante/resources/images/cardapio/social/linkedin_color.png");
+	background: url("/resources/images/cardapio/social/linkedin_color.png");
 }
 
 .link:hover {
-	background: url(/restaurante/resources/images/cardapio/social/linkedin_black.png);
+	background: url(/resources/images/cardapio/social/linkedin_black.png);
 }
 
 #map-canvas {
