@@ -169,11 +169,25 @@
 	margin-bottom: 15px;
 }
 
-.menu-price li a:hover .menu-desc {
+/* .menu-price li a:hover .menu-desc { */
+/* 	left: 0px; */
+/* } */
+
+/* .menu-price li a:hover .menu-desc span { */
+/* 	display: block; */
+/* 	color: rgba(255,255,255,0.9); */
+/* 	font-size: 14px; */
+/*   	padding: 22% 20px; */
+/*   	line-height: 23px; */
+/* } */
+
+
+
+.menu-price li:hover .menu-desc {
 	left: 0px;
 }
 
-.menu-price li a:hover .menu-desc span {
+.menu-price li:hover .menu-desc span {
 	display: block;
 	color: rgba(255,255,255,0.9);
 	font-size: 14px;

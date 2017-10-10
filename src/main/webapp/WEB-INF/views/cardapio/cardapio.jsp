@@ -123,7 +123,7 @@
 													<h2 class="white">R$:${produto.precovenda}</h2>
                                 					
                                 					</a>
-                                					<i class="icon-icon eye">Detalhes</i>
+                                					<i class="icon icon-eye">Detalhes</i>
                                 					</li>
 												
 												</c:forEach>
