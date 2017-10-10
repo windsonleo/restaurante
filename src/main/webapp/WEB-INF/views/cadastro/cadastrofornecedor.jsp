@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a>>> <a href="#">Movimentação Fornecedor</a> >><a href="#" class="current">Cadastro Fornecedor</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a> <a href="#">Movimentação Fornecedor</a> <a href="#" class="current">Cadastro Fornecedor</a> </div>
     <h1>Cadastro de Fornecedor</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -28,7 +28,7 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="/resources/images/icons/16/fornecedor.png"></i> </span>
             <h5>Cadastro de Fornecedor</h5>
           </div>
           <div class="widget-content nopadding">

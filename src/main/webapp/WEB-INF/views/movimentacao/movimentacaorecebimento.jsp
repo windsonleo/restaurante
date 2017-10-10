@@ -13,7 +13,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon-icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i></span>
+          <div class="widget-title"> <span class="icon"><i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i></span>
             <h5>Movimentação Recebimento</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i class="icon-plus" color="blue"></i></a> </span>

@@ -12,7 +12,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Forma de Pagamento</a> >> <a href="#" class="current">Movimentação de Forma de Pagamento</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Forma de Pagamento" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Forma de Pagamento</a> <a href="#" class="current">Movimentação de Forma de Pagamento</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">
@@ -21,7 +21,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i></span>
+          <div class="widget-title"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i></span>
             <h5>Movimentação Forma de Pagamento</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/formapagamento/cadastro"><i class="icon-plus" color="blue"></i></a> </span>

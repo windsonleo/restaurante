@@ -13,7 +13,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon-icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png" ></i></span>
+          <div class="widget-title"> <span class="icon"><i clas="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png" ></i></span>
             <h5>Movimentação Usuario</h5>
             
             <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i class="icon-plus" color="blue"></i></a> </span>

@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/despesa/movimentacao" title="Go to Despesa" class="tip-bottom"><i class="icon-home"></i> Despesa</a> <a href="#">Movimentação Despesa</a> <a href="#" class="current">Cadastro Despesa</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/despesa/movimentacao" title="Go to Despesa" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png"></i> Despesa</a> <a href="#">Movimentação Despesa</a> <a href="#" class="current">Cadastro Despesa</a> </div>
     <h1>Cadastro de Despesa</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -29,7 +29,7 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png"></i> </span>
             <h5>Cadastro de Despesa</h5>
           </div>
           <div class="widget-content nopadding">
