@@ -1,5 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.EstoqueDAO;
 import com.tecsoluction.restaurante.dao.ItemDAO;
@@ -17,6 +21,7 @@ import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
@@ -81,4 +86,26 @@ public class EstoqueController extends AbstractController<Estoque> {
     protected AbstractEntityDao<Estoque> getDao() {
         return dao;
     }
+    
+    
+    
+    @RequestMapping(value = "informacoes", method = RequestMethod.GET)
+    public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
+
+
+        long idf = Long.parseLong(request.getParameter("id"));
+        ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
+        
+        Estoque estoque = dao.PegarPorId(idf);
+        
+//        List<Produto>produtos = dao.getAll();
+        
+        informacoesestoque.addObject("estoque", estoque);
+
+
+
+        return informacoesestoque;
+    } 
+    
+    
 }

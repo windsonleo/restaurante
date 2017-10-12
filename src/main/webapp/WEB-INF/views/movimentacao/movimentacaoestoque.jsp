@@ -12,7 +12,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Estoque</a> >> <a href="#" class="current">Movimentação de Estoque</a> </div>
+    <div id="breadcrumb"> <a href="#" title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#" class="current">Movimentação de Estoque</a> </div>
     <h1>Listagem e Visão Geral</h1>
   </div>
   <div class="container-fluid">

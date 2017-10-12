@@ -530,9 +530,13 @@
 
 
 
+<!-- INFORMAÇÕES -->
 
+		<definition name="informacaesestoque" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaesestoque.jsp" />
 
-
+	</definition>
 
 
 </tiles-definitions>
