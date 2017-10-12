@@ -37,18 +37,54 @@
           </div>
              <div class="widget-content nopadding">
 		
-						<div class="control-group">
-							<label class="control-label">...</label>
-							<div class="controls">
+<!-- 						<div class="control-group"> -->
+<!-- 							<label class="control-label">...</label> -->
+<!-- 							<div class="controls"> -->
 						
-						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
-               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${estoque.isativo}"/>
-						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome da Estoque"/>
+<%-- 						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" /> --%>
+<%--                			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${estoque.isativo}"/> --%>
+<%-- 						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome da Estoque"/> --%>
 							
-							</div>
-						</div>
+<!-- 							</div> -->
+<!-- 						</div> -->
            						
-        
+   <div class="widget-box widget-plain">
+      <div class="center">
+        <ul class="stat-boxes2">
+          <li>
+            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
+              <canvas width="50" height="24"></canvas>
+              </span>+10%</div>
+            <div class="right"> <strong>${pedidocomprasnovos.size()}</strong>Produtos </div>
+          </li>
+          <li>
+            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
+              <canvas width="50" height="24"></canvas>
+              </span>10%</div>
+            <div class="right"> <strong>${recebimentosnovos.size()}</strong> Itens</div>
+          </li>
+          <li>
+            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
+              <canvas width="50" height="24"></canvas>
+              </span>-40%</div>
+            <div class="right"> <strong>${pedidovendasnovos.size()}</strong> CR$</div>
+          </li>
+          <li>
+            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
+              <canvas width="50" height="24"></canvas>
+              </span>+60%</div>
+            <div class="right"> <strong>${clientesnovos.size()}</strong> VR$</div>
+          </li>
+          <li>
+            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
+            
+            </div>
+            
+            <div class="right"> <strong>${pedidovendascancelado.size()}</strong> XXX</div>
+          </li>
+        </ul>
+      </div>
+    </div>
               
              							
      
