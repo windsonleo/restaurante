@@ -55,13 +55,16 @@
       </div>
     </div>
 	
+	<div classe="row-fluid"> 
 	<div class="widget-box">
 	          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
                      <h5>Atalhos Gerenciais</h5>
          
         	 </div>
-		          <div class="widget-content nopadding">
+		          <div class="widget-content">
 		          
+		          		<div class="container-fluid">
+		          	
 		          
 				      <div class="quick-actions_homepage">
 				    	  <ul class="quick-actions">
@@ -79,35 +82,36 @@
 				 		</ul>
 					</div>
 				</div>
+				</div>
 	</div>
-	
+	</div>
  
   	<div class="span12">
   	
-  	
-<div class="span5">
+  <div class="row-fluid">
+		<div class="span5">
       
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
-            <h5>Pedidos de Compras Pedente de Aprovação</h5>
-          </div>
-          <div class="widget-content nopadding">
+        	<div class="widget-box">
+         		 <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
+           			 <h5>Pedidos de Compras Pedente de Aprovação</h5>
+          		</div>
+         	 <div class="widget-content nopadding">
            
-           <ul class="recent-posts">
+           		<ul class="recent-posts">
            
-           <c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
            		
-           		<c:if test="${pedidocompra.status=='PENDENTE' }">
+           				<c:if test="${pedidocompra.status=='PENDENTE' }">
            		
-              <li>
-                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
-	                <div class="article-post">
-	                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
-	                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
-	                  <p><a href="#"></a> ${pedidocompra.items}</p>
-	                </div>
-				</c:if>
-              </c:forEach>
+			              <li>
+			                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
+				                <div class="article-post">
+				                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
+				                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
+				                  <p><a href="#"></a> ${pedidocompra.items}</p>
+				                </div>
+							</c:if>
+              	</c:forEach>
                <li>
                 <button class="btn btn-warning btn-mini">View All</button>
               </li>
@@ -116,7 +120,9 @@
         </div>
         
         </div>
+        </div>
      	
+  	  <div class="row-fluid">
   	
   	<div class="span6">
   	 <div class="widget-box collapsible">
@@ -173,6 +179,7 @@
           
         </div>
         
+        </div>
         </div>
         
        
