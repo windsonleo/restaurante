@@ -36,6 +36,7 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 @Controller
@@ -232,8 +233,12 @@ public class ProdutoController extends AbstractController<Produto> {
     	
     	
     	Produto produto = dao.PegarPorId(idf);
+    	
+    	
+    	DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
     	 
     	gerencia.addObject("produto", produto);
+    	gerencia.addObject("dadosgerenciais", dadosgerenciais);
 
   		
   		return gerencia;

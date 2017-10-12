@@ -18,7 +18,7 @@
                 <label class="control-label">Foto</label>
                 <div class="controls">
 
-               		<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
+               		<input type="image" alt="foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
                
                 </div>
               </div>
