@@ -54,7 +54,8 @@
         </ul>
       </div>
     </div>
-		  
+	
+	<div class="widget-box">	  
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
         <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
@@ -70,13 +71,13 @@
 		 
 		 </ul>
 		</div>
-		
+		</div>
 	
  
   	<div class="span12">
   	
   	
-<div class="span6">
+<div class="span5">
       
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
@@ -143,6 +144,25 @@
           
       		</div>    
           </div>
+          
+          
+          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+            <h5>Saldo </h5>
+            </a><span class="label label-important">R$:0</span>
+          </div>
+          
+          <div class="collapse" id="collapseThree">
+            <div class="widget-content"> Saldo 
+          
+           <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
+          
+      		</div>    
+          </div>          
+          
+          
         </div>
         
         </div>

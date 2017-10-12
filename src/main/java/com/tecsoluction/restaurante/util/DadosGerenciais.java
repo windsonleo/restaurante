@@ -60,7 +60,7 @@ public class DadosGerenciais {
 	public double getMargemlucro() {
 	
 		
-		this.margemlucro = (getPrecovenda() - getCusto()) / getPrecovenda() * 100;
+		margemlucro = (getPrecovenda() - getCusto()) / getPrecovenda() * 100;
 		
 				
 		return margemlucro;
@@ -73,7 +73,7 @@ public class DadosGerenciais {
 	public double getPrecovenda() {
 		
 		
-		this.precovenda = getCusto()/(100-getDespesafixa()-getDespesavariavel()-getMargemlucro())*100;
+		precovenda = getCusto()/(100-getDespesafixa()-getDespesavariavel()-getMargemlucro())*100;
 		return precovenda;
 	}
 
