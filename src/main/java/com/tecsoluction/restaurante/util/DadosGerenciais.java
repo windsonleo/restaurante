@@ -10,7 +10,7 @@ public class DadosGerenciais {
 	
 	private double despesavariavel=5.00;
 	
-	private double margemlucro=0.00;
+	private double margemlucro=40.00;
 
 	private double precovenda=0.00;
 	
@@ -60,7 +60,7 @@ public class DadosGerenciais {
 	public double getMargemlucro() {
 	
 		
-		this.margemlucro = (this.precovenda - this.custo) / this.precovenda * 100;
+		this.margemlucro = (getPrecovenda() - getCusto()) / getPrecovenda() * 100;
 		
 				
 		return margemlucro;
@@ -73,8 +73,24 @@ public class DadosGerenciais {
 	public double getPrecovenda() {
 		
 		
-		this.precovenda = custo/(100-despesafixa-despesavariavel-margemlucro)*100;
+		this.precovenda = getCusto()/(100-getDespesafixa()-getDespesavariavel()-getMargemlucro())*100;
 		return precovenda;
+	}
+
+
+	/**
+	 * @return the despesavariavel
+	 */
+	public double getDespesavariavel() {
+		return despesavariavel;
+	}
+
+
+	/**
+	 * @param despesavariavel the despesavariavel to set
+	 */
+	public void setDespesavariavel(double despesavariavel) {
+		this.despesavariavel = despesavariavel;
 	}
 
 
