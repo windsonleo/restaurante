@@ -265,8 +265,8 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         itens = pv.getItems();
         itens.put(item,item.getQtd());
         pv.setItems(itens);
-        pv.CalcularTotal(itens);
-        
+        pv.setTotal(pv.CalcularTotal(itens));
+        pv.setStatus(StatusPedido.PENDENTE);
 
           itempedidovendaDao.add(item);
           

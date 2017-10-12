@@ -251,7 +251,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //        	}
         	
        
-        
+        recebimento.setStatus(StatusPedido.FECHADO);
 
         	itensRecebimentoCorfirmados.clear();
 
@@ -419,6 +419,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 
     		recebimento.setItems(itensRecebimentoCorfirmados);
+    		recebimento.setStatus(StatusPedido.PENDENTE);
 	        recebimentoDao.editar(recebimento);
 	        
 	    	System.out.println("pedidovenda:"+pv.toString());

@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> >> <a href="#">Movimentação Pedido Compra </a>>> <a href="#" class="current">Add Item ao Pedido Compra </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> <a href="#">Movimentação Pedido Compra </a><a href="#" class="current">Add Item ao Pedido Compra </a> </div>
     <h1>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>

@@ -276,6 +276,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         pedidov.setItems(itens);
         pedidov.setTotal(pedidov.CalcularTotal(itens));
+        pedidov.setStatus(StatusPedido.PENDENTE);
         
         pedidoVendaDao.editar(pedidov);
         
