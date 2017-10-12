@@ -57,12 +57,12 @@
     </div>
 	
 	<div class="row-fluid"> 
-	<div class="widget-box">
-	          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
-                     <h5>Atalhos Gerenciais</h5>
+<!-- 	<div class="widget-box"> -->
+<!-- 	          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span> -->
+<!--                      <h5>Atalhos Gerenciais</h5> -->
          
-        	 </div>
-		          <div class="widget-content">
+<!--         	 </div> -->
+<!-- 		          <div class="widget-content"> -->
 		          
 <!-- 		          		<div class="container-fluid"> -->
 		          	
@@ -84,8 +84,8 @@
 					</div>
 <!-- 				</div> -->
 				</div>
-	</div>
-	</div>
+<!-- 	</div> -->
+<!-- 	</div> -->
  
 <!--   	<div class="span12"> -->
   	
