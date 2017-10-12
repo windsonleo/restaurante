@@ -59,11 +59,9 @@ public class DadosGerenciais {
 	 */
 	public double getMargemlucro() {
 	
-//		double margemlucro=0.00;
 		
 		this.margemlucro = (this.precovenda - this.custo) / this.precovenda * 100;
 		
-//		Margem de lucro = preço de venda – custo de produção / preço de venda x 100;	
 				
 		return margemlucro;
 	}
@@ -74,7 +72,6 @@ public class DadosGerenciais {
 	 */
 	public double getPrecovenda() {
 		
-//		double precovenda = 0.00;
 		
 		this.precovenda = custo/(100-despesafixa-despesavariavel-margemlucro)*100;
 		return precovenda;
