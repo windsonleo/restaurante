@@ -54,7 +54,7 @@
      
                <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Estoque  : <strong> ${estoque.name }</strong></h5>
+            <h5>Itens do Estoque  : <strong> ${estoque.nome }</strong></h5>
            
           </div>
      
