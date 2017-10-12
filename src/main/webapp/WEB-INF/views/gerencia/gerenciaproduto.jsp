@@ -148,11 +148,11 @@
               <div class="control-group">
                 <label class="control-label">Margem de Lucro</label>
                 <div class="controls">
-						<input id="margem"  name="margem" type="text" value="${dadosgerenciais.margemlucro}" placeholder="Margem de Lucro" disabled="true"/>
+						<input id="margemlucro"  name="margemlucro" type="number" value="${dadosgerenciais.margemlucro}" placeholder="Margem de Lucro" disabled="true"/>
                 		<input id="totpedido" name="totpedido" class="span4"  type="text" value="" placeholder="Qunatidades de Pedidos" disabled="true"/>
                 		<input id="lucro" name="lucro" class="span4"  type="text" value="" placeholder="Lucro total" disabled="true"/>
                         <input id="totestoque" name="totestoque" class="span4"  type="text" value="" placeholder="Total no Estoque" disabled="true"/>
-                        <input id="precosugerido" name="precosugerido" class="span4"  type="text" value="${dadosgerenciais.precovenda}" placeholder="Preço Sugerido" disabled="true"/>
+                        <input id="precovenda" name="precovenda" class="span4"  type="number" value="${dadosgerenciais.precovenda}" placeholder="Preço Sugerido" disabled="true"/>
                 
               
                 </div>

@@ -237,6 +237,12 @@ public class ProdutoController extends AbstractController<Produto> {
     	
     	DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
     	 
+    	dadosgerenciais.setMargemlucro(40.00);
+    	 dadosgerenciais.setCusto(produto.getPrecocusto());
+    	 dadosgerenciais.setDespesafixa(5.00);
+    	 dadosgerenciais.setDespesavariavel(10.00);
+    	 dadosgerenciais.getPrecovenda();
+    	 
     	gerencia.addObject("produto", produto);
     	gerencia.addObject("dadosgerenciais", dadosgerenciais);
 
