@@ -16,6 +16,62 @@
 <!--    <div class="span12"> -->
    <div class="row-fluid">
   <sec:authorize access="hasRole('ROLE_ADM')">
+  
+          <div class="widget-box widget-plain">
+      <div class="center">
+        <ul class="stat-boxes2">
+          <li>
+            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
+              <canvas width="50" height="24"></canvas>
+              </span>+10%</div>
+            <div class="right"> <strong>${pedidocomprasnovos.size()}</strong>Compras </div>
+          </li>
+          <li>
+            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
+              <canvas width="50" height="24"></canvas>
+              </span>10%</div>
+            <div class="right"> <strong>${recebimentosnovos.size()}</strong> Recebimentos</div>
+          </li>
+          <li>
+            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
+              <canvas width="50" height="24"></canvas>
+              </span>-40%</div>
+            <div class="right"> <strong>${pedidovendasnovos.size()}</strong> Vendas</div>
+          </li>
+          <li>
+            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
+              <canvas width="50" height="24"></canvas>
+              </span>+60%</div>
+            <div class="right"> <strong>${clientesnovos.size()}</strong> Clientes</div>
+          </li>
+          <li>
+            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
+            
+            </div>
+            
+            <div class="right"> <strong>${pedidovendascancelado.size()}</strong> Vendas Cancelados</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+		  
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
+        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda Fast</a> </li>
+        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
+        <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
+        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
+		<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li>
+		 
+		 </ul>
+		</div>
+		
+	
  
   	<div class="span12">
   	
@@ -104,68 +160,7 @@
         </div>
     
   
-        <div class="widget-box widget-plain">
-      <div class="center">
-        <ul class="stat-boxes2">
-          <li>
-            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+10%</div>
-            <div class="right"> <strong>${pedidocomprasnovos.size()}</strong>Compras </div>
-          </li>
-          <li>
-            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
-              <canvas width="50" height="24"></canvas>
-              </span>10%</div>
-            <div class="right"> <strong>${recebimentosnovos.size()}</strong> Recebimentos</div>
-          </li>
-          <li>
-            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
-              <canvas width="50" height="24"></canvas>
-              </span>-40%</div>
-            <div class="right"> <strong>${pedidovendasnovos.size()}</strong> Vendas</div>
-          </li>
-          <li>
-            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+60%</div>
-            <div class="right"> <strong>${clientesnovos.size()}</strong> Clientes</div>
-          </li>
-          <li>
-            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
-            
-            </div>
-            
-            <div class="right"> <strong>${pedidovendascancelado.size()}</strong> Vendas Cancelados</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-		</sec:authorize>
-
-
-  
-  
-    <sec:authorize access="hasRole('ROLE_ADM')">
-  
-    <div class="quick-actions_homepage">
-      <ul class="quick-actions">
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
-        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
-        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda Fast</a> </li>
-        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
-        <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
-        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
-		<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li>
-		 
-		 </ul>
-		</div>
-		
-	
-	</sec:authorize>
+</sec:authorize>
 		 
 	        
 
