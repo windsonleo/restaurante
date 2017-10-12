@@ -92,11 +92,11 @@
            		
               <li>
                 <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
-                <div class="article-post">
-                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
-                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
-                  <p><a href="#"></a> ${pedidocompra.itens}</p>
-                </div>
+	                <div class="article-post">
+	                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
+	                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
+	                  <p><a href="#"></a> ${pedidocompra.items}</p>
+	                </div>
 				</c:if>
               </c:forEach>
                <li>
