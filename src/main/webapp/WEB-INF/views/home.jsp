@@ -95,7 +95,6 @@
            			 <h5>Pedidos de Compras Pedente de Aprovação</h5>
           		</div>
          	 <div class="widget-content">
-		          		<div class="container-fluid">
 			           		<ul class="recent-posts">
 			           
 			           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
@@ -115,7 +114,6 @@
 			                <button class="btn btn-warning btn-mini">View All</button>
 			              </li>
 			            </ul>
-          			</div>
         </div>
         
         </div>
