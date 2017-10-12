@@ -38,18 +38,18 @@
 			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
-			
-								
-				<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
-		<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script> 
-			
-		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 			
 		<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>				
-	
+									
+		
+		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script> 
+			
+		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
+		
 			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
@@ -99,6 +99,11 @@
 				
 			
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.min.js"></script> 
+		
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.min.js"></script> 
+		
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.js"></script> 
+		
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.resize.min.js"></script> 
 
 			

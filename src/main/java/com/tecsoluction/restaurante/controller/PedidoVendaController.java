@@ -365,6 +365,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
   	
 	}
 
+    @RequestMapping(value = "rapido", method = RequestMethod.GET)
+    public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
 
+
+        ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
+
+//        	List<PedidoVenda> vendas = pedidoVendaDao.getAll();
+        	
+//        	novospedidos.addObject("pedidovendasList", vendas);
+
+        return novospedidos;
+    } 
 
 }

@@ -1,16 +1,23 @@
 package com.tecsoluction.restaurante.controller;
 
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.FornecedorDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
@@ -46,7 +53,7 @@ public class FornecedorController extends AbstractController<Fornecedor> {
     public void addAttributes(Model model) {
 
 //        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
+        List<Fornecedor> fornecedorList = dao.getAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
         
@@ -56,7 +63,7 @@ public class FornecedorController extends AbstractController<Fornecedor> {
 		usuario = usudao.PegarPorNome(usuario.getUsername());
         
 		model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("clienteList", clienteList);
+        model.addAttribute("fornecedorList", fornecedorList);
 //        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("umList", umList);
 
@@ -69,4 +76,41 @@ public class FornecedorController extends AbstractController<Fornecedor> {
     protected AbstractEntityDao<Fornecedor> getDao() {
         return dao;
     }
+    
+    
+    @RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
+  	public ModelAndView  gerenciarFornecedorLocalizar(HttpServletRequest request){
+    	
+    	
+    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+    	
+    	
+    	Fornecedor fornecedor = dao.PegarPorId(idf);
+    	 
+    	gerencia.addObject("fornecedor", fornecedor);
+
+  		
+  		return gerencia;
+  	}
+
+    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
+  	public ModelAndView  gerenciafornecedor(HttpServletRequest request){
+    	
+    	
+//    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+    	
+    	
+//    	Produto produto = dao.PegarPorId(idf);
+    	 
+//    	gerencia.addObject("produto", produto);
+
+  		
+  		return gerencia;
+  	}
+     
+    
 }

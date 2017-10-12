@@ -27,6 +27,7 @@ import com.tecsoluction.restaurante.dao.EnderecoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Endereco;
+import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
@@ -119,7 +120,7 @@ public class ClienteController extends AbstractController<Cliente> {
 		usuario = usudao.PegarPorNome(usuario.getUsername());
         
 		model.addAttribute("usuarioAtt", usuario);
-        model.addAttribute("clienteList", clienteList);
+        model.addAttribute("clientesList", clienteList);
 //        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("umList", umList);
 
@@ -241,5 +242,39 @@ public class ClienteController extends AbstractController<Cliente> {
 		return cadastrocliente;
 	}
 	
+	
+	 @RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)
+	  	public ModelAndView  gerenciarProdutoLocalizarProduto(HttpServletRequest request){
+	    	
+	    	
+	    	long idf = Long.parseLong(request.getParameter("id"));
+	    	
+	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
+	    	
+	    	
+	    	Cliente cliente = dao.PegarPorId(idf);
+	    	 
+	    	gerencia.addObject("cliente", cliente);
+
+	  		
+	  		return gerencia;
+	  	}
+	
+	    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	  	public ModelAndView  gerenciarCliente(HttpServletRequest request){
+	    	
+	    	
+//	    	long idf = Long.parseLong(request.getParameter("id"));
+	    	
+	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
+	    	
+	    	
+//	    	Produto produto = dao.PegarPorId(idf);
+	    	 
+//	    	gerencia.addObject("produto", produto);
+
+	  		
+	  		return gerencia;
+	  	}
 	
 }

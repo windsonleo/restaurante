@@ -103,7 +103,7 @@
               <div class="control-group">
                 <label class="control-label">CodeBar</label>
                 <div class="controls">
-	<input id="codebar" class="form-control"
+						<input id="codebar" class="form-control"
 						name="codebar" type="text" value="${produto.codebar}"
 						placeholder="Digite o CodeBar" />			
 				

@@ -13,8 +13,44 @@
 
 <!--Action boxes-->
   <div class="container-fluid">
+<!--    <div class="span12"> -->
   
   <sec:authorize access="hasRole('ROLE_ADM')">
+  
+  	 <div class="widget-box collapsible">
+          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+            <h5>Contas a Receber  </h5>
+            </a><span class="label label-success">R$:1880</span></div>
+          <div class="collapse" id="collapseTwo">
+            <div class="widget-content"> Contas a Receber 
+          
+           <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
+          
+          </div>
+          
+          
+          </div>
+          
+          
+          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+            <h5>Contas a Pagar </h5>
+            </a><span class="label label-important">R$:1880</span>
+          </div>
+          
+          <div class="collapse" id="collapseThree">
+            <div class="widget-content"> Contas a Pagar 
+          
+           <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
+          
+      		</div>    
+          </div>
+        </div>
   
         <div class="widget-box widget-plain">
       <div class="center">
@@ -56,27 +92,27 @@
 		</sec:authorize>
 
 
-
-  
   
   
     <sec:authorize access="hasRole('ROLE_ADM')">
   
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
-        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
-        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda </a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
+        <li class="bg_lg span3"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda Fast</a> </li>
         <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
         <li class="bg_lo span3"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
-        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
+        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
         <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
         <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
-		<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/movimentacao"> <i class="icon icon-money" ></i>Caixa</a> </li>
+		<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li>
 		 
 		 </ul>
 		</div>
+		
+	
 	</sec:authorize>
 		 
 		        
@@ -88,32 +124,43 @@
       		
       
     
-<!--End-Action boxes-->    
+<!--End-Action boxes-->   
 
-        <sec:authorize access="hasRole('ROLE_ADM')">
 
-<!--Chart-box-->    
+
+
+
+
+
+ 
+
+<%--       <sec:authorize access="hasRole('ROLE_FINANCEIRO')"> --%>
+
+<!-- <!--Chart-box-->  
     <div class="row-fluid">
+      <div class="span12">
+      <div class="span6">
+      
       <div class="widget-box">
-        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5>Site Analytics</h5>
+        <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Graficos</h5>
         </div>
 
- 			<div class="widget-content nopadding">
+ 			<div class="widget-content">
           
 				<div class="container-fluid">
+		              
 		              <div class="chart"></div>
+		            
 		            </div>
 
            </div>
            
            </div>
+           </div>
           
-          </div>
-        
-    <div class="row-fluid">
-                   
-       <div class="widget-box">
+          <div class="span6">
+          <div class="widget-box">
           
           <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
              <h5>Progresso das Metas </h5>
@@ -148,7 +195,27 @@
           </div>
           </div>
           
-          </sec:authorize>
+          </div>
+          </div>
+          
+<!-- 	    <div class="row-fluid"> -->
+<!--          <div class="span6"> -->
+                   
+       
+<!--           </div>  -->
+<!--           </div>       -->
+
+		            
+		            
+		            
+		            
+
+          
+<%--           	</sec:authorize> --%>
+          
+        
+
+          
  
  <sec:authorize access="hasRole('ROLE_GARCON')">
           
@@ -224,13 +291,45 @@
 	
 
 	</sec:authorize>
+	
+	
+	
+<sec:authorize access="hasRole('ROLE_FINANCEIRO')">
+       
+<div class="row-fluid">
+    <div class="widget-box">
+	      <div class="widget-title"> <span class="icon"><i class="icon-money"></i></span>
+	             <h5>Financeiro </h5>
+	             
+	             </div>
+	             
+          <div class="widget-content nopadding">
+          
+	<div class="container-fluid">
+       <div class="quick-actions_homepage">
+      	<ul class="quick-actions">
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/financeiro/movimentacao"> <i class="icon icon-money" ></i>Financeiro</a> </li>
+		</ul>
+		</div>
+		</div>
+		
+		
+		
+		
+		
+		</div>
+		</div>
+		</div>
+	
+
+	</sec:authorize>
                 
                 
                 </div>
                 
 				</div>
 
-                
+<!--                 </div> -->
 
 <div class="row-fluid">
   <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>

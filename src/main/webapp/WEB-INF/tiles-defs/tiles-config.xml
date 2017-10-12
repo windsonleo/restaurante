@@ -480,14 +480,60 @@
 	</definition>
 	
 			
-									<definition name="finalizacaodevolucao" extends="defaultTemplate">
+	<definition name="finalizacaodevolucao" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/finalizacao/finalizacaodevolucao.jsp" />
 
 	</definition>
 
+<!-- 	GERENCIA -->
+
+
+	<definition name="gerenciaproduto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/gerencia/gerenciaproduto.jsp" />
+
+	</definition>
 	
+		<definition name="gerenciagarcon" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/gerencia/gerenciagarcon.jsp" />
+
+	</definition>
 	
+		<definition name="gerenciacliente" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/gerencia/gerenciacliente.jsp" />
+
+	</definition>
+	
+		<definition name="gerenciafornecedor" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/gerencia/gerenciafornecedor.jsp" />
+
+	</definition>
+
+<!-- 	RAPIDO -->
+
+
+		<definition name="pedidovendarapido" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/rapido/pedidovendarapido.jsp" />
+
+	</definition>
+	
+		<definition name="caixarapido" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/rapido/caixarapido.jsp" />
+
+	</definition>
+
+
+
+
+
+
+
 
 </tiles-definitions>
 

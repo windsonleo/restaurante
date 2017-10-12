@@ -527,7 +527,18 @@ public class CaixaController extends AbstractController<Caixa> {
   	
 	}
 	
-	
+	 @RequestMapping(value = "rapido", method = RequestMethod.GET)
+	    public ModelAndView CaixaRapido(HttpServletRequest request) {
+
+
+	        ModelAndView novospedidos = new ModelAndView("caixarapido");
+
+//	        	List<PedidoVenda> vendas = pedidoVendaDao.getAll();
+	        	
+//	        	novospedidos.addObject("pedidovendasList", vendas);
+
+	        return novospedidos;
+	    } 
 
 }
 

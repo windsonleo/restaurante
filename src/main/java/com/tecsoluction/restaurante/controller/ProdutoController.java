@@ -31,6 +31,7 @@ import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.ProdutoComposto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
@@ -200,6 +201,40 @@ public class ProdutoController extends AbstractController<Produto> {
         
         return cadastro;  
     	
+  	}
+    
+    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
+  	public ModelAndView  gerenciarProduto(HttpServletRequest request){
+    	
+    	
+//    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView gerencia = new ModelAndView("gerenciaproduto");
+    	
+    	
+//    	Produto produto = dao.PegarPorId(idf);
+    	 
+//    	gerencia.addObject("produto", produto);
+
+  		
+  		return gerencia;
+  	}
+    
+    @RequestMapping(value = "LocalizarProdutoGerencia", method = RequestMethod.POST)
+  	public ModelAndView  gerenciarProdutoLocalizarProduto(HttpServletRequest request){
+    	
+    	
+    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView gerencia = new ModelAndView("gerenciaproduto");
+    	
+    	
+    	Produto produto = dao.PegarPorId(idf);
+    	 
+    	gerencia.addObject("produto", produto);
+
+  		
+  		return gerencia;
   	}
 
 }

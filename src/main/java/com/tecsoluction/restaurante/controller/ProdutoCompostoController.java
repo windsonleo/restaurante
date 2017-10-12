@@ -356,5 +356,25 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         return cadastro;  
     	
   	}
+    
+    
+    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
+  	public ModelAndView  gerenciarProduto(HttpServletRequest request){
+    	
+    	
+    	long idf = Long.parseLong(request.getParameter("id"));
+    	
+    	ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
+    	
+    	
+    	ProdutoComposto produto = dao.PegarPorId(idf);
+    	 
+       	 detalhesproduto.addObject("produto", produto);
+
+  		
+  		return detalhesproduto;
+  	}
+
+    
 
 }

@@ -75,10 +75,10 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="section-header">
-                                        <h2 class="pricing-title">O Cardápio </h2>
+                                        <h2 class="pricing-title"></h2>
                                         	
                                         	<ul id="filter-list" class="clearfix">
-                                            <li class="filter" data-filter="all">Todas</li>
+                                            <li class="filter" data-filter="all">TODAS</li>
                                       			
                                       			<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
                                             		
@@ -261,16 +261,16 @@
                     <div class="col-md-10 col-md-offset-1 col-sm-9 col-sm-offset-2 col-xs-12">
                        <div class="row">
 
- <c:forEach var="produto" items="${sugestaoList}" varStatus="id">
+<%--  <c:forEach var="produto" items="${sugestaoList}" varStatus="id"> --%>
+  			 <c:forEach var="produtocomposto" items="${sugestaoList}" varStatus="id">
  
-  	  <div class="col-md-3 col-sm-6 col-xs-12">
+  	  				<div class="col-md-3 col-sm-6 col-xs-12">
   	
-  			 <c:forEach var="produtocomposto" items="${sugestaoListComposto}" varStatus="id">
   					
   								<div class="row">
 
                                     <div class="menu-catagory">
-                                        <h3>${produtocomposto.categoria.nome}</h3>
+                                        <h2>${produtocomposto.categoria.nome}</h2> </br>
                                     </div>
                                     
                                 </div>
@@ -296,48 +296,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div> 
+                                </div>
+                                
+                           </div>
+                                
+                   </c:forEach> 
 <!--                                 </div> -->
 <!-- 							</div> -->
 							
 
 
-			</c:forEach>
+		
 			
 			
-			<div class="row">
-
-                                    <div class="menu-catagory">
-                                        <h3>${produto.categoria.nome}</h3>
-                                    </div>
-                                    
-                                </div>
-                            
-                             
-<!--                               <div class="col-md-3 col-sm-6 col-xs-12"> /-->
-                              
-                              <div class="col-md-12">
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h4 class="menu-title">${produto.nome}</h4>
-                                        <p class="menu-about">${produto.descricao}</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">R$ ${produto.precovenda}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div> 
-                                
-                                </div>
-</c:forEach>
+			
 							</div>
 							</div>
 
@@ -350,7 +322,8 @@
                     </div>
                     </div>
                     
-
+		
+			
         </section>
 
 
