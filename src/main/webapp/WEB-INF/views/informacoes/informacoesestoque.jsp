@@ -86,7 +86,7 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="item" items="${estoque.items}" varStatus="id">
+                                <c:forEach var="item" items="${estoque.itens}" varStatus="id">
 
   
   <tr class="gradeX">
