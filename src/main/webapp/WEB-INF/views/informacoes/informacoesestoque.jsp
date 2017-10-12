@@ -110,9 +110,9 @@
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
 									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
 									
-																			<a
-									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}"
-									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a>
+<!-- 																			<a -->
+<%-- 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}" --%>
+<!-- 									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a> -->
 									
 									
 									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
