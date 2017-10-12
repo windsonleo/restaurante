@@ -1,9 +1,16 @@
 package com.tecsoluction.restaurante.util;
 
+import java.io.Serializable;
+
 import com.tecsoluction.restaurante.entidade.Produto;
 
-public class DadosGerenciais {
+public class DadosGerenciais implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private double custo=0.00;
 	
 	private double despesafixa=10.00;
@@ -60,7 +67,7 @@ public class DadosGerenciais {
 	public double getMargemlucro() {
 	
 		
-		margemlucro = (getPrecovenda() - getCusto()) / getPrecovenda() * 100;
+		margemlucro = (this.precovenda - this.custo) / this.precovenda * 100;
 		
 				
 		return margemlucro;
@@ -73,7 +80,7 @@ public class DadosGerenciais {
 	public double getPrecovenda() {
 		
 		
-		precovenda = getCusto()/(100-getDespesafixa()-getDespesavariavel()-getMargemlucro())*100;
+		precovenda = this.custo/(100-this.despesafixa-this.despesavariavel-this.margemlucro)*100;
 		return precovenda;
 	}
 
@@ -138,5 +145,12 @@ public class DadosGerenciais {
 	public void setMarkup(double markup) {
 		this.markup = markup;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	
 
 }

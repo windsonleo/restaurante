@@ -152,7 +152,7 @@
                 		<input id="totpedido" name="totpedido" class="span4"  type="text" value="" placeholder="Qunatidades de Pedidos" disabled="true"/>
                 		<input id="lucro" name="lucro" class="span4"  type="text" value="" placeholder="Lucro total" disabled="true"/>
                         <input id="totestoque" name="totestoque" class="span4"  type="text" value="" placeholder="Total no Estoque" disabled="true"/>
-                        <input id="precovenda" name="precovenda" class="span4"  type="number" value="${dadosgerenciais.precovenda}" placeholder="Preço Sugerido" disabled="true"/>
+                        <input id="precovenda" name="precovenda" class="span4"  type="number" value="${precosugerido}" placeholder="Preço Sugerido" disabled="true"/>
                 
               
                 </div>
