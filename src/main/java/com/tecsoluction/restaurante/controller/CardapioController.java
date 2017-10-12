@@ -78,7 +78,7 @@ public class CardapioController   {
 //		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 //		
     	
-        List<Produto> sugestaoList = produtoDao.getProdutoSugestao();
+        List<Produto> sugestaoList = produtoDao.getAll();
         
         List<ProdutoComposto> sugestaoListComposto = produtoCompostoDao.getProdutoCompostoSugestao();
 

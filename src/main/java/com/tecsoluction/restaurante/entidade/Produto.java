@@ -108,7 +108,7 @@ public class Produto implements Serializable {
     
     public Produto() {
     	super();
-    	this.esugestao= false;
+//    	this.esugestao= false;
     	
     }
     

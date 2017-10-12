@@ -263,8 +263,10 @@
 
 <%--  <c:forEach var="produto" items="${sugestaoList}" varStatus="id"> --%>
   			 <c:forEach var="produtocomposto" items="${sugestaoList}" varStatus="id">
- 
-  	  				<div class="col-md-3 col-sm-6 col-xs-12">
+ 					
+					<c:if test="produtocomposto.esugestao=TRUE">   
+  	  						
+  	  						<div class="col-md-3 col-sm-6 col-xs-12">
   	
   					
   								<div class="row">
@@ -299,7 +301,8 @@
                                 </div>
                                 
                            </div>
-                                
+                         </c:if> 
+                               
                    </c:forEach> 
 <!--                                 </div> -->
 <!-- 							</div> -->
