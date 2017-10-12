@@ -54,6 +54,7 @@
         </ul>
       </div>
     </div>
+    </div>
 	
 	<div class="row-fluid"> 
 	<div class="widget-box">
@@ -177,9 +178,7 @@
         </div>
        
         
-       
-                   </div>
-                   </sec:authorize>
+                          </sec:authorize>
       
 
   
@@ -398,7 +397,7 @@
                 </div>
                 
 				</div>
-				</div>
+<!-- 				</div> -->
 
 <!--                 </div> -->
 
