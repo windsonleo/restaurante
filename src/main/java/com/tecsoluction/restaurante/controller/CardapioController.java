@@ -80,7 +80,7 @@ public class CardapioController   {
     	
         List<Produto> sugestaoList = produtoDao.getAll();
         
-        List<ProdutoComposto> sugestaoListComposto = produtoCompostoDao.getProdutoCompostoSugestao();
+//        List<ProdutoComposto> sugestaoListComposto = produtoCompostoDao.getProdutoCompostoSugestao();
 
         List<Categoria> categoriaList = dao.getAll();
         
@@ -123,7 +123,7 @@ public class CardapioController   {
         
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("sugestaoList", sugestaoList);
-        model.addAttribute("sugestaoListComposto", sugestaoListComposto);
+//        model.addAttribute("sugestaoListComposto", sugestaoListComposto);
 
     }
     
