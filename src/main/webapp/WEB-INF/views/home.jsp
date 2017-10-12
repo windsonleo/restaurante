@@ -121,6 +121,7 @@
         
         </div>
         </div>
+        </div>
      	
   	  <div class="row-fluid">
   	<div class="span6">
@@ -184,9 +185,10 @@
        
            
         </div>
+        </sec:authorize>
+        
     </div>
   
-</sec:authorize>
 		 
 	        
 
