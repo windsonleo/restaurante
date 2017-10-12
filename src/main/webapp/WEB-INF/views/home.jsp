@@ -70,11 +70,11 @@
 				      <div class="quick-actions_homepage">
 				    	  <ul class="quick-actions">
 						        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
-						        <li class="bg_lg span2"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
+						        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
 						        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda Fast</a> </li>
 						        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesa/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
 						        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/garcon/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
-						        <li class="bg_lo span2"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
+						        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
 						        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
 						        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
 						        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
