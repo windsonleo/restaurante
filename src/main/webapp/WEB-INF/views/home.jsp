@@ -14,8 +14,8 @@
 <!--Action boxes-->
   <div class="container-fluid">
 <!--    <div class="span12"> -->
-   <div class="row-fluid">
   <sec:authorize access="hasRole('ROLE_ADM')">
+     <div class="row-fluid">
   
           <div class="widget-box widget-plain">
       <div class="center">
@@ -55,7 +55,7 @@
       </div>
     </div>
 	
-	<div classe="row-fluid"> 
+	<div class="row-fluid"> 
 	<div class="widget-box">
 	          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
                      <h5>Atalhos Gerenciais</h5>
@@ -89,7 +89,7 @@
   	<div class="span12">
   	
   <div class="row-fluid">
-		<div class="span6">
+		<div class="span5">
       
         	<div class="widget-box">
          		 <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
@@ -124,7 +124,7 @@
         </div>
      	
   	  <div class="row-fluid">
-  	<div class="span6">
+  	<div class="span5">
   	 <div class="widget-box collapsible">
           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
             <h5>Contas a Receber  </h5>
@@ -183,11 +183,11 @@
         </div>
         
        
+                   </div>
            
         </div>
         </sec:authorize>
-        
-    </div>
+  
   
 		 
 	        
