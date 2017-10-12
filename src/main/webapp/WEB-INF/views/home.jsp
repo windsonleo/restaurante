@@ -89,41 +89,40 @@
   	<div class="span12">
   	
   <div class="row-fluid">
-		<div class="span5">
+		<div class="span6">
       
         	<div class="widget-box">
          		 <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
            			 <h5>Pedidos de Compras Pedente de Aprovação</h5>
           		</div>
-         	 <div class="widget-content nopadding">
-           
-           		<ul class="recent-posts">
-           
-           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
-           		
-           				<c:if test="${pedidocompra.status=='PENDENTE' }">
-           		
-			              <li>
-			                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
-				                <div class="article-post">
-				                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
-				                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
-				                  <p><a href="#"></a> ${pedidocompra.items}</p>
-				                </div>
-							</c:if>
-              	</c:forEach>
-               <li>
-                <button class="btn btn-warning btn-mini">View All</button>
-              </li>
-            </ul>
-          </div>
+         	 <div class="widget-content">
+		          		<div class="container-fluid">
+			           		<ul class="recent-posts">
+			           
+			           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+			           		
+			           				<c:if test="${pedidocompra.status=='PENDENTE' }">
+			           		
+						              <li>
+						                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
+							                <div class="article-post">
+							                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
+							                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
+							                  <p><a href="#"></a> ${pedidocompra.items}</p>
+							                </div>
+										</c:if>
+			              	</c:forEach>
+			               <li>
+			                <button class="btn btn-warning btn-mini">View All</button>
+			              </li>
+			            </ul>
+          			</div>
         </div>
         
         </div>
         </div>
      	
   	  <div class="row-fluid">
-  	
   	<div class="span6">
   	 <div class="widget-box collapsible">
           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
@@ -160,12 +159,12 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+          <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
             <h5>Saldo </h5>
             </a><span class="label label-important">R$:0</span>
           </div>
           
-          <div class="collapse" id="collapseThree">
+          <div class="collapse" id="collapseOne">
             <div class="widget-content"> Saldo 
           
            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
@@ -185,7 +184,7 @@
        
            
         </div>
-    
+    </div>
   
 </sec:authorize>
 		 
