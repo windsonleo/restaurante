@@ -59,7 +59,7 @@
 			      <td>${empresa.id}</td>
                   <td>${empresa.nome}</td>
                   <td ><input type="text" value="${empresa.logo}"></td>
-                  <td>${empresa.isativo}</td>
+                  <td><span class="label label bg_lb">${empresa.isativo}</span></td>
                  <td class="options-widt">
 								
 								

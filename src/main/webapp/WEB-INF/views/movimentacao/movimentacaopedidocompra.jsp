@@ -64,7 +64,7 @@
 <%--                  <td>${pedidocompra.mesa}</td> --%>
 <%--                  <td>${pedidocompra.garcon}</td> --%>
                   <td>${pedidocompra.items}</td>
-                   <td> ${pedidocompra.isativo}</td>
+                   <td><span class="label label bg_lb"> ${pedidocompra.isativo}</span></td>
                  <td class="options-widt">
 								
 								

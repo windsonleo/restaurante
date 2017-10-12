@@ -56,14 +56,14 @@
 		 				<td>${pedidovenda.id}</td>
 		                  <td>${pedidovenda.data}</td>
 						<td>${pedidovenda.situacao}</td>
-		                  <td>${pedidovenda.status}</td>
+		                  <td><span class="label label-info">${pedidovenda.status}</span></td>
 		                 <td>${pedidovenda.origempedido}</td>
 		                 <td>${pedidovenda.total}</td>
 		                 <td>${pedidovenda.cliente}</td>
 		                 <td>${pedidovenda.mesa}</td>
 		                 <td>${pedidovenda.garcon}</td>
 		                  <td>${pedidovenda.items}</td>
-		                   <td> ${pedidovenda.isativo}</td>
+		                   <td><span class="label label bg_lb"> ${pedidovenda.isativo}</span></td>
 		                   
 		                   <td class="options-widt">
 								

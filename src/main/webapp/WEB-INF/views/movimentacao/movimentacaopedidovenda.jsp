@@ -63,7 +63,8 @@
                  <td>${pedidovenda.mesa}</td>
                  <td>${pedidovenda.garcon}</td>
                   <td>${pedidovenda.items}</td>
-                   <td> ${pedidovenda.isativo}</td>
+                   <td><span class="label label bg_lb"> ${pedidovenda.isativo}</span></td>
+                 
                  <td class="options-widt">
 								
 								

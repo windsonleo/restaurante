@@ -48,7 +48,7 @@
 			          <td>${banco.id}</td>
                   <td>${banco.nome}</td>
                   <td >${banco.numero}</td>
-                  <td>${banco.isativo}</td>
+                  <td><span class="label label bg_lb">${banco.isativo}</span></td>
                  <td class="options-widt">
 								
 								

@@ -54,7 +54,7 @@
 <%--                    <td>${caixa.datanascimento}</td> --%>
 <%--                    <td>${caixa.genero}</td> --%>
 <%--                    <td>${caixa.preferencia}</td> --%>
-                   <td> ${caixa.isativo}</td>
+                   <td> <span class="label label bg_lb">${caixa.isativo}</span></td>
 <%--                    <td> ${caixa.obs}</td> --%>
                  <td class="options-widt">
 								

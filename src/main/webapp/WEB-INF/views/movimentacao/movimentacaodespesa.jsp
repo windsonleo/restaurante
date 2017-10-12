@@ -58,7 +58,7 @@
 <%--                    <td>${despesa.datanascimento}</td> --%>
 <%--                    <td>${despesa.genero}</td> --%>
 <%--                    <td>${despesa.preferencia}</td> --%>
-                   <td> ${despesa.isativo}</td>
+                   <td><span class="label label bg_lb"> ${despesa.isativo}</span></td>
                  <td class="options-widt">
 								
 								

@@ -63,7 +63,7 @@
                   <td >${formapagamento.tipo}</td>
                   <td>${formapagamento.parcelas}</td>
                    <td>${formapagamento.percdesconto}</td>
-                   <td>${formapagamento.isativo}</td>
+                   <td><span class="label label bg_lb">${formapagamento.isativo}</span></td>
                  <td class="options-widt">
 								
 								
