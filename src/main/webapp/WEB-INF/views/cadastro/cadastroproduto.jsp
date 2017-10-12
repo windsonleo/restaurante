@@ -12,6 +12,17 @@
 		<a href="#" class="current">Cadastro Produto</a>
 	</div>
 	<h1>Cadastro de Produto</h1>
+
+
+			<div class="control-group">
+                <label class="control-label">Foto</label>
+                <div class="controls">
+
+               		<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
+               
+                </div>
+              </div>
+
 </div>
 
 <div class="container-fluid">
@@ -44,27 +55,14 @@
 				
 					<form method="post" action="salvarfoto" enctype="multipart/form-data" class="form-horizonta">  		
 					
-					
-			<div class="control-group">
-                <label class="control-label">Foto</label>
-                <div class="controls">
-
-               		<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
-               
-                </div>
-              </div>
-					
-					
-					
-					
-							
+											
 							
 				<div class="control-group">
                 <label class="control-label">Carregar Foto</label>
                 <div class="controls">
                 
 
-			<div class="span3">
+			<div class="span6">
 				<div id="uniform-undefined" class="uploader">
 						<input id="file" size="30" style="opacity: 0;" type="file"  name="file" >
 						<span class="filename" style="-moz-user-select: none;"><p>${filename}</p></span>
@@ -89,7 +87,7 @@
 					
 					</div>
 					
-					</form>
+					</form><hr>
 					
 					
 				<form role="form" id="ds" class="form-horizontal"
