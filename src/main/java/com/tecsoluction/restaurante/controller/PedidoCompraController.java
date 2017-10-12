@@ -354,6 +354,52 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
   	
 	}
 
+	@RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+	public ModelAndView  AprovarPedidoCompra(HttpServletRequest request){
+  	
+	  	Long idf = Long.parseLong(request.getParameter("id"));  	
 
+		
+//        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
 
+  	PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
+  	
+  	pc.setStatus(StatusPedido.PRONTO);
+  	
+  	pedidoCompraDao.editar(pc);
+  	
+  	ModelAndView home= new ModelAndView("home");
+  	
+//  	home.addObject("pedidovendaList",pedidoCompraList);
+  	
+
+		
+  	return home;	
+  	
+	}
+
+	
+	@RequestMapping(value = "/cancelar", method = RequestMethod.GET)
+	public ModelAndView  CancelarPedidoCompra(HttpServletRequest request){
+  	
+	  	Long idf = Long.parseLong(request.getParameter("id"));  	
+
+		
+//        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
+
+  	PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
+  	
+  	pc.setStatus(StatusPedido.CANCELADO);
+  	
+  	pedidoCompraDao.editar(pc);
+  	
+  	ModelAndView home= new ModelAndView("home");
+  	
+//  	home.addObject("pedidovendaList",pedidoCompraList);
+  	
+
+		
+  	return home;	
+  	
+	}
 }

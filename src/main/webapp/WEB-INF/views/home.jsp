@@ -105,7 +105,7 @@
 						              <li>
 						                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
 							                <div class="article-post">
-							                  <div class="fr"> <a href="#" class="btn btn-success btn-mini">Aprovar</a> <a href="#" class="btn btn-danger btn-mini">Cancelar</a></div>
+							                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div>
 							                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
 							                  <p><a href="#"></a> ${pedidocompra.items}</p>
 							                </div>
@@ -350,7 +350,7 @@
 	<div class="container-fluid">
        <div class="quick-actions_homepage">
       	<ul class="quick-actions">
-        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/movimentacao"> <i class="icon icon-money" ></i>Caixa</a> </li>
+        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li>
 		</ul>
 		</div>
 		</div>
@@ -377,7 +377,7 @@
 	<div class="container-fluid">
        <div class="quick-actions_homepage">
       	<ul class="quick-actions">
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/financeiro/movimentacao"> <i class="icon icon-money" ></i>Financeiro</a> </li>
+        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon icon-money" ></i>Financeiro</a> </li>
 		</ul>
 		</div>
 		</div>
