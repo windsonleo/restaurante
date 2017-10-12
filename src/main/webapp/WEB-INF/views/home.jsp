@@ -86,10 +86,9 @@
 	</div>
 	</div>
  
-  	<div class="span12">
+<!--   	<div class="span12"> -->
   	
   <div class="row-fluid">
-		<div class="span5">
       
         	<div class="widget-box">
          		 <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
@@ -121,10 +120,8 @@
         
         </div>
         </div>
-        </div>
      	
   	  <div class="row-fluid">
-  	<div class="span5">
   	 <div class="widget-box collapsible">
           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
             <h5>Contas a Receber  </h5>
@@ -180,13 +177,13 @@
         </div>
         
         </div>
-        </div>
+       
         
        
                    </div>
-           
-        </div>
-        </sec:authorize>
+                   </sec:authorize>
+      
+
   
   
 		 
