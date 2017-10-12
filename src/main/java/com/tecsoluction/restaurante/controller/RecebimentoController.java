@@ -251,7 +251,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //        	}
         	
        
-        recebimento.setStatus(StatusPedido.FECHADO);
+            recebimento.setStatus(StatusPedido.FECHADO);
+            recebimentoDao.editar(recebimento);
 
         	itensRecebimentoCorfirmados.clear();
 
