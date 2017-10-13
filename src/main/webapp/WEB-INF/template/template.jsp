@@ -56,13 +56,15 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
 			
-			<script
-			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
+			
 			<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
+		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 			
+			<script
+			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
 		
 		
 		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
@@ -72,6 +74,10 @@
 		
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
 		
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
+		
+		
+		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>
 			
@@ -80,7 +86,6 @@
 						
 
 				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-				<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
 				<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
 	
 		
