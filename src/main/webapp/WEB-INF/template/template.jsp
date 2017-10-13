@@ -41,8 +41,29 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
 			
-				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 			
+				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+				
+							
+				<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+			
+	<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
+	
+		<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
+		
+		
+
+			<script
+			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
+
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script>
 			
@@ -102,9 +123,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>
 		
 		
-			
-				<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
 	
 		
 <!-- 		<script -->
@@ -118,22 +137,9 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 			
-					<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
+					 
 		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
-	
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
-		
-		
-
-			<script
-			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
-			
+				
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 
