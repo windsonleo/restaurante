@@ -54,7 +54,7 @@
 										<div class="input-prepend">
 											<span class="add-on"><i class="icon-key"></i></span>
 										
-										<input id="id" class="span3 m-wrap" name="id" type="text"
+										<input id="id" class="span11 m-wrap" name="id" type="text"
 											value="${cliente.id}" placeholder="Digite o id" /> 
 										
 										
@@ -62,7 +62,7 @@
 											
  										<div class="input-prepend">
 											<span class="add-on"><i class="icon-ok-sign">Ativo?</i></span>
-												<input id="isativo" name="isativo" class="span3 m-wrap" type="checkbox"
+												<input id="isativo" name="isativo" class="span11 m-wrap" type="checkbox"
 											checked="${cliente.isativo}" />
 										</div>
 										
@@ -84,7 +84,7 @@
 										<div class="input-prepend">
 											<span class="add-on"><i class="icon-picture"></i></span>
 
-												<input type="text" id="foto" name="foto" class="span11 m-wrap" value="${cliente.foto}">
+												<input type="text" id="foto" name="foto" class="span11 m-wrap" value="${cliente.foto}" placeholder="Digite o caminh da Foto">
 										</div>
 									</div>
 								</div>
@@ -115,7 +115,7 @@
 									<div class="controls">
 										<div class="input-prepend">
 											<span class="add-on"><i class="icon-question-sign"></i></span>											
-											<select id="genero" name="genero" class="span4">
+											<select id="genero" name="genero" class="span11">
 												<optgroup label="Genero do Cliente">
 
 													<option value="MASCULINO">MASCULINO</option>
