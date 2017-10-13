@@ -14,7 +14,7 @@
       
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" ></i></span>
-            <h5>Movimentação Pedidovenda</h5>
+            <h5>Movimentação Pedido Venda</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          

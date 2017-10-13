@@ -374,7 +374,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
   	
 
 		
-  	return home;	
+  	return new ModelAndView("redirect:/home");	
   	
 	}
 
@@ -399,7 +399,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
   	
 
 		
-  	return home;	
+  	return new ModelAndView("redirect:/home");	
   	
 	}
 }
