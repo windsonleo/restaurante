@@ -30,6 +30,12 @@
 <div class="row-fluid">
       <div class="span12">
                 <div class="widget-content nopadding">               
+			
+			  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+  </div>
+			
 			<form action="LocalizarProdutoGerencia" method="POST" class="form-horizontal">		
   
 				<div class="control-group">
@@ -88,7 +94,7 @@
                			<input id="isativo" class="span3"name="isativo"  type="checkbox" checked="${produto.isativo}" disabled="true"/>
                          <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produto.esugestao}" disabled="true"/>
                
-					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="span2" disabled="true">				
+					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="img-thumbnail" disabled="true">				
               
                 </div>
               </div>
