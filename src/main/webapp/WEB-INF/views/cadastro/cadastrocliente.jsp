@@ -84,7 +84,7 @@
 										<div class="input-prepend">
 											<span class="add-on"><i class="icon-picture"></i></span>
 
-												<input type="text" id="foto" name="foto" class="span11 m-wrap" value="${cliente.foto}" placeholder="Digite o caminh da Foto">
+												<input type="text" id="foto" name="foto" class="span11 m-wrap" value="${cliente.foto}" placeholder="Digite o caminho da Foto">
 										</div>
 									</div>
 								</div>
@@ -146,8 +146,8 @@
 										<div data-date="12-02-2012"
 											class="input-append date datepicker ">
 
-							<input id="datanascimento" type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy"
-							 value="${cliente.datanascimento}" class=".datepicker" name="datanascimento"> 
+							<input id="datepicker" type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy"
+							 value="${cliente.datanascimento}" class="datepicker" name="datanascimento"> 
 												<span class="add-on"><i class="icon-th"></i></span>
 
 

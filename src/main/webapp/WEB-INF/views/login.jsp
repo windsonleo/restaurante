@@ -9,7 +9,8 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" id="username" name="username" placeholder="Username" />
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+                            <input type="text" id="username" name="username" placeholder="Username" />
                         </div>
                     </div>
                 </div>

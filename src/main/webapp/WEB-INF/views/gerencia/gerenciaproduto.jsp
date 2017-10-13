@@ -93,7 +93,7 @@
                			<input id="isativo" class="span3"name="isativo"  type="checkbox" checked="${produto.isativo}" disabled="true"/>
                          <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produto.esugestao}" disabled="true"/>
                
-					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="form-control" disabled="true">				
+					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="span3" disabled="true">				
               
                 </div>
               </div>

@@ -59,6 +59,17 @@
 		
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
 		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>
+			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
+						
+
+				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+				<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
+				<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
+	
 		
 		
 		<script
@@ -77,17 +88,7 @@
 				
 								
  
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>
-			
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
-						
-
-				<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-				<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
-				<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
-			
+				
 				
  <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>		
 
