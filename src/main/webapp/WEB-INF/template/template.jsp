@@ -42,11 +42,12 @@
 <!-- 		<script -->
 <%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
 			
-			<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
-			
+						
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
 			
 			
 		<script
@@ -56,13 +57,14 @@
 			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
 			
 			<script
-			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>
-	
+			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
 			<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 			
+		
+		
 		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
 
 		<script 
