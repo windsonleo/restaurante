@@ -48,12 +48,7 @@
 		
 
 			
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
-						
+							
 
 			
 		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
@@ -81,6 +76,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
 	
 <script src="${pageContext.request.contextPath}/resources/js/jquery.flot.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
 
 			
 				<script
@@ -102,10 +98,8 @@
 <%-- 			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			 --%>
 		
 	
-
 			
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
-							<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
 			
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 	
@@ -118,6 +112,11 @@
 				
 			
 
+			<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 			
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.min.js"></script> 
 									
