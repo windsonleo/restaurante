@@ -39,12 +39,12 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
 		
-<!-- 		<script -->
-<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 			
 						
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<!-- 		<script -->
+<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script> --%>
 		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
@@ -70,7 +70,9 @@
 		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
 
 		<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			
+			
+<%-- 			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			 --%>
 		
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
 		
