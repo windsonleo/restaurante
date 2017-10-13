@@ -73,8 +73,8 @@
 								
               </div>
               
-              			  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="icon-info-sign"></i></span>
     <input id="email" type="text" class="form-control" name="email" placeholder="Email">
   </div>
                                 
@@ -96,7 +96,7 @@
                			<input id="isativo" class="span3"name="isativo"  type="checkbox" checked="${produto.isativo}" disabled="true"/>
                          <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produto.esugestao}" disabled="true"/>
                
-					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class="img-thumbnail" disabled="true">				
+					<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${produto.foto}.jpg" class=".img-thumbnail" disabled="true">				
               
                 </div>
               </div>
