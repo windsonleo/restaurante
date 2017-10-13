@@ -87,7 +87,7 @@
 				<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 
 				
 								
- 
+ 	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
 				
 				
  <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>		
@@ -104,20 +104,7 @@
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.js"></script>
 	
 
-			
-			
-									
 		
- 
-			
-		
-			
-
-			
-			
-		
-		
-			
 		<script 
 			src="${pageContext.request.contextPath}/resources/js/joint.min.js"></script>	
 		
@@ -159,7 +146,6 @@
 			
 					 	
  	
- 	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
  	
  	
  	

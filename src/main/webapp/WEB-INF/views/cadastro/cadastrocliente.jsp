@@ -154,6 +154,21 @@
 										</div>
 									</div>
 								</div>
+								
+								            <div class="control-group">
+              <label class="control-label">Date picker (dd-mm)</label>
+              <div class="controls">
+                <input type="text" data-date="01-02-2013" data-date-format="dd-mm-yyyy" value="01-02-2013" class="datepicker span11">
+                <span class="help-block">Date with Formate of  (dd-mm-yy)</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Date Picker (mm-dd)</label>
+              <div class="controls">
+                <div  data-date="12-02-2012" class="input-append date datepicker">
+                  <input type="text" value="12-02-2012"  data-date-format="mm-dd-yyyy" class="span11" >
+                  <span class="add-on"><i class="icon-th"></i></span> </div>
+              </div>
+            </div>
 							</div>
 
 
