@@ -46,6 +46,15 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 			
+<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
+			
 						
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
@@ -72,15 +81,7 @@
 	
 		
 		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
-		
-<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
-			
+				
 				<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
 				<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
 				<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 

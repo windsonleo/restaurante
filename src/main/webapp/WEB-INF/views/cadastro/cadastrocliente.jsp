@@ -113,9 +113,10 @@
 
 								<div class="control-group">
 									<div class="controls">
-										<div class="input-prepend">
+										<div class="input-prepend select">
 											<span class="add-on"><i class="icon-question-sign"></i></span>											
-											<select id="genero" name="genero" class="span11">
+											
+											<select id="genero" name="genero" class="form-control">
 												<optgroup label="Genero do Cliente">
 
 													<option value="MASCULINO">MASCULINO</option>
