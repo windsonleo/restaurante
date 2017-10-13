@@ -121,7 +121,7 @@
 
                                 					</a>
                                 					<h2 class="white">R$:${produto.precovenda}</h2>
-                                					<span class="icon-icon"><i class="icon-eye-open">Detalhes</i></span>
+                                					<span class="icon"><i class="icon-eye-open">Detalhes</i></span>
                                 					</li>
 												
 												</c:forEach>

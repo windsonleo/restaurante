@@ -14,10 +14,10 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title-sucess"> <span class="icon"><i class="icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
-          </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
+         
             <h5>Movimentação Delivery</h5>
-          <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button>
+          <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button> </span>
 <%--              <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon" color="blue"></i></a> </span> --%>
          
 <!--             </div> -->
