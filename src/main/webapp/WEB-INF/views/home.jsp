@@ -92,7 +92,7 @@
   <div class="row-fluid">
       
         	<div class="widget-box">
-         		 <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span>
+         		 <div class="widget-title"> <span class="icon"> <i class="icon-check"></i> </span>
            			 <h5>Pedidos de Compras Pedente de Aprovação</h5>
           		</div>
          	 <div class="widget-content">
@@ -122,9 +122,9 @@
      	
   	  <div class="row-fluid">
   	 <div class="widget-box collapsible">
-          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Contas a Receber  </h5>
-            </a><span class="label label-success">R$:1880</span></div>
+            </a><span class="label label-bg">R$:1880</span></div>
           <div class="collapse" id="collapseTwo">
             <div class="widget-content"> Contas a Receber 
           
@@ -139,9 +139,9 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Contas a Pagar </h5>
-            </a><span class="label label-important">R$:1880</span>
+            </a><span class="label label-warning">R$:1880</span>
           </div>
           
           <div class="collapse" id="collapseThree">
@@ -156,9 +156,9 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span>
+          <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Saldo </h5>
-            </a><span class="label label-important">R$:0</span>
+            </a><span class="label label-info">R$:0.00</span>
           </div>
           
           <div class="collapse" id="collapseOne">

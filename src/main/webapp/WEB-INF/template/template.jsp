@@ -17,17 +17,17 @@
 		
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-style.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-media.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joint.min.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/uniform.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select2.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css"  />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.gritter.css" />
 	   	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" />
  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-wysihtml5.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
 
 
@@ -39,30 +39,52 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
 		
-<!-- 		<script -->
-<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
-			
-			
-					
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			
-		
 		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-			
-			
-		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
-									
-		
-		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
-		<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script> 
-			
-		
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
+			
+		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
+
+		<script 
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			
+		
+		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>		
+		
+		
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
+		
+		
+ <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>		
+
+
+   	<script src="${pageContext.request.contextPath}/resources/js/wysihtml5-0.3.0.js"></script>
+
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script>
+			
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.js"></script>
+	
+					
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+			
+			
+									
+		
+ 
+			
+		
+			
+
 			
 			
 		
@@ -116,9 +138,7 @@
 
 			
  
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script>
+
 			
 			
 		
@@ -144,9 +164,7 @@
 
 	
  
-   	<script src="${pageContext.request.contextPath}/resources/js/wysihtml5-0.3.0.js"></script>
    	
- <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>		
 				<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
 		 
 
