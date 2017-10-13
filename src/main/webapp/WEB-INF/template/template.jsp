@@ -118,12 +118,11 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 			
+					<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
 		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
 	
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
-		 <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>				
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
 		
@@ -135,7 +134,6 @@
 			<script
 			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
 			
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 
@@ -161,6 +159,8 @@
 	
 
 		
+		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
+		 <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>				
 
 				
 			
