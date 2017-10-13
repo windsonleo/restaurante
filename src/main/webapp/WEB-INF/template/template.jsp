@@ -40,8 +40,16 @@
 			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
-							
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
+						
 				<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 			
@@ -54,8 +62,22 @@
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>							
 
 				<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>	
 			
+				<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>		
+			
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
+		
+		<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
+			
+					<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script>
+			
+			<script
+			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>					
+				
 <%-- 			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			 --%>
 		
 	
@@ -65,43 +87,21 @@
 			<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
 			
-	<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
+
 	
 		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
-		
+			
 
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script>
 
 
 
 			
-							<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
+			<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
 			<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 	
 
-			<script
-			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>	
-	
-		
-<!-- 		<script -->
-<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
-			
-						
-
-			
-					 
-		
-				
 
 	
-			
-		
 		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
 		 <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>				
 
@@ -164,11 +164,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
 
 			
-					<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>		
+	
 		
 		
 			
