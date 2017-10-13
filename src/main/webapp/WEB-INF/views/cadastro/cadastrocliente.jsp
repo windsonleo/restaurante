@@ -86,7 +86,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<div class="input-prepend">
-											<span class="add-on">Nome</span> <input id="nome"
+											<span class="add-on"><i class="icon-user"></i></span> <input id="nome"
 												class="span11 m-wrap" name="nome" type="text"
 												value="${cliente.nome}"
 												placeholder="Digite o Nome da Cliente" />
@@ -97,7 +97,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<div class="input-prepend">
-											<span class="add-on">Email</span> <input id="mask-mail"
+											<span class="add-on"><i class="icon-envelope"></i></span> <input id="mask-mail"
 												class="span11 mask text" name="email" type="text"
 												value="${cliente.email}" placeholder="Digite o Email" />
 										</div>
