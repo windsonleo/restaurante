@@ -42,21 +42,23 @@
 <!-- 		<script -->
 <%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
 			
-					
+			<script
+			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
+			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 			
-<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>
-		
+			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
 		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
 			
-						
-		<script
+			<script
+			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>
+	
+			<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
@@ -135,9 +137,7 @@
 			
 		
 		
-		<script
-			 src="${pageContext.request.contextPath}/resources/js/fullcalendar.min.js"></script>
-		
+			
 				
 
 
