@@ -49,17 +49,24 @@
 							action="${pageContext.request.contextPath}/cliente/addEnderecoCliente">
 							<div id="form-wizard-1" class="step">
 								<div class="control-group">
-									                  <label class="control-label">Id</label>
-									<div class="controls">
 
-										<input id="id" class="span2 m-wrap" name="id" type="text"
+									<div class="controls">
+										<div class="input-prepend">
+											<span class="add-on"><i class="icon-key"></i></span>
+										
+										<input id="id" class="span3 m-wrap" name="id" type="text"
 											value="${cliente.id}" placeholder="Digite o id" /> 
+										
+										
+										</div>
 											
- 										<label
-											class="span1"> <input id="isativo" name="isativo"
-											class="span1 m-wrap" type="checkbox"
-											checked="${cliente.isativo}" /> Ativo?
-										</label>
+ 										<div class="input-prepend">
+											<span class="add-on"><i class="icon-ok-sign">Ativo?</i></span>
+												<input id="isativo" name="isativo" class="span3 m-wrap" type="checkbox"
+											checked="${cliente.isativo}" />
+										</div>
+										
+									
 
 									</div>
 								</div>
@@ -75,9 +82,9 @@
 								<div class="control-group">
 									<div class="controls">
 										<div class="input-prepend">
-											<span class="add-on">Foto</span>
+											<span class="add-on"><i class="icon-picture"></i></span>
 
-												<input type="text" id="foto" name="foto" class="" value="${cliente.foto}">
+												<input type="text" id="foto" name="foto" class="span11 m-wrap" value="${cliente.foto}">
 										</div>
 									</div>
 								</div>
@@ -106,8 +113,8 @@
 
 								<div class="control-group">
 									<div class="controls">
-<!-- 										<div class="input-prepend"> -->
-
+										<div class="input-prepend">
+											<span class="add-on"><i class="icon-question-sign"></i></span>											
 											<select id="genero" name="genero" class="span4">
 												<optgroup label="Genero do Cliente">
 
@@ -116,6 +123,8 @@
 
 												</optgroup>
 											</select>
+											
+											</div>
 <!-- 										</div> -->
 									</div>
 								</div>
@@ -123,7 +132,7 @@
 								<div class="control-group">
 									<div class="controls">
 										<div class="input-prepend">
-											<span class="add-on">Telefone</span> <input id="mask-phone"
+											<span class="add-on"><i class="icon-phone"></i></span> <input id="mask-phone"
 												class="span11 mask text" name="telefone" type="text"
 												value="${cliente.telefone}" placeholder="Digite o Telefone" />
 											<br>
