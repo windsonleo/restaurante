@@ -73,10 +73,7 @@
 								
               </div>
               
-  <div class="input-group">
-    <span class="input-group-addon"><i class="icon-info-sign"></i></span>
-    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
-  </div>
+
                                 
 							</form>
 							
@@ -137,7 +134,12 @@
 						
 						<input id="precovenda" class="form-control"
 						name="precovenda" type="text" value="${produto.precovenda}"
-						placeholder="Digite o Preco de Venda" disabled="true" />									
+						placeholder="Digite o Preco de Venda" disabled="true" />
+						
+						  <div class="input-group">
+    <span class="input-group-addon"><i class="icon-info-sign"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+  </div>									
 				
                 </div>
               </div> 
