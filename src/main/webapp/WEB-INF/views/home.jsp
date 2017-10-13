@@ -122,7 +122,7 @@
      	
   	  <div class="row-fluid">
   	 <div class="widget-box collapsible">
-          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
+          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Contas a Receber  </h5>
             </a><span class="label label-bg">R$:1880</span></div>
           <div class="collapse" id="collapseTwo">
@@ -139,7 +139,7 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
+          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Contas a Pagar </h5>
             </a><span class="label label-warning">R$:1880</span>
           </div>
@@ -156,7 +156,7 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
+          <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Saldo </h5>
             </a><span class="label label-info">R$:0.00</span>
           </div>
