@@ -38,6 +38,10 @@
 		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+			
+				<script
+			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+						
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
 		
@@ -50,10 +54,7 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	
 						
-				<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-			
-			
+
 			
 		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
 
@@ -62,7 +63,18 @@
 		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>							
 
 				<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>	
+			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			
+
+			
+						<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
+			
+				<script
+			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>			
+			
+
+			
+				
 			
 				<script
 			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>		
@@ -81,13 +93,7 @@
 <%-- 			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			 --%>
 		
 	
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>			
-			
-			<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
-			
-
+	
 	
 		
 			
