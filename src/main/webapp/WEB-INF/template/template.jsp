@@ -34,15 +34,7 @@
 
 
 
-			<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
-			
 	
- 	 	
- 	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
-
-		<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
-		
-		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>	
 		
 		<script
 			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
@@ -97,15 +89,26 @@
 
 				
 		
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.js"></script> 
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.js"></script>
+		
+					<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
+			
+	
+ 	 	
+ 	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
+
+		<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>
+		
 		
 			
 				<script
 			src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 	
 		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<!-- 		<script -->
+<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
 			
 						
 
