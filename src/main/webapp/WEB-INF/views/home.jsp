@@ -124,7 +124,9 @@
   	 <div class="widget-box collapsible">
           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
             <h5>Contas a Receber  </h5>
-            </a><span class="label label-bg">R$:1880</span></div>
+            </a><span class="label label-bg">R$:1880</span>
+            
+          </div>
           <div class="collapse" id="collapseTwo">
             <div class="widget-content"> Contas a Receber 
           

@@ -14,7 +14,7 @@
       <div class="span12">
       
    <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
+          <div class="widget-title-sucess"> <span class="icon"><i class="icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
           </span>
             <h5>Movimentação Delivery</h5>
           <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button>
@@ -25,7 +25,7 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-striped data-table">
+            <table class="table table-bordered data-table">
             
                      
               <thead>
