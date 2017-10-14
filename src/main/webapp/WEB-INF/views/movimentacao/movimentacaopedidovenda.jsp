@@ -85,7 +85,7 @@
 				
 				    </c:when>  
 				    
-				    <c:when test="${pedidocompra.status=='FINALIZADO'}">
+				    <c:when test="${pedidocompra.status=='FECHADO'}">
 
                   <td><span class="label label-ly">${pedidovenda.status}</span></td>
 
@@ -98,7 +98,7 @@
 				    </c:otherwise>
 				
 				</c:choose>
-                  <td><span class="label label-info">${pedidovenda.status}</span></td>
+<%--                   <td><span class="label label-info">${pedidovenda.status}</span></td> --%>
                  <td>${pedidovenda.origempedido}</td>
                  <td>${pedidovenda.total}</td>
                  <td>${pedidovenda.cliente}</td>
