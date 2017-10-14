@@ -77,7 +77,6 @@ public class Estoque implements Serializable {
     private  Map<Produto, Double> items = new HashMap<>();
     
     
-    private Estoque estoque;
 
     
     
@@ -106,18 +105,6 @@ public class Estoque implements Serializable {
     /**
 	 * @return the estoque
 	 */
-	public Estoque getEstoque() {
-		return estoque;
-	}
-
-	/**
-	 * @param estoque the estoque to set
-	 */
-	public void setEstoque(Estoque estoque) {
-		this.estoque = estoque;
-	}
-
-
 
 
     public long getId() {
