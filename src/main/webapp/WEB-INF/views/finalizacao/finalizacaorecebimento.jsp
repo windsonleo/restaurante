@@ -10,7 +10,7 @@
 	<form id="formVenda" action="AddVenda" method="POST">
 
 
-<div id="blink" name="blink"><h1>Recebimento Finalizado</h1></div>
+		<div id="blink" name="blink"><h1>Recebimento Finalizado</h1></div>
 
 
 

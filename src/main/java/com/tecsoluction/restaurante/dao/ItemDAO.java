@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 
@@ -63,13 +64,31 @@ public class ItemDAO extends AbstractEntityDao<Item> {
 		   	
 }
 	
-	public List<Item> getItemPorNome(String descricao) {
+	public Item getItemPorNome(String descricao, Pedido pedido) {
 		// TODO Auto-generated method stub
 		
-		 List<Item>  result = manager.createQuery("SELECT p FROM Item p where p.nome= '" + descricao+"'", Item.class).getResultList();
+		Item result=null;
+
+		result = manager.createQuery("SELECT p FROM Item p where p.nome= '" + descricao+"'"+"AND p.pedido="+pedido.getId(), Item.class).getSingleResult();
+
+		
    
     return result;
 		   	
 }
+
+	
+//	public Item getItemPorNomeItem(String descricao) {
+//		// TODO Auto-generated method stub
+//		
+//		Item item = null;
+//		
+//		item = manager.createQuery("SELECT p FROM Item p where p.nome= '" + descricao+"'", Item.class).getSingleResult();
+//		
+//				
+//   
+//    return item;
+//		   	
+//}
 	
 }

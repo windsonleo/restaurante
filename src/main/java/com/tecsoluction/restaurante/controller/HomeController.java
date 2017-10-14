@@ -116,7 +116,7 @@ public class HomeController {
 			model.addAttribute("usuarios", usuarios);
 			model.addAttribute("mesas", mesas);
 
-			model.addAttribute("pedidovendascancelado", buscarVendaCancelada(pedidovendasnovos));
+//			model.addAttribute("pedidovendascancelado", buscarVendaCancelada(pedidovendasnovos));
 
 
 

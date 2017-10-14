@@ -85,6 +85,10 @@
 									href="${pageContext.request.contextPath}/pedidovenda/informacoes?id=${pedidovenda.id}"
 									title="Informações" ><i class="icon-info-sign"></i></a>
 									
+												<a
+									href="${pageContext.request.contextPath}/pedidovenda/finalizacaovenda?id=${pedidovenda.id}"
+									title="Finalizar" ><i class="icon-bolt"></i></a>
+									
 									
 									<a href="#myAlert${pedidovenda.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									

@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -73,10 +74,14 @@ public class Estoque implements Serializable {
     @MapKeyColumn(name = "ID")
     @Column(name="qtd")
     @CollectionTable(name="produtos_estoque",joinColumns=@JoinColumn(name="id"))
-    private final  Map<Produto, Double> items= new HashMap<>();
+    private  Map<Produto, Double> items = new HashMap<>();
     
     
+    private Estoque estoque;
 
+    
+    
+    
     public Estoque() {
         // TODO Auto-generated constructor stub
 
@@ -93,11 +98,26 @@ public class Estoque implements Serializable {
     public String getNome() {
         return nome;
     }
+    
 
-
-    public void setNome(String nome) {
+	public void setNome(String nome) {
         this.nome = nome;
     }
+    /**
+	 * @return the estoque
+	 */
+	public Estoque getEstoque() {
+		return estoque;
+	}
+
+	/**
+	 * @param estoque the estoque to set
+	 */
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
+	}
+
+
 
 
     public long getId() {
@@ -110,10 +130,7 @@ public class Estoque implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return nome.toUpperCase();
-    }
+
 
 
     
@@ -140,51 +157,141 @@ public class Estoque implements Serializable {
 	
 	}
 	
+	
+	
+	
+    /**
+	 * @return the items
+	 */
+	public Map<Produto, Double> getItems() {
+		return items;
+	}
+
+	/**
+	 * @param items the items to set
+	 */
+	public void setItems(Map<Produto, Double> items) {
+		this.items = items;
+	}
+
+	@Override
+    public String toString() {
+        return nome.toUpperCase();
+    }
+	
 	public void AddProdutoEstoque(Produto produto, Double qtd){
 		
+		double vantigo = 0.0;
 		
-		if(items.get(produto) != null){
+		double vnovo = qtd;
 		
-			Double qtdant = items.get(produto).doubleValue();
-			items.put(produto, qtdant+qtd);
-			
-            System.out.println("produto no estoque add if "+produto.getNome());
+		
+		  for(Produto key: getItens().keySet()) {
+		       
+	            if(key.getId()==(produto.getId())){
+	            	
+	            	
+	            	vantigo = getItens().get(key);
+	            	double novo = vantigo + vnovo ;
+	            	items.replace(key, vantigo,novo);
+	
+	            	
+	            }
 
-		
-		}else
-			
-		{
-			items.put(produto,qtd);
-            System.out.println("produto no estoque add else "+produto.getNome());
-
-			
-		}
-		
+			  	  
+	            
+		  }
+		  
+          if(!getItens().containsKey(produto)){
+          	
+          	items.put(produto, qtd);
+          }
 	
 	
 	}
 	
 	public void RetirarProdutoEstoque(Produto produto, Double qtd){
-		
-		
-		
-		if(items.get(produto) != null){
 			
-			Double qtdant = items.get(produto).doubleValue();
+		
+		double vantigo = 0.0;
+		
+		double vnovo = 0.0;
+		
+		
+		  for(Produto key: getItens().keySet()) {
+		       
+	            if(key.getId()==(produto.getId())){
+	            	
+	            	
+	            	vantigo = getItens().get(key);
+	            	vnovo = qtd;
+	            	double novo = vantigo - vnovo ;
+	            	items.replace(key, vantigo,novo);
+	
+	            	
+	            }
+	            
+	           
+	              	
+	              	
+	     }
+		  
+		  if(!getItens().containsKey(produto)){
+          	
+          	vnovo = qtd;
+          	double qtdnegativa = 0.0 - vnovo;
+            	items.put(produto, qtdnegativa);
+  
+	            
+		  }
+		  
+	}
 
-			items.replace(produto, qtdant - qtd);
-			
-			
-		}else
-			
-		{
-			items.put(produto,qtd);
+	
+	public double CalcularTotalCusto() {
 
+		
+		double totalcusto = 0.0;
+		
 			
-		}
-		
-		
+	     for(Produto key: getItens().keySet()) {
+	    
+	    	 double qtd = getItens().get(key);
+	    	 
+	    	 totalcusto = totalcusto + key.getPrecocusto()*qtd;
+	        
+	     }
+	        
+
+		return totalcusto;
 	}
 	
+	public double CalcularTotalVenda(){
+		
+		
+		double totalvenda = 0.0;
+		
+			
+	     for(Produto key: getItens().keySet()) {
+	       
+	    	 double qtd = getItens().get(key);
+	    	 
 	
+	    	 
+	    	 totalvenda = totalvenda + key.getPrecovenda()*qtd;
+	        
+	     }
+
+		
+		return totalvenda;
+	}
+	
+
+	
+//	public Produto PegarProduto(){
+//		
+//		
+//		return null;
+//	}
+
 }

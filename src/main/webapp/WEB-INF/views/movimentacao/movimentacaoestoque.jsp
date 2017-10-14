@@ -37,7 +37,7 @@
                <tr>
                                         <th>Id</th>
 									    <th>Nome</th>
-									    <th>Qtd Itens</th>
+									    <th>Produtos</th>
 									    <th>Ativo?</th>
 									    
 <!-- 									    <th>Data Nasciemnto</th> -->

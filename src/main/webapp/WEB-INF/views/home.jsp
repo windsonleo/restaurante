@@ -49,7 +49,7 @@
             
             </div>
             
-            <div class="right"> <strong>${pedidovendascancelado.size()}</strong> Vendas Cancelados</div>
+            <div class="right"> <strong>${clientesnovos.size()}</strong> Vendas Canceladas</div>
           </li>
         </ul>
       </div>
@@ -100,17 +100,35 @@
 			           
 			           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
 			           		
-			           				<c:if test="${pedidocompra.status=='PENDENTE' }">
-			           		
-						              <li>
+
+										 
+										
+								<c:choose>
+								    <c:when test="${pedidocompra.status=='PENDENTE'}">
+								       <li>
 						                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div>
 							                <div class="article-post">
 							                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div>
 							                  <span class="user-info"> ${pedidocompra.id} / Date: ${pedidocompra.data} / ${pedidocompra.fornecedor} </span>
 							                  <p><a href="#"></a> ${pedidocompra.items}</p>
 							                </div>
-										</c:if>
+						                </li>
+								
+								    </c:when>    
+								    
+								    <c:otherwise>
+
+
+								    </c:otherwise>
+								
+								</c:choose>
+			              	
+			              	
 			              	</c:forEach>
+			              
+
+			                
+									
 			               <li>
 			                <button class="btn btn-warning btn-mini">View All</button>
 			              </li>
@@ -120,30 +138,13 @@
         </div>
         </div>
      	
-  	  <div class="row-fluid">
+<!--   	  <div class="row-fluid"> -->
   	 <div class="widget-box collapsible">
+  	   	 
   	 
-  	 
-  	  <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
-            <h5>Saldo </h5>
-            </a><span class="label label-info">R$:0.00</span>
-          </div>
-          
-          <div class="collapse" id="collapseOne">
-            <div class="widget-content"> Saldo 
-          
-           <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
-          
-      		</div>    
-          </div> 
-  	 
-  	 
-          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
+          <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon icon-money"></i></span>
             <h5>Contas a Receber  </h5>
-            </a><span class="label label-bg">R$:1880</span>
+            </a><span class="label label bg_lg">R$:1880</span>
             
           </div>
           <div class="collapse" id="collapseTwo">
@@ -160,9 +161,10 @@
           </div>
           
           
-          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span>
+          <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon icon-money"></i></span>
             <h5>Contas a Pagar </h5>
-            </a><span class="label label-warning">R$:1880</span>
+            </a>
+            <span class="label label bg_lb">R$:1880</span>
           </div>
           
           <div class="collapse" id="collapseThree">
@@ -176,33 +178,81 @@
       		</div>    
           </div>
           
+  	  <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon icon-money"></i></span>
+            <h5>Saldo </h5></a>
+            <span class="label label bg_ly">R$:0.00</span>
+          </div>
           
-<%--           <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i></span> --%>
-<!--             <h5>Saldo </h5> -->
-<!--             </a><span class="label label-info">R$:0.00</span> -->
-<!--           </div> -->
+          <div class="collapse" id="collapseOne">
+            <div class="widget-content"> Saldo 
           
-<!--           <div class="collapse" id="collapseOne"> -->
-<!--             <div class="widget-content"> Saldo  -->
+           <div class="new-update clearfix"> <i class="icon-gift"></i>  <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
           
-<!--            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div> -->
-          
-<!--       		</div>     -->
-<!--           </div>           -->
+      		</div>    
+          </div> 
           
           
         </div>
         
-        </div>
+<!--         </div> -->
+
+<!--         <div class="widget-box collapsible"> -->
+<!--           <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-arrow-right"></i></span> -->
+<!--             <h5>Toggle, Open by default</h5> -->
+<!--             </a> </div> -->
+<!--           <div class="collapse in" id="collapseOne"> -->
+<!--             <div class="widget-content"> This box is opened by default </div> -->
+<!--           </div> -->
+<!--           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span> -->
+<!--             <h5>Toggle, closed by default</h5> -->
+<!--             </a> </div> -->
+<!--           <div class="collapse" id="collapseTwo"> -->
+<!--             <div class="widget-content"> This box is now open </div> -->
+<!--           </div> -->
+<!--           <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span> -->
+<!--             <h5>Toggle, closed by default</h5> -->
+<!--             </a> </div> -->
+<!--           <div class="collapse" id="collapseThree"> -->
+<!--             <div class="widget-content"> This box is now open </div> -->
+<!--           </div> -->
+<!--         </div> -->
        
         
                           </sec:authorize>
       
 
-  
+  <sec:authorize access="hasRole('ROLE_COZINHA')">
+       
+<div class="row-fluid">
+    <div class="widget-box">
+	      <div class="widget-title"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/chef.png"></i></span>
+	             <h5>Cozinha </h5>
+	             
+	      </div>
+	             
+          <div class="widget-content nopadding">
+          
+				<div class="container-fluid">
+			       <div class="quick-actions_homepage">
+			      	<ul class="quick-actions">
+			        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/home/cozinha"> <i class="icon-icon" > <img src="${pageContext.request.contextPath}/resources/images/icons/32/chef.png"></i>Chef</a> </li>
+					</ul>
+					</div>
+				</div>
+		
+		
+		
+		
+		
+		</div>
+	</div>
+</div>
+	
+
+	</sec:authorize>
   
 		 
 	        
@@ -391,25 +441,25 @@
 	      <div class="widget-title"> <span class="icon"><i class="icon-money"></i></span>
 	             <h5>Financeiro </h5>
 	             
-	             </div>
+	      </div>
 	             
           <div class="widget-content nopadding">
           
-	<div class="container-fluid">
-       <div class="quick-actions_homepage">
-      	<ul class="quick-actions">
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon icon-money" ></i>Financeiro</a> </li>
-		</ul>
-		</div>
-		</div>
+				<div class="container-fluid">
+			       <div class="quick-actions_homepage">
+			      	<ul class="quick-actions">
+			        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon icon-money" ></i>Financeiro</a> </li>
+					</ul>
+					</div>
+				</div>
 		
 		
 		
 		
 		
 		</div>
-		</div>
-		</div>
+	</div>
+</div>
 	
 
 	</sec:authorize>

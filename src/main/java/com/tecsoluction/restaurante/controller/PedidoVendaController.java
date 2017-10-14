@@ -1,5 +1,6 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.ClienteDAO;
+import com.tecsoluction.restaurante.dao.EstoqueDAO;
 import com.tecsoluction.restaurante.dao.GarconDAO;
 import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.dao.MesaDAO;
@@ -25,9 +27,11 @@ import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
@@ -76,18 +80,27 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private
     final
     GarconDAO garconDao;
+    
+    
+	
+	private
+	final
+	EstoqueDAO estdao;
+
 
     private Map<Item,Double> itens = new HashMap<>();
     
     private List<Produto> produtosList;
     
     private double totalpedido;
+    
+    private Estoque estoque = new Estoque();
 
 
 
 
     @Autowired
-    public PedidoVendaController(PedidoVendaDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, ClienteDAO daocliente,MesaDAO daomesa, GarconDAO daogarcon,UsuarioDAO daousu) {
+    public PedidoVendaController(PedidoVendaDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, ClienteDAO daocliente,MesaDAO daomesa, GarconDAO daogarcon,UsuarioDAO daousu,EstoqueDAO estdao) {
 
         super("pedidovenda");
         this.pedidoVendaDao = dao;
@@ -97,6 +110,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.mesaDao = daomesa;
         this.garconDao = daogarcon;
         this.usudao = daousu;
+        this.estdao = estdao;
 
     }
 
@@ -168,17 +182,50 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
 
-    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.POST)
+    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
     public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
+    	
+    	this.estoque = estdao.PegarPorId(49L);
 
-        long idf = Long.parseLong(request.getParameter("idpedido"));
+        long idf = Long.parseLong(request.getParameter("id"));
+        
+    	this.pv = pedidoVendaDao.PegarPorId(idf);
+       
         ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
+        for(Item key: pv.getItems().keySet()) {
+            
+            //  System.out.println(key + "wind - " + recebimento.getItems().get(key));
+              Produto produto = produtopedidovendaDao.getProdutoPorCodebar(key.getCodigo());
+              Double qtd = key.getQtd();
+              
+              key.setEstoque(estoque);
+             
+              
+              estoque.RetirarProdutoEstoque(produto, qtd);
+              
+//           System.out.println(key + "produto - " + produto.getNome());
 
+              estdao.editar(estoque);
+              
+              itempedidovendaDao.editar(key);
+            
+             }
+        		
+        
+        	this.pv.setStatus(StatusPedido.FECHADO);
+        	this.pv.setIspago(true);
+        	
+        	pedidoVendaDao.editar(pv);
+        	
+        	itens.clear();
+       
+        	
 
-        return finalizacaovenda;
-    }
+       return finalizacaovenda;
+   }
+   
     
  
     @RequestMapping(value = "novospedidos", method = RequestMethod.GET)
@@ -208,18 +255,18 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
        produtosList = produtopedidovendaDao.getAll();
        
-       
-       
-
-
-       
         
         pv.setTotal(pv.CalcularTotal(pv.getItems()));
+        
+        totalpedido = pv.CalcularTotal(pv.getItems());
+        
+        DecimalFormat df = new DecimalFormat("0.##");
+        String totalformatado = df.format(totalpedido);
         
         
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
-        additempedidovenda.addObject("totalpedido", pv.CalcularTotal(pv.getItems()));
+        additempedidovenda.addObject("totalpedido",totalformatado );
 
 
         return additempedidovenda;
@@ -258,9 +305,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         
         
-        PedidoVenda pedidov = pedidoVendaDao.PegarPorId(pv.getId());
+        PedidoVenda pedidov = pedidoVendaDao.PegarPorId(this.pv.getId());
         
-        System.out.println("windson ped"+pedidov.toString());
+//        System.out.println("windson ped"+pedidov.toString());
         
         Item item = new Item(produto,pedidov);
         
@@ -275,16 +322,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         itempedidovendaDao.add(item);
         
         pedidov.setItems(itens);
-        pedidov.setTotal(pedidov.CalcularTotal(itens));
+        pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
         pedidov.setStatus(StatusPedido.PENDENTE);
         
         pedidoVendaDao.editar(pedidov);
         
         
  
-        
-        System.out.println(pv.getItems().toString());
-        System.out.println(pv.getTotal());
+//        
+//        System.out.println(pv.getItems().toString());
+//        System.out.println(pv.getTotal());
 
 
 

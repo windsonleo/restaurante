@@ -137,9 +137,9 @@
 		
 <%-- 		  <c:when test="${item.id != null}"> --%>
 		  
-        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/item/">
-         <i class="icon-dashboard"></i> <div class="huge">${item.key}</div>
-                                       <div>${item.value}</div>
+        <li class="bg_lb"><div><span class="close" data-dismiss="alert" href="#">x</span></div> <a href="${pageContext.request.contextPath}/item/">
+         <i class="icon-barcode"></i> <div class="huge">${item.key}</div>
+                                       <div class="huge">${item.value}</div>
 <%--                                       <div>Total: ${item.totalItem}</div>  --%>
 <%--                                       <div>Qtd: ${item.qtd}</div> --%>
                                       

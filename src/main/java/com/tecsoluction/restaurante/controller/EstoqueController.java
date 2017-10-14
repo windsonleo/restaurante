@@ -1,6 +1,10 @@
 package com.tecsoluction.restaurante.controller;
 
+import java.text.DecimalFormat;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.dao.EstoqueDAO;
 import com.tecsoluction.restaurante.dao.ItemDAO;
+import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Estoque;
@@ -35,17 +40,23 @@ public class EstoqueController extends AbstractController<Estoque> {
     final
     AbstractEntityDao<Estoque> dao;
     
+    private
+    final
+    ProdutoDAO prodDAO;
+  
+    
     private final UsuarioDAO usudao;
     
     private final ItemDAO itdao;
 
 
     @Autowired
-    public EstoqueController(AbstractEntityDao<Estoque> dao,UsuarioDAO daousu,ItemDAO itdao) {
+    public EstoqueController(AbstractEntityDao<Estoque> dao,UsuarioDAO daousu,ItemDAO itdao,ProdutoDAO pdao) {
         super("estoque");
         this.dao = dao;
         this.usudao = daousu;
         this.itdao= itdao;
+        this.prodDAO = pdao;
     }
     
     
@@ -100,8 +111,41 @@ public class EstoqueController extends AbstractController<Estoque> {
         
 //        List<Produto>produtos = dao.getAll();
         
-        informacoesestoque.addObject("estoque", estoque);
+//        double qtditens = estoque.getItens().values().size();
+        
+//        informacoesestoque.addObject("estoque", estoque);
+//        informacoesestoque.addObject("qtditens", qtditens);
 
+        double totalitens = 0.0;
+        double totalcusto = 0.0;
+        double totalvenda = 0.0;
+
+      
+       
+       Collection<Double> itenstotal = estoque.getItens().values();
+        
+        for (Iterator iterator = itenstotal.iterator(); iterator.hasNext();) {
+			Double double1 = (Double) iterator.next();
+			
+			totalitens= totalitens + double1;
+			
+		}
+        
+        
+        DecimalFormat df = new DecimalFormat("0.##");
+       
+        
+        totalcusto = estoque.CalcularTotalCusto();
+        totalvenda = estoque.CalcularTotalVenda();
+
+        String stringcusto = df.format(totalcusto);
+        String stringvenda = df.format(totalvenda);
+//        String dx = df.format(valor);
+        
+        informacoesestoque.addObject("estoque", estoque);
+        informacoesestoque.addObject("qtditens", totalitens);
+        informacoesestoque.addObject("totalcusto", stringcusto);
+        informacoesestoque.addObject("totalvenda", stringvenda);
 
 
         return informacoesestoque;
