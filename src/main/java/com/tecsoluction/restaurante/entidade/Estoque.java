@@ -225,7 +225,7 @@ public class Estoque implements Serializable {
 		  
 		  if(!getItens().containsKey(produto)){
           	
-          	vantigo = getItens().get(produto);
+          	//vantigo = getItens().get(produto);
           	vnovo = qtd;
           	double qtdnegativa = vantigo - vnovo;
             	items.put(produto, qtdnegativa);
