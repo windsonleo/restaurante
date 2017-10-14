@@ -56,6 +56,48 @@
 			      <td>${pedidovenda.id}</td>
                   <td>${pedidovenda.data}</td>
 				<td>${pedidovenda.situacao}</td>
+				<c:choose>
+				    <c:when test="${pedidocompra.status=='ABERTO'}">
+
+                  <td><span class="label label-info">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				   <c:when test="${pedidocompra.status=='PENDENTE'}">
+
+                  <td><span class="label label-warning">${pedidovenda.status}</span></td>
+
+				
+				    </c:when>
+				    
+				    <c:when test="${pedidocompra.status=='PRONTO'}">
+
+                  <td><span class="label label-lg">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:when test="${pedidocompra.status=='CANCELADO'}">
+
+                  <td><span class="label label-warning">${pedidovenda.status}</span></td>
+
+				
+				    </c:when>  
+				    
+				    <c:when test="${pedidocompra.status=='FINALIZADO'}">
+
+                  <td><span class="label label-ly">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:otherwise>
+
+
+				    </c:otherwise>
+				
+				</c:choose>
                   <td><span class="label label-info">${pedidovenda.status}</span></td>
                  <td>${pedidovenda.origempedido}</td>
                  <td>${pedidovenda.total}</td>
