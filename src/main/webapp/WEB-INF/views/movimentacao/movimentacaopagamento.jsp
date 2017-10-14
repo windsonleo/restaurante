@@ -23,7 +23,7 @@
           
           
           <div class="widget-content nopadding">
-            <table class="table table-striped data-table">
+            <table class="table table-bordered data-table">
             
 
               <thead>
@@ -60,7 +60,7 @@
                    <td>${pagamento.status}</td>
                    <td>${pagamento.valorPago}</td>
                    <td> ${pagamento.caixa}</td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> >> <a href="#">Movimentação Caixa </a>>> <a href="#" class="current">Fechar Caixa</a> </div>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> <a href="#">Movimentação Caixa </a><a href="#" class="current">Fechar Caixa</a> </div>
     <h1>Fechamento de Caixa ${caixa.id}</h1>
   </div>
   <div class="container-fluid"><hr>

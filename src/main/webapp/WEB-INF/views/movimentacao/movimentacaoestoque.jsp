@@ -63,7 +63,7 @@
                   <td>${estoque.nome}</td>
                   <td >${estoque.itens.size()}</td>
                   <td><span class="label label bg_lb">${estoque.isativo}</span></td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

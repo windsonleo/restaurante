@@ -60,7 +60,7 @@
                   <td>${empresa.nome}</td>
                   <td ><input type="text" value="${empresa.logo}"></td>
                   <td><span class="label label bg_lb">${empresa.isativo}</span></td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

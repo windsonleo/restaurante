@@ -57,7 +57,7 @@
                   <td>${fornecedor.cnpj}</td>
                    <td>${fornecedor.inscricaoestadual}</td>
                    <td><span class="label label bg_lb">${fornecedor.isativo}</span></td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

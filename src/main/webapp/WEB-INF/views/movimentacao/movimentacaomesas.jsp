@@ -47,7 +47,7 @@
                   <td>${mesa.id }</td>
                   <td>${mesa.numero }</td>
                   <td><span class="label label bg_lb">${mesa.status}</span></td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

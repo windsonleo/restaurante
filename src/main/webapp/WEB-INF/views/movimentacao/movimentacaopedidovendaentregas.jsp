@@ -51,12 +51,58 @@
                                 <c:forEach var="pedidovenda" items="${pedidovendaList}" varStatus="origempedido">
 
 
-		  			<tr class="success">
+		  			<tr class="gradeX">
 		
 		 				<td>${pedidovenda.id}</td>
 		                  <td>${pedidovenda.data}</td>
 						<td>${pedidovenda.situacao}</td>
-		                  <td><span class="label label-info">${pedidovenda.status}</span></td>
+		                  
+<%-- 		                  <td><span class="label label-info">${pedidovenda.status}</span></td> --%>
+		                
+		                	<c:choose>
+				    <c:when test="${pedidovenda.status=='ABERTO'}">
+
+                  <td><span class="label label-info">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				   <c:when test="${pedidovenda.status=='PENDENTE'}">
+
+                  <td><span class="label label-warning">${pedidovenda.status}</span></td>
+
+				
+				    </c:when>
+				    
+				    <c:when test="${pedidovenda.status=='PRONTO'}">
+
+                  <td><span class="label label-success">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:when test="${pedidovenda.status=='CANCELADO'}">
+
+                  <td><span class="label label-important">${pedidovenda.status}</span></td>
+
+				
+				    </c:when>  
+				    
+				    <c:when test="${pedidovenda.status=='FECHADO'}">
+
+                  <td><span class="label label-ly">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:otherwise>
+
+
+				    </c:otherwise>
+				
+				</c:choose>
+		                
+		                
 		                 <td>${pedidovenda.origempedido}</td>
 		                 <td>${pedidovenda.total}</td>
 		                 <td>${pedidovenda.cliente}</td>
@@ -65,7 +111,7 @@
 		                  <td>${pedidovenda.items}</td>
 		                   <td><span class="label label bg_lb"> ${pedidovenda.isativo}</span></td>
 		                   
-		                   <td class="options-widt">
+		                   <td class="options-width">
 								
 								
 								<a

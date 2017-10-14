@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido</a>>> <a href="#">Movimentação Pedido</a> >><a href="#" class="current">Detalhes Pedido</a> </div>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido</a><a href="#">Movimentação Pedido</a> <a href="#" class="current">Detalhes Pedido</a> </div>
     <h1>Detalhes da Pedido ${pedido.id }</h1>
   </div>
   <div class="container-fluid"><hr>

@@ -157,10 +157,10 @@ public class ProdutoController extends AbstractController<Produto> {
 
     
     @RequestMapping(value = "salvarfoto", method = RequestMethod.POST)
-  	public ModelAndView  SalvarFoto(@RequestParam CommonsMultipartFile file,HttpSession session,HttpServletRequest request){
+  	public String  SalvarFoto(@RequestParam CommonsMultipartFile file,HttpSession session,HttpServletRequest request,Model model){
     	
     	
-    	ModelAndView cadastro = new ModelAndView("cadastroproduto");
+//    	ModelAndView cadastro = new ModelAndView("cadastroproduto");
     	
     	String mensagem = "Sucesso ao salvar foto";
     	String erros = "Falha ao salvar foto";
@@ -190,19 +190,22 @@ public class ProdutoController extends AbstractController<Produto> {
         bout.flush();  
         bout.close();  
         
-        cadastro.addObject("mensagem", mensagem);
-        cadastro.addObject("filename", filename);
+        model.addAttribute("mensagem", mensagem);
+        model.addAttribute("filename", filename);
+    	model.addAttribute("produto", new Produto());
 
           
         }catch(Exception e){
         	
         	System.out.println(e);
         	
-        	cadastro.addObject("erros", erros + e);
+        	model.addAttribute("erros", erros + e);
+        	model.addAttribute("produto", new Produto());
+
         
         } 
         
-        return cadastro;  
+        return "redirect:/produto/cadastro";  
     	
   	}
     

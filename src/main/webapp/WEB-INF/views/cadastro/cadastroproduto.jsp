@@ -136,7 +136,7 @@
 				
 
 							<input id="foto" class="span4 m-wrap" name="foto"
-						type="text" value="${produto.foto}"
+						type="text" value="${filename}"
 						placeholder="Digite o Caminho da Foto" />			
 				
                 </div>

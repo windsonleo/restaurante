@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Mesa</a>>> <a href="#">Movimentação Mesa</a> >><a href="#" class="current">Detalhes Mesa</a> </div>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-th"></i> Mesa</a><a href="#">Movimentação Mesa</a> <a href="#" class="current">Detalhes Mesa</a> </div>
     <h1>Detalhes da Mesa ${mesa.id }</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -84,7 +84,7 @@
 			
 			
 			<div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Pedidos da Mesa</h5>
           </div>
           <div class="widget-content nopadding">
@@ -102,13 +102,13 @@
 		
 		  <c:when test="${pedido.id != null}">
 		  
-		  <li class="bg_lg span2"> <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
-         		<i class="icon-dashboard"></i>
+		  <li class="bg_lg"> <a href="${pageContext.request.contextPath}/pedidovenda/detalhes?id=${pedido.id}">
+         		<i class="icon-th"></i>
          	
          		 <div class="huge">${pedido.id}</div>
-                 <div>${pedido.cliente}</div>
-                  <div> ${pedido.status}</div> 
-                   <div> ${pedido.total}</div> 
+                 <div class="huge">${pedido.cliente}</div>
+                  <div class="huge"> ${pedido.status}</div> 
+                   <div class="huge"> ${pedido.total}</div> 
                   
                                      	<span class="label label-success">${pedidoList.size()}</span> 
                                       </a> 
