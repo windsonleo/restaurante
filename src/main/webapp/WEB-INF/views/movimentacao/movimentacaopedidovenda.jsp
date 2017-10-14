@@ -73,14 +73,14 @@
 				    
 				    <c:when test="${pedidovenda.status=='PRONTO'}">
 
-                  <td><span class="label label-lg">${pedidovenda.status}</span></td>
+                  <td><span class="label label-success">${pedidovenda.status}</span></td>
 
 				
 				    </c:when> 
 				    
 				    <c:when test="${pedidovenda.status=='CANCELADO'}">
 
-                  <td><span class="label label-warning">${pedidovenda.status}</span></td>
+                  <td><span class="label label-important">${pedidovenda.status}</span></td>
 
 				
 				    </c:when>  
