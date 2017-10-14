@@ -17,7 +17,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-play"></i></span><input type="password" id="senha" name="senha" placeholder="Password" />
+                            <span class="add-on bg_lg"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="Password" />
                         </div>
                     </div>
                 </div>

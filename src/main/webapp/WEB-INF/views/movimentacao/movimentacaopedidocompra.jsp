@@ -57,7 +57,50 @@
 			      <td>${pedidocompra.id}</td>
                   <td>${pedidocompra.data}</td>
 <%-- 				<td>${pedidocompra.situacao}</td> --%>
+<c:choose>
+				    <c:when test="${pedidocompra.status=='ABERTO'}">
+
                   <td><span class="label label-info">${pedidocompra.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				   <c:when test="${pedidocompra.status=='PENDENTE'}">
+
+                  <td><span class="label label-warning">${pedidocompra.status}</span></td>
+
+				
+				    </c:when>
+				    
+				    <c:when test="${pedidocompra.status=='PRONTO'}">
+
+                  <td><span class="label label-success">${pedidocompra.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:when test="${pedidocompra.status=='CANCELADO'}">
+
+                  <td><span class="label label-important">${pedidocompra.status}</span></td>
+
+				
+				    </c:when>  
+				    
+				    <c:when test="${pedidocompra.status=='FECHADO'}">
+
+                  <td><span class="label label-ly">${pedidocompra.status}</span></td>
+
+				
+				    </c:when> 
+				    
+				    <c:otherwise>
+
+
+				    </c:otherwise>
+				
+				</c:choose>
+
+<%--                   <td><span class="label label-info">${pedidocompra.status}</span></td> --%>
 <%--                  <td>${pedidocompra.origempedido}</td> --%>
                  <td>${pedidocompra.total}</td>
                  <td>${pedidocompra.fornecedor}</td>
@@ -65,7 +108,7 @@
 <%--                  <td>${pedidocompra.garcon}</td> --%>
                   <td>${pedidocompra.items}</td>
                    <td><span class="label label bg_lb"> ${pedidocompra.isativo}</span></td>
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a

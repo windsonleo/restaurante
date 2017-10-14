@@ -107,7 +107,7 @@
                   <td>${pedidovenda.items}</td>
                    <td><span class="label label bg_lb"> ${pedidovenda.isativo}</span></td>
                  
-                 <td class="options-widt">
+                 <td class="options-width">
 								
 								
 								<a
