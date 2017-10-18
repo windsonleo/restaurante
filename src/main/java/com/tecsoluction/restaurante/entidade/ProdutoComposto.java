@@ -26,84 +26,80 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 @Entity
-public class ProdutoComposto  extends Produto implements Serializable {
+public class ProdutoComposto extends Produto implements Serializable {
 
 
-	private static final long serialVersionUID = -5401174413867896341L;
-	
-	
-    @ElementCollection(fetch=FetchType.EAGER)
+    private static final long serialVersionUID = -5401174413867896341L;
+
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @MapKeyColumn(name = "id")
-    @Column(name="qtd")
-    @CollectionTable(name="itens_produtocompostos",joinColumns=@JoinColumn(name="id"))
+    @Column(name = "qtd")
+    @CollectionTable(name = "itens_produtocompostos", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item,Double> itens=new HashMap<>();
-   
+    private Map<Item, Double> itens = new HashMap<>();
 
-	
 
     public ProdutoComposto() {
         // TODO Auto-generated constructor stub
         // items = new ArrayList<Item>();
-    	super();
-    	
-    }
-    
+        super();
 
-    public ProdutoComposto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo,Map<Item,Double> itens,boolean esugestao ) {
-     
-    	super(id,foto,nome,codebar,descricao,un,precocusto,precocusto,fornecedor,cat,ativo,esugestao);
-    	
-    	this.itens = itens;
     }
 
 
-	public Map<Item,Double> getItens() {
-		return itens;
-	}
+    public ProdutoComposto(long id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, Map<Item, Double> itens, boolean esugestao) {
 
-	public void setItens(Map<Item,Double> itens) {
-		this.itens = itens;
-	}
-    
+        super(id, foto, nome, codebar, descricao, un, precocusto, precocusto, fornecedor, cat, ativo, esugestao);
+
+        this.itens = itens;
+    }
 
 
-    
+    public Map<Item, Double> getItens() {
+        return itens;
+    }
+
+    public void setItens(Map<Item, Double> itens) {
+        this.itens = itens;
+    }
+
+
     @Override
     public String toString() {
         return getNome().toUpperCase();
     }
-    
-    
-    
-    public double CalcularTotal( Map<Item,Double> pitens){
-    	
-        double totalpedido = 0.0;
+
+
+    public double CalcularTotal(Map<Item, Double> pitens) {
+
+        double totalpedido = 0.00;
 
 //     	Set<Item> keys = itens.keySet();
-  //	
+        //
 //  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
-  	
-      for(Item key: pitens.keySet()) {
-  		
-  		totalpedido = + totalpedido+key.getTotalItem();
-        
-  		
-  	}
+
+        for (Item key : pitens.keySet()) {
+
+            totalpedido = +totalpedido + key.getTotalItem();
+
+
+        }
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
 //        for (int i = 0; i < itens.size(); i++) {
 //        	
 //            totalpedido += totalpedido + itens.get(i).getTotalItem();
-  //
+        //
 //  			
 //  		}
 
-      	
-      	return totalpedido;
-      }
+        return DadosGerenciais.transfomarPreco(totalpedido);
+
+    }
 
 }

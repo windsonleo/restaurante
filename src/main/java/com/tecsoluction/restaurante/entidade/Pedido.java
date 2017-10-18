@@ -26,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 import org.apache.commons.collections.map.HashedMap;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -122,11 +123,11 @@ public abstract class Pedido {
     	
 //        return CalcularTotal(items);
     	
-    	return total;
+    	return DadosGerenciais.transfomarPreco(total);
     }
 
     public void setTotal(double total) {
-        this.total = total;
+        this.total = DadosGerenciais.transfomarPreco(total);
     }
 
 //    public List<Pagamento> getPagamentos() {
@@ -184,7 +185,7 @@ public boolean getIsativo(){
     
     public double CalcularTotal( Map<Item,Double> itens){
     	
-      double totalpedido = 0.0;
+      double totalpedido = 0.00;
 
 //   	Set<Item> keys = itens.keySet();
 //	
@@ -206,6 +207,6 @@ public boolean getIsativo(){
 //		}
 
     	
-    	return totalpedido;
+    	return DadosGerenciais.transfomarPreco(totalpedido);
     }
 }

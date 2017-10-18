@@ -1,6 +1,7 @@
- package com.tecsoluction.restaurante.entidade;
+package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,15 +29,15 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 public class Produto implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -5401174413867896341L;
+     *
+     */
+    private static final long serialVersionUID = -5401174413867896341L;
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
-   
+
     @Column(name = "foto")
     private String foto;
     @NotBlank
@@ -43,7 +45,7 @@ public class Produto implements Serializable {
     private String nome;
 
     @NotBlank
-	@Column(name = "codebar")
+    @Column(name = "codebar")
     private String codebar;
 
     @Column(name = "descricao")
@@ -52,75 +54,72 @@ public class Produto implements Serializable {
     @Column(name = "un_medida")
     @Enumerated(EnumType.STRING)
     private UnidadeMedida un_medida;
-    
+
     @Column(name = "preco_custo")
     private double precocusto;
-    
+
     @Column(name = "preco_venda")
     private double precovenda;
-    
+
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="fornecedor_id")
+    @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
     // @OneToMany(mappedBy = "produto")
     // private List<Item> items;
 
-    
-    @ManyToOne(cascade={CascadeType.REFRESH})
-    @JoinColumn(name="categoria_id",nullable=false)
+
+    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
-    
-    
+
+
 //    @ManyToOne(cascade={CascadeType.REFRESH})
 //    @JoinColumn(name="estoque_id",nullable=true)
 //    private Estoque estoque;
-    
-    
-    
-    @Column(name = "esugestao",nullable=true)
-	private boolean esugestao;
-	
-    
-    @Column(name = "isativo")
-	private boolean isativo;
-	
 
-    public Produto(long id,String foto,String nome,String codebar,String descricao,UnidadeMedida un, double precocusto,double precovenda,Fornecedor fornecedor,Categoria cat, boolean ativo, boolean esugestao ) {
-    	super();
-    	this.id=id;
-    	this.foto = foto;
-    	this.nome = nome;
-    	this.codebar = codebar;
-    	this.descricao = descricao;
-    	this.un_medida = un;
-    	this.precocusto = precocusto;
-    	this.precovenda= precovenda;
-    	this.fornecedor =fornecedor;
-    	this.categoria = cat;
-    	this.isativo = ativo;
-    	this.esugestao =esugestao;
-    	
-    	
-    	
+
+    @Column(name = "esugestao", nullable = true)
+    private boolean esugestao;
+
+
+    @Column(name = "isativo")
+    private boolean isativo;
+
+
+    public Produto(long id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, boolean esugestao) {
+        super();
+        this.id = id;
+        this.foto = foto;
+        this.nome = nome;
+        this.codebar = codebar;
+        this.descricao = descricao;
+        this.un_medida = un;
+        this.precocusto = precocusto;
+        this.precovenda = precovenda;
+        this.fornecedor = fornecedor;
+        this.categoria = cat;
+        this.isativo = ativo;
+        this.esugestao = esugestao;
+
+
     }
-    
+
     public Produto() {
-    	super();
+        super();
 //    	this.esugestao= false;
-    	
+
     }
-    
+
 //    public Produto(Categoria cat, Fornecedor forn) {
 //      
 //    	this.categoria = cat;
 //    	this.fornecedor = forn;
 //    	
 //    }
-    
-    
-    
+
+
     public Fornecedor getFornecedor() {
         return fornecedor;
     }
@@ -129,22 +128,22 @@ public class Produto implements Serializable {
         this.fornecedor = fornecedor;
     }
 
- 
+
     /**
-	 * @return the esugestao
-	 */
-	public boolean isEsugestao() {
-		return esugestao;
-	}
+     * @return the esugestao
+     */
+    public boolean isEsugestao() {
+        return esugestao;
+    }
 
-	/**
-	 * @param esugestao the esugestao to set
-	 */
-	public void setEsugestao(boolean esugestao) {
-		this.esugestao = esugestao;
-	}
+    /**
+     * @param esugestao the esugestao to set
+     */
+    public void setEsugestao(boolean esugestao) {
+        this.esugestao = esugestao;
+    }
 
-	public Categoria getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -159,28 +158,28 @@ public class Produto implements Serializable {
     public long getId() {
         return id;
     }
-    
-    public void setId(long id){
-    	
-    	this.id =id;
+
+    public void setId(long id) {
+
+        this.id = id;
     }
 
-    
+
     /**
-  	 * @return the nome
-  	 */
-  	public String getNome() {
-  		return nome;
-  	}
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
 
-  	/**
-  	 * @param nome the nome to set
-  	 */
-  	public void setNome(String nome) {
-  		this.nome = nome;
-  	}
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -198,19 +197,19 @@ public class Produto implements Serializable {
     }
 
     public double getPrecocusto() {
-        return precocusto;
+        return DadosGerenciais.transfomarPreco(precocusto);
     }
 
     public void setPrecocusto(double preco) {
-        this.precocusto = preco;
+        this.precocusto = DadosGerenciais.transfomarPreco(preco);
     }
 
     public double getPrecovenda() {
-        return precovenda;
+        return DadosGerenciais.transfomarPreco(precovenda);
     }
 
     public void setPrecovenda(double precoVenda) {
-        this.precovenda = precoVenda;
+        this.precovenda = DadosGerenciais.transfomarPreco(precoVenda);
     }
 
     public String getCodebar() {
@@ -220,8 +219,8 @@ public class Produto implements Serializable {
     public void setCodebar(String codebar) {
         this.codebar = codebar;
     }
-    
-    
+
+
     public String getFoto() {
         return foto;
     }
@@ -229,17 +228,17 @@ public class Produto implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-    
-    
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
+
+
+    public boolean getIsativo() {
+
+        return isativo;
+    }
+
+    public void setIsativo(boolean valor) {
+
+        this.isativo = valor;
+    }
 
     // public List<Item> getItems() {
     // return items;

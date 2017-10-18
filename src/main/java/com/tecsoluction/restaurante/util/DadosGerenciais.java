@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.util;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 import com.tecsoluction.restaurante.entidade.Produto;
 
@@ -151,6 +152,12 @@ public class DadosGerenciais implements Serializable{
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
+
+
+	public static double transfomarPreco(double numero) {
+		DecimalFormat formato = new DecimalFormat("#.##");
+		return Double.valueOf(formato.format(numero));
+	}
+
 
 }

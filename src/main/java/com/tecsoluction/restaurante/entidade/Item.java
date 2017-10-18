@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 
 @Entity
 @Table(name = "ITEM")
@@ -273,22 +274,22 @@ public class Item  implements Serializable, Comparable<Item>{
 
 
     public double getPrecoUnitario() {
-        return precoUnitario;
+        return DadosGerenciais.transfomarPreco(precoUnitario);
     }
 
 
     public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = precoUnitario;
+        this.precoUnitario = DadosGerenciais.transfomarPreco(precoUnitario);
     }
 
 
     public double getTotalItem() {
-        return qtd * precoUnitario;
+        return DadosGerenciais.transfomarPreco(qtd * precoUnitario);
     }
 
 
     public void setTotalItem(double totalItem) {
-        this.totalItem = totalItem;
+        this.totalItem = DadosGerenciais.transfomarPreco(totalItem);
     }
 
 

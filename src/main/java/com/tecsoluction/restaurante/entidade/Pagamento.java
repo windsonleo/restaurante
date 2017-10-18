@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -41,196 +42,175 @@ public class Pagamento implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<PedidoVenda> pedidos;
-    
+
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<FormaPagamento> formaPagamentos;
-    
+
     private double valorTotalPagamento;
-    
+
     /* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+     * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return "Pagamento [valorPago=" + valorPago + "]";
-	}
+    @Override
+    public String toString() {
+        return "Pagamento [valorPago=" + valorPago + "]";
+    }
 
 
-
-	// REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
+    // REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
     private String status;
-    
+
     private double valorPago;
-    
+
     @ManyToOne
-    @JoinColumn(name="caixa_id")
+    @JoinColumn(name = "caixa_id")
     private Caixa caixa;
-    
-    
-    
+
+
     /**
-	 * @return the formaPagamentos
-	 */
-	public Set<FormaPagamento> getFormaPagamentos() {
-		return formaPagamentos;
-	}
+     * @return the formaPagamentos
+     */
+    public Set<FormaPagamento> getFormaPagamentos() {
+        return formaPagamentos;
+    }
 
 
-
-	/**
-	 * @param formaPagamentos the formaPagamentos to set
-	 */
-	public void setFormaPagamentos(Set<FormaPagamento> formaPagamentos) {
-		this.formaPagamentos = formaPagamentos;
-	}
-
+    /**
+     * @param formaPagamentos the formaPagamentos to set
+     */
+    public void setFormaPagamentos(Set<FormaPagamento> formaPagamentos) {
+        this.formaPagamentos = formaPagamentos;
+    }
 
 
-	public Pagamento() {
-		// TODO Auto-generated constructor stub
-	}
+    public Pagamento() {
+        // TODO Auto-generated constructor stub
+    }
 
 
-
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
 
 
-	/**
-	 * @return the datapagamento
-	 */
-	public Date getDatapagamento() {
-		return datapagamento;
-	}
+    /**
+     * @return the datapagamento
+     */
+    public Date getDatapagamento() {
+        return datapagamento;
+    }
 
 
-
-	/**
-	 * @return the pedidos
-	 */
-	public List<PedidoVenda> getPedidos() {
-		return pedidos;
-	}
-
+    /**
+     * @return the pedidos
+     */
+    public List<PedidoVenda> getPedidos() {
+        return pedidos;
+    }
 
 
-	/**
-	 * @return the formaPagamento
-	 */
+    /**
+     * @return the formaPagamento
+     */
 //	public Set<FormaPagamento> getFormaPagamento() {
 //		return formaPagamentos;
 //	}
 
 
-
-	/**
-	 * @return the valorTotalPagamento
-	 */
-	public double getValorTotalPagamento() {
-		return valorTotalPagamento;
-	}
-
+    /**
+     * @return the valorTotalPagamento
+     */
+    public double getValorTotalPagamento() {
+        return valorTotalPagamento;
+    }
 
 
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
-	}
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
 
 
-
-	/**
-	 * @return the valorPago
-	 */
-	public double getValorPago() {
-		return valorPago;
-	}
-
+    /**
+     * @return the valorPago
+     */
+    public double getValorPago() {
+        return DadosGerenciais.transfomarPreco(valorPago);
+    }
 
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
 
-
-	/**
-	 * @param datapagamento the datapagamento to set
-	 */
-	public void setDatapagamento(Date datapagamento) {
-		this.datapagamento = datapagamento;
-	}
-
+    /**
+     * @param datapagamento the datapagamento to set
+     */
+    public void setDatapagamento(Date datapagamento) {
+        this.datapagamento = datapagamento;
+    }
 
 
-	/**
-	 * @param pedidos the pedidos to set
-	 */
-	public void setPedidos(List<PedidoVenda> pedidos) {
-		this.pedidos = pedidos;
-	}
+    /**
+     * @param pedidos the pedidos to set
+     */
+    public void setPedidos(List<PedidoVenda> pedidos) {
+        this.pedidos = pedidos;
+    }
 
 
-
-	/**
-	 * @param formaPagamento the formaPagamento to set
-	 */
+    /**
+     * @param formaPagamento the formaPagamento to set
+     */
 //	public void setFormaPagamento(Set<FormaPagamento> formaPagamento) {
 //		this.formaPagamentos = formaPagamento;
 //	}
 
 
-
-	/**
-	 * @param valorTotalPagamento the valorTotalPagamento to set
-	 */
-	public void setValorTotalPagamento(double valorTotalPagamento) {
-		this.valorTotalPagamento = valorTotalPagamento;
-	}
-
+    /**
+     * @param valorTotalPagamento the valorTotalPagamento to set
+     */
+    public void setValorTotalPagamento(double valorTotalPagamento) {
+        this.valorTotalPagamento = DadosGerenciais.transfomarPreco(valorTotalPagamento);
+    }
 
 
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
-
-	/**
-	 * @param valorPago the valorPago to set
-	 */
-	public void setValorPago(double valorPago) {
-		this.valorPago = valorPago;
-	}
-
+    /**
+     * @param valorPago the valorPago to set
+     */
+    public void setValorPago(double valorPago) {
+        this.valorPago = DadosGerenciais.transfomarPreco(valorPago);
+    }
 
 
-	public Caixa getCaixa() {
-		return caixa;
-	}
+    public Caixa getCaixa() {
+        return caixa;
+    }
 
 
+    public void setCaixa(Caixa caixa) {
+        this.caixa = caixa;
+    }
 
-	public void setCaixa(Caixa caixa) {
-		this.caixa = caixa;
-	}
-    
-    
-    
+
 }
