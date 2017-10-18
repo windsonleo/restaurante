@@ -23,13 +23,10 @@ public abstract class AbstractController<Entity> {
         this.entityAlias = entityAlias;
     }
 
-    
+
     protected abstract AbstractEntityDao<Entity> getDao();
-    
-    
-    
-    
-    
+
+
 //    @ModelAttribute
 //    public void addAttributes(Model model) {
 //        
@@ -37,15 +34,15 @@ public abstract class AbstractController<Entity> {
 //       
 //        model.addAttribute("usuarioAtt", usuarioAtt);
 //    }
-    
+
 
     @RequestMapping(value = "cadastro", method = RequestMethod.GET)
     public ModelAndView cadastrarEntity() {
 
         ModelAndView cadastro = new ModelAndView("cadastro" + entityAlias);
-        
-        List<Entity> entityList = getDao().getAll();        
-        cadastro.addObject("acao","add");
+
+        List<Entity> entityList = getDao().getAll();
+        cadastro.addObject("acao", "add");
 
 
         return cadastro;
@@ -55,37 +52,34 @@ public abstract class AbstractController<Entity> {
 
     @Transactional
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ModelAndView AdicionarEntity( @ModelAttribute @Valid Entity entity,BindingResult result
-			, RedirectAttributes attributes) {
+    public ModelAndView AdicionarEntity(@ModelAttribute @Valid Entity entity, BindingResult result
+            , RedirectAttributes attributes) {
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
-    	if (result.hasErrors()) {
-			
-        
-        System.out.println("erro ao add:"+ entityAlias+"erro:"+result.getObjectName());
-        attributes.addFlashAttribute("erros", "Erro ao Salvar."+result.getFieldError());
+        if (result.hasErrors()) {
+
+
+            System.out.println("erro ao add:" + entityAlias + "erro:" + result.getObjectName());
+            attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
 //        attributes.a
-        
-    	}else{
-    		
-           getDao().add(entity);
-            System.out.println("add:"+ entityAlias);
+
+        } else {
+
+            getDao().add(entity);
+            System.out.println("add:" + entityAlias);
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
             attributes.addFlashAttribute("entity", entity.toString());
 
 
-
-
-    	}
+        }
 //        getDao().PegarPorId(entity);
 
         cadastroEntity.addObject("entity", entity);
 
-      
-        
+
         return cadastroEntity;  //cadastroEntity;
-       
+
 //        return new ModelAndView("redirect:/" + entityAlias + "/cadastro");
     }
 
@@ -120,13 +114,13 @@ public abstract class AbstractController<Entity> {
     @Transactional
     @RequestMapping(value = "edicao", method = RequestMethod.POST)
     public ModelAndView editarEntity(HttpServletRequest request, Entity entity) {
-       
-    	Long idf = Long.parseLong(request.getParameter("id"));
 
-    	//Entity entity2 = getDao().PegarPorId(idf);
-    	
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+        //Entity entity2 = getDao().PegarPorId(idf);
+
 //        entity2 = getDao().PegarPorId(idf);
-    	 getDao().editar(entity);
+        getDao().editar(entity);
 
 
         return new ModelAndView("redirect:/" + entityAlias + "/" + "movimentacao");

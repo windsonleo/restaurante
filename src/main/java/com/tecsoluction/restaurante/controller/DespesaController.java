@@ -23,19 +23,19 @@ public class DespesaController extends AbstractController<Despesa> {
     private
     final
     DespesaDAO dao;
-    
+
     private final UsuarioDAO usudao;
 
 
     @Autowired
-    public DespesaController(DespesaDAO dao,UsuarioDAO daousu) {
+    public DespesaController(DespesaDAO dao, UsuarioDAO daousu) {
         super("despesa");
         this.dao = dao;
         this.usudao = daousu;
     }
 
     @Override
-    protected AbstractEntityDao<Despesa> getDao() {
+    protected DespesaDAO getDao() {
         return dao;
     }
 
@@ -53,10 +53,10 @@ public class DespesaController extends AbstractController<Despesa> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-    	Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
         List<Despesa> despesaList = getDao().getAll();
         model.addAttribute("despesaList", despesaList);
         model.addAttribute("usuarioAtt", usuario);

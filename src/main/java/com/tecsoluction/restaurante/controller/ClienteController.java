@@ -62,9 +62,6 @@ public class ClienteController extends AbstractController<Cliente> {
     
     private Cliente cliente;
 
-    
-    
-
     @Autowired
     public ClienteController(ClienteDAO dao,UsuarioDAO daousu,EnderecoDAO enddao) {
         super("cliente");
@@ -72,16 +69,18 @@ public class ClienteController extends AbstractController<Cliente> {
         this.usudao = daousu;
         this.enddao =enddao;
     }
-    
-    
+
+	@Override
+	protected ClienteDAO getDao() {
+		// TODO Auto-generated method stub
+		return dao;
+	}
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
         binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enddao) {
         });
-     
-
-
     }
 
 	
@@ -126,12 +125,6 @@ public class ClienteController extends AbstractController<Cliente> {
 
 
     }
-
-	@Override
-	protected AbstractEntityDao<Cliente> getDao() {
-		// TODO Auto-generated method stub
-		return dao;
-	}
 	
 	@RequestMapping(value = "/novos", method = RequestMethod.GET)
 	public ModelAndView NovosClientes(Locale locale, Model model) {

@@ -30,87 +30,74 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 public class FornecedorController extends AbstractController<Fornecedor> {
 
     private final FornecedorDAO dao;
-    
-    
-    
-    
+
     private final UsuarioDAO usudao;
 
-    
-    
 
     @Autowired
     public FornecedorController(FornecedorDAO dao, UsuarioDAO daousu) {
         super("fornecedor");
         this.dao = dao;
         this.usudao = daousu;
-    
-    
     }
-    
-    
+
+    @Override
+    protected FornecedorDAO getDao() {
+        return dao;
+    }
+
+
     @ModelAttribute
     public void addAttributes(Model model) {
-
 //        List<Cliente> clienteList = dao.getAll();
         List<Fornecedor> fornecedorList = dao.getAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
-        
+
         Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
-        
-		model.addAttribute("usuarioAtt", usuario);
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("fornecedorList", fornecedorList);
 //        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("umList", umList);
-
-
     }
 
-    
-
-    @Override
-    protected AbstractEntityDao<Fornecedor> getDao() {
-        return dao;
-    }
-    
-    
     @RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
-  	public ModelAndView  gerenciarFornecedorLocalizar(HttpServletRequest request){
-    	
-    	
-    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
-    	
-    	
-    	Fornecedor fornecedor = dao.PegarPorId(idf);
-    	 
-    	gerencia.addObject("fornecedor", fornecedor);
+    public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
 
-  		
-  		return gerencia;
-  	}
+
+        long idf = Long.parseLong(request.getParameter("id"));
+
+        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+
+
+        Fornecedor fornecedor = dao.PegarPorId(idf);
+
+        gerencia.addObject("fornecedor", fornecedor);
+
+
+        return gerencia;
+    }
 
     @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-  	public ModelAndView  gerenciafornecedor(HttpServletRequest request){
-    	
-    	
+    public ModelAndView gerenciafornecedor(HttpServletRequest request) {
+
+
 //    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
-    	
-    	
+
+        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+
+
 //    	Produto produto = dao.PegarPorId(idf);
-    	 
+
 //    	gerencia.addObject("produto", produto);
 
-  		
-  		return gerencia;
-  	}
-     
-    
+
+        return gerencia;
+    }
+
+
 }

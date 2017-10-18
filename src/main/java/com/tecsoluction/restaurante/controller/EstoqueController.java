@@ -38,39 +38,44 @@ public class EstoqueController extends AbstractController<Estoque> {
 
     private
     final
-    AbstractEntityDao<Estoque> dao;
-    
+    EstoqueDAO dao;
+
     private
     final
     ProdutoDAO prodDAO;
-  
-    
+
+
     private final UsuarioDAO usudao;
-    
+
     private final ItemDAO itdao;
 
 
     @Autowired
-    public EstoqueController(AbstractEntityDao<Estoque> dao,UsuarioDAO daousu,ItemDAO itdao,ProdutoDAO pdao) {
+    public EstoqueController(EstoqueDAO dao, UsuarioDAO daousu, ItemDAO itdao, ProdutoDAO pdao) {
         super("estoque");
         this.dao = dao;
         this.usudao = daousu;
-        this.itdao= itdao;
+        this.itdao = itdao;
         this.prodDAO = pdao;
     }
-    
-    
+
+
+    @Override
+    protected EstoqueDAO getDao() {
+        return dao;
+    }
+
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
         binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itdao) {
 
         });
-        
 
     }
-    
-    
+
+
     @ModelAttribute
     public void addAttributes(Model model) {
 
@@ -78,13 +83,13 @@ public class EstoqueController extends AbstractController<Estoque> {
 //        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
-        
+
         Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
-        
-		model.addAttribute("usuarioAtt", usuario);
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
 //        model.addAttribute("clienteList", clienteList);
 //        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("umList", umList);
@@ -93,26 +98,19 @@ public class EstoqueController extends AbstractController<Estoque> {
     }
 
 
-    @Override
-    protected AbstractEntityDao<Estoque> getDao() {
-        return dao;
-    }
-    
-    
-    
     @RequestMapping(value = "informacoes", method = RequestMethod.GET)
     public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
 
 
         long idf = Long.parseLong(request.getParameter("id"));
         ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
-        
+
         Estoque estoque = dao.PegarPorId(idf);
-        
+
 //        List<Produto>produtos = dao.getAll();
-        
+
 //        double qtditens = estoque.getItens().values().size();
-        
+
 //        informacoesestoque.addObject("estoque", estoque);
 //        informacoesestoque.addObject("qtditens", qtditens);
 
@@ -120,28 +118,27 @@ public class EstoqueController extends AbstractController<Estoque> {
         double totalcusto = 0.0;
         double totalvenda = 0.0;
 
-      
-       
-       Collection<Double> itenstotal = estoque.getItens().values();
-        
-        for (Iterator iterator = itenstotal.iterator(); iterator.hasNext();) {
-			Double double1 = (Double) iterator.next();
-			
-			totalitens= totalitens + double1;
-			
-		}
-        
-        
+
+        Collection<Double> itenstotal = estoque.getItens().values();
+
+        for (Iterator iterator = itenstotal.iterator(); iterator.hasNext(); ) {
+            Double double1 = (Double) iterator.next();
+
+            totalitens = totalitens + double1;
+
+        }
+
+
         DecimalFormat df = new DecimalFormat("0.##");
-       
-        
+
+
         totalcusto = estoque.CalcularTotalCusto();
         totalvenda = estoque.CalcularTotalVenda();
 
         String stringcusto = df.format(totalcusto);
         String stringvenda = df.format(totalvenda);
 //        String dx = df.format(valor);
-        
+
         informacoesestoque.addObject("estoque", estoque);
         informacoesestoque.addObject("qtditens", totalitens);
         informacoesestoque.addObject("totalcusto", stringcusto);
@@ -149,7 +146,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 
 
         return informacoesestoque;
-    } 
-    
-    
+    }
+
+
 }

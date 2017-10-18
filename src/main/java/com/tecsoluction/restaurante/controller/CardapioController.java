@@ -31,7 +31,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 
 @Controller
-@RequestMapping(value = "cardapio/")
+@RequestMapping(value = "cardapio")
 public class CardapioController   {
 
     private

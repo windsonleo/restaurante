@@ -47,17 +47,14 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @Controller
 @RequestMapping(value = "pedidocompra/")
 public class PedidoCompraController extends AbstractController<PedidoCompra> {
-	
+
     private final UsuarioDAO usudao;
 
-	
-	private PedidoCompra pv;
-
+    private PedidoCompra pv;
 
     private
     final
     PedidoCompraDAO pedidoCompraDao;
-
 
     private
     final
@@ -66,33 +63,31 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     private
     final
     ProdutoDAO produtopedidovendaDao;
-    
-
-	private
-	final
-	MesaDAO mesaDao;
 
     private
     final
-   FornecedorDAO fornecedorDao;
-    
+    MesaDAO mesaDao;
+
+    private
+    final
+    FornecedorDAO fornecedorDao;
+
 
     private
     final
     GarconDAO garconDao;
 
-    private Map<Item,Double> itens = new HashedMap();
-    
+    private Map<Item, Double> itens = new HashedMap();
+
     private List<Produto> produtosList;
-    
+
     private List<Fornecedor> fornecedores;
-    
+
     private double totalpedido;
 
 
-
     @Autowired
-    public PedidoCompraController(PedidoCompraDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, FornecedorDAO fdao,MesaDAO daomesa, GarconDAO daogarcon,UsuarioDAO daousu) {
+    public PedidoCompraController(PedidoCompraDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, FornecedorDAO fdao, MesaDAO daomesa, GarconDAO daogarcon, UsuarioDAO daousu) {
 
         super("pedidocompra");
         this.pedidoCompraDao = dao;
@@ -105,65 +100,58 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
+    @Override
+    protected PedidoCompraDAO getDao() {
+        return pedidoCompraDao;
+    }
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-    	
+        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorDao) {
 
-    	binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorDao){
-    		
-    	});
-    	
-    	binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconDao){
-    		
-    	});
-  	
-    	binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaDao){
-		
-    	});
-    	
-    	binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itempedidovendaDao){
-    		
-    	});
+        });
+
+        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconDao) {
+
+        });
+
+        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaDao) {
+
+        });
+
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itempedidovendaDao) {
+
+        });
 
     }
-
-
-    @Override
-    protected AbstractEntityDao<PedidoCompra> getDao() {
-
-    	return pedidoCompraDao;
-    }
-
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-    	List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
+        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
         TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
 
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
-        
+
         SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
 
-         fornecedores = fornecedorDao.getAll();       
-        
-       
+        fornecedores = fornecedorDao.getAll();
+
+
         Usuario usuario = new Usuario();
-    		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-    		
-    		usuario = usudao.PegarPorNome(usuario.getUsername());
-            
-    		model.addAttribute("usuarioAtt", usuario);
-		
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
+
         model.addAttribute("pedidoCompraList", pedidoCompraList);
-        model.addAttribute("fornecedores", fornecedores);        
+        model.addAttribute("fornecedores", fornecedores);
         model.addAttribute("tipoStatusList", tipoStatusList);
 
     }
-
 
 
     @RequestMapping(value = "finalizacaovenda", method = RequestMethod.POST)
@@ -176,104 +164,97 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         return finalizacaocompra;
     }
-    
- 
+
+
     @RequestMapping(value = "novospedidos", method = RequestMethod.GET)
     public ModelAndView NovosPedidos(HttpServletRequest request) {
 
 
         ModelAndView novospedidos = new ModelAndView("novospedidos");
 
-        	List<PedidoCompra> compras = pedidoCompraDao.getAll();
-        	
-        	novospedidos.addObject("pedidocomprasList", compras);
+        List<PedidoCompra> compras = pedidoCompraDao.getAll();
+
+        novospedidos.addObject("pedidocomprasList", compras);
 
         return novospedidos;
-    } 
-    
-    
+    }
+
+
     @RequestMapping(value = "additem", method = RequestMethod.GET)
     public ModelAndView additemvendaForm(HttpServletRequest request) {
 
 
         Long idf = Long.parseLong(request.getParameter("id"));
-      
+
         ModelAndView additempedidovenda = new ModelAndView("additempedidocompra");
 
         this.pv = pedidoCompraDao.PegarPorId(idf);
 
 
-       produtosList = produtopedidovendaDao.getAll();
-       
-       
-       
-       totalpedido = pv.CalcularTotal(pv.getItems());
-       
-       pv.setTotal(totalpedido);
-       
-      pedidoCompraDao.editar(pv);
+        produtosList = produtopedidovendaDao.getAll();
+
+
+        totalpedido = pv.CalcularTotal(pv.getItems());
+
+        pv.setTotal(totalpedido);
+
+        pedidoCompraDao.editar(pv);
 
         additempedidovenda.addObject("pedidocompra", pv);
         additempedidovenda.addObject("produtosList", produtosList);
         additempedidovenda.addObject("totalpedidocompra", pv.CalcularTotal(pv.getItems()));
 
 
-
         return additempedidovenda;
     }
-    
-    
-    
+
+
     @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
     public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
 
-    	
-    	
 
         Long idf = Long.parseLong(request.getParameter("id"));
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
 
-    	 
-        
         ModelAndView additempedidocompra = new ModelAndView("additempedidocompra");
-       
-        Produto produto;
-        
-        produto = produtopedidovendaDao.PegarPorId(idf);
-        
-    	if(produto == null){
-    		
 
-    		String erros = "Nao Existe esse Produto";
-    		
-    		additempedidocompra.addObject("erros",erros);
+        Produto produto;
+
+        produto = produtopedidovendaDao.PegarPorId(idf);
+
+        if (produto == null) {
+
+
+            String erros = "Nao Existe esse Produto";
+
+            additempedidocompra.addObject("erros", erros);
             additempedidocompra.addObject("pedidocompra", pv);
             additempedidocompra.addObject("produtosList", produtosList);
-            
-    		return additempedidocompra;
-    	}
-        
+
+            return additempedidocompra;
+        }
+
         pv = pedidoCompraDao.PegarPorId(pv.getId());
-        
-        
-        Item item = new Item(produto,pv);
+
+
+        Item item = new Item(produto, pv);
         item.setQtd(prodqtd);
 
-       // pv.getItems().put(item,item.getQtd());
-        
+        // pv.getItems().put(item,item.getQtd());
+
         itens = pv.getItems();
-        itens.put(item,item.getQtd());
+        itens.put(item, item.getQtd());
         pv.setItems(itens);
         pv.setTotal(pv.CalcularTotal(itens));
         pv.setStatus(StatusPedido.PENDENTE);
 
-          itempedidovendaDao.add(item);
-          
+        itempedidovendaDao.add(item);
 
-          pedidoCompraDao.editar(pv);
 
-        
+        pedidoCompraDao.editar(pv);
+
+
         System.out.println(pv.getItems().toString());
         System.out.println(pv.getTotal());
 
@@ -283,123 +264,116 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         return additempedidocompra;
     }
-    
 
 
-	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
-	public ModelAndView  detalhesPedidoCompra(HttpServletRequest request){
-  	
-  	
-  	long idf = Long.parseLong(request.getParameter("id"));
-  	
-  	ModelAndView detalhespedidocompra= new ModelAndView("detalhespedidocompra");
-  	
-  	
-  	PedidoCompra pedido= pedidoCompraDao.PegarPorId(idf);
-  	 
-  	detalhespedidocompra.addObject("pedido", pedido);
+    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
+    public ModelAndView detalhesPedidoCompra(HttpServletRequest request) {
 
-		
-		return detalhespedidocompra;
-	}
-	
-	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-	public ModelAndView  detalhesItem(HttpServletRequest request){
-  	
-  	
-  	Long idf = Long.parseLong(request.getParameter("id"));
-  	
-  	
-  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
-  	
-  	
-  	Item item = itempedidovendaDao.PegarPorId(idf);
-  	 
 
-  	detalhesitem.addObject("item", item);
+        long idf = Long.parseLong(request.getParameter("id"));
 
-		
-		return detalhesitem;
-	}
-	
-	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
-	public ModelAndView  deleteItemPedidoCompra(HttpServletRequest request){
-  	
-  	
-  	Long idf = Long.parseLong(request.getParameter("id"));  	
-  	
-  	 pedidoCompraDao.delete(idf);
-  	 
+        ModelAndView detalhespedidocompra = new ModelAndView("detalhespedidocompra");
 
-		
-  	return new ModelAndView("redirect:/pedidocompra/additem?id=" + pv.getId());	
-  	
-	}
-	
-	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
-	public ModelAndView  entregasPedidoVenda(HttpServletRequest request){
-  	
-  	
-		
+
+        PedidoCompra pedido = pedidoCompraDao.PegarPorId(idf);
+
+        detalhespedidocompra.addObject("pedido", pedido);
+
+
+        return detalhespedidocompra;
+    }
+
+    @RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+    public ModelAndView detalhesItem(HttpServletRequest request) {
+
+
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+
+        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+
+
+        Item item = itempedidovendaDao.PegarPorId(idf);
+
+
+        detalhesitem.addObject("item", item);
+
+
+        return detalhesitem;
+    }
+
+    @RequestMapping(value = "/item/delete", method = RequestMethod.GET)
+    public ModelAndView deleteItemPedidoCompra(HttpServletRequest request) {
+
+
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+        pedidoCompraDao.delete(idf);
+
+
+        return new ModelAndView("redirect:/pedidocompra/additem?id=" + pv.getId());
+
+    }
+
+    @RequestMapping(value = "/entregas", method = RequestMethod.GET)
+    public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
+
+
         List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
 
-  	
-  	
-  	ModelAndView entregas= new ModelAndView("movimentacaopedidovendaentregas");
-  	entregas.addObject("pedidovendaList",pedidoCompraList);
-  	
 
-		
-  	return entregas;	
-  	
-	}
+        ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
+        entregas.addObject("pedidovendaList", pedidoCompraList);
 
-	@RequestMapping(value = "/aprovar", method = RequestMethod.GET)
-	public ModelAndView  AprovarPedidoCompra(HttpServletRequest request){
-  	
-	  	Long idf = Long.parseLong(request.getParameter("id"));  	
 
-		
+        return entregas;
+
+    }
+
+    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+    public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
+
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+
 //        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
 
-  	PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
-  	
-  	pc.setStatus(StatusPedido.PRONTO);
-  	
-  	pedidoCompraDao.editar(pc);
-  	
-  	ModelAndView home= new ModelAndView("home");
-  	
+        PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
+
+        pc.setStatus(StatusPedido.PRONTO);
+
+        pedidoCompraDao.editar(pc);
+
+        ModelAndView home = new ModelAndView("home");
+
 //  	home.addObject("pedidovendaList",pedidoCompraList);
-  	
 
-		
-  	return new ModelAndView("redirect:/home");	
-  	
-	}
 
-	
-	@RequestMapping(value = "/cancelar", method = RequestMethod.GET)
-	public ModelAndView  CancelarPedidoCompra(HttpServletRequest request){
-  	
-	  	Long idf = Long.parseLong(request.getParameter("id"));  	
+        return new ModelAndView("redirect:/home");
 
-		
+    }
+
+
+    @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
+    public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
+
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+
 //        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
 
-  	PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
-  	
-  	pc.setStatus(StatusPedido.CANCELADO);
-  	
-  	pedidoCompraDao.editar(pc);
-  	
-  	ModelAndView home= new ModelAndView("home");
-  	
-//  	home.addObject("pedidovendaList",pedidoCompraList);
-  	
+        PedidoCompra pc = pedidoCompraDao.PegarPorId(idf);
 
-		
-  	return new ModelAndView("redirect:/home");	
-  	
-	}
+        pc.setStatus(StatusPedido.CANCELADO);
+
+        pedidoCompraDao.editar(pc);
+
+        ModelAndView home = new ModelAndView("home");
+
+//  	home.addObject("pedidovendaList",pedidoCompraList);
+
+
+        return new ModelAndView("redirect:/home");
+
+    }
 }

@@ -114,6 +114,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         this.estdao = estdao;
     }
 
+	@Override
+	protected RecebimentoDAO getDao() {
+		return recebimentoDao;
+	}
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
@@ -136,13 +141,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     	});
 
     }
-
-
-    @Override
-    protected AbstractEntityDao<Recebimento> getDao() {
-        return recebimentoDao;
-    }
-
 
     @ModelAttribute
     public void addAttributes(Model model) {

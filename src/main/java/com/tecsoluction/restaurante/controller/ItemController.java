@@ -25,10 +25,9 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 @RequestMapping(value = "item/")
 public class ItemController extends AbstractController<Item> {
 
-
     private
     ItemDAO dao;
-    
+
     private ProdutoDAO produtodao;
 
 //	private
@@ -48,30 +47,29 @@ public class ItemController extends AbstractController<Item> {
 //    }
 
     @Autowired
-    public ItemController(ItemDAO itemdao,ProdutoDAO proddao) {
+    public ItemController(ItemDAO itemdao, ProdutoDAO proddao) {
         super("item");
         this.dao = itemdao;
         this.produtodao = proddao;
 
     }
-    
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-    	
-
-    	binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtodao){
-    		
-    	});
-    	
-
-    }
-
 
     @Override
-    protected AbstractEntityDao<Item> getDao() {
+    protected ItemDAO getDao() {
         return dao;
     }
 
+
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+
+
+        binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtodao) {
+
+        });
+
+
+    }
 
 //    @RequestMapping(value = "additemvenda/", method = RequestMethod.GET)
 //	public ModelAndView  additemvenda(HttpServletRequest request){
@@ -94,30 +92,30 @@ public class ItemController extends AbstractController<Item> {
 //		return additemvenda;
 //	}
 
-	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
-	public ModelAndView  detalhesItem(HttpServletRequest request){
-  	
-  	
-  	Long idf = Long.parseLong(request.getParameter("id"));
-  	
-  	
-  	ModelAndView detalhesitem= new ModelAndView("detalhesitem");
-  	
-  	
-  	Item item = dao.PegarPorId(idf);
-  	 
-  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-  //	 pedidos = pedidovendadao.getAll();
-  	
-  	
- // 	List<Produto> produtoList = produtoDao.getAll();
-  //	List<Item> itemList = dao.getAll();
-  	
-  //	detalhesmesa.addObject("itemList", itemList);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-  	detalhesitem.addObject("item", item);
+    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
+    public ModelAndView detalhesItem(HttpServletRequest request) {
 
-		
-		return detalhesitem;
-	}
+
+        Long idf = Long.parseLong(request.getParameter("id"));
+
+
+        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+
+
+        Item item = dao.PegarPorId(idf);
+
+        // mudar para trazer pelo id da mesa e pelo status da mesa
+        //	 pedidos = pedidovendadao.getAll();
+
+
+        // 	List<Produto> produtoList = produtoDao.getAll();
+        //	List<Item> itemList = dao.getAll();
+
+        //	detalhesmesa.addObject("itemList", itemList);
+//  	detalhescliente.addObject("pedidoList", pedidos);
+        detalhesitem.addObject("item", item);
+
+
+        return detalhesitem;
+    }
 }

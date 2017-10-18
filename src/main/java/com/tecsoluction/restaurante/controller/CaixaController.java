@@ -65,18 +65,8 @@ public class CaixaController extends AbstractController<Caixa> {
     private final UsuarioDAO usudao;
     
     List<PedidoVenda> pedidoVendaLista;
-    
 
-
-
-
-    
     List<FormaPagamento> formapagamentoLista;
-
-    
-    
-    
-
 
     @Autowired
     public CaixaController(CaixaDAO CDAO,PedidoVendaDAO dao,DespesaDAO despdao,UsuarioDAO daousu,FormaPagamentoDAO formdao,PagamentoDAO pdao) {
@@ -89,6 +79,11 @@ public class CaixaController extends AbstractController<Caixa> {
         this.despdao = despdao;
     }
 
+    @Override
+	protected CaixaDAO getDao() {
+		// TODO Auto-generated method stub
+		return cdao;
+	}
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
@@ -409,13 +404,6 @@ public class CaixaController extends AbstractController<Caixa> {
   	return fecharcaixa;	
   	
 	}
-
-	@Override
-	protected AbstractEntityDao<Caixa> getDao() {
-		// TODO Auto-generated method stub
-		return cdao;
-	}
-
 
 	@SuppressWarnings("null")
 	public List<PedidoVenda> PedidoPorData(Date ini, Date fim){

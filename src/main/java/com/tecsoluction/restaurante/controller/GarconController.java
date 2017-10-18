@@ -28,79 +28,75 @@ public class GarconController extends AbstractController<Garcon> {
 
     private
     final
-    AbstractEntityDao<Garcon> dao;
-    
+    GarconDAO dao;
+
     private final UsuarioDAO usudao;
 
 
     @Autowired
-    public GarconController(GarconDAO dao,UsuarioDAO daousu) {
+    public GarconController(GarconDAO dao, UsuarioDAO daousu) {
         super("garcon");
         this.dao = dao;
         this.usudao = daousu;
     }
-    
-    
+
+    @Override
+    protected GarconDAO getDao() {
+        return dao;
+    }
+
     @ModelAttribute
     public void addAttributes(Model model) {
 
 //        List<Cliente> clienteList = dao.getAll();
-        List<Garcon> garconList =  dao.getAll();
+        List<Garcon> garconList = dao.getAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
-        
+
         Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
-        
-		model.addAttribute("usuarioAtt", usuario);
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("garconsList", garconList);
 //        model.addAttribute("categoriaList", categoriaList);
 //        model.addAttribute("umList", umList);
-
-
     }
 
-
-    @Override
-    protected AbstractEntityDao<Garcon> getDao() {
-        return dao;
-    }
-    
     @RequestMapping(value = "LocalizarGarconGerencia", method = RequestMethod.POST)
-  	public ModelAndView  gerenciarGarconLocalizar(HttpServletRequest request){
-    	
-    	
-    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView gerencia = new ModelAndView("gerenciagarcon");
-    	
-    	
-    	Garcon garcon = dao.PegarPorId(idf);
-    	 
-    	gerencia.addObject("garcon", garcon);
+    public ModelAndView gerenciarGarconLocalizar(HttpServletRequest request) {
 
-  		
-  		return gerencia;
-  	}
+
+        long idf = Long.parseLong(request.getParameter("id"));
+
+        ModelAndView gerencia = new ModelAndView("gerenciagarcon");
+
+
+        Garcon garcon = dao.PegarPorId(idf);
+
+        gerencia.addObject("garcon", garcon);
+
+
+        return gerencia;
+    }
 
     @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-  	public ModelAndView  gerenciargarcon(HttpServletRequest request){
-    	
-    	
+    public ModelAndView gerenciargarcon(HttpServletRequest request) {
+
+
 //    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView gerencia = new ModelAndView("gerenciagarcon");
-    	
-    	
+
+        ModelAndView gerencia = new ModelAndView("gerenciagarcon");
+
+
 //    	Produto produto = dao.PegarPorId(idf);
-    	 
+
 //    	gerencia.addObject("produto", produto);
 
-  		
-  		return gerencia;
-  	}
-    
-   
+
+        return gerencia;
+    }
+
+
 }

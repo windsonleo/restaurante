@@ -38,13 +38,7 @@ public abstract class AbstractEntityDao<Entity> {
 
     @Transactional
     public void add(Entity entity) {
-    	
-  
-    	
        manager.persist(entity);
-       
-     
-
     }
 
 //    public int searchEntityCount() {

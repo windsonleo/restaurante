@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.tecsoluction.restaurante.dao.BancoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class DeliveryController {
 
     private
     final
-    AbstractEntityDao<Banco> dao;
+    BancoDAO dao;
     
     private final UsuarioDAO usudao;
     
@@ -55,7 +56,7 @@ public class DeliveryController {
 
 
     @Autowired
-    public DeliveryController(AbstractEntityDao<Banco> dao,UsuarioDAO daousu,PedidoVendaDAO vdao,ClienteDAO cdao) {
+    public DeliveryController(BancoDAO dao,UsuarioDAO daousu,PedidoVendaDAO vdao,ClienteDAO cdao) {
         this.dao = dao;
         this.usudao = daousu;
         this.pedvendadao = vdao;

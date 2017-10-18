@@ -56,35 +56,31 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     private final CategoriaDAO categoriaDao;
     private List<ProdutoComposto> produtoList;
     private List<Produto> produtosList;
-    
+
     private final ItemDAO itdao;
-    
-    private Map<Item,Double> items = new HashMap<>();
+
+    private Map<Item, Double> items = new HashMap<>();
 
     private ProdutoComposto produtocomposto;
-    
+
     private double totalitem;
 
 
-
-    
     @Autowired
-    public ProdutoCompostoController(ProdutoCompostoDAO dao, CategoriaDAO categoriaDao, FornecedorDAO fornecedorDao,UsuarioDAO usudao,ProdutoDAO daoprod,ItemDAO it) {
+    public ProdutoCompostoController(ProdutoCompostoDAO dao, CategoriaDAO categoriaDao, FornecedorDAO fornecedorDao, UsuarioDAO usudao, ProdutoDAO daoprod, ItemDAO it) {
         super("produtocomposto");
         this.dao = dao;
         this.categoriaDao = categoriaDao;
         this.fornecedorDao = fornecedorDao;
         this.usudao = usudao;
-        this.daoprod= daoprod;
+        this.daoprod = daoprod;
         this.itdao = it;
         this.items.clear();
 
     }
-    
-    
 
     @Override
-    protected AbstractEntityDao<ProdutoComposto> getDao() {
+    protected ProdutoCompostoDAO getDao() {
         return dao;
     }
 
@@ -92,19 +88,18 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-       
-    	   binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaDao) {
-           });
-    	
-	    	binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorDao) {
-	        });
-	    	
-	       	binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itdao) {
-	        });
-        
+
+        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaDao) {
+        });
+
+        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorDao) {
+        });
+
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itdao) {
+        });
+
 
     }
-
 
 
     @ModelAttribute
@@ -117,20 +112,20 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 
         UnidadeMedida[] umList = UnidadeMedida.values();
-        
-        Usuario usuario = new Usuario();
-      		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-      		
-      		usuario = usudao.PegarPorNome(usuario.getUsername());
-              
-      		model.addAttribute("usuarioAtt", usuario);
 
-      		if(produtocomposto == null){
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
+
+        if (produtocomposto == null) {
 //      			produtocomposto = new ProdutoComposto();
-      			items.clear();
-      			
-      		}
-      		
+            items.clear();
+
+        }
+
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("itensList", produtosList);
 //        model.addAttribute("produtocomposto", produtocomposto);
@@ -140,66 +135,62 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 
     }
-    
+
     @RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
     public ModelAndView NovosProdutos(HttpServletRequest request) {
 
 
         ModelAndView novosprodutos = new ModelAndView("novosprodutos");
-        
-        List<ProdutoComposto>produtos = dao.getAll();
-        
+
+        List<ProdutoComposto> produtos = dao.getAll();
+
         novosprodutos.addObject("produtosList", produtos);
 
 
-
         return novosprodutos;
-    } 
-    
+    }
+
     @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-  	public ModelAndView  detalhesProduto(HttpServletRequest request){
-    	
-    	
-    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
-    	
-    	
-    	ProdutoComposto produto = dao.PegarPorId(idf);
-    	 
-       	 detalhesproduto.addObject("produto", produto);
+    public ModelAndView detalhesProduto(HttpServletRequest request) {
 
-  		
-  		return detalhesproduto;
-  	}
 
-    
+        long idf = Long.parseLong(request.getParameter("id"));
+
+        ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
+
+
+        ProdutoComposto produto = dao.PegarPorId(idf);
+
+        detalhesproduto.addObject("produto", produto);
+
+
+        return detalhesproduto;
+    }
+
+
     @RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
     public ModelAndView AdicionarItemProdutoComposto(HttpServletRequest request) {
 
-       
-    	if(produtocomposto != null){
-    		
-    		produtocomposto.setItens(items);
-    		    		
-    	}else{
-    		
-    		produtocomposto = new  ProdutoComposto();
-    		items.clear();
-    	}
-    	
-    	
-    	
-    	Long idf = Long.parseLong(request.getParameter("itenss"));
-    	Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-    	
+
+        if (produtocomposto != null) {
+
+            produtocomposto.setItens(items);
+
+        } else {
+
+            produtocomposto = new ProdutoComposto();
+            items.clear();
+        }
+
+
+        Long idf = Long.parseLong(request.getParameter("itenss"));
+        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+
         Produto produto = daoprod.PegarPorId(idf);
-    	
-    	System.out.println("produto"+produto.toString());
 
-    	
+        System.out.println("produto" + produto.toString());
 
-        
+
         ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
 
 
@@ -209,13 +200,10 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         return cadastroprodutocomposto;
     }
-    
+
     @RequestMapping(value = "additem", method = RequestMethod.GET)
     public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
-    	
-    	
-    	
 
         Long idf = Long.parseLong(request.getParameter("id"));
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
@@ -224,26 +212,24 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 
         produtosList = daoprod.getAll();
-       
-       
-       
-      totalitem = 0;
-      
-      double precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+
+
+        totalitem = 0;
+
+        double precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
 
 
         produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(produtocomposto.getItens()));
-        produtocomposto.setPrecovenda(precovenda*2);
-        
-         additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+        produtocomposto.setPrecovenda(precovenda * 2);
+
+        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
         additemprodutocomposto.addObject("produtosList", produtosList);
         additemprodutocomposto.addObject("totalitem", totalitem);
 
 
-
         return additemprodutocomposto;
     }
-    
+
     @RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.GET)
     public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
@@ -251,130 +237,127 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         Long idf = Long.parseLong(request.getParameter("id"));
         Long idfprodcomp = Long.parseLong(request.getParameter("idprocomp"));
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-        
-    	    	 
-        
+
+
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
-       
-        Produto produto ;
-        
+
+        Produto produto;
+
         produto = daoprod.PegarPorId(idf);
-        
-    	if(produto == null){
-    		
 
-  		String erros = "Nao Existe esse Produto";
-  		
-  		additemprodutocomposto.addObject("erros",erros);
-  		additemprodutocomposto.addObject("produtocomposto",produtocomposto = dao.PegarPorId(idfprodcomp));
-  		additemprodutocomposto.addObject("produtosList", produtosList);
-          
-  		return additemprodutocomposto;
-  	}
-        
+        if (produto == null) {
+
+
+            String erros = "Nao Existe esse Produto";
+
+            additemprodutocomposto.addObject("erros", erros);
+            additemprodutocomposto.addObject("produtocomposto", produtocomposto = dao.PegarPorId(idfprodcomp));
+            additemprodutocomposto.addObject("produtosList", produtosList);
+
+            return additemprodutocomposto;
+        }
+
         produtocomposto = dao.PegarPorId(idfprodcomp);
-       
-        
-        Item  item  = new Item(produto);
-        
+
+
+        Item item = new Item(produto);
+
         item.setQtd(prodqtd);
-        
-        
-           itdao.add(item);
-           
-           items = produtocomposto.getItens();
-           
-           items.put(item,item.getQtd());
-         
-           produtocomposto.setItens(items);
-           
-           produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items));
-           
-           produtocomposto.setPrecovenda(produtocomposto.getPrecocusto()*2);
-           
-           dao.editar(produtocomposto);
-           
-         //  ProdutoComposto pc = dao.PegarPorId(idfprodcomp);
-           
 
-           additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-           additemprodutocomposto.addObject("produtosList", produtosList);
 
-           
+        itdao.add(item);
+
+        items = produtocomposto.getItens();
+
+        items.put(item, item.getQtd());
+
+        produtocomposto.setItens(items);
+
+        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items));
+
+        produtocomposto.setPrecovenda(produtocomposto.getPrecocusto() * 2);
+
+        dao.editar(produtocomposto);
+
+        //  ProdutoComposto pc = dao.PegarPorId(idfprodcomp);
+
+
+        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+        additemprodutocomposto.addObject("produtosList", produtosList);
+
+
         return additemprodutocomposto;
     }
-    
+
     @RequestMapping(value = "salvarfotocomposto", method = RequestMethod.POST)
-  	public ModelAndView  SalvarFoto(@RequestParam CommonsMultipartFile file,HttpSession session,HttpServletRequest request){
-    	
-    	
-    	ModelAndView cadastro = new ModelAndView("cadastroprodutocomposto");
-    	
-    	String mensagem = "Sucesso ao salvar foto";
-    	String erros = "Falha ao salvar foto";
-
-    	
-    	String path=session.getServletContext().getRealPath("/");  
-    	
-    	String d = request.getContextPath();
-    	
-    	
-    	String pathh = "/resources/images/produto";
-    	//string pathh = file.get
-        String filename=file.getOriginalFilename();  
-          
-        System.out.println("Caminho"+path+" "+filename);  
-        
-    	System.out.println("request end" + d + pathh+"/"+filename);
-
-        
-        try{ 
-        	
-        byte barr[]=file.getBytes();  
-          
-        BufferedOutputStream bout=new BufferedOutputStream(  
-                 new FileOutputStream(path+pathh+"/"+filename));  
-        bout.write(barr);  
-        bout.flush();  
-        bout.close();  
-        
-        cadastro.addObject("mensagem", mensagem);
-        cadastro.addObject("filename", filename);
-        cadastro.addObject("produto", produtocomposto);
-        cadastro.addObject("acao", "add");
+    public ModelAndView SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request) {
 
 
-          
-        }catch(Exception e){
-        	
-        	System.out.println(e);
-        	
-        	cadastro.addObject("erros", erros + e);
-        
-        } 
-        
-        return cadastro;  
-    	
-  	}
-    
-    
+        ModelAndView cadastro = new ModelAndView("cadastroprodutocomposto");
+
+        String mensagem = "Sucesso ao salvar foto";
+        String erros = "Falha ao salvar foto";
+
+
+        String path = session.getServletContext().getRealPath("/");
+
+        String d = request.getContextPath();
+
+
+        String pathh = "/resources/images/produto";
+        //string pathh = file.get
+        String filename = file.getOriginalFilename();
+
+        System.out.println("Caminho" + path + " " + filename);
+
+        System.out.println("request end" + d + pathh + "/" + filename);
+
+
+        try {
+
+            byte barr[] = file.getBytes();
+
+            BufferedOutputStream bout = new BufferedOutputStream(
+                    new FileOutputStream(path + pathh + "/" + filename));
+            bout.write(barr);
+            bout.flush();
+            bout.close();
+
+            cadastro.addObject("mensagem", mensagem);
+            cadastro.addObject("filename", filename);
+            cadastro.addObject("produto", produtocomposto);
+            cadastro.addObject("acao", "add");
+
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+
+            cadastro.addObject("erros", erros + e);
+
+        }
+
+        return cadastro;
+
+    }
+
+
     @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-  	public ModelAndView  gerenciarProduto(HttpServletRequest request){
-    	
-    	
-    	long idf = Long.parseLong(request.getParameter("id"));
-    	
-    	ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
-    	
-    	
-    	ProdutoComposto produto = dao.PegarPorId(idf);
-    	 
-       	 detalhesproduto.addObject("produto", produto);
+    public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
-  		
-  		return detalhesproduto;
-  	}
 
-    
+        long idf = Long.parseLong(request.getParameter("id"));
+
+        ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
+
+
+        ProdutoComposto produto = dao.PegarPorId(idf);
+
+        detalhesproduto.addObject("produto", produto);
+
+
+        return detalhesproduto;
+    }
+
 
 }

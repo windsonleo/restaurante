@@ -39,251 +39,224 @@ import com.tecsoluction.restaurante.util.StatusPedido;
  */
 @Controller
 public class HomeController {
-	
-	
-	
-	private final UsuarioDAO usuariodao;
-	
-	private final PedidoVendaDAO pedidovendadao;
-	private final ClienteDAO clientedao;
-	private final MesaDAO mesadao;
-	private final ProdutoDAO produtodao;
-	private final PedidoCompraDAO pedidocompradao;
-	private final RecebimentoDAO recebimentodao;
 
 
-	
+    private final UsuarioDAO usuariodao;
 
-	
-	
-	private List<Cliente>clientesnovos;
-	private List<PedidoVenda>pedidovendasnovos;
-	private List<Mesa>mesasocupadas;
-	private List<Produto>produtosnovos;
-	private List<Usuario>usuarios;
-	private List<PedidoCompra>pedidocomprasnovos;
-	private List<Recebimento>recebimentosnovos;
+    private final PedidoVendaDAO pedidovendadao;
+    private final ClienteDAO clientedao;
+    private final MesaDAO mesadao;
+    private final ProdutoDAO produtodao;
+    private final PedidoCompraDAO pedidocompradao;
+    private final RecebimentoDAO recebimentodao;
 
 
-	
-	
-	private List<Cliente> resultsearch;
+    private List<Cliente> clientesnovos;
+    private List<PedidoVenda> pedidovendasnovos;
+    private List<Mesa> mesasocupadas;
+    private List<Produto> produtosnovos;
+    private List<Usuario> usuarios;
+    private List<PedidoCompra> pedidocomprasnovos;
+    private List<Recebimento> recebimentosnovos;
 
-	
-	
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	
-	public HomeController(PedidoCompraDAO compradao,RecebimentoDAO recdao,UsuarioDAO dao,PedidoVendaDAO vendadao,ClienteDAO clientedao,MesaDAO mesadao,ProdutoDAO proddao) {
-		// TODO Auto-generated constructor stub
-		
-		this.usuariodao = dao;
-		this.pedidovendadao=vendadao;
-		this.clientedao = clientedao;
-		this.mesadao = mesadao;
-		this.produtodao = proddao;
-		this.pedidocompradao = compradao;
-		this.recebimentodao = recdao;
-	}
-	
-	
+    private List<Cliente> resultsearch;
+
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+    /**
+     * Simply selects the home view to render by returning its name.
+     */
+
+    public HomeController(PedidoCompraDAO compradao, RecebimentoDAO recdao, UsuarioDAO dao, PedidoVendaDAO vendadao, ClienteDAO clientedao, MesaDAO mesadao, ProdutoDAO proddao) {
+        // TODO Auto-generated constructor stub
+
+        this.usuariodao = dao;
+        this.pedidovendadao = vendadao;
+        this.clientedao = clientedao;
+        this.mesadao = mesadao;
+        this.produtodao = proddao;
+        this.pedidocompradao = compradao;
+        this.recebimentodao = recdao;
+    }
+
+
     @ModelAttribute
     public void addAttributes(Model model) {
 
-    	List<Mesa> mesas = mesadao.getAll();
-    	
-    	clientesnovos =clientedao.getAll();
-    	pedidovendasnovos = pedidovendadao.getAll();
-    	mesasocupadas = mesadao.getAll();
-    	produtosnovos = produtodao.getAll();
-        usuarios = usuariodao.getAll();
-        
-        pedidocomprasnovos = pedidocompradao.getAll();
-        
-        recebimentosnovos = recebimentodao.getAll();
-       
-			model.addAttribute("clientesnovos", clientesnovos);
-			model.addAttribute("pedidovendasnovos", pedidovendasnovos);
-			model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
-			model.addAttribute("recebimentosnovos", recebimentosnovos);
+        List<Mesa> mesas = mesadao.getAll();
 
-			model.addAttribute("mesasocupadas", mesasocupadas);
-			model.addAttribute("produtosnovos", produtosnovos);
-			model.addAttribute("usuarios", usuarios);
-			model.addAttribute("mesas", mesas);
+        clientesnovos = clientedao.getAll();
+        pedidovendasnovos = pedidovendadao.getAll();
+        mesasocupadas = mesadao.getAll();
+        produtosnovos = produtodao.getAll();
+        usuarios = usuariodao.getAll();
+
+        pedidocomprasnovos = pedidocompradao.getAll();
+
+        recebimentosnovos = recebimentodao.getAll();
+
+        model.addAttribute("clientesnovos", clientesnovos);
+        model.addAttribute("pedidovendasnovos", pedidovendasnovos);
+        model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
+        model.addAttribute("recebimentosnovos", recebimentosnovos);
+
+        model.addAttribute("mesasocupadas", mesasocupadas);
+        model.addAttribute("produtosnovos", produtosnovos);
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("mesas", mesas);
 
 //			model.addAttribute("pedidovendascancelado", buscarVendaCancelada(pedidovendasnovos));
-
-
-
     }
-	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		ModelAndView login = new ModelAndView("login");
-		
-		login.addObject("serverTime", formattedDate );
-		
-		return login;
-	}
-	
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView Login(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
 
-		
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usuariodao.PegarPorNome(usuario.getUsername());
-				
-		
-		
-		ModelAndView home = new ModelAndView("home");
-		
-		home.addObject("serverTime", formattedDate );
-		home.addObject("usuarioAtt", usuario );
-		
-		return home;
-	}
-	
-	
-	
-	@RequestMapping(value = "/erro", method = RequestMethod.GET)
-	public ModelAndView Erro(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		ModelAndView erro = new ModelAndView("erro");
-		
-		erro.addObject("serverTime", formattedDate );
-		
-		return erro;
-	}
-	
-	@RequestMapping(value = "/acessonegado", method = RequestMethod.GET)
-	public ModelAndView AcessoNegado(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		ModelAndView acessonegado = new ModelAndView("acessonegado");
-		
-		acessonegado.addObject("serverTime", formattedDate );
-		
-		return acessonegado;
-	}
-	
-	
-	public List<Cliente> SearchInData(String sugestion) {
-		
-		logger.info("Welcome SearchInData! The Susgestao is {}.", sugestion);
-		
-		List<Cliente> listAllobjetos = new ArrayList<Cliente>();
-		resultsearch = new ArrayList<Cliente>();
-		
-		listAllobjetos.addAll(clientedao.getAll());
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView login = new ModelAndView("login");
+
+        login.addObject("serverTime", formattedDate);
+
+        return login;
+    }
+
+
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public ModelAndView Login(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usuariodao.PegarPorNome(usuario.getUsername());
+
+
+        ModelAndView home = new ModelAndView("home");
+
+        home.addObject("serverTime", formattedDate);
+        home.addObject("usuarioAtt", usuario);
+
+        return home;
+    }
+
+
+    @RequestMapping(value = "/erro", method = RequestMethod.GET)
+    public ModelAndView Erro(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView erro = new ModelAndView("erro");
+
+        erro.addObject("serverTime", formattedDate);
+
+        return erro;
+    }
+
+    @RequestMapping(value = "/acessonegado", method = RequestMethod.GET)
+    public ModelAndView AcessoNegado(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView acessonegado = new ModelAndView("acessonegado");
+
+        acessonegado.addObject("serverTime", formattedDate);
+
+        return acessonegado;
+    }
+
+
+    public List<Cliente> SearchInData(String sugestion) {
+
+        logger.info("Welcome SearchInData! The Susgestao is {}.", sugestion);
+
+        List<Cliente> listAllobjetos = new ArrayList<Cliente>();
+        resultsearch = new ArrayList<Cliente>();
+
+        listAllobjetos.addAll(clientedao.getAll());
 //		listAllobjetos.add(pedidovendadao.getAll());
 //		listAllobjetos.add(produtodao.getAll());
-		
-		Cliente cliente = new Cliente();
-		
-		for (int i = 0; i < listAllobjetos.size(); i++) {
-			cliente = (Cliente) listAllobjetos.get(i);
-			
-			if(cliente.getNome().contains(sugestion)){
-				
-				resultsearch.add(cliente);
-				
-			}
-			
-		}
-		
-		
-		//ModelAndView resultsearch = new ModelAndView("acessonegado");
-		
-		//resultsearch.addObject("result", resultsearch );
-		
-		return resultsearch;
-	}
-	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public List<Object> ResultSearch(Locale locale, Model model) {
-		
-		logger.info("Welcome ResultSearch! The client locale is {}.", locale);
-		
-		
-		List<Object> listobjetos = null;
-		
-		listobjetos.add(clientedao.getAll());
-		listobjetos.add(pedidovendadao.getAll());
-		listobjetos.add(produtodao.getAll());
 
-		
-		//ModelAndView resultsearch = new ModelAndView("search");
-		
-		//resultsearch.addObject("result", listobjetos );
-		
-		return listobjetos;
-	}
-	
-	@RequestMapping(value = "/getResults", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Cliente> getResult(@RequestParam String sugestion) {
+        Cliente cliente = new Cliente();
 
-		return SearchInData(sugestion);
+        for (Cliente listAllobjeto : listAllobjetos) {
+            cliente = listAllobjeto;
 
-	}
-	
-	public List<PedidoVenda> buscarVendaCancelada(List<PedidoVenda> vendas) {
-				
-		
-		List<PedidoVenda> listcanceladas = null;
-		
+            if (cliente.getNome().contains(sugestion)) {
 
-		for (int i = 0; i < vendas.size(); i++) {
-			
-			PedidoVenda v = vendas.get(i);
-			
-			if(v.getStatus() == StatusPedido.CANCELADO){
-				
-				listcanceladas.add(v);
-				
-				
-			}
-			
-			
-		}
-		
+                resultsearch.add(cliente);
 
-		
-		return listcanceladas;
-	}
-	
-	
+            }
+
+        }
+
+
+        //ModelAndView resultsearch = new ModelAndView("acessonegado");
+
+        //resultsearch.addObject("result", resultsearch );
+
+        return resultsearch;
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public List<Object> ResultSearch(Locale locale, Model model) {
+
+        logger.info("Welcome ResultSearch! The client locale is {}.", locale);
+
+
+        List<Object> listobjetos = null;
+
+        listobjetos.add(clientedao.getAll());
+        listobjetos.add(pedidovendadao.getAll());
+        listobjetos.add(produtodao.getAll());
+
+
+        //ModelAndView resultsearch = new ModelAndView("search");
+
+        //resultsearch.addObject("result", listobjetos );
+
+        return listobjetos;
+    }
+
+    @RequestMapping(value = "/getResults", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Cliente> getResult(@RequestParam String sugestion) {
+
+        return SearchInData(sugestion);
+
+    }
+
+    public List<PedidoVenda> buscarVendaCancelada(List<PedidoVenda> vendas) {
+
+        List<PedidoVenda> listcanceladas = new ArrayList<>();
+
+        for (PedidoVenda v : vendas) {
+
+            if (v.getStatus() == StatusPedido.CANCELADO) {
+
+                listcanceladas.add(v);
+            }
+        }
+        return listcanceladas;
+    }
+
+
 }

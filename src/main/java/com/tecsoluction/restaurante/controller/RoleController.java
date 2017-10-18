@@ -12,38 +12,36 @@ import com.tecsoluction.restaurante.entidade.Role;
 import com.tecsoluction.restaurante.framework.AbstractController;
 
 
-
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping(value = "role/")
 public class RoleController extends AbstractController<Role> {
-	
-	private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
-	
+
+    private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
+
 //    private final UsuarioDAO usudao;
 
 
     private
     final
     UsuarioDAO dao;
-    
+
     private
     final
     RoleDAO rdao;
-    
-    
+
 
     @Autowired
-    public RoleController(UsuarioDAO dao,RoleDAO rdao) {
+    public RoleController(UsuarioDAO dao, RoleDAO rdao) {
         super("role");
         this.dao = dao;
-        this.rdao =rdao;
+        this.rdao = rdao;
 //        this.usudao =usudao;
     }
-    
-    
+
+
 //    @InitBinder
 //    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 //
@@ -54,10 +52,10 @@ public class RoleController extends AbstractController<Role> {
 //
 //    }
 
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
+    /**
+     * Simply selects the home view to render by returning its name.
+     */
 //	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 //	public ModelAndView CadastrarUsuarioForm(Locale locale, Model model) {
 //		logger.info("Welcome home! The client locale is {}.", locale);
@@ -73,9 +71,8 @@ public class RoleController extends AbstractController<Role> {
 //		
 //		return caduser;
 //	}
-	
-	
-	
+
+
 //    @ModelAttribute
 //    public void addAttributes(Model model) {
 //
@@ -98,14 +95,13 @@ public class RoleController extends AbstractController<Role> {
 //
 //
 //    }
+    @Override
+    protected RoleDAO getDao() {
+        // TODO Auto-generated method stub
+        return rdao;
+    }
 
-	@Override
-	protected RoleDAO getDao() {
-		// TODO Auto-generated method stub
-		return rdao;
-	}
-	
-	
+
 //	  @RequestMapping(value = "profile", method = RequestMethod.GET)
 //	  	public ModelAndView  profileUsuario(HttpServletRequest request){
 //	    	
@@ -132,5 +128,5 @@ public class RoleController extends AbstractController<Role> {
 //	  		return profileusuario;
 //	  	}
 
-	
+
 }

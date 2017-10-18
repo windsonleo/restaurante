@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,11 +18,8 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @Controller
 @RequestMapping(value = "pedido/")
 public class PedidoController extends AbstractController<Pedido> {
-	
-	
-	
-	private final PedidoDAO pedidoDao;
 
+    private final PedidoDAO pedidoDao;
 
 //    private
 //    final
@@ -40,19 +38,19 @@ public class PedidoController extends AbstractController<Pedido> {
 //        this.garconDao = daogarcon;
 //        this.mesaDao = daomesa;
 //    }
-	
-	
-	public PedidoController(PedidoDAO dao) {
 
-	super("pedido");
-	
-	this.pedidoDao = dao;
-	
-	}
+    @Autowired
+    public PedidoController(PedidoDAO dao) {
+
+        super("pedido");
+
+        this.pedidoDao = dao;
+
+    }
 
 
     @Override
-    protected AbstractEntityDao<Pedido> getDao() {
+    protected PedidoDAO getDao() {
         // TODO Auto-generated method stub
         return pedidoDao;
     }
