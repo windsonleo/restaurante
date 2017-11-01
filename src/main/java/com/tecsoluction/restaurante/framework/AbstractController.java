@@ -138,6 +138,5 @@ public abstract class AbstractController<Entity> {
 
         return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
     }
-
-
+    
 }
