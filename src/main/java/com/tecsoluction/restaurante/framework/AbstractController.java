@@ -139,5 +139,18 @@ public abstract class AbstractController<Entity> {
         return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
     }
 
+    @RequestMapping(value = "informacoes", method = RequestMethod.GET)
+    public ModelAndView informacoes(HttpServletRequest request) {
+
+        Entity entity;
+        long idf = Long.parseLong(request.getParameter("id"));
+        ModelAndView edicao = new ModelAndView("informacoes" + entityAlias);
+        entity = getDao().PegarPorId(idf);
+        edicao.addObject(entityAlias, entity);
+        edicao.addObject("acao", "informacoes");
+
+        return new ModelAndView("redirect:/" + entityAlias + "/informacoes");
+
+    }
 
 }
