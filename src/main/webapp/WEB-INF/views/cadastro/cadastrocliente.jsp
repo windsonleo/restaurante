@@ -149,7 +149,7 @@
                                         <div data-date="12-02-2012"
                                              class="input-append date datepicker ">
 
-                                            <input id="datepicker" type="date" data-date="01-02-2013"
+                                            <input id="datepicker" type="text" data-date="01-02-2013"
                                                    data-date-format="dd-mm-yyyy"
                                                    value="${cliente.datanascimento}" class="datepicker"
                                                    name="datanascimento">
