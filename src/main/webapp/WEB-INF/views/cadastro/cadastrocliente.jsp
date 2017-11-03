@@ -8,7 +8,7 @@
             <a href="${pageContext.request.contextPath}/cliente/movimentacao"
                title="Go to Cliente" class="tip-bottom"><i class="icon-icon"><img
                     src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i>
-                Cliente</a> <a href="#">Movimentação Cliente</a> <a href="#"
+                Cliente</a> <a href="#">Movimentaï¿½ï¿½o Cliente</a> <a href="#"
                                                                     class="current">Cadastro Cliente</a>
         </div>
         <h1>Cadastro de Cliente</h1>
@@ -18,7 +18,7 @@
 
         <c:if test="${erros != null }">
             <div class="alert alert-error alert-block">
-                <a class="close" data-dismiss="alert" href="#">×</a>
+                <a class="close" data-dismiss="alert" href="#">ï¿½</a>
                 <h4 class="alert-heading">Erros!</h4>
 
                     ${erros}
@@ -28,7 +28,7 @@
 
         <c:if test="${mensagem != null }">
             <div class="alert alert-success alert-block">
-                <a class="close" data-dismiss="alert" href="#">×</a>
+                <a class="close" data-dismiss="alert" href="#">ï¿½</a>
                 <h4 class="alert-heading">Sucesso!</h4>
 
                     ${mensagem}
@@ -47,10 +47,10 @@
                     <div class="widget-content nopadding">
 
 
-                        <form id="form-wizard" class="form-horizontal" method="post"
-                              action="${pageContext.request.contextPath}/cliente/addEnderecoCliente">
-                            <div id="form-wizard-1" class="step">
-                                <div class="control-group">
+						<form id="form-wizard" class="form-horizontal" method="post"
+							action="${pageContext.request.contextPath}/cliente/${acao}">
+							<div id="form-wizard-1" class="step">
+								<div class="control-group">
 
                                     <div class="controls">
                                         <div class="input-prepend">
@@ -200,11 +200,11 @@
                                         <div class="controls">
 
                                             <div class="input-prepend">
-                                                <span class="add-on">N°</span> <input id="numero"
+                                                <span class="add-on">Nï¿½</span> <input id="numero"
                                                                                       class="span11 mask text"
                                                                                       name="numero" type="text"
                                                                                       value="${cliente.endereco.numero}"
-                                                                                      placeholder="Nº"/>
+                                                                                      placeholder="Nï¿½"/>
 
                                             </div>
 
@@ -332,7 +332,7 @@
                             <div class="form-actions">
                                 <input id="back" class="btn btn-primary" type="reset"
                                        value="Voltar"/> <input id="next" class="btn btn-primary"
-                                                               type="submit" value="Próximo"/>
+                                                               type="submit" value="Prï¿½ximo"/>
                                 <div id="status"></div>
                             </div>
                             <div id="submitted"></div>
@@ -352,7 +352,7 @@
 
 
 <div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em
+    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em
         Tecnologia</a></div>
 </div>
 

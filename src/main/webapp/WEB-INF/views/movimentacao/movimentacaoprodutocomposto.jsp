@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -59,7 +61,8 @@
                   <td>${produtocomposto.codebar}</td>
                     <td>${produtocomposto.nome}</td>
                   <td>${produtocomposto.descricao}</td>
-                  <td>${produtocomposto.precovenda}</td>
+                  <td><fmt:formatNumber type="currency"
+                       value="${produto.precovenda}"/></td>
                    <td>${produtocomposto.fornecedor}</td>
                   <td>${produtocomposto.itens}</td>
                    
