@@ -1,7 +1,9 @@
 package com.tecsoluction.restaurante.framework;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -42,6 +44,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastro = new ModelAndView("cadastro" + entityAlias);
 
         List<Entity> entityList = getDao().getAll();
+       
         cadastro.addObject("acao", "add");
 
 
@@ -60,27 +63,30 @@ public abstract class AbstractController<Entity> {
         if (result.hasErrors()) {
 
 
-            System.out.println("erro ao add:" + entityAlias + "erro:" + result.getObjectName());
+            System.out.println("erro ao add Entidade:" + entityAlias + "erro:" + result.getObjectName());
+            System.out.println("erro ap add Entidade:" + entityAlias + "fields erro:" + result.getFieldError());
+            System.out.println("erro ao add Entidade:" + entityAlias + "outros erros global:" + result.getGlobalError());
+            System.out.println("erro ao add Entidade:" + entityAlias + "outros erros nestedPatch:" + result.getNestedPath());
+
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
 //        attributes.a
 
         } else {
+        	
 
             getDao().add(entity);
             System.out.println("add:" + entityAlias);
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
             attributes.addFlashAttribute("entity", entity.toString());
-
+            
 
         }
-//        getDao().PegarPorId(entity);
 
         cadastroEntity.addObject("entity", entity);
-
+        cadastroEntity.addObject("acao", "add");
 
         return cadastroEntity;  //cadastroEntity;
 
-//        return new ModelAndView("redirect:/" + entityAlias + "/cadastro");
     }
 
 

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "PAGAMENTO")
+@SequenceGenerator(name = "pag_seq", sequenceName = "pag_seq")
 public class Pagamento implements Serializable {
 
     /**
@@ -34,7 +36,7 @@ public class Pagamento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "pag_seq")
     @Column(name = "ID")
     private long id;
 
@@ -143,7 +145,13 @@ public class Pagamento implements Serializable {
      * @return the valorPago
      */
     public double getValorPago() {
-        return DadosGerenciais.transfomarPreco(valorPago);
+    	
+ 	   String precoformat = DadosGerenciais.transfomarPreco(valorPago);;
+  	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+       
+       
+        return valor;
     }
 
 
@@ -183,7 +191,13 @@ public class Pagamento implements Serializable {
      * @param valorTotalPagamento the valorTotalPagamento to set
      */
     public void setValorTotalPagamento(double valorTotalPagamento) {
-        this.valorTotalPagamento = DadosGerenciais.transfomarPreco(valorTotalPagamento);
+    	
+    	   String precoformat = DadosGerenciais.transfomarPreco(valorTotalPagamento);;
+     	   	
+           double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+    	
+        this.valorTotalPagamento = valor;
     }
 
 
@@ -199,7 +213,14 @@ public class Pagamento implements Serializable {
      * @param valorPago the valorPago to set
      */
     public void setValorPago(double valorPago) {
-        this.valorPago = DadosGerenciais.transfomarPreco(valorPago);
+    	
+ 	   String precoformat = DadosGerenciais.transfomarPreco(valorPago);;
+	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+    	
+    	
+        this.valorPago =valor;
     }
 
 

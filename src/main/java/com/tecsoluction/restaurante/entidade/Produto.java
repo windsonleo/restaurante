@@ -15,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.tecsoluction.restaurante.util.DadosGerenciais;
@@ -26,6 +27,7 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @Entity
 @Table
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@SequenceGenerator(name = "produto_seq", sequenceName = "produto_seq")
 public class Produto implements Serializable {
 
     /**
@@ -34,7 +36,7 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = -5401174413867896341L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "produto_seq")
     @Column(name = "id")
     private long id;
 
@@ -197,19 +199,36 @@ public class Produto implements Serializable {
     }
 
     public double getPrecocusto() {
-        return DadosGerenciais.transfomarPreco(precocusto);
+    	
+    	String precoformat = DadosGerenciais.transfomarPreco(precocusto);;
+    	
+    	double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    
+    	
+        return valor;
     }
 
     public void setPrecocusto(double preco) {
-        this.precocusto = DadosGerenciais.transfomarPreco(preco);
+    	String precoformat = DadosGerenciais.transfomarPreco(precocusto);;
+    	double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    	
+        this.precocusto = valor;
     }
 
     public double getPrecovenda() {
-        return DadosGerenciais.transfomarPreco(precovenda);
+    	
+    	String precoformat = DadosGerenciais.transfomarPreco(precovenda);;
+    	double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    	
+        return valor;
     }
 
     public void setPrecovenda(double precoVenda) {
-        this.precovenda = DadosGerenciais.transfomarPreco(precoVenda);
+    	
+    	String precoformat = DadosGerenciais.transfomarPreco(precovenda);;
+    	double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    	
+        this.precovenda = valor;
     }
 
     public String getCodebar() {

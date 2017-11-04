@@ -23,6 +23,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -39,10 +40,11 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@SequenceGenerator(name = "pedido_seq", sequenceName = "pedido_seq")
 public abstract class Pedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "pedido_seq")
     @Column(name = "ID")
     protected long id;
 
@@ -121,13 +123,21 @@ public abstract class Pedido {
 
     public double getTotal() {
     	
-//        return CalcularTotal(items);
+ 	   String precoformat = DadosGerenciais.transfomarPreco(total);;
+	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
     	
-    	return DadosGerenciais.transfomarPreco(total);
+    	return valor;
     }
 
     public void setTotal(double total) {
-        this.total = DadosGerenciais.transfomarPreco(total);
+    	
+    	   String precoformat = DadosGerenciais.transfomarPreco(total);;
+   	   	
+           double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+    	
+        this.total = valor;
     }
 
 //    public List<Pagamento> getPagamentos() {
@@ -206,7 +216,11 @@ public boolean getIsativo(){
 //			
 //		}
 
+    String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
+	
+    double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
     	
-    	return DadosGerenciais.transfomarPreco(totalpedido);
+    	return valor;
     }
 }

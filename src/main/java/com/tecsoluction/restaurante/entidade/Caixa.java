@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "CAIXA")
+@SequenceGenerator(name = "caixa_seq", sequenceName = "caixa_seq")
 public class Caixa implements Serializable {
 
     /**
@@ -29,7 +31,7 @@ public class Caixa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator  = "caixa_seq")
     @Column(name = "id")
     private long id;
     

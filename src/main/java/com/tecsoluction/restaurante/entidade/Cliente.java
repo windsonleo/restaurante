@@ -1,17 +1,22 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,12 +24,15 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.util.DataUtil;
 
 @Entity
 @Table(name = "CLIENTE")
+@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq")
 public class Cliente implements Serializable {
 
     /**
@@ -33,7 +41,7 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "cliente_seq")
     @Column(name = "id")
     private long id;
    
@@ -62,7 +70,7 @@ public class Cliente implements Serializable {
     @Column(name = "isativo") 
 	private boolean isativo;
     
-    @OneToOne(cascade={CascadeType.ALL})
+    @OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.EAGER )
     private Endereco endereco;
 	
 
@@ -82,13 +90,40 @@ public class Cliente implements Serializable {
     public Cliente() {
         // TODO Auto-generated constructor stub
     	
-    	this.endereco = new Endereco();
     }
     
     public Cliente(Endereco endereco) {
         // TODO Auto-generated constructor stub
     	
     	this.endereco=endereco;
+    }
+    
+    
+    
+    @PrePersist
+    public void prePersist() {
+       
+    	if (endereco != null) {
+        	this.setEndereco(endereco);
+//        	endereco.setCliente(this);
+        	
+        	System.out.println("endereco diferente de null : " + endereco);
+        	
+//        }else{
+//        	
+//        	endereco = new Endereco();
+//        	this.setEndereco(endereco);
+//        	endereco.setCliente(this);
+//        	
+//        	System.out.println("endereco igual a null : " + this.id + endereco);
+//
+//        	
+//        }
+        	
+    	}
+        
+    	System.out.println("endereco =  null : " + this.nome);
+
     }
 
 
@@ -159,11 +194,44 @@ public class Cliente implements Serializable {
 
 
     public Date getDatanascimento() {
+    	
+//		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//    	
+//    	String datatemp = DataUtil.TransformarData(datanascimento);
+//    	
+//    	Date data = new Date();
+//    	
+//    	try {
+//    		data = df.parse(datatemp);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	
+//    	datanascimento =data;
+    	
+    	
         return datanascimento;
     }
 
 
     public void setDatanascimento(Date dataNascimento) {
+    	
+//    	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//    	
+//    	String datatemp = DataUtil.TransformarData(dataNascimento);
+//    	
+//    	Date data = new Date();
+//    	
+//    	try {
+//    		data = df.parse(datatemp);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+    	
+    	
         this.datanascimento = dataNascimento;
     }
     

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -18,13 +19,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "GARCON")
 //@XmlRootElement(name = "garcon")
+@SequenceGenerator(name = "garcon_seq", sequenceName = "garcon_seq")
 public class Garcon implements Serializable {
 
    
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "garcon_seq")
     @Column(name = "id")
     private long id;
     @NotBlank

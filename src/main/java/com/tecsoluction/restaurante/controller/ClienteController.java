@@ -32,6 +32,7 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.util.DataUtil;
 
 
 
@@ -61,6 +62,8 @@ public class ClienteController extends AbstractController<Cliente> {
     private final UsuarioDAO usudao;
     
     private Cliente cliente;
+    
+    private Endereco endereco;
 
     @Autowired
     public ClienteController(ClienteDAO dao,UsuarioDAO daousu,EnderecoDAO enddao) {
@@ -113,6 +116,16 @@ public class ClienteController extends AbstractController<Cliente> {
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
         
+        
+        
+         cliente = new Cliente();
+        
+         endereco = new Endereco();
+        
+        cliente.setEndereco(endereco);
+        cliente.setDatanascimento( new Date());
+//        endereco.setCliente(cliente);
+        
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		
@@ -120,7 +133,9 @@ public class ClienteController extends AbstractController<Cliente> {
         
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
-//        model.addAttribute("categoriaList", categoriaList);
+        model.addAttribute("cliente",cliente);
+        model.addAttribute("endereco", endereco);
+        
 //        model.addAttribute("umList", umList);
 
 
@@ -183,21 +198,21 @@ public class ClienteController extends AbstractController<Cliente> {
 		
 		String datanascimento = request.getParameter("datanascimento");
 		
-		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
-		
-		Date data = null;
-		
-		try {
-			data = df.parse(datanascimento);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+//		
+//		Date data = null;
+//		
+//		try {
+//			data = df.parse(datanascimento);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 							
 			cliente = new Cliente();
 			cliente.setNome(request.getParameter("nome"));
 			cliente.setTelefone(request.getParameter("telefone"));
-			cliente.setDatanascimento(data);
+//			cliente.setDatanascimento(data);
 			cliente.setEmail(request.getParameter("email"));
 			cliente.setFoto(request.getParameter("foto"));
 			cliente.setGenero(request.getParameter("genero"));

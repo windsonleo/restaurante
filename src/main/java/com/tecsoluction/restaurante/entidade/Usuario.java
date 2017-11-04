@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="USUARIO")
+@SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq")
 public class Usuario implements Serializable {
 
 	
@@ -46,7 +48,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "usuario_seq")
 	@Column(name = "id")
 	public long getId(){
 		

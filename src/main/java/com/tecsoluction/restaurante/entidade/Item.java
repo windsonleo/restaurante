@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,13 +19,14 @@ import com.tecsoluction.restaurante.util.DadosGerenciais;
 
 @Entity
 @Table(name = "ITEM")
+@SequenceGenerator(name = "item_seq", sequenceName = "item_seq")
 public class Item  implements Serializable, Comparable<Item>{
 
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "item_seq")
     @Column(name = "ID")
     private long id;
 
@@ -274,22 +276,44 @@ public class Item  implements Serializable, Comparable<Item>{
 
 
     public double getPrecoUnitario() {
-        return DadosGerenciais.transfomarPreco(precoUnitario);
+	
+	   String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);;
+   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+      
+        return valor;
     }
 
 
     public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = DadosGerenciais.transfomarPreco(precoUnitario);
+    	
+ 	   String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);;
+ 	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    	
+    	
+        this.precoUnitario = valor;
     }
 
 
     public double getTotalItem() {
-        return DadosGerenciais.transfomarPreco(qtd * precoUnitario);
+    	
+  	   String precoformat = DadosGerenciais.transfomarPreco(qtd * precoUnitario);;
+	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+       
+       
+        return valor;
     }
 
 
     public void setTotalItem(double totalItem) {
-        this.totalItem = DadosGerenciais.transfomarPreco(totalItem);
+    	
+    	   String precoformat = DadosGerenciais.transfomarPreco(totalItem);;
+   	   	
+           double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    	
+        this.totalItem = valor;
     }
 
 

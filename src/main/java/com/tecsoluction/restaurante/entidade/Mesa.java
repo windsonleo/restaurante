@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "MESA")
+@SequenceGenerator(name = "mesa_seq", sequenceName = "mesa_seq")
 public class Mesa implements Serializable {
 
     /**
@@ -27,7 +29,7 @@ public class Mesa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "mesa_seq")
     @Column(name = "id")
     private long id;
     @NotBlank

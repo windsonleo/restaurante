@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ESTOQUE")
+@SequenceGenerator(name = "estoque_seq", sequenceName = "estoque_seq")
 public class Estoque implements Serializable {
 
     /**
@@ -39,7 +41,7 @@ public class Estoque implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "estoque_seq")
     @Column(name = "id")
     private long id;
 

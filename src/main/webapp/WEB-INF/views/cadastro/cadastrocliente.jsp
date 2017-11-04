@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@ page session="true" %>
 
 
@@ -43,12 +45,13 @@
                                 src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i>
 						</span>
                         <h5>Cadastro de Cliente</h5>
+                       
                     </div>
                     <div class="widget-content nopadding">
 
 
 						<form id="form-wizard" class="form-horizontal" method="post"
-							action="${pageContext.request.contextPath}/cliente/${acao}">
+							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente" modelAttribute="endereco">
 							<div id="form-wizard-1" class="step">
 								<div class="control-group">
 
@@ -56,7 +59,7 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-key"></i></span>
 
-                                            <input id="id" class="span11 m-wrap" name="id" type="text"
+                                            <input id="id" class="span11 m-wrap" name="id" type="number"
                                                    value="${cliente.id}" placeholder="Digite o id"/>
 
 
@@ -106,7 +109,7 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-envelope"></i></span> <input
                                                 id="mask-mail"
-                                                class="span11 mask text" name="email" type="text"
+                                                class="span12 mask text" name="email" type="text"
                                                 value="${cliente.email}" placeholder="Digite o Email"/>
                                         </div>
                                     </div>
@@ -114,13 +117,14 @@
 
                                 <div class="control-group">
                                     <div class="controls">
-                                        <div class="input-prepend select">
+                                        <div class="input-prepend">
                                             <span class="add-on"><i class="icon-question-sign"></i></span>
 
-                                            <select id="genero" name="genero" class="span3 m-wrap">
+                                            <select id="genero" name="genero" class="span3">
                                                 <optgroup label="Genero do Cliente">
-
-                                                    <option value="MASCULINO">MASCULINO</option>
+													
+												  <option value="${cliente.genero }">${cliente.genero }</option>
+                                                   <option value="MASCULINO">MASCULINO</option>
                                                     <option value="FEMININO">FEMININO</option>
 
                                                 </optgroup>
@@ -149,14 +153,17 @@
                                         <div data-date="12-02-2012"
                                              class="input-append date datepicker ">
 
-                                            <input id="datepicker" type="text" data-date="01-02-2013"
-                                                   data-date-format="dd-mm-yyyy"
-                                                   value="${cliente.datanascimento}" class="datepicker"
-                                                   name="datanascimento">
+                                            <input id="datepicker" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.datanascimento}"/>" class="datepicker" name="datanascimento">
+<%--                                              --%>
                                             <span class="add-on"><i class="icon-th"></i></span>
+                                            
+                                            
 
 
                                         </div>
+                                        
+                                        
+                                        
                                     </div>
                                 </div>
 
@@ -170,10 +177,11 @@
 
                                     <div class="controls">
 
+
                                         <div class="input-prepend">
-                                            <span class="add-on">Id</span> <input id="id"
+                                            <span class="add-on">Id</span> <input id="id" 
                                                                                   class="span11 mask text" name="id"
-                                                                                  type="text"
+                                                                                  type="number"
                                                                                   value="${cliente.endereco.id}"
                                                                                   placeholder="Digite o Id"/>
                                         </div>
@@ -186,7 +194,7 @@
 
                                         <div class="input-prepend">
                                             <span class="add-on">Logradouro</span> <input id="logradouro"
-                                                                                          class="span11 mask text"
+                                                                                          class=""
                                                                                           name="logradouro" type="text"
                                                                                           value="${cliente.endereco.logradouro}"
                                                                                           placeholder="Digite o Logradouro"/>
@@ -200,11 +208,11 @@
                                         <div class="controls">
 
                                             <div class="input-prepend">
-                                                <span class="add-on">N�</span> <input id="numero"
-                                                                                      class="span11 mask text"
+                                                <span class="add-on">N</span> <input id="numero"
+                                                                                      class=""
                                                                                       name="numero" type="text"
                                                                                       value="${cliente.endereco.numero}"
-                                                                                      placeholder="N�"/>
+                                                                                      placeholder="Numero"/>
 
                                             </div>
 
@@ -279,7 +287,7 @@
 
                                             <div class="input-prepend">
                                                 <span class="add-on">P.Ref</span>
-                                                <input id="pontoreferencia" class="span11 mask text"
+                                                <input id="pontoreferencia" class=""
                                                        name="pontoreferencia" type="text"
                                                        value="${cliente.endereco.pontoreferencia}"
                                                        placeholder="Digite o Ponto de Referencia"/>
@@ -320,7 +328,7 @@
                                             <div class="input-prepend">
                                                 <span class="add-on">Cliente</span>
                                                 <input id="cliente" name="cliente"
-                                                       class="span11 m-wrap" type="text" value="${cliente.id }"/>
+                                                       class="span11 m-wrap" type="number" value="${cliente.endereco.cliente.id }"/>
                                             </div>
                                         </div>
                                     </div>
