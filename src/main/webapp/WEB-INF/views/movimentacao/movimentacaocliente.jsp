@@ -60,7 +60,14 @@
                                             <td>${cliente.nome}</td>
                                             <td>${cliente.telefone}</td>
                                             <td>${cliente.email}</td>
-                                            <td>${cliente.datanascimento}</td>
+                                            
+                                            <td>
+                                            
+                                            <fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${cliente.datanascimento}"/>
+                                             
+                                            </td>
+                                            
                                             <td>${cliente.genero}</td>
                                                 <%--                    <td>${cliente.preferencia}</td> --%>
                                             <td><span class="label label bg_lb">${cliente.isativo}</span></td>

@@ -97,8 +97,13 @@ public class ProdutoComposto extends Produto implements Serializable {
         //
 //  			
 //  		}
+        
+        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
+    	
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+    
 
-        return DadosGerenciais.transfomarPreco(totalpedido);
+        return valor;
 
     }
 

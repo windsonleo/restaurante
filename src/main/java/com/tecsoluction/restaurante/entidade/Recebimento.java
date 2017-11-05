@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +36,7 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Entity
 @Table(name = "RECEBIMENTO")
+@SequenceGenerator(name = "recebimento_seq", sequenceName = "recebimento_seq")
 public class Recebimento implements Serializable {
 
 
@@ -42,7 +44,7 @@ public class Recebimento implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "recebimento_seq")
     @Column(name = "ID")
     private long id;
 
@@ -87,14 +89,26 @@ public class Recebimento implements Serializable {
      * @return the total
      */
     public Double getTotal() {
-        return DadosGerenciais.transfomarPreco(total);
+    	
+        String precoformat = DadosGerenciais.transfomarPreco(total);;
+    	
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+    	
+        return valor;
     }
 
     /**
      * @param total the total to set
      */
     public void setTotal(double total) {
-        this.total = DadosGerenciais.transfomarPreco(total)
+    	
+        String precoformat = DadosGerenciais.transfomarPreco(total);;
+    	
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+        
+        this.total = valor;
         ;
     }
 
@@ -254,9 +268,12 @@ public class Recebimento implements Serializable {
         //
 //  			
 //  		}
+ 	   String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
+	   	
+       double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
 
-        return 		DadosGerenciais.transfomarPreco(totalpedido);
+        return 	valor;
     }
 
 

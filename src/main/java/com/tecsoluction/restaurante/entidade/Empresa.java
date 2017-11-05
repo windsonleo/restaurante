@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "EMPRESA")
+@SequenceGenerator(name = "empresa_seq", sequenceName = "empresa_seq")
 public class Empresa implements Serializable {
 
     /**
@@ -25,7 +27,7 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "empresa_seq")
     @Column(name = "id")
     private long id;
 

@@ -8,32 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "ENDERECO")
-//@XmlRootElement(name = "garcon")
+@SequenceGenerator(name = "endereco_seq", sequenceName = "endereco_seq")
 public class Endereco implements Serializable {
 
    
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "endereco_seq")
     @Column(name = "id")
     private long id;
 
     @Column(name = "logradouro")
-	@NotBlank(message = "Nome do Banco obrigatorio")
     private String logradouro;
        
     @Column(name = "isativo")
 	private boolean isativo;
 
-	@NotBlank(message = "Numero do Banco  obrigatorio")
     @Column(name = "numero")
     private String numero;
 	
@@ -55,9 +56,11 @@ public class Endereco implements Serializable {
     @Column(name = "uf")
     private String uf;
     
-    @OneToOne(mappedBy="endereco",cascade={CascadeType.ALL})
+    @OneToOne(mappedBy="endereco")
+    @JoinColumn(name = "cliente_id", referencedColumnName="id")
     private Cliente cliente;
 
+    
 
     public Endereco() {
         // TODO Auto-generated constructor stub
@@ -72,7 +75,28 @@ public class Endereco implements Serializable {
     }
 
 
-
+//    @PrePersist
+//    public void prePersist() {
+//       
+//    	if (cliente != null) {
+//        	this.setCliente(cliente);
+////        	cliente.setEndereco(this);
+//        	
+//        	System.out.println("cliente diferente de null : " + cliente);
+//        	
+////        }else{
+////        	
+////        	cliente = new Cliente();
+////        	this.setCliente(cliente);
+////        	cliente.setEndereco(this);
+////        	
+////        	System.out.println("cliente igual a null : " + cliente);
+//
+//        	
+//        }
+//        
+//        
+//    }
 
 	/**
 	 * @return the cliente

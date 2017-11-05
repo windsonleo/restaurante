@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -17,6 +18,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "FORMAPAGAMENTO")
+@SequenceGenerator(name = "formapag_seq", sequenceName = "formapag_seq")
 public class FormaPagamento implements Serializable {
 
     /**
@@ -25,7 +27,7 @@ public class FormaPagamento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "formapag_seq")
     @Column(name = "ID")
     private long id;
 

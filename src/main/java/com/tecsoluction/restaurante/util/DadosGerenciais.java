@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.util;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 import com.tecsoluction.restaurante.entidade.Produto;
 
@@ -154,9 +155,43 @@ public class DadosGerenciais implements Serializable{
 	}
 
 
-	public static double transfomarPreco(double numero) {
-		DecimalFormat formato = new DecimalFormat("#.##");
-		return Double.valueOf(formato.format(numero));
+	public static String transfomarPreco(double numero) {
+		
+	    boolean isInteiro=(numero == Math.round(numero));
+	    
+//	    String pattern = isInteiro ? "#.##" : "0.##";  
+//		
+//		DecimalFormat formato = new DecimalFormat(pattern);
+	    
+//	    NumberFormat formato = NumberFormat.getCurrencyInstance();
+		
+//		formato.setMinimumFractionDigits(2);
+//		formato.setMaximumFractionDigits(2);
+	    
+	    
+	    DecimalFormat formato = new DecimalFormat();
+
+	    if(numero % 1 == 0 ){ 
+	    	
+		     formato = new DecimalFormat("##.##");
+
+
+	    	System.out.println("inteiro : " + formato.format(numero));
+	    	
+
+	    	
+	    }else {
+	    	
+		     formato =new DecimalFormat("#.##");
+		    
+	    	System.out.println("nao inteiro:"+formato.format(numero));
+
+
+
+	    }
+	    
+		
+		return formato.format(numero);
 	}
 
 

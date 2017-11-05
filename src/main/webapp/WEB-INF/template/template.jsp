@@ -229,6 +229,7 @@ function resetMenu() {
 
   });
   </script>
+  
   <script type="text/javascript">
 $(function () {
     // we use an inline data source in the example, usually data would
@@ -450,7 +451,13 @@ $(function () {
              document.getElementById('cidade').value=(conteudo.localidade);
              document.getElementById('uf').value=(conteudo.uf);
              document.getElementById('ibge').value=(conteudo.ibge);
+        
+         
+         
          } //end if.
+       
+         
+         
          else {
              //CEP não Encontrado.
              limpa_formulário_cep();

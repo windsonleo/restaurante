@@ -62,7 +62,7 @@
                     <td>${produtocomposto.nome}</td>
                   <td>${produtocomposto.descricao}</td>
                   <td><fmt:formatNumber type="currency"
-                       value="${produto.precovenda}"/></td>
+                       value="${produtocomposto.precovenda}"/></td>
                    <td>${produtocomposto.fornecedor}</td>
                   <td>${produtocomposto.itens}</td>
                    
