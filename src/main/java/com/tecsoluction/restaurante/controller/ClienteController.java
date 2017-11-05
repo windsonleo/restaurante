@@ -79,7 +79,12 @@ public class ClienteController extends AbstractController<Cliente> {
 		return dao;
 	}
 
-    @InitBinder
+	@Override
+	protected void validateDelete(String id) {
+
+	}
+
+	@InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
         binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enddao) {

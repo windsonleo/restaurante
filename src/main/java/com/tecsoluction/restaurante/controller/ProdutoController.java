@@ -56,6 +56,11 @@ public class ProdutoController extends AbstractController<Produto> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {

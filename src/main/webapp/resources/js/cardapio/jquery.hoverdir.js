@@ -139,9 +139,8 @@
 					fromStyle = !this.options.inverse ? slideFromLeft : slideFromRight;
 					toStyle = slideLeft;
 					break;
-			};
-			
-			return { from : fromStyle, to : toStyle };
+            }
+            return { from : fromStyle, to : toStyle };
 					
 		},
 		// apply a transition or fallback to jquery animate based on Modernizr.csstransitions support

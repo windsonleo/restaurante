@@ -4,13 +4,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Recebimento" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> <a href="#">Movimentação Recebimento</a><a href="#" class="current">Add Item ao Recebimento </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Recebimento" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> <a href="#">Movimentaï¿½ï¿½o Recebimento</a><a href="#" class="current">Add Item ao Recebimento </a> </div>
     <h1>Add Item ao Recebimento <strong> ${recebimento.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +19,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -42,13 +42,13 @@
                    <form action="${pageContext.request.contextPath}/recebimento/localizarpedido?id=${pedidocompra.id}" method="get" class="form-horizontal">
               
               
-                <label class="control-label">Número do Pedido Compra</label>
+                <label class="control-label">Nï¿½mero do Pedido Compra</label>
                 <div class="controls">
 							<input id="id" name="id" class="form-control"
 							type="text" value="${recebimento.pedidocompra.id }"
-							placeholder="Digite o Número do Pedido de Compra" />  
+							placeholder="Digite o Nï¿½mero do Pedido de Compra" />  
 							
-							<button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
+							<button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
 							
 							
 							              </div>
@@ -62,7 +62,7 @@
           
 		
 						<div class="control-group">
-							<label class="control-label">Código</label>
+							<label class="control-label">Cï¿½digo</label>
 							<div class="controls">
 							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra.id }" readonly="readonly"> 
 							<input id="data" name="data" type="text" class="form-control" value="${recebimento.pedidocompra.data }" readonly="readonly"> 
@@ -100,9 +100,9 @@
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
 <!-- 									    <th>Qtd</th> -->
-<!-- 									    <th>Preço Custo</th> -->
+<!-- 									    <th>Preï¿½o Custo</th> -->
 <!-- 									    <th>UM</th> -->
 									    
 <!-- 									    <th>Total Item</th> -->
@@ -112,7 +112,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-<!-- 									    <th>Ação</th> -->
+<!-- 									    <th>Aï¿½ï¿½o</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -136,7 +136,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informação" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
@@ -151,8 +151,8 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -208,7 +208,7 @@
                                     <tr>
                                        <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
 <!-- 									    <th>UM</th> -->
 									    
 <!-- 									    <th>Total Item</th> -->
@@ -218,7 +218,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-<!-- 									    <th>Ação</th> -->
+<!-- 									    <th>Aï¿½ï¿½o</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -245,7 +245,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informação" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
@@ -260,8 +260,8 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -294,7 +294,7 @@
                         </div>
 			
 			               <div class="controls">
- 	                    <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='finalizarrecebimento'">Finalizar</button>
+ 	                    <button type="submit" class="btn btn-sm btn-success" onClick="window.location='finalizarrecebimento'">Finalizar</button>
                
                
                </div>

@@ -128,7 +128,6 @@ public class Produto implements Serializable {
     public double getPrecocusto() {
 
         String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-        ;
 
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
@@ -138,7 +137,6 @@ public class Produto implements Serializable {
 
     public void setPrecocusto(double preco) {
         String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-        ;
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
         this.precocusto = valor;
@@ -147,7 +145,6 @@ public class Produto implements Serializable {
     public double getPrecovenda() {
 
         String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-        ;
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
         return valor;
@@ -156,7 +153,6 @@ public class Produto implements Serializable {
     public void setPrecovenda(double precoVenda) {
 
         String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-        ;
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
         this.precovenda = valor;

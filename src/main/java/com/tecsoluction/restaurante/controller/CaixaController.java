@@ -85,6 +85,11 @@ public class CaixaController extends AbstractController<Caixa> {
         return cdao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
@@ -223,15 +228,13 @@ public class CaixaController extends AbstractController<Caixa> {
         List<FormaPagamento> pagdinheiro = new ArrayList<>();
 
         List<FormaPagamento> pagcartaocredito = new ArrayList<>();
-        ;
 
         List<FormaPagamento> pagcartaodebito = new ArrayList<>();
-        ;
 
         Double total = 0.0;
 
 
-        String Dti = (String) request.getParameter("dataini");
+        String Dti = request.getParameter("dataini");
 
 //		System.out.println("windson"+Dti);
 
@@ -386,7 +389,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         for (int i = 0; i >= pedidoVendaLista.size(); i++) {
 
-            PedidoVenda pedidoVenda = (PedidoVenda) pedidoVendaLista.get(i);
+            PedidoVenda pedidoVenda = pedidoVendaLista.get(i);
 
             if ((pedidoVenda.getData().before(fim)) && (pedidoVenda.getData().after(ini))) {
 

@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
  * Created by clebr on 06/07/2016.
  */
 
-
+@Controller
 @RequestMapping(value = "item/")
 public class ItemController extends AbstractController<Item> {
 
@@ -57,6 +58,11 @@ public class ItemController extends AbstractController<Item> {
     @Override
     protected ItemDAO getDao() {
         return dao;
+    }
+
+    @Override
+    protected void validateDelete(String id) {
+
     }
 
 

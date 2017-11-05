@@ -506,7 +506,7 @@ $(function () {
              //cep sem valor, limpa formulário.
              limpa_formulário_cep();
          }
-     };
+     }
 
 
     </script>

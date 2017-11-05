@@ -161,4 +161,4 @@ maruti = {
 				left: x + 5
 			}).appendTo("body").fadeIn(200);
 		}
-}
+};

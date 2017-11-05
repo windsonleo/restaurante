@@ -101,6 +101,11 @@ public class RoleController extends AbstractController<Role> {
         return rdao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
 //	  @RequestMapping(value = "profile", method = RequestMethod.GET)
 //	  	public ModelAndView  profileUsuario(HttpServletRequest request){

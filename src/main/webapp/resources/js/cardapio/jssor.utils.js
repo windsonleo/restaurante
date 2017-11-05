@@ -2256,7 +2256,7 @@ $JssorAnimator$ = function (delay, duration, options, elmt, fromStyles, toStyles
     function PlayToPosition(toPosition, callback, noStop) {
         if (!_AutoPlay) {
             _AutoPlay = true;
-            _NoStop = noStop
+            _NoStop = noStop;
             _Callback = callback;
             toPosition = Math.max(toPosition, _Position_OuterBegin);
             toPosition = Math.min(toPosition, _Position_OuterEnd);

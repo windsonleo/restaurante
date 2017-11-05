@@ -111,13 +111,11 @@ public class Recebimento implements Serializable {
     public void setTotal(double total) {
 
         String precoformat = DadosGerenciais.transfomarPreco(total);
-        ;
 
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
 
         this.total = valor;
-        ;
     }
 
     //CONSTRUTOR PADRÃO
@@ -181,7 +179,6 @@ public class Recebimento implements Serializable {
 //  			
 //  		}
         String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
-        ;
 
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 

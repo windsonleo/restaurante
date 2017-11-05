@@ -16,14 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public abstract class AbstractEntityDao<Entity> {
 
-   
+
     @PersistenceContext
     protected EntityManager manager;
 
     private Class<Entity> entityClass;
     private String entityAlias;
-    
-    
+
 
     public AbstractEntityDao(Class<Entity> entityClass, String entityAlias) {
         this.entityClass = entityClass;
@@ -37,7 +36,7 @@ public abstract class AbstractEntityDao<Entity> {
 
     @Transactional
     public void add(Entity entity) {
-       manager.persist(entity);
+        manager.persist(entity);
     }
 
 //    public int searchEntityCount() {
@@ -90,38 +89,40 @@ public abstract class AbstractEntityDao<Entity> {
     @Transactional
     public void editar(Entity entity) {
 //    	manager.find(entityClass, id);
-    	
+
 //    	Entity entityant = manager.find(entityClass, id);
 //    	entityant = entity;
- //   	manager.remove(entityant);
-    //	manager.remove(entity);
-    	 manager.merge(entity);
-    	 manager.flush();
-    	 
-    	System.out.println("valor entity:"+entity.toString());
-    	 
+        //   	manager.remove(entityant);
+        //	manager.remove(entity);
+        manager.merge(entity);
+        manager.flush();
+
+        System.out.println("valor entity:" + entity.toString());
+
 //    	Entity entity2 = new Entity();
 //    	
 //        Long idf = Long.parseLong(request.getParameter("id"));
 //        entity2 = getDao().PegarPorId(idf);
 //    	entity2= getDao().editar(entity);
-    	
+
     }
 
     @Transactional
-    public void delete(String id) {
-//        Object id = manager.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
-//        Entity managedEntity = manager.find(entityClass, id);
-        Entity managedEntity = manager.getReference(entityClass, id);
-        manager.remove(managedEntity);
+    public void delete(Entity entity) {
+        manager.remove(entity);
+    }
+
+
+    public void deleteById(String id) {
+        Entity entity = manager.getReference(entityClass, id);
+        delete(entity);
+
     }
 
     @Transactional
-    public Entity PegarPorId(String entityId){
+    public Entity PegarPorId(String entityId) {
         return manager.find(entityClass, entityId);
     }
-
-
 
 
 //    public Entity searchOneEntity(String entity) {

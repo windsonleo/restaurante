@@ -45,6 +45,11 @@ public class GarconController extends AbstractController<Garcon> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @ModelAttribute
     public void addAttributes(Model model) {
 

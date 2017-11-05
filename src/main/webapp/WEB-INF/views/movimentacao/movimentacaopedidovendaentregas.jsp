@@ -4,8 +4,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Delivery" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Delivery</a> <a href="#" class="current">Movimentação de  Delivery</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Delivery" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Delivery</a> <a href="#" class="current">Movimentaï¿½ï¿½o de  Delivery</a> </div>
+    <h1>Listagem e Visï¿½o Geral</h1>
     
   </div>
   <div class="container-fluid">
@@ -16,8 +16,8 @@
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
          
-            <h5>Movimentação Delivery</h5>
-          <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='AdicionarDelivery'">Add</button> </span>
+            <h5>Movimentaï¿½ï¿½o Delivery</h5>
+          <button type="submit" class="btn btn-sm btn-success" onClick="window.location='AdicionarDelivery'">Add</button> </span>
 <%--              <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon" color="blue"></i></a> </span> --%>
          
 <!--             </div> -->
@@ -32,7 +32,7 @@
                <tr>
                                         <th>Id</th>
 									    <th>Data</th>
-									    <th>Situação</th>
+									    <th>Situaï¿½ï¿½o</th>
 									    
 									    <th>Status</th>
 									    <th>Origem</th>
@@ -42,7 +42,7 @@
    									    <th>Garcon</th>
 									     <th>Itens</th>
 									     <th>Ativo</th>
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -116,7 +116,7 @@
 								
 								<a
 									href="${pageContext.request.contextPath}/pedidovenda/informacao?id=${pedidovenda.id}"
-									title="informação" class="fa fa-info fa-2x"></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
 									
 											<a
 									href="${pageContext.request.contextPath}/pedidovenda/additem?id=${pedidovenda.id}"
@@ -134,8 +134,8 @@
 									
 			<div id="myAlert${pedidovenda.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -171,5 +171,5 @@
         </div>
         
         <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>

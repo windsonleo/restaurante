@@ -2970,7 +2970,7 @@ new function () {
                     $JssorUtils$.$SetAttribute(_LoadingContainer, "debug-id", "loading-container");
                 });
 
-                _Carousel = new Carousel()
+                _Carousel = new Carousel();
                 _CarouselPlayer = new CarouselPlayer(_Carousel, _Slideshow);
 
                 $JssorDebug$.$Execute(function () {

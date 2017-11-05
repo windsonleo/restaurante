@@ -114,6 +114,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         return pedidoVendaDao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
@@ -362,11 +367,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
-
-        itempedidovendaDao.delete(idf);
-
+        itempedidovendaDao.deleteById(idf);
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
 

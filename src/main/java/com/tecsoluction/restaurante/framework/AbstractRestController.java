@@ -72,9 +72,9 @@ public abstract class AbstractRestController<Entity> {
 
     //@Transactional
     @RequestMapping(method = RequestMethod.DELETE)
-    public void deleteEntity(@PathVariable Long id) {
+    public void deleteEntity(@PathVariable String id) {
         validateDelete(id);
-        getDao().delete(id);
+        getDao().deleteById(id);
     }
 
     /**
@@ -82,5 +82,5 @@ public abstract class AbstractRestController<Entity> {
      *
      * @param id
      */
-    protected abstract void validateDelete(Long id);
+    protected abstract void validateDelete(String id);
 }

@@ -49,6 +49,11 @@ public class EnderecoController extends AbstractController<Endereco> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @ModelAttribute
     public void addAttributes(Model model) {
 

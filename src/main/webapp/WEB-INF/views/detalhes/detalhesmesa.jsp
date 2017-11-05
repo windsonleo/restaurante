@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-th"></i> Mesa</a><a href="#">Movimentação Mesa</a> <a href="#" class="current">Detalhes Mesa</a> </div>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-th"></i> Mesa</a><a href="#">Movimentaï¿½ï¿½o Mesa</a> <a href="#" class="current">Detalhes Mesa</a> </div>
     <h1>Detalhes da Mesa ${mesa.id }</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -26,9 +26,9 @@
 						<div class="form-group">
 
 						 
-							<label>Código</label>	
+							<label>Cï¿½digo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${mesa.id }" disabled="disabled"> 
-							<label>Número</label>	
+							<label>Nï¿½mero</label>	
 							<input id="numero" name="numero" type="text" class="form-control" value="${mesa.numero }" disabled="disabled"> 
 							<label>Status</label>
 							<input id="status" name="status" type="text" class="form-control" value="${mesa.status }" disabled="disabled"> 
@@ -48,11 +48,11 @@
 			
 								<span >
 								<button type="button" class="btn btn-sm btn-success"
-									onClick="javascript:window.location='../pedidovenda/cadastro'">AddPedido</button> </span>
+									onClick="window.location='../pedidovenda/cadastro'">AddPedido</button> </span>
 									
 									<span>
 								<button type="button" class="btn btn-sm btn-success"
-									onClick="javascript:window.location='../pagamento/cadastro'">AddPagamento</button> </span>
+									onClick="window.location='../pagamento/cadastro'">AddPagamento</button> </span>
 								
 </div>
 </div>

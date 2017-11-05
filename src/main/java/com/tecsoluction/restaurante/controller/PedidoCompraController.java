@@ -105,6 +105,11 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         return pedidoCompraDao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
         binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorDao) {
@@ -306,9 +311,9 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView deleteItemPedidoCompra(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
-        pedidoCompraDao.delete(idf);
+        pedidoCompraDao.deleteById(idf);
 
 
         return new ModelAndView("redirect:/pedidocompra/additem?id=" + pv.getId());

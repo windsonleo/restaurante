@@ -102,7 +102,7 @@ $(document).ready(function() {
 		show24Hours: true,
 		spinnerImage: ''
 	});
-	$('#timepicker').timeEntry('setTime', '22:15')
+	$('#timepicker').timeEntry('setTime', '22:15');
 
 	//------------- Select plugin -------------//
 	$("#select1").select2();
@@ -158,8 +158,8 @@ $(document).ready(function() {
 
 //sparkline in sidebar area
 var positive = [1,5,3,7,8,6,10];
-var negative = [10,6,8,7,3,5,1]
-var negative1 = [7,6,8,7,6,5,4]
+var negative = [10,6,8,7,3,5,1];
+var negative1 = [7,6,8,7,6,5,4];
 
 $('#stat1').sparkline(positive,{
 	height:15,

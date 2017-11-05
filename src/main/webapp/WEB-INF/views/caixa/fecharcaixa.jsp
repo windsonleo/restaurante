@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> <a href="#">Movimentação Caixa </a><a href="#" class="current">Fechar Caixa</a> </div>
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> <a href="#">Movimentaï¿½ï¿½o Caixa </a><a href="#" class="current">Fechar Caixa</a> </div>
     <h1>Fechamento de Caixa ${caixa.id}</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -31,7 +31,7 @@
 							
 				 </div>
 				 
-				 	<button type="submit"class="btn btn-sm btn-success" onClick="javascript:window.location='fechamentocaixa'">Fechar Caixa</button>
+				 	<button type="submit"class="btn btn-sm btn-success" onClick="window.location='fechamentocaixa'">Fechar Caixa</button>
 					<button type="button"class="btn btn-sm btn-success">Imprimir Caixa</button>
               </div>
 						
@@ -79,7 +79,7 @@
       </div>
     </li>
     
-                 <li class="content"> <span>Quantidade Pedidos Balcão${pedidoVendaListabalcao.size()}</span>
+                 <li class="content"> <span>Quantidade Pedidos Balcï¿½o${pedidoVendaListabalcao.size()}</span>
       <div class="progress progress-mini progress-primary active progress-striped">
         <div style="width: 77%;" class="bar"></div>
       </div>

@@ -43,14 +43,21 @@ public class CategoriaController extends AbstractController<Categoria> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+        Categoria catGenericaPai = getDao().getOnlyCategoriaPai();
+        List<Categoria> categoriasFilha = getDao().getCategoriasFilho(id);
+        for (Categoria cat : categoriasFilha) {
+            cat.setCatpai(catGenericaPai);
+        }
+    }
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
         binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
 
         });
-
-
     }
 
     @ModelAttribute
@@ -58,14 +65,11 @@ public class CategoriaController extends AbstractController<Categoria> {
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
         usuario = usudao.PegarPorNome(usuario.getUsername());
         List<Categoria> categoriaList = getDao().getAll();
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("usuarioAtt", usuario);
-
     }
-
 
 }
 

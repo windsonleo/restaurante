@@ -58,6 +58,11 @@ public class MesaController extends AbstractController<Mesa> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
     @ModelAttribute
     public void addAttributes(Model model) {
 

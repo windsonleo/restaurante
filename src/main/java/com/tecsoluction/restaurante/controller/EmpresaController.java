@@ -37,6 +37,11 @@ public class EmpresaController extends AbstractController<Empresa> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @ModelAttribute
     public void addAttributes(Model model) {

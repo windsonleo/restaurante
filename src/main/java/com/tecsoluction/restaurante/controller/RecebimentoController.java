@@ -118,6 +118,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         return recebimentoDao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {

@@ -55,6 +55,11 @@ public class PedidoController extends AbstractController<Pedido> {
         return pedidoDao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 //    @InitBinder
 //    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 //

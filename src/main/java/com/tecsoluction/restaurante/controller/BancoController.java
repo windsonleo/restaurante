@@ -35,6 +35,11 @@ public class BancoController extends AbstractController<Banco> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @ModelAttribute
     public void addAttributes(Model model) {

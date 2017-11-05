@@ -25,52 +25,49 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 
 
-
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping(value = "usuario/")
 public class UsuarioController extends AbstractController<Usuario> {
-	
-	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
-	
+
+    private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+
     private final UsuarioDAO usudao;
 
 
     private
     final
     UsuarioDAO dao;
-    
+
     private
     final
     RoleDAO rdao;
-    
-    
+
 
     @Autowired
-    public UsuarioController(UsuarioDAO dao,RoleDAO rdao,UsuarioDAO usudao) {
+    public UsuarioController(UsuarioDAO dao, RoleDAO rdao, UsuarioDAO usudao) {
         super("usuario");
         this.dao = dao;
-        this.rdao =rdao;
-        this.usudao =usudao;
+        this.rdao = rdao;
+        this.usudao = usudao;
     }
-    
-    
+
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
         binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.rdao) {
         });
-     
 
 
     }
 
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
+    /**
+     * Simply selects the home view to render by returning its name.
+     */
 //	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 //	public ModelAndView CadastrarUsuarioForm(Locale locale, Model model) {
 //		logger.info("Welcome home! The client locale is {}.", locale);
@@ -86,9 +83,6 @@ public class UsuarioController extends AbstractController<Usuario> {
 //		
 //		return caduser;
 //	}
-	
-	
-	
     @ModelAttribute
     public void addAttributes(Model model) {
 
@@ -96,13 +90,13 @@ public class UsuarioController extends AbstractController<Usuario> {
         List<Usuario> usuarioList = dao.getAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
-        
+
         Usuario usuario = new Usuario();
-  		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-  		
-  		usuario = usudao.PegarPorNome(usuario.getUsername());
-          
-  		model.addAttribute("usuarioAtt", usuario);
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
+
+        model.addAttribute("usuarioAtt", usuario);
 //
 
         model.addAttribute("roleList", roleList);
@@ -112,38 +106,42 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     }
 
-	@Override
-	protected UsuarioDAO getDao() {
-		// TODO Auto-generated method stub
-		return dao;
-	}
-	
-	
-	  @RequestMapping(value = "profile", method = RequestMethod.GET)
-	  	public ModelAndView  profileUsuario(HttpServletRequest request){
-	    	
-	    	
-	    	String idf = request.getParameter("id");
-	    	
-	    	ModelAndView profileusuario = new ModelAndView("profileusuario");
-	    	
-	    	
-	    	 Usuario usuario = dao.PegarPorId(idf);
-	    	 
-	    	 // mudar para trazer pelo id da mesa e pelo status da mesa
-	    	// pedidos = pedidovendadao.getAll();
-	    	
-	    	
-	   // 	List<Produto> produtoList = produtoDao.getAll();
-	    //	List<Item> itemList = dao.getAll();
-	    	
-	    //	detalhesmesa.addObject("itemList", itemList);
-	    	 profileusuario.addObject("usuario", usuario);
-	    //	detalhesmesa.addObject("mesa", mesa);
+    @Override
+    protected UsuarioDAO getDao() {
+        return dao;
+    }
 
-	  		
-	  		return profileusuario;
-	  	}
+    @Override
+    protected void validateDelete(String id) {
 
-	
+    }
+
+
+    @RequestMapping(value = "profile", method = RequestMethod.GET)
+    public ModelAndView profileUsuario(HttpServletRequest request) {
+
+
+        String idf = request.getParameter("id");
+
+        ModelAndView profileusuario = new ModelAndView("profileusuario");
+
+
+        Usuario usuario = dao.PegarPorId(idf);
+
+        // mudar para trazer pelo id da mesa e pelo status da mesa
+        // pedidos = pedidovendadao.getAll();
+
+
+        // 	List<Produto> produtoList = produtoDao.getAll();
+        //	List<Item> itemList = dao.getAll();
+
+        //	detalhesmesa.addObject("itemList", itemList);
+        profileusuario.addObject("usuario", usuario);
+        //	detalhesmesa.addObject("mesa", mesa);
+
+
+        return profileusuario;
+    }
+
+
 }

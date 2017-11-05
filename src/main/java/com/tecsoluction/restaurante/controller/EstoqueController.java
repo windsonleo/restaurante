@@ -65,6 +65,11 @@ public class EstoqueController extends AbstractController<Estoque> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {

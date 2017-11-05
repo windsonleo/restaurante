@@ -67,7 +67,7 @@
 			this.steps = this.element.find(".step").hide();
 
 			this.firstStep = this.steps.eq(0).attr("id");
-			this.activatedSteps = new Array();
+			this.activatedSteps = [];
 			this.isLastStep = false;
 			this.previousStep = undefined;
 			this.currentStep = this.steps.eq(0).attr("id");
@@ -175,7 +175,7 @@
 							$(wizard.element).trigger('after_remote_ajax', {"currentStep" : wizard.currentStep});
 							wizard._enableNavigation();
 						}
-					})
+					});
 					this.element.ajaxSubmit(options);
 					return false;
 				}
@@ -271,7 +271,7 @@
 
 					stepShownCallback.apply(wizard);
 				});
-				return;
+
 			});
 		},
 
@@ -331,18 +331,16 @@
 				this.currentStep = step;
 				var stepShownCallback = function(){if(triggerStepShown)$(this.element).trigger('step_shown', $.extend({"isBackNavigation" : backwards},this._state()));};
 				this._animate(this.previousStep, step, stepShownCallback);
-			};
-
-
-		},
+            }
+        },
 
 	   _reset : function(){
-			this.element.resetForm()
+			this.element.resetForm();
 			$("label,:input,textarea",this).removeClass("error");
 			for(var i = 0; i < this.activatedSteps.length; i++){
 				this.steps.filter("#" + this.activatedSteps[i]).hide().find(":input").attr("disabled","disabled");
 			}
-			this.activatedSteps = new Array();
+			this.activatedSteps = [];
 			this.previousStep = undefined;
 			this.isLastStep = false;
 			if(this.options.historyEnabled){
@@ -364,7 +362,7 @@
 				"nextButton" : this.nextButton,
 				"steps" : this.steps,
 				"firstStep" : this.firstStep
-			}
+			};
 
 			if(state !== undefined)
 				return currentState[state];

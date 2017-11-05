@@ -6,13 +6,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao" title="Go to Pagamento" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Pagamento</a> <a href="#">Movimentação Pagamento </a><a href="#" class="current">Cadastro Pagamento</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao" title="Go to Pagamento" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Pagamento</a> <a href="#">Movimentaï¿½ï¿½o Pagamento </a><a href="#" class="current">Cadastro Pagamento</a> </div>
     <h1>Cadastro de Pagamento</h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -21,7 +21,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -42,13 +42,13 @@
                    <form action="${pageContext.request.contextPath}/pagamento/localizarpedido?id=${pedidovenda.id}" method="get" class="form-horizontal">
               
                <div class="control-group">
-                <label class="control-label">Número do Pedido</label>
+                <label class="control-label">Nï¿½mero do Pedido</label>
                 <div class="controls">
 							<input id="id" name="id" class="span4"
 							type="text" value="${pedidovenda.id }"
-							placeholder="Digite o Número do Pedido de Venda" />                
+							placeholder="Digite o Nï¿½mero do Pedido de Venda" />                
               
-               	            <button type="submit" class="btn btn-sm btn-success" onClick="javascript:window.location='localizarpedido'">Loc Pedido</button>
+               	            <button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
               
               </div>
               
@@ -68,7 +68,7 @@
 <%-- 		     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/pagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate"> --%>
 		
 						<div class="control-group">
-							<label class="control-labe">Código</label>
+							<label class="control-labe">Cï¿½digo</label>
 							<div class="controls">
 							<input id="id" name="id" type="text" class="span2" value="${pedidovenda.id }" readonly="readonly"> 
 							<input id="data" name="data" type="text" class="span2" value="${pedidovenda.data }" readonly="readonly"> 
@@ -130,7 +130,7 @@
 		       				</c:forEach>
 		                </optgroup>
 	                    </select>	
-	                    	                    <button type="submit" class="btn  btn-success" onClick="javascript:window.location='adicionarformapagamentopagamento'">Add</button>
+	                    	                    <button type="submit" class="btn  btn-success" onClick="window.location='adicionarformapagamentopagamento'">Add</button>
 	                    
 	         		
 				
@@ -158,7 +158,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -191,7 +191,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}"
-									title="informação" class="fa fa-info fa-2x"></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}"
@@ -321,5 +321,5 @@
 
       
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>

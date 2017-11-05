@@ -39,6 +39,11 @@ public class DespesaController extends AbstractController<Despesa> {
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
 //    @InitBinder
 //    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {

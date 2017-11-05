@@ -38,10 +38,10 @@ public class UsuarioDAO extends AbstractEntityDao<Usuario> {
 
 	public Usuario PegarPorNome(String nome){
 		
-		Usuario usuario =manager.createQuery("SELECT p FROM Usuario p where p.username='" + nome +"'", Usuario.class).getSingleResult();;
-		
-					
-		return usuario;
+		Usuario usuario =manager.createQuery("SELECT p FROM Usuario p where p.username='" + nome +"'", Usuario.class).getSingleResult();
+
+
+        return usuario;
 	}
 
 

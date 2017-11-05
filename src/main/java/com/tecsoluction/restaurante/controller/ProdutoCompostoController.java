@@ -84,6 +84,11 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         return dao;
     }
 
+    @Override
+    protected void validateDelete(String id) {
+
+    }
+
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {

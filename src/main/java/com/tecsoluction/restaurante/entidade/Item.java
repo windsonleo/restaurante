@@ -188,7 +188,6 @@ public class Item implements Serializable, Comparable<Item> {
     public void setTotalItem(double totalItem) {
 
         String precoformat = DadosGerenciais.transfomarPreco(totalItem);
-        ;
 
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 

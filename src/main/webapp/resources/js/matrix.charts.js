@@ -87,7 +87,7 @@ $(document).ready(function(){
     var d1 = [];
     for (var i = 0; i <= 10; i += 1) d1.push([i, parseInt(Math.random() * 30)]);
 
-	var data = new Array(); 
+	var data = [];
 	data.push({
 		data:d1,
         bars: {
@@ -115,4 +115,4 @@ maruti = {
 				left: x + 5
 			}).appendTo("body").fadeIn(200);
 		}
-}
+};

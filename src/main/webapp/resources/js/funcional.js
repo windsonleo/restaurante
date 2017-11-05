@@ -47,7 +47,7 @@
 	       var total=0;
 	       $('.qtd').each(function(i){ 
 	    	   
-	    	   valoritem =parseInt($('.precounit').val())
+	    	   valoritem =parseInt($('.precounit').val());
 
 	    	   total = parseInt($(this).val()) * valoritem ;
 	       });
