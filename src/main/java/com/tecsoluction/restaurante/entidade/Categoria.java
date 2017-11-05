@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
@@ -33,9 +34,11 @@ public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id")
-    private long id;
+    private String id;
 
     @NotBlank
     @Column(name = "nome", nullable = false)
@@ -63,7 +66,7 @@ public class Categoria implements Serializable {
     }
 
     
-    public Categoria(long id, String nome,Categoria catpai,boolean isativo) {
+    public Categoria(String id, String nome,Categoria catpai,boolean isativo) {
         // TODO Auto-generated constructor stub
     	this.id = id;
     	this.nome = nome;
@@ -72,7 +75,7 @@ public class Categoria implements Serializable {
     }
     
 
-    public Categoria(long id, String nome,boolean isativo) {
+    public Categoria(String id, String nome,boolean isativo) {
         // TODO Auto-generated constructor stub
     	this.id = id;
     	this.nome = nome;
@@ -91,11 +94,11 @@ public class Categoria implements Serializable {
     }
 
 
-    public long getId() {
+    public String getId() {
         return id;
     }
     
-    public void setId(long id){
+    public void setId(String id){
     	
     	this.id = id;
     }

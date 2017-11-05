@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @version 1.0
  */
-@Component
 public abstract class AbstractEntityDao<Entity> {
 
    
