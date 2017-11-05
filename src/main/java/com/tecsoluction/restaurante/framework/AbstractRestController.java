@@ -42,7 +42,7 @@ public abstract class AbstractRestController<Entity> {
     protected abstract void validateSave(Entity entity);
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Entity> buscarEntity(@PathVariable Long id) {
+    public ResponseEntity<Entity> buscarEntity(@PathVariable String id) {
         Entity entity = getDao().PegarPorId(id);
         if (entity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

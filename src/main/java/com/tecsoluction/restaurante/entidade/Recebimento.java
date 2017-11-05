@@ -27,6 +27,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,19 +40,20 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "RECEBIMENTO")
-@SequenceGenerator(name = "recebimento_seq", sequenceName = "recebimento_seq")
 public class Recebimento implements Serializable {
-
 
     private static final long serialVersionUID = 1L;
 
-
     @Id
-    @GeneratedValue(generator = "recebimento_seq")
-    @Column(name = "ID")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -89,12 +96,12 @@ public class Recebimento implements Serializable {
      * @return the total
      */
     public Double getTotal() {
-    	
-        String precoformat = DadosGerenciais.transfomarPreco(total);;
-    	
+
+        String precoformat = DadosGerenciais.transfomarPreco(total);
+
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-    	
+
         return valor;
     }
 
@@ -102,19 +109,19 @@ public class Recebimento implements Serializable {
      * @param total the total to set
      */
     public void setTotal(double total) {
-    	
-        String precoformat = DadosGerenciais.transfomarPreco(total);;
-    	
+
+        String precoformat = DadosGerenciais.transfomarPreco(total);
+        ;
+
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-        
+
         this.total = valor;
         ;
     }
 
     //CONSTRUTOR PADRÃO
     public Recebimento() {
-
 
         //   listaDevolucao = new ArrayList<>();
         //  tipo.VENDA.values();
@@ -131,28 +138,6 @@ public class Recebimento implements Serializable {
 //    	this.fornecedor=pedidoompra.
     }
 
-
-    /**
-     * @return the id
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * @return the data
-     */
-    public Date getData() {
-        return data;
-    }
-
-    /**
-     * @return the pedidocompra
-     */
-    public PedidoCompra getPedidocompra() {
-        return pedidocompra;
-    }
-
     /**
      * @return the fornecedor
      */
@@ -163,79 +148,6 @@ public class Recebimento implements Serializable {
         }
 
         return fornecedor;
-    }
-
-    /**
-     * @return the items
-     */
-    public Map<Item, Double> getItems() {
-        return items;
-    }
-
-
-    /**
-     * @return the ispago
-     */
-    public boolean isIspago() {
-        return ispago;
-    }
-
-    /**
-     * @return the status
-     */
-    public StatusPedido getStatus() {
-        return status;
-    }
-
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    /**
-     * @param pedidocompra the pedidocompra to set
-     */
-    public void setPedidocompra(PedidoCompra pedidocompra) {
-        this.pedidocompra = pedidocompra;
-    }
-
-    /**
-     * @param fornecedor the fornecedor to set
-     */
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
-    /**
-     * @param items the items to set
-     */
-    public void setItems(Map<Item, Double> items) {
-        this.items = items;
-    }
-
-
-    /**
-     * @param ispago the ispago to set
-     */
-    public void setIspago(boolean ispago) {
-        this.ispago = ispago;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(StatusPedido status) {
-        this.status = status;
     }
 
 
@@ -268,12 +180,13 @@ public class Recebimento implements Serializable {
         //
 //  			
 //  		}
- 	   String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
-	   	
-       double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
+        ;
+
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
 
-        return 	valor;
+        return valor;
     }
 
 

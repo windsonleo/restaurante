@@ -10,30 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "BANCO")
 //@XmlRootElement(name = "garcon")
-@SequenceGenerator(name = "banco_seq", sequenceName = "banco_seq")
 public class Banco implements Serializable {
 
-   
+
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "banco_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "nome")
-	@NotBlank(message = "Nome do Banco obrigatorio")
+    @NotBlank(message = "Nome do Banco obrigatorio")
     private String nome;
-       
-    @Column(name = "isativo")
-	private boolean isativo;
 
-	@NotBlank(message = "Numero do Banco  obrigatorio")
+    @Column(name = "isativo")
+    private boolean isativo;
+
+    @NotBlank(message = "Numero do Banco  obrigatorio")
     private String numero;
 
 
@@ -41,65 +49,6 @@ public class Banco implements Serializable {
         // TODO Auto-generated constructor stub
 //        pedidos = new ArrayList<>();
     }
-
-
-
-
-	/**
-	 * @return the numero
-	 */
-	public String getNumero() {
-		return numero;
-	}
-
-
-
-
-	/**
-	 * @param numero the numero to set
-	 */
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-
-
-
-	public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-
-//	public String getFoto() {
-//		return foto;
-//	}
-//
-//	public void setFoto(String foto) {
-//		this.foto = foto;
-//	}
-	
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 
 //    public List<PedidoVenda> getPedidos() {
 //        return pedidos;
@@ -109,7 +58,7 @@ public class Banco implements Serializable {
 //    public void setPedidos(List<PedidoVenda> pedidos) {
 //        this.pedidos = pedidos;
 //    }
-	
+
     @Override
     public String toString() {
         return nome.toUpperCase();

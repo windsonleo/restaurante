@@ -11,14 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "EMPRESA")
-@SequenceGenerator(name = "empresa_seq", sequenceName = "empresa_seq")
 public class Empresa implements Serializable {
 
     /**
@@ -27,103 +34,30 @@ public class Empresa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "empresa_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @NotBlank
     @Column(name = "nome", nullable = true)
     private String nome;
-    
-//    (cascade = { CascadeType.ALL })
-//	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Estoque.class,optional=true)
-//	@JoinColumn(name = "catpai_id", nullable = true)
-//    private Estoque catpai;
+
     @NotBlank
     private String logo;
-    
-    
-    @Column(name = "isativo")
-	private boolean isativo;
-    
-    @JsonIgnore
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//    @OneToMany
-//    private Map<Produto,Integer> produtos;
 
-    
-//    public Estoque(long id, String nome,Estoque catpai,boolean isativo) {
-//        // TODO Auto-generated constructor stub
-//    	this.id = id;
-//    	this.nome = nome;
-//    	this.catpai=catpai;
-//    	this.isativo = isativo;
-//    }
-    
+
+    @Column(name = "isativo")
+    private boolean isativo;
 
     public Empresa() {
         // TODO Auto-generated constructor stub
 
     }
 
-    //GETTERS AND SETTERS
-
-    public String getNome() {
-        return nome;
-    }
-
-
-    /**
-	 * @return the logo
-	 */
-	public String getLogo() {
-		return logo;
-	}
-
-	/**
-	 * @param logo the logo to set
-	 */
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id){
-    	
-    	this.id = id;
-    }
-
-
     @Override
     public String toString() {
         return nome.toUpperCase();
     }
 
-
-
-//    public Map<Produto, Integer> getProdutos() {
-//        return produtos;
-//    }
-//
-//    public void setProdutos(Map<Produto, Integer> produtos) {
-//        this.produtos = produtos;
-//    }
-    
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 }

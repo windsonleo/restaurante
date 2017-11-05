@@ -96,7 +96,7 @@ public class ItemController extends AbstractController<Item> {
     public ModelAndView detalhesItem(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
 
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");

@@ -13,16 +13,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "CAIXA")
-@SequenceGenerator(name = "caixa_seq", sequenceName = "caixa_seq")
 public class Caixa implements Serializable {
 
     /**
@@ -31,86 +37,39 @@ public class Caixa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator  = "caixa_seq")
-    @Column(name = "id")
-    private long id;
-    
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
+
     @NotBlank
     @Column(name = "nome", nullable = true)
     private String nome;
-    
+
 ////    (cascade = { CascadeType.ALL })
 //	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Caixa.class,optional=true)
 //	@JoinColumn(name = "catpai_id", nullable = true)
 //    private Caixa catpai;
-    
-    
+
+
     @Column(name = "isativo")
-	private boolean isativo;
-    
+    private boolean isativo;
+
     @JsonIgnore
-	@LazyCollection(LazyCollectionOption.TRUE)
-    @OneToMany(mappedBy="caixa")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany(mappedBy = "caixa")
     private List<Pagamento> pagamentos;
-    
-    
+
+
     @JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy="caixa")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "caixa")
     private List<Despesa> despesas;
-    
-    
-    
 
 
     //CONSTRUTOR PADRAO
-
-    /**
-	 * @return the despesas
-	 */
-	public List<Despesa> getDespesas() {
-		return despesas;
-	}
-
-
-
-
-	/**
-	 * @param despesas the despesas to set
-	 */
-	public void setDespesas(List<Despesa> despesas) {
-		this.despesas = despesas;
-	}
-
-
-
-
-	public Caixa() {
+    public Caixa() {
         // TODO Auto-generated constructor stub
-    }
-
-    
-
-
-    //GETTERS AND SETTERS
-
-    public String getNome() {
-        return nome;
-    }
-
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id){
-    	
-    	this.id = id;
     }
 
 
@@ -119,37 +78,4 @@ public class Caixa implements Serializable {
         return nome.toUpperCase();
     }
 
-
-  
-
-    
-	/**
-	 * @return the pagamentos
-	 */
-	public List<Pagamento> getPagamentos() {
-		return pagamentos;
-	}
-
-
-
-
-	/**
-	 * @param pagamentos the pagamentos to set
-	 */
-	public void setPagamentos(List<Pagamento> pagamentos) {
-		this.pagamentos = pagamentos;
-	}
-
-
-
-
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 }

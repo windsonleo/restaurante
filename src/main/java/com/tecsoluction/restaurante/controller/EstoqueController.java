@@ -102,7 +102,7 @@ public class EstoqueController extends AbstractController<Estoque> {
     public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
         ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
 
         Estoque estoque = dao.PegarPorId(idf);
@@ -119,7 +119,7 @@ public class EstoqueController extends AbstractController<Estoque> {
         double totalvenda = 0.0;
 
 
-        Collection<Double> itenstotal = estoque.getItens().values();
+        Collection<Double> itenstotal = estoque.getItems().values();
 
         for (Iterator iterator = itenstotal.iterator(); iterator.hasNext(); ) {
             Double double1 = (Double) iterator.next();

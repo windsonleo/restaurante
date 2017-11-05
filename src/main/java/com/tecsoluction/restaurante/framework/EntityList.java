@@ -22,7 +22,7 @@ public class EntityList<Entity> extends PropertyEditorSupport {
     @Override
     public void setAsText(final String id) {
 
-        final Entity entity = dao.PegarPorId(Long.parseLong(id));
+        final Entity entity = dao.PegarPorId(id);
 
         this.setValue(entity);
 

@@ -13,75 +13,43 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "ROLE")
-@SequenceGenerator(name = "role_seq", sequenceName = "role_seq")
-public class Role  implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-  
+public class Role implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(generator = "role_seq")
-    @Column(name = "id")
-	private long idrole;
-    
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
+
     private String name;
-    
- 
-    private Set<Usuario> users;
-    
-    
-    
-    
-    public Role() {
-		// TODO Auto-generated constructor stub
-	}
-
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    public Long getId() {
-        return idrole;
-    }
-    
-
-    public void setId(Long id) {
-        this.idrole = id;
-    }
-    
-    
-    @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
 //    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<Usuario> getUsers() {
-        return users;
+    private Set<Usuario> users;
+
+
+    public Role() {
+        // TODO Auto-generated constructor stub
     }
 
-    public void setUsers(Set<Usuario> users) {
-        this.users = users;
-    }
-    
-    
     @Override
     public String toString() {
-    	// TODO Auto-generated method stub
-    	return name;
+        // TODO Auto-generated method stub
+        return name;
     }
 
 }

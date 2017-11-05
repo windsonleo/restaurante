@@ -123,7 +123,7 @@ public class UsuarioController extends AbstractController<Usuario> {
 	  	public ModelAndView  profileUsuario(HttpServletRequest request){
 	    	
 	    	
-	    	long idf = Long.parseLong(request.getParameter("id"));
+	    	String idf = request.getParameter("id");
 	    	
 	    	ModelAndView profileusuario = new ModelAndView("profileusuario");
 	    	

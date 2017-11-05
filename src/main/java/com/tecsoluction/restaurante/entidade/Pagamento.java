@@ -20,14 +20,22 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "PAGAMENTO")
-@SequenceGenerator(name = "pag_seq", sequenceName = "pag_seq")
 public class Pagamento implements Serializable {
 
     /**
@@ -36,9 +44,10 @@ public class Pagamento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "pag_seq")
-    @Column(name = "ID")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -71,167 +80,42 @@ public class Pagamento implements Serializable {
     @JoinColumn(name = "caixa_id")
     private Caixa caixa;
 
-
-    /**
-     * @return the formaPagamentos
-     */
-    public Set<FormaPagamento> getFormaPagamentos() {
-        return formaPagamentos;
-    }
-
-
-    /**
-     * @param formaPagamentos the formaPagamentos to set
-     */
-    public void setFormaPagamentos(Set<FormaPagamento> formaPagamentos) {
-        this.formaPagamentos = formaPagamentos;
-    }
-
-
     public Pagamento() {
         // TODO Auto-generated constructor stub
     }
-
-
-    /**
-     * @return the id
-     */
-    public long getId() {
-        return id;
-    }
-
-
-    /**
-     * @return the datapagamento
-     */
-    public Date getDatapagamento() {
-        return datapagamento;
-    }
-
-
-    /**
-     * @return the pedidos
-     */
-    public List<PedidoVenda> getPedidos() {
-        return pedidos;
-    }
-
-
-    /**
-     * @return the formaPagamento
-     */
-//	public Set<FormaPagamento> getFormaPagamento() {
-//		return formaPagamentos;
-//	}
-
-
-    /**
-     * @return the valorTotalPagamento
-     */
-    public double getValorTotalPagamento() {
-        return valorTotalPagamento;
-    }
-
-
-    /**
-     * @return the status
-     */
-    public String getStatus() {
-        return status;
-    }
-
 
     /**
      * @return the valorPago
      */
     public double getValorPago() {
-    	
- 	   String precoformat = DadosGerenciais.transfomarPreco(valorPago);;
-  	   	
-       double valor = Double.parseDouble(precoformat.replace(',', '.'));
-       
-       
+
+        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
+
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
         return valor;
     }
-
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    /**
-     * @param datapagamento the datapagamento to set
-     */
-    public void setDatapagamento(Date datapagamento) {
-        this.datapagamento = datapagamento;
-    }
-
-
-    /**
-     * @param pedidos the pedidos to set
-     */
-    public void setPedidos(List<PedidoVenda> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-
-    /**
-     * @param formaPagamento the formaPagamento to set
-     */
-//	public void setFormaPagamento(Set<FormaPagamento> formaPagamento) {
-//		this.formaPagamentos = formaPagamento;
-//	}
-
 
     /**
      * @param valorTotalPagamento the valorTotalPagamento to set
      */
     public void setValorTotalPagamento(double valorTotalPagamento) {
-    	
-    	   String precoformat = DadosGerenciais.transfomarPreco(valorTotalPagamento);;
-     	   	
-           double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        String precoformat = DadosGerenciais.transfomarPreco(valorTotalPagamento);
 
-    	
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
         this.valorTotalPagamento = valor;
     }
-
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 
     /**
      * @param valorPago the valorPago to set
      */
     public void setValorPago(double valorPago) {
-    	
- 	   String precoformat = DadosGerenciais.transfomarPreco(valorPago);;
-	   	
-       double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-    	
-    	
-        this.valorPago =valor;
+        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
+
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
+        this.valorPago = valor;
     }
-
-
-    public Caixa getCaixa() {
-        return caixa;
-    }
-
-
-    public void setCaixa(Caixa caixa) {
-        this.caixa = caixa;
-    }
-
-
 }

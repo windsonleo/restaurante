@@ -34,7 +34,7 @@ public class ProdutoCompostoControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ProdutoComposto> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<ProdutoComposto> buscarEntity(@PathVariable String id) {
     	ProdutoComposto produto = getDao().PegarPorId(id);
         if (produto == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

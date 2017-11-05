@@ -32,7 +32,7 @@ public class ProdutoControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Produto> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<Produto> buscarEntity(@PathVariable String id) {
     	Produto produto = getDao().PegarPorId(id);
         if (produto == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

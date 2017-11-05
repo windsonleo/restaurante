@@ -44,7 +44,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastro = new ModelAndView("cadastro" + entityAlias);
 
         List<Entity> entityList = getDao().getAll();
-       
+
         cadastro.addObject("acao", "add");
 
 
@@ -72,13 +72,13 @@ public abstract class AbstractController<Entity> {
 //        attributes.a
 
         } else {
-        	
+
 
             getDao().add(entity);
             System.out.println("add:" + entityAlias);
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
             attributes.addFlashAttribute("entity", entity.toString());
-            
+
 
         }
 
@@ -107,7 +107,7 @@ public abstract class AbstractController<Entity> {
     public ModelAndView editarEntityForm(HttpServletRequest request) {
 
         Entity entity;
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
         ModelAndView edicao = new ModelAndView("cadastro" + entityAlias);
         entity = getDao().PegarPorId(idf);
         edicao.addObject(entityAlias, entity);
@@ -144,5 +144,5 @@ public abstract class AbstractController<Entity> {
 
         return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
     }
-    
+
 }

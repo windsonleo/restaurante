@@ -47,9 +47,9 @@ public class CategoriaController extends AbstractController<Categoria> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
-
-        });
+//        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
+//
+//        });
         
 
     }

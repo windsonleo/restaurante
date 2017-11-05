@@ -12,32 +12,40 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "GARCON")
 //@XmlRootElement(name = "garcon")
-@SequenceGenerator(name = "garcon_seq", sequenceName = "garcon_seq")
 public class Garcon implements Serializable {
 
-   
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 121L;
 
     @Id
-    @GeneratedValue(generator = "garcon_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
+
     @NotBlank
     @Column(name = "nome")
     private String nome;
-    
+
     @Column(name = "foto")
-    private String foto; 
-    
+    private String foto;
+
     @Column(name = "isativo")
-	private boolean isativo;
+    private boolean isativo;
 
     @JsonIgnore
     @OneToMany(mappedBy = "garcon")
@@ -48,66 +56,16 @@ public class Garcon implements Serializable {
         // TODO Auto-generated constructor stub
 //        pedidos = new ArrayList<>();
     }
-    
-    
-    
-
-    public Garcon(long id, String nome, String foto, boolean isativo) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.foto = foto;
-		this.isativo = isativo;
-	}
 
 
-
-
-	public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public Garcon(String id, String nome, String foto, boolean isativo) {
+        super();
         this.id = id;
+        this.nome = nome;
+        this.foto = foto;
+        this.isativo = isativo;
     }
 
-
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-	
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
-
-    public List<PedidoVenda> getPedidos() {
-        return pedidos;
-    }
-
-
-    public void setPedidos(List<PedidoVenda> pedidos) {
-        this.pedidos = pedidos;
-    }
-	
     @Override
     public String toString() {
         return nome.toUpperCase();

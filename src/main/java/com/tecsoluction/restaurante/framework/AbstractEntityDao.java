@@ -117,7 +117,7 @@ public abstract class AbstractEntityDao<Entity> {
     }
 
     @Transactional
-    public Entity PegarPorId(long entityId){
+    public Entity PegarPorId(String entityId){
         return manager.find(entityClass, entityId);
     }
 

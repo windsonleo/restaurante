@@ -97,7 +97,7 @@ public class MesaController extends AbstractController<Mesa> {
     public ModelAndView detalhesMesa(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView detalhesmesa = new ModelAndView("detalhesmesa");
 

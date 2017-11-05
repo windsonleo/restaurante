@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,6 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -24,6 +29,9 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "CATEGORIA")
 public class Categoria implements Serializable {
@@ -34,28 +42,27 @@ public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id")
+    @Column(name = "id", length = 36)
     private String id;
 
     @NotBlank
     @Column(name = "nome", nullable = false)
     private String nome;
-    
-//    (cascade = { CascadeType.ALL })
-	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Categoria.class,optional=true)
-	@JoinColumn(name = "catpai_id", nullable = true)
+
+    //    (cascade = { CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Categoria.class, optional = true)
+    @JoinColumn(name = "catpai_id", nullable = true)
     private Categoria catpai;
-    
-    
+
+
     @Column(name = "isativo")
-	private boolean isativo;
-    
+    private boolean isativo;
+
     @JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "categoria" ,cascade={CascadeType.REFRESH})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "categoria", cascade = {CascadeType.REFRESH})
     private List<Produto> produtos;
 
 
@@ -63,77 +70,29 @@ public class Categoria implements Serializable {
 
     public Categoria() {
         // TODO Auto-generated constructor stub
-    }
-
-    
-    public Categoria(String id, String nome,Categoria catpai,boolean isativo) {
-        // TODO Auto-generated constructor stub
-    	this.id = id;
-    	this.nome = nome;
-    	this.catpai=catpai;
-    	this.isativo = isativo;
-    }
-    
-
-    public Categoria(String id, String nome,boolean isativo) {
-        // TODO Auto-generated constructor stub
-    	this.id = id;
-    	this.nome = nome;
-    	this.isativo = isativo;
-    }
-
-    //GETTERS AND SETTERS
-
-    public String getNome() {
-        return nome;
+        produtos = new ArrayList<>();
     }
 
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public String getId() {
-        return id;
-    }
-    
-    public void setId(String id){
-    	
-    	this.id = id;
-    }
+//    public Categoria(String id, String nome,Categoria catpai,boolean isativo) {
+//        // TODO Auto-generated constructor stub
+//    	this.id = id;
+//    	this.nome = nome;
+//    	this.catpai=catpai;
+//    	this.isativo = isativo;
+//    }
+//
+//
+//    public Categoria(String id, String nome,boolean isativo) {
+//        // TODO Auto-generated constructor stub
+//    	this.id = id;
+//    	this.nome = nome;
+//    	this.isativo = isativo;
+//    }
 
 
     @Override
     public String toString() {
         return nome.toUpperCase();
     }
-
-
-    public Categoria getCatpai() {
-        return catpai;
-    }
-
-
-    public void setCatpai(Categoria catpai) {
-        this.catpai = catpai;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-    
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 }

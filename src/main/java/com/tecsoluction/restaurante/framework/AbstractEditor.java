@@ -19,7 +19,7 @@ public class AbstractEditor<Entity> extends PropertyEditorSupport {
         if (id.equalsIgnoreCase("")) {
             this.setValue(null);
         } else {
-            final Entity entity = dao.PegarPorId(Long.parseLong(id));
+            final Entity entity = dao.PegarPorId(id);
 
             this.setValue(entity);
         }

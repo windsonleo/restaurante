@@ -115,7 +115,7 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView detalhesProduto(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
@@ -213,7 +213,7 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 

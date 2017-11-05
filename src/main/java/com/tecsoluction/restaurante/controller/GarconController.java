@@ -68,7 +68,7 @@ public class GarconController extends AbstractController<Garcon> {
     public ModelAndView gerenciarGarconLocalizar(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView gerencia = new ModelAndView("gerenciagarcon");
 

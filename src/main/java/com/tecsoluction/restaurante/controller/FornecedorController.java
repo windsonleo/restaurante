@@ -68,8 +68,7 @@ public class FornecedorController extends AbstractController<Fornecedor> {
     @RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
     public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
 
-
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = (request.getParameter("id"));
 
         ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 

@@ -34,7 +34,7 @@ public class MesaControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Mesa> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<Mesa> buscarEntity(@PathVariable String id) {
     	Mesa mesa = getDao().PegarPorId(id);
         if (mesa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

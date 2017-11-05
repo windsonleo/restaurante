@@ -33,7 +33,7 @@ public class UsuarioControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Usuario> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<Usuario> buscarEntity(@PathVariable String id) {
     	
     	Usuario cliente = getDao().PegarPorId(id);
         if (cliente == null) {

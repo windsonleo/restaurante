@@ -1,6 +1,12 @@
 package com.tecsoluction.restaurante.entidade;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -13,9 +19,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "DESPESA")
-@SequenceGenerator(name = "despesa_seq", sequenceName = "despesa_seq")
 public class Despesa implements Serializable {
 
     /**
@@ -24,25 +32,26 @@ public class Despesa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "despesa_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "nome", nullable = true)
     private String nome;
-    
-////    (cascade = { CascadeType.ALL })
-	@ManyToOne
+
+    ////    (cascade = { CascadeType.ALL })
+    @ManyToOne
 //	@JoinColumn(name = "catpai_id", nullable = true)
     private Caixa caixa;
     @Column(name = "isativo")
-	private boolean isativo;
-    
+    private boolean isativo;
+
 //    @JsonIgnore
 ////	@LazyCollection(LazyCollectionOption.TRUE)
 //    @OneToMany(mappedBy="despesas")
 //    private List<Caixa> caixa;
-    
+
 //    @JsonIgnore
 //	@LazyCollection(LazyCollectionOption.TRUE)
 //    @OneToMany(mappedBy="caixa")
@@ -69,74 +78,16 @@ public class Despesa implements Serializable {
 //	}
 
 
-
-
-	public Despesa() {
+    public Despesa() {
         // TODO Auto-generated constructor stub
     }
 
-    
-
 
     //GETTERS AND SETTERS
-
-    public String getNome() {
-        return nome;
-    }
-
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id){
-    	
-    	this.id = id;
-    }
-
 
     @Override
     public String toString() {
         return nome.toUpperCase();
     }
-
-
-  
-
-    
-	/**
-	 * @return the pagamentos
-	 */
-//	public List<Pagamento> getPagamentos() {
-//		return pagamentos;
-//	}
-//
-//
-//
-//
-//	/**
-//	 * @param pagamentos the pagamentos to set
-//	 */
-//	public void setPagamentos(List<Pagamento> pagamentos) {
-//		this.pagamentos = pagamentos;
-//	}
-
-
-
-
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 }
 

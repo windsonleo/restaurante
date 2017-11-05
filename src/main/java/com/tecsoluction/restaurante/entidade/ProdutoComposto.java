@@ -28,7 +28,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
+@Getter
+@Setter
 @Entity
 public class ProdutoComposto extends Produto implements Serializable {
 
@@ -52,22 +58,12 @@ public class ProdutoComposto extends Produto implements Serializable {
     }
 
 
-    public ProdutoComposto(long id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, Map<Item, Double> itens, boolean esugestao) {
+    public ProdutoComposto(String id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, Map<Item, Double> itens, boolean esugestao) {
 
         super(id, foto, nome, codebar, descricao, un, precocusto, precocusto, fornecedor, cat, ativo, esugestao);
 
         this.itens = itens;
     }
-
-
-    public Map<Item, Double> getItens() {
-        return itens;
-    }
-
-    public void setItens(Map<Item, Double> itens) {
-        this.itens = itens;
-    }
-
 
     @Override
     public String toString() {
@@ -97,14 +93,10 @@ public class ProdutoComposto extends Produto implements Serializable {
         //
 //  			
 //  		}
-        
-        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
-    	
+
+        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
         double valor = Double.parseDouble(precoformat.replace(',', '.'));
-    
-
         return valor;
-
     }
 
 }

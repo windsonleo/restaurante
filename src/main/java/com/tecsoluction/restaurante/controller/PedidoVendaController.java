@@ -113,7 +113,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     protected PedidoVendaDAO getDao() {
         return pedidoVendaDao;
     }
-    
+
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
@@ -176,9 +176,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
 
-        this.estoque = estdao.PegarPorId(49L);
+        this.estoque = estdao.PegarPorId("49L");
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         this.pv = pedidoVendaDao.PegarPorId(idf);
 
@@ -234,7 +234,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView additemvendaForm(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
@@ -265,7 +265,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView salvaritempedido(HttpServletRequest request) {
 
 
-        long prodid = Long.parseLong(request.getParameter("produtoescolhido"));
+        String prodid = request.getParameter("produtoescolhido");
 
 
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
@@ -325,7 +325,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
@@ -343,7 +343,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView detalhesItem(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
 
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");

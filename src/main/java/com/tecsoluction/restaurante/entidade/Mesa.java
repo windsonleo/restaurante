@@ -12,15 +12,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "MESA")
-@SequenceGenerator(name = "mesa_seq", sequenceName = "mesa_seq")
 public class Mesa implements Serializable {
 
     /**
@@ -29,60 +36,26 @@ public class Mesa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "mesa_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
+
     @NotBlank
     @Column(name = "numero")
     private String numero;
-   
+
     @Column(name = "status")
     private String status;
-    
+
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "mesa")
     private List<PedidoVenda> pedidos;
-    
+
 
     public Mesa() {
         // TODO Auto-generated constructor stub
-    }
-
-
-    public String getStatus() {
-        return status;
-    }
-
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public List<PedidoVenda> getPedidos() {
-    	
-        return pedidos;
-    }
-
-    public void setPedidos(List<PedidoVenda> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(long id){
-    	
-    	this.id = id;
     }
 
     @Override

@@ -13,15 +13,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "FORNECEDOR")
-@SequenceGenerator(name = "fornecedor_seq", sequenceName = "fornecedor_seq")
 public class Fornecedor implements Serializable {
 
     /**
@@ -30,9 +37,10 @@ public class Fornecedor implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "fornecedor_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
     @NotBlank
     @Column(name = "nomefantasia")
     private String nomefantasia;
@@ -45,101 +53,25 @@ public class Fornecedor implements Serializable {
 
     @Column(name = "inscricaoestadual")
     private String inscricaoestadual;
-    
+
     @Column(name = "isativo")
-	private boolean isativo;
-    
-    
+    private boolean isativo;
+
+
     @JsonIgnore
-  	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy="fornecedor",fetch=FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
     private List<Produto> produtos;
-    
-    
+
+
     @JsonIgnore
-  	@LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy="fornecedor",fetch=FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
     private List<Recebimento> recebimento;
-    
-    
-    
 
-    /**
-	 * @return the recebimento
-	 */
-	public List<Recebimento> getRecebimento() {
-		return recebimento;
-	}
-
-	/**
-	 * @param recebimento the recebimento to set
-	 */
-	public void setRecebimento(List<Recebimento> recebimento) {
-		this.recebimento = recebimento;
-	}
-
-	public Fornecedor() {
-    //    produtos = new ArrayList<>();
+    public Fornecedor() {
+        //    produtos = new ArrayList<>();
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNomefantasia() {
-        return nomefantasia;
-    }
-
-    public void setNomefantasia(String nomefantasia) {
-        this.nomefantasia = nomefantasia;
-    }
-
-    public String getRazaosocial() {
-        return razaosocial;
-    }
-
-    public void setRazaosocial(String razaoSocial) {
-        this.razaosocial = razaoSocial;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getInscricaoestadual() {
-        return inscricaoestadual;
-    }
-
-    public void setInscricaoestadual(String inscricaoestadual) {
-        this.inscricaoestadual = inscricaoestadual;
-    }
-    
- 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-    
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
 
     @Override
     public String toString() {

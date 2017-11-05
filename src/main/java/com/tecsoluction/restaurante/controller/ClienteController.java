@@ -160,7 +160,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	public ModelAndView  detalhesCliente(HttpServletRequest request){
   	
   	
-  	long idf = Long.parseLong(request.getParameter("id"));
+  	String idf = request.getParameter("id");
   	
   	ModelAndView detalhescliente= new ModelAndView("detalhescliente");
   	
@@ -255,7 +255,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	  	public ModelAndView  gerenciarProdutoLocalizarProduto(HttpServletRequest request){
 	    	
 	    	
-	    	long idf = Long.parseLong(request.getParameter("id"));
+	    	String idf = (request.getParameter("id"));
 	    	
 	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
 	    	

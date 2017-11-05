@@ -38,7 +38,7 @@ public class PedidoVendaDAO extends AbstractEntityDao<PedidoVenda> {
     }
     
     
-	public List<PedidoVenda> getAllPedidoPorMesa(long idmesa) {
+	public List<PedidoVenda> getAllPedidoPorMesa(String idmesa) {
 		// TODO Auto-generated method stub
 		
     List<PedidoVenda> result = manager.createQuery("SELECT p FROM PedidoVenda p where p.mesa=" + idmesa +"AND p.status <> 'FINALIZADO' AND p.status <> 'CANCELADO' ", PedidoVenda.class).getResultList();

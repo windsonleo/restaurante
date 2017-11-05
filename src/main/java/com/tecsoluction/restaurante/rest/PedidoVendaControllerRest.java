@@ -32,7 +32,7 @@ public class PedidoVendaControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<PedidoVenda> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<PedidoVenda> buscarEntity(@PathVariable String id) {
     	PedidoVenda pedidovenda = getDao().PegarPorId(id);
         if (pedidovenda == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -56,7 +56,7 @@ public class PedidoVendaControllerRest {
     }
     
     @RequestMapping(value="/pormesa/{id}",method = RequestMethod.GET)
-    public List<PedidoVenda> listarPedidoPorMesa(@PathVariable long id) {
+    public List<PedidoVenda> listarPedidoPorMesa(@PathVariable String id) {
        
     	return getDao().getAllPedidoPorMesa(id);
 

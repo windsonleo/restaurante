@@ -28,7 +28,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 import org.apache.commons.collections.map.HashedMap;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,15 +43,18 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@SequenceGenerator(name = "pedido_seq", sequenceName = "pedido_seq")
 public abstract class Pedido {
 
     @Id
-    @GeneratedValue(generator = "pedido_seq")
-    @Column(name = "ID")
-    protected long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    protected String id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -55,7 +63,7 @@ public abstract class Pedido {
 
     @Column(name = "total")
     private double total;
-    
+
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE)
 //    @OneToMany(mappedBy = "pedido")
@@ -68,75 +76,37 @@ public abstract class Pedido {
 //    @CollectionTable(name="itens_pedido",joinColumns=@JoinColumn(name="id"))
 //    @JsonManagedReference
 //    private Map<Item,Double> items = new HashMap<>();
-    
-    @ManyToMany(mappedBy="pedidos")
+
+    @ManyToMany(mappedBy = "pedidos")
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pagamento> pagamento;
-    
-   
-    
+
+
     @Column(name = "isativo")
-	private boolean isativo;
-    
+    private boolean isativo;
+
     //aberto,pendente,fechado,cancelado
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
     public Pedido() {
         // TODO Auto-generated constructor stub
-    //    items = new ArrayList<>();
+        //    items = new ArrayList<>();
 //        pagamentos = new ArrayList<>();
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    /**
-	 * @return the status
-	 */
-	public StatusPedido getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(StatusPedido status) {
-		this.status = status;
-	}
-
-	public void setData(Date data) {
-        this.data = data;
-    }
-
-
-
     public double getTotal() {
-    	
- 	   String precoformat = DadosGerenciais.transfomarPreco(total);;
-	   	
-       double valor = Double.parseDouble(precoformat.replace(',', '.'));
-    	
-    	return valor;
+
+        String precoformat = DadosGerenciais.transfomarPreco(total);
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        return valor;
     }
 
     public void setTotal(double total) {
-    	
-    	   String precoformat = DadosGerenciais.transfomarPreco(total);;
-   	   	
-           double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-    	
+        String precoformat = DadosGerenciais.transfomarPreco(total);
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
         this.total = valor;
     }
 
@@ -148,7 +118,7 @@ public abstract class Pedido {
 //        this.pagamentos = pagamentos;
 //    }
 
-     
+
 //    public Map<Item,Double> getItems() {
 //        return items;
 //    }
@@ -156,59 +126,27 @@ public abstract class Pedido {
 //    public void setItems(Map<Item,Double> items) {
 //        this.items = items;
 //    }
-    
-public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
-    
 
 
-	/**
-	 * @return the pagamento
-	 */
-	public List<Pagamento> getPagamento() {
-		return pagamento;
-	}
-
-
-	/**
-	 * @param pagamento the pagamento to set
-	 */
-	public void setPagamento(List<Pagamento> pagamento) {
-		this.pagamento = pagamento;
-	}
-
-	@Override
+    @Override
     public String toString() {
 
         return String.valueOf(id);
     }
-    
-    
-    
-    
-    public double CalcularTotal( Map<Item,Double> itens){
-    	
-      double totalpedido = 0.00;
+
+    public double CalcularTotal(Map<Item, Double> itens) {
+
+        double totalpedido = 0.00;
 
 //   	Set<Item> keys = itens.keySet();
 //	
 //	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
-	
-    for(Item key: itens.keySet()) {
-		
-		totalpedido = + totalpedido+key.getTotalItem();
-      
-		
-	}
 
-      //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
+        for (Item key : itens.keySet()) {
+            totalpedido = +totalpedido + key.getTotalItem();
+        }
+
+        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
 //      for (int i = 0; i < itens.size(); i++) {
 //      	
 //          totalpedido += totalpedido + itens.get(i).getTotalItem();
@@ -216,11 +154,8 @@ public boolean getIsativo(){
 //			
 //		}
 
-    String precoformat = DadosGerenciais.transfomarPreco(totalpedido);;
-	
-    double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-    	
-    	return valor;
+        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
+        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        return valor;
     }
 }

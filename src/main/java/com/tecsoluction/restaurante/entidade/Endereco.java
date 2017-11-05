@@ -14,64 +14,71 @@ import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "ENDERECO")
-@SequenceGenerator(name = "endereco_seq", sequenceName = "endereco_seq")
 public class Endereco implements Serializable {
 
-   
+
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "endereco_seq")
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id", length = 36)
+    private String id;
 
     @Column(name = "logradouro")
     private String logradouro;
-       
+
     @Column(name = "isativo")
-	private boolean isativo;
+    private boolean isativo;
 
     @Column(name = "numero")
     private String numero;
-	
+
     @Column(name = "bairro")
-	private String bairro;
-    
+    private String bairro;
+
     @Column(name = "cidade")
-	private String cidade;
-	
+    private String cidade;
+
     @Column(name = "cep")
-	private String cep;
-    
+    private String cep;
+
     @Column(name = "complemento")
-	private String complemento;
-    
+    private String complemento;
+
     @Column(name = "pontoreferencia")
-	private String pontoreferencia;
-    
+    private String pontoreferencia;
+
     @Column(name = "uf")
     private String uf;
-    
-    @OneToOne(mappedBy="endereco")
-    @JoinColumn(name = "cliente_id", referencedColumnName="id")
+
+    @OneToOne(mappedBy = "endereco")
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
 
-    
 
     public Endereco() {
         // TODO Auto-generated constructor stub
 //        pedidos = new ArrayList<>();
     }
-    
+
     public Endereco(Cliente cliente) {
         // TODO Auto-generated constructor stub
 //        pedidos = new ArrayList<>();
-    	
-    	this.cliente = cliente;
+
+        this.cliente = cliente;
     }
 
 
@@ -98,219 +105,7 @@ public class Endereco implements Serializable {
 //        
 //    }
 
-	/**
-	 * @return the cliente
-	 */
-	public Cliente getCliente() {
-		return cliente;
-	}
 
-
-
-
-	/**
-	 * @return the uf
-	 */
-	public String getUf() {
-		return uf;
-	}
-
-	/**
-	 * @param uf the uf to set
-	 */
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	/**
-	 * @param cliente the cliente to set
-	 */
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-
-
-
-	/**
-	 * @return the numero
-	 */
-	public String getNumero() {
-		return numero;
-	}
-
-
-
-
-	/**
-	 * @param numero the numero to set
-	 */
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-
-
-
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-
-//	public String getFoto() {
-//		return foto;
-//	}
-//
-//	public void setFoto(String foto) {
-//		this.foto = foto;
-//	}
-	
-	/**
-	 * @return the logradouro
-	 */
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-
-
-
-	/**
-	 * @return the bairro
-	 */
-	public String getBairro() {
-		return bairro;
-	}
-
-
-
-
-	/**
-	 * @return the cidade
-	 */
-	public String getCidade() {
-		return cidade;
-	}
-
-
-
-
-	/**
-	 * @return the cep
-	 */
-	public String getCep() {
-		return cep;
-	}
-
-
-
-
-	/**
-	 * @return the complemento
-	 */
-	public String getComplemento() {
-		return complemento;
-	}
-
-
-
-
-	/**
-	 * @return the pontoreferencia
-	 */
-	public String getPontoreferencia() {
-		return pontoreferencia;
-	}
-
-
-
-
-	/**
-	 * @param logradouro the logradouro to set
-	 */
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-
-
-
-	/**
-	 * @param bairro the bairro to set
-	 */
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-
-
-
-	/**
-	 * @param cidade the cidade to set
-	 */
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-
-
-
-	/**
-	 * @param cep the cep to set
-	 */
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-
-
-
-	/**
-	 * @param complemento the complemento to set
-	 */
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
-
-
-
-	/**
-	 * @param pontoreferencia the pontoreferencia to set
-	 */
-	public void setPontoreferencia(String pontoreferencia) {
-		this.pontoreferencia = pontoreferencia;
-	}
-
-
-
-
-	public boolean getIsativo(){
-		
-		return isativo;
-	}
-	
-	public void setIsativo(boolean valor){
-		
-		this.isativo=valor;
-	}
-
-//    public List<PedidoVenda> getPedidos() {
-//        return pedidos;
-//    }
-//
-//
-//    public void setPedidos(List<PedidoVenda> pedidos) {
-//        this.pedidos = pedidos;
-//    }
-	
     @Override
     public String toString() {
         return logradouro.toUpperCase();

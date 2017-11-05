@@ -154,7 +154,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView detalhesProduto(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = (request.getParameter("id"));
 
         ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
@@ -183,7 +183,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         }
 
 
-        Long idf = Long.parseLong(request.getParameter("itenss"));
+        String idf = (request.getParameter("itenss"));
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
         Produto produto = daoprod.PegarPorId(idf);
@@ -205,7 +205,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = (request.getParameter("id"));
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
         this.produtocomposto = dao.PegarPorId(idf);
@@ -234,8 +234,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
-        Long idfprodcomp = Long.parseLong(request.getParameter("idprocomp"));
+        String idf = (request.getParameter("id"));
+        String idfprodcomp = (request.getParameter("idprocomp"));
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
 
@@ -346,7 +346,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = (request.getParameter("id"));
 
         ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
 

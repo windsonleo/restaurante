@@ -142,8 +142,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
     public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
-
+        String idf = request.getParameter("id");
 
         this.pv = peddao.PegarPorId(idf);
 //	    	
@@ -189,7 +188,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
     public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("formaPagamentos"));
+        String idf = request.getParameter("formaPagamentos");
 
         FormaPagamento formapag = new FormaPagamento();
 

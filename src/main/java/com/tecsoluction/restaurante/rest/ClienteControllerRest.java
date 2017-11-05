@@ -36,7 +36,7 @@ public class ClienteControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Cliente> buscarEntity(@PathVariable long id) {
+    public ResponseEntity<Cliente> buscarEntity(@PathVariable String id) {
     	Cliente cliente = getDao().PegarPorId(id);
         if (cliente == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

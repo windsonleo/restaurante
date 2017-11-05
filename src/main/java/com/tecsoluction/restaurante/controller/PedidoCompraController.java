@@ -184,7 +184,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView additemvendaForm(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView additempedidovenda = new ModelAndView("additempedidocompra");
 
@@ -213,7 +213,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
 
@@ -270,7 +270,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView detalhesPedidoCompra(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         ModelAndView detalhespedidocompra = new ModelAndView("detalhespedidocompra");
 
@@ -287,7 +287,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView detalhesItem(HttpServletRequest request) {
 
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
 
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");
@@ -333,7 +333,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
 
 //        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();
@@ -357,7 +357,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
     public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
 
 //        List<PedidoCompra> pedidoCompraList = pedidoCompraDao.getAll();

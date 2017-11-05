@@ -34,8 +34,8 @@ public class CategoriaControllerRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Categoria> buscarEntity(@PathVariable long id) {
-    	Categoria categoria = getDao().PegarPorId(id);
+    public ResponseEntity<Categoria> buscarEntity(@PathVariable String id) {
+        Categoria categoria = getDao().PegarPorId(id);
         if (categoria == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -43,29 +43,28 @@ public class CategoriaControllerRest {
     }
 
 
-    @RequestMapping(value="/salvar",method = RequestMethod.POST)
+    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public ResponseEntity<Categoria> AdicionarEntity(@RequestBody Categoria entity) {
-    	
 
-    	
-       getDao().add(entity);
-       
 
-            return new ResponseEntity<Categoria>(entity, HttpStatus.OK);
+        getDao().add(entity);
+
+
+        return new ResponseEntity<Categoria>(entity, HttpStatus.OK);
 
     }
-    
+
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Categoria> listarEntity() {
         return getDao().getAll();
 
     }
-    
-    @RequestMapping(value="/pai/",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/pai/", method = RequestMethod.GET)
     public List<Categoria> listarCategoriaPai() {
-        
-    	return getDao().getCategoriaPai();
+
+        return getDao().getCategoriaPai();
 
     }
 
