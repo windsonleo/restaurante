@@ -27,12 +27,12 @@ public class CategoriaController extends AbstractController<Categoria> {
     private
     final
     CategoriaDAO dao;
-    
+
     private final UsuarioDAO usudao;
 
 
     @Autowired
-    public CategoriaController(CategoriaDAO dao,UsuarioDAO daousu) {
+    public CategoriaController(CategoriaDAO dao, UsuarioDAO daousu) {
         super("categoria");
         this.dao = dao;
         this.usudao = daousu;
@@ -46,21 +46,20 @@ public class CategoriaController extends AbstractController<Categoria> {
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
 
-//        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
-//
-//        });
-        
+        });
+
 
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-    	Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        usuario = usudao.PegarPorNome(usuario.getUsername());
         List<Categoria> categoriaList = getDao().getAll();
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("usuarioAtt", usuario);

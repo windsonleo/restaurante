@@ -63,10 +63,10 @@ public abstract class AbstractController<Entity> {
         if (result.hasErrors()) {
 
 
-            System.out.println("erro ao add Entidade:" + entityAlias + "erro:" + result.getObjectName());
-            System.out.println("erro ap add Entidade:" + entityAlias + "fields erro:" + result.getFieldError());
-            System.out.println("erro ao add Entidade:" + entityAlias + "outros erros global:" + result.getGlobalError());
-            System.out.println("erro ao add Entidade:" + entityAlias + "outros erros nestedPatch:" + result.getNestedPath());
+            System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());
+            System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
+            System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
+            System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
 
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
 //        attributes.a
@@ -121,7 +121,7 @@ public abstract class AbstractController<Entity> {
     @RequestMapping(value = "edicao", method = RequestMethod.POST)
     public ModelAndView editarEntity(HttpServletRequest request, Entity entity) {
 
-        Long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 
         //Entity entity2 = getDao().PegarPorId(idf);
 
@@ -137,7 +137,7 @@ public abstract class AbstractController<Entity> {
     public ModelAndView deletarEntity(HttpServletRequest request) {
 
 
-        long idf = Long.parseLong(request.getParameter("id"));
+        String idf = request.getParameter("id");
 //		ModelAndView movimentacaocategoria = new ModelAndView("movimentacaocategoria");
         getDao().delete(idf);
 

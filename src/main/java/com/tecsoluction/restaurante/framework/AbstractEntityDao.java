@@ -109,7 +109,7 @@ public abstract class AbstractEntityDao<Entity> {
     }
 
     @Transactional
-    public void delete(long id) {
+    public void delete(String id) {
 //        Object id = manager.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
 //        Entity managedEntity = manager.find(entityClass, id);
         Entity managedEntity = manager.getReference(entityClass, id);
