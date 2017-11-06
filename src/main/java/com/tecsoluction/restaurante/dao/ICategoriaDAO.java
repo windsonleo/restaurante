@@ -15,8 +15,8 @@ public interface ICategoriaDAO extends JpaRepository<Categoria, String> {
     @Query("SELECT p FROM Categoria p where p.catpai=(SELECT id FROM Categoria m  where m.nome='PAI')")
     public List<Categoria> getCategoriaPai();
     
-    @Query("SELECT p FROM Categoria p where p.catpai=(:idPai)")
-    public List<Categoria> getCategoriasFilho(@Param("idPai")String idPai);
+    @Query("SELECT p FROM Categoria p where p.catpai=(:catpai)")
+    public List<Categoria> getCategoriasFilho(@Param("catpai")String idPai);
     
     @Query("SELECT p FROM Categoria p where p.nome='PAI'")
     public Categoria getOnlyCategoriaPai();

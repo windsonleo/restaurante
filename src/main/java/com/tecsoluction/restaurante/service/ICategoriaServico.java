@@ -13,7 +13,7 @@ public interface ICategoriaServico {
 
     public List<Categoria> getCategoriaPai();
     
-    public List<Categoria> getCategoriasFilho(@Param("idPai")String idPai);
+    public List<Categoria> getCategoriasFilho(@Param("catpai") String idPai);
     
     public Categoria getOnlyCategoriaPai();
     

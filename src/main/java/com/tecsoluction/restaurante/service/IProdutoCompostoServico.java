@@ -10,6 +10,6 @@ import com.tecsoluction.restaurante.entidade.Produto;
 public interface IProdutoCompostoServico {
 	
 	
-	public List<Produto> getAllProdutoPorCategoria(@Param("idcategoria") String idcategoria); 
+	public List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria); 
 
 }

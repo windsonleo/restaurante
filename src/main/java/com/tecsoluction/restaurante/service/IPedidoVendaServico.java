@@ -9,7 +9,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 public interface IPedidoVendaServico {
 	
 	
-	public List<PedidoVenda> getAllPedidoPorMesa(@Param ("idmesa")String idmesa);
+	public List<PedidoVenda> getAllPedidoPorMesa(@Param ("mesa")String idmesa);
 
 	public List<PedidoVenda> getAllPedidoPorData(@Param("dataini") String dataini);
 

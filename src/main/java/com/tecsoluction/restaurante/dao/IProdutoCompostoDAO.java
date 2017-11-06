@@ -13,8 +13,8 @@ public interface IProdutoCompostoDAO extends org.springframework.data.jpa.reposi
 
 
 	
-	@Query("SELECT p FROM ProdutoComposto p where p.categoria=:idcategoria")
-	public List<Produto> getAllProdutoPorCategoria(@Param("idcategoria") String idcategoria); 
+	@Query("SELECT p FROM ProdutoComposto p where p.categoria=:categoria")
+	public List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria); 
 	
 
 }

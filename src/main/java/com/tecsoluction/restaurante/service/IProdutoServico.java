@@ -10,7 +10,7 @@ public interface IProdutoServico {
 	
 	public Produto getProdutoPorCodebar(String codebar) ;
 	
-	public List<Produto> getAllProdutoPorCategoria(@Param("idcategoria") String idcategoria); 
+	public List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria); 
 
 
 }

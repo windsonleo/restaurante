@@ -13,8 +13,8 @@ public interface IProdutoDAO extends org.springframework.data.jpa.repository.Jpa
 	@Query("SELECT p FROM Produto p where p.codebar=:codebar")
 	public Produto getProdutoPorCodebar(@Param("codebar") String codebar) ;
 	
-	@Query("SELECT p FROM Produto p where p.categoria=:idcategoria")
-	public List<Produto> getAllProdutoPorCategoria(@Param("idcategoria") String idcategoria); 
+	@Query("SELECT p FROM Produto p where p.categoria=:categoria")
+	public List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria); 
 
 	
 	

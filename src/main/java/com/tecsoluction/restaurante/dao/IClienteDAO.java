@@ -11,8 +11,8 @@ import com.tecsoluction.restaurante.entidade.Cliente;
 public interface IClienteDAO extends JpaRepository<Cliente, String> {
 	
 	
-    @Query("SELECT p FROM Cliente p where p.telefone=:tel")
-	public Cliente getClienteporTelefone(@Param("tel")String tel);
+    @Query("SELECT p FROM Cliente p where p.telefone=:telefone")
+	public Cliente getClienteporTelefone(@Param("telefone")String tel);
 	
 	
 	

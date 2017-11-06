@@ -9,7 +9,7 @@ import com.tecsoluction.restaurante.entidade.Item;
 public interface IItemServico {
 	
 	
-	public Item getItemPorNome(@Param("descricao")String descricao, @Param("pedido_id") String pedido_id) ;
+	public Item getItemPorNome(@Param("descricao")String descricao, @Param("pedido") String pedido_id) ;
 
 	public List<Item> getAllItemPorPedido(@Param("pedido") String idpedido);
 
