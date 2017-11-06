@@ -11,7 +11,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 public interface IPedidoVendaDAO extends org.springframework.data.jpa.repository.JpaRepository<PedidoVenda, String> {
 
 
-	@Query("SELECT p FROM PedidoVenda p where p.mesa_id=:idmesa")
+	@Query("SELECT p FROM PedidoVenda p where p.mesa=:idmesa")
 	public List<PedidoVenda> getAllPedidoPorMesa(@Param("idmesa")String idmesa);
 
 	@Query("SELECT p FROM PedidoVenda p where p.data=:dataini")
