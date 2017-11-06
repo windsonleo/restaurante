@@ -16,15 +16,22 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @ControllerAdvice
 public class ContextoAplicacao {
 
-	@Autowired
-	private 
-	UsuarioServicoImpl userservice;
+//	@Autowired
+//	private 
+//	UsuarioServicoImpl userservice;
 	
 
+//    @Autowired
+//    public ContextoAplicacao(UsuarioServicoImpl sevice) {
+//
+//        this.userservice = sevice;
+//    }
+    
+    
     @Autowired
-    public ContextoAplicacao(UsuarioServicoImpl sevice) {
+    public ContextoAplicacao() {
 
-        this.userservice = sevice;
+//        this.userservice = sevice;
     }
     
 
