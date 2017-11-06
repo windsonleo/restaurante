@@ -1,62 +1,57 @@
 package com.tecsoluction.restaurante.service.impl;
-import java.util.List;
 
+import com.tecsoluction.restaurante.dao.ICategoriaDAO;
+import com.tecsoluction.restaurante.entidade.Categoria;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.ICategoriaDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.ICategoriaServico;
+
+import java.util.List;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("categoriaService")
 @Transactional
-public class CategoriaServicoImpl extends AbstractEntityService<Categoria> implements ICategoriaServico {
-				
-		@Autowired
-	    private ICategoriaDAO dao;
-	    
+public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
-	
-	public CategoriaServicoImpl() {
-		
-		super(Categoria.class, "categoria");
-		
-		}
+    @Autowired
+    private ICategoriaDAO dao;
 
-	@Override
-	protected JpaRepository<Categoria, String> getDao() {
 
-		return dao;
-	}
+    public CategoriaServicoImpl() {
 
-	@Override
-	public List<Categoria> getCategoriaPai() {
+        super(Categoria.class, "categoria");
 
-		return dao.getCategoriaPai();
-	}
+    }
 
-	@Override
-	public List<Categoria> getCategoriasFilho(String idPai) {
+    @Override
+    protected JpaRepository<Categoria, String> getDao() {
 
-		return dao.getCategoriasFilho(idPai);
-	}
+        return dao;
+    }
 
-	@Override
-	public Categoria getOnlyCategoriaPai() {
+    public List<Categoria> getCategoriaPai() {
 
-		return dao.getOnlyCategoriaPai();
-	}
+        return dao.getCategoriaPai();
+    }
 
-	@Override
-	public Categoria getOnlyCategoriaExcludeCardapio() {
+    public List<Categoria> getCategoriasFilho(String idPai) {
 
-		return dao.getOnlyCategoriaExcludeCardapio();
-	}
-	
+        return dao.getCategoriasFilho(idPai);
+    }
+
+    public Categoria getOnlyCategoriaPai() {
+
+        return dao.getOnlyCategoriaPai();
+    }
+
+    public Categoria getOnlyCategoriaExcludeCardapio() {
+
+        return dao.getOnlyCategoriaExcludeCardapio();
+    }
+
 
 }

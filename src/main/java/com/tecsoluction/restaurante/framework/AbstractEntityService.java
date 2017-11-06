@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  *
  * @version 1.0
  */
-@Component
+//@Component
 public abstract class AbstractEntityService<Entity> {
 
    

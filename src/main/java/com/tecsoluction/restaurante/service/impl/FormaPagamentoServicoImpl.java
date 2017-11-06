@@ -1,36 +1,35 @@
 package com.tecsoluction.restaurante.service.impl;
+
+import com.tecsoluction.restaurante.dao.IFormaPagamentoDAO;
+import com.tecsoluction.restaurante.entidade.FormaPagamento;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IFormaPagamentoDAO;
-import com.tecsoluction.restaurante.entidade.FormaPagamento;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IFormaPagamentoServico;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("formapagamentoService")
 @Transactional
-public class FormaPagamentoServicoImpl extends AbstractEntityService<FormaPagamento> implements IFormaPagamentoServico {
-				
-		@Autowired
-	    private IFormaPagamentoDAO dao;
-	    
+public class FormaPagamentoServicoImpl extends AbstractEntityService<FormaPagamento> {
 
-	
-	public FormaPagamentoServicoImpl() {
-		
-		super(FormaPagamento.class, "formapagamento");
-		
-		}
+    @Autowired
+    private IFormaPagamentoDAO dao;
 
-	@Override
-	protected JpaRepository<FormaPagamento, String> getDao() {
 
-		return dao;
-	}
-	
+    public FormaPagamentoServicoImpl() {
+
+        super(FormaPagamento.class, "formapagamento");
+
+    }
+
+    @Override
+    protected JpaRepository<FormaPagamento, String> getDao() {
+
+        return dao;
+    }
+
 
 }

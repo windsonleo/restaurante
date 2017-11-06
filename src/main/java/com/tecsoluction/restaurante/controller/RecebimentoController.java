@@ -1,15 +1,14 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.tecsoluction.restaurante.entidade.*;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.*;
+import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.util.TipoPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,47 +19,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Estoque;
-import com.tecsoluction.restaurante.entidade.Fornecedor;
-import com.tecsoluction.restaurante.entidade.Garcon;
-import com.tecsoluction.restaurante.entidade.Item;
-import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.Pagamento;
-import com.tecsoluction.restaurante.entidade.PedidoCompra;
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.entidade.Recebimento;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
-import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import com.tecsoluction.restaurante.util.OrigemPedido;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
-import com.tecsoluction.restaurante.util.StatusPedido;
-import com.tecsoluction.restaurante.util.TipoPedido;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping(value = "recebimento/")
 public class RecebimentoController extends AbstractController<Recebimento> {
 
-    private  
+    private
     UsuarioServicoImpl userservice;
-
 
 
     private Estoque estoque = new Estoque();
 
-    private  
+    private
     EstoqueServicoImpl estoqueService;
 
 
@@ -82,22 +59,22 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     FornecedorServicoImpl fornecedorService;
 
 
-    private 
+    private
     List<Item> itens = new ArrayList<>();
 
-    private 
+    private
     Map<Item, Double> itensRecebimentoCorfirmados = new HashMap<>();
 
-    private 
+    private
     List<Produto> produtosList = new ArrayList<>();
 
-    private 
+    private
     double totalpedido;
 
-    private 
+    private
     Recebimento recebimento = new Recebimento();
-    
-    private 
+
+    private
     PedidoCompra pv = new PedidoCompra();
 
 
@@ -113,7 +90,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         this.recebimentoService = daorec;
         this.estoqueService = estdao;
     }
-
 
 
     @Override
@@ -199,11 +175,10 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         }
 
 
-
         PedidoCompra pedidocompra = pedidocompraService.findOne(recebimento.getPedidocompra().getId());
         pedidocompra.setStatus(StatusPedido.FECHADO);
         pedidocompraService.save(pedidocompra);
-      
+
 
         recebimento.setStatus(StatusPedido.FECHADO);
         recebimentoService.save(recebimento);
@@ -223,7 +198,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
 
         this.recebimento = recebimentoService.findOne(idf);
-    	   
+
         totalpedido = 0.0;
 
         this.recebimento.setTotal(totalpedido);
@@ -326,7 +301,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         }
 
 
-
         if (it != null) {
 
             Item itemvar = new Item();
@@ -373,10 +347,10 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         return additemrecebimento;
     }
 
-	@Override
-	protected AbstractEntityService<Recebimento> getservice() {
-		// TODO Auto-generated method stub
-		return recebimentoService;
-	}
+    @Override
+    protected AbstractEntityService<Recebimento> getservice() {
+        // TODO Auto-generated method stub
+        return recebimentoService;
+    }
 
 }

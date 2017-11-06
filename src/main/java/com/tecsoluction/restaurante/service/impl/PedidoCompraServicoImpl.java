@@ -1,36 +1,35 @@
 package com.tecsoluction.restaurante.service.impl;
+
+import com.tecsoluction.restaurante.dao.IPedidoCompraDAO;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IPedidoCompraDAO;
-import com.tecsoluction.restaurante.entidade.PedidoCompra;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IPedidoServico;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("pedidocompraService")
 @Transactional
-public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra> implements IPedidoServico {
-				
-		@Autowired
-	    private IPedidoCompraDAO dao;
-	    
+public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra> {
 
-	
-	public PedidoCompraServicoImpl() {
-		
-		super(PedidoCompra.class, "pedidocompra");
-		
-		}
+    @Autowired
+    private IPedidoCompraDAO dao;
 
-	@Override
-	protected JpaRepository<PedidoCompra, String> getDao() {
 
-		return dao;
-	}
-	
+    public PedidoCompraServicoImpl() {
+
+        super(PedidoCompra.class, "pedidocompra");
+
+    }
+
+    @Override
+    protected JpaRepository<PedidoCompra, String> getDao() {
+
+        return dao;
+    }
+
 
 }

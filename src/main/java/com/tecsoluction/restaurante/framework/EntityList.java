@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 public class EntityList<Entity> extends PropertyEditorSupport {
 
-    private final AbstractEntityDao<Entity> dao;
+    private final AbstractEntityService<Entity> service;
 
     @Autowired
-    public EntityList(final AbstractEntityDao<Entity> dao) {
-        this.dao = dao;
+    public EntityList(final AbstractEntityService<Entity> service) {
+        this.service = service;
     }
 
     @Override
     public void setAsText(final String id) {
 
-        final Entity entity = dao.PegarPorId(id);
+        final Entity entity = service.findOne(id);
 
         this.setValue(entity);
 
@@ -31,9 +31,8 @@ public class EntityList<Entity> extends PropertyEditorSupport {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Entity> entitylist = dao.getAll();
+        List<Entity> entitylist = service.findAll();
         model.addAttribute("entityList", entitylist);
     }
-
 
 }

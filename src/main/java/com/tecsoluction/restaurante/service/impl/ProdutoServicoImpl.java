@@ -1,50 +1,47 @@
 package com.tecsoluction.restaurante.service.impl;
-import java.util.List;
 
+import com.tecsoluction.restaurante.dao.IProdutoDAO;
+import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IProdutoDAO;
-import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IProdutoServico;
+
+import java.util.List;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("produtoService")
 @Transactional
-public class ProdutoServicoImpl extends AbstractEntityService<Produto> implements IProdutoServico {
-				
-		@Autowired
-	    private IProdutoDAO dao;
-	    
+public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
 
-	
-	public ProdutoServicoImpl() {
-		
-		super(Produto.class, "produto");
-		
-		}
+    @Autowired
+    private IProdutoDAO dao;
 
-	@Override
-	protected JpaRepository<Produto, String> getDao() {
 
-		return dao;
-	}
+    public ProdutoServicoImpl() {
 
-	@Override
-	public Produto getProdutoPorCodebar(String codebar) {
-	
-		return dao.getProdutoPorCodebar(codebar);
-	}
+        super(Produto.class, "produto");
 
-	@Override
-	public List<Produto> getAllProdutoPorCategoria(String idcategoria) {
+    }
 
-		return dao.getAllProdutoPorCategoria(idcategoria);
-	}
-	
+    @Override
+    protected JpaRepository<Produto, String> getDao() {
+
+        return dao;
+    }
+
+    public Produto getProdutoPorCodebar(String codebar) {
+
+        return dao.getProdutoPorCodebar(codebar);
+    }
+
+    public List<Produto> getAllProdutoPorCategoria(String idcategoria) {
+
+        return dao.getAllProdutoPorCategoria(idcategoria);
+    }
+
 
 }

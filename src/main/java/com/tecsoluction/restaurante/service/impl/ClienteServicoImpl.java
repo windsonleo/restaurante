@@ -1,41 +1,39 @@
 package com.tecsoluction.restaurante.service.impl;
+
+import com.tecsoluction.restaurante.dao.IClienteDAO;
+import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IClienteDAO;
-import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IClienteServico;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 @Service("clienteService")
 @Transactional
-public class ClienteServicoImpl extends AbstractEntityService<Cliente> implements IClienteServico {
-				
-		@Autowired
-	    private IClienteDAO dao;
-	    
+public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
 
-	
-	public ClienteServicoImpl() {
-		
-		super(Cliente.class, "cliente");
-		
-		}
+    @Autowired
+    private IClienteDAO dao;
 
-	@Override
-	protected JpaRepository<Cliente, String> getDao() {
 
-		return dao;
-	}
+    public ClienteServicoImpl() {
 
-	@Override
-	public Cliente getClienteporTelefone(String tel) {
+        super(Cliente.class, "cliente");
 
-		return dao.getClienteporTelefone(tel);
-	}
-	
+    }
+
+    @Override
+    protected JpaRepository<Cliente, String> getDao() {
+
+        return dao;
+    }
+
+    public Cliente getClienteporTelefone(String tel) {
+
+        return dao.getClienteporTelefone(tel);
+    }
+
 
 }

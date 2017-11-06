@@ -1,36 +1,35 @@
 package com.tecsoluction.restaurante.service.impl;
+
+import com.tecsoluction.restaurante.dao.IEnderecoDAO;
+import com.tecsoluction.restaurante.entidade.Endereco;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IEnderecoDAO;
-import com.tecsoluction.restaurante.entidade.Endereco;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IEnderecoServico;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("enderecoService")
 @Transactional
-public class EnderecoServicoImpl extends AbstractEntityService<Endereco> implements IEnderecoServico {
-				
-		@Autowired
-	    private IEnderecoDAO dao;
-	    
+public class EnderecoServicoImpl extends AbstractEntityService<Endereco> {
 
-	
-	public EnderecoServicoImpl() {
-		
-		super(Endereco.class, "endereco");
-		
-		}
+    @Autowired
+    private IEnderecoDAO dao;
 
-	@Override
-	protected JpaRepository<Endereco, String> getDao() {
 
-		return dao;
-	}
-	
+    public EnderecoServicoImpl() {
+
+        super(Endereco.class, "endereco");
+
+    }
+
+    @Override
+    protected JpaRepository<Endereco, String> getDao() {
+
+        return dao;
+    }
+
 
 }

@@ -222,7 +222,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         totalitem = 0;
 
-        double precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+        Double precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
 
 
         produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(produtocomposto.getItens()));

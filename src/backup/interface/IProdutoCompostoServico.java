@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 import com.tecsoluction.restaurante.entidade.Produto;
 
 public interface IProdutoCompostoServico {
-	
-	
-	public List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria); 
+
+
+    List<Produto> getAllProdutoPorCategoria(@Param("categoria") String idcategoria);
 
 }

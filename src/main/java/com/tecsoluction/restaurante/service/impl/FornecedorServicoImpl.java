@@ -1,36 +1,35 @@
 package com.tecsoluction.restaurante.service.impl;
+
+import com.tecsoluction.restaurante.dao.IFornecedorDAO;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.tecsoluction.restaurante.dao.IFornecedorDAO;
-import com.tecsoluction.restaurante.entidade.Fornecedor;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.IFornecedorServico;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("fornecedorService")
 @Transactional
-public class FornecedorServicoImpl extends AbstractEntityService<Fornecedor> implements IFornecedorServico {
-				
-		@Autowired
-	    private IFornecedorDAO dao;
-	    
+public class FornecedorServicoImpl extends AbstractEntityService<Fornecedor> {
 
-	
-	public FornecedorServicoImpl() {
-		
-		super(Fornecedor.class, "fornecedor");
-		
-		}
+    @Autowired
+    private IFornecedorDAO dao;
 
-	@Override
-	protected JpaRepository<Fornecedor, String> getDao() {
 
-		return dao;
-	}
-	
+    public FornecedorServicoImpl() {
+
+        super(Fornecedor.class, "fornecedor");
+
+    }
+
+    @Override
+    protected JpaRepository<Fornecedor, String> getDao() {
+
+        return dao;
+    }
+
 
 }
