@@ -16,7 +16,7 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @ControllerAdvice
 public class ContextoAplicacao {
 
-	
+	@Autowired
 	private 
 	UsuarioServicoImpl userservice;
 	
