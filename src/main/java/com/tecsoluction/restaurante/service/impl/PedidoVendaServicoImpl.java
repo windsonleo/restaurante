@@ -1,4 +1,6 @@
 package com.tecsoluction.restaurante.service.impl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,26 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> i
 
 	@Override
 	protected JpaRepository<PedidoVenda, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
+	}
+
+	@Override
+	public List<PedidoVenda> getAllPedidoPorMesa(String idmesa) {
+
+		return dao.getAllPedidoPorMesa(idmesa);
+	}
+
+	@Override
+	public List<PedidoVenda> getAllPedidoPorData(String dataini) {
+		// TODO Auto-generated method stub
+		return dao.getAllPedidoPorData(dataini);
+	}
+
+	@Override
+	public List<PedidoVenda> getAllPedidoDelivery() {
+		// TODO Auto-generated method stub
+		return dao.getAllPedidoDelivery();
 	}
 	
 

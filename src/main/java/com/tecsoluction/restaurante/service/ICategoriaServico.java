@@ -1,9 +1,25 @@
 package com.tecsoluction.restaurante.service;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.tecsoluction.restaurante.entidade.Categoria;
 
 public interface ICategoriaServico {
 	
 	
-//	Usuario findByUsername(String username);
 
+    public List<Categoria> getCategoriaPai();
+    
+    public List<Categoria> getCategoriasFilho(@Param("idPai")String idPai);
+    
+    public Categoria getOnlyCategoriaPai();
+    
+    public Categoria getOnlyCategoriaExcludeCardapio();
+	
+	
+	
+	
 }

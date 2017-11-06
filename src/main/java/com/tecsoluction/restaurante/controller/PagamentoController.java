@@ -1,15 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,12 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.CaixaDAO;
-import com.tecsoluction.restaurante.dao.FormaPagamentoDAO;
-import com.tecsoluction.restaurante.dao.PagamentoDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Caixa;
 import com.tecsoluction.restaurante.entidade.FormaPagamento;
 import com.tecsoluction.restaurante.entidade.Pagamento;
@@ -33,7 +23,12 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.CaixaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FormaPagamentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 /**
  * Created by clebr on 06/07/2016.
@@ -43,22 +38,21 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 public class PagamentoController extends AbstractController<Pagamento> {
 
 
-    private final PagamentoDAO dao;
+    private
+    PagamentoServicoImpl pagamentoService;
 
     private
-    final
-    PedidoVendaDAO peddao;
+    PedidoVendaServicoImpl pedidovendaService;
 
     private
-    final
-    CaixaDAO cdao;
+    CaixaServicoImpl caixaService;
 
     private
-    final
-    FormaPagamentoDAO fdao;
+    FormaPagamentoServicoImpl formapagamentoService;
 
-
-    private final UsuarioDAO usudao;
+	private
+	UsuarioServicoImpl userservice;
+	
 
     private Pagamento pagamento = new Pagamento();
 
@@ -67,21 +61,20 @@ public class PagamentoController extends AbstractController<Pagamento> {
     private Set<FormaPagamento> formas = new HashSet<>();
 
     private double totalpedido;
+    
+    
 
     @Autowired
-    public PagamentoController(PagamentoDAO dao, UsuarioDAO daousu, CaixaDAO CDAO, PedidoVendaDAO peddao, FormaPagamentoDAO formdao) {
+    public PagamentoController(PagamentoServicoImpl dao, UsuarioServicoImpl daousu, CaixaServicoImpl CDAO, PedidoVendaServicoImpl peddao, FormaPagamentoServicoImpl formdao) {
         super("pagamento");
-        this.dao = dao;
-        this.usudao = daousu;
-        this.cdao = CDAO;
-        this.fdao = formdao;
-        this.peddao = peddao;
+        
+        this.pagamentoService = dao;
+        this.userservice = daousu;
+        this.caixaService = CDAO;
+        this.formapagamentoService = formdao;
+        this.pedidovendaService = peddao;
     }
 
-    @Override
-    protected PagamentoDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -92,17 +85,17 @@ public class PagamentoController extends AbstractController<Pagamento> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(FormaPagamento.class, new AbstractEditor<FormaPagamento>(this.fdao) {
+        binder.registerCustomEditor(FormaPagamento.class, new AbstractEditor<FormaPagamento>(this.formapagamentoService) {
 
         });
 
 
-        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.peddao) {
+        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendaService) {
 
         });
 
 
-        binder.registerCustomEditor(Caixa.class, new AbstractEditor<Caixa>(this.cdao) {
+        binder.registerCustomEditor(Caixa.class, new AbstractEditor<Caixa>(this.caixaService) {
 
         });
 
@@ -113,31 +106,21 @@ public class PagamentoController extends AbstractController<Pagamento> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
-        List<FormaPagamento> formapagamentoList = fdao.getAll();
-
-        List<PedidoVenda> pedidoList = peddao.getAll();
-
-        List<Caixa> caixaList = cdao.getAll();
+        usuario = userservice.findByUsername(usuario.getUsername());
+      
+        List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
+        List<PedidoVenda> pedidoList = pedidovendaService.findAll();
+        List<Caixa> caixaList = caixaService.findAll();
 
 
         model.addAttribute("caixaList", caixaList);
         model.addAttribute("pedidoList", pedidoList);
         model.addAttribute("formapagamentoList", formapagamentoList);
-
-
         model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("clienteList", clienteList);
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
+
 
 
     }
@@ -149,7 +132,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         String idf = request.getParameter("id");
 
-        this.pv = peddao.PegarPorId(idf);
+        this.pv = pedidovendaService.findOne(idf);
 //	    	
 
         if (pagamento == null) {
@@ -197,21 +180,12 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         FormaPagamento formapag = new FormaPagamento();
 
-        formapag = fdao.PegarPorId(idf);
+        formapag = formapagamentoService.findOne(idf);
 
         System.out.println("formaPag" + formapag.toString());
 
-        //	pagamento.getFormaPagamentos().add(formapag);
 
         formas.add(formapag);
-
-
-//          formas = pagamento.getFormaPagamentos();
-//         formas.add(formapag);
-//         
-//         pagamento.setFormaPagamentos(formas);
-
-        //	pagamento.getFormaPagamentos().add(formapag);
 
 
         ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
@@ -227,6 +201,12 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         return cadastropagamento;
     }
+
+	@Override
+	protected AbstractEntityService<Pagamento> getservice() {
+		// TODO Auto-generated method stub
+		return pagamentoService;
+	}
 
 
 }

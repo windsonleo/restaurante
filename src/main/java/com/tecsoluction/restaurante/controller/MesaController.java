@@ -3,7 +3,6 @@ package com.tecsoluction.restaurante.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,49 +13,41 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.MesaDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 
 @Controller
 @RequestMapping(value = "mesa/")
 public class MesaController extends AbstractController<Mesa> {
 
-    private final UsuarioDAO usudao;
+	private
+	UsuarioServicoImpl userservice;
 
     private
-    final
-    MesaDAO dao;
+    MesaServicoImpl mesaService;
 
     private
-    final
-    PedidoVendaDAO pedidovendadao;
+    PedidoVendaServicoImpl pedidovendaService;
 
     private List<PedidoVenda> pedidos;
 
 
     @Autowired
-    public MesaController(MesaDAO dao, PedidoVendaDAO pv, UsuarioDAO daousu) {
+    public MesaController(MesaServicoImpl dao, PedidoVendaServicoImpl pv, UsuarioServicoImpl daousu) {
         super("mesas");
-        this.dao = dao;
-        this.pedidovendadao = pv;
-        this.usudao = daousu;
+        this.mesaService = dao;
+        this.pedidovendaService = pv;
+        this.userservice = daousu;
     }
 
-
-    @Override
-    protected MesaDAO getDao() {
-        // TODO Auto-generated method stub
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -66,21 +57,11 @@ public class MesaController extends AbstractController<Mesa> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("clienteList", clienteList);
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
-
 
     }
 
@@ -88,11 +69,8 @@ public class MesaController extends AbstractController<Mesa> {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendadao) {
+        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendaService) {
         });
-
-//	    	binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorDao) {
-//	        });
 
 
     }
@@ -101,19 +79,18 @@ public class MesaController extends AbstractController<Mesa> {
     @RequestMapping(value = "detalhes", method = RequestMethod.GET)
     public ModelAndView detalhesMesa(HttpServletRequest request) {
 
-
         String idf = request.getParameter("id");
 
         ModelAndView detalhesmesa = new ModelAndView("detalhesmesa");
 
 
-        Mesa mesa = dao.PegarPorId(idf);
+        Mesa mesa = mesaService.findOne(idf);
 
         double total = 0.0;
 
 
         // mudar para trazer pelo id da mesa e pelo status da mesa
-        pedidos = pedidovendadao.getAllPedidoPorMesa(idf);
+        pedidos = pedidovendaService.getAllPedidoPorMesa(idf);
 
 
         for (PedidoVenda pedidoVenda : pedidos) {
@@ -122,10 +99,7 @@ public class MesaController extends AbstractController<Mesa> {
 
         }
 
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
 
-        //	detalhesmesa.addObject("itemList", itemList);
         detalhesmesa.addObject("pedidoList", pedidos);
         detalhesmesa.addObject("mesa", mesa);
         detalhesmesa.addObject("total", total);
@@ -138,10 +112,9 @@ public class MesaController extends AbstractController<Mesa> {
     public ModelAndView MesasOcupadas(HttpServletRequest request) {
 
 
-        //Long idf = Long.parseLong(request.getParameter("id"));
         ModelAndView mesasocupadas = new ModelAndView("mesasocupadas");
 
-        List<Mesa> mesas = dao.getAll();
+        List<Mesa> mesas = mesaService.findAll();
 
 
         mesasocupadas.addObject("mesasList", mesas);
@@ -153,11 +126,9 @@ public class MesaController extends AbstractController<Mesa> {
     @RequestMapping(value = "salao", method = RequestMethod.GET)
     public ModelAndView MesasSalao(HttpServletRequest request) {
 
-
-        //Long idf = Long.parseLong(request.getParameter("id"));
         ModelAndView mesassalao = new ModelAndView("salao");
 
-        List<Mesa> mesas = dao.getAll();
+        List<Mesa> mesas = mesaService.findAll();
 
 
         mesassalao.addObject("mesasList", mesas);
@@ -165,5 +136,12 @@ public class MesaController extends AbstractController<Mesa> {
 
         return mesassalao;
     }
+
+
+	@Override
+	protected AbstractEntityService<Mesa> getservice() {
+
+		return mesaService;
+	}
 
 }

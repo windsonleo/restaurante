@@ -8,36 +8,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.tecsoluction.restaurante.dao.DespesaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Despesa;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.DespesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "despesa/")
 public class DespesaController extends AbstractController<Despesa> {
 
-    private
-    final
-    DespesaDAO dao;
+	 private
+	 DespesaServicoImpl despesaService;
 
-    private final UsuarioDAO usudao;
+    private
+	UsuarioServicoImpl userservice;
 
 
     @Autowired
-    public DespesaController(DespesaDAO dao, UsuarioDAO daousu) {
+    public DespesaController(DespesaServicoImpl dao, UsuarioServicoImpl daousu) {
         super("despesa");
-        this.dao = dao;
-        this.usudao = daousu;
+        this.despesaService = dao;
+        this.userservice = daousu;
     }
 
-    @Override
-    protected DespesaDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -60,13 +55,20 @@ public class DespesaController extends AbstractController<Despesa> {
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
-        List<Despesa> despesaList = getDao().getAll();
+        usuario = userservice.findByUsername(usuario.getUsername());
+      
+        List<Despesa> despesaList = getservice().findAll();
+       
         model.addAttribute("despesaList", despesaList);
         model.addAttribute("usuarioAtt", usuario);
 
     }
+
+	@Override
+	protected AbstractEntityService<Despesa> getservice() {
+
+		return despesaService;
+	}
 
 
 }

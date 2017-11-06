@@ -18,52 +18,43 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.EstoqueDAO;
-import com.tecsoluction.restaurante.dao.ItemDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Item;
-import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "estoque/")
 public class EstoqueController extends AbstractController<Estoque> {
 
     private
-    final
-    EstoqueDAO dao;
+    EstoqueServicoImpl estoqueService;
+
+//    private
+//	ProdutoServicoImpl produtoService;
+
+	private
+	UsuarioServicoImpl userservice;
 
     private
-    final
-    ProdutoDAO prodDAO;
-
-
-    private final UsuarioDAO usudao;
-
-    private final ItemDAO itdao;
+    ItemServicoImpl itemService;
 
 
     @Autowired
-    public EstoqueController(EstoqueDAO dao, UsuarioDAO daousu, ItemDAO itdao, ProdutoDAO pdao) {
+    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, ItemServicoImpl itdao, ProdutoServicoImpl pdao) {
         super("estoque");
-        this.dao = dao;
-        this.usudao = daousu;
-        this.itdao = itdao;
-        this.prodDAO = pdao;
+        this.estoqueService = dao;
+        this.userservice = daousu;
+        this.itemService = itdao;
+//        this.produtoService = pdao;
     }
 
-
-    @Override
-    protected EstoqueDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -74,7 +65,7 @@ public class EstoqueController extends AbstractController<Estoque> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itdao) {
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
 
         });
 
@@ -84,20 +75,11 @@ public class EstoqueController extends AbstractController<Estoque> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("clienteList", clienteList);
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
 
 
     }
@@ -110,14 +92,7 @@ public class EstoqueController extends AbstractController<Estoque> {
         String idf = request.getParameter("id");
         ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
 
-        Estoque estoque = dao.PegarPorId(idf);
-
-//        List<Produto>produtos = dao.getAll();
-
-//        double qtditens = estoque.getItens().values().size();
-
-//        informacoesestoque.addObject("estoque", estoque);
-//        informacoesestoque.addObject("qtditens", qtditens);
+        Estoque estoque = getservice().findOne(idf);
 
         double totalitens = 0.0;
         double totalcusto = 0.0;
@@ -142,8 +117,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 
         String stringcusto = df.format(totalcusto);
         String stringvenda = df.format(totalvenda);
-//        String dx = df.format(valor);
-
+        
         informacoesestoque.addObject("estoque", estoque);
         informacoesestoque.addObject("qtditens", totalitens);
         informacoesestoque.addObject("totalcusto", stringcusto);
@@ -152,6 +126,13 @@ public class EstoqueController extends AbstractController<Estoque> {
 
         return informacoesestoque;
     }
+
+
+	@Override
+	protected AbstractEntityService<Estoque> getservice() {
+
+		return estoqueService;
+	}
 
 
 }

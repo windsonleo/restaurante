@@ -1,4 +1,6 @@
 package com.tecsoluction.restaurante.service.impl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,32 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> imple
 
 	@Override
 	protected JpaRepository<Categoria, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
+	}
+
+	@Override
+	public List<Categoria> getCategoriaPai() {
+
+		return dao.getCategoriaPai();
+	}
+
+	@Override
+	public List<Categoria> getCategoriasFilho(String idPai) {
+
+		return dao.getCategoriasFilho(idPai);
+	}
+
+	@Override
+	public Categoria getOnlyCategoriaPai() {
+
+		return dao.getOnlyCategoriaPai();
+	}
+
+	@Override
+	public Categoria getOnlyCategoriaExcludeCardapio() {
+
+		return dao.getOnlyCategoriaExcludeCardapio();
 	}
 	
 

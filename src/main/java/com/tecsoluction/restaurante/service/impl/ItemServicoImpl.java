@@ -1,4 +1,6 @@
 package com.tecsoluction.restaurante.service.impl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,20 @@ public class ItemServicoImpl extends AbstractEntityService<Item> implements IIte
 
 	@Override
 	protected JpaRepository<Item, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
+	}
+
+	@Override
+	public Item getItemPorNome(String descricao, String pedido_id) {
+
+		return dao.getItemPorNome(descricao, pedido_id);
+	}
+
+	@Override
+	public List<Item> getAllItemPorPedido(String idpedido) {
+
+		return dao.getAllItemPorPedido(idpedido);
 	}
 	
 

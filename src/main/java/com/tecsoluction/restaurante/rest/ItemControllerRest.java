@@ -9,32 +9,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.tecsoluction.restaurante.dao.ItemDAO;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.framework.AbstractRestController;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
 
 @RestController
 @RequestMapping(value = "item")
-public class ItemControllerRest {
+public class ItemControllerRest extends AbstractRestController<Item> {
 
     private
-    final
-    ItemDAO dao;
+    ItemServicoImpl itemService;
 
+    
     @Autowired
-    public ItemControllerRest(ItemDAO dao) {
-        this.dao = dao;
+    public ItemControllerRest(ItemServicoImpl dao) {
+        this.itemService = dao;
     }
 
 
-    protected ItemDAO getDao() {
-        return dao;
-    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Item> buscarEntity(@PathVariable String id) {
-    	Item item = getDao().PegarPorId(id);
-        if (item == null) {
+    	
+    	Item item = getservice().findOne(id);
+      
+    	if (item == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(item, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class ItemControllerRest {
     public ResponseEntity<Item> AdicionarEntity(@RequestBody Item entity) {
     	
     	
-        getDao().add(entity);
+    	getservice().save(entity);
         
 
         return new ResponseEntity<Item>(entity, HttpStatus.OK);
@@ -60,15 +60,47 @@ public class ItemControllerRest {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Item> listarEntity() {
-        return getDao().getAll();
+        return getservice().findAll();
 
     }
     
     @RequestMapping(value="/porpedido/{id}",method = RequestMethod.GET)
-    public List<Item> listarItemsPorPedido(@PathVariable long id) {
+    public List<Item> listarItemsPorPedido(@PathVariable String id) {
        
-    	return getDao().getAllItemPorPedido(id);
+    	return itemService.getAllItemPorPedido(id);
 
     }
+
+
+
+	@Override
+	protected AbstractEntityService<Item> getservice() {
+
+		return itemService;
+	}
+
+
+
+	@Override
+	protected void validateSave(Item entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void validateUpdate(Item entity) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

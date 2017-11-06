@@ -17,74 +17,67 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.EstoqueDAO;
-import com.tecsoluction.restaurante.dao.GarconDAO;
-import com.tecsoluction.restaurante.dao.ItemDAO;
-import com.tecsoluction.restaurante.dao.MesaDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
-import com.tecsoluction.restaurante.util.TipoPedido;
 
 
 @Controller
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
-    private final UsuarioDAO usudao;
+	private
+	UsuarioServicoImpl userservice;
+
+
+    private
+    PedidoVendaServicoImpl pedidovendaService;
+
+
+    private
+    ItemServicoImpl itemService;
+
+    private
+	ProdutoServicoImpl produtoService;
+ 
+
+    private
+    MesaServicoImpl mesaService;
+
+    private
+    ClienteServicoImpl clienteService;
+
+
+    private
+    GarconServicoImpl garconService;
+
+
+    private
+    final
+    EstoqueServicoImpl estoqueService;
+    
 
     private PedidoVenda pv;
-
-    private
-    final
-    PedidoVendaDAO pedidoVendaDao;
-
-
-    private
-    final
-    ItemDAO itempedidovendaDao;
-
-    private
-    final
-    ProdutoDAO produtopedidovendaDao;
-
-
-    private
-    final
-    MesaDAO mesaDao;
-
-    private
-    final
-    ClienteDAO clienteDao;
-
-
-    private
-    final
-    GarconDAO garconDao;
-
-
-    private
-    final
-    EstoqueDAO estdao;
-
-
+    
     private Map<Item, Double> itens = new HashMap<>();
 
     private List<Produto> produtosList;
@@ -95,24 +88,22 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
     @Autowired
-    public PedidoVendaController(PedidoVendaDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, ClienteDAO daocliente, MesaDAO daomesa, GarconDAO daogarcon, UsuarioDAO daousu, EstoqueDAO estdao) {
-
+    public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao, ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon, UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
         super("pedidovenda");
-        this.pedidoVendaDao = dao;
-        this.itempedidovendaDao = daoitem;
-        this.produtopedidovendaDao = produtodao;
-        this.clienteDao = daocliente;
-        this.mesaDao = daomesa;
-        this.garconDao = daogarcon;
-        this.usudao = daousu;
-        this.estdao = estdao;
+        
+        this.pedidovendaService = dao;
+        this.itemService = daoitem;
+        this.produtoService = produtodao;
+        this.clienteService = daocliente;
+        this.mesaService = daomesa;
+        this.garconService = daogarcon;
+        this.userservice = daousu;
+        this.estoqueService = estdao;
 
     }
 
-    @Override
-    protected PedidoVendaDAO getDao() {
-        return pedidoVendaDao;
-    }
+
+    
 
     @Override
     protected void validateDelete(String id) {
@@ -123,19 +114,19 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteDao) {
+        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteService) {
 
         });
 
-        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconDao) {
+        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
 
         });
 
-        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaDao) {
+        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
 
         });
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itempedidovendaDao) {
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
 
         });
 
@@ -144,25 +135,24 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
-        TipoPedido[] tipoList = TipoPedido.values();
+        List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
+       
+//        TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
-
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
-
         SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
 
-        List<Cliente> clienteList = clienteDao.getAll();
+        List<Cliente> clienteList = clienteService.findAll();
 
-        List<Garcon> garconList = garconDao.getAll();
+        List<Garcon> garconList = garconService.findAll();
 
-        List<Mesa> mesaList = mesaDao.getAll();
+        List<Mesa> mesaList = mesaService.findAll();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
 
@@ -181,18 +171,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
 
-        this.estoque = estdao.PegarPorId("49L");
+        this.estoque = estoqueService.findOne("49L");
 
         String idf = request.getParameter("id");
 
-        this.pv = pedidoVendaDao.PegarPorId(idf);
+        this.pv = pedidovendaService.findOne(idf);
 
         ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
         for (Item key : pv.getItems().keySet()) {
 
-            //  System.out.println(key + "wind - " + recebimento.getItems().get(key));
-            Produto produto = produtopedidovendaDao.getProdutoPorCodebar(key.getCodigo());
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
             Double qtd = key.getQtd();
 
             key.setEstoque(estoque);
@@ -200,11 +189,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
             estoque.RetirarProdutoEstoque(produto, qtd);
 
-//           System.out.println(key + "produto - " + produto.getNome());
 
-            estdao.editar(estoque);
+            estoqueService.save(estoque);
 
-            itempedidovendaDao.editar(key);
+            itemService.save(key);
 
         }
 
@@ -212,7 +200,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.pv.setStatus(StatusPedido.FECHADO);
         this.pv.setIspago(true);
 
-        pedidoVendaDao.editar(pv);
+        pedidovendaService.save(pv);
 
         itens.clear();
 
@@ -227,7 +215,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView novospedidos = new ModelAndView("novospedidos");
 
-        List<PedidoVenda> vendas = pedidoVendaDao.getAll();
+        List<PedidoVenda> vendas = pedidovendaService.findAll();
 
         novospedidos.addObject("pedidovendasList", vendas);
 
@@ -243,10 +231,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-        this.pv = pedidoVendaDao.PegarPorId(idf);
+        this.pv = pedidovendaService.findOne(idf);
 
 
-        produtosList = produtopedidovendaDao.getAll();
+        produtosList = produtoService.findAll();
 
 
         pv.setTotal(pv.CalcularTotal(pv.getItems()));
@@ -277,7 +265,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         Produto produto;
 
-        produto = produtopedidovendaDao.PegarPorId(prodid);
+        produto = produtoService.findOne(prodid);
 
 
         if (produto == null) {
@@ -294,7 +282,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         }
 
 
-        PedidoVenda pedidov = pedidoVendaDao.PegarPorId(this.pv.getId());
+        PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
 
 //        System.out.println("windson ped"+pedidov.toString());
 
@@ -308,18 +296,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         itens.put(item, item.getQtd());
 
-        itempedidovendaDao.add(item);
+        itemService.save(item);
 
         pedidov.setItems(itens);
         pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
         pedidov.setStatus(StatusPedido.PENDENTE);
 
-        pedidoVendaDao.editar(pedidov);
-
-
-//        
-//        System.out.println(pv.getItems().toString());
-//        System.out.println(pv.getTotal());
+        pedidovendaService.save(pedidov);
 
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
@@ -335,7 +318,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
 
-        PedidoVenda pedido = pedidoVendaDao.PegarPorId(idf);
+        PedidoVenda pedido = pedidovendaService.findOne(idf);
 
 
         detalhespedidovenda.addObject("pedido", pedido);
@@ -354,7 +337,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");
 
 
-        Item item = itempedidovendaDao.PegarPorId(idf);
+        Item item = itemService.findOne(idf);
 
 
         detalhesitem.addObject("item", item);
@@ -369,7 +352,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         String idf = request.getParameter("id");
 
-        itempedidovendaDao.deleteById(idf);
+        itemService.delete(idf);
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
 
@@ -379,7 +362,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
 
-        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
+        List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
 
 
         ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
@@ -396,11 +379,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
 
-//        	List<PedidoVenda> vendas = pedidoVendaDao.getAll();
+//        	List<PedidoVenda> vendas = pedidovendaService.findAll();
 
 //        	novospedidos.addObject("pedidovendasList", vendas);
 
         return novospedidos;
     }
+
+	@Override
+	protected AbstractEntityService<PedidoVenda> getservice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

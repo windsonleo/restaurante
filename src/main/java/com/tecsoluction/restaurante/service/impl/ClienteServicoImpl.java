@@ -28,8 +28,14 @@ public class ClienteServicoImpl extends AbstractEntityService<Cliente> implement
 
 	@Override
 	protected JpaRepository<Cliente, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
+	}
+
+	@Override
+	public Cliente getClienteporTelefone(String tel) {
+
+		return dao.getClienteporTelefone(tel);
 	}
 	
 

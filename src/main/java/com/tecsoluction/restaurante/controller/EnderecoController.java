@@ -10,44 +10,39 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.EnderecoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Banco;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Endereco;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.EnderecoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "endereco/")
 public class EnderecoController extends AbstractController<Endereco> {
 
     private
-    final
-    EnderecoDAO dao;
+    EnderecoServicoImpl enderecoService;
 
-    private final ClienteDAO clidao;
+	private
+	ClienteServicoImpl clienteService;
 
 
-    private final UsuarioDAO usudao;
+    private
+	UsuarioServicoImpl userservice;
 
 
     @Autowired
-    public EnderecoController(EnderecoDAO dao, UsuarioDAO daousu, ClienteDAO clidao) {
+    public EnderecoController(EnderecoServicoImpl dao, UsuarioServicoImpl daousu, ClienteServicoImpl clidao) {
         super("endereco");
-        this.dao = dao;
-        this.usudao = daousu;
-        this.clidao = clidao;
+        this.enderecoService = dao;
+        this.userservice = daousu;
+        this.clienteService = clidao;
     }
 
-    @Override
-    protected EnderecoDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -57,29 +52,27 @@ public class EnderecoController extends AbstractController<Endereco> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("clienteList", clienteList);
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
+
 
     }
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(this.clidao) {
+        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(this.clienteService) {
         });
     }
+
+	@Override
+	protected AbstractEntityService<Endereco> getservice() {
+
+		return enderecoService;
+	}
 
 
 }

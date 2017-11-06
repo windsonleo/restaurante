@@ -1,8 +1,5 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,18 +18,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.EnderecoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Endereco;
-import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
-import com.tecsoluction.restaurante.util.DataUtil;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.EnderecoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 
 
@@ -47,37 +41,35 @@ public class ClienteController extends AbstractController<Cliente> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ClienteController.class);
 
-    private
-    final
-    ClienteDAO dao;
+	private
+	ClienteServicoImpl clienteService;
     
-    private final EnderecoDAO enddao;
+    private
+    EnderecoServicoImpl enderecoService;
+    
+	
+	private  
+	UsuarioServicoImpl userservice;
+	
     
     private List<Cliente> clientes;
     
-//    private
-//    final
-//    RoleDAO rdao;
     
-    private final UsuarioDAO usudao;
     
     private Cliente cliente;
     
     private Endereco endereco;
+    
 
     @Autowired
-    public ClienteController(ClienteDAO dao,UsuarioDAO daousu,EnderecoDAO enddao) {
+    public ClienteController(ClienteServicoImpl dao,UsuarioServicoImpl daousu,EnderecoServicoImpl enddao) {
         super("cliente");
-        this.dao = dao;
-        this.usudao = daousu;
-        this.enddao =enddao;
+       
+        this.clienteService = dao;
+        this.userservice = daousu;
+        this.enderecoService =enddao;
     }
 
-	@Override
-	protected ClienteDAO getDao() {
-		// TODO Auto-generated method stub
-		return dao;
-	}
 
 	@Override
 	protected void validateDelete(String id) {
@@ -87,42 +79,16 @@ public class ClienteController extends AbstractController<Cliente> {
 	@InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enddao) {
+        binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enderecoService) {
         });
     }
 
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-//	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
-//	public ModelAndView CadastrarUsuarioForm(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		ModelAndView caduser = new ModelAndView("cadastrarusuario");
-//		
-//		caduser.addObject("serverTime", formattedDate );
-//		
-//		return caduser;
-//	}
-	
-	
-	
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-        
-        
-        
+        List<Cliente> clienteList = clienteService.findAll();
+       
          cliente = new Cliente();
         
          endereco = new Endereco();
@@ -134,15 +100,13 @@ public class ClienteController extends AbstractController<Cliente> {
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
+		usuario = userservice.findByUsername(usuario.getUsername());
         
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
         model.addAttribute("cliente",cliente);
         model.addAttribute("endereco", endereco);
         
-//        model.addAttribute("umList", umList);
-
 
     }
 	
@@ -154,7 +118,7 @@ public class ClienteController extends AbstractController<Cliente> {
 		
 		ModelAndView novosclientes = new ModelAndView("novosclientes");
 		
-		clientes = dao.getAll();
+		clientes = clienteService.findAll();
 		
 		novosclientes.addObject("clientesList",clientes);
 		
@@ -170,17 +134,8 @@ public class ClienteController extends AbstractController<Cliente> {
   	ModelAndView detalhescliente= new ModelAndView("detalhescliente");
   	
   	
-  	Cliente cliente = dao.PegarPorId(idf);
+  	Cliente cliente = clienteService.findOne(idf);
   	 
-  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-  //	 pedidos = pedidovendadao.getAll();
-  	
-  	
- // 	List<Produto> produtoList = produtoDao.getAll();
-  //	List<Item> itemList = dao.getAll();
-  	
-  //	detalhesmesa.addObject("itemList", itemList);
-//  	detalhescliente.addObject("pedidoList", pedidos);
   	detalhescliente.addObject("cliente", cliente);
 
 		
@@ -226,28 +181,10 @@ public class ClienteController extends AbstractController<Cliente> {
 			cliente.setEndereco(endereco); 
 		
 		
-			dao.add(cliente);
-		
-  	
-//  	long idf = Long.parseLong(request.getParameter("id"));
-//  	
-//  	
+			getservice().save(cliente);
+
   	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
 		
-  	
-  	
-//  	Cliente cliente = dao.PegarPorId(idf);
-  	 
-  	 // mudar para trazer pelo id da mesa e pelo status da mesa
-  //	 pedidos = pedidovendadao.getAll();
-  	
-  	
- // 	List<Produto> produtoList = produtoDao.getAll();
-  //	List<Item> itemList = dao.getAll();
-  	
-  //	detalhesmesa.addObject("itemList", itemList);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-//  	cadastrocliente.addObject("cliente", cliente);
 		
   	cadastrocliente.addObject("cliente",cliente);
 
@@ -265,7 +202,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
 	    	
 	    	
-	    	Cliente cliente = dao.PegarPorId(idf);
+	    	Cliente cliente = getservice().findOne(idf);
 	    	 
 	    	gerencia.addObject("cliente", cliente);
 
@@ -274,20 +211,18 @@ public class ClienteController extends AbstractController<Cliente> {
 	  	}
 	
 	    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-	  	public ModelAndView  gerenciarCliente(HttpServletRequest request){
-	    	
-	    	
-//	    	long idf = Long.parseLong(request.getParameter("id"));
+	  	public ModelAndView  gerenciarCliente(HttpServletRequest request){	    	
 	    	
 	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
 	    	
-	    	
-//	    	Produto produto = dao.PegarPorId(idf);
-	    	 
-//	    	gerencia.addObject("produto", produto);
 
-	  		
 	  		return gerencia;
 	  	}
+
+		@Override
+		protected AbstractEntityService<Cliente> getservice() {
+
+			return clienteService;
+		}
 	
 }

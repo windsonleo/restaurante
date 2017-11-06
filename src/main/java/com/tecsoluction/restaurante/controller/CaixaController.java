@@ -17,13 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.CaixaDAO;
-import com.tecsoluction.restaurante.dao.DespesaDAO;
-import com.tecsoluction.restaurante.dao.FormaPagamentoDAO;
-import com.tecsoluction.restaurante.dao.PagamentoDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Caixa;
 import com.tecsoluction.restaurante.entidade.Despesa;
 import com.tecsoluction.restaurante.entidade.FormaPagamento;
@@ -32,7 +25,13 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.CaixaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.DespesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FormaPagamentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
@@ -40,50 +39,44 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 @RequestMapping(value = "caixa/")
 public class CaixaController extends AbstractController<Caixa> {
 
-    private
-    final
-    PedidoVendaDAO dao;
+	 private
+	 PedidoVendaServicoImpl pedidovendaService;
+	 
+	 
+	 private
+	 CaixaServicoImpl caixaService;
 
-    private
-    final
-    CaixaDAO cdao;
+	 private
+	 FormaPagamentoServicoImpl formapagamentoService;
 
-    private
-    final
-    FormaPagamentoDAO fdao;
-
-    private
-    final
-    PagamentoDAO pdao;
+	 private
+	 PagamentoServicoImpl pagamentoService;
 
 
-    private
-    final
-    DespesaDAO despdao;
+	 private
+	 DespesaServicoImpl despesaService;
 
 
-    private final UsuarioDAO usudao;
+	 private
+	 UsuarioServicoImpl userservice;
+	 
 
     List<PedidoVenda> pedidoVendaLista;
 
     List<FormaPagamento> formapagamentoLista;
+    
 
     @Autowired
-    public CaixaController(CaixaDAO CDAO, PedidoVendaDAO dao, DespesaDAO despdao, UsuarioDAO daousu, FormaPagamentoDAO formdao, PagamentoDAO pdao) {
+    public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService, UsuarioServicoImpl pedidovendaServiceusu, FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService) {
         super("caixa");
-        this.dao = dao;
-        this.usudao = daousu;
-        this.cdao = CDAO;
-        this.fdao = formdao;
-        this.pdao = pdao;
-        this.despdao = despdao;
+        this.pedidovendaService = pedidovendaService;
+        this.userservice = pedidovendaServiceusu;
+        this.caixaService = CpedidovendaService;
+        this.formapagamentoService = formpedidovendaService;
+        this.pagamentoService = ppedidovendaService;
+        this.despesaService = desppedidovendaService;
     }
 
-    @Override
-    protected CaixaDAO getDao() {
-        // TODO Auto-generated method stub
-        return cdao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -93,21 +86,21 @@ public class CaixaController extends AbstractController<Caixa> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(FormaPagamento.class, new AbstractEditor<FormaPagamento>(this.fdao) {
+        binder.registerCustomEditor(FormaPagamento.class, new AbstractEditor<FormaPagamento>(this.formapagamentoService) {
 
         });
 
 
-        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.dao) {
+        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendaService) {
 
         });
 
 
-        binder.registerCustomEditor(Pagamento.class, new AbstractEditor<Pagamento>(this.pdao) {
+        binder.registerCustomEditor(Pagamento.class, new AbstractEditor<Pagamento>(this.pagamentoService) {
 
         });
 
-        binder.registerCustomEditor(Despesa.class, new AbstractEditor<Despesa>(this.despdao) {
+        binder.registerCustomEditor(Despesa.class, new AbstractEditor<Despesa>(this.despesaService) {
 
         });
 
@@ -119,15 +112,12 @@ public class CaixaController extends AbstractController<Caixa> {
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
-        List<FormaPagamento> formapagamentoList = fdao.getAll();
-
-        List<PedidoVenda> pedidoList = dao.getAll();
-
-        List<Caixa> caixaList = cdao.getAll();
-
-        List<Despesa> despesaList = despdao.getAll();
+        usuario = userservice.findByUsername(usuario.getUsername());
+       
+        List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
+        List<PedidoVenda> pedidoList = pedidovendaService.findAll();
+        List<Caixa> caixaList = caixaService.findAll();
+        List<Despesa> despesaList = despesaService.findAll();
 
 
         model.addAttribute("caixaList", caixaList);
@@ -145,28 +135,11 @@ public class CaixaController extends AbstractController<Caixa> {
 
         String idf = request.getParameter("id");
 
-        Caixa cx = cdao.PegarPorId(idf);
-
-//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
-
+        Caixa cx = caixaService.findOne(idf);
 
         ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
-//  	entregas.addObject("pedidovendaList",pedidoVendaList);
-
-
-//  	 itempedidovendaDao.delete(idf);
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        //	 pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
 
         fecharcaixa.addObject("caixa", cx);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhesitem.addObject("item", item);
-
 
         return fecharcaixa;
 
@@ -176,27 +149,7 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView AddPagamentoCaixa(HttpServletRequest request) {
 
 
-//  	Long idf = Long.parseLong(request.getParameter("id"));
-
-//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
-
-
         ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
-//  	entregas.addObject("pedidovendaList",pedidoVendaList);
-
-
-//  	 itempedidovendaDao.delete(idf);
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        //	 pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
-
-        //	detalhesmesa.addObject("itemList", itemList);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhesitem.addObject("item", item);
 
 
         return cadastropagamento;
@@ -204,16 +157,10 @@ public class CaixaController extends AbstractController<Caixa> {
     }
 
 
-    @SuppressWarnings("null")
     @RequestMapping(value = "/fechamentocaixa", method = RequestMethod.GET)
     public ModelAndView FechamentoCaixa(HttpServletRequest request) {
 
-        formapagamentoLista = fdao.getAll();
-//  		String mesa=OrigemPedido.MESA.toString();
-//  		
-//  			OrigemPedido origem;
-//  		
-//  		StatusPedido status = StatusPedido.CANCELADO;
+        formapagamentoLista = formapagamentoService.findAll();
 
         List<PedidoVenda> pedidoVendaListamesa = new ArrayList<>();
 
@@ -236,9 +183,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         String Dti = request.getParameter("dataini");
 
-//		System.out.println("windson"+Dti);
-
-        List<PedidoVenda> pvListData = dao.getAllPedidoPorData(Dti);
+        List<PedidoVenda> pvListData = pedidovendaService.getAllPedidoPorData(Dti);
 
 
         for (int i = 0; i < pvListData.size(); i++) {
@@ -252,8 +197,6 @@ public class CaixaController extends AbstractController<Caixa> {
 
             OrigemPedido origem = pv.getOrigempedido();
             StatusPedido status = pv.getStatus();
-//			total = total + pv.getTotal();
-
 
             if (origem == OrigemPedido.MESA) {
 
@@ -286,12 +229,6 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         for (int i = 0; i < pvListData.size(); i++) {
-
-//			List<FormaPagamento> pagdinheiro = new ArrayList<>();
-//			
-//			List<FormaPagamento> pagcartaocredito = new ArrayList<>();;
-//			
-//			List<FormaPagamento> pagcartaodebito = new ArrayList<>();;
 
 
             PedidoVenda pv = pvListData.get(i);
@@ -336,18 +273,6 @@ public class CaixaController extends AbstractController<Caixa> {
                 }
 
 
-//				for(int k = 0 ; k < formapag.size();k++){
-//					
-//					FormaPagamento  forpag = formapag.get(k);
-//					
-//					if(forpag.getNome() == formapag.)
-//					
-//					
-//					
-//					
-//				}
-
-
             }
 
         }
@@ -385,7 +310,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         List<PedidoVenda> pedidovendaListData = null;
 
-        pedidoVendaLista = dao.getAll();
+        pedidoVendaLista = pedidovendaService.findAll();
 
         for (int i = 0; i >= pedidoVendaLista.size(); i++) {
 
@@ -416,28 +341,13 @@ public class CaixaController extends AbstractController<Caixa> {
 
         String idf = request.getParameter("id");
 
-//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
-
-
-        Caixa caixa = cdao.PegarPorId(idf);
+        Caixa caixa = caixaService.findOne(idf);
 
 
         ModelAndView adddespesacaixa = new ModelAndView("adddespesacaixa");
-//  	entregas.addObject("pedidovendaList",pedidoVendaList);
-
-
-//  	 itempedidovendaDao.delete(idf);
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        //	 pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
 
         adddespesacaixa.addObject("caixa", caixa);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhesitem.addObject("item", item);
+
 
 
         return adddespesacaixa;
@@ -452,35 +362,19 @@ public class CaixaController extends AbstractController<Caixa> {
 
         String idfc = request.getParameter("caixa");
 
+        Despesa desp = despesaService.findOne(idf);
 
-//        List<PedidoVenda> pedidoVendaList = pedidoVendaDao.getAll();
-
-
-        Despesa desp = despdao.PegarPorId(idf);
-
-        Caixa caixa = cdao.PegarPorId(idfc);
+        Caixa caixa = caixaService.findOne(idfc);
 
 
         ModelAndView adddespesacaixa = new ModelAndView("adddespesacaixa");
 
         caixa.getDespesas().add(desp);
 
-        cdao.editar(caixa);
-//  	entregas.addObject("pedidovendaList",pedidoVendaList);
-
-
-//  	 itempedidovendaDao.delete(idf);
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        //	 pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
+        caixaService.save(caixa);
 
         adddespesacaixa.addObject("caixa", caixa);
-//  	detalhescliente.addObject("pedidoList", pedidos);
-//  	detalhesitem.addObject("item", item);
+
 
 
         return adddespesacaixa;
@@ -493,12 +387,15 @@ public class CaixaController extends AbstractController<Caixa> {
 
         ModelAndView novospedidos = new ModelAndView("caixarapido");
 
-//	        	List<PedidoVenda> vendas = pedidoVendaDao.getAll();
-
-//	        	novospedidos.addObject("pedidovendasList", vendas);
 
         return novospedidos;
     }
+
+	@Override
+	protected AbstractEntityService<Caixa> getservice() {
+
+		return caixaService;
+	}
 
 }
 

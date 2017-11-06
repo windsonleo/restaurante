@@ -17,14 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.MesaDAO;
-import com.tecsoluction.restaurante.dao.PedidoCompraDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.dao.RecebimentoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoCompra;
@@ -32,6 +24,13 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 /**
@@ -40,72 +39,87 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 @Controller
 public class HomeController {
 
+	private
+	UsuarioServicoImpl userservice;
 
-    private final UsuarioDAO usuariodao;
+    private
+    PedidoVendaServicoImpl pedidovendaService;
 
-    private final PedidoVendaDAO pedidovendadao;
-    private final ClienteDAO clientedao;
-    private final MesaDAO mesadao;
-    private final ProdutoDAO produtodao;
-    private final PedidoCompraDAO pedidocompradao;
-    private final RecebimentoDAO recebimentodao;
+    private
+	ProdutoServicoImpl produtoService;
+ 
+    private
+    MesaServicoImpl mesaService;
 
+    private
+    ClienteServicoImpl clienteService;
 
-    private List<Cliente> clientesnovos;
-    private List<PedidoVenda> pedidovendasnovos;
-    private List<Mesa> mesasocupadas;
-    private List<Produto> produtosnovos;
-    private List<Usuario> usuarios;
-    private List<PedidoCompra> pedidocomprasnovos;
-    private List<Recebimento> recebimentosnovos;
+    private
+    RecebimentoServicoImpl recebimentoService;
 
-    private List<Cliente> resultsearch;
+    private
+    PedidoCompraServicoImpl pedidocompraService;
+    
+    private 
+    List<Cliente> clientesnovos;
+    
+    private 
+    List<PedidoVenda> pedidovendasnovos;
+    
+    private 
+    List<Mesa> mesasocupadas;
+    
+    private 
+    List<Produto> produtosnovos;
+    
+    private 
+    List<Usuario> usuarios;
+    
+    private 
+    List<PedidoCompra> pedidocomprasnovos;
+    
+    private 
+    List<Recebimento> recebimentosnovos;
+
+    private 
+    List<Cliente> resultsearch;
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    /**
-     * Simply selects the home view to render by returning its name.
-     */
 
-    public HomeController(PedidoCompraDAO compradao, RecebimentoDAO recdao, UsuarioDAO dao, PedidoVendaDAO vendadao, ClienteDAO clientedao, MesaDAO mesadao, ProdutoDAO proddao) {
-        // TODO Auto-generated constructor stub
+    public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao) {
 
-        this.usuariodao = dao;
-        this.pedidovendadao = vendadao;
-        this.clientedao = clientedao;
-        this.mesadao = mesadao;
-        this.produtodao = proddao;
-        this.pedidocompradao = compradao;
-        this.recebimentodao = recdao;
+        this.userservice = dao;
+        this.pedidovendaService = vendadao;
+        this.clienteService = clienteService;
+        this.mesaService = mesaService;
+        this.produtoService = proddao;
+        this.pedidocompraService = compradao;
+        this.recebimentoService = recdao;
     }
 
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Mesa> mesas = mesadao.getAll();
-
-        clientesnovos = clientedao.getAll();
-        pedidovendasnovos = pedidovendadao.getAll();
-        mesasocupadas = mesadao.getAll();
-        produtosnovos = produtodao.getAll();
-        usuarios = usuariodao.getAll();
-
-        pedidocomprasnovos = pedidocompradao.getAll();
-
-        recebimentosnovos = recebimentodao.getAll();
+        List<Mesa> mesas = mesaService.findAll();
+        clientesnovos = clienteService.findAll();
+        pedidovendasnovos = pedidovendaService.findAll();
+        mesasocupadas = mesaService.findAll();
+        produtosnovos = produtoService.findAll();
+        usuarios = userservice.findAll();
+        pedidocomprasnovos = pedidocompraService.findAll();
+        recebimentosnovos = recebimentoService.findAll();
 
         model.addAttribute("clientesnovos", clientesnovos);
         model.addAttribute("pedidovendasnovos", pedidovendasnovos);
         model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
         model.addAttribute("recebimentosnovos", recebimentosnovos);
-
         model.addAttribute("mesasocupadas", mesasocupadas);
         model.addAttribute("produtosnovos", produtosnovos);
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("mesas", mesas);
 
-//			model.addAttribute("pedidovendascancelado", buscarVendaCancelada(pedidovendasnovos));
     }
 
 
@@ -135,11 +149,9 @@ public class HomeController {
 
         String formattedDate = dateFormat.format(date);
 
-
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usuariodao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
 
         ModelAndView home = new ModelAndView("home");
@@ -190,10 +202,9 @@ public class HomeController {
 
         List<Cliente> listAllobjetos = new ArrayList<Cliente>();
         resultsearch = new ArrayList<Cliente>();
+        
+        listAllobjetos.addAll(clienteService.findAll());
 
-        listAllobjetos.addAll(clientedao.getAll());
-//		listAllobjetos.add(pedidovendadao.getAll());
-//		listAllobjetos.add(produtodao.getAll());
 
         Cliente cliente = new Cliente();
 
@@ -209,14 +220,12 @@ public class HomeController {
         }
 
 
-        //ModelAndView resultsearch = new ModelAndView("acessonegado");
-
-        //resultsearch.addObject("result", resultsearch );
 
         return resultsearch;
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @SuppressWarnings("null")
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
     public List<Object> ResultSearch(Locale locale, Model model) {
 
         logger.info("Welcome ResultSearch! The client locale is {}.", locale);
@@ -224,14 +233,10 @@ public class HomeController {
 
         List<Object> listobjetos = null;
 
-        listobjetos.add(clientedao.getAll());
-        listobjetos.add(pedidovendadao.getAll());
-        listobjetos.add(produtodao.getAll());
+        listobjetos.add(clienteService.findAll());
+        listobjetos.add(pedidovendaService.findAll());
+        listobjetos.add(produtoService.findAll());
 
-
-        //ModelAndView resultsearch = new ModelAndView("search");
-
-        //resultsearch.addObject("result", listobjetos );
 
         return listobjetos;
     }

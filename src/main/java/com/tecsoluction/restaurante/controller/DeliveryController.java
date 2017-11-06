@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.tecsoluction.restaurante.dao.BancoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,18 +13,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.databind.deser.std.TokenBufferDeserializer;
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Banco;
 import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
@@ -35,41 +28,41 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @RequestMapping(value = "delivery/")
 public class DeliveryController {
 
+   
+	private
+	UsuarioServicoImpl userservice;
+
+
     private
-    final
-    BancoDAO dao;
-    
-    private final UsuarioDAO usudao;
-    
+    PedidoVendaServicoImpl pedidovendaService;
+
+
     private
-    final
-    PedidoVendaDAO  pedvendadao;
+    ClienteServicoImpl clienteService;
+
+    
     
     private List<PedidoVenda> pedidosvendaList;
     
     private List<Cliente> clientesList;
 
     
-    private final ClienteDAO clidao;
+
     
     private Cliente cliente;
 
 
     @Autowired
-    public DeliveryController(BancoDAO dao,UsuarioDAO daousu,PedidoVendaDAO vdao,ClienteDAO cdao) {
-        this.dao = dao;
-        this.usudao = daousu;
-        this.pedvendadao = vdao;
-        this.clidao = cdao;
+    public DeliveryController(UsuarioServicoImpl daousu,PedidoVendaServicoImpl vdao,ClienteServicoImpl cdao) {
+        this.userservice = daousu;
+        this.pedidovendaService = vdao;
+        this.clienteService = cdao;
     }
     
     
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-//        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-//
        UnidadeMedida[] umList = UnidadeMedida.values();
        
        StatusPedido[] statusList = StatusPedido.values();
@@ -78,22 +71,17 @@ public class DeliveryController {
        
        
     	
-    	pedidosvendaList = pedvendadao.getAllPedidoDelivery();
+    	pedidosvendaList = pedidovendaService.getAllPedidoDelivery();
     	
-    	clientesList = clidao.getAll();
+    	clientesList = clienteService.findAll();
         
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
-		usuario = usudao.PegarPorNome(usuario.getUsername());
+		usuario = userservice.findByUsername(usuario.getUsername());
         
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidovendaList", pedidosvendaList);
         model.addAttribute("clientesList", clientesList);
-
-        
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
 
 
     }
@@ -102,15 +90,8 @@ public class DeliveryController {
     @RequestMapping(value = "movimentacao", method = RequestMethod.GET)
   	public ModelAndView  MovimentacaoDelivery(HttpServletRequest request){
     	
-    	
-    	//Long idf = Long.parseLong(request.getParameter("id"));
-    	ModelAndView delivery = new ModelAndView("movimentacaopedidovendaentregas");
-    	
-    	
+       	ModelAndView delivery = new ModelAndView("movimentacaopedidovendaentregas");
 
-//    	delivery.addObject("mesasList", mesas);
-    	
-  		
   		return delivery;
   	}
     
@@ -119,15 +100,8 @@ public class DeliveryController {
     @RequestMapping(value = "AdicionarDelivery", method = RequestMethod.GET)
   	public ModelAndView  AdicionarDeliveryForm(HttpServletRequest request){
     	
+       	ModelAndView delivery = new ModelAndView("cadastrodelivery");
     	
-    	//Long idf = Long.parseLong(request.getParameter("id"));
-    	ModelAndView delivery = new ModelAndView("cadastrodelivery");
-    	
-    	
-
-//    	delivery.addObject("mesasList", mesas);
-    	
-  		
   		return delivery;
   	}
     
@@ -135,11 +109,8 @@ public class DeliveryController {
   	public ModelAndView  LocalizarClienteFone(HttpServletRequest request){
     	
     	ModelAndView delivery = new ModelAndView("cadastrodelivery");
-
-    	
     	String telefone  = request.getParameter("telefone");
     	
-
     	if((telefone == null )|| (telefone == "")){
     		
     		String Erros = "Preencha o Telefone";
@@ -148,10 +119,8 @@ public class DeliveryController {
     		return delivery;
     	}
 
-    	
-    	
     	Cliente cli = new Cliente();
-    	cli = clidao.getClienteporTelefone(telefone);
+    	cli = clienteService.getClienteporTelefone(telefone);
     	
     	if(cli.getNome() == null){
     		

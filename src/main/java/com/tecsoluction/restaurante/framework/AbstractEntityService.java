@@ -43,6 +43,11 @@ public abstract class AbstractEntityService<Entity> {
 	public Entity save(Entity post) {
 	    return getDao().saveAndFlush(post);
 	}
+	
+	
+	public Entity edit(Entity post) {
+	    return getDao().saveAndFlush(post);
+	}
 	 
 	public void delete(String id) {
 		getDao().delete(id);

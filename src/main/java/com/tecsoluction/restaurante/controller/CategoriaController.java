@@ -12,50 +12,50 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.tecsoluction.restaurante.dao.CategoriaDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.CategoriaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "categoria/")
 public class CategoriaController extends AbstractController<Categoria> {
 
-    private
-    final
-    CategoriaDAO dao;
+	private 
+	CategoriaServicoImpl categoriaService;
 
-    private final UsuarioDAO usudao;
+	
+	private  
+	UsuarioServicoImpl userservice;
 
 
     @Autowired
-    public CategoriaController(CategoriaDAO dao, UsuarioDAO daousu) {
+    public CategoriaController(CategoriaServicoImpl dao, UsuarioServicoImpl daousu) {
         super("categoria");
-        this.dao = dao;
-        this.usudao = daousu;
+        this.categoriaService = dao;
+        this.userservice = daousu;
     }
 
-    @Override
-    protected CategoriaDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
-        Categoria catGenericaPai = getDao().getOnlyCategoriaPai();
-        List<Categoria> categoriasFilha = getDao().getCategoriasFilho(id);
+    
+    	Categoria catGenericaPai = categoriaService.getOnlyCategoriaPai();
+        List<Categoria> categoriasFilha = categoriaService.getCategoriasFilho(id);
         for (Categoria cat : categoriasFilha) {
             cat.setCatpai(catGenericaPai);
         }
+        
+      
     }
 
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
+        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
 
         });
     }
@@ -65,11 +65,17 @@ public class CategoriaController extends AbstractController<Categoria> {
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = usudao.PegarPorNome(usuario.getUsername());
-        List<Categoria> categoriaList = getDao().getAll();
+        usuario = userservice.findByUsername(usuario.getUsername());
+        List<Categoria> categoriaList = getservice().findAll();
         model.addAttribute("categoriaList", categoriaList);
         model.addAttribute("usuarioAtt", usuario);
     }
+
+	@Override
+	protected AbstractEntityService<Categoria> getservice() {
+		// TODO Auto-generated method stub
+		return categoriaService;
+	}
 
 }
 

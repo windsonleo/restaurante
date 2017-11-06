@@ -6,11 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.tecsoluction.restaurante.dao.PedidoDAO;
 import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.PedidoServicoImpl;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
@@ -19,72 +18,42 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @RequestMapping(value = "pedido/")
 public class PedidoController extends AbstractController<Pedido> {
 
-    private final PedidoDAO pedidoDao;
+    private
+    PedidoServicoImpl pedidoService;
 
-//    private
-//    final
-//    AbstractEntityDao<Pedido> pedidoDao;
-//    private
-//    AbstractEntityDao<Mesa> mesaDao;
-//    private
-//    AbstractEntityDao<Garcon> garconDao;
-
-//    @Autowired
-//    public PedidoController(PedidoDAO dao, MesaDAO daomesa, GarconDAO daogarcon) {
-//
-//        super("pedido");
-//
-//        this.pedidoDao = dao;
-//        this.garconDao = daogarcon;
-//        this.mesaDao = daomesa;
-//    }
 
     @Autowired
-    public PedidoController(PedidoDAO dao) {
+    public PedidoController(PedidoServicoImpl dao) {
 
         super("pedido");
 
-        this.pedidoDao = dao;
+        this.pedidoService = dao;
 
     }
 
-
-    @Override
-    protected PedidoDAO getDao() {
-        // TODO Auto-generated method stub
-        return pedidoDao;
-    }
 
     @Override
     protected void validateDelete(String id) {
 
     }
 
-//    @InitBinder
-//    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-//
-//        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(this.mesaDao) {
-//        });
-//
-//        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(this.garconDao) {
-//        });
-//
-//
-//    }
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Garcon> garconList = garconDao.getAll();
-//        List<Mesa> mesaList = mesaDao.getAll();
 
         TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
-
-//        model.addAttribute("garconList", garconList);
-//        model.addAttribute("mesaList", mesaList);
+        
         model.addAttribute("tipoList", tipoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
     }
+
+
+	@Override
+	protected AbstractEntityService<Pedido> getservice() {
+		// TODO Auto-generated method stub
+		return pedidoService;
+	}
 
 }

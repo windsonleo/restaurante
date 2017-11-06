@@ -34,7 +34,8 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
-    private final UsuarioServicoImpl usudao;
+    private 
+    UsuarioServicoImpl usudao;
 
 
     private
@@ -67,7 +68,7 @@ public class UsuarioController extends AbstractController<Usuario> {
     
 	@Override
 	protected AbstractEntityService<Usuario> getservice() {
-		// TODO Auto-generated method stub
+
 		return ususervice;
 	}
 	
@@ -83,20 +84,14 @@ public class UsuarioController extends AbstractController<Usuario> {
 
         List<Role> roleList = roleservico.findAll();
         List<Usuario> usuarioList = ususervice.findAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-
+        
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
         usuario = ususervice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-//
-
         model.addAttribute("roleList", roleList);
         model.addAttribute("usuarioList", usuarioList);
-//        model.addAttribute("umList", umList);
 
 
     }
@@ -113,20 +108,9 @@ public class UsuarioController extends AbstractController<Usuario> {
 
         ModelAndView profileusuario = new ModelAndView("profileusuario");
 
-
         Usuario usuario = ususervice.findOne(idf);
 
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        // pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
-
-        //	detalhesmesa.addObject("itemList", itemList);
         profileusuario.addObject("usuario", usuario);
-        //	detalhesmesa.addObject("mesa", mesa);
-
 
         return profileusuario;
     }

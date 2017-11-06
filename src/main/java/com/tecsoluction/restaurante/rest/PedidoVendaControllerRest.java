@@ -9,32 +9,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.framework.AbstractRestController;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 
 @RestController
 @RequestMapping(value = "pedidovenda")
-public class PedidoVendaControllerRest {
+public class PedidoVendaControllerRest extends AbstractRestController<PedidoVenda> {
 
     private
-    final
-    PedidoVendaDAO dao;
+    PedidoVendaServicoImpl pedidovendaService;
+    
 
     @Autowired
-    public PedidoVendaControllerRest(PedidoVendaDAO dao) {
-        this.dao = dao;
+    public PedidoVendaControllerRest(PedidoVendaServicoImpl dao) {
+      
+    	this.pedidovendaService = dao;
     }
 
 
-    protected PedidoVendaDAO getDao() {
-        return dao;
-    }
-
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<PedidoVenda> buscarEntity(@PathVariable String id) {
-    	PedidoVenda pedidovenda = getDao().PegarPorId(id);
-        if (pedidovenda == null) {
+    	
+    	PedidoVenda pedidovenda = getservice().findOne(id);
+        
+    	if (pedidovenda == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(pedidovenda	, HttpStatus.OK);
@@ -44,23 +45,55 @@ public class PedidoVendaControllerRest {
     public ResponseEntity<PedidoVenda> AdicionarEntity(@RequestBody PedidoVenda entity) {
 
 
-            getDao().add(entity);
+    	getservice().save(entity);
             return new ResponseEntity<PedidoVenda>(entity, HttpStatus.OK);
     
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<PedidoVenda> listarEntity() {
-        return getDao().getAll();
+        return getservice().findAll();
 
     }
     
     @RequestMapping(value="/pormesa/{id}",method = RequestMethod.GET)
     public List<PedidoVenda> listarPedidoPorMesa(@PathVariable String id) {
        
-    	return getDao().getAllPedidoPorMesa(id);
+    	return pedidovendaService.getAllPedidoPorMesa(id);
 
     }
+
+
+
+	@Override
+	protected AbstractEntityService<PedidoVenda> getservice() {
+
+		return pedidovendaService;
+	}
+
+
+
+	@Override
+	protected void validateSave(PedidoVenda entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void validateUpdate(PedidoVenda entity) {
+		// TODO Auto-generated method stub
+		
+	}
     
 //    @RequestMapping(value = "/enviar",method = RequestMethod.POST)
 //    public ResponseEntity EnviarEntity(PedidoVenda entity) {

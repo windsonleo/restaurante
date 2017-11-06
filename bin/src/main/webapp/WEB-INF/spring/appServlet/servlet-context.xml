@@ -38,7 +38,6 @@
     </bean>
     
 
-<<<<<<< Updated upstream
       <bean class="org.apache.commons.dbcp.BasicDataSource" 
           destroy-method="close" id="dataSource"> 
         <property name="driverClassName" value="org.postgresql.Driver"/>
@@ -56,7 +55,7 @@
         <property name="initialSize" value="5"/> 
         <property name="removeAbandoned" value="true"/> 
     </bean>
-=======
+    
 <!--       <bean class="org.apache.commons.dbcp.BasicDataSource"  -->
 <!--           destroy-method="close" id="dataSource">  -->
 <!--         <property name="driverClassName" value="org.postgresql.Driver"/>  -->
@@ -70,7 +69,6 @@
 <!--         <property name="initialSize" value="5"/>  -->
 <!--         <property name="removeAbandoned" value="true"/>  -->
 <!--     </bean> -->
->>>>>>> Stashed changes
     
          <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="PU-RESTAURANTE"/>

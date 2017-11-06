@@ -12,38 +12,31 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.GarconDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
-import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Garcon;
-import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "garcon/")
 public class GarconController extends AbstractController<Garcon> {
 
     private
-    final
-    GarconDAO dao;
+    GarconServicoImpl garconService;
 
-    private final UsuarioDAO usudao;
-
+	 private
+	 UsuarioServicoImpl userservice;
+	 
 
     @Autowired
-    public GarconController(GarconDAO dao, UsuarioDAO daousu) {
+    public GarconController(GarconServicoImpl dao, UsuarioServicoImpl daousu) {
         super("garcon");
-        this.dao = dao;
-        this.usudao = daousu;
+        this.garconService = dao;
+        this.userservice = daousu;
     }
 
-    @Override
-    protected GarconDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
@@ -53,20 +46,14 @@ public class GarconController extends AbstractController<Garcon> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-//        List<Cliente> clienteList = dao.getAll();
-        List<Garcon> garconList = dao.getAll();
-//
-//        UnidadeMedida[] umList = UnidadeMedida.values();
-
+        List<Garcon> garconList = getservice().findAll();
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("garconsList", garconList);
-//        model.addAttribute("categoriaList", categoriaList);
-//        model.addAttribute("umList", umList);
+
     }
 
     @RequestMapping(value = "LocalizarGarconGerencia", method = RequestMethod.POST)
@@ -78,7 +65,7 @@ public class GarconController extends AbstractController<Garcon> {
         ModelAndView gerencia = new ModelAndView("gerenciagarcon");
 
 
-        Garcon garcon = dao.PegarPorId(idf);
+        Garcon garcon = getservice().findOne(idf);
 
         gerencia.addObject("garcon", garcon);
 
@@ -89,19 +76,16 @@ public class GarconController extends AbstractController<Garcon> {
     @RequestMapping(value = "gerencia", method = RequestMethod.GET)
     public ModelAndView gerenciargarcon(HttpServletRequest request) {
 
-
-//    	long idf = Long.parseLong(request.getParameter("id"));
-
         ModelAndView gerencia = new ModelAndView("gerenciagarcon");
-
-
-//    	Produto produto = dao.PegarPorId(idf);
-
-//    	gerencia.addObject("produto", produto);
-
 
         return gerencia;
     }
+
+	@Override
+	protected AbstractEntityService<Garcon> getservice() {
+		
+		return garconService;
+	}
 
 
 }

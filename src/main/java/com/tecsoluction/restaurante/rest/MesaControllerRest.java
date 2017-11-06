@@ -10,32 +10,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.tecsoluction.restaurante.dao.MesaDAO;
 import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.framework.AbstractRestController;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 
 @RestController
 @RequestMapping(value = "mesa")
-public class MesaControllerRest {
+public class MesaControllerRest extends AbstractRestController<Mesa> {
 
     private
-    final
-    MesaDAO dao;
+    MesaServicoImpl mesaService;
 
     @Autowired
-    public MesaControllerRest(MesaDAO dao) {
-        this.dao = dao;
+    public MesaControllerRest(MesaServicoImpl dao) {
+        this.mesaService = dao;
     }
 
 
-    protected AbstractEntityDao<Mesa> getDao() {
-        return dao;
-    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Mesa> buscarEntity(@PathVariable String id) {
-    	Mesa mesa = getDao().PegarPorId(id);
+    	Mesa mesa = getservice().findOne(id);
         if (mesa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -46,7 +42,7 @@ public class MesaControllerRest {
     public ResponseEntity AdicionarEntity(Mesa entity) {
 
         try {
-            getDao().add(entity);
+        	getservice().save(entity);
             return new ResponseEntity<>(entity, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
@@ -55,9 +51,37 @@ public class MesaControllerRest {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Mesa> listarEntity() {
-        return getDao().getAll();
+        return getservice().findAll();
 
     }
+
+
+	@Override
+	protected AbstractEntityService<Mesa> getservice() {
+
+		return mesaService;
+	}
+
+
+	@Override
+	protected void validateSave(Mesa entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	protected void validateUpdate(Mesa entity) {
+		// TODO Auto-generated method stub
+		
+	}
     
     
 

@@ -53,13 +53,15 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @RequestMapping(value = "recebimento/")
 public class RecebimentoController extends AbstractController<Recebimento> {
 
-    private  UsuarioServicoImpl userservice;
+    private  
+    UsuarioServicoImpl userservice;
 
-    private PedidoCompra pv = new PedidoCompra();
+
 
     private Estoque estoque = new Estoque();
 
-    private  EstoqueServicoImpl estdao;
+    private  
+    EstoqueServicoImpl estoqueService;
 
 
     private
@@ -80,15 +82,23 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     FornecedorServicoImpl fornecedorService;
 
 
-    private List<Item> itens = new ArrayList<>();
+    private 
+    List<Item> itens = new ArrayList<>();
 
-    private Map<Item, Double> itensRecebimentoCorfirmados = new HashMap<>();
+    private 
+    Map<Item, Double> itensRecebimentoCorfirmados = new HashMap<>();
 
-    private List<Produto> produtosList = new ArrayList<>();
+    private 
+    List<Produto> produtosList = new ArrayList<>();
 
-    private double totalpedido;
+    private 
+    double totalpedido;
 
-    private Recebimento recebimento = new Recebimento();
+    private 
+    Recebimento recebimento = new Recebimento();
+    
+    private 
+    PedidoCompra pv = new PedidoCompra();
 
 
     @Autowired
@@ -101,7 +111,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         this.fornecedorService = fdao;
         this.userservice = daousu;
         this.recebimentoService = daorec;
-        this.estdao = estdao;
+        this.estoqueService = estdao;
     }
 
 
@@ -116,19 +126,19 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(FornecedorServicoImpl) {
+        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorService) {
 
         });
 
-        binder.registerCustomEditor(PedidoCompra.class, new AbstractEditor<PedidoCompra>(PedidoCompraServicoImpl) {
+        binder.registerCustomEditor(PedidoCompra.class, new AbstractEditor<PedidoCompra>(pedidocompraService) {
 
         });
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itempedidovendaDao) {
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
 
         });
 
-        binder.registerCustomEditor(Estoque.class, new AbstractEditor<Estoque>(estdao) {
+        binder.registerCustomEditor(Estoque.class, new AbstractEditor<Estoque>(estoqueService) {
 
         });
 
@@ -137,7 +147,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Recebimento> RecebimentoList = RecebimentoServicoImpl.getAll();
+        List<Recebimento> RecebimentoList = recebimentoService.findAll();
 
         TipoPedido[] tipoList = TipoPedido.values();
 
@@ -151,7 +161,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
 
@@ -167,24 +177,14 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     public ModelAndView FinalizarRecebimento(HttpServletRequest request) {
 
 
-        this.estoque = estdao.PegarPorId("49L");
+        this.estoque = estoqueService.findOne("49L");
 
         ModelAndView finalizacaorecebimento = new ModelAndView("finalizacaorecebimento");
 
-//        System.out.println("estoque "+estoque.getItens());
-//        System.out.println("itens rec "+ recebimento.getItems());
-//        System.out.println("itens rec conf "+ itensRecebimentoCorfirmados);
-//
-//        System.out.println("recebimento "+ recebimento);
-//        
-
-
-        // Iterate over all vehicles, using the keySet method.
 
         for (Item key : this.recebimento.getItems().keySet()) {
 
-            //  System.out.println(key + "wind - " + recebimento.getItems().get(key));
-            Produto produto = produtopedidovendaDao.getProdutoPorCodebar(key.getCodigo());
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
             Double qtd = key.getQtd();
 
             key.setEstoque(estoque);
@@ -192,55 +192,21 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
             estoque.AddProdutoEstoque(produto, qtd);
 
-//            System.out.println(key + "produto - " + produto.getNome());
 
-            estdao.editar(estoque);
-            itempedidovendaDao.editar(key);
+            estoqueService.save(estoque);
+            itemService.save(key);
 
         }
 
 
-//        for(Map.Entry m : recebimento.getItems().entrySet()){ 
-//        	
-//        	   System.out.println( "wind teste"+m.getKey()+" "+m.getValue());  
-//        	  } 
 
-
-//        	Set<Item> keys = recebimento.getItems().keySet();
-//        	
-//        	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
-//        	
-//        	for (Item item : keysorder) {
-//				
-//
-//            	Produto produto = produtopedidovendaDao.getProdutoPorCodebar(item.getCodigo());
-//            	
-//                System.out.println("produto "+produto.getNome());
-//
-//                System.out.println("keysorder "+keysorder.toString());
-//
-//            	
-//            	Double qtd = item.getQtd();
-//            	
-//            	item.setEstoque(estoque);
-//            	
-//            	estoque.AddProdutoEstoque(produto, qtd);
-//            	
-//                RecebimentoServicoImpl.editar(recebimento);
-//
-//                estdao.editar(estoque);
-//            	
-//            	
-//        	
-//        	}
-
-        PedidoCompra pedidocompra = PedidoCompraServicoImpl.PegarPorId(recebimento.getPedidocompra().getId());
+        PedidoCompra pedidocompra = pedidocompraService.findOne(recebimento.getPedidocompra().getId());
         pedidocompra.setStatus(StatusPedido.FECHADO);
-        PedidoCompraServicoImpl.editar(pedidocompra);
-//       
+        pedidocompraService.save(pedidocompra);
+      
 
         recebimento.setStatus(StatusPedido.FECHADO);
-        RecebimentoServicoImpl.editar(recebimento);
+        recebimentoService.save(recebimento);
 
         itensRecebimentoCorfirmados.clear();
 
@@ -254,18 +220,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         String idf = request.getParameter("id");
 
-
         ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
 
-        this.recebimento = RecebimentoServicoImpl.PegarPorId(idf);
-
-
-        //  totalpedido = recebimento.CalcularTotal(recebimento.getItems());
-
-//       if(totalpedido == null){
-//    	   
+        this.recebimento = recebimentoService.findOne(idf);
+    	   
         totalpedido = 0.0;
-//       }
 
         this.recebimento.setTotal(totalpedido);
 
@@ -285,7 +244,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
         String idf = request.getParameter("id");
-        this.pv = PedidoCompraServicoImpl.PegarPorId(idf);
+        this.pv = pedidocompraService.findOne(idf);
 
         if (pv == null) {
 
@@ -308,15 +267,12 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         pv.setIspago(false);
 
-
-        // pv.getRecebimentos().add(recebimento);
-
         recebimento.setPedidocompra(pv);
         recebimento.setFornecedor(pv.getFornecedor());
 
-        PedidoCompraServicoImpl.editar(pv);
+        pedidocompraService.save(pv);
 
-        RecebimentoServicoImpl.editar(recebimento);
+        recebimentoService.save(recebimento);
 
         ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
@@ -338,15 +294,13 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         Item it = null;
 
-//		 	itensRecebimentoCorfirmados.clear();
-
         String erros = null;
 
         String idf = request.getParameter("id");
 
         String idfrec = request.getParameter("idrec");
 
-        this.recebimento = RecebimentoServicoImpl.PegarPorId(idfrec);
+        this.recebimento = recebimentoService.findOne(idfrec);
 
         itensRecebimentoCorfirmados = recebimento.getItems();
 
@@ -355,7 +309,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         try {
 
-            it = itempedidovendaDao.getItemPorNome(idf, recebimento.getPedidocompra());
+            it = itemService.getItemPorNome(idf, recebimento.getPedidocompra().getId());
 
 
         } catch (Exception e) {
@@ -371,8 +325,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
             return additemrecebimento;
         }
 
-
-//	        System.out.println("item it:"+ it);
 
 
         if (it != null) {
@@ -390,13 +342,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
             itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtd());
 
-            //recebimento.setItems(itensRecebimentoCorfirmados);
-
-            itempedidovendaDao.add(itemvar);
+            itemService.save(itemvar);
 
             this.recebimento.setItems(itensRecebimentoCorfirmados);
             this.recebimento.setStatus(StatusPedido.PENDENTE);
-            RecebimentoServicoImpl.editar(recebimento);
+            recebimentoService.save(recebimento);
 
             additemrecebimento.addObject("pedidocompra", pv);
             additemrecebimento.addObject("acao", "add");
@@ -418,37 +368,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
             return additemrecebimento;
 
         }
-
-
-//	        for (int i = 0; i < it.size(); i++) {
-//	        	
-//	        	Item itemv = it.get(i);
-//	        	
-//	        	if(itemv.getPedido().getId() == recebimento.getPedidocompra().getId()){
-//	        		
-//	    	        System.out.println("if: id pedido item"+ itemv.getPedido().getId());
-//	    	        System.out.println("if: id pedido recebimento"+ recebimento.getPedidocompra().getId());
-//	    	        System.out.println("if: id pedido recebimento"+ itensRecebimentoCorfirmados.toString());
-//
-//
-//	        		
-//	        		
-//	        		//RecebimentoServicoImpl.editar(recebimento);
-//	        		
-//	        	
-//
-//	        	}
-
-//        		recebimento.setItems(itensRecebimentoCorfirmados);
-//        		RecebimentoServicoImpl.editar(recebimento);
-
-
-//			}
-
-
-//	    	System.out.println("pedidovenda:"+pv.toString());
-//	    	System.out.println("recebimento:"+recebimento);
-//		        
 
 
         return additemrecebimento;

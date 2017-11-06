@@ -1,15 +1,15 @@
 package com.tecsoluction.restaurante.controller;
-
-import com.tecsoluction.restaurante.dao.CategoriaDAO;
-import com.tecsoluction.restaurante.dao.FornecedorDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.CategoriaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,45 +31,55 @@ import java.util.List;
 @RequestMapping(value = "produto/")
 public class ProdutoController extends AbstractController<Produto> {
 
-    private final UsuarioDAO usudao;
+	private  
+	UsuarioServicoImpl userservice;
 
-    private final ProdutoDAO dao;
-    private final FornecedorDAO fornecedorDao;
-    private final CategoriaDAO categoriaDao;
+	private
+	ProdutoServicoImpl produtoService;
+   
+	private
+	FornecedorServicoImpl fornecedorService;
+    
+    private 
+    CategoriaServicoImpl categoriaService;
+    
+    
     private List<Produto> produtoList;
-//    private List<Fornecedor> fornecedorList;
-//    private List<Categoria> categoriaList;
+
 
 
     @Autowired
-    public ProdutoController(ProdutoDAO dao, CategoriaDAO categoriaDao, FornecedorDAO fornecedorDao, UsuarioDAO usudao) {
+    public ProdutoController(ProdutoServicoImpl dao, CategoriaServicoImpl categoriaDao, FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao) {
         super("produto");
-        this.dao = dao;
-        this.categoriaDao = categoriaDao;
-        this.fornecedorDao = fornecedorDao;
-        this.usudao = usudao;
+        this.produtoService = dao;
+        this.categoriaService = categoriaDao;
+        this.fornecedorService = fornecedorDao;
+        this.userservice = usudao;
     }
 
-
-    @Override
-    protected ProdutoDAO getDao() {
-        return dao;
-    }
 
     @Override
     protected void validateDelete(String id) {
 
     }
+    
+    
+
+	@Override
+	protected AbstractEntityService<Produto> getservice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaDao) {
+        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
         });
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorDao) {
+        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
         });
 
 
@@ -79,19 +89,19 @@ public class ProdutoController extends AbstractController<Produto> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Categoria> categoriaList = categoriaDao.getAll();
-        List<Fornecedor> fornecedorList = fornecedorDao.getAll();
-        produtoList = dao.getAll();
+        List<Categoria> categoriaList = categoriaService.findAll();
+        List<Fornecedor> fornecedorList = fornecedorService.findAll();
+        produtoList = produtoService.findAll();
 
         UnidadeMedida[] umList = UnidadeMedida.values();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-//           
+          
 
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("fornecedorList", fornecedorList);
@@ -108,7 +118,7 @@ public class ProdutoController extends AbstractController<Produto> {
         //   long idf = Long.parseLong(request.getParameter("idpedido"));
         ModelAndView novosprodutos = new ModelAndView("novosprodutos");
 
-        List<Produto> produtos = dao.getAll();
+        List<Produto> produtos = produtoService.findAll();
 
         novosprodutos.addObject("produtosList", produtos);
 
@@ -125,20 +135,9 @@ public class ProdutoController extends AbstractController<Produto> {
         ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
 
-        Produto produto = dao.PegarPorId(idf);
+        Produto produto = produtoService.findOne(idf);
 
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        // pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
-
-        //	detalhesmesa.addObject("itemList", itemList);
         detalhesproduto.addObject("produto", produto);
-        //	detalhesmesa.addObject("mesa", mesa);
-
 
         return detalhesproduto;
     }
@@ -147,8 +146,6 @@ public class ProdutoController extends AbstractController<Produto> {
     @RequestMapping(value = "salvarfoto", method = RequestMethod.POST)
     public String SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request, Model model) {
 
-
-//    	ModelAndView cadastro = new ModelAndView("cadastroproduto");
 
         String mensagem = "Sucesso ao salvar foto";
         String erros = "Falha ao salvar foto";
@@ -161,6 +158,7 @@ public class ProdutoController extends AbstractController<Produto> {
 
         String pathh = "/resources/images/produto";
         //string pathh = file.get
+        
         String filename = file.getOriginalFilename();
 
         System.out.println("Caminho" + path + " " + filename);
@@ -201,14 +199,9 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
 
-//    	long idf = Long.parseLong(request.getParameter("id"));
 
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 
-
-//    	Produto produto = dao.PegarPorId(idf);
-
-//    	gerencia.addObject("produto", produto);
 
 
         return gerencia;
@@ -223,7 +216,7 @@ public class ProdutoController extends AbstractController<Produto> {
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 
 
-        Produto produto = dao.PegarPorId(idf);
+        Produto produto = produtoService.findOne(idf);
 
 
         DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
@@ -241,5 +234,7 @@ public class ProdutoController extends AbstractController<Produto> {
 
         return gerencia;
     }
+
+
 
 }

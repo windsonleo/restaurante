@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.ItemDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 
 /**
  * Created by clebr on 06/07/2016.
@@ -26,38 +25,21 @@ import com.tecsoluction.restaurante.framework.AbstractEntityDao;
 @RequestMapping(value = "item/")
 public class ItemController extends AbstractController<Item> {
 
+
     private
-    ItemDAO dao;
+    ItemServicoImpl itemService;
 
-    private ProdutoDAO produtodao;
+    private
+    ProdutoServicoImpl produtoService;
 
-//	private
-//	final
-//	AbstractEntityDao<PedidoVenda> pedidovendaDao;
-//	
-//	private
-//	final
-//	AbstractEntityDao<Produto> produtoDao;
-
-
-//    public ItemController(ItemDAO itemdao, ProdutoDAO produtodao,PedidoVendaDAO pedidovendaDao) {
-//        super("item");
-//        this.dao=itemdao;
-//        this.pedidovendaDao = pedidovendaDao;
-//        this.produtoDao = produtodao;
-//    }
-
+    
+    
     @Autowired
-    public ItemController(ItemDAO itemdao, ProdutoDAO proddao) {
+    public ItemController(ItemServicoImpl itemdao, ProdutoServicoImpl proddao) {
         super("item");
-        this.dao = itemdao;
-        this.produtodao = proddao;
+        this.itemService = itemdao;
+        this.produtoService = proddao;
 
-    }
-
-    @Override
-    protected ItemDAO getDao() {
-        return dao;
     }
 
     @Override
@@ -70,33 +52,13 @@ public class ItemController extends AbstractController<Item> {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtodao) {
+        binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtoService) {
 
         });
 
 
     }
 
-//    @RequestMapping(value = "additemvenda/", method = RequestMethod.GET)
-//	public ModelAndView  additemvenda(HttpServletRequest request){
-//    	
-//    	
-//    	Long idf = Long.parseLong(request.getParameter("id"));
-//    	ModelAndView additemvenda = new ModelAndView("additemvenda");
-//    	
-//    	PedidoVenda pv = pedidovendaDao.PegarPorId(idf);
-//    	
-//    	
-//    	List<Produto> produtoList = produtoDao.getAll();
-//    	List<Item> itemList = dao.getAll();
-//    	
-//    	additemvenda.addObject("itemList", itemList);
-//    	additemvenda.addObject("produtoList", produtoList);
-//    	additemvenda.addObject("pv", pv);
-//
-//		
-//		return additemvenda;
-//	}
 
     @RequestMapping(value = "detalhes", method = RequestMethod.GET)
     public ModelAndView detalhesItem(HttpServletRequest request) {
@@ -104,24 +66,18 @@ public class ItemController extends AbstractController<Item> {
 
         String idf = request.getParameter("id");
 
-
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");
 
+        Item item = itemService.findOne(idf);
 
-        Item item = dao.PegarPorId(idf);
-
-        // mudar para trazer pelo id da mesa e pelo status da mesa
-        //	 pedidos = pedidovendadao.getAll();
-
-
-        // 	List<Produto> produtoList = produtoDao.getAll();
-        //	List<Item> itemList = dao.getAll();
-
-        //	detalhesmesa.addObject("itemList", itemList);
-//  	detalhescliente.addObject("pedidoList", pedidos);
         detalhesitem.addObject("item", item);
-
 
         return detalhesitem;
     }
+
+	@Override
+	protected AbstractEntityService<Item> getservice() {
+
+		return itemService;
+	}
 }
