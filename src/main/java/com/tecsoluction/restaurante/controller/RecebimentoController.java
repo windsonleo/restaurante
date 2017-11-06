@@ -20,18 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.ClienteDAO;
-import com.tecsoluction.restaurante.dao.EstoqueDAO;
-import com.tecsoluction.restaurante.dao.FornecedorDAO;
-import com.tecsoluction.restaurante.dao.GarconDAO;
-import com.tecsoluction.restaurante.dao.ItemDAO;
-import com.tecsoluction.restaurante.dao.MesaDAO;
-import com.tecsoluction.restaurante.dao.PedidoCompraDAO;
-import com.tecsoluction.restaurante.dao.PedidoVendaDAO;
-import com.tecsoluction.restaurante.dao.ProdutoDAO;
-import com.tecsoluction.restaurante.dao.RecebimentoDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
@@ -47,6 +35,14 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityDao;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
@@ -57,36 +53,31 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @RequestMapping(value = "recebimento/")
 public class RecebimentoController extends AbstractController<Recebimento> {
 
-    private final UsuarioDAO usudao;
+    private  UsuarioServicoImpl userservice;
 
     private PedidoCompra pv = new PedidoCompra();
 
     private Estoque estoque = new Estoque();
 
-    private final EstoqueDAO estdao;
+    private  EstoqueServicoImpl estdao;
 
 
     private
-    final
-    RecebimentoDAO recebimentoDao;
+    RecebimentoServicoImpl recebimentoService;
 
     private
-    final
-    PedidoCompraDAO pedidoCompraDao;
+    PedidoCompraServicoImpl pedidocompraService;
 
 
     private
-    final
-    ItemDAO itempedidovendaDao;
+    ItemServicoImpl itemService;
 
     private
-    final
-    ProdutoDAO produtopedidovendaDao;
+    ProdutoServicoImpl produtoService;
 
 
     private
-    final
-    FornecedorDAO fornecedorDao;
+    FornecedorServicoImpl fornecedorService;
 
 
     private List<Item> itens = new ArrayList<>();
@@ -101,22 +92,19 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 
     @Autowired
-    public RecebimentoController(RecebimentoDAO daorec, PedidoCompraDAO dao, ItemDAO daoitem, ProdutoDAO produtodao, FornecedorDAO fdao, UsuarioDAO daousu, EstoqueDAO estdao) {
+    public RecebimentoController(RecebimentoServicoImpl daorec, PedidoCompraServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl ProdutoServicoImpl, FornecedorServicoImpl fdao, UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
 
         super("recebimento");
-        this.pedidoCompraDao = dao;
-        this.itempedidovendaDao = daoitem;
-        this.produtopedidovendaDao = produtodao;
-        this.fornecedorDao = fdao;
-        this.usudao = daousu;
-        this.recebimentoDao = daorec;
+        this.pedidocompraService = dao;
+        this.itemService = daoitem;
+        this.produtoService = ProdutoServicoImpl;
+        this.fornecedorService = fdao;
+        this.userservice = daousu;
+        this.recebimentoService = daorec;
         this.estdao = estdao;
     }
 
-    @Override
-    protected RecebimentoDAO getDao() {
-        return recebimentoDao;
-    }
+
 
     @Override
     protected void validateDelete(String id) {
@@ -128,11 +116,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorDao) {
+        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(FornecedorServicoImpl) {
 
         });
 
-        binder.registerCustomEditor(PedidoCompra.class, new AbstractEditor<PedidoCompra>(pedidoCompraDao) {
+        binder.registerCustomEditor(PedidoCompra.class, new AbstractEditor<PedidoCompra>(PedidoCompraServicoImpl) {
 
         });
 
@@ -149,7 +137,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Recebimento> RecebimentoList = recebimentoDao.getAll();
+        List<Recebimento> RecebimentoList = RecebimentoServicoImpl.getAll();
 
         TipoPedido[] tipoList = TipoPedido.values();
 
@@ -238,7 +226,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //            	
 //            	estoque.AddProdutoEstoque(produto, qtd);
 //            	
-//                recebimentoDao.editar(recebimento);
+//                RecebimentoServicoImpl.editar(recebimento);
 //
 //                estdao.editar(estoque);
 //            	
@@ -246,13 +234,13 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //        	
 //        	}
 
-        PedidoCompra pedidocompra = pedidoCompraDao.PegarPorId(recebimento.getPedidocompra().getId());
+        PedidoCompra pedidocompra = PedidoCompraServicoImpl.PegarPorId(recebimento.getPedidocompra().getId());
         pedidocompra.setStatus(StatusPedido.FECHADO);
-        pedidoCompraDao.editar(pedidocompra);
+        PedidoCompraServicoImpl.editar(pedidocompra);
 //       
 
         recebimento.setStatus(StatusPedido.FECHADO);
-        recebimentoDao.editar(recebimento);
+        RecebimentoServicoImpl.editar(recebimento);
 
         itensRecebimentoCorfirmados.clear();
 
@@ -269,7 +257,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
 
-        this.recebimento = recebimentoDao.PegarPorId(idf);
+        this.recebimento = RecebimentoServicoImpl.PegarPorId(idf);
 
 
         //  totalpedido = recebimento.CalcularTotal(recebimento.getItems());
@@ -297,7 +285,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
         String idf = request.getParameter("id");
-        this.pv = pedidoCompraDao.PegarPorId(idf);
+        this.pv = PedidoCompraServicoImpl.PegarPorId(idf);
 
         if (pv == null) {
 
@@ -326,9 +314,9 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         recebimento.setPedidocompra(pv);
         recebimento.setFornecedor(pv.getFornecedor());
 
-        pedidoCompraDao.editar(pv);
+        PedidoCompraServicoImpl.editar(pv);
 
-        recebimentoDao.editar(recebimento);
+        RecebimentoServicoImpl.editar(recebimento);
 
         ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
@@ -358,7 +346,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         String idfrec = request.getParameter("idrec");
 
-        this.recebimento = recebimentoDao.PegarPorId(idfrec);
+        this.recebimento = RecebimentoServicoImpl.PegarPorId(idfrec);
 
         itensRecebimentoCorfirmados = recebimento.getItems();
 
@@ -408,7 +396,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
             this.recebimento.setItems(itensRecebimentoCorfirmados);
             this.recebimento.setStatus(StatusPedido.PENDENTE);
-            recebimentoDao.editar(recebimento);
+            RecebimentoServicoImpl.editar(recebimento);
 
             additemrecebimento.addObject("pedidocompra", pv);
             additemrecebimento.addObject("acao", "add");
@@ -445,14 +433,14 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //
 //	        		
 //	        		
-//	        		//recebimentoDao.editar(recebimento);
+//	        		//RecebimentoServicoImpl.editar(recebimento);
 //	        		
 //	        	
 //
 //	        	}
 
 //        		recebimento.setItems(itensRecebimentoCorfirmados);
-//        		recebimentoDao.editar(recebimento);
+//        		RecebimentoServicoImpl.editar(recebimento);
 
 
 //			}
@@ -465,5 +453,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         return additemrecebimento;
     }
+
+	@Override
+	protected AbstractEntityService<Recebimento> getservice() {
+		// TODO Auto-generated method stub
+		return recebimentoService;
+	}
 
 }

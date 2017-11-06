@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.framework;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,32 +17,34 @@ public abstract class AbstractEntityService<Entity> {
 //    @PersistenceContext
 //    protected EntityManager manager;
 	
-	
-	protected AbstractEntityDaoI<Entity>entitydao;
-
     private Class<Entity> entityClass;
+    
     private String entityAlias;
     
     
+    protected abstract JpaRepository<Entity,String> getDao();
+
+
 
     public AbstractEntityService(Class<Entity> entityClass, String entityAlias) {
-        this.entityClass = entityClass;
+       
+    	this.entityClass = entityClass;
         this.entityAlias = entityAlias;
     }
 
 	public List<Entity> findAll() {
-	    return entitydao.findAll();
+	    return getDao().findAll();
 	}
 	 
-	public Entity findOne(Long id) {
-	    return entitydao.findOne(id);
+	public Entity findOne(String id) {
+	    return getDao().findOne(id);
 	}
 	 
 	public Entity save(Entity post) {
-	    return entitydao.saveAndFlush(post);
+	    return getDao().saveAndFlush(post);
 	}
 	 
-	public void delete(Long id) {
-		entitydao.delete(id);
+	public void delete(String id) {
+		getDao().delete(id);
 	}
 }

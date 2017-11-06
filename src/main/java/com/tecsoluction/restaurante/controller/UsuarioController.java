@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.tecsoluction.restaurante.dao.RoleDAO;
-import com.tecsoluction.restaurante.dao.UsuarioDAO;
 import com.tecsoluction.restaurante.entidade.Role;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.RoleServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 
 /**
@@ -34,23 +34,23 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
-    private final UsuarioDAO usudao;
+    private final UsuarioServicoImpl usudao;
 
 
     private
     final
-    UsuarioDAO dao;
+    UsuarioServicoImpl ususervice;
 
     private
     final
-    RoleDAO rdao;
+    RoleServicoImpl roleservico;
 
 
     @Autowired
-    public UsuarioController(UsuarioDAO dao, RoleDAO rdao, UsuarioDAO usudao) {
+    public UsuarioController(UsuarioServicoImpl usuaservice, RoleServicoImpl roleservice, UsuarioServicoImpl usudao) {
         super("usuario");
-        this.dao = dao;
-        this.rdao = rdao;
+        this.ususervice = usuaservice;
+        this.roleservico = roleservice;
         this.usudao = usudao;
     }
 
@@ -58,43 +58,38 @@ public class UsuarioController extends AbstractController<Usuario> {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.rdao) {
+        binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.roleservico) {
         });
 
 
     }
+    
+    
+	@Override
+	protected AbstractEntityService<Usuario> getservice() {
+		// TODO Auto-generated method stub
+		return ususervice;
+	}
+	
+	
+    @Override
+    protected void validateDelete(String id) {
+
+    }
 
 
-    /**
-     * Simply selects the home view to render by returning its name.
-     */
-//	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
-//	public ModelAndView CadastrarUsuarioForm(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		ModelAndView caduser = new ModelAndView("cadastrarusuario");
-//		
-//		caduser.addObject("serverTime", formattedDate );
-//		
-//		return caduser;
-//	}
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Role> roleList = rdao.getAll();
-        List<Usuario> usuarioList = dao.getAll();
+        List<Role> roleList = roleservico.findAll();
+        List<Usuario> usuarioList = ususervice.findAll();
 //
 //        UnidadeMedida[] umList = UnidadeMedida.values();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        usuario = usudao.PegarPorNome(usuario.getUsername());
+        usuario = ususervice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
 //
@@ -106,15 +101,8 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     }
 
-    @Override
-    protected UsuarioDAO getDao() {
-        return dao;
-    }
 
-    @Override
-    protected void validateDelete(String id) {
 
-    }
 
 
     @RequestMapping(value = "profile", method = RequestMethod.GET)
@@ -126,7 +114,7 @@ public class UsuarioController extends AbstractController<Usuario> {
         ModelAndView profileusuario = new ModelAndView("profileusuario");
 
 
-        Usuario usuario = dao.PegarPorId(idf);
+        Usuario usuario = ususervice.findOne(idf);
 
         // mudar para trazer pelo id da mesa e pelo status da mesa
         // pedidos = pedidovendadao.getAll();
@@ -142,6 +130,9 @@ public class UsuarioController extends AbstractController<Usuario> {
 
         return profileusuario;
     }
+
+
+
 
 
 }

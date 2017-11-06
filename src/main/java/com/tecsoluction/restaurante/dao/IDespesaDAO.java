@@ -1,4 +1,9 @@
 package com.tecsoluction.restaurante.dao;
 
-public interface IDespesaDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tecsoluction.restaurante.entidade.Despesa;
+
+
+public interface IDespesaDAO   extends JpaRepository<Despesa, String>{
 }

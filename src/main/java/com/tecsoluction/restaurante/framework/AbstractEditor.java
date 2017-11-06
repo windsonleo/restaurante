@@ -7,10 +7,10 @@ import java.beans.PropertyEditorSupport;
  */
 public class AbstractEditor<Entity> extends PropertyEditorSupport {
 
-    private final AbstractEntityDao<Entity> dao;
+	private final AbstractEntityService<Entity> service;
 
-    public AbstractEditor(final AbstractEntityDao<Entity> dao) {
-        this.dao = dao;
+    public AbstractEditor(final AbstractEntityService<Entity> service) {
+        this.service = service;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class AbstractEditor<Entity> extends PropertyEditorSupport {
         if (id.equalsIgnoreCase("")) {
             this.setValue(null);
         } else {
-            final Entity entity = dao.PegarPorId(id);
+            final Entity entity = service.findOne(id);
 
             this.setValue(entity);
         }
