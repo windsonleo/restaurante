@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -43,10 +44,10 @@ public class Item implements Serializable, Comparable<Item> {
     private double qtd;
 
     @Column(name = "precounitario")
-    private double precoUnitario;
+    private BigDecimal precoUnitario;
 
     @Column(name = "totalitem")
-    private double totalItem;
+    private BigDecimal totalItem;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Pedido.class, optional = true)
     @JsonBackReference
@@ -156,43 +157,43 @@ public class Item implements Serializable, Comparable<Item> {
 //	}
 
 
-    public double getPrecoUnitario() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);
-        return Double.parseDouble(precoformat.replace(',', '.'));
-    }
-
-
-    public void setPrecoUnitario(double precoUnitario) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);
-
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-        this.precoUnitario = valor;
-    }
-
-
-    public double getTotalItem() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(qtd * precoUnitario);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        return valor;
-    }
-
-
-    public void setTotalItem(double totalItem) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(totalItem);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.totalItem = valor;
-    }
+//    public BigDecimal getPrecoUnitario() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);
+//        return Double.parseDouble(precoformat.replace(',', '.'));
+//    }
+//
+//
+//    public void setPrecoUnitario(double precoUnitario) {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(precoUnitario);
+//
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//
+//        this.precoUnitario = valor;
+//    }
+//
+//
+//    public double getTotalItem() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(qtd * precoUnitario);
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        return valor;
+//    }
+//
+//
+//    public void setTotalItem(double totalItem) {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(totalItem);
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        this.totalItem = valor;
+//    }
 
 
 //    public Devolucao getDevolucao() {

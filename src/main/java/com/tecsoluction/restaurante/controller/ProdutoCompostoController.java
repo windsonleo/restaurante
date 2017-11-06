@@ -2,6 +2,8 @@ package com.tecsoluction.restaurante.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -42,28 +45,28 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @RequestMapping(value = "produtocomposto/")
 public class ProdutoCompostoController extends AbstractController<ProdutoComposto> {
 
-	private
-	UsuarioServicoImpl userservice;
+    private
+    UsuarioServicoImpl userservice;
 
-	private
-	ProdutoServicoImpl produtoService;
-   
-	private
-	FornecedorServicoImpl fornecedorService;
-    
-    private 
+    private
+    ProdutoServicoImpl produtoService;
+
+    private
+    FornecedorServicoImpl fornecedorService;
+
+    private
     CategoriaServicoImpl categoriaService;
-    
+
     private
     ItemServicoImpl itemService;
-    
-    private 
+
+    private
     ProdutoCompostoServicoImpl produtocompostoService;
 
     private List<ProdutoComposto> produtoList;
-    
+
     private List<Produto> produtosList;
- 
+
     private Map<Item, Double> items = new HashMap<>();
 
     private ProdutoComposto produtocomposto;
@@ -124,14 +127,14 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         model.addAttribute("usuarioAtt", usuario);
 
-        
+
         if (produtocomposto == null) {
 
-        	items.clear();
+            items.clear();
 
         }
 
-        
+
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("itensList", produtosList);
         model.addAttribute("fornecedorList", fornecedorList);
@@ -189,7 +192,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 
         String idf = (request.getParameter("itenss"));
-        
+
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
         Produto produto = produtoService.findOne(idf);
@@ -222,11 +225,15 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         totalitem = 0;
 
-        Double precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+        Money precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
 
 
-        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(produtocomposto.getItens()));
-        produtocomposto.setPrecovenda(precovenda * 2);
+        produtocomposto.setPrecocusto(
+                produtocomposto.CalcularTotal(produtocomposto.getItens()).getAmountMajor(
+                ));
+        produtocomposto.setPrecovenda(
+                precovenda.multipliedBy(2, RoundingMode.UP).getAmountMajor()
+        );
 
         additemprodutocomposto.addObject("produtocomposto", produtocomposto);
         additemprodutocomposto.addObject("produtosList", produtosList);
@@ -279,9 +286,11 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         produtocomposto.setItens(items);
 
-        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items));
+        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).getAmountMajor());
 
-        produtocomposto.setPrecovenda(produtocomposto.getPrecocusto() * 2);
+        produtocomposto.setPrecovenda(
+                produtocomposto.getPrecocusto().multiply(new BigDecimal(2))
+        );
 
         produtocompostoService.save(produtocomposto);
 
@@ -362,11 +371,11 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         return detalhesproduto;
     }
 
-	@Override
-	protected AbstractEntityService<ProdutoComposto> getservice() {
-		// TODO Auto-generated method stub
-		return produtocompostoService;
-	}
+    @Override
+    protected AbstractEntityService<ProdutoComposto> getservice() {
+        // TODO Auto-generated method stub
+        return produtocompostoService;
+    }
 
 
 }

@@ -1,198 +1,161 @@
 package com.tecsoluction.restaurante.util;
 
-import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
 import com.tecsoluction.restaurante.entidade.Produto;
+import org.joda.money.CurrencyUnit;
+import org.joda.money.Money;
 
-public class DadosGerenciais implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private double custo=0.00;
-	
-	private double despesafixa=10.00;
-	
-	private double despesavariavel=5.00;
-	
-	private double margemlucro=40.00;
-
-	private double precovenda=0.00;
-	
-	private double markup=0.00;
-	
-	
-	
-	/**
-	 * @return the markup
-	 */
-	
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
-	public DadosGerenciais() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	public DadosGerenciais(Produto produto) {
+public class DadosGerenciais implements Serializable {
 
-	this.custo = produto.getPrecocusto();
-	
-	
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    public static final CurrencyUnit usd = CurrencyUnit.of("BRL");
 
 
-	/**
-	 * @return the custo
-	 */
-	public double getCusto() {
-		
-		return custo;
-	}
+    private Money custo = Money.of(usd, 0.00);
+
+    private Money despesafixa = Money.of(usd, 10.00);
+
+    private Money despesavariavel = Money.of(usd, 5.00);
+
+    private Money margemlucro = Money.of(usd, 40.00);
+
+    private Money precovenda = Money.of(usd, 0.00);
+
+    private Money markup = Money.of(usd, 0.00);
 
 
-	/**
-	 * @return the despesafixa
-	 */
-	public double getDespesafixa() {
-		return despesafixa;
-	}
+    /**
+     * @return the markup
+     */
 
 
-	/**
-	 * @return the margemlucro
-	 */
-	public double getMargemlucro() {
-	
-		
-		margemlucro = (this.precovenda - this.custo) / this.precovenda * 100;
-		
-				
-		return margemlucro;
-	}
+    public DadosGerenciais() {
+        // TODO Auto-generated constructor stub
+    }
 
 
-	/**
-	 * @return the precovenda
-	 */
-	public double getPrecovenda() {
-		
-		
-		precovenda = this.custo/(100-this.despesafixa-this.despesavariavel-this.margemlucro)*100;
-		return precovenda;
-	}
+    public DadosGerenciais(Produto produto) {
+        this.custo = Money.of(usd, produto.getPrecocusto());
+    }
+
+    /**
+     * @return the margemlucro
+     */
+    public Money getMargemlucro() {
+
+        margemlucro = (((this.precovenda).minus(this.custo))
+                .dividedBy(this.precovenda.getAmountMajor(), RoundingMode.UP)).multipliedBy(100);
+
+        return margemlucro;
+    }
 
 
-	/**
-	 * @return the despesavariavel
-	 */
-	public double getDespesavariavel() {
-		return despesavariavel;
-	}
+    /**
+     * @return the precovenda
+     */
+    public Money getPrecovenda() {
+
+        Money divisao = Money.of(usd, 100).minus(this.despesafixa).minus(this.despesavariavel)
+                .minus(this.margemlucro);
+
+        precovenda = this.precovenda.dividedBy(divisao.getAmountMajor(), RoundingMode.UP);
 
 
-	/**
-	 * @param despesavariavel the despesavariavel to set
-	 */
-	public void setDespesavariavel(double despesavariavel) {
-		this.despesavariavel = despesavariavel;
-	}
+        // this.custo / (100 - this.despesafixa - this.despesavariavel - this.margemlucro) * 100;
+        return precovenda;
+    }
+
+    public Money getCusto() {
+        return custo;
+    }
+
+    public void setCusto(BigDecimal custo) {
+        this.custo = Money.of(usd, custo);
+    }
+
+    public Money getDespesafixa() {
+        return despesafixa;
+    }
+
+    public void setDespesafixa(BigDecimal despesafixa) {
+        this.despesafixa = Money.of(usd, despesafixa);
+    }
+
+    public Money getDespesavariavel() {
+        return despesavariavel;
+    }
+
+    public void setDespesavariavel(BigDecimal despesavariavel) {
+        this.despesavariavel = Money.of(usd, despesavariavel);
+    }
+
+    public void setMargemlucro(BigDecimal margemlucro) {
+        this.margemlucro = Money.of(usd, margemlucro);
+    }
+
+    public void setPrecovenda(BigDecimal precovenda) {
+        this.precovenda = Money.of(usd, precovenda);
+    }
+
+    public Money getMarkup() {
+        return markup;
+    }
+
+    public void setMarkup(BigDecimal markup) {
+        this.markup = Money.of(usd, markup);
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
+    }
 
 
-	/**
-	 * @param custo the custo to set
-	 */
-	public void setCusto(double custo) {
-		this.custo = custo;
-	}
-
-
-	/**
-	 * @param despesafixa the despesafixa to set
-	 */
-	public void setDespesafixa(double despesafixa) {
-		this.despesafixa = despesafixa;
-	}
-
-
-	/**
-	 * @param margemlucro the margemlucro to set
-	 */
-	public void setMargemlucro(double margemlucro) {
-		this.margemlucro = margemlucro;
-	}
-
-
-	/**
-	 * @param precovenda the precovenda to set
-	 */
-	public void setPrecovenda(double precovenda) {
-		this.precovenda = precovenda;
-	}
-	
-	public double getMarkup() {
-
-		
-		return markup;
-	}
-
-
-	/**
-	 * @param markup the markup to set
-	 */
-	public void setMarkup(double markup) {
-		this.markup = markup;
-	}
-	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
-
-
-	public static String transfomarPreco(double numero) {
-		
-	    boolean isInteiro=(numero == Math.round(numero));
-	    
-//	    String pattern = isInteiro ? "#.##" : "0.##";  
-//		
-//		DecimalFormat formato = new DecimalFormat(pattern);
-	    
-//	    NumberFormat formato = NumberFormat.getCurrencyInstance();
-		
-//		formato.setMinimumFractionDigits(2);
-//		formato.setMaximumFractionDigits(2);
-	    
-	    
-	    DecimalFormat formato = new DecimalFormat();
-
-	    if(numero % 1 == 0 ){ 
-	    	
-		     formato = new DecimalFormat("##.##");
-
-
-	    	System.out.println("inteiro : " + formato.format(numero));
-	    	
-
-	    	
-	    }else {
-	    	
-		     formato =new DecimalFormat("#.##");
-		    
-	    	System.out.println("nao inteiro:"+formato.format(numero));
-
-
-
-	    }
-	    
-		
-		return formato.format(numero);
-	}
+//    public static String transfomarPreco(double numero) {
+//
+//        boolean isInteiro = (numero == Math.round(numero));
+//
+////	    String pattern = isInteiro ? "#.##" : "0.##";
+////
+////		DecimalFormat formato = new DecimalFormat(pattern);
+//
+////	    NumberFormat formato = NumberFormat.getCurrencyInstance();
+//
+////		formato.setMinimumFractionDigits(2);
+////		formato.setMaximumFractionDigits(2);
+//
+//
+//        DecimalFormat formato = new DecimalFormat();
+//
+//        if (numero % 1 == 0) {
+//
+//            formato = new DecimalFormat("##.##");
+//
+//
+//            System.out.println("inteiro : " + formato.format(numero));
+//
+//
+//        } else {
+//
+//            formato = new DecimalFormat("#.##");
+//
+//            System.out.println("nao inteiro:" + formato.format(numero));
+//
+//
+//        }
+//
+//
+//        return formato.format(numero);
+//    }
 
 
 }

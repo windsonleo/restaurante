@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,12 +34,15 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
+
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 @Getter
 @Setter
@@ -89,34 +93,8 @@ public class Recebimento implements Serializable {
     private StatusPedido status;
 
     @Column(name = "total")
-    private double total = 0.00;
+    private BigDecimal total = new BigDecimal(0.00);
 
-
-    /**
-     * @return the total
-     */
-    public Double getTotal() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(total);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-        return valor;
-    }
-
-    /**
-     * @param total the total to set
-     */
-    public void setTotal(double total) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(total);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-        this.total = valor;
-    }
 
     //CONSTRUTOR PADRÃO
     public Recebimento() {
@@ -156,9 +134,9 @@ public class Recebimento implements Serializable {
     }
 
 
-    public double CalcularTotal(Map<Item, Double> itens) {
+    public Money CalcularTotal(Map<Item, Double> itens) {
 
-        double totalpedido = 0.00;
+        Money totalpedido = Money.of(usd, 0.00);
 
 //     	Set<Item> keys = itens.keySet();
         //
@@ -166,7 +144,7 @@ public class Recebimento implements Serializable {
 
         for (Item key : itens.keySet()) {
 
-            totalpedido = +totalpedido + key.getTotalItem();
+            totalpedido.plus(totalpedido).plus(key.getTotalItem());
 
 
         }
@@ -178,12 +156,8 @@ public class Recebimento implements Serializable {
         //
 //  			
 //  		}
-        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
 
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-        return valor;
+        return totalpedido;
     }
 
 

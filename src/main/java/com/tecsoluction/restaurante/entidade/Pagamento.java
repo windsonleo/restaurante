@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +30,7 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
@@ -60,11 +62,8 @@ public class Pagamento implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<FormaPagamento> formaPagamentos;
 
-    private double valorTotalPagamento;
+    private Money valorTotalPagamento;
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-	 */
     @Override
     public String toString() {
         return "Pagamento [valorPago=" + valorPago + "]";
@@ -74,7 +73,7 @@ public class Pagamento implements Serializable {
     // REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
     private String status;
 
-    private double valorPago;
+    private Money valorPago;
 
     @ManyToOne
     @JoinColumn(name = "caixa_id")
@@ -84,38 +83,38 @@ public class Pagamento implements Serializable {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @return the valorPago
-     */
-    public double getValorPago() {
+//    /**
+//     * @return the valorPago
+//     */
+//    public double getValorPago() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        return valor;
+//    }
 
-        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
+//    /**
+//     * @param valorTotalPagamento the valorTotalPagamento to set
+//     */
+//    public void setValorTotalPagamento(BigDecimal valorTotalPagamento) {
+////        String precoformat = DadosGerenciais.transfomarPreco(valorTotalPagamento);
+//
+////        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        this.valorTotalPagamento = valorTotalPagamento;
+//    }
 
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        return valor;
-    }
-
-    /**
-     * @param valorTotalPagamento the valorTotalPagamento to set
-     */
-    public void setValorTotalPagamento(double valorTotalPagamento) {
-        String precoformat = DadosGerenciais.transfomarPreco(valorTotalPagamento);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.valorTotalPagamento = valor;
-    }
-
-    /**
-     * @param valorPago the valorPago to set
-     */
-    public void setValorPago(double valorPago) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.valorPago = valor;
-    }
+//    /**
+//     * @param valorPago the valorPago to set
+//     */
+//    public void setValorPago(double valorPago) {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(valorPago);
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        this.valorPago = valor;
+//    }
 }

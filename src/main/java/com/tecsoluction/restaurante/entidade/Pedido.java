@@ -1,47 +1,20 @@
 package com.tecsoluction.restaurante.entidade;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.MapKeyColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.tecsoluction.restaurante.util.DadosGerenciais;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
-import org.apache.commons.collections.map.HashedMap;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
-import com.tecsoluction.restaurante.util.StatusPedido;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -96,19 +69,19 @@ public abstract class Pedido {
 //        pagamentos = new ArrayList<>();
     }
 
-    public double getTotal() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(total);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-        return valor;
-    }
-
-    public void setTotal(double total) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(total);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-        this.total = valor;
-    }
+//    public double getTotal() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(total);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//        return valor;
+//    }
+//
+//    public void setTotal(double total) {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(total);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//        this.total = valor;
+//    }
 
 //    public List<Pagamento> getPagamentos() {
 //        return pagamentos;
@@ -134,9 +107,9 @@ public abstract class Pedido {
         return String.valueOf(id);
     }
 
-    public double CalcularTotal(Map<Item, Double> itens) {
+    public Money CalcularTotal(Map<Item, Double> itens) {
 
-        double totalpedido = 0.00;
+        Money totalpedido = 0.00;
 
 //   	Set<Item> keys = itens.keySet();
 //	
@@ -154,8 +127,8 @@ public abstract class Pedido {
 //			
 //		}
 
-        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-        return valor;
+//        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        return totalpedido;
     }
 }

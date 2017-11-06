@@ -1,4 +1,5 @@
 package com.tecsoluction.restaurante.controller;
+
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Produto;
@@ -12,6 +13,7 @@ import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -25,27 +27,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
 @RequestMapping(value = "produto/")
 public class ProdutoController extends AbstractController<Produto> {
 
-	private  
-	UsuarioServicoImpl userservice;
+    private
+    UsuarioServicoImpl userservice;
 
-	private
-	ProdutoServicoImpl produtoService;
-   
-	private
-	FornecedorServicoImpl fornecedorService;
-    
-    private 
+    private
+    ProdutoServicoImpl produtoService;
+
+    private
+    FornecedorServicoImpl fornecedorService;
+
+    private
     CategoriaServicoImpl categoriaService;
-    
-    
-    private List<Produto> produtoList;
 
+
+    private List<Produto> produtoList;
 
 
     @Autowired
@@ -62,14 +64,13 @@ public class ProdutoController extends AbstractController<Produto> {
     protected void validateDelete(String id) {
 
     }
-    
-    
 
-	@Override
-	protected AbstractEntityService<Produto> getservice() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+    @Override
+    protected AbstractEntityService<Produto> getservice() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
     @InitBinder
@@ -101,7 +102,7 @@ public class ProdutoController extends AbstractController<Produto> {
         usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-          
+
 
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("fornecedorList", fornecedorList);
@@ -158,7 +159,7 @@ public class ProdutoController extends AbstractController<Produto> {
 
         String pathh = "/resources/images/produto";
         //string pathh = file.get
-        
+
         String filename = file.getOriginalFilename();
 
         System.out.println("Caminho" + path + " " + filename);
@@ -199,9 +200,7 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
 
-
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
-
 
 
         return gerencia;
@@ -221,11 +220,11 @@ public class ProdutoController extends AbstractController<Produto> {
 
         DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
 
-        dadosgerenciais.setMargemlucro(40.00);
+        dadosgerenciais.setMargemlucro(new BigDecimal(40.00));
         dadosgerenciais.setCusto(produto.getPrecocusto());
-        dadosgerenciais.setDespesafixa(5.00);
-        dadosgerenciais.setDespesavariavel(10.00);
-        double precosugerido = dadosgerenciais.getPrecovenda();
+        dadosgerenciais.setDespesafixa(new BigDecimal(5.00));
+        dadosgerenciais.setDespesavariavel(new BigDecimal(10.00));
+        Money precosugerido = dadosgerenciais.getPrecovenda();
 
         gerencia.addObject("produto", produto);
         gerencia.addObject("dadosgerenciais", dadosgerenciais);
@@ -234,7 +233,6 @@ public class ProdutoController extends AbstractController<Produto> {
 
         return gerencia;
     }
-
 
 
 }

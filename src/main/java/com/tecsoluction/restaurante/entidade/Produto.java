@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 import javax.persistence.CascadeType;
@@ -66,10 +67,10 @@ public class Produto implements Serializable {
     private UnidadeMedida un_medida;
 
     @Column(name = "preco_custo")
-    private double precocusto;
+    private BigDecimal precocusto;
 
     @Column(name = "preco_venda")
-    private double precovenda;
+    private BigDecimal precovenda;
 
     @JsonIgnore
     @ManyToOne
@@ -98,7 +99,9 @@ public class Produto implements Serializable {
     private boolean isativo;
 
 
-    public Produto(String id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, boolean esugestao) {
+    public Produto(String id, String foto, String nome, String codebar, String descricao,
+                   UnidadeMedida un, BigDecimal precocusto, BigDecimal precovenda, Fornecedor fornecedor,
+                   Categoria cat, boolean ativo, boolean esugestao) {
         super();
         this.id = id;
         this.foto = foto;
@@ -125,38 +128,38 @@ public class Produto implements Serializable {
 //    	this.fornecedor = forn;
 //    }
 
-    public double getPrecocusto() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-        return valor;
-    }
-
-    public void setPrecocusto(double preco) {
-        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.precocusto = valor;
-    }
-
-    public double getPrecovenda() {
-
-        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        return valor;
-    }
-
-    public void setPrecovenda(double precoVenda) {
-
-        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.precovenda = valor;
-    }
+//    public double getPrecocusto() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
+//
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//
+//        return valor;
+//    }
+//
+//    public void setPrecocusto(double preco) {
+//        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        this.precocusto = valor;
+//    }
+//
+//    public double getPrecovenda() {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        return valor;
+//    }
+//
+//    public void setPrecovenda(double precoVenda) {
+//
+//        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+//
+//        this.precovenda = valor;
+//    }
 
     @Override
     public String toString() {

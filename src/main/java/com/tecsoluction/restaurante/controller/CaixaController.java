@@ -1,12 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.tecsoluction.restaurante.util.DadosGerenciais;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -39,32 +38,32 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 @RequestMapping(value = "caixa/")
 public class CaixaController extends AbstractController<Caixa> {
 
-	 private
-	 PedidoVendaServicoImpl pedidovendaService;
-	 
-	 
-	 private
-	 CaixaServicoImpl caixaService;
-
-	 private
-	 FormaPagamentoServicoImpl formapagamentoService;
-
-	 private
-	 PagamentoServicoImpl pagamentoService;
+    private
+    PedidoVendaServicoImpl pedidovendaService;
 
 
-	 private
-	 DespesaServicoImpl despesaService;
+    private
+    CaixaServicoImpl caixaService;
+
+    private
+    FormaPagamentoServicoImpl formapagamentoService;
+
+    private
+    PagamentoServicoImpl pagamentoService;
 
 
-	 private
-	 UsuarioServicoImpl userservice;
-	 
+    private
+    DespesaServicoImpl despesaService;
+
+
+    private
+    UsuarioServicoImpl userservice;
+
 
     List<PedidoVenda> pedidoVendaLista;
 
     List<FormaPagamento> formapagamentoLista;
-    
+
 
     @Autowired
     public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService, UsuarioServicoImpl pedidovendaServiceusu, FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService) {
@@ -113,7 +112,7 @@ public class CaixaController extends AbstractController<Caixa> {
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         usuario = userservice.findByUsername(usuario.getUsername());
-       
+
         List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
         List<Caixa> caixaList = caixaService.findAll();
@@ -178,7 +177,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         List<FormaPagamento> pagcartaodebito = new ArrayList<>();
 
-        Double total = 0.0;
+        Money total = Money.of(DadosGerenciais.usd, 0.0);
 
 
         String Dti = request.getParameter("dataini");
@@ -186,26 +185,20 @@ public class CaixaController extends AbstractController<Caixa> {
         List<PedidoVenda> pvListData = pedidovendaService.getAllPedidoPorData(Dti);
 
 
-        for (int i = 0; i < pvListData.size(); i++) {
+        for (PedidoVenda aPvListData : pvListData) {
 
 
             PedidoVenda pv = new PedidoVenda();
 
-
-            pv = pvListData.get(i);
-
+            pv = aPvListData;
 
             OrigemPedido origem = pv.getOrigempedido();
             StatusPedido status = pv.getStatus();
 
             if (origem == OrigemPedido.MESA) {
-
-
                 pedidoVendaListamesa.add(pv);
 
-            }
-//			
-            else if (origem == OrigemPedido.INTERNET) {
+            } else if (origem == OrigemPedido.INTERNET) {
 
                 pedidoVendaListainternet.add(pv);
 
@@ -226,80 +219,40 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         }
-
-
-        for (int i = 0; i < pvListData.size(); i++) {
-
-
-            PedidoVenda pv = pvListData.get(i);
+        for (PedidoVenda pv : pvListData) {
 
             List<Pagamento> pags = pv.getPagamento();
-
-            for (int j = 0; j < pags.size(); j++) {
-
-
-                Pagamento pagamento = pags.get(j);
-
-                Set<FormaPagamento> formapag = pags.get(j).getFormaPagamentos();
-
-
+            for (Pagamento pagamento : pags) {
+                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
                 for (FormaPagamento valor : formapag) {
-
-
-                    if (valor.getTipo() == "AVISTA") {
-
+                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
                         pagdinheiro.add(valor);
-
-
                     }
 
-
-                    if (valor.getTipo() == "CCREDITO") {
-
+                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
                         pagcartaocredito.add(valor);
-
                     }
 
-
-                    if (valor.getTipo() == "CDEBITO") {
-
+                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
                         pagcartaodebito.add(valor);
-
                     }
-
-                    total = total + pagamento.getValorPago();
-
-
+                    total = pagamento.getValorPago().plus(total);
                 }
-
-
             }
-
         }
-
 
         ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
 
-
         fecharcaixa.addObject("pedidovendaList", pvListData);
-
         fecharcaixa.addObject("pedidoVendaListacancelados", pedidoVendaListacancelados);
-
         fecharcaixa.addObject("pedidoVendaListatelevendas", pedidoVendaListatelevendas);
-
         fecharcaixa.addObject("pedidoVendaListabalcao", pedidoVendaListabalcao);
-
         fecharcaixa.addObject("pedidoVendaListainternet", pedidoVendaListainternet);
-
         fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
-
         fecharcaixa.addObject("total", total);
-
-
         fecharcaixa.addObject("pagdinheiro", pagdinheiro);
         fecharcaixa.addObject("pagcartaocredito", pagcartaocredito);
         fecharcaixa.addObject("pagcartaodebito", pagcartaodebito);
-
 
         return fecharcaixa;
 
@@ -349,7 +302,6 @@ public class CaixaController extends AbstractController<Caixa> {
         adddespesacaixa.addObject("caixa", caixa);
 
 
-
         return adddespesacaixa;
 
     }
@@ -376,7 +328,6 @@ public class CaixaController extends AbstractController<Caixa> {
         adddespesacaixa.addObject("caixa", caixa);
 
 
-
         return adddespesacaixa;
 
     }
@@ -391,11 +342,11 @@ public class CaixaController extends AbstractController<Caixa> {
         return novospedidos;
     }
 
-	@Override
-	protected AbstractEntityService<Caixa> getservice() {
+    @Override
+    protected AbstractEntityService<Caixa> getservice() {
 
-		return caixaService;
-	}
+        return caixaService;
+    }
 
 }
 

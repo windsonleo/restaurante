@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import org.joda.money.Money;
+
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 @Getter
 @Setter
@@ -58,9 +62,12 @@ public class ProdutoComposto extends Produto implements Serializable {
     }
 
 
-    public ProdutoComposto(String id, String foto, String nome, String codebar, String descricao, UnidadeMedida un, double precocusto, double precovenda, Fornecedor fornecedor, Categoria cat, boolean ativo, Map<Item, Double> itens, boolean esugestao) {
+    public ProdutoComposto(String id, String foto, String nome, String codebar,
+                           String descricao, UnidadeMedida un, BigDecimal precocusto,
+                           BigDecimal precovenda, Fornecedor fornecedor, Categoria cat,
+                           boolean ativo, Map<Item, Double> itens, boolean esugestao) {
 
-        super(id, foto, nome, codebar, descricao, un, precocusto, precocusto, fornecedor, cat, ativo, esugestao);
+        super(id, foto, nome, codebar, descricao, un, precocusto, precovenda, fornecedor, cat, ativo, esugestao);
 
         this.itens = itens;
     }
@@ -71,19 +78,16 @@ public class ProdutoComposto extends Produto implements Serializable {
     }
 
 
-    public double CalcularTotal(Map<Item, Double> pitens) {
+    public Money CalcularTotal(Map<Item, Double> pitens) {
 
-        double totalpedido = 0.00;
+        Money totalpedido = Money.of(usd, 0.00);
 
 //     	Set<Item> keys = itens.keySet();
         //
 //  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
 
         for (Item key : pitens.keySet()) {
-
-            totalpedido = +totalpedido + key.getTotalItem();
-
-
+            totalpedido.plus(totalpedido).plus(key.getTotalItem());
         }
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
@@ -94,9 +98,9 @@ public class ProdutoComposto extends Produto implements Serializable {
 //  			
 //  		}
 
-        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
-        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-        return valor;
+//        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
+//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+        return totalpedido;
     }
 
 }
