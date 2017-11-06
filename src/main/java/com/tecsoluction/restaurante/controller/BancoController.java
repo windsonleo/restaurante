@@ -16,10 +16,13 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @Controller
 @RequestMapping(value = "banco/")
 public class BancoController extends AbstractController<Banco> {
-
+	
+	
+	@Autowired
     private
     BancoServicoImpl bancoService;
 	
+	@Autowired
     private
 	UsuarioServicoImpl userservice;
 
@@ -27,6 +30,7 @@ public class BancoController extends AbstractController<Banco> {
     @Autowired
     public BancoController(BancoServicoImpl dao, UsuarioServicoImpl daousu) {
         super("banco");
+       
         this.bancoService = dao;
         this.userservice = daousu;
     }
