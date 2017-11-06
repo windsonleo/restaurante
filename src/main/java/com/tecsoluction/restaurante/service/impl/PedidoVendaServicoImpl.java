@@ -10,7 +10,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IPedidoVendaServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("pedidovendaService")
@@ -42,13 +42,13 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> i
 
 	@Override
 	public List<PedidoVenda> getAllPedidoPorData(String dataini) {
-		// TODO Auto-generated method stub
+
 		return dao.getAllPedidoPorData(dataini);
 	}
 
 	@Override
 	public List<PedidoVenda> getAllPedidoDelivery() {
-		// TODO Auto-generated method stub
+
 		return dao.getAllPedidoDelivery();
 	}
 	

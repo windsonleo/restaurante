@@ -8,7 +8,7 @@ import com.tecsoluction.restaurante.entidade.Empresa;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IEmpresaServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("empresaService")
@@ -28,7 +28,7 @@ public class EmpresaServicoImpl extends AbstractEntityService<Empresa> implement
 
 	@Override
 	protected JpaRepository<Empresa, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 	

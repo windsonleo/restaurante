@@ -8,7 +8,7 @@ import com.tecsoluction.restaurante.entidade.FormaPagamento;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IFormaPagamentoServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("formapagamentoService")
@@ -28,7 +28,7 @@ public class FormaPagamentoServicoImpl extends AbstractEntityService<FormaPagame
 
 	@Override
 	protected JpaRepository<FormaPagamento, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 	

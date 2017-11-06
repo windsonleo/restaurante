@@ -10,8 +10,6 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IRoleServico;
 
 
-
-
 @Service("roleService")
 @Transactional
 public class RoleServicoImpl extends AbstractEntityService<Role>implements IRoleServico {
@@ -34,7 +32,7 @@ public class RoleServicoImpl extends AbstractEntityService<Role>implements IRole
 
 	@Override
 	protected JpaRepository<Role, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return roledao;
 	}
 

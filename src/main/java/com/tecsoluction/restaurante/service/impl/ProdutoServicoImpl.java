@@ -10,7 +10,7 @@ import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IProdutoServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("produtoService")
@@ -30,7 +30,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> implement
 
 	@Override
 	protected JpaRepository<Produto, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 
@@ -42,7 +42,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> implement
 
 	@Override
 	public List<Produto> getAllProdutoPorCategoria(String idcategoria) {
-		// TODO Auto-generated method stub
+
 		return dao.getAllProdutoPorCategoria(idcategoria);
 	}
 	

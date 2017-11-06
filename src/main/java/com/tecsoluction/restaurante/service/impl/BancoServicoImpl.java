@@ -8,7 +8,7 @@ import com.tecsoluction.restaurante.entidade.Banco;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IBancoServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("bancoService")
@@ -28,7 +28,7 @@ public class BancoServicoImpl extends AbstractEntityService<Banco> implements IB
 
 	@Override
 	protected JpaRepository<Banco, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 	

@@ -8,7 +8,7 @@ import com.tecsoluction.restaurante.entidade.Caixa;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.ICaixaServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("caixaService")
@@ -28,7 +28,7 @@ public class CaixaServicoImpl extends AbstractEntityService<Caixa> implements IC
 
 	@Override
 	protected JpaRepository<Caixa, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 	

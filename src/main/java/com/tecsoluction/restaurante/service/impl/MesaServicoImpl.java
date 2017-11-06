@@ -8,7 +8,7 @@ import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.IMesaServico;
 
-/*  criar validações para que o servico as chamem caso não haja erros execute a acao  */
+/*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("mesaService")
@@ -28,7 +28,7 @@ public class MesaServicoImpl extends AbstractEntityService<Mesa> implements IMes
 
 	@Override
 	protected JpaRepository<Mesa, String> getDao() {
-		// TODO Auto-generated method stub
+
 		return dao;
 	}
 	
