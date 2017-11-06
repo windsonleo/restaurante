@@ -11,7 +11,7 @@ import com.tecsoluction.restaurante.entidade.Item;
 public interface IItemDAO extends org.springframework.data.jpa.repository.JpaRepository<Item, String> {
 	
 	
-	@Query("SELECT p FROM Item p where p.descricao=(:descricao) AND p.pedido_id=(:pedido)")
+	@Query("SELECT p FROM Item p where p.descricao=(:descricao) AND p.pedido=(:pedido)")
 	public Item getItemPorNome(@Param("descricao")String descricao, @Param("pedido") String pedido_id) ;
 	
 	@Query("SELECT p FROM Item p where p.pedido=:pedido")
