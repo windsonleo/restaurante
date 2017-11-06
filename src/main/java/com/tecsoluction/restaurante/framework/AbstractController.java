@@ -17,15 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public abstract class AbstractController<Entity> {
 
 
-   
-	
-	private final String entityAlias;
+    private final String entityAlias;
 
-  
-    
-    
-    
-    
+
     public AbstractController(String entityAlias) {
         this.entityAlias = entityAlias;
     }
@@ -33,10 +27,9 @@ public abstract class AbstractController<Entity> {
 
     protected abstract AbstractEntityService<Entity> getservice();
 
-    
+
     protected abstract void validateDelete(String id);
 
-    
 
     @GetMapping(value = "cadastro")
     public ModelAndView cadastrarEntity() {
@@ -67,22 +60,23 @@ public abstract class AbstractController<Entity> {
             System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
         } else {
-        	getservice().save(entity);
-            System.out.println("add:" + entityAlias);
+            getservice().save(entity);
+            System.out.println("add: " + entityAlias);
+
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
             attributes.addFlashAttribute("entity", entity.toString());
         }
-     
+
         cadastroEntity.addObject("entity", entity);
         cadastroEntity.addObject("acao", "add");
-      
-        return cadastroEntity;  //cadastroEntity;
+
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro");  //cadastroEntity;
     }
 
     @GetMapping(value = "movimentacao")
     public ModelAndView movimentacaoEntity() {
-      
-    	ModelAndView movimentacao = new ModelAndView("movimentacao" + entityAlias);
+
+        ModelAndView movimentacao = new ModelAndView("movimentacao" + entityAlias);
         List<Entity> entityList = getservice().findAll();
         movimentacao.addObject(entityAlias + "List", entityList);
         return movimentacao;
@@ -115,19 +109,16 @@ public abstract class AbstractController<Entity> {
             System.out.println("erro ao Editar Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
             System.out.println("erro ao Editar Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
-       
+
         } else {
-        	getservice().save(entity);
+            getservice().save(entity);
             System.out.println("Editado:" + entityAlias);
             attributes.addFlashAttribute("mensagem", "Sucesso ao Editar.");
             attributes.addFlashAttribute("entity", entity.toString());
         }
-         	
-      
-    	
-    	
-    	
-    	return new ModelAndView("redirect:/" + entityAlias + "/" + "movimentacao");
+
+
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "movimentacao");
     }
 
     @Transactional
