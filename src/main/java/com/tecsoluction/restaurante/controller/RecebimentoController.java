@@ -9,6 +9,8 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
+
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +74,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     List<Produto> produtosList = new ArrayList<>();
 
     private
-    double totalpedido;
+    Money totalpedido = Money.of(usd,0.00);
 
     private
     Recebimento recebimento = new Recebimento();
@@ -199,7 +204,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         this.recebimento = recebimentoService.findOne(idf);
 
-        totalpedido = 0.0;
+        totalpedido = Money.of(usd,0.00);
 
         this.recebimento.setTotal(totalpedido);
 
@@ -233,7 +238,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         }
 
 
-        totalpedido = 0;
+        totalpedido =Money.of(usd,0.00);
 
         totalpedido = pv.CalcularTotal(pv.getItems());
 

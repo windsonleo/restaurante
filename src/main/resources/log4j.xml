@@ -31,6 +31,8 @@
 	<logger name="org.springframework.web">
 		<level value="DEBUG" />
 	</logger>
+	
+	
 
 	<!-- Root Logger -->
 	<root>

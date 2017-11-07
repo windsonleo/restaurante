@@ -93,7 +93,7 @@ public class Recebimento implements Serializable {
     private StatusPedido status;
 
     @Column(name = "total")
-    private BigDecimal total = new BigDecimal(0.00);
+    private Money total = Money.of(usd,0.00);
 
 
     //CONSTRUTOR PADRÃO

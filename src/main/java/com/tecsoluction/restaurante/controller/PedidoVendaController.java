@@ -1,5 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -82,7 +85,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     private List<Produto> produtosList;
 
-    private double totalpedido;
+    private Money totalpedido = Money.of(usd,0.00);
 
     private Estoque estoque = new Estoque();
 

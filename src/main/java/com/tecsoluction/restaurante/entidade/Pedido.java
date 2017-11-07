@@ -12,6 +12,10 @@ import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +39,7 @@ public abstract class Pedido {
 
 
     @Column(name = "total")
-    private double total;
+    private Money  total =  Money.of(usd,0.00);
 
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE)
@@ -109,14 +113,14 @@ public abstract class Pedido {
 
     public Money CalcularTotal(Map<Item, Double> itens) {
 
-        Money totalpedido = 0.00;
+        Money totalpedido = Money.of(usd, 0.00);
 
 //   	Set<Item> keys = itens.keySet();
 //	
 //	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
 
         for (Item key : itens.keySet()) {
-            totalpedido = +totalpedido + key.getTotalItem();
+            totalpedido.plus(totalpedido).plus(key.getTotalItem());
         }
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL

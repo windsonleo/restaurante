@@ -1,5 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Iterator;
@@ -8,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -95,8 +98,8 @@ public class EstoqueController extends AbstractController<Estoque> {
         Estoque estoque = getservice().findOne(idf);
 
         double totalitens = 0.0;
-        double totalcusto = 0.0;
-        double totalvenda = 0.0;
+        Money totalcusto = Money.of(usd, 0.00);
+        Money totalvenda = Money.of(usd, 0.00);
 
 
         Collection<Double> itenstotal = estoque.getItems().values();

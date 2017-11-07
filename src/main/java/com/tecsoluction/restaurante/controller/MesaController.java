@@ -1,8 +1,12 @@
 package com.tecsoluction.restaurante.controller;
 
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -86,7 +90,7 @@ public class MesaController extends AbstractController<Mesa> {
 
         Mesa mesa = mesaService.findOne(idf);
 
-        double total = 0.0;
+        Money total =Money.of(usd, 0.00); 
 
 
         // mudar para trazer pelo id da mesa e pelo status da mesa
@@ -95,7 +99,7 @@ public class MesaController extends AbstractController<Mesa> {
 
         for (PedidoVenda pedidoVenda : pedidos) {
 
-            total = total + pedidoVenda.getTotal();
+            total = total.plus(pedidoVenda.getTotal());
 
         }
 

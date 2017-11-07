@@ -38,6 +38,9 @@ import com.tecsoluction.restaurante.util.StatusPedido;
  */
 @Controller
 public class HomeController {
+	
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
 
 	private
 	UsuarioServicoImpl userservice;
@@ -84,7 +87,6 @@ public class HomeController {
     private 
     List<Cliente> resultsearch;
 
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 
     public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao) {

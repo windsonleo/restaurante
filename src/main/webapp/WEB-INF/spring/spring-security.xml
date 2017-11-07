@@ -66,8 +66,7 @@
 	        </b:bean>
 
 
-    <b:bean id="usernamePasswordAuthenticationFilter"
-            
+    <b:bean id="usernamePasswordAuthenticationFilter"  
             class="com.tecsoluction.restaurante.security.UsernamePasswordAuthenticationFilter">
              <b:property name="authenticationManager" ref="authenticationManager" />
 			 <b:property name="authenticationFailureHandler" ref="failureHandler" />

@@ -1,7 +1,10 @@
 package com.tecsoluction.restaurante.entidade;
 
 
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,6 +34,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
+import org.joda.money.Money;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -144,20 +148,38 @@ public class Estoque implements Serializable {
     }
 
 
-    public double CalcularTotalCusto() {
-        double totalcusto = 0.0;
+    public Money CalcularTotalCusto() {
+      
+    	Money totalcusto =Money.of(usd, 0.00);
+        
+        
         for (Produto key : getItems().keySet()) {
-            double qtd = getItems().get(key);
-            totalcusto = totalcusto + key.getPrecocusto() * qtd;
+           
+        	double qtd = getItems().get(key);
+            
+            String qtdstring = Double.toString(qtd);
+            
+            BigDecimal quantidadef = new BigDecimal(qtdstring);
+            
+            totalcusto.plus(totalcusto).plus(key.getPrecocusto().multiply(quantidadef));
         }
+        
         return totalcusto;
     }
 
-    public double CalcularTotalVenda() {
-        double totalvenda = 0.0;
+    public Money CalcularTotalVenda() {
+    	Money totalvenda =Money.of(usd, 0.00);
+    	
         for (Produto key : getItems().keySet()) {
-            double qtd = getItems().get(key);
-            totalvenda = totalvenda + key.getPrecovenda() * qtd;
+        	
+        	double qtd = getItems().get(key);
+
+        	   String qtdstring = Double.toString(qtd);
+               
+               BigDecimal quantidadef = new BigDecimal(qtdstring);
+               
+               totalvenda.plus(totalvenda).plus(key.getPrecovenda().multiply(quantidadef));
+        
         }
         return totalvenda;
     }

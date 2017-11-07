@@ -1,11 +1,14 @@
 package com.tecsoluction.restaurante.controller;
 
+import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
+
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -75,7 +78,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     private List<Fornecedor> fornecedores;
 
-    private double totalpedido;
+    private Money totalpedido =  Money.of(usd,0.00);
 
 
     @Autowired
