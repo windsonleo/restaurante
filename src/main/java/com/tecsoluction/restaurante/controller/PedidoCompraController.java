@@ -43,326 +43,274 @@ import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
-
 @Controller
 @RequestMapping(value = "pedidocompra/")
 public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
-	private
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
-   
-	 private
-	 ProdutoServicoImpl produtoService;
-	 
+	private ProdutoServicoImpl produtoService;
 
-	 private
-	 MesaServicoImpl mesaService;
-	 
-	 private
-	 ItemServicoImpl itemService;
-	 
-	 private
-	 PedidoCompraServicoImpl pedidocompraService;
-	 
-	 private
-	 FornecedorServicoImpl fornecedorService;
-	 
-	 private
-	 GarconServicoImpl garconService;
-	 
-	 private PedidoCompra pv;
+	private MesaServicoImpl mesaService;
 
+	private ItemServicoImpl itemService;
 
     private Map<Item, BigDecimal> itens = new HashedMap();
 
-    private List<Produto> produtosList;
+	private FornecedorServicoImpl fornecedorService;
 
-    private List<Fornecedor> fornecedores;
+	private GarconServicoImpl garconService;
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
+	private Map<Item, Double> itens = new HashedMap();
 
-    @Autowired
-    public PedidoCompraController(PedidoCompraServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao, FornecedorServicoImpl fdao, MesaServicoImpl daomesa, GarconServicoImpl daogarcon, UsuarioServicoImpl daousu) {
+	private List<Produto> produtosList;
 
-        super("pedidocompra");
-        this.pedidocompraService = dao;
-        this.itemService = daoitem;
-        this.produtoService = produtodao;
-        this.fornecedorService = fdao;
-        this.mesaService = daomesa;
-        this.garconService = daogarcon;
-        this.userservice = daousu;
+	private List<Fornecedor> fornecedores;
 
-    }
+	private Money totalpedido = Money.of(usd, 0.00);
 
+	@Autowired
+	public PedidoCompraController(PedidoCompraServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
+			FornecedorServicoImpl fdao, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
+			UsuarioServicoImpl daousu) {
 
-    @Override
-    protected void validateDelete(String id) {
+		super("pedidocompra");
+		this.pedidocompraService = dao;
+		this.itemService = daoitem;
+		this.produtoService = produtodao;
+		this.fornecedorService = fdao;
+		this.mesaService = daomesa;
+		this.garconService = daogarcon;
+		this.userservice = daousu;
 
-    }
+	}
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-    	
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorService) {
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        });
+		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorService) {
 
-        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
+		});
 
-        });
+		binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
 
-        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
+		});
 
-        });
+		binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
+		});
 
-        });
+		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
 
-    }
+		});
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+	}
 
-        List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
-       
-        TipoPedido[] tipoList = TipoPedido.values();
-        StatusPedido[] tipoStatusList = StatusPedido.values();
-        OrigemPedido[] origemPedidoList = OrigemPedido.values();
-        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
+		List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
 
-        fornecedores = fornecedorService.findAll();
+		TipoPedido[] tipoList = TipoPedido.values();
+		StatusPedido[] tipoStatusList = StatusPedido.values();
+		OrigemPedido[] origemPedidoList = OrigemPedido.values();
+		SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
+		fornecedores = fornecedorService.findAll();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-        model.addAttribute("usuarioAtt", usuario);
-        model.addAttribute("pedidoCompraList", pedidoCompraList);
-        model.addAttribute("fornecedores", fornecedores);
-        model.addAttribute("tipoStatusList", tipoStatusList);
+		model.addAttribute("usuarioAtt", usuario);
+		model.addAttribute("pedidoCompraList", pedidoCompraList);
+		model.addAttribute("fornecedores", fornecedores);
+		model.addAttribute("tipoStatusList", tipoStatusList);
 
-    }
+	}
 
+	@RequestMapping(value = "finalizacaovenda", method = RequestMethod.POST)
+	public ModelAndView FinalizarCompra(HttpServletRequest request) {
 
-    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.POST)
-    public ModelAndView FinalizarCompra(HttpServletRequest request) {
+		long idf = Long.parseLong(request.getParameter("idpedido"));
+		ModelAndView finalizacaocompra = new ModelAndView("finalizacaocompra");
 
+		return finalizacaocompra;
+	}
 
-        long idf = Long.parseLong(request.getParameter("idpedido"));
-        ModelAndView finalizacaocompra = new ModelAndView("finalizacaocompra");
+	@RequestMapping(value = "novospedidos", method = RequestMethod.GET)
+	public ModelAndView NovosPedidos(HttpServletRequest request) {
 
+		ModelAndView novospedidos = new ModelAndView("novospedidos");
 
-        return finalizacaocompra;
-    }
+		List<PedidoCompra> compras = pedidocompraService.findAll();
 
+		novospedidos.addObject("pedidocomprasList", compras);
 
-    @RequestMapping(value = "novospedidos", method = RequestMethod.GET)
-    public ModelAndView NovosPedidos(HttpServletRequest request) {
+		return novospedidos;
+	}
 
+	@RequestMapping(value = "saveitem", method = RequestMethod.GET)
+	public ModelAndView saveitemvendaForm(HttpServletRequest request) {
 
-        ModelAndView novospedidos = new ModelAndView("novospedidos");
+		String idf = request.getParameter("id");
 
-        List<PedidoCompra> compras = pedidocompraService.findAll();
+		ModelAndView saveitempedidovenda = new ModelAndView("saveitempedidocompra");
 
-        novospedidos.addObject("pedidocomprasList", compras);
+		this.pv = pedidocompraService.findOne(idf);
 
-        return novospedidos;
-    }
+		produtosList = produtoService.findAll();
 
+		totalpedido = pv.CalcularTotal(pv.getItems());
 
-    @RequestMapping(value = "saveitem", method = RequestMethod.GET)
-    public ModelAndView saveitemvendaForm(HttpServletRequest request) {
+		pv.setTotal(totalpedido);
 
+		pedidocompraService.save(pv);
 
-        String idf = request.getParameter("id");
+		saveitempedidovenda.addObject("pedidocompra", pv);
+		saveitempedidovenda.addObject("produtosList", produtosList);
+		saveitempedidovenda.addObject("totalpedidocompra", pv.CalcularTotal(pv.getItems()));
 
-        ModelAndView saveitempedidovenda = new ModelAndView("saveitempedidocompra");
+		return saveitempedidovenda;
+	}
 
-        this.pv = pedidocompraService.findOne(idf);
+	@RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
+	public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
+		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-        produtosList = produtoService.findAll();
+		ModelAndView saveitempedidocompra = new ModelAndView("saveitempedidocompra");
 
+		Produto produto;
 
-        totalpedido = pv.CalcularTotal(pv.getItems());
+		produto = produtoService.findOne(idf);
 
-        pv.setTotal(totalpedido);
+		if (produto == null) {
 
-        pedidocompraService.save(pv);
+			String erros = "Nao Existe esse Produto";
 
-        saveitempedidovenda.addObject("pedidocompra", pv);
-        saveitempedidovenda.addObject("produtosList", produtosList);
-        saveitempedidovenda.addObject("totalpedidocompra", pv.CalcularTotal(pv.getItems()));
+			saveitempedidocompra.addObject("erros", erros);
+			saveitempedidocompra.addObject("pedidocompra", pv);
+			saveitempedidocompra.addObject("produtosList", produtosList);
 
+			return saveitempedidocompra;
+		}
 
-        return saveitempedidovenda;
-    }
+		pv = pedidocompraService.findOne(pv.getId());
 
+		Item item = new Item(produto, pv);
+		item.setQtd(prodqtd);
 
-    @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
-    public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
+		itens = pv.getItems();
+		itens.put(item, item.getQtd());
+		pv.setItems(itens);
+		pv.setTotal(pv.CalcularTotal(itens));
+		pv.setStatus(StatusPedido.PENDENTE);
 
+		itemService.save(item);
 
         String idf = request.getParameter("id");
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
         
         BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
 
+		System.out.println(pv.getItems().toString());
+		System.out.println(pv.getTotal());
 
-        ModelAndView saveitempedidocompra = new ModelAndView("saveitempedidocompra");
+		saveitempedidocompra.addObject("pedidocompra", pv);
+		saveitempedidocompra.addObject("produtosList", produtosList);
 
-        Produto produto;
+		return saveitempedidocompra;
+	}
 
-        produto = produtoService.findOne(idf);
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesPedidoCompra(HttpServletRequest request) {
 
-        if (produto == null) {
+		String idf = request.getParameter("id");
 
+		ModelAndView detalhespedidocompra = new ModelAndView("detalhespedidocompra");
 
-            String erros = "Nao Existe esse Produto";
+		PedidoCompra pedido = pedidocompraService.findOne(idf);
 
-            saveitempedidocompra.addObject("erros", erros);
-            saveitempedidocompra.addObject("pedidocompra", pv);
-            saveitempedidocompra.addObject("produtosList", produtosList);
+		detalhespedidocompra.addObject("pedido", pedido);
 
-            return saveitempedidocompra;
-        }
+		return detalhespedidocompra;
+	}
 
-        pv = pedidocompraService.findOne(pv.getId());
+	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesItem(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
 
         Item item = new Item(produto, pv);
         item.setQtd(qtdbc);
 
-        itens = pv.getItems();
-        itens.put(item, item.getQtd());
-        pv.setItems(itens);
-        pv.setTotal(pv.CalcularTotal(itens));
-        pv.setStatus(StatusPedido.PENDENTE);
+		Item item = itemService.findOne(idf);
 
-        itemService.save(item);
+		detalhesitem.addObject("item", item);
 
+		return detalhesitem;
+	}
 
-        pedidocompraService.save(pv);
+	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
+	public ModelAndView deleteItemPedidoCompra(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
 
-        System.out.println(pv.getItems().toString());
-        System.out.println(pv.getTotal());
+		pedidocompraService.delete(idf);
 
-        saveitempedidocompra.addObject("pedidocompra", pv);
-        saveitempedidocompra.addObject("produtosList", produtosList);
+		return new ModelAndView("redirect:/pedidocompra/saveitem?id=" + pv.getId());
 
+	}
 
-        return saveitempedidocompra;
-    }
+	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
+	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
+		List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
 
-    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesPedidoCompra(HttpServletRequest request) {
+		ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
+		entregas.addObject("pedidovendaList", pedidoCompraList);
 
+		return entregas;
 
-        String idf = request.getParameter("id");
+	}
 
-        ModelAndView detalhespedidocompra = new ModelAndView("detalhespedidocompra");
+	@RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+	public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
 
-        PedidoCompra pedido = pedidocompraService.findOne(idf);
+		PedidoCompra pc = pedidocompraService.findOne(idf);
 
-        detalhespedidocompra.addObject("pedido", pedido);
+		pc.setStatus(StatusPedido.PRONTO);
 
+		pedidocompraService.save(pc);
 
-        return detalhespedidocompra;
-    }
+		ModelAndView home = new ModelAndView("home");
 
-    @RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesItem(HttpServletRequest request) {
+		return new ModelAndView("redirect:/home");
 
+	}
 
-        String idf = request.getParameter("id");
+	@RequestMapping(value = "/cancelar", method = RequestMethod.GET)
+	public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
 
-        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+		PedidoCompra pc = pedidocompraService.findOne(idf);
 
+		pc.setStatus(StatusPedido.CANCELADO);
 
-        Item item = itemService.findOne(idf);
+		pedidocompraService.save(pc);
 
+		ModelAndView home = new ModelAndView("home");
 
-        detalhesitem.addObject("item", item);
+		return new ModelAndView("redirect:/home");
 
-
-        return detalhesitem;
-    }
-
-    @RequestMapping(value = "/item/delete", method = RequestMethod.GET)
-    public ModelAndView deleteItemPedidoCompra(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-        pedidocompraService.delete(idf);
-
-
-        return new ModelAndView("redirect:/pedidocompra/saveitem?id=" + pv.getId());
-
-    }
-
-    @RequestMapping(value = "/entregas", method = RequestMethod.GET)
-    public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
-
-
-        List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
-
-
-        ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
-        entregas.addObject("pedidovendaList", pedidoCompraList);
-
-
-        return entregas;
-
-    }
-
-    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
-    public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
-
-        String idf = request.getParameter("id");
-
-        PedidoCompra pc = pedidocompraService.findOne(idf);
-
-        pc.setStatus(StatusPedido.PRONTO);
-
-        pedidocompraService.save(pc);
-
-        ModelAndView home = new ModelAndView("home");
-
-        return new ModelAndView("redirect:/home");
-
-    }
-
-
-    @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
-    public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
-
-        String idf = request.getParameter("id");
-
-
-
-        PedidoCompra pc = pedidocompraService.findOne(idf);
-
-        pc.setStatus(StatusPedido.CANCELADO);
-
-        pedidocompraService.save(pc);
-
-        ModelAndView home = new ModelAndView("home");
-
-
-        return new ModelAndView("redirect:/home");
-
-    }
+	}
 
 	@Override
 	protected AbstractEntityService<PedidoCompra> getservice() {

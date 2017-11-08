@@ -37,70 +37,81 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "estoque/")
 public class EstoqueController extends AbstractController<Estoque> {
 
-    private
-    EstoqueServicoImpl estoqueService;
+	private EstoqueServicoImpl estoqueService;
 
-//    private
-//	ProdutoServicoImpl produtoService;
+	// private
+	// ProdutoServicoImpl produtoService;
 
-	private
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
-    private
-    ItemServicoImpl itemService;
+	private ItemServicoImpl itemService;
 
+	@Autowired
+	public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, ItemServicoImpl itdao,
+			ProdutoServicoImpl pdao) {
+		super("estoque");
+		this.estoqueService = dao;
+		this.userservice = daousu;
+		this.itemService = itdao;
+		// this.produtoService = pdao;
+	}
 
-    @Autowired
-    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, ItemServicoImpl itdao, ProdutoServicoImpl pdao) {
-        super("estoque");
-        this.estoqueService = dao;
-        this.userservice = daousu;
-        this.itemService = itdao;
-//        this.produtoService = pdao;
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
+		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
 
-    @Override
-    protected void validateDelete(String id) {
+		});
 
-    }
+	}
 
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
+		model.addAttribute("usuarioAtt", usuario);
 
-        });
+	}
 
-    }
+	@RequestMapping(value = "informacoes", method = RequestMethod.GET)
+	public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
+		ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		Estoque estoque = getservice().findOne(idf);
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+		double totalitens = 0.0;
+		Money totalcusto = Money.of(usd, 0.00);
+		Money totalvenda = Money.of(usd, 0.00);
 
-        model.addAttribute("usuarioAtt", usuario);
+		Collection<Double> itenstotal = estoque.getItems().values();
 
+		for (Iterator iterator = itenstotal.iterator(); iterator.hasNext();) {
+			Double double1 = (Double) iterator.next();
 
-    }
+			totalitens = totalitens + double1;
 
+		}
 
-    @RequestMapping(value = "informacoes", method = RequestMethod.GET)
-    public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
+		DecimalFormat df = new DecimalFormat("0.##");
 
+		totalcusto = estoque.CalcularTotalCusto();
+		totalvenda = estoque.CalcularTotalVenda();
 
-        String idf = request.getParameter("id");
-        ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
+		String stringcusto = df.format(totalcusto);
+		String stringvenda = df.format(totalvenda);
 
-        Estoque estoque = getservice().findOne(idf);
+		informacoesestoque.addObject("estoque", estoque);
+		informacoesestoque.addObject("qtditens", totalitens);
+		informacoesestoque.addObject("totalcusto", stringcusto);
+		informacoesestoque.addObject("totalvenda", stringvenda);
 
-        double totalitens = 0.0;
-        Money totalcusto = Money.of(usd, 0.00);
-        Money totalvenda = Money.of(usd, 0.00);
+		return informacoesestoque;
+	}
 
 
         Collection<BigDecimal> itenstotal = estoque.getItems().values();
@@ -137,6 +148,5 @@ public class EstoqueController extends AbstractController<Estoque> {
 
 		return estoqueService;
 	}
-
 
 }

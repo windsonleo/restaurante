@@ -23,69 +23,56 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "garcon/")
 public class GarconController extends AbstractController<Garcon> {
 
-    private
-    GarconServicoImpl garconService;
+	private GarconServicoImpl garconService;
 
-	 private
-	 UsuarioServicoImpl userservice;
-	 
+	private UsuarioServicoImpl userservice;
 
-    @Autowired
-    public GarconController(GarconServicoImpl dao, UsuarioServicoImpl daousu) {
-        super("garcon");
-        this.garconService = dao;
-        this.userservice = daousu;
-    }
+	@Autowired
+	public GarconController(GarconServicoImpl dao, UsuarioServicoImpl daousu) {
+		super("garcon");
+		this.garconService = dao;
+		this.userservice = daousu;
+	}
 
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @Override
-    protected void validateDelete(String id) {
+		List<Garcon> garconList = getservice().findAll();
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-    }
+		model.addAttribute("usuarioAtt", usuario);
+		model.addAttribute("garconsList", garconList);
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+	}
 
-        List<Garcon> garconList = getservice().findAll();
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+	@RequestMapping(value = "LocalizarGarconGerencia", method = RequestMethod.POST)
+	public ModelAndView gerenciarGarconLocalizar(HttpServletRequest request) {
 
-        model.addAttribute("usuarioAtt", usuario);
-        model.addAttribute("garconsList", garconList);
+		String idf = request.getParameter("id");
 
-    }
+		ModelAndView gerencia = new ModelAndView("gerenciagarcon");
 
-    @RequestMapping(value = "LocalizarGarconGerencia", method = RequestMethod.POST)
-    public ModelAndView gerenciarGarconLocalizar(HttpServletRequest request) {
+		Garcon garcon = getservice().findOne(idf);
 
+		gerencia.addObject("garcon", garcon);
 
-        String idf = request.getParameter("id");
+		return gerencia;
+	}
 
-        ModelAndView gerencia = new ModelAndView("gerenciagarcon");
+	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	public ModelAndView gerenciargarcon(HttpServletRequest request) {
 
+		ModelAndView gerencia = new ModelAndView("gerenciagarcon");
 
-        Garcon garcon = getservice().findOne(idf);
-
-        gerencia.addObject("garcon", garcon);
-
-
-        return gerencia;
-    }
-
-    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-    public ModelAndView gerenciargarcon(HttpServletRequest request) {
-
-        ModelAndView gerencia = new ModelAndView("gerenciagarcon");
-
-        return gerencia;
-    }
+		return gerencia;
+	}
 
 	@Override
 	protected AbstractEntityService<Garcon> getservice() {
-		
+
 		return garconService;
 	}
-
 
 }

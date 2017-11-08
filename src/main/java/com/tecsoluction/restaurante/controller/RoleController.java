@@ -19,7 +19,6 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.RoleServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
-
 /**
  * Handles requests for the application home page.
  */
@@ -27,68 +26,52 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "role/")
 public class RoleController extends AbstractController<Role> {
 
-    private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
+	private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
 	@Autowired
-    private  UsuarioServicoImpl userService;
+	private UsuarioServicoImpl userService;
 
 	@Autowired
-    private
-    RoleServicoImpl roleService;
+	private RoleServicoImpl roleService;
 
+	@Autowired
+	public RoleController(UsuarioServicoImpl usu, RoleServicoImpl rd) {
+		super("role");
+		this.userService = usu;
+		this.roleService = rd;
 
-    @Autowired
-    public RoleController(UsuarioServicoImpl usu,RoleServicoImpl rd) {
-        super("role");
-        this.userService = usu;
-        this.roleService=rd;
+	}
 
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
+		binder.registerCustomEditor(Usuario.class, new AbstractEditor<Usuario>(this.userService) {
+		});
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	}
 
-        binder.registerCustomEditor(Usuario.class, new AbstractEditor<Usuario>(this.userService) {
-        });
-     
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
+		// List<Role> roleList = rdao.getAll();
+		// List<Usuario> usuarioList = dao.getAll();
+		////
+		//// UnidadeMedida[] umList = UnidadeMedida.values();
+		//
+		// Usuario usuario = new Usuario();
+		// usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		//
+		// usuario = usudao.PegarPorNome(usuario.getUsername());
+		// model.addAttribute("usuarioAtt", usuario);
+		// model.addAttribute("roleList", roleList);
+		// model.addAttribute("usuarioList", usuarioList);
 
-    }
-
-
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-//        List<Role> roleList = rdao.getAll();
-//        List<Usuario> usuarioList = dao.getAll();
-////
-////        UnidadeMedida[] umList = UnidadeMedida.values();
-//        
-//        Usuario usuario = new Usuario();
-//  		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//  		
-//  		usuario = usudao.PegarPorNome(usuario.getUsername());    
-//  		model.addAttribute("usuarioAtt", usuario);
-//        model.addAttribute("roleList", roleList);
-//        model.addAttribute("usuarioList", usuarioList);
-
-
-
-    }
-
-    @Override
-    protected void validateDelete(String id) {
-
-    }
-
+	}
 
 	@Override
 	protected AbstractEntityService<Role> getservice() {
 		// TODO Auto-generated method stub
 		return roleService;
 	}
-
 
 }

@@ -10,46 +10,51 @@ import org.springframework.stereotype.Component;
  *
  * @version 1.0
  */
-//@Component
+// @Component
 public abstract class AbstractEntityService<Entity> {
 
-   
-//    @PersistenceContext
-//    protected EntityManager manager;
-	
-    private Class<Entity> entityClass;
-    
-    private String entityAlias;
-    
-    
-    protected abstract JpaRepository<Entity,String> getDao();
+	// @PersistenceContext
+	// protected EntityManager manager;
 
+	private Class<Entity> entityClass;
 
+	private String entityAlias;
 
-    public AbstractEntityService(Class<Entity> entityClass, String entityAlias) {
-       
-    	this.entityClass = entityClass;
-        this.entityAlias = entityAlias;
-    }
+	protected abstract JpaRepository<Entity, String> getDao();
+
+	public AbstractEntityService(Class<Entity> entityClass, String entityAlias) {
+
+		this.entityClass = entityClass;
+		this.entityAlias = entityAlias;
+	}
 
 	public List<Entity> findAll() {
-	    return getDao().findAll();
+		return getDao().findAll();
 	}
-	 
+
 	public Entity findOne(String id) {
-	    return getDao().findOne(id);
+		return getDao().findOne(id);
 	}
-	 
+
 	public Entity save(Entity post) {
-	    return getDao().saveAndFlush(post);
+		validateSave(post);
+		return getDao().saveAndFlush(post);
 	}
-	
-	
+
+	protected abstract void validateSave(Entity post);
+
 	public Entity edit(Entity post) {
-	    return getDao().saveAndFlush(post);
+		validateEdit(post);
+		return getDao().saveAndFlush(post);
 	}
-	 
+
+	protected abstract void validateEdit(Entity post);
+
 	public void delete(String id) {
+		validateDelete(id);
 		getDao().delete(id);
 	}
+
+	protected abstract void validateDelete(String id);
+
 }

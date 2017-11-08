@@ -34,37 +34,45 @@ import java.util.List;
 @RequestMapping(value = "produto/")
 public class ProdutoController extends AbstractController<Produto> {
 
-    private
-    UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
-    private
-    ProdutoServicoImpl produtoService;
+	private ProdutoServicoImpl produtoService;
 
-    private
-    FornecedorServicoImpl fornecedorService;
+	private FornecedorServicoImpl fornecedorService;
 
-    private
-    CategoriaServicoImpl categoriaService;
+	private CategoriaServicoImpl categoriaService;
 
+	private List<Produto> produtoList;
 
-    private List<Produto> produtoList;
+	@Autowired
+	public ProdutoController(ProdutoServicoImpl dao, CategoriaServicoImpl categoriaDao,
+			FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao) {
+		super("produto");
+		this.produtoService = dao;
+		this.categoriaService = categoriaDao;
+		this.fornecedorService = fornecedorDao;
+		this.userservice = usudao;
+	}
 
+	@Override
+	protected AbstractEntityService<Produto> getservice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Autowired
-    public ProdutoController(ProdutoServicoImpl dao, CategoriaServicoImpl categoriaDao, FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao) {
-        super("produto");
-        this.produtoService = dao;
-        this.categoriaService = categoriaDao;
-        this.fornecedorService = fornecedorDao;
-        this.userservice = usudao;
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
+		binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
+		});
 
-    @Override
-    protected void validateDelete(String id) {
+		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
+		});
 
-    }
+	}
 
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
     @Override
     protected AbstractEntityService<Produto> getservice() {
@@ -72,167 +80,125 @@ public class ProdutoController extends AbstractController<Produto> {
         return produtoService;
     }
 
+		UnidadeMedida[] umList = UnidadeMedida.values();
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
-        });
+		model.addAttribute("usuarioAtt", usuario);
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
-        });
+		model.addAttribute("produtosList", produtoList);
+		model.addAttribute("fornecedorList", fornecedorList);
+		model.addAttribute("categoriaList", categoriaList);
+		model.addAttribute("umList", umList);
 
+	}
 
-    }
+	@RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
+	public ModelAndView NovosProdutos(HttpServletRequest request) {
 
+		// long idf = Long.parseLong(request.getParameter("idpedido"));
+		ModelAndView novosprodutos = new ModelAndView("novosprodutos");
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		List<Produto> produtos = produtoService.findAll();
 
-        List<Categoria> categoriaList = categoriaService.findAll();
-        List<Fornecedor> fornecedorList = fornecedorService.findAll();
-        produtoList = produtoService.findAll();
+		novosprodutos.addObject("produtosList", produtos);
 
-        UnidadeMedida[] umList = UnidadeMedida.values();
+		return novosprodutos;
+	}
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesProduto(HttpServletRequest request) {
 
-        usuario = userservice.findByUsername(usuario.getUsername());
+		String idf = request.getParameter("id");
 
-        model.addAttribute("usuarioAtt", usuario);
+		ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
+		Produto produto = produtoService.findOne(idf);
 
-        model.addAttribute("produtosList", produtoList);
-        model.addAttribute("fornecedorList", fornecedorList);
-        model.addAttribute("categoriaList", categoriaList);
-        model.addAttribute("umList", umList);
+		detalhesproduto.addObject("produto", produto);
 
+		return detalhesproduto;
+	}
 
-    }
+	@RequestMapping(value = "salvarfoto", method = RequestMethod.POST)
+	public String SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request,
+			Model model) {
 
-    @RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
-    public ModelAndView NovosProdutos(HttpServletRequest request) {
+		String mensagem = "Sucesso ao salvar foto";
+		String erros = "Falha ao salvar foto";
 
+		String path = session.getServletContext().getRealPath("/");
 
-        //   long idf = Long.parseLong(request.getParameter("idpedido"));
-        ModelAndView novosprodutos = new ModelAndView("novosprodutos");
+		String d = request.getContextPath();
 
-        List<Produto> produtos = produtoService.findAll();
+		String pathh = "/resources/images/produto";
+		// string pathh = file.get
 
-        novosprodutos.addObject("produtosList", produtos);
+		String filename = file.getOriginalFilename();
 
+		System.out.println("Caminho" + path + " " + filename);
 
-        return novosprodutos;
-    }
+		System.out.println("request end" + d + pathh + "/" + filename);
 
-    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesProduto(HttpServletRequest request) {
+		try {
 
+			byte barr[] = file.getBytes();
 
-        String idf = request.getParameter("id");
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + pathh + "/" + filename));
+			bout.write(barr);
+			bout.flush();
+			bout.close();
 
-        ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
+			model.addAttribute("mensagem", mensagem);
+			model.addAttribute("filename", filename);
+			model.addAttribute("produto", new Produto());
 
+		} catch (Exception e) {
 
-        Produto produto = produtoService.findOne(idf);
+			System.out.println(e);
 
-        detalhesproduto.addObject("produto", produto);
+			model.addAttribute("erros", erros + e);
+			model.addAttribute("produto", new Produto());
 
-        return detalhesproduto;
-    }
+		}
 
+		return "redirect:/produto/cadastro";
 
-    @RequestMapping(value = "salvarfoto", method = RequestMethod.POST)
-    public String SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request, Model model) {
+	}
 
+	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
-        String mensagem = "Sucesso ao salvar foto";
-        String erros = "Falha ao salvar foto";
+		ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 
+		return gerencia;
+	}
 
-        String path = session.getServletContext().getRealPath("/");
+	@RequestMapping(value = "LocalizarProdutoGerencia", method = RequestMethod.POST)
+	public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
 
-        String d = request.getContextPath();
+		String idf = request.getParameter("id");
 
+		ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 
-        String pathh = "/resources/images/produto";
-        //string pathh = file.get
+		Produto produto = produtoService.findOne(idf);
 
-        String filename = file.getOriginalFilename();
+		DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
 
-        System.out.println("Caminho" + path + " " + filename);
+		dadosgerenciais.setMargemlucro(new BigDecimal(40.00));
+		dadosgerenciais.setCusto(produto.getPrecocusto());
+		dadosgerenciais.setDespesafixa(new BigDecimal(5.00));
+		dadosgerenciais.setDespesavariavel(new BigDecimal(10.00));
+		Money precosugerido = dadosgerenciais.getPrecovenda();
 
-        System.out.println("request end" + d + pathh + "/" + filename);
+		gerencia.addObject("produto", produto);
+		gerencia.addObject("dadosgerenciais", dadosgerenciais);
+		gerencia.addObject("precosugerido", precosugerido);
 
-
-        try {
-
-            byte barr[] = file.getBytes();
-
-            BufferedOutputStream bout = new BufferedOutputStream(
-                    new FileOutputStream(path + pathh + "/" + filename));
-            bout.write(barr);
-            bout.flush();
-            bout.close();
-
-            model.addAttribute("mensagem", mensagem);
-            model.addAttribute("filename", filename);
-            model.addAttribute("produto", new Produto());
-
-
-        } catch (Exception e) {
-
-            System.out.println(e);
-
-            model.addAttribute("erros", erros + e);
-            model.addAttribute("produto", new Produto());
-
-
-        }
-
-        return "redirect:/produto/cadastro";
-
-    }
-
-    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-    public ModelAndView gerenciarProduto(HttpServletRequest request) {
-
-
-        ModelAndView gerencia = new ModelAndView("gerenciaproduto");
-
-
-        return gerencia;
-    }
-
-    @RequestMapping(value = "LocalizarProdutoGerencia", method = RequestMethod.POST)
-    public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-        ModelAndView gerencia = new ModelAndView("gerenciaproduto");
-
-
-        Produto produto = produtoService.findOne(idf);
-
-
-        DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
-
-        dadosgerenciais.setMargemlucro(new BigDecimal(40.00));
-        dadosgerenciais.setCusto(produto.getPrecocusto());
-        dadosgerenciais.setDespesafixa(new BigDecimal(5.00));
-        dadosgerenciais.setDespesavariavel(new BigDecimal(10.00));
-        Money precosugerido = dadosgerenciais.getPrecovenda();
-
-        gerencia.addObject("produto", produto);
-        gerencia.addObject("dadosgerenciais", dadosgerenciais);
-        gerencia.addObject("precosugerido", precosugerido);
-
-
-        return gerencia;
-    }
-
+		return gerencia;
+	}
 
 }

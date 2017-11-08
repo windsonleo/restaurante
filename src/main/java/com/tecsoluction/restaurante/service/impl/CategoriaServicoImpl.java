@@ -12,46 +12,54 @@ import java.util.List;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
-
 @Service("categoriaService")
 @Transactional
 public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
-    @Autowired
-    private ICategoriaDAO dao;
+	@Autowired
+	private ICategoriaDAO dao;
 
+	public CategoriaServicoImpl() {
 
-    public CategoriaServicoImpl() {
+		super(Categoria.class, "categoria");
 
-        super(Categoria.class, "categoria");
+	}
 
-    }
+	@Override
+	protected JpaRepository<Categoria, String> getDao() {
 
-    @Override
-    protected JpaRepository<Categoria, String> getDao() {
+		return dao;
+	}
 
-        return dao;
-    }
+	public List<Categoria> getCategoriaPai() {
 
-    public List<Categoria> getCategoriaPai() {
+		return dao.getCategoriaPai();
+	}
 
-        return dao.getCategoriaPai();
-    }
+	public List<Categoria> getCategoriasFilho(String idPai) {
 
-    public List<Categoria> getCategoriasFilho(String idPai) {
+		return dao.getCategoriasFilho(idPai);
+	}
 
-        return dao.getCategoriasFilho(idPai);
-    }
+	public Categoria getOnlyCategoriaPai() {
 
-    public Categoria getOnlyCategoriaPai() {
+		return dao.getOnlyCategoriaPai();
+	}
 
-        return dao.getOnlyCategoriaPai();
-    }
+	public Categoria getOnlyCategoriaExcludeCardapio() {
 
-    public Categoria getOnlyCategoriaExcludeCardapio() {
+		return dao.getOnlyCategoriaExcludeCardapio();
+	}
 
-        return dao.getOnlyCategoriaExcludeCardapio();
-    }
+	@Override
+	protected void validateDelete(String id) {
 
+		Categoria catGenericaPai = dao.getOnlyCategoriaPai();
+		List<Categoria> categoriasFilha = dao.getCategoriasFilho(id);
+		for (Categoria cat : categoriasFilha) {
+			cat.setCatpai(catGenericaPai);
+		}
+
+	}
 
 }

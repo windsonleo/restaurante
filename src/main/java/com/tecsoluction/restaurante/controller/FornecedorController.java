@@ -1,6 +1,5 @@
 package com.tecsoluction.restaurante.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,69 +26,57 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "fornecedor/")
 public class FornecedorController extends AbstractController<Fornecedor> {
 
-	 private
-	 FornecedorServicoImpl fornecedorService;
-	 
-	 
-	 private
-	 UsuarioServicoImpl userservice;
-		
+	private FornecedorServicoImpl fornecedorService;
 
-    @Autowired
-    public FornecedorController(FornecedorServicoImpl dao, UsuarioServicoImpl daousu) {
-        super("fornecedor");
-        this.fornecedorService = dao;
-        this.userservice = daousu;
-    }
+	private UsuarioServicoImpl userservice;
 
-    @Override
-    protected void validateDelete(String id) {
+	@Autowired
+	public FornecedorController(FornecedorServicoImpl dao, UsuarioServicoImpl daousu) {
+		super("fornecedor");
+		this.fornecedorService = dao;
+		this.userservice = daousu;
+	}
 
-    }
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
+		List<Fornecedor> fornecedorList = getservice().findAll();
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-    	List<Fornecedor> fornecedorList = getservice().findAll();
-       
-    	Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+		model.addAttribute("usuarioAtt", usuario);
+		model.addAttribute("fornecedorList", fornecedorList);
 
-        model.addAttribute("usuarioAtt", usuario);
-        model.addAttribute("fornecedorList", fornecedorList);
+	}
 
-        
-    }
+	@RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
+	public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
 
-    @RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
-    public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
+		String idf = (request.getParameter("id"));
 
-        String idf = (request.getParameter("id"));
+		ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 
-        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+		Fornecedor fornecedor = getservice().findOne(idf);
 
-        Fornecedor fornecedor = getservice().findOne(idf);
+		gerencia.addObject("fornecedor", fornecedor);
 
-        gerencia.addObject("fornecedor", fornecedor);
+		return gerencia;
+	}
 
-        return gerencia;
-    }
+	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	public ModelAndView gerenciafornecedor(HttpServletRequest request) {
 
-    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-    public ModelAndView gerenciafornecedor(HttpServletRequest request) {
+		ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 
-        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
-
-        return gerencia;
-    }
+		return gerencia;
+	}
 
 	@Override
 	protected AbstractEntityService<Fornecedor> getservice() {
 
 		return fornecedorService;
 	}
-
 
 }

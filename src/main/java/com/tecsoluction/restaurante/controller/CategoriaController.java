@@ -24,58 +24,38 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "categoria/")
 public class CategoriaController extends AbstractController<Categoria> {
 
-	private 
-	CategoriaServicoImpl categoriaService;
+	private CategoriaServicoImpl categoriaService;
 
-	
-	private  
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
+	@Autowired
+	public CategoriaController(CategoriaServicoImpl dao, UsuarioServicoImpl daousu) {
+		super("categoria");
+		this.categoriaService = dao;
+		this.userservice = daousu;
+	}
 
-    @Autowired
-    public CategoriaController(CategoriaServicoImpl dao, UsuarioServicoImpl daousu) {
-        super("categoria");
-        this.categoriaService = dao;
-        this.userservice = daousu;
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
 
+		});
+	}
 
-    @Override
-    protected void validateDelete(String id) {
-    
-    	Categoria catGenericaPai = categoriaService.getOnlyCategoriaPai();
-        List<Categoria> categoriasFilha = categoriaService.getCategoriasFilho(id);
-        for (Categoria cat : categoriasFilha) {
-            cat.setCatpai(catGenericaPai);
-        }
-        
-      
-    }
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
-
-        });
-    }
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-        List<Categoria> categoriaList = getservice().findAll();
-        model.addAttribute("categoriaList", categoriaList);
-        model.addAttribute("usuarioAtt", usuario);
-    }
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
+		List<Categoria> categoriaList = getservice().findAll();
+		model.addAttribute("categoriaList", categoriaList);
+		model.addAttribute("usuarioAtt", usuario);
+	}
 
 	@Override
 	protected AbstractEntityService<Categoria> getservice() {
-		// TODO Auto-generated method stub
 		return categoriaService;
 	}
 
 }
-

@@ -25,55 +25,40 @@ import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 @RequestMapping(value = "item/")
 public class ItemController extends AbstractController<Item> {
 
+	private ItemServicoImpl itemService;
 
-    private
-    ItemServicoImpl itemService;
+	private ProdutoServicoImpl produtoService;
 
-    private
-    ProdutoServicoImpl produtoService;
+	@Autowired
+	public ItemController(ItemServicoImpl itemdao, ProdutoServicoImpl proddao) {
+		super("item");
+		this.itemService = itemdao;
+		this.produtoService = proddao;
 
-    
-    
-    @Autowired
-    public ItemController(ItemServicoImpl itemdao, ProdutoServicoImpl proddao) {
-        super("item");
-        this.itemService = itemdao;
-        this.produtoService = proddao;
+	}
 
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-    @Override
-    protected void validateDelete(String id) {
+		binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtoService) {
 
-    }
+		});
 
+	}
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesItem(HttpServletRequest request) {
 
+		String idf = request.getParameter("id");
 
-        binder.registerCustomEditor(Produto.class, new AbstractEditor<Produto>(produtoService) {
+		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
 
-        });
+		Item item = itemService.findOne(idf);
 
+		detalhesitem.addObject("item", item);
 
-    }
-
-
-    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesItem(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
-
-        Item item = itemService.findOne(idf);
-
-        detalhesitem.addObject("item", item);
-
-        return detalhesitem;
-    }
+		return detalhesitem;
+	}
 
 	@Override
 	protected AbstractEntityService<Item> getservice() {

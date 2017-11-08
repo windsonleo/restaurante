@@ -28,64 +28,45 @@ import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
 import com.tecsoluction.restaurante.service.impl.EnderecoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
-
-
-
-
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping(value = "cliente/")
 public class ClienteController extends AbstractController<Cliente> {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(ClienteController.class);
 
-	private
-	ClienteServicoImpl clienteService;
-    
-    private
-    EnderecoServicoImpl enderecoService;
-    
-	
-	private  
-	UsuarioServicoImpl userservice;
-	
-    
-    private List<Cliente> clientes;
-    
-    
-    
-    private Cliente cliente;
-    
-    private Endereco endereco;
-    
+	private ClienteServicoImpl clienteService;
 
-    @Autowired
-    public ClienteController(ClienteServicoImpl dao,UsuarioServicoImpl daousu,EnderecoServicoImpl enddao) {
-        super("cliente");
-       
-        this.clienteService = dao;
-        this.userservice = daousu;
-        this.enderecoService =enddao;
-    }
+	private EnderecoServicoImpl enderecoService;
 
+	private UsuarioServicoImpl userservice;
 
-	@Override
-	protected void validateDelete(String id) {
+	private List<Cliente> clientes;
 
+	private Cliente cliente;
+
+	private Endereco endereco;
+
+	@Autowired
+	public ClienteController(ClienteServicoImpl dao, UsuarioServicoImpl daousu, EnderecoServicoImpl enddao) {
+		super("cliente");
+
+		this.clienteService = dao;
+		this.userservice = daousu;
+		this.enderecoService = enddao;
 	}
 
 	@InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enderecoService) {
-        });
-    }
+		binder.registerCustomEditor(Endereco.class, new AbstractEditor<Endereco>(this.enderecoService) {
+		});
+	}
 
-	
-    @ModelAttribute
-    public void addAttributes(Model model) {
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
         List<Cliente> clienteList = clienteService.findAll();
        
@@ -94,44 +75,40 @@ public class ClienteController extends AbstractController<Cliente> {
         
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		
+
 		usuario = userservice.findByUsername(usuario.getUsername());
-        
+
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
         model.addAttribute("cliente",cliente);        
 
-    }
-	
+	}
+
 	@RequestMapping(value = "/novos", method = RequestMethod.GET)
 	public ModelAndView NovosClientes(Locale locale, Model model) {
-		
+
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		
+
 		ModelAndView novosclientes = new ModelAndView("novosclientes");
-		
+
 		clientes = clienteService.findAll();
-		
-		novosclientes.addObject("clientesList",clientes);
-		
+
+		novosclientes.addObject("clientesList", clientes);
+
 		return novosclientes;
 	}
-	
-	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
-	public ModelAndView  detalhesCliente(HttpServletRequest request){
-  	
-  	
-  	String idf = request.getParameter("id");
-  	
-  	ModelAndView detalhescliente= new ModelAndView("detalhescliente");
-  	
-  	
-  	Cliente cliente = clienteService.findOne(idf);
-  	 
-  	detalhescliente.addObject("cliente", cliente);
 
-		
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesCliente(HttpServletRequest request) {
+
+		String idf = request.getParameter("id");
+
+		ModelAndView detalhescliente = new ModelAndView("detalhescliente");
+
+		Cliente cliente = clienteService.findOne(idf);
+
+		detalhescliente.addObject("cliente", cliente);
+
 		return detalhescliente;
 	}
 	
@@ -164,7 +141,7 @@ public class ClienteController extends AbstractController<Cliente> {
 		String id = request.getParameter("id");
 		
 		Endereco endereco = new Endereco();
-		
+
 		endereco.setLogradouro(request.getParameter("logradouro"));
 		endereco.setNumero(request.getParameter("numero"));
 		endereco.setBairro(request.getParameter("bairro"));
@@ -234,23 +211,32 @@ public class ClienteController extends AbstractController<Cliente> {
 	    	 
 	    	gerencia.addObject("cliente", cliente);
 
-	  		
-	  		return gerencia;
-	  	}
-	
-	    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-	  	public ModelAndView  gerenciarCliente(HttpServletRequest request){	    	
-	    	
-	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
-	    	
+	@RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)
+	public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
 
-	  		return gerencia;
-	  	}
+		String idf = (request.getParameter("id"));
 
-		@Override
-		protected AbstractEntityService<Cliente> getservice() {
+		ModelAndView gerencia = new ModelAndView("gerenciacliente");
 
-			return clienteService;
-		}
-	
+		Cliente cliente = getservice().findOne(idf);
+
+		gerencia.addObject("cliente", cliente);
+
+		return gerencia;
+	}
+
+	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	public ModelAndView gerenciarCliente(HttpServletRequest request) {
+
+		ModelAndView gerencia = new ModelAndView("gerenciacliente");
+
+		return gerencia;
+	}
+
+	@Override
+	protected AbstractEntityService<Cliente> getservice() {
+
+		return clienteService;
+	}
+
 }

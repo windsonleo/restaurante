@@ -1,6 +1,5 @@
 package com.tecsoluction.restaurante.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,42 +12,30 @@ import com.tecsoluction.restaurante.service.impl.PedidoServicoImpl;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
-
 @Controller
 @RequestMapping(value = "pedido/")
 public class PedidoController extends AbstractController<Pedido> {
 
-    private
-    PedidoServicoImpl pedidoService;
+	private PedidoServicoImpl pedidoService;
 
+	@Autowired
+	public PedidoController(PedidoServicoImpl dao) {
 
-    @Autowired
-    public PedidoController(PedidoServicoImpl dao) {
+		super("pedido");
 
-        super("pedido");
+		this.pedidoService = dao;
 
-        this.pedidoService = dao;
+	}
 
-    }
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
+		TipoPedido[] tipoList = TipoPedido.values();
+		StatusPedido[] tipoStatusList = StatusPedido.values();
 
-    @Override
-    protected void validateDelete(String id) {
-
-    }
-
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-
-        TipoPedido[] tipoList = TipoPedido.values();
-        StatusPedido[] tipoStatusList = StatusPedido.values();
-        
-        model.addAttribute("tipoList", tipoList);
-        model.addAttribute("tipoStatusList", tipoStatusList);
-    }
-
+		model.addAttribute("tipoList", tipoList);
+		model.addAttribute("tipoStatusList", tipoStatusList);
+	}
 
 	@Override
 	protected AbstractEntityService<Pedido> getservice() {

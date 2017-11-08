@@ -45,353 +45,290 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
-
 @Controller
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
-	private
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
+	private PedidoVendaServicoImpl pedidovendaService;
 
-    private
-    PedidoVendaServicoImpl pedidovendaService;
+	private ItemServicoImpl itemService;
 
+	private ProdutoServicoImpl produtoService;
 
-    private
-    ItemServicoImpl itemService;
+	private MesaServicoImpl mesaService;
 
-    private
-	ProdutoServicoImpl produtoService;
- 
+	private ClienteServicoImpl clienteService;
 
-    private
-    MesaServicoImpl mesaService;
+	private GarconServicoImpl garconService;
 
-    private
-    ClienteServicoImpl clienteService;
+	private final EstoqueServicoImpl estoqueService;
 
+	private PedidoVenda pv;
 
-    private
-    GarconServicoImpl garconService;
+	private Map<Item, Double> itens = new HashMap<>();
 
+	private List<Produto> produtosList;
 
-    private
-    final
-    EstoqueServicoImpl estoqueService;
-    
+	private Money totalpedido = Money.of(usd, 0.00);
 
     private PedidoVenda pv;
     
     private Map<Item, BigDecimal> itens = new HashMap<>();
 
-    private List<Produto> produtosList;
+	@Autowired
+	public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
+			ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
+			UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
+		super("pedidovenda");
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-    private Estoque estoque = new Estoque();
+	}
 
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-    @Autowired
-    public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao, ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon, UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
-        super("pedidovenda");
-        
-        this.pedidovendaService = dao;
-        this.itemService = daoitem;
-        this.produtoService = produtodao;
-        this.clienteService = daocliente;
-        this.mesaService = daomesa;
-        this.garconService = daogarcon;
-        this.userservice = daousu;
-        this.estoqueService = estdao;
+		binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteService) {
 
-    }
+		});
 
+		binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
 
-    
+		});
 
-    @Override
-    protected void validateDelete(String id) {
+		binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
 
-    }
+		});
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
 
+		});
 
-        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteService) {
+	}
 
-        });
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
+		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
 
-        });
+		// TipoPedido[] tipoList = TipoPedido.values();
+		StatusPedido[] tipoStatusList = StatusPedido.values();
+		OrigemPedido[] origemPedidoList = OrigemPedido.values();
+		SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
-        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
+		List<Cliente> clienteList = clienteService.findAll();
 
-        });
+		List<Garcon> garconList = garconService.findAll();
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
+		List<Mesa> mesaList = mesaService.findAll();
 
-        });
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-    }
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		model.addAttribute("usuarioAtt", usuario);
 
-        List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
-       
-//        TipoPedido[] tipoList = TipoPedido.values();
-        StatusPedido[] tipoStatusList = StatusPedido.values();
-        OrigemPedido[] origemPedidoList = OrigemPedido.values();
-        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+		model.addAttribute("pedidoVendaList", pedidoVendaList);
+		model.addAttribute("origemPedidoList", origemPedidoList);
+		model.addAttribute("garconList", garconList);
+		model.addAttribute("mesaList", mesaList);
+		model.addAttribute("situacaoPedidoList", situacaoPedidoList);
+		model.addAttribute("tipoStatusList", tipoStatusList);
+		model.addAttribute("clienteList", clienteList);
 
+	}
 
-        List<Cliente> clienteList = clienteService.findAll();
+	@RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
+	public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
-        List<Garcon> garconList = garconService.findAll();
+		this.estoque = estoqueService.findOne("49L");
 
-        List<Mesa> mesaList = mesaService.findAll();
+		String idf = request.getParameter("id");
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		this.pv = pedidovendaService.findOne(idf);
 
-        usuario = userservice.findByUsername(usuario.getUsername());
+		ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
-        model.addAttribute("usuarioAtt", usuario);
+		for (Item key : pv.getItems().keySet()) {
 
-        model.addAttribute("pedidoVendaList", pedidoVendaList);
-        model.addAttribute("origemPedidoList", origemPedidoList);
-        model.addAttribute("garconList", garconList);
-        model.addAttribute("mesaList", mesaList);
-        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
-        model.addAttribute("tipoStatusList", tipoStatusList);
-        model.addAttribute("clienteList", clienteList);
+			Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
+			Double qtd = key.getQtd();
 
-    }
+			key.setEstoque(estoque);
 
+			estoque.RetirarProdutoEstoque(produto, qtd);
 
-    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
-    public ModelAndView FinalizarVenda(HttpServletRequest request) {
+			estoqueService.save(estoque);
 
+			itemService.save(key);
 
-        this.estoque = estoqueService.findOne("49L");
+		}
 
-        String idf = request.getParameter("id");
+		this.pv.setStatus(StatusPedido.FECHADO);
+		this.pv.setIspago(true);
 
-        this.pv = pedidovendaService.findOne(idf);
+		pedidovendaService.save(pv);
 
-        ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
+		itens.clear();
 
-        for (Item key : pv.getItems().keySet()) {
+		return finalizacaovenda;
+	}
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
             BigDecimal qtd = key.getQtd();
 
-            key.setEstoque(estoque);
+		ModelAndView novospedidos = new ModelAndView("novospedidos");
 
+		List<PedidoVenda> vendas = pedidovendaService.findAll();
 
-            estoque.RetirarProdutoEstoque(produto, qtd);
+		novospedidos.addObject("pedidovendasList", vendas);
 
+		return novospedidos;
+	}
 
-            estoqueService.save(estoque);
+	@RequestMapping(value = "additem", method = RequestMethod.GET)
+	public ModelAndView additemvendaForm(HttpServletRequest request) {
 
-            itemService.save(key);
+		String idf = request.getParameter("id");
 
-        }
+		ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
+		this.pv = pedidovendaService.findOne(idf);
 
-        this.pv.setStatus(StatusPedido.FECHADO);
-        this.pv.setIspago(true);
+		produtosList = produtoService.findAll();
 
-        pedidovendaService.save(pv);
+		pv.setTotal(pv.CalcularTotal(pv.getItems()));
 
-        itens.clear();
+		totalpedido = pv.CalcularTotal(pv.getItems());
 
+		DecimalFormat df = new DecimalFormat("0.##");
+		String totalformatado = df.format(totalpedido);
 
-        return finalizacaovenda;
-    }
+		additempedidovenda.addObject("pedidovenda", pv);
+		additempedidovenda.addObject("produtosList", produtosList);
+		additempedidovenda.addObject("totalpedido", totalformatado);
 
+		return additempedidovenda;
+	}
 
-    @RequestMapping(value = "novospedidos", method = RequestMethod.GET)
-    public ModelAndView NovosPedidos(HttpServletRequest request) {
+	@RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
+	public ModelAndView salvaritempedido(HttpServletRequest request) {
 
+		String prodid = request.getParameter("produtoescolhido");
 
-        ModelAndView novospedidos = new ModelAndView("novospedidos");
+		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-        List<PedidoVenda> vendas = pedidovendaService.findAll();
+		Produto produto;
 
-        novospedidos.addObject("pedidovendasList", vendas);
+		produto = produtoService.findOne(prodid);
 
-        return novospedidos;
-    }
+		if (produto == null) {
 
+			ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-    @RequestMapping(value = "additem", method = RequestMethod.GET)
-    public ModelAndView additemvendaForm(HttpServletRequest request) {
+			String erros = "Nao Existe esse Produto";
 
+			additempedidovenda.addObject("erros", erros);
+			additempedidovenda.addObject("pv", pv);
+			additempedidovenda.addObject("produtosList", produtosList);
 
-        String idf = request.getParameter("id");
+			return additempedidovenda;
+		}
 
-        ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+		PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
 
-        this.pv = pedidovendaService.findOne(idf);
+		// System.out.println("windson ped"+pedidov.toString());
 
+		Item item = new Item(produto, pedidov);
 
-        produtosList = produtoService.findAll();
+		item.setQtd(prodqtd);
+		item.setTotalItem(item.getTotalItem());
+		item.setPedido(pedidov);
 
+		itens = pedidov.getItems();
 
-        pv.setTotal(pv.CalcularTotal(pv.getItems()));
+		itens.put(item, item.getQtd());
 
-        totalpedido = pv.CalcularTotal(pv.getItems());
+		itemService.save(item);
 
-        DecimalFormat df = new DecimalFormat("0.##");
-        String totalformatado = df.format(totalpedido);
+		pedidov.setItems(itens);
+		pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
+		pedidov.setStatus(StatusPedido.PENDENTE);
 
+		pedidovendaService.save(pedidov);
 
-        additempedidovenda.addObject("pedidovenda", pv);
-        additempedidovenda.addObject("produtosList", produtosList);
-        additempedidovenda.addObject("totalpedido", totalformatado);
+		return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
+	}
 
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
 
-        return additempedidovenda;
-    }
+		String idf = request.getParameter("id");
 
+		ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
-    @RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
-    public ModelAndView salvaritempedido(HttpServletRequest request) {
+		PedidoVenda pedido = pedidovendaService.findOne(idf);
 
+		detalhespedidovenda.addObject("pedido", pedido);
 
-        String prodid = request.getParameter("produtoescolhido");
+		return detalhespedidovenda;
+	}
 
+	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesItem(HttpServletRequest request) {
 
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
         
         BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
 
-        Produto produto;
+		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
 
-        produto = produtoService.findOne(prodid);
+		Item item = itemService.findOne(idf);
 
+		detalhesitem.addObject("item", item);
 
-        if (produto == null) {
+		return detalhesitem;
+	}
 
-            ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
+	public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
 
-            String erros = "Nao Existe esse Produto";
+		String idf = request.getParameter("id");
 
-            additempedidovenda.addObject("erros", erros);
-            additempedidovenda.addObject("pv", pv);
-            additempedidovenda.addObject("produtosList", produtosList);
+		itemService.delete(idf);
 
-            return additempedidovenda;
-        }
+		return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
 
+	}
 
-        PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
+	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
+	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
-//        System.out.println("windson ped"+pedidov.toString());
+		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
 
-        Item item = new Item(produto, pedidov);
+		ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
+		entregas.addObject("pedidovendaList", pedidoVendaList);
 
         item.setQtd(qtdbc);
         item.setTotalItem(item.getTotalItem());
         item.setPedido(pedidov);
 
-        itens = pedidov.getItems();
+	}
 
-        itens.put(item, item.getQtd());
+	@RequestMapping(value = "rapido", method = RequestMethod.GET)
+	public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
 
-        itemService.save(item);
+		ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
 
-        pedidov.setItems(itens);
-        pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
-        pedidov.setStatus(StatusPedido.PENDENTE);
+		// List<PedidoVenda> vendas = pedidovendaService.findAll();
 
-        pedidovendaService.save(pedidov);
+		// novospedidos.addObject("pedidovendasList", vendas);
 
-
-        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
-    }
-
-
-    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-        ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
-
-
-        PedidoVenda pedido = pedidovendaService.findOne(idf);
-
-
-        detalhespedidovenda.addObject("pedido", pedido);
-
-
-        return detalhespedidovenda;
-    }
-
-    @RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesItem(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-
-        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
-
-
-        Item item = itemService.findOne(idf);
-
-
-        detalhesitem.addObject("item", item);
-
-
-        return detalhesitem;
-    }
-
-    @RequestMapping(value = "/item/delete", method = RequestMethod.GET)
-    public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("id");
-
-        itemService.delete(idf);
-
-        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
-
-    }
-
-    @RequestMapping(value = "/entregas", method = RequestMethod.GET)
-    public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
-
-
-        List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
-
-
-        ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
-        entregas.addObject("pedidovendaList", pedidoVendaList);
-
-
-        return entregas;
-
-    }
-
-    @RequestMapping(value = "rapido", method = RequestMethod.GET)
-    public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
-
-
-        ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
-
-//        	List<PedidoVenda> vendas = pedidovendaService.findAll();
-
-//        	novospedidos.addObject("pedidovendasList", vendas);
-
-        return novospedidos;
-    }
+		return novospedidos;
+	}
 
 	@Override
 	protected AbstractEntityService<PedidoVenda> getservice() {

@@ -31,5 +31,11 @@ public class CaixaServicoImpl extends AbstractEntityService<Caixa> {
         return dao;
     }
 
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
