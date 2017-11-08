@@ -34,19 +34,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EqualsAndHashCode
 @Entity
 @Table(name = "CATEGORIA")
-public class Categoria implements Serializable {
+public class Categoria extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Type(type = "pg-uuid")
-    @Column(name = "id", length = 36)
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = false)
@@ -57,9 +50,6 @@ public class Categoria implements Serializable {
     @JoinColumn(name = "catpai_id", nullable = true)
     private Categoria catpai;
 
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)

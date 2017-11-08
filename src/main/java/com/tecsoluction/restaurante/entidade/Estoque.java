@@ -41,19 +41,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EqualsAndHashCode
 @Entity
 @Table(name = "ESTOQUE")
-public class Estoque implements Serializable {
+public class Estoque extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = true)
@@ -63,10 +56,6 @@ public class Estoque implements Serializable {
 //	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Estoque.class,optional=true)
 //	@JoinColumn(name = "catpai_id", nullable = true)
 //    private Estoque catpai;
-
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE) 

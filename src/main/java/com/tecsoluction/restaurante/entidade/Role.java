@@ -26,16 +26,9 @@ import org.hibernate.annotations.Type;
 @Setter
 @Entity
 @Table(name = "ROLE")
-public class Role implements Serializable {
+public class Role extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     private String name;
 

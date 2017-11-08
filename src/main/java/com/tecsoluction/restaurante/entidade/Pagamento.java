@@ -36,19 +36,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @EqualsAndHashCode
 @Entity
 @Table(name = "PAGAMENTO")
-public class Pagamento implements Serializable {
+public class Pagamento extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")

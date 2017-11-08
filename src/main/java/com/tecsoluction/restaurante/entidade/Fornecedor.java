@@ -31,21 +31,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EqualsAndHashCode
 @Entity
 @Table(name = "FORNECEDOR")
-public class Fornecedor implements Serializable {
+public class Fornecedor extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
-
-    @NotBlank
+       @NotBlank
     @Column(name = "nomefantasia")
     private String nomefantasia;
 
@@ -57,10 +50,6 @@ public class Fornecedor implements Serializable {
 
     @Column(name = "inscricaoestadual")
     private String inscricaoestadual;
-
-    @Column(name = "isativo")
-    private boolean isativo;
-
 
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)

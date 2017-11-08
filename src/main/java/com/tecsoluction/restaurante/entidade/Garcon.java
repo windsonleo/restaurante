@@ -29,16 +29,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "GARCON")
 //@XmlRootElement(name = "garcon")
-public class Garcon implements Serializable {
+public class Garcon extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 121L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome")
@@ -46,9 +39,6 @@ public class Garcon implements Serializable {
 
     @Column(name = "foto")
     private String foto;
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     @JsonIgnore
     @OneToMany(mappedBy = "garcon")

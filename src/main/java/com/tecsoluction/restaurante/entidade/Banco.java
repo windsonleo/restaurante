@@ -25,24 +25,15 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "BANCO")
 //@XmlRootElement(name = "garcon")
-public class Banco implements Serializable {
+public class Banco extends BaseEntity implements Serializable {
 
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Type(type = "pg-uuid")
-    @Column(name = "id", length = 36)
-    private UUID id;
 
     @Column(name = "nome")
     @NotBlank(message = "Nome do Banco obrigatorio")
     private String nome;
 
-    @Column(name = "isativo")
-    private boolean isativo;
 
     @NotBlank(message = "Numero do Banco  obrigatorio")
     private String numero;

@@ -39,19 +39,12 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @Entity
 @Table
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Produto implements Serializable {
+public class Produto extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = -5401174413867896341L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @Column(name = "foto")
     private String foto;
@@ -97,10 +90,6 @@ public class Produto implements Serializable {
 
     @Column(name = "esugestao", nullable = true)
     private boolean esugestao;
-
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
 
     public Produto(UUID id, String foto, String nome, String codebar, String descricao,

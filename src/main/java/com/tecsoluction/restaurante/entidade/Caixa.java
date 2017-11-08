@@ -21,19 +21,12 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Table(name = "CAIXA")
-public class Caixa implements Serializable {
+public class Caixa extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = true)
@@ -43,10 +36,6 @@ public class Caixa implements Serializable {
 //	@ManyToOne(fetch =FetchType.EAGER,targetEntity=Caixa.class,optional=true)
 //	@JoinColumn(name = "catpai_id", nullable = true)
 //    private Caixa catpai;
-
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.TRUE)

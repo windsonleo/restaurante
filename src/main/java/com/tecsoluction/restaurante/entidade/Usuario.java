@@ -31,16 +31,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Setter
 @Entity
 @Table(name = "USUARIO")
-public class Usuario implements Serializable {
+public class Usuario extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     private String username;
@@ -48,8 +41,8 @@ public class Usuario implements Serializable {
     @Column(name = "senha")
     @NotBlank
     private String senha;
+    
     private String email;
-    private boolean isativo;
 
     //	@LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore

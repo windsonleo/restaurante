@@ -28,14 +28,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pedido {
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
+public abstract class Pedido extends BaseEntity {
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -62,10 +55,6 @@ public abstract class Pedido {
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pagamento> pagamento;
-
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     //aberto,pendente,fechado,cancelado
     @Enumerated(EnumType.STRING)

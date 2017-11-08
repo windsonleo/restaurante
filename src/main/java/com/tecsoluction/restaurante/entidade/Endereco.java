@@ -28,7 +28,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @EqualsAndHashCode
 @Entity
 @Table(name = "ENDERECO")
-public class Endereco implements Serializable {
+public class Endereco extends BaseEntity implements Serializable {
 
 
     private static final long serialVersionUID = 1L;

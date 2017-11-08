@@ -28,20 +28,12 @@ import org.hibernate.validator.constraints.NotBlank;
 @EqualsAndHashCode
 @Entity
 @Table(name = "FORMAPAGAMENTO")
-public class FormaPagamento implements Serializable {
+public class FormaPagamento extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
-
 
     @NotBlank
     private String nome;
@@ -59,9 +51,6 @@ public class FormaPagamento implements Serializable {
     @ManyToMany(mappedBy = "formaPagamentos")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Pagamento> pagamentos;
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     //
 //    @ManyToOne

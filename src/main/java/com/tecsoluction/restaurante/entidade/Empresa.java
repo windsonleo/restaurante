@@ -28,19 +28,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EqualsAndHashCode
 @Entity
 @Table(name = "EMPRESA")
-public class Empresa implements Serializable {
+public class Empresa extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = true)
@@ -48,10 +41,6 @@ public class Empresa implements Serializable {
 
     @NotBlank
     private String logo;
-
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     public Empresa() {
         // TODO Auto-generated constructor stub

@@ -20,17 +20,10 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Table(name = "ITEM")
-public class Item implements Serializable, Comparable<Item> {
+public class Item extends BaseEntity implements Serializable, Comparable<Item> {
 
 
     private static final long serialVersionUID = 121L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
 //	@JoinColumn(name="produto_id", nullable=true)
 //	private Produto produto;

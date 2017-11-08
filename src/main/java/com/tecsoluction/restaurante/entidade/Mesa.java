@@ -30,19 +30,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @EqualsAndHashCode
 @Entity
 @Table(name = "MESA")
-public class Mesa implements Serializable {
+public class Mesa extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "numero")
@@ -65,6 +58,5 @@ public class Mesa implements Serializable {
     public String toString() {
         return numero.toUpperCase();
     }
-
 
 }

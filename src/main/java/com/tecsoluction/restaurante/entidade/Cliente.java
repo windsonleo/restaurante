@@ -22,19 +22,12 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Table(name = "CLIENTE")
-public class Cliente implements Serializable {
+public class Cliente extends BaseEntity implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "id", length = 36)
-    @Type(type = "pg-uuid")
-    private UUID id;
 
     @NotBlank
     @Column(name = "nome")
@@ -57,9 +50,6 @@ public class Cliente implements Serializable {
     @NotBlank
     @Column(name = "genero")
     private String genero;
-
-    @Column(name = "isativo")
-    private boolean isativo;
 
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Endereco endereco;
