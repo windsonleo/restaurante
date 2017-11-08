@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,13 +70,13 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     List<Item> itens = new ArrayList<>();
 
     private
-    Map<Item, Double> itensRecebimentoCorfirmados = new HashMap<>();
+    Map<Item, BigDecimal> itensRecebimentoCorfirmados = new HashMap<>();
 
     private
     List<Produto> produtosList = new ArrayList<>();
 
     private
-    Money totalpedido = Money.of(usd,0.00);
+    BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     private
     Recebimento recebimento = new Recebimento();
@@ -166,7 +168,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         for (Item key : this.recebimento.getItems().keySet()) {
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            Double qtd = key.getQtd();
+            BigDecimal qtd = key.getQtd();
 
             key.setEstoque(estoque);
 
@@ -204,7 +206,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         this.recebimento = recebimentoService.findOne(idf);
 
-        totalpedido = Money.of(usd,0.00);
+//        totalpedido = Money.of(usd,0.00);
 
         this.recebimento.setTotal(totalpedido);
 
@@ -238,7 +240,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         }
 
 
-        totalpedido =Money.of(usd,0.00);
+//        totalpedido =Money.of(usd,0.00);
 
         totalpedido = pv.CalcularTotal(pv.getItems());
 

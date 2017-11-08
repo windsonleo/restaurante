@@ -90,12 +90,7 @@ public class ClienteController extends AbstractController<Cliente> {
         List<Cliente> clienteList = clienteService.findAll();
        
          cliente = new Cliente();
-        
-         endereco = new Endereco();
-        
-        cliente.setEndereco(endereco);
         cliente.setDatanascimento( new Date());
-//        endereco.setCliente(cliente);
         
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -104,9 +99,7 @@ public class ClienteController extends AbstractController<Cliente> {
         
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
-        model.addAttribute("cliente",cliente);
-        model.addAttribute("endereco", endereco);
-        
+        model.addAttribute("cliente",cliente);        
 
     }
 	
@@ -142,9 +135,33 @@ public class ClienteController extends AbstractController<Cliente> {
 		return detalhescliente;
 	}
 	
-	@RequestMapping(value = "addEnderecoCliente", method = RequestMethod.POST)
+	@RequestMapping(value = "addEndereco", method = RequestMethod.GET)
+	public ModelAndView  addEnderecoClienteForm(HttpServletRequest request,Model model){
+		
+		String id = request.getParameter("id");
+
+		cliente = getservice().findOne(id);
+
+		
+	  	ModelAndView cadastroendereco= new ModelAndView("cadastroendereco");
+
+		
+			
+	  	cadastroendereco.addObject("cliente",cliente);
+
+		
+		return cadastroendereco;
+	}
+	
+	
+	@RequestMapping(value = "addEndereco", method = RequestMethod.POST)
 	public ModelAndView  addEnderecoCliente(HttpServletRequest request,Model model){
 		
+		
+		
+//	  	ModelAndView cadastroendereco= new ModelAndView("cadastroendereco");
+
+		String id = request.getParameter("id");
 		
 		Endereco endereco = new Endereco();
 		
@@ -156,7 +173,7 @@ public class ClienteController extends AbstractController<Cliente> {
 		endereco.setPontoreferencia(request.getParameter("pontoreferencia"));
 		endereco.setComplemento(request.getParameter("complemento"));
 		
-		String datanascimento = request.getParameter("datanascimento");
+//		String datanascimento = request.getParameter("datanascimento");
 		
 //		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 //		
@@ -168,29 +185,40 @@ public class ClienteController extends AbstractController<Cliente> {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-							
-			cliente = new Cliente();
-			cliente.setNome(request.getParameter("nome"));
-			cliente.setTelefone(request.getParameter("telefone"));
-//			cliente.setDatanascimento(data);
-			cliente.setEmail(request.getParameter("email"));
-			cliente.setFoto(request.getParameter("foto"));
-			cliente.setGenero(request.getParameter("genero"));
-			cliente.setIsativo(true);
+				
+		endereco =enderecoService.save(endereco);
+		
+	
+		
+			cliente = getservice().findOne(id);
+			
+			
+//			cliente.setNome(request.getParameter("nome"));
+//			cliente.setTelefone(request.getParameter("telefone"));
+////			cliente.setDatanascimento(data);
+//			cliente.setEmail(request.getParameter("email"));
+//			cliente.setFoto(request.getParameter("foto"));
+//			cliente.setGenero(request.getParameter("genero"));
+//			cliente.setIsativo(true);
 			
 			cliente.setEndereco(endereco); 
 		
 		
 			getservice().save(cliente);
 
-  	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
-		
-		
-  	cadastrocliente.addObject("cliente",cliente);
+//  	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
+//		
+//		
+//  	cadastrocliente.addObject("cliente",cliente);
 
 		
-		return cadastrocliente;
+		return new ModelAndView("redirect:/cliente/movimentacao");
 	}
+	
+	
+	
+	
+	
 	
 	
 	 @RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)

@@ -29,7 +29,7 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 
 @Controller
-@RequestMapping(value = "mesa/")
+@RequestMapping(value = "mesas/")
 public class MesaController extends AbstractController<Mesa> {
 
 	private

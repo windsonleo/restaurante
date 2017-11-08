@@ -59,6 +59,7 @@ public abstract class AbstractController<Entity> {
             System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
             System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
+        
         } else {
             getservice().save(entity);
             System.out.println("add: " + entityAlias);
@@ -67,9 +68,10 @@ public abstract class AbstractController<Entity> {
             attributes.addFlashAttribute("entity", entity.toString());
         }
 
-        cadastroEntity.addObject("entity", entity);
+//        cadastroEntity.addObject("entity", entity);
         cadastroEntity.addObject("acao", "add");
-
+        
+//        return cadastroEntity;
         return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro");  //cadastroEntity;
     }
 
@@ -79,6 +81,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView movimentacao = new ModelAndView("movimentacao" + entityAlias);
         List<Entity> entityList = getservice().findAll();
         movimentacao.addObject(entityAlias + "List", entityList);
+   
         return movimentacao;
     }
 

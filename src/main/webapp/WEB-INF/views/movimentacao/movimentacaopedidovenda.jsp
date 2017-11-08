@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -54,7 +56,11 @@
   <tr class="gradeX">
 
 			      <td>${pedidovenda.id}</td>
-                  <td>${pedidovenda.data}</td>
+                  <td>
+                   <fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${pedidovenda.data}"/>
+                  
+                  </td>
 				<td>${pedidovenda.situacao}</td>
 				<c:choose>
 				    <c:when test="${pedidovenda.status=='ABERTO'}">
@@ -100,7 +106,12 @@
 				</c:choose>
 <%--                   <td><span class="label label-info">${pedidovenda.status}</span></td> --%>
                  <td>${pedidovenda.origempedido}</td>
-                 <td>${pedidovenda.total}</td>
+                 <td>
+                 <fmt:formatNumber type="currency"
+                 value="${pedidovenda.total}"/>
+<%-- 				${pedidovenda.total} --%>
+
+				</td>
                  <td>${pedidovenda.cliente}</td>
                  <td>${pedidovenda.mesa}</td>
                  <td>${pedidovenda.garcon}</td>

@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +84,7 @@ public class Recebimento implements Serializable {
     @Column(name = "qtd")
     @CollectionTable(name = "itens_recebimento", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, Double> items = new HashMap<>();
+    private Map<Item, BigDecimal> items = new HashMap<>();
 
 
     private boolean ispago = false;
@@ -93,7 +94,7 @@ public class Recebimento implements Serializable {
     private StatusPedido status;
 
     @Column(name = "total")
-    private Money total = Money.of(usd,0.00);
+    private BigDecimal total = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 
     //CONSTRUTOR PADRÃO
@@ -134,28 +135,17 @@ public class Recebimento implements Serializable {
     }
 
 
-    public Money CalcularTotal(Map<Item, Double> itens) {
+    public BigDecimal CalcularTotal(Map<Item, BigDecimal> itens) {
 
-        Money totalpedido = Money.of(usd, 0.00);
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-//     	Set<Item> keys = itens.keySet();
-        //
-//  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
 
         for (Item key : itens.keySet()) {
 
-            totalpedido.plus(totalpedido).plus(key.getTotalItem());
-
+            totalpedido.add(totalpedido).add(key.getTotalItem());
 
         }
 
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (int i = 0; i < itens.size(); i++) {
-//        	
-//            totalpedido += totalpedido + itens.get(i).getTotalItem();
-        //
-//  			
-//  		}
 
         return totalpedido;
     }

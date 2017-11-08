@@ -50,16 +50,16 @@
                     <div class="widget-content nopadding">
 
 
-						<form id="form-wizard" class="form-horizontal" method="post"
-							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente" modelAttribute="endereco">
-							<div id="form-wizard-1" class="step">
+						<form id="form" class="form-horizontal" method="post"
+							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente">
+<!-- 							<div id="form-wizard-1" class="step"> -->
 								<div class="control-group">
 
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-key"></i></span>
 
-                                            <input id="id" class="span11 m-wrap" name="id" type="number"
+                                            <input id="id" class="span11 m-wrap" name="id" type="text"
                                                    value="${cliente.id}" placeholder="Digite o id"/>
 
 
@@ -153,7 +153,7 @@
                                         <div data-date="12-02-2012"
                                              class="input-append date datepicker ">
 
-                                            <input id="datepicker" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.datanascimento}"/>" class="datepicker" name="datanascimento">
+                                            <input id="datanascimento" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.datanascimento}"/>" class="datepicker" name="datanascimento">
 <%--                                              --%>
                                             <span class="add-on"><i class="icon-th"></i></span>
                                             
@@ -168,182 +168,185 @@
                                 </div>
 
 
-                            </div>
+<!--                             </div> -->
 
 
-                            <div id="form-wizard-2" class="step">
+<!--                             <div id="form-wizard-2" class="step"> -->
 
-                                <div class="control-group">
+<!--                                 <div class="control-group"> -->
 
-                                    <div class="controls">
-
-
-                                        <div class="input-prepend">
-                                            <span class="add-on">Id</span> <input id="id" 
-                                                                                  class="span11 mask text" name="id"
-                                                                                  type="number"
-                                                                                  value="${cliente.endereco.id}"
-                                                                                  placeholder="Digite o Id"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-
-                                    <div class="controls">
-
-                                        <div class="input-prepend">
-                                            <span class="add-on">Logradouro</span> <input id="logradouro"
-                                                                                          class=""
-                                                                                          name="logradouro" type="text"
-                                                                                          value="${cliente.endereco.logradouro}"
-                                                                                          placeholder="Digite o Logradouro"/>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="control-group">
-
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">N</span> <input id="numero"
-                                                                                      class=""
-                                                                                      name="numero" type="text"
-                                                                                      value="${cliente.endereco.numero}"
-                                                                                      placeholder="Numero"/>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="control-group">
-
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">Bairro</span>
-                                                <input id="bairro"
-                                                       class="span11 mask text" name="bairro" type="text"
-                                                       value="${cliente.endereco.bairro}"
-                                                       placeholder="Digite o Bairro"/>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+<!--                                     <div class="controls"> -->
 
 
-                                    <div class="control-group">
+<!--                                         <div class="input-prepend"> -->
+<!--                                             <span class="add-on">Id</span> <input id="id"  -->
+<!--                                                                                   class="span11 mask text" name="id" -->
+<!--                                                                                   type="number" -->
+<%--                                                                                   value="${cliente.endereco.id}" --%>
+<!--                                                                                   placeholder="Digite o Id"/> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                                        <div class="controls">
-                                            <div class="input-prepend">
-                                                <span class="add-on">Cidade</span>
-                                                <input id="cidade" class="span11 mask text" name="cidade"
-                                                       type="text" value="${cliente.endereco.cidade}"
-                                                       placeholder="Digite a Cidade"/>
+<!--                                 <div class="control-group"> -->
 
-                                            </div>
+<!--                                     <div class="controls"> -->
 
-                                        </div>
-                                    </div>
+<!--                                         <div class="input-prepend"> -->
+<!--                                             <span class="add-on">Logradouro</span> <input id="logradouro" -->
+<!--                                                                                           class="" -->
+<!--                                                                                           name="logradouro" type="text" -->
+<%--                                                                                           value="${cliente.endereco.logradouro}" --%>
+<!--                                                                                           placeholder="Digite o Logradouro"/> -->
 
+<!--                                         </div> -->
 
-                                    <div class="control-group">
+<!--                                     </div> -->
 
-                                        <div class="controls">
+<!--                                     <div class="control-group"> -->
 
-                                            <div class="input-prepend">
-                                                <span class="add-on">UF</span>
-                                                <input id="uf" class="span11 mask text" name="uf" type="text"
-                                                       value="${cliente.endereco.uf}" placeholder="Digite a UF"/>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                         <div class="controls"> -->
 
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">N</span> <input id="numero" -->
+<!--                                                                                       class="" -->
+<!--                                                                                       name="numero" type="text" -->
+<%--                                                                                       value="${cliente.endereco.numero}" --%>
+<!--                                                                                       placeholder="Numero"/> -->
 
-                                    <div class="control-group">
+<!--                                             </div> -->
 
-                                        <div class="controls">
+<!--                                         </div> -->
 
-                                            <div class="input-prepend">
-                                                <span class="add-on">Cep</span>
-                                                <input id="cep" class="span11 mask text" name="cep"
-                                                       type="text" value="${cliente.endereco.cep}"
-                                                       placeholder="Digite o Cep" onblur="pesquisacep(this.value);"/>
+<!--                                     </div> -->
 
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                     <div class="control-group"> -->
 
+<!--                                         <div class="controls"> -->
 
-                                    <div class="control-group">
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Bairro</span> -->
+<!--                                                 <input id="bairro" -->
+<!--                                                        class="span11 mask text" name="bairro" type="text" -->
+<%--                                                        value="${cliente.endereco.bairro}" --%>
+<!--                                                        placeholder="Digite o Bairro"/> -->
 
-                                        <div class="controls">
+<!--                                             </div> -->
 
-                                            <div class="input-prepend">
-                                                <span class="add-on">P.Ref</span>
-                                                <input id="pontoreferencia" class=""
-                                                       name="pontoreferencia" type="text"
-                                                       value="${cliente.endereco.pontoreferencia}"
-                                                       placeholder="Digite o Ponto de Referencia"/>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                         </div> -->
 
-                                    <div class="control-group">
-
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">Compl.</span>
-                                                <input id="complemento" class="span11 mask text"
-                                                       name="complemento" type="text"
-                                                       value="${cliente.endereco.complemento}"
-                                                       placeholder="Digite o Complemneto"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">Ibge</span>
-                                                <input id="ibge" name="ibge"
-                                                       class="span11 m-wrap" type="text" value=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-group">
-
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">Cliente</span>
-                                                <input id="cliente" name="cliente"
-                                                       class="span11 m-wrap" type="number" value="${cliente.endereco.cliente.id }"/>
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                     </div> -->
 
 
-                                </div>
-                            </div>
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Cidade</span> -->
+<!--                                                 <input id="cidade" class="span11 mask text" name="cidade" -->
+<%--                                                        type="text" value="${cliente.endereco.cidade}" --%>
+<!--                                                        placeholder="Digite a Cidade"/> -->
+
+<!--                                             </div> -->
+
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">UF</span> -->
+<!--                                                 <input id="uf" class="span11 mask text" name="uf" type="text" -->
+<%--                                                        value="${cliente.endereco.uf}" placeholder="Digite a UF"/> --%>
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Cep</span> -->
+<!--                                                 <input id="cep" class="span11 mask text" name="cep" -->
+<%--                                                        type="text" value="${cliente.endereco.cep}" --%>
+<!--                                                        placeholder="Digite o Cep" onblur="pesquisacep(this.value);"/> -->
+
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">P.Ref</span> -->
+<!--                                                 <input id="pontoreferencia" class="" -->
+<!--                                                        name="pontoreferencia" type="text" -->
+<%--                                                        value="${cliente.endereco.pontoreferencia}" --%>
+<!--                                                        placeholder="Digite o Ponto de Referencia"/> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Compl.</span> -->
+<!--                                                 <input id="complemento" class="span11 mask text" -->
+<!--                                                        name="complemento" type="text" -->
+<%--                                                        value="${cliente.endereco.complemento}" --%>
+<!--                                                        placeholder="Digite o Complemneto"/> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Ibge</span> -->
+<!--                                                 <input id="ibge" name="ibge" -->
+<!--                                                        class="span11 m-wrap" type="text" value=""/> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+<!--                                     <div class="control-group"> -->
+
+<!--                                         <div class="controls"> -->
+
+<!--                                             <div class="input-prepend"> -->
+<!--                                                 <span class="add-on">Cliente</span> -->
+<!--                                                 <input id="cliente" name="cliente" -->
+<%--                                                        class="span11 m-wrap" type="number" value="${cliente.endereco.cliente.id }"/> --%>
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+
+<!--                                 </div> -->
+<!--                             </div> -->
 
                             <div class="form-actions">
-                                <input id="back" class="btn btn-primary" type="reset"
-                                       value="Voltar"/> <input id="next" class="btn btn-primary"
-                                                               type="submit" value="Pr�ximo"/>
-                                <div id="status"></div>
+<!--                                 <input id="back" class="btn btn-primary" type="reset" -->
+<!--                                        value="Voltar"/> <input id="next" class="btn btn-primary" -->
+<!--                                                                type="submit" value="SALVAR"/> -->
+<!--                                 <div id="status"></div> --> 
+
+                <input type="submit" value="Cadastrar" class="btn btn-success">
+
                             </div>
-                            <div id="submitted"></div>
+<!--                             <div id="submitted"></div> -->
 
                         </form>
 

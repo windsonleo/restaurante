@@ -4,7 +4,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/mesa/movimentacao" title="Go to Mesa" class="tip-bottom"><i class="icon-th"></i> Mesa</a><a href="#">Movimentação Mesa</a> <a href="#" class="current">Cadastro Mesa</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/mesas/movimentacao" title="Go to Mesa" class="tip-bottom"><i class="icon-th"></i> Mesa</a><a href="#">Movimentação Mesa</a> <a href="#" class="current">Cadastro Mesa</a> </div>
     <h1>Cadastro de Mesa</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -32,7 +32,7 @@
             <h5>Cadastro de Mesa</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/mesa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/mesas/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
                <div class="control-group">
                 <label class="control-label">Ativo?</label>

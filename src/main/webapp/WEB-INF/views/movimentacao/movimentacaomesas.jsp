@@ -18,7 +18,7 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Movimentação Mesa</h5>
           
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/mesa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
+                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/mesas/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
             </div>
           </div>
@@ -51,11 +51,11 @@
 								
 								
 								<a
-									href="${pageContext.request.contextPath}/mesa/editar?id=${mesa.id}"
+									href="${pageContext.request.contextPath}/mesas/editar?id=${mesa.id}"
 									title="Editar"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/mesa/informacoes?id=${mesa.id}"
+									href="${pageContext.request.contextPath}/mesas/informacoes?id=${mesa.id}"
 									title="Informações" ><i class="icon-info-sign"></i></a>
 									
 
@@ -69,7 +69,7 @@
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/mesa/delete?id=${mesa.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/mesas/delete?id=${mesa.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
            
             </div>
 

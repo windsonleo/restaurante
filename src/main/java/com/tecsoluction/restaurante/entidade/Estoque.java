@@ -88,7 +88,7 @@ public class Estoque implements Serializable {
     @MapKeyColumn(name = "ID")
     @Column(name = "qtd")
     @CollectionTable(name = "produtos_estoque", joinColumns = @JoinColumn(name = "id"))
-    private Map<Produto, Double> items = new HashMap<>();
+    private Map<Produto, BigDecimal> items = new HashMap<>();
 
 
     public Estoque() {
@@ -96,7 +96,7 @@ public class Estoque implements Serializable {
 
     }
 
-    public Estoque(Map<Double, Item> itens) {
+    public Estoque(Map<BigDecimal, Item> itens) {
         // TODO Auto-generated constructor stub
 
         //this.items = new HashMap<Produto,Double>();
@@ -108,16 +108,19 @@ public class Estoque implements Serializable {
         return nome.toUpperCase();
     }
 
-    public void AddProdutoEstoque(Produto produto, Double qtd) {
+    public void AddProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-        double vantigo = 0.0;
-        double vnovo = qtd;
+    	BigDecimal vantigo = new BigDecimal("0.0");
+    	BigDecimal vnovo = qtd;
+    	BigDecimal novo = new BigDecimal("0.0");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
 
                 vantigo = getItems().get(key);
-                double novo = vantigo + vnovo;
+               
+                 novo = novo.add(vantigo).add(vnovo);
+                
                 items.replace(key, vantigo, novo);
             }
         }
@@ -126,23 +129,28 @@ public class Estoque implements Serializable {
         }
     }
 
-    public void RetirarProdutoEstoque(Produto produto, Double qtd) {
+    public void RetirarProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-        double vantigo = 0.0;
-        double vnovo = 0.0;
+    	BigDecimal vantigo= new BigDecimal("0.0");
+    	BigDecimal vnovo = qtd;
+    	BigDecimal novo  = new BigDecimal("0.0");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
-                vantigo = getItems().get(key);
+               
+            	vantigo = getItems().get(key);
                 vnovo = qtd;
-                double novo = vantigo - vnovo;
+                
+                novo = vantigo.subtract(vnovo) ;
+                
                 items.replace(key, vantigo, novo);
             }
         }
         if (!getItems().containsKey(produto)) {
-            //vantigo = getItems().get(produto);
+           
+//        	vantigo = getItems().get(produto);
             vnovo = qtd;
-            double qtdnegativa = vantigo - vnovo;
+            BigDecimal qtdnegativa = vnovo;
             items.put(produto, qtdnegativa);
         }
     }
@@ -155,11 +163,11 @@ public class Estoque implements Serializable {
         
         for (Produto key : getItems().keySet()) {
            
-        	double qtd = getItems().get(key);
+        	BigDecimal qtd = getItems().get(key);
             
-            String qtdstring = Double.toString(qtd);
+//            String qtdstring = BigDecimal.valueOf(qtd);
             
-            BigDecimal quantidadef = new BigDecimal(qtdstring);
+            BigDecimal quantidadef =qtd;
             
             totalcusto.plus(totalcusto).plus(key.getPrecocusto().multiply(quantidadef));
         }
@@ -168,15 +176,16 @@ public class Estoque implements Serializable {
     }
 
     public Money CalcularTotalVenda() {
+    	
     	Money totalvenda =Money.of(usd, 0.00);
     	
         for (Produto key : getItems().keySet()) {
         	
-        	double qtd = getItems().get(key);
+        	BigDecimal qtd = getItems().get(key);
 
-        	   String qtdstring = Double.toString(qtd);
+//        	   String qtdstring = Double.toString(qtd);
                
-               BigDecimal quantidadef = new BigDecimal(qtdstring);
+               BigDecimal quantidadef = qtd;
                
                totalvenda.plus(totalvenda).plus(key.getPrecovenda().multiply(quantidadef));
         

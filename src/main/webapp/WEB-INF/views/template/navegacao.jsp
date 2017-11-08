@@ -124,7 +124,7 @@
     <li><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/fornecedor.png" /></i> <span>Fornecedor</span></a></li>
     <li><a href="${pageContext.request.contextPath}/garcon/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garcon.png" /></i> <span>Garçon</span></a></li>
 
-    <li><a href="${pageContext.request.contextPath}/mesa/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png" /></i> <span>Mesa</span></a></li>
+    <li><a href="${pageContext.request.contextPath}/mesas/movimentacao"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png" /></i> <span>Mesa</span></a></li>
     
         <li class="submenu"> <a href="#"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" /></i> <span>Produto</span> <span class="label label-important">3</span></a>
       <ul>

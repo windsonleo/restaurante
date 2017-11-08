@@ -2,6 +2,8 @@ package com.tecsoluction.restaurante.controller;
 
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
@@ -72,13 +74,13 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 	 private PedidoCompra pv;
 
 
-    private Map<Item, Double> itens = new HashedMap();
+    private Map<Item, BigDecimal> itens = new HashedMap();
 
     private List<Produto> produtosList;
 
     private List<Fornecedor> fornecedores;
 
-    private Money totalpedido =  Money.of(usd,0.00);
+    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 
     @Autowired
@@ -209,6 +211,8 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         String idf = request.getParameter("id");
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+        
+        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
 
 
         ModelAndView saveitempedidocompra = new ModelAndView("saveitempedidocompra");
@@ -233,7 +237,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 
         Item item = new Item(produto, pv);
-        item.setQtd(prodqtd);
+        item.setQtd(qtdbc);
 
         itens = pv.getItems();
         itens.put(item, item.getQtd());

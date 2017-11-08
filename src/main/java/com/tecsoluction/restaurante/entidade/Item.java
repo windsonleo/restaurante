@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Getter
 @Setter
@@ -41,7 +42,7 @@ public class Item implements Serializable, Comparable<Item> {
     private String descricao;
 
     @Column(name = "qtd")
-    private double qtd;
+    private BigDecimal qtd;
 
     @Column(name = "precounitario")
     private BigDecimal precoUnitario;
@@ -176,24 +177,24 @@ public class Item implements Serializable, Comparable<Item> {
 //    }
 //
 //
-//    public double getTotalItem() {
-//
+    public BigDecimal getTotalItem() {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(qtd * precoUnitario);
 //
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//        return valor;
-//    }
-//
-//
-//    public void setTotalItem(double totalItem) {
-//
+
+        return precoUnitario.multiply(qtd).setScale(4, RoundingMode.UP);
+    }
+
+
+    public void setTotalItem(BigDecimal totalItem) {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(totalItem);
 //
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//        this.totalItem = valor;
-//    }
+
+        this.totalItem = totalItem.setScale(4, RoundingMode.UP);;
+    }
 
 
 //    public Devolucao getDevolucao() {

@@ -67,7 +67,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
     private List<Produto> produtosList;
 
-    private Map<Item, Double> items = new HashMap<>();
+    private Map<Item, BigDecimal> items = new HashMap<>();
 
     private ProdutoComposto produtocomposto;
 
@@ -131,6 +131,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         if (produtocomposto == null) {
 
             items.clear();
+            
+            produtocomposto = new ProdutoComposto();
 
         }
 
@@ -214,7 +216,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
 
-        String idf = (request.getParameter("id"));
+        String idf = request.getParameter("id");
+       
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
         this.produtocomposto = produtocompostoService.findOne(idf);
@@ -223,16 +226,18 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         produtosList = produtoService.findAll();
 
 
-        totalitem = 0;
+        totalitem = 0.00;
 
-        Money precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+        BigDecimal precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+        
+        BigDecimal mult = new BigDecimal(2.00);
 
 
         produtocomposto.setPrecocusto(
-                produtocomposto.CalcularTotal(produtocomposto.getItens()).getAmountMajor(
-                ));
+                produtocomposto.CalcularTotal(produtocomposto.getItens()).setScale(4, RoundingMode.UP));
+       
         produtocomposto.setPrecovenda(
-                precovenda.multipliedBy(2, RoundingMode.UP).getAmountMajor()
+        		produtocomposto.getPrecocusto().multiply(mult).setScale(4, RoundingMode.UP)
         );
 
         additemprodutocomposto.addObject("produtocomposto", produtocomposto);
@@ -249,7 +254,13 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         String idf = (request.getParameter("id"));
         String idfprodcomp = (request.getParameter("idprocomp"));
+        
+       
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+        
+       
+        BigDecimal prodqtdbc = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+
 
 
         ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
@@ -275,25 +286,33 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         Item item = new Item(produto);
 
-        item.setQtd(prodqtd);
+        item.setQtd(prodqtdbc);
+        
+        item.setTotalItem(item.getTotalItem());
 
 
         itemService.save(item);
 
-        items = produtocomposto.getItens();
+      
 
-        items.put(item, item.getQtd());
-
+        items.put(item, item.getQtd().setScale(4, RoundingMode.UP));
+        
         produtocomposto.setItens(items);
-
-        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).getAmountMajor());
+        
+        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).setScale(4, RoundingMode.UP));
 
         produtocomposto.setPrecovenda(
-                produtocomposto.getPrecocusto().multiply(new BigDecimal(2))
+                produtocomposto.getPrecocusto().setScale(4, RoundingMode.UP).multiply(prodqtdbc)
         );
 
         produtocompostoService.save(produtocomposto);
 
+        
+        items = produtocomposto.getItens();
+
+      
+
+      
         additemprodutocomposto.addObject("produtocomposto", produtocomposto);
         additemprodutocomposto.addObject("produtosList", produtosList);
 

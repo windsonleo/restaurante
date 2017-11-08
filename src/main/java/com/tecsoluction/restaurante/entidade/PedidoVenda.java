@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,7 +85,7 @@ public class PedidoVenda extends Pedido implements Serializable {
     @Column(name = "qtd")
     @CollectionTable(name = "itens_pedidovenda", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, Double> items = new HashMap<>();
+    private Map<Item, BigDecimal> items = new HashMap<>();
 
     //CONSTRUTOR PADRÃO
     public PedidoVenda() {

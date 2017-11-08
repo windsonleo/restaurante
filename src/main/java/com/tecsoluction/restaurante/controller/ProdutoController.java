@@ -69,7 +69,7 @@ public class ProdutoController extends AbstractController<Produto> {
     @Override
     protected AbstractEntityService<Produto> getservice() {
         // TODO Auto-generated method stub
-        return null;
+        return produtoService;
     }
 
 

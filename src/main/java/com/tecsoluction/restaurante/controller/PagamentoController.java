@@ -3,6 +3,8 @@ package com.tecsoluction.restaurante.controller;
 
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -64,7 +66,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
     private Set<FormaPagamento> formas = new HashSet<>();
 
-    private Money totalpedido = Money.of(usd, 0.00);
+    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
     
     
 
@@ -148,7 +150,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         this.pagamento.setDatapagamento(new Date());
 
-        totalpedido = Money.of(usd, 0.00);
+        
 
 
         //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL

@@ -32,7 +32,7 @@
            					<c:forEach var="mesa" items="${mesasList}" varStatus="id">
               
                 				<li class="bg_lo">
-                				 <a href="${pageContext.request.contextPath}/mesa/detalhes?id=${mesa.id}">
+                				 <a href="${pageContext.request.contextPath}/mesas/detalhes?id=${mesa.id}">
 			       					<i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i>
          	
 						         		 <div class="huge">${mesa.id}</div>

@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.controller;
 
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Iterator;
@@ -102,7 +103,7 @@ public class EstoqueController extends AbstractController<Estoque> {
         Money totalvenda = Money.of(usd, 0.00);
 
 
-        Collection<Double> itenstotal = estoque.getItems().values();
+        Collection<BigDecimal> itenstotal = estoque.getItems().values();
 
         for (Iterator iterator = itenstotal.iterator(); iterator.hasNext(); ) {
             Double double1 = (Double) iterator.next();

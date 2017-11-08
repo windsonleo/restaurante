@@ -2,6 +2,8 @@ package com.tecsoluction.restaurante.controller;
 
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -81,11 +83,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     private PedidoVenda pv;
     
-    private Map<Item, Double> itens = new HashMap<>();
+    private Map<Item, BigDecimal> itens = new HashMap<>();
 
     private List<Produto> produtosList;
 
-    private Money totalpedido = Money.of(usd,0.00);
+    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     private Estoque estoque = new Estoque();
 
@@ -185,7 +187,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         for (Item key : pv.getItems().keySet()) {
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            Double qtd = key.getQtd();
+            BigDecimal qtd = key.getQtd();
 
             key.setEstoque(estoque);
 
@@ -265,6 +267,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+        
+        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
 
         Produto produto;
 
@@ -291,7 +295,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         Item item = new Item(produto, pedidov);
 
-        item.setQtd(prodqtd);
+        item.setQtd(qtdbc);
         item.setTotalItem(item.getTotalItem());
         item.setPedido(pedidov);
 
@@ -392,7 +396,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@Override
 	protected AbstractEntityService<PedidoVenda> getservice() {
 		// TODO Auto-generated method stub
-		return null;
+		return pedidovendaService;
 	}
 
 }

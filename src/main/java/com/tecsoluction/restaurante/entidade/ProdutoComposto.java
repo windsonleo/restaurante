@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     @Column(name = "qtd")
     @CollectionTable(name = "itens_produtocompostos", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, Double> itens = new HashMap<>();
+    private Map<Item, BigDecimal> itens = new HashMap<>();
 
 
     public ProdutoComposto() {
@@ -65,7 +66,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     public ProdutoComposto(String id, String foto, String nome, String codebar,
                            String descricao, UnidadeMedida un, BigDecimal precocusto,
                            BigDecimal precovenda, Fornecedor fornecedor, Categoria cat,
-                           boolean ativo, Map<Item, Double> itens, boolean esugestao) {
+                           boolean ativo, Map<Item, BigDecimal> itens, boolean esugestao) {
 
         super(id, foto, nome, codebar, descricao, un, precocusto, precovenda, fornecedor, cat, ativo, esugestao);
 
@@ -78,29 +79,39 @@ public class ProdutoComposto extends Produto implements Serializable {
     }
 
 
-    public Money CalcularTotal(Map<Item, Double> pitens) {
+    
+    @Override
+    public BigDecimal getPrecocusto() {
+    
+    	
+    	return CalcularTotal(getItens()).setScale(4, RoundingMode.UP);
+    }
+    
+    
+	@Override
+	public BigDecimal getPrecovenda() {
 
-        Money totalpedido = Money.of(usd, 0.00);
+		BigDecimal mult = new BigDecimal(2.00);
+		
+		return CalcularTotal(getItens()).setScale(4, RoundingMode.UP).multiply(mult);
+	}
+    
+    
+    
+  
+    public BigDecimal CalcularTotal(Map<Item, BigDecimal> pitens) {
 
-//     	Set<Item> keys = itens.keySet();
-        //
-//  	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+
 
         for (Item key : pitens.keySet()) {
-            totalpedido.plus(totalpedido).plus(key.getTotalItem());
+            totalpedido.add(totalpedido).add(key.getTotalItem().setScale(4, RoundingMode.UP));
         }
 
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//        for (int i = 0; i < itens.size(); i++) {
-//        	
-//            totalpedido += totalpedido + itens.get(i).getTotalItem();
-        //
-//  			
-//  		}
-
-//        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
         return totalpedido;
     }
+    
+    
+    
 
 }

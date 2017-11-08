@@ -1,11 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produtocomposto/movimentacao"  title="Go to " class="tip-bottom"><i class="icon-home"></i> Produto Composto</a> <a href="#">Movimentação Produto Composto </a> <a href="#" class="current">Add Item ao Produto Composto </a> </div>
-    <h1>Add Item ao Produto Composto <strong> ${produtocomposto.id }</strong></h1>
+    <h1>Add Item ao Produto Composto <strong> ${produtocomposto.nome }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
    <c:if test="${erros != null }">
@@ -86,7 +88,7 @@
                         
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Produto Composto : ${produtocomposto.id} <strong> ${produtocomposto.id }</strong></h5>
+            <h5>Detalhes do Produto Composto :  <strong> ${produtocomposto.nome}</strong></h5>
            
           </div>
                     <div class="widget-content nopadding">               			 						
@@ -128,11 +130,13 @@
 					</select>
 					
 					<input id="precocusto" class="form-control"
-						name="precocusto" type="text" value="${produtocomposto.precocusto}"
+						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
+                                                                  value="${produtocomposto.precocusto}"/>"
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
 					<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="${produtocomposto.precovenda }"
+						name="precovenda" type="text" value="        <fmt:formatNumber type="currency"
+                                                                  value="${produtocomposto.precovenda}"/>"
 						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
 				
                 </div>
@@ -150,7 +154,7 @@
 
  <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Produto Composto : <strong> ${produtocomposto.id }</strong></h5>
+            <h5>Itens do Produto Composto : <strong> ${produtocomposto.nome }</strong></h5>
            
           </div>
      

@@ -16,6 +16,7 @@ import javax.persistence.*;
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public abstract class Pedido {
 
 
     @Column(name = "total")
-    private Money  total =  Money.of(usd,0.00);
+    private BigDecimal  total =  new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE)
@@ -73,19 +74,20 @@ public abstract class Pedido {
 //        pagamentos = new ArrayList<>();
     }
 
-//    public double getTotal() {
-//
+    public BigDecimal getTotal() {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(total);
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//        return valor;
-//    }
-//
-//    public void setTotal(double total) {
-//
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(total);
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//        this.total = valor;
-//    }
+       
+    	this.total = total;
+    }
 
 //    public List<Pagamento> getPagamentos() {
 //        return pagamentos;
@@ -111,28 +113,18 @@ public abstract class Pedido {
         return String.valueOf(id);
     }
 
-    public Money CalcularTotal(Map<Item, Double> itens) {
+    public BigDecimal CalcularTotal(Map<Item, BigDecimal> itens) {
 
-        Money totalpedido = Money.of(usd, 0.00);
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-//   	Set<Item> keys = itens.keySet();
-//	
-//	TreeSet<Item> keysorder = new TreeSet<Item>(keys);
 
         for (Item key : itens.keySet()) {
-            totalpedido.plus(totalpedido).plus(key.getTotalItem());
+           
+        	totalpedido.add(totalpedido).add(key.getTotalItem());
         }
 
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//      for (int i = 0; i < itens.size(); i++) {
-//      	
-//          totalpedido += totalpedido + itens.get(i).getTotalItem();
-//
-//			
-//		}
 
-//        String precoformat = DadosGerenciais.transfomarPreco(totalpedido);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
         return totalpedido;
     }
 }

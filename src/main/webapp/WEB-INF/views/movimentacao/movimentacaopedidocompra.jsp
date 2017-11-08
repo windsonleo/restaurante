@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -55,7 +57,12 @@
   <tr class="gradeX">
 
 			      <td>${pedidocompra.id}</td>
-                  <td>${pedidocompra.data}</td>
+                  <td>
+                  
+ 					<fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${pedidocompra.data}"/>                  
+                  
+                  </td>
 <%-- 				<td>${pedidocompra.situacao}</td> --%>
 <c:choose>
 				    <c:when test="${pedidocompra.status=='ABERTO'}">
@@ -102,7 +109,9 @@
 
 <%--                   <td><span class="label label-info">${pedidocompra.status}</span></td> --%>
 <%--                  <td>${pedidocompra.origempedido}</td> --%>
-                 <td>${pedidocompra.total}</td>
+                 <td><fmt:formatNumber type="currency"
+                 value="${pedidocompra.total}"/>
+                 </td>
                  <td>${pedidocompra.fornecedor}</td>
 <%--                  <td>${pedidocompra.mesa}</td> --%>
 <%--                  <td>${pedidocompra.garcon}</td> --%>

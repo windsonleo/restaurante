@@ -68,6 +68,7 @@ public class EnderecoController extends AbstractController<Endereco> {
         });
     }
 
+    
 	@Override
 	protected AbstractEntityService<Endereco> getservice() {
 

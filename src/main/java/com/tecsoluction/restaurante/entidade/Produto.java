@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import javax.persistence.CascadeType;
@@ -128,38 +129,40 @@ public class Produto implements Serializable {
 //    	this.fornecedor = forn;
 //    }
 
-//    public double getPrecocusto() {
-//
+    public BigDecimal getPrecocusto() {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
 //
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//
-//        return valor;
-//    }
-//
-//    public void setPrecocusto(double preco) {
+
+
+//        return precocusto.setScale(4, RoundingMode.UP);
+    	
+    	return precocusto;
+    }
+
+    public void setPrecocusto(BigDecimal preco) {
 //        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//        this.precocusto = valor;
-//    }
-//
-//    public double getPrecovenda() {
-//
+
+        this.precocusto = preco;
+    }
+
+    public BigDecimal getPrecovenda() {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//        return valor;
-//    }
-//
-//    public void setPrecovenda(double precoVenda) {
-//
+
+        return precovenda.setScale(4, RoundingMode.UP);
+    }
+
+    public void setPrecovenda(BigDecimal precoVenda) {
+
 //        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-//
-//        this.precovenda = valor;
-//    }
+
+        this.precovenda = precoVenda;
+    }
 
     @Override
     public String toString() {

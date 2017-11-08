@@ -79,6 +79,10 @@
                                                 <a
                                                         href="${pageContext.request.contextPath}/cliente/editar?id=${cliente.id}"
                                                         title="Editar"><i class="icon-edit"></i> </a>
+                                                        
+                                                <a
+                                                        href="${pageContext.request.contextPath}/cliente/addEndereco?id=${cliente.id}"
+                                                        title="Add Endereco"><i class="icon-edit"></i> </a>
 
                                                 <a
                                                         href="${pageContext.request.contextPath}/cliente/informacoes?id=${cliente.id}"

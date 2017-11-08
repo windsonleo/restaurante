@@ -39,6 +39,7 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
     }
 
+    
     public Usuario findByUsername(String username) {
 
         return dao.findByUsername(username);
