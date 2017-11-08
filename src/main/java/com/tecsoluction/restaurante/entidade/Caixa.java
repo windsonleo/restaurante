@@ -1,20 +1,24 @@
 package com.tecsoluction.restaurante.entidade;
 
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.framework.BaseEntity;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.NotBlank;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter

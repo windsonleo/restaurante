@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.exception.CustomGenericException;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 /**
  * Created by clebr on 01/09/2016.
@@ -16,35 +15,31 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @ControllerAdvice
 public class ContextoAplicacao {
 
-//	@Autowired
-//	private 
-//	UsuarioServicoImpl userservice;
-	
+	// @Autowired
+	// private
+	// UsuarioServicoImpl userservice;
 
-//    @Autowired
-//    public ContextoAplicacao(UsuarioServicoImpl sevice) {
-//
-//        this.userservice = sevice;
-//    }
-    
-    
-    @Autowired
-    public ContextoAplicacao() {
+	// @Autowired
+	// public ContextoAplicacao(UsuarioServicoImpl sevice) {
+	//
+	// this.userservice = sevice;
+	// }
 
-//        this.userservice = sevice;
-    }
-    
+	@Autowired
+	public ContextoAplicacao() {
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
-      
-//    	Usuario usuarioAtt = dao.PegarPorId(100L);
-//       
-//        model.addAttribute("usuarioAtt", usuarioAtt);
-    }
-    
-    
-    @ExceptionHandler(CustomGenericException.class)
+		// this.userservice = sevice;
+	}
+
+	@ModelAttribute
+	public void addAttributes(Model model) {
+
+		// Usuario usuarioAtt = dao.PegarPorId(100L);
+		//
+		// model.addAttribute("usuarioAtt", usuarioAtt);
+	}
+
+	@ExceptionHandler(CustomGenericException.class)
 	public ModelAndView handleCustomException(CustomGenericException ex) {
 
 		ModelAndView model = new ModelAndView("erro");
@@ -64,6 +59,5 @@ public class ContextoAplicacao {
 		return model;
 
 	}
-    
-    
+
 }
