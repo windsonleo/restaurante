@@ -39,5 +39,23 @@ public class ProdutoCompostoServicoImpl extends AbstractEntityService<ProdutoCom
         return dao.getAllProdutoPorCategoria(idcategoria);
     }
 
+	@Override
+	protected void validateSave(ProdutoComposto post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(ProdutoComposto post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

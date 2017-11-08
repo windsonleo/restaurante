@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true"%>
 
 
@@ -187,11 +189,13 @@
                 <label class="control-label">Preço</label>
                 <div class="controls">
 						<input id="precocusto" class="form-control"
-						name="precocusto" type="text" value="${produtocomposto.precocusto}"
+						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
+                                                                  value="${produtocomposto.precocusto}"/>"
 						placeholder="Digite o Preco de Custo" />
 						
 						<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="${produtocomposto.precovenda}"
+						name="precovenda" type="text" value="<fmt:formatNumber type="currency"
+                                                                  value="${produtocomposto.precovenda}"/>"
 						placeholder="Digite o Preco de Venda" />			
 				
                 </div>

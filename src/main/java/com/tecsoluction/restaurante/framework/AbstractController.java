@@ -66,6 +66,7 @@ public abstract class AbstractController<Entity> {
 		return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro"); // cadastroEntity;
 	}
 
+	
 	@GetMapping(value = "movimentacao")
 	public ModelAndView movimentacaoEntity() {
 
@@ -74,12 +75,32 @@ public abstract class AbstractController<Entity> {
 		movimentacao.addObject(entityAlias + "List", entityList);
 		return movimentacao;
 	}
+	
+	
 
 	@Transactional
 	@GetMapping(value = "editar")
-	public ModelAndView editarEntityForm(HttpServletRequest request) {
+	public ModelAndView editarEntityForm(@ModelAttribute @Valid Entity entity, BindingResult result,
+			RedirectAttributes attributes) {
 
-        if (result.hasErrors()) {
+		ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
+	
+		cadastroEntity.addObject("acao", "edicao");
+
+
+		return cadastroEntity;
+	}
+	
+	
+	@Transactional
+	@PostMapping(value = "edicao")
+	public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
+			RedirectAttributes attributes) {
+
+		ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
+
+		
+		if (result.hasErrors()) {
             System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());
             System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
             System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
@@ -87,32 +108,17 @@ public abstract class AbstractController<Entity> {
             attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
         
         } else {
-            getservice().save(entity);
-            System.out.println("add: " + entityAlias);
+            getservice().edit(entity);
+            System.out.println("edit: " + entityAlias);
+            
+        }
+		
+//		cadastroEntity.addObject("acao", "edicao");
 
-		return edicao;
+		
+
+		return cadastroEntity;
 	}
-
-//        cadastroEntity.addObject("entity", entity);
-        cadastroEntity.addObject("acao", "add");
-        
-//        return cadastroEntity;
-        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro");  //cadastroEntity;
-    }
-
-		} else {
-			getservice().save(entity);
-			System.out.println("Editado:" + entityAlias);
-			attributes.addFlashAttribute("mensagem", "Sucesso ao Editar.");
-			attributes.addFlashAttribute("entity", entity.toString());
-		}
-
-        ModelAndView movimentacao = new ModelAndView("movimentacao" + entityAlias);
-        List<Entity> entityList = getservice().findAll();
-        movimentacao.addObject(entityAlias + "List", entityList);
-   
-        return movimentacao;
-    }
 
 	@Transactional
 	@GetMapping(value = "delete")

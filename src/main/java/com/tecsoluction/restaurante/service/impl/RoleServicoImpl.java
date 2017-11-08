@@ -31,5 +31,23 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
         return roledao;
     }
 
+	@Override
+	protected void validateSave(Role post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Role post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -62,4 +62,16 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
 	}
 
+	@Override
+	protected void validateSave(Categoria post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Categoria post) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

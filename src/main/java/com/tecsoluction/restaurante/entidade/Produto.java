@@ -120,49 +120,10 @@ public class Produto implements Serializable {
 
     public Produto() {
         super();
-//    	this.esugestao= false;
+
     }
 
-//    public Produto(Categoria cat, Fornecedor forn) {
-//      
-//    	this.categoria = cat;
-//    	this.fornecedor = forn;
-//    }
 
-    public BigDecimal getPrecocusto() {
-
-//        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-//
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-
-//        return precocusto.setScale(4, RoundingMode.UP);
-    	
-    	return precocusto;
-    }
-
-    public void setPrecocusto(BigDecimal preco) {
-//        String precoformat = DadosGerenciais.transfomarPreco(precocusto);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.precocusto = preco;
-    }
-
-    public BigDecimal getPrecovenda() {
-
-//        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        return precovenda.setScale(4, RoundingMode.UP);
-    }
-
-    public void setPrecovenda(BigDecimal precoVenda) {
-
-//        String precoformat = DadosGerenciais.transfomarPreco(precovenda);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
-
-        this.precovenda = precoVenda;
-    }
 
     @Override
     public String toString() {

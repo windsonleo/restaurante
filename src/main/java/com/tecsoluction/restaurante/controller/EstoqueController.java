@@ -88,7 +88,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 		Money totalcusto = Money.of(usd, 0.00);
 		Money totalvenda = Money.of(usd, 0.00);
 
-		Collection<Double> itenstotal = estoque.getItems().values();
+		Collection<BigDecimal> itenstotal = estoque.getItems().values();
 
 		for (Iterator iterator = itenstotal.iterator(); iterator.hasNext();) {
 			Double double1 = (Double) iterator.next();
@@ -112,36 +112,6 @@ public class EstoqueController extends AbstractController<Estoque> {
 
 		return informacoesestoque;
 	}
-
-
-        Collection<BigDecimal> itenstotal = estoque.getItems().values();
-
-        for (Iterator iterator = itenstotal.iterator(); iterator.hasNext(); ) {
-            Double double1 = (Double) iterator.next();
-
-            totalitens = totalitens + double1;
-
-        }
-
-
-        DecimalFormat df = new DecimalFormat("0.##");
-
-
-        totalcusto = estoque.CalcularTotalCusto();
-        totalvenda = estoque.CalcularTotalVenda();
-
-        String stringcusto = df.format(totalcusto);
-        String stringvenda = df.format(totalvenda);
-        
-        informacoesestoque.addObject("estoque", estoque);
-        informacoesestoque.addObject("qtditens", totalitens);
-        informacoesestoque.addObject("totalcusto", stringcusto);
-        informacoesestoque.addObject("totalvenda", stringvenda);
-
-
-        return informacoesestoque;
-    }
-
 
 	@Override
 	protected AbstractEntityService<Estoque> getservice() {

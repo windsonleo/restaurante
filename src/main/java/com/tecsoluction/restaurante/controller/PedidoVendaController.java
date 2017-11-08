@@ -65,26 +65,34 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 	private final EstoqueServicoImpl estoqueService;
 
-	private PedidoVenda pv;
-
-	private Map<Item, Double> itens = new HashMap<>();
-
 	private List<Produto> produtosList;
 
-	private Money totalpedido = Money.of(usd, 0.00);
+    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     private PedidoVenda pv;
     
     private Map<Item, BigDecimal> itens = new HashMap<>();
+    
+    private Estoque estoque;
 
 	@Autowired
 	public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
 			ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
 			UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
 		super("pedidovenda");
+		
+		this.pedidovendaService =dao;
+		this.itemService = daoitem;
+		this.produtoService = produtodao;
+		this.clienteService = daocliente;
+		this.mesaService = daomesa;
+		this.garconService = daogarcon;
+		this.userservice = daousu;
+		this.estoqueService = estdao;
 
-    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
+	
+	
 	}
 
 	@InitBinder
@@ -155,7 +163,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		for (Item key : pv.getItems().keySet()) {
 
 			Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-			Double qtd = key.getQtd();
+			BigDecimal qtd = key.getQtd();
 
 			key.setEstoque(estoque);
 
@@ -177,17 +185,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		return finalizacaovenda;
 	}
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
-
-		ModelAndView novospedidos = new ModelAndView("novospedidos");
-
-		List<PedidoVenda> vendas = pedidovendaService.findAll();
-
-		novospedidos.addObject("pedidovendasList", vendas);
-
-		return novospedidos;
-	}
 
 	@RequestMapping(value = "additem", method = RequestMethod.GET)
 	public ModelAndView additemvendaForm(HttpServletRequest request) {
@@ -220,6 +217,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		String prodid = request.getParameter("produtoescolhido");
 
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+		
+		BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+
 
 		Produto produto;
 
@@ -244,7 +244,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 		Item item = new Item(produto, pedidov);
 
-		item.setQtd(prodqtd);
+		item.setQtd(qtdbd);
 		item.setTotalItem(item.getTotalItem());
 		item.setPedido(pedidov);
 
@@ -277,21 +277,21 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		return detalhespedidovenda;
 	}
 
-	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-	public ModelAndView detalhesItem(HttpServletRequest request) {
-
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-        
-        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
-
-		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
-
-		Item item = itemService.findOne(idf);
-
-		detalhesitem.addObject("item", item);
-
-		return detalhesitem;
-	}
+//	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+//	public ModelAndView detalhesItem(HttpServletRequest request) {
+//
+//        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+//        
+//        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
+//
+//		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+//
+//		Item item = itemService.findOne(idf);
+//
+//		detalhesitem.addObject("item", item);
+//
+//		return detalhesitem;
+//	}
 
 	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
 	public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
@@ -304,19 +304,19 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 	}
 
-	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
-	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
+//	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
+//	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
-		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
+//		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
+//
+//		ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
+//		entregas.addObject("pedidovendaList", pedidoVendaList);
+//
+//        item.setQtd(qtdbc);
+//        item.setTotalItem(item.getTotalItem());
+//        item.setPedido(pedidov);
 
-		ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
-		entregas.addObject("pedidovendaList", pedidoVendaList);
-
-        item.setQtd(qtdbc);
-        item.setTotalItem(item.getTotalItem());
-        item.setPedido(pedidov);
-
-	}
+//	}
 
 	@RequestMapping(value = "rapido", method = RequestMethod.GET)
 	public ModelAndView NovosPedidosRapido(HttpServletRequest request) {

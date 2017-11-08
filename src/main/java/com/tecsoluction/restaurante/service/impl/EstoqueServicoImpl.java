@@ -31,5 +31,23 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Estoque post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Estoque post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

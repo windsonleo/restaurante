@@ -63,7 +63,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
     private Map<Item, BigDecimal> items = new HashMap<>();
 
-	private ProdutoComposto produtocomposto;
+	private ProdutoComposto produtocomposto = null;
 
 	private double totalitem;
 
@@ -72,6 +72,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 			FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod,
 			ItemServicoImpl it) {
 		super("produtocomposto");
+		
 		this.produtocompostoService = dao;
 		this.categoriaService = categoriaDao;
 		this.fornecedorService = fornecedorDao;
@@ -101,7 +102,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		List<Categoria> categoriaList = categoriaService.findAll();
 		List<Fornecedor> fornecedorList = fornecedorService.findAll();
-		produtoList = produtocompostoService.findAll();
+		produtoList = getservice().findAll();
 		produtosList = produtoService.findAll();
 
 		UnidadeMedida[] umList = UnidadeMedida.values();
@@ -115,6 +116,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		if (produtocomposto == null) {
 
 			items.clear();
+			
+			produtocomposto = new ProdutoComposto();
 
 		}
 
@@ -138,70 +141,65 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		return novosprodutos;
 	}
 
-            items.clear();
-            
-            produtocomposto = new ProdutoComposto();
 
-		String idf = (request.getParameter("id"));
 
-		ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
-
-		ProdutoComposto produto = produtocompostoService.findOne(idf);
-
-		detalhesproduto.addObject("produto", produto);
-
-		return detalhesproduto;
-	}
-
-	@RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
-	public ModelAndView AdicionarItemProdutoComposto(HttpServletRequest request) {
-
-		if (produtocomposto != null) {
-
-			produtocomposto.setItens(items);
-
-		} else {
-
-			produtocomposto = new ProdutoComposto();
-			items.clear();
-		}
-
-		String idf = (request.getParameter("itenss"));
-
-		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-
-		Produto produto = produtoService.findOne(idf);
-
-		System.out.println("produto" + produto.toString());
-
-		ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
-
-		cadastroprodutocomposto.addObject("items", items);
-		cadastroprodutocomposto.addObject("produtocomposto", produtocomposto);
-
-		return cadastroprodutocomposto;
-	}
+//	@RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
+//	public ModelAndView AdicionarItemProdutoComposto(HttpServletRequest request) {
+//
+//		if (produtocomposto != null) {
+//
+//			produtocomposto.setItens(items);
+//
+//		} else {
+//
+//			produtocomposto = new ProdutoComposto();
+//			items.clear();
+//		}
+//
+//		String idf = (request.getParameter("itenss"));
+//
+//		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+//
+//		Produto produto = produtoService.findOne(idf);
+//
+//		System.out.println("produto" + produto.toString());
+//
+//		ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
+//
+//		cadastroprodutocomposto.addObject("items", items);
+//		cadastroprodutocomposto.addObject("produtocomposto", produtocomposto);
+//
+//		return cadastroprodutocomposto;
+//	}
 
 	@RequestMapping(value = "additem", method = RequestMethod.GET)
 	public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
-		String idf = (request.getParameter("id"));
+		String idf = request.getParameter("id");
+		
 		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
-		this.produtocomposto = produtocompostoService.findOne(idf);
+		produtocomposto = new ProdutoComposto();
+		produtocomposto = produtocompostoService.findOne(idf);
 
 		produtosList = produtoService.findAll();
 
-		totalitem = 0;
-
-		Money precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
-
-		produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(produtocomposto.getItens()).getAmountMajor());
-		produtocomposto.setPrecovenda(precovenda.multipliedBy(2, RoundingMode.UP).getAmountMajor());
+//		BigDecimal precovenda = produtocomposto.getPrecovenda();
+//		BigDecimal precocusto = produtocomposto.getPrecocusto();
+			
+//		totalitem = produtocomposto.
+		
+//		(produtocomposto.getItens());
+		
+//		BigDecimal mult = new BigDecimal(2.00);
+		
+//		produtocomposto.setPrecocusto(produtocomposto.getPrecocusto());
+//		produtocomposto.setPrecovenda(produtocomposto.getPrecovenda());
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList);
-		additemprodutocomposto.addObject("totalitem", totalitem);
+//		additemprodutocomposto.addObject("precovenda", produtocomposto.getPrecovenda());
+//		additemprodutocomposto.addObject("precocusto", produtocomposto.getPrecocusto());
 
 		return additemprodutocomposto;
 	}
@@ -213,6 +211,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		String idfprodcomp = (request.getParameter("idprocomp"));
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
+		BigDecimal qtdbc= BigDecimal.valueOf(prodqtd);
+		
 		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
 		Produto produto;
@@ -235,127 +235,56 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		Item item = new Item(produto);
 
-		item.setQtd(prodqtd);
+		item.setQtd(qtdbc);
+		
+		item.setTotalItem(item.getTotalItem());
 
 		itemService.save(item);
+		
+		
+//		boolean vazio = produtocomposto.getItens().isEmpty();
+		
+//		if(vazio == true){
+			
+			items.put(item, item.getQtd());
+			produtocomposto.setItens(items);
+		
+//		}else {
+			
+			items  = produtocomposto.getItens();
+//			items.put(item, item.getQtd());
 
-		items = produtocomposto.getItens();
+			
+//		}
+		
+				
+//		BigDecimal precovenda = produtocomposto.getPrecovenda();
+//		BigDecimal precocusto = produtocomposto.getPrecocusto();
+		
+//		totalitem = produtocomposto.CalcularTotal(items);
 
-		items.put(item, item.getQtd());
 
-        String idf = request.getParameter("id");
-       
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
-
-		produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).getAmountMajor());
-
-		produtocomposto.setPrecovenda(produtocomposto.getPrecocusto().multiply(new BigDecimal(2)));
+//		produtocomposto.setPrecocusto(precocusto);
+//
+//		produtocomposto.setPrecovenda(precovenda);
+		
+		produtocomposto.setItens(items);
 
 		produtocompostoService.save(produtocomposto);
+		
+		itemService.save(item);
+
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-		additemprodutocomposto.addObject("produtosList", produtosList);
-
-        totalitem = 0.00;
-
-        BigDecimal precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+		additemprodutocomposto.addObject("produtosList", produtosList); 
+		
+		
         
-        BigDecimal mult = new BigDecimal(2.00);
-
-		ModelAndView cadastro = new ModelAndView("cadastroprodutocomposto");
-
-        produtocomposto.setPrecocusto(
-                produtocomposto.CalcularTotal(produtocomposto.getItens()).setScale(4, RoundingMode.UP));
-       
-        produtocomposto.setPrecovenda(
-        		produtocomposto.getPrecocusto().multiply(mult).setScale(4, RoundingMode.UP)
-        );
-
-		String path = session.getServletContext().getRealPath("/");
-
-		String d = request.getContextPath();
-
-		String pathh = "/resources/images/produto";
-		// string pathh = file.get
-		String filename = file.getOriginalFilename();
-
-		System.out.println("Caminho" + path + " " + filename);
-
-		System.out.println("request end" + d + pathh + "/" + filename);
-
-        String idf = (request.getParameter("id"));
-        String idfprodcomp = (request.getParameter("idprocomp"));
-        
-       
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-        
-       
-        BigDecimal prodqtdbc = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
-
-			byte barr[] = file.getBytes();
-
-
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
-
-			cadastro.addObject("mensagem", mensagem);
-			cadastro.addObject("filename", filename);
-			cadastro.addObject("produto", produtocomposto);
-			cadastro.addObject("acao", "add");
-
-		} catch (Exception e) {
-
-			System.out.println(e);
-
-			cadastro.addObject("erros", erros + e);
-
-		}
-
-		return cadastro;
+		return additemprodutocomposto;
 
 	}
 
-	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
-	public ModelAndView gerenciarProduto(HttpServletRequest request) {
-
-		String idf = (request.getParameter("id"));
-
-		ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
-
-        item.setQtd(prodqtdbc);
-        
-        item.setTotalItem(item.getTotalItem());
-
-		detalhesproduto.addObject("produto", produto);
-
-		return detalhesproduto;
-	}
-
       
-
-        items.put(item, item.getQtd().setScale(4, RoundingMode.UP));
-        
-        produtocomposto.setItens(items);
-        
-        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).setScale(4, RoundingMode.UP));
-
-        produtocomposto.setPrecovenda(
-                produtocomposto.getPrecocusto().setScale(4, RoundingMode.UP).multiply(prodqtdbc)
-        );
-
-        produtocompostoService.save(produtocomposto);
-
-        
-        items = produtocomposto.getItens();
-
-      
-
-      
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-        additemprodutocomposto.addObject("produtosList", produtosList);
-
-
-        return additemprodutocomposto;
-    }
 
     @RequestMapping(value = "salvarfotocomposto", method = RequestMethod.POST)
     public ModelAndView SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request) {

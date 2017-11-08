@@ -192,24 +192,6 @@ public class ClienteController extends AbstractController<Cliente> {
 		return new ModelAndView("redirect:/cliente/movimentacao");
 	}
 	
-	
-	
-	
-	
-	
-	
-	 @RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)
-	  	public ModelAndView  gerenciarProdutoLocalizarProduto(HttpServletRequest request){
-	    	
-	    	
-	    	String idf = (request.getParameter("id"));
-	    	
-	    	ModelAndView gerencia = new ModelAndView("gerenciacliente");
-	    	
-	    	
-	    	Cliente cliente = getservice().findOne(idf);
-	    	 
-	    	gerencia.addObject("cliente", cliente);
 
 	@RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)
 	public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {

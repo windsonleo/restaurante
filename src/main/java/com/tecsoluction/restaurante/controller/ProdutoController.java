@@ -43,6 +43,11 @@ public class ProdutoController extends AbstractController<Produto> {
 	private CategoriaServicoImpl categoriaService;
 
 	private List<Produto> produtoList;
+	
+	private List<Fornecedor> fornecedorList;
+	
+	private List<Categoria> categoriaList;
+
 
 	@Autowired
 	public ProdutoController(ProdutoServicoImpl dao, CategoriaServicoImpl categoriaDao,
@@ -54,11 +59,6 @@ public class ProdutoController extends AbstractController<Produto> {
 		this.userservice = usudao;
 	}
 
-	@Override
-	protected AbstractEntityService<Produto> getservice() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
@@ -74,21 +74,19 @@ public class ProdutoController extends AbstractController<Produto> {
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
-    @Override
-    protected AbstractEntityService<Produto> getservice() {
-        // TODO Auto-generated method stub
-        return produtoService;
-    }
-
 		UnidadeMedida[] umList = UnidadeMedida.values();
 
 		Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
 		usuario = userservice.findByUsername(usuario.getUsername());
+		
+		categoriaList = categoriaService.findAll();
+		
+		fornecedorList = fornecedorService.findAll();
+		
+		
 
 		model.addAttribute("usuarioAtt", usuario);
-
 		model.addAttribute("produtosList", produtoList);
 		model.addAttribute("fornecedorList", fornecedorList);
 		model.addAttribute("categoriaList", categoriaList);
@@ -200,5 +198,11 @@ public class ProdutoController extends AbstractController<Produto> {
 
 		return gerencia;
 	}
+	
+    @Override
+    protected AbstractEntityService<Produto> getservice() {
+        // TODO Auto-generated method stub
+        return produtoService;
+    }
 
 }

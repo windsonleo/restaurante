@@ -55,11 +55,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 	private List<Item> itens = new ArrayList<>();
 
-	private Map<Item, Double> itensRecebimentoCorfirmados = new HashMap<>();
-
 	private List<Produto> produtosList = new ArrayList<>();
-
-	private Money totalpedido = Money.of(usd, 0.00);
 
 	private Recebimento recebimento = new Recebimento();
 
@@ -67,19 +63,27 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     private
     Map<Item, BigDecimal> itensRecebimentoCorfirmados = new HashMap<>();
-
+    
+    private
+    BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    
+    
+    public RecebimentoController(UsuarioServicoImpl usudao,EstoqueServicoImpl estdao,RecebimentoServicoImpl recdao,PedidoCompraServicoImpl pcdao,
+    		ItemServicoImpl itdao,ProdutoServicoImpl proddao,FornecedorServicoImpl fordao) {
+	
 		super("recebimento");
-		this.pedidocompraService = dao;
-		this.itemService = daoitem;
-		this.produtoService = ProdutoServicoImpl;
-		this.fornecedorService = fdao;
-		this.userservice = daousu;
-		this.recebimentoService = daorec;
+		this.pedidocompraService = pcdao;
+		this.itemService = itdao;
+		this.produtoService = proddao;
+		this.fornecedorService = fordao;
+		this.userservice = usudao;
+		this.recebimentoService = recdao;
 		this.estoqueService = estdao;
 	}
 
-    private
-    BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+
+    @InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
 		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(fornecedorService) {
 
@@ -136,7 +140,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 		for (Item key : this.recebimento.getItems().keySet()) {
 
 			Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-			Double qtd = key.getQtd();
+			BigDecimal qtd = key.getQtd();
 
 			key.setEstoque(estoque);
 
@@ -168,15 +172,11 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 		this.recebimento = recebimentoService.findOne(idf);
 
-		totalpedido = Money.of(usd, 0.00);
+//		totalpedido = Money.of(usd, 0.00);
 
 		this.recebimento.setTotal(totalpedido);
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
-
-		itensRecebimentoCorfirmados.clear();
-
+    
 		return additempedidovenda;
 	}
 
@@ -197,7 +197,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 			return additempedidovenda;
 		}
 
-		totalpedido = Money.of(usd, 0.00);
+//		totalpedido = Money.of(usd, 0.00);
 
 		totalpedido = pv.CalcularTotal(pv.getItems());
 
@@ -284,20 +284,6 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 			additemrecebimento.addObject("recebimento", recebimento);
 			additemrecebimento.addObject("itens", itens);
 			additemrecebimento.addObject("erros", erros);
-
-		} else {
-
-			erros = "item retornado Nulo IF";
-
-			additemrecebimento.addObject("pedidocompra", pv);
-			additemrecebimento.addObject("acao", "add");
-			additemrecebimento.addObject("recebimento", recebimento);
-			additemrecebimento.addObject("itens", itens);
-			additemrecebimento.addObject("erros", erros);
-
-			return additemrecebimento;
-
-		}
 
 		return additemrecebimento;
 	}

@@ -58,7 +58,6 @@ public class ProdutoComposto extends Produto implements Serializable {
     public ProdutoComposto() {
         // TODO Auto-generated constructor stub
         // items = new ArrayList<Item>();
-        super();
 
     }
 
@@ -80,22 +79,36 @@ public class ProdutoComposto extends Produto implements Serializable {
 
 
     
-    @Override
-    public BigDecimal getPrecocusto() {
+//    @Override
+//    public BigDecimal getPrecocusto() {
+//    
+//    	
+//    	return  CalcularTotal(getItens()).setScale(4, RoundingMode.UP);
+//    }
+//    
+//    
+//	@Override
+//	public BigDecimal getPrecovenda() {
+//
+//		BigDecimal mult = new BigDecimal(2.00);
+//		
+//		return CalcularTotal(getItens()).setScale(4, RoundingMode.UP).multiply(mult).setScale(4, RoundingMode.HALF_UP);
+//	}
     
-    	
-    	return CalcularTotal(getItens()).setScale(4, RoundingMode.UP);
-    }
-    
-    
-	@Override
-	public BigDecimal getPrecovenda() {
-
-		BigDecimal mult = new BigDecimal(2.00);
-		
-		return CalcularTotal(getItens()).setScale(4, RoundingMode.UP).multiply(mult);
-	}
-    
+	
+//	@Override
+//	public void setPrecocusto(BigDecimal preco) {
+//		// TODO Auto-generated method stub
+//		super.setPrecocusto(getPrecocusto());
+//	}
+//	
+//	
+//	@Override
+//	public void setPrecovenda(BigDecimal precoVenda) {
+//		// TODO Auto-generated method stub
+//		super.setPrecovenda(getPrecovenda());
+//	}
+//	
     
     
   
@@ -111,7 +124,14 @@ public class ProdutoComposto extends Produto implements Serializable {
         return totalpedido;
     }
     
-    
+    public void addItem(Item item, BigDecimal qtd){
+    	
+    	
+    	getItens().put(item, qtd);
+    	
+    	
+    	
+    }
     
 
 }

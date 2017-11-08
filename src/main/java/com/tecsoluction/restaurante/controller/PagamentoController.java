@@ -58,12 +58,12 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
 	private Set<FormaPagamento> formas = new HashSet<>();
 
-	private Money totalpedido = Money.of(usd, 0.00);
-
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
     
     
-
+public PagamentoController(PagamentoServicoImpl dao,UsuarioServicoImpl daousu,CaixaServicoImpl CDAO,FormaPagamentoServicoImpl formdao,PedidoVendaServicoImpl peddao ) {
+	// TODO Auto-generated constructor stub
+		super("pagamento");
 		this.pagamentoService = dao;
 		this.userservice = daousu;
 		this.caixaService = CDAO;
@@ -124,7 +124,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
 		this.pagamento.setDatapagamento(new Date());
 
-		totalpedido = Money.of(usd, 0.00);
+//		totalpedido = Money.of(usd, 0.00);
 
 		// PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O
 		// VALOR TOTAL

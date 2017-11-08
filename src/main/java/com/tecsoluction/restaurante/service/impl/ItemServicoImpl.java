@@ -44,5 +44,23 @@ public class ItemServicoImpl extends AbstractEntityService<Item> {
         return dao.getAllItemPorPedido(idpedido);
     }
 
+	@Override
+	protected void validateSave(Item post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Item post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

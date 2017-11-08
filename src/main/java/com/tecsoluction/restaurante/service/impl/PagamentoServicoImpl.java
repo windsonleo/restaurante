@@ -31,5 +31,23 @@ public class PagamentoServicoImpl extends AbstractEntityService<Pagamento> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Pagamento post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Pagamento post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

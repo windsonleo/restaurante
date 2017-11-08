@@ -40,4 +40,16 @@ public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
 
 	}
 
+	@Override
+	protected void validateSave(Cliente post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Cliente post) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

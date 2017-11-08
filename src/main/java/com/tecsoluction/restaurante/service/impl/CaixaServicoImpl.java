@@ -37,5 +37,17 @@ public class CaixaServicoImpl extends AbstractEntityService<Caixa> {
 		
 	}
 
+	@Override
+	protected void validateSave(Caixa post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Caixa post) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -130,13 +130,11 @@
 					</select>
 					
 					<input id="precocusto" class="form-control"
-						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
-                                                                  value="${produtocomposto.precocusto}"/>"
+						name="precocusto" type="number" value="${produtocomposto.precocusto}"
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
 					<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="        <fmt:formatNumber type="currency"
-                                                                  value="${produtocomposto.precovenda}"/>"
+						name="precovenda" type="number" value="${produtocomposto.venda}"
 						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
 				
                 </div>

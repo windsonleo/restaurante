@@ -31,5 +31,23 @@ public class EnderecoServicoImpl extends AbstractEntityService<Endereco> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Endereco post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Endereco post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

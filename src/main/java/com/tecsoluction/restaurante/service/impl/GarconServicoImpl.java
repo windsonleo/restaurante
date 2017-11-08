@@ -31,5 +31,23 @@ public class GarconServicoImpl extends AbstractEntityService<Garcon> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Garcon post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Garcon post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

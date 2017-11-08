@@ -31,5 +31,23 @@ public class MesaServicoImpl extends AbstractEntityService<Mesa> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Mesa post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Mesa post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -31,5 +31,23 @@ public class PedidoServicoImpl extends AbstractEntityService<Pedido> {
         return dao;
     }
 
+	@Override
+	protected void validateSave(Pedido post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateEdit(Pedido post) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

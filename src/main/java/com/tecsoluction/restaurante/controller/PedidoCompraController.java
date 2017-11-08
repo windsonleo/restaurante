@@ -48,6 +48,8 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 	private UsuarioServicoImpl userservice;
+	
+	private PedidoCompraServicoImpl pedidocompraService;
 
 	private ProdutoServicoImpl produtoService;
 
@@ -63,13 +65,13 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-	private Map<Item, Double> itens = new HashedMap();
-
 	private List<Produto> produtosList;
 
 	private List<Fornecedor> fornecedores;
+	
+	
+	private PedidoCompra pv ;
 
-	private Money totalpedido = Money.of(usd, 0.00);
 
 	@Autowired
 	public PedidoCompraController(PedidoCompraServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
@@ -180,8 +182,11 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 	public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
 
 		String idf = request.getParameter("id");
+		
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
+		BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+		
 		ModelAndView saveitempedidocompra = new ModelAndView("saveitempedidocompra");
 
 		Produto produto;
@@ -202,7 +207,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 		pv = pedidocompraService.findOne(pv.getId());
 
 		Item item = new Item(produto, pv);
-		item.setQtd(prodqtd);
+		item.setQtd(qtdbd);
 
 		itens = pv.getItems();
 		itens.put(item, item.getQtd());
@@ -212,13 +217,6 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 		itemService.save(item);
 
-        String idf = request.getParameter("id");
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-        
-        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
-
-		System.out.println(pv.getItems().toString());
-		System.out.println(pv.getTotal());
 
 		saveitempedidocompra.addObject("pedidocompra", pv);
 		saveitempedidocompra.addObject("produtosList", produtosList);
@@ -240,20 +238,20 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 		return detalhespedidocompra;
 	}
 
-	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-	public ModelAndView detalhesItem(HttpServletRequest request) {
+//	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+//	public ModelAndView detalhesItem(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
-
-        Item item = new Item(produto, pv);
-        item.setQtd(qtdbc);
-
-		Item item = itemService.findOne(idf);
-
-		detalhesitem.addObject("item", item);
-
-		return detalhesitem;
-	}
+//		String idf = request.getParameter("id");
+//
+//        Item item = new Item(produto, pv);
+//        item.setQtd(qtdbc);
+//
+//		Item item = itemService.findOne(idf);
+//
+//		detalhesitem.addObject("item", item);
+//
+//		return detalhesitem;
+//	}
 
 	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
 	public ModelAndView deleteItemPedidoCompra(HttpServletRequest request) {
