@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-left"><a href="#" class="flip-link btn btn bg_ly" id="to-recover">Lost password?</a></span>
+                    <span class="pull-left"><a href="#" class="flip-link btn btn bg_ly" name="lost" id="to-recover">Lost password?</a></span>
                     <span class="pull-right"><button type="submit" class="btn btn-success" > Login</button></span>
                 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 
@@ -35,13 +35,13 @@
 				
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                            <span class="add-on bg_lg"><i class="icon-envelope"></i></span><input type="text" name ="emailrecovery" placeholder="E-mail address" />
                         </div>
                     </div>
                
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn bg_ly" id="to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><a class="btn btn-success">Reecover</a></span>
+                    <span class="pull-right"><a class="btn btn-success" name="recovery">Reecover</a></span>
                 </div>
             </form>
         </div>
