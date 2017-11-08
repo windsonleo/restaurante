@@ -4,6 +4,7 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,8 +44,9 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Type(type = "pg-uuid")
     @Column(name = "id", length = 36)
-    private String id;
+    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = false)

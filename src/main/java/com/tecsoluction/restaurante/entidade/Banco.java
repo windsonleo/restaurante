@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Getter
@@ -31,8 +33,9 @@ public class Banco implements Serializable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Type(type = "pg-uuid")
     @Column(name = "id", length = 36)
-    private String id;
+    private UUID id;
 
     @Column(name = "nome")
     @NotBlank(message = "Nome do Banco obrigatorio")

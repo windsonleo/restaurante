@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Banco;
 
+import java.util.UUID;
+
 @Repository
-public interface IBancoDAO extends JpaRepository<Banco, String> {
+public interface IBancoDAO extends JpaRepository<Banco, UUID> {
 }

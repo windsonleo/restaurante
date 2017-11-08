@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -152,9 +153,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
 	public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
-		this.estoque = estoqueService.findOne("49L");
+		this.estoque = estoqueService.findOne(UUID.fromString("49L"));
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		this.pv = pedidovendaService.findOne(idf);
 
@@ -189,7 +190,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@RequestMapping(value = "additem", method = RequestMethod.GET)
 	public ModelAndView additemvendaForm(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
@@ -214,7 +215,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
 	public ModelAndView salvaritempedido(HttpServletRequest request) {
 
-		String prodid = request.getParameter("produtoescolhido");
+		UUID prodid = UUID.fromString(request.getParameter("produtoescolhido"));
 
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 		
@@ -266,7 +267,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
 	public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
@@ -296,7 +297,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
 	public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		itemService.delete(idf);
 

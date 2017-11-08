@@ -4,10 +4,7 @@ import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 import org.joda.money.Money;
@@ -110,7 +107,7 @@ public PagamentoController(PagamentoServicoImpl dao,UsuarioServicoImpl daousu,Ca
 	@RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
 	public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		this.pv = pedidovendaService.findOne(idf);
 		//
@@ -153,7 +150,7 @@ public PagamentoController(PagamentoServicoImpl dao,UsuarioServicoImpl daousu,Ca
 	@RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.GET)
 	public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
 
-		String idf = request.getParameter("formaPagamentos");
+		UUID idf = UUID.fromString(request.getParameter("formaPagamentos"));
 
 		FormaPagamento formapag = new FormaPagamento();
 

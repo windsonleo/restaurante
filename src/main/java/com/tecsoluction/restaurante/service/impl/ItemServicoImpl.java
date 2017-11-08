@@ -29,38 +29,38 @@ public class ItemServicoImpl extends AbstractEntityService<Item> {
     }
 
     @Override
-    protected JpaRepository<Item, String> getDao() {
+    protected JpaRepository<Item, UUID> getDao() {
 
         return dao;
     }
 
-    public Item getItemPorNome(String descricao, String pedido_id) {
+    public Item getItemPorNome(String descricao, UUID pedido_id) {
 
         return dao.getItemPorNome(descricao, pedido_id);
     }
 
-    public List<Item> getAllItemPorPedido(String idpedido) {
+    public List<Item> getAllItemPorPedido(UUID idpedido) {
 
         return dao.getAllItemPorPedido(idpedido);
     }
 
-	@Override
-	protected void validateSave(Item post) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateSave(Item post) {
+        // TODO Auto-generated method stub
 
-	@Override
-	protected void validateEdit(Item post) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	protected void validateDelete(String id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateEdit(Item post) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void validateDelete(UUID id) {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }

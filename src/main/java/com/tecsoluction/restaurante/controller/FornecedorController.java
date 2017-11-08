@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -54,7 +55,7 @@ public class FornecedorController extends AbstractController<Fornecedor> {
 	@RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
 	public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
 
-		String idf = (request.getParameter("id"));
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 

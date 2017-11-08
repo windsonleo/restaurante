@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +37,8 @@ public class Despesa implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
 
     @Column(name = "nome", nullable = true)
     private String nome;

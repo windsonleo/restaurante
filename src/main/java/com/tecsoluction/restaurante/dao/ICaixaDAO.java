@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Caixa;
 
+import java.util.UUID;
+
 @Repository
-public interface ICaixaDAO extends JpaRepository<Caixa, String> {
+public interface ICaixaDAO extends JpaRepository<Caixa, UUID> {
 }

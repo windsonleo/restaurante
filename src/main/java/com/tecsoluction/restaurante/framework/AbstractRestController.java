@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.framework;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,17 +22,16 @@ public abstract class AbstractRestController<Entity> {
 
 
     protected abstract AbstractEntityService<Entity> getservice();
-    
-    
-    
+
+
     /**
      * Valida se uma entidade está pronta para ser persistida
      *
      * @param entity
      */
     protected abstract void validateSave(Entity entity);
-    
-    
+
+
     /**
      * Valida o delete de uma entidade
      *
@@ -46,32 +46,29 @@ public abstract class AbstractRestController<Entity> {
      */
     protected abstract void validateUpdate(Entity entity);
 
-   
-    
+
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Entity> AdicionarEntity(Entity entity) {
-      
-    	validateSave(entity);
+
+        validateSave(entity);
         getservice().save(entity);
-        
-        
+
+
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
 
-
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Entity> buscarEntity(@PathVariable String id) {
-      
-    	
-    	Entity entity = getservice().findOne(id);
-     
-    	if (entity == null) {
+
+
+        Entity entity = getservice().findOne(UUID.fromString(id));
+
+        if (entity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        
+
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
@@ -88,15 +85,13 @@ public abstract class AbstractRestController<Entity> {
         getservice().save(entity);
     }
 
-   
 
     //@Transactional
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteEntity(@PathVariable String id) {
         validateDelete(id);
-        getservice().delete(id);
+        getservice().delete(UUID.fromString(id));
     }
 
 
- 
 }

@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,7 +42,9 @@ public class Fornecedor implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
+
     @NotBlank
     @Column(name = "nomefantasia")
     private String nomefantasia;

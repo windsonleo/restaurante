@@ -8,48 +8,50 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 @Service("clienteService")
 @Transactional
 public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
 
-	@Autowired
-	private IClienteDAO dao;
+    @Autowired
+    private IClienteDAO dao;
 
-	public ClienteServicoImpl() {
+    public ClienteServicoImpl() {
 
-		super(Cliente.class, "cliente");
+        super(Cliente.class, "cliente");
 
-	}
+    }
 
-	@Override
-	protected JpaRepository<Cliente, String> getDao() {
+    @Override
+    protected JpaRepository<Cliente, UUID> getDao() {
 
-		return dao;
-	}
+        return dao;
+    }
 
-	public Cliente getClienteporTelefone(String tel) {
+    public Cliente getClienteporTelefone(String tel) {
 
-		return dao.getClienteporTelefone(tel);
-	}
+        return dao.getClienteporTelefone(tel);
+    }
 
-	@Override
-	protected void validateDelete(String id) {
-		// TODO Auto-generated method stub
+    @Override
+    protected void validateDelete(UUID id) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	protected void validateSave(Cliente post) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateSave(Cliente post) {
+        // TODO Auto-generated method stub
 
-	@Override
-	protected void validateEdit(Cliente post) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
+
+    @Override
+    protected void validateEdit(Cliente post) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -27,7 +29,8 @@ public class Item implements Serializable, Comparable<Item> {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
 
 //	@JoinColumn(name="produto_id", nullable=true)
 //	private Produto produto;

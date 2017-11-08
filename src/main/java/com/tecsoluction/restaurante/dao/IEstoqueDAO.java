@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Estoque;
 
+import java.util.UUID;
+
 @Repository
-public interface IEstoqueDAO extends JpaRepository<Estoque, String>{
+public interface IEstoqueDAO extends JpaRepository<Estoque, UUID>{
         }
