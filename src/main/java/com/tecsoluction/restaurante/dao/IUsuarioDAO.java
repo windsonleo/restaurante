@@ -5,8 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Usuario;
 
+import java.util.UUID;
+
 @Repository
-public interface IUsuarioDAO extends JpaRepository<Usuario, String> {
+public interface IUsuarioDAO extends JpaRepository<Usuario, UUID> {
 
 
 //	@Query("SELECT p FROM Usuario p where p.username=")

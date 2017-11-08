@@ -3,10 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -35,6 +32,7 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.joda.money.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -58,7 +56,8 @@ public class Recebimento implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")

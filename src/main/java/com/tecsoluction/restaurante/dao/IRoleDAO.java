@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Role;
 
+import java.util.UUID;
+
 @Repository
-public interface IRoleDAO extends JpaRepository<Role, String> {
+public interface IRoleDAO extends JpaRepository<Role, UUID> {
 }

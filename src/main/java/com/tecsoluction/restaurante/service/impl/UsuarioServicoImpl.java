@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
@@ -47,7 +49,7 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
 
     @Override
-    protected JpaRepository<Usuario, String> getDao() {
+    protected JpaRepository<Usuario, UUID> getDao() {
 
         return dao;
     }
@@ -68,7 +70,7 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
 
 	@Override
-	protected void validateDelete(String id) {
+	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
 	}

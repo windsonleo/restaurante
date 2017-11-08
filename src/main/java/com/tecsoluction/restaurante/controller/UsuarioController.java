@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,64 +32,64 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "usuario/")
 public class UsuarioController extends AbstractController<Usuario> {
 
-	private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
-	private UsuarioServicoImpl usudao;
+    private UsuarioServicoImpl usudao;
 
-	private final UsuarioServicoImpl ususervice;
+    private final UsuarioServicoImpl ususervice;
 
-	private final RoleServicoImpl roleservico;
+    private final RoleServicoImpl roleservico;
 
-	@Autowired
-	public UsuarioController(UsuarioServicoImpl usuaservice, RoleServicoImpl roleservice, UsuarioServicoImpl usudao) {
-		super("usuario");
-		this.ususervice = usuaservice;
-		this.roleservico = roleservice;
-		this.usudao = usudao;
-	}
+    @Autowired
+    public UsuarioController(UsuarioServicoImpl usuaservice, RoleServicoImpl roleservice, UsuarioServicoImpl usudao) {
+        super("usuario");
+        this.ususervice = usuaservice;
+        this.roleservico = roleservice;
+        this.usudao = usudao;
+    }
 
-	@InitBinder
-	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-		binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.roleservico) {
-		});
+        binder.registerCustomEditor(Role.class, new AbstractEditor<Role>(this.roleservico) {
+        });
 
-	}
+    }
 
-	@Override
-	protected AbstractEntityService<Usuario> getservice() {
+    @Override
+    protected AbstractEntityService<Usuario> getservice() {
 
-		return ususervice;
-	}
+        return ususervice;
+    }
 
-	@ModelAttribute
-	public void addAttributes(Model model) {
+    @ModelAttribute
+    public void addAttributes(Model model) {
 
-		List<Role> roleList = roleservico.findAll();
-		List<Usuario> usuarioList = ususervice.findAll();
+        List<Role> roleList = roleservico.findAll();
+        List<Usuario> usuarioList = ususervice.findAll();
 
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = ususervice.findByUsername(usuario.getUsername());
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        usuario = ususervice.findByUsername(usuario.getUsername());
 
-		model.addAttribute("usuarioAtt", usuario);
-		model.addAttribute("roleList", roleList);
-		model.addAttribute("usuarioList", usuarioList);
+        model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("roleList", roleList);
+        model.addAttribute("usuarioList", usuarioList);
 
-	}
+    }
 
-	@RequestMapping(value = "profile", method = RequestMethod.GET)
-	public ModelAndView profileUsuario(HttpServletRequest request) {
+    @RequestMapping(value = "profile", method = RequestMethod.GET)
+    public ModelAndView profileUsuario(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		ModelAndView profileusuario = new ModelAndView("profileusuario");
+        ModelAndView profileusuario = new ModelAndView("profileusuario");
 
-		Usuario usuario = ususervice.findOne(idf);
+        Usuario usuario = ususervice.findOne(idf);
 
-		profileusuario.addObject("usuario", usuario);
+        profileusuario.addObject("usuario", usuario);
 
-		return profileusuario;
-	}
+        return profileusuario;
+    }
 
 }

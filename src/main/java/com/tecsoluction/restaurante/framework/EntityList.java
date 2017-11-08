@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.framework;
 
 import java.beans.PropertyEditorSupport;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class EntityList<Entity> extends PropertyEditorSupport {
     @Override
     public void setAsText(final String id) {
 
-        final Entity entity = service.findOne(id);
+        final Entity entity = service.findOne(UUID.fromString(id));
 
         this.setValue(entity);
 

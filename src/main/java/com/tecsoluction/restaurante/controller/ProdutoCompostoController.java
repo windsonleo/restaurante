@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -175,7 +176,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 	@RequestMapping(value = "additem", method = RequestMethod.GET)
 	public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 		
 		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
@@ -207,8 +208,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 	@RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.GET)
 	public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
-		String idf = (request.getParameter("id"));
-		String idfprodcomp = (request.getParameter("idprocomp"));
+		UUID idf = (UUID.fromString(request.getParameter("id")));
+		UUID idfprodcomp = UUID.fromString(request.getParameter("idprocomp"));
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
 		BigDecimal qtdbc= BigDecimal.valueOf(prodqtd);
@@ -343,7 +344,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
 
-        String idf = (request.getParameter("id"));
+        UUID idf = (UUID.fromString(request.getParameter("id")));
 
         ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
 

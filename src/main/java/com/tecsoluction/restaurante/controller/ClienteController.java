@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.controller;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -101,7 +102,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
 	public ModelAndView detalhesCliente(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView detalhescliente = new ModelAndView("detalhescliente");
 
@@ -115,7 +116,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	@RequestMapping(value = "addEndereco", method = RequestMethod.GET)
 	public ModelAndView  addEnderecoClienteForm(HttpServletRequest request,Model model){
 		
-		String id = request.getParameter("id");
+		UUID id = UUID.fromString(request.getParameter("id"));
 
 		cliente = getservice().findOne(id);
 
@@ -138,7 +139,7 @@ public class ClienteController extends AbstractController<Cliente> {
 		
 //	  	ModelAndView cadastroendereco= new ModelAndView("cadastroendereco");
 
-		String id = request.getParameter("id");
+		UUID id = UUID.fromString(request.getParameter("id"));
 		
 		Endereco endereco = new Endereco();
 
@@ -196,7 +197,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	@RequestMapping(value = "LocalizarClienteGerencia", method = RequestMethod.POST)
 	public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
 
-		String idf = (request.getParameter("id"));
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView gerencia = new ModelAndView("gerenciacliente");
 

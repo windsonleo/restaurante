@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
@@ -26,28 +28,28 @@ public class EmpresaServicoImpl extends AbstractEntityService<Empresa> {
     }
 
     @Override
-    protected JpaRepository<Empresa, String> getDao() {
+    protected JpaRepository<Empresa, UUID> getDao() {
 
         return dao;
     }
 
-	@Override
-	protected void validateSave(Empresa post) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateSave(Empresa post) {
+        // TODO Auto-generated method stub
 
-	@Override
-	protected void validateEdit(Empresa post) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	protected void validateDelete(String id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateEdit(Empresa post) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void validateDelete(UUID id) {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }

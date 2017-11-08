@@ -17,6 +17,8 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 
+import java.util.UUID;
+
 /**
  * Created by clebr on 06/07/2016.
  */
@@ -49,7 +51,7 @@ public class ItemController extends AbstractController<Item> {
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
 	public ModelAndView detalhesItem(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
 

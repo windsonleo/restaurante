@@ -5,11 +5,7 @@ import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -33,6 +29,7 @@ import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 import org.joda.money.Money;
 
@@ -55,7 +52,8 @@ public class Estoque implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
 
     @NotBlank
     @Column(name = "nome", nullable = true)
@@ -110,17 +108,17 @@ public class Estoque implements Serializable {
 
     public void AddProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-    	BigDecimal vantigo = new BigDecimal("0.0");
-    	BigDecimal vnovo = qtd;
-    	BigDecimal novo = new BigDecimal("0.0");
+        BigDecimal vantigo = new BigDecimal("0.0");
+        BigDecimal vnovo = qtd;
+        BigDecimal novo = new BigDecimal("0.0");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
 
                 vantigo = getItems().get(key);
-               
-                 novo = novo.add(vantigo).add(vnovo);
-                
+
+                novo = novo.add(vantigo).add(vnovo);
+
                 items.replace(key, vantigo, novo);
             }
         }
@@ -131,23 +129,23 @@ public class Estoque implements Serializable {
 
     public void RetirarProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-    	BigDecimal vantigo= new BigDecimal("0.0");
-    	BigDecimal vnovo = qtd;
-    	BigDecimal novo  = new BigDecimal("0.0");
+        BigDecimal vantigo = new BigDecimal("0.0");
+        BigDecimal vnovo = qtd;
+        BigDecimal novo = new BigDecimal("0.0");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
-               
-            	vantigo = getItems().get(key);
+
+                vantigo = getItems().get(key);
                 vnovo = qtd;
-                
-                novo = vantigo.subtract(vnovo) ;
-                
+
+                novo = vantigo.subtract(vnovo);
+
                 items.replace(key, vantigo, novo);
             }
         }
         if (!getItems().containsKey(produto)) {
-           
+
 //        	vantigo = getItems().get(produto);
             vnovo = qtd;
             BigDecimal qtdnegativa = vnovo;
@@ -157,38 +155,38 @@ public class Estoque implements Serializable {
 
 
     public Money CalcularTotalCusto() {
-      
-    	Money totalcusto =Money.of(usd, 0.00);
-        
-        
+
+        Money totalcusto = Money.of(usd, 0.00);
+
+
         for (Produto key : getItems().keySet()) {
-           
-        	BigDecimal qtd = getItems().get(key);
-            
+
+            BigDecimal qtd = getItems().get(key);
+
 //            String qtdstring = BigDecimal.valueOf(qtd);
-            
-            BigDecimal quantidadef =qtd;
-            
+
+            BigDecimal quantidadef = qtd;
+
             totalcusto.plus(totalcusto).plus(key.getPrecocusto().multiply(quantidadef));
         }
-        
+
         return totalcusto;
     }
 
     public Money CalcularTotalVenda() {
-    	
-    	Money totalvenda =Money.of(usd, 0.00);
-    	
+
+        Money totalvenda = Money.of(usd, 0.00);
+
         for (Produto key : getItems().keySet()) {
-        	
-        	BigDecimal qtd = getItems().get(key);
+
+            BigDecimal qtd = getItems().get(key);
 
 //        	   String qtdstring = Double.toString(qtd);
-               
-               BigDecimal quantidadef = qtd;
-               
-               totalvenda.plus(totalvenda).plus(key.getPrecovenda().multiply(quantidadef));
-        
+
+            BigDecimal quantidadef = qtd;
+
+            totalvenda.plus(totalvenda).plus(key.getPrecovenda().multiply(quantidadef));
+
         }
         return totalvenda;
     }

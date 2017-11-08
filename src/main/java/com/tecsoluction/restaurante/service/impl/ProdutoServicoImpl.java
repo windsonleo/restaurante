@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
@@ -28,7 +29,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
     }
 
     @Override
-    protected JpaRepository<Produto, String> getDao() {
+    protected JpaRepository<Produto, UUID> getDao() {
 
         return dao;
     }
@@ -38,7 +39,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
         return dao.getProdutoPorCodebar(codebar);
     }
 
-    public List<Produto> getAllProdutoPorCategoria(String idcategoria) {
+    public List<Produto> getAllProdutoPorCategoria(UUID idcategoria) {
 
         return dao.getAllProdutoPorCategoria(idcategoria);
     }
@@ -56,7 +57,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
 	}
 
 	@Override
-	protected void validateDelete(String id) {
+	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
 	}

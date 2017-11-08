@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
@@ -26,7 +28,7 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
     }
 
     @Override
-    protected JpaRepository<Estoque, String> getDao() {
+    protected JpaRepository<Estoque, UUID> getDao() {
 
         return dao;
     }
@@ -44,7 +46,7 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
 	}
 
 	@Override
-	protected void validateDelete(String id) {
+	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
 	}

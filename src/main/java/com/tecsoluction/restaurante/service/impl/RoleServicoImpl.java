@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 
 @Service("roleService")
 @Transactional
@@ -26,7 +28,7 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
     }
 
     @Override
-    protected JpaRepository<Role, String> getDao() {
+    protected JpaRepository<Role, UUID> getDao() {
 
         return roledao;
     }
@@ -44,7 +46,7 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
 	}
 
 	@Override
-	protected void validateDelete(String id) {
+	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
 	}

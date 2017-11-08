@@ -29,6 +29,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "produto/")
@@ -110,7 +111,7 @@ public class ProdutoController extends AbstractController<Produto> {
 	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
 	public ModelAndView detalhesProduto(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
@@ -178,7 +179,7 @@ public class ProdutoController extends AbstractController<Produto> {
 	@RequestMapping(value = "LocalizarProdutoGerencia", method = RequestMethod.POST)
 	public ModelAndView gerenciarProdutoLocalizarProduto(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 
 		ModelAndView gerencia = new ModelAndView("gerenciaproduto");
 

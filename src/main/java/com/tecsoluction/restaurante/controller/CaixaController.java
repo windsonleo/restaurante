@@ -126,7 +126,7 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView FecharCaixaForm(HttpServletRequest request) {
 
 
-        String idf = request.getParameter("id");
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
         Caixa cx = caixaService.findOne(idf);
 
@@ -286,7 +286,7 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView AddDespesaCaixaForm(HttpServletRequest request) {
 
 
-        String idf = request.getParameter("id");
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
         Caixa caixa = caixaService.findOne(idf);
 
@@ -304,9 +304,9 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView AddDespesaCaixa(HttpServletRequest request) {
 
 
-        String idf = request.getParameter("despesaescolhido");
+        UUID idf = UUID.fromString(request.getParameter("despesaescolhido"));
 
-        String idfc = request.getParameter("caixa");
+        UUID idfc = UUID.fromString(request.getParameter("caixa"));
 
         Despesa desp = despesaService.findOne(idf);
 

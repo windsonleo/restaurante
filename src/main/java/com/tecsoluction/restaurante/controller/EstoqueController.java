@@ -4,10 +4,7 @@ import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -79,7 +76,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 	@RequestMapping(value = "informacoes", method = RequestMethod.GET)
 	public ModelAndView InformacaoEstoqueForm(HttpServletRequest request) {
 
-		String idf = request.getParameter("id");
+		UUID idf = UUID.fromString(request.getParameter("id"));
 		ModelAndView informacoesestoque = new ModelAndView("informacoesestoque");
 
 		Estoque estoque = getservice().findOne(idf);

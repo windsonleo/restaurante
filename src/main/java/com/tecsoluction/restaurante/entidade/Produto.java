@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,6 +27,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -48,7 +50,8 @@ public class Produto implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", length = 36)
-    private String id;
+    @Type(type = "pg-uuid")
+    private UUID id;
 
     @Column(name = "foto")
     private String foto;
@@ -100,7 +103,7 @@ public class Produto implements Serializable {
     private boolean isativo;
 
 
-    public Produto(String id, String foto, String nome, String codebar, String descricao,
+    public Produto(UUID id, String foto, String nome, String codebar, String descricao,
                    UnidadeMedida un, BigDecimal precocusto, BigDecimal precovenda, Fornecedor fornecedor,
                    Categoria cat, boolean ativo, boolean esugestao) {
         super();
