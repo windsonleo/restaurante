@@ -1,6 +1,8 @@
 package com.tecsoluction.restaurante.rest;
 	
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,9 @@ public class ProdutoCompostoControllerRest extends AbstractRestController<Produt
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<ProdutoComposto> buscarEntity(@PathVariable String id) {
     	
-    	ProdutoComposto produto = getservice().findOne(id);
+    	UUID idf = UUID.fromString(id);
+
+    	ProdutoComposto produto = getservice().findOne(idf);
         
     	if (produto == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -63,7 +67,9 @@ public class ProdutoCompostoControllerRest extends AbstractRestController<Produt
     @RequestMapping(value = "/porcategoria/{id}" ,method = RequestMethod.GET) 
     public List<Produto> listarProdutoCategoria(@PathVariable String id) { 
        
-    	return produtos = produtocompostoService.getAllProdutoPorCategoria(id); 
+    	UUID idf = UUID.fromString(id);
+    	
+    	return produtos = produtocompostoService.getAllProdutoPorCategoria(idf); 
  
     }
 

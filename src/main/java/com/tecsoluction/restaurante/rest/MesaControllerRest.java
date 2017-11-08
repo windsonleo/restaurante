@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.rest;
 
 	
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,10 @@ public class MesaControllerRest extends AbstractRestController<Mesa> {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Mesa> buscarEntity(@PathVariable String id) {
-    	Mesa mesa = getservice().findOne(id);
+    	
+    	UUID idf = UUID.fromString(id);
+
+    	Mesa mesa = getservice().findOne(idf);
         if (mesa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

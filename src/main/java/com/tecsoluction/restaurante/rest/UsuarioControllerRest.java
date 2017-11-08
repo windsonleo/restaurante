@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.rest;
 	
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,9 @@ public class UsuarioControllerRest extends AbstractRestController<Usuario> {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Usuario> buscarEntity(@PathVariable String id) {
     	
-    	Usuario cliente = getservice().findOne(id);
+    	UUID idf = UUID.fromString(id);
+    	
+    	Usuario cliente = getservice().findOne(idf);
         if (cliente == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -62,7 +63,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     }
 
 
-    public ProdutoComposto(String id, String foto, String nome, String codebar,
+    public ProdutoComposto(UUID  id, String foto, String nome, String codebar,
                            String descricao, UnidadeMedida un, BigDecimal precocusto,
                            BigDecimal precovenda, Fornecedor fornecedor, Categoria cat,
                            boolean ativo, Map<Item, BigDecimal> itens, boolean esugestao) {

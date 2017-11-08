@@ -231,6 +231,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         UUID idf = UUID.fromString(request.getParameter("id"));
 
         UUID idfrec = UUID.fromString(request.getParameter("idrec"));
+        
+        it = itemService.findOne(idf);
 
         this.recebimento = recebimentoService.findOne(idfrec);
 
@@ -240,7 +242,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         try {
 
-            it = itemService.getItemPorNome(idf, recebimento.getPedidocompra().getId());
+            it = itemService.getItemPorNome(it.getNome(), recebimento.getPedidocompra().getId());
 
         } catch (Exception e) {
 

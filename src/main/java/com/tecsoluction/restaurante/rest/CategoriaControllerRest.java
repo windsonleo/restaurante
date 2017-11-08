@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.rest;
 
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,7 +62,11 @@ public class CategoriaControllerRest extends AbstractRestController<Categoria> {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Categoria> buscarEntity(@PathVariable String id) {
        
-    	Categoria categoria = getservice().findOne(id);
+    	
+    	UUID idf = UUID.fromString(id);
+
+    	
+    	Categoria categoria = getservice().findOne(idf);
       
     	if (categoria == null) {
           
