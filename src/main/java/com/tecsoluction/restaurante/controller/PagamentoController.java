@@ -1,6 +1,5 @@
 package com.tecsoluction.restaurante.controller;
 
-
 import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 import java.util.Date;
@@ -41,176 +40,144 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "pagamento")
 public class PagamentoController extends AbstractController<Pagamento> {
 
+	private PagamentoServicoImpl pagamentoService;
 
-    private
-    PagamentoServicoImpl pagamentoService;
+	private PedidoVendaServicoImpl pedidovendaService;
 
-    private
-    PedidoVendaServicoImpl pedidovendaService;
+	private CaixaServicoImpl caixaService;
 
-    private
-    CaixaServicoImpl caixaService;
+	private FormaPagamentoServicoImpl formapagamentoService;
 
-    private
-    FormaPagamentoServicoImpl formapagamentoService;
+	private UsuarioServicoImpl userservice;
 
-	private
-	UsuarioServicoImpl userservice;
-	
+	private Pagamento pagamento = new Pagamento();
 
-    private Pagamento pagamento = new Pagamento();
+	private PedidoVenda pv = new PedidoVenda();
 
-    private PedidoVenda pv = new PedidoVenda();
+	private Set<FormaPagamento> formas = new HashSet<>();
 
-    private Set<FormaPagamento> formas = new HashSet<>();
+	private Money totalpedido = Money.of(usd, 0.00);
 
-    private Money totalpedido = Money.of(usd, 0.00);
-    
-    
+	@Autowired
+	public PagamentoController(PagamentoServicoImpl dao, UsuarioServicoImpl daousu, CaixaServicoImpl CDAO,
+			PedidoVendaServicoImpl peddao, FormaPagamentoServicoImpl formdao) {
+		super("pagamento");
 
-    @Autowired
-    public PagamentoController(PagamentoServicoImpl dao, UsuarioServicoImpl daousu, CaixaServicoImpl CDAO, PedidoVendaServicoImpl peddao, FormaPagamentoServicoImpl formdao) {
-        super("pagamento");
-        
-        this.pagamentoService = dao;
-        this.userservice = daousu;
-        this.caixaService = CDAO;
-        this.formapagamentoService = formdao;
-        this.pedidovendaService = peddao;
-    }
+		this.pagamentoService = dao;
+		this.userservice = daousu;
+		this.caixaService = CDAO;
+		this.formapagamentoService = formdao;
+		this.pedidovendaService = peddao;
+	}
 
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-    @Override
-    protected void validateDelete(String id) {
+		binder.registerCustomEditor(FormaPagamento.class,
+				new AbstractEditor<FormaPagamento>(this.formapagamentoService) {
 
-    }
+				});
 
+		binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendaService) {
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		});
 
-        binder.registerCustomEditor(FormaPagamento.class, new AbstractEditor<FormaPagamento>(this.formapagamentoService) {
+		binder.registerCustomEditor(Caixa.class, new AbstractEditor<Caixa>(this.caixaService) {
 
-        });
+		});
 
+	}
 
-        binder.registerCustomEditor(PedidoVenda.class, new AbstractEditor<PedidoVenda>(this.pedidovendaService) {
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-        });
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
+		List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
+		List<PedidoVenda> pedidoList = pedidovendaService.findAll();
+		List<Caixa> caixaList = caixaService.findAll();
 
-        binder.registerCustomEditor(Caixa.class, new AbstractEditor<Caixa>(this.caixaService) {
+		model.addAttribute("caixaList", caixaList);
+		model.addAttribute("pedidoList", pedidoList);
+		model.addAttribute("formapagamentoList", formapagamentoList);
+		model.addAttribute("usuarioAtt", usuario);
 
-        });
+	}
 
+	@RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
+	public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
-    }
+		String idf = request.getParameter("id");
 
+		this.pv = pedidovendaService.findOne(idf);
+		//
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		if (pagamento == null) {
+			this.pagamento = new Pagamento();
 
+		}
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-      
-        List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
-        List<PedidoVenda> pedidoList = pedidovendaService.findAll();
-        List<Caixa> caixaList = caixaService.findAll();
+		// LocalDate dataDeInscricao = LocalDate.now();
 
+		this.pagamento.setDatapagamento(new Date());
 
-        model.addAttribute("caixaList", caixaList);
-        model.addAttribute("pedidoList", pedidoList);
-        model.addAttribute("formapagamentoList", formapagamentoList);
-        model.addAttribute("usuarioAtt", usuario);
+		totalpedido = Money.of(usd, 0.00);
 
+		// PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O
+		// VALOR TOTAL
+		// for (int i = 0; i < pv.getItems().size(); i++) {
+		//
+		// totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
+		//
+		//
+		// }
 
+		pv.setTotal(totalpedido);
 
-    }
+		ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
 
+		cadastropagamento.addObject("pedidovenda", pv);
+		cadastropagamento.addObject("pagamento", pagamento);
 
-    @RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
-    public ModelAndView LocalizarPedido(HttpServletRequest request) {
+		System.out.println("pedidovenda:" + pv.toString());
+		System.out.println("pagamento:" + pagamento.toString());
 
+		formas.clear();
 
-        String idf = request.getParameter("id");
+		return cadastropagamento;
+	}
 
-        this.pv = pedidovendaService.findOne(idf);
-//	    	
+	@RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.GET)
+	public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
 
-        if (pagamento == null) {
-            this.pagamento = new Pagamento();
+		String idf = request.getParameter("formaPagamentos");
 
-        }
+		FormaPagamento formapag = new FormaPagamento();
 
-        // LocalDate dataDeInscricao = LocalDate.now();
+		formapag = formapagamentoService.findOne(idf);
 
-        this.pagamento.setDatapagamento(new Date());
+		System.out.println("formaPag" + formapag.toString());
 
-        totalpedido = Money.of(usd, 0.00);
+		formas.add(formapag);
 
+		ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
 
-        //PERCORRE A LISTA DE ITEM PEGANDO O VALOR TOTAL DE CADA ITEM PARA OBTER O VALOR TOTAL
-//	        for (int i = 0; i < pv.getItems().size(); i++) {
-//	        	
-//	            totalpedido = totalpedido + pv.getItems().get(i).getTotalItem();
-//
-//				
-//			}
+		cadastropagamento.addObject("pedidovenda", pv);
+		cadastropagamento.addObject("pagamento", pagamento);
+		cadastropagamento.addObject("formas", formas);
 
-        pv.setTotal(totalpedido);
+		System.out.println("pedidovenda methodo add:" + pv.toString());
+		System.out.println("pagamento method add:" + pagamento.toString());
 
-        ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
-
-        cadastropagamento.addObject("pedidovenda", pv);
-        cadastropagamento.addObject("pagamento", pagamento);
-
-        System.out.println("pedidovenda:" + pv.toString());
-        System.out.println("pagamento:" + pagamento.toString());
-
-        formas.clear();
-
-
-        return cadastropagamento;
-    }
-
-
-    @RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.GET)
-    public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
-
-
-        String idf = request.getParameter("formaPagamentos");
-
-        FormaPagamento formapag = new FormaPagamento();
-
-        formapag = formapagamentoService.findOne(idf);
-
-        System.out.println("formaPag" + formapag.toString());
-
-
-        formas.add(formapag);
-
-
-        ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
-
-
-        cadastropagamento.addObject("pedidovenda", pv);
-        cadastropagamento.addObject("pagamento", pagamento);
-        cadastropagamento.addObject("formas", formas);
-
-        System.out.println("pedidovenda methodo add:" + pv.toString());
-        System.out.println("pagamento method add:" + pagamento.toString());
-
-
-        return cadastropagamento;
-    }
+		return cadastropagamento;
+	}
 
 	@Override
 	protected AbstractEntityService<Pagamento> getservice() {
 		// TODO Auto-generated method stub
 		return pagamentoService;
 	}
-
 
 }

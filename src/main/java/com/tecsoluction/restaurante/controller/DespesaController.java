@@ -19,50 +19,42 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "despesa/")
 public class DespesaController extends AbstractController<Despesa> {
 
-	 private
-	 DespesaServicoImpl despesaService;
+	private DespesaServicoImpl despesaService;
 
-    private
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
+	@Autowired
+	public DespesaController(DespesaServicoImpl dao, UsuarioServicoImpl daousu) {
+		super("despesa");
+		this.despesaService = dao;
+		this.userservice = daousu;
+	}
 
-    @Autowired
-    public DespesaController(DespesaServicoImpl dao, UsuarioServicoImpl daousu) {
-        super("despesa");
-        this.despesaService = dao;
-        this.userservice = daousu;
-    }
+	// @InitBinder
+	// protected void initBinder(HttpServletRequest request,
+	// ServletRequestDataBinder binder) {
+	//
+	// binder.registerCustomEditor(Categoria.class, new
+	// AbstractEditor<Categoria>(this.dao) {
+	//
+	// });
+	//
+	//
+	// }
 
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @Override
-    protected void validateDelete(String id) {
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-    }
+		List<Despesa> despesaList = getservice().findAll();
 
+		model.addAttribute("despesaList", despesaList);
+		model.addAttribute("usuarioAtt", usuario);
 
-//    @InitBinder
-//    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-//
-//        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.dao) {
-//
-//        });
-//        
-//
-//    }
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-      
-        List<Despesa> despesaList = getservice().findAll();
-       
-        model.addAttribute("despesaList", despesaList);
-        model.addAttribute("usuarioAtt", usuario);
-
-    }
+	}
 
 	@Override
 	protected AbstractEntityService<Despesa> getservice() {
@@ -70,6 +62,4 @@ public class DespesaController extends AbstractController<Despesa> {
 		return despesaService;
 	}
 
-
 }
-

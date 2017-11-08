@@ -76,12 +76,6 @@ public class CaixaController extends AbstractController<Caixa> {
         this.despesaService = desppedidovendaService;
     }
 
-
-    @Override
-    protected void validateDelete(String id) {
-
-    }
-
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 

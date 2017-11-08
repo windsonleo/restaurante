@@ -1,4 +1,5 @@
 package com.tecsoluction.restaurante.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,38 +17,27 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "empresa/")
 public class EmpresaController extends AbstractController<Empresa> {
 
-    private
-    EmpresaServicoImpl empresaService;
+	private EmpresaServicoImpl empresaService;
 
-    private
-	UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
+	@Autowired
+	public EmpresaController(EmpresaServicoImpl dao, UsuarioServicoImpl daousu) {
+		super("empresa");
+		this.empresaService = dao;
+		this.userservice = daousu;
+	}
 
-    @Autowired
-    public EmpresaController(EmpresaServicoImpl dao, UsuarioServicoImpl daousu) {
-        super("empresa");
-        this.empresaService = dao;
-        this.userservice = daousu;
-    }
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @Override
-    protected void validateDelete(String id) {
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-    }
+		model.addAttribute("usuarioAtt", usuario);
 
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
-
-
-
-    }
+	}
 
 	@Override
 	protected AbstractEntityService<Empresa> getservice() {

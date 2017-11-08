@@ -24,55 +24,42 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "endereco/")
 public class EnderecoController extends AbstractController<Endereco> {
 
-    private
-    EnderecoServicoImpl enderecoService;
+	private EnderecoServicoImpl enderecoService;
 
-	private
-	ClienteServicoImpl clienteService;
+	private ClienteServicoImpl clienteService;
 
+	private UsuarioServicoImpl userservice;
 
-    private
-	UsuarioServicoImpl userservice;
+	@Autowired
+	public EnderecoController(EnderecoServicoImpl dao, UsuarioServicoImpl daousu, ClienteServicoImpl clidao) {
+		super("endereco");
+		this.enderecoService = dao;
+		this.userservice = daousu;
+		this.clienteService = clidao;
+	}
 
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @Autowired
-    public EnderecoController(EnderecoServicoImpl dao, UsuarioServicoImpl daousu, ClienteServicoImpl clidao) {
-        super("endereco");
-        this.enderecoService = dao;
-        this.userservice = daousu;
-        this.clienteService = clidao;
-    }
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
+		model.addAttribute("usuarioAtt", usuario);
 
-    @Override
-    protected void validateDelete(String id) {
+	}
 
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
-
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
-
-
-    }
-
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-
-        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(this.clienteService) {
-        });
-    }
+		binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(this.clienteService) {
+		});
+	}
 
 	@Override
 	protected AbstractEntityService<Endereco> getservice() {
 
 		return enderecoService;
 	}
-
 
 }

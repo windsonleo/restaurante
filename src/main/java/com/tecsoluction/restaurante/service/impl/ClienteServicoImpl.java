@@ -14,26 +14,30 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
 
-    @Autowired
-    private IClienteDAO dao;
+	@Autowired
+	private IClienteDAO dao;
 
+	public ClienteServicoImpl() {
 
-    public ClienteServicoImpl() {
+		super(Cliente.class, "cliente");
 
-        super(Cliente.class, "cliente");
+	}
 
-    }
+	@Override
+	protected JpaRepository<Cliente, String> getDao() {
 
-    @Override
-    protected JpaRepository<Cliente, String> getDao() {
+		return dao;
+	}
 
-        return dao;
-    }
+	public Cliente getClienteporTelefone(String tel) {
 
-    public Cliente getClienteporTelefone(String tel) {
+		return dao.getClienteporTelefone(tel);
+	}
 
-        return dao.getClienteporTelefone(tel);
-    }
+	@Override
+	protected void validateDelete(String id) {
+		// TODO Auto-generated method stub
 
+	}
 
 }

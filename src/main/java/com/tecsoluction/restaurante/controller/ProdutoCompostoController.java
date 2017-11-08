@@ -45,337 +45,282 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @RequestMapping(value = "produtocomposto/")
 public class ProdutoCompostoController extends AbstractController<ProdutoComposto> {
 
-    private
-    UsuarioServicoImpl userservice;
+	private UsuarioServicoImpl userservice;
 
-    private
-    ProdutoServicoImpl produtoService;
+	private ProdutoServicoImpl produtoService;
 
-    private
-    FornecedorServicoImpl fornecedorService;
+	private FornecedorServicoImpl fornecedorService;
 
-    private
-    CategoriaServicoImpl categoriaService;
+	private CategoriaServicoImpl categoriaService;
 
-    private
-    ItemServicoImpl itemService;
+	private ItemServicoImpl itemService;
 
-    private
-    ProdutoCompostoServicoImpl produtocompostoService;
+	private ProdutoCompostoServicoImpl produtocompostoService;
 
-    private List<ProdutoComposto> produtoList;
+	private List<ProdutoComposto> produtoList;
 
-    private List<Produto> produtosList;
+	private List<Produto> produtosList;
 
-    private Map<Item, Double> items = new HashMap<>();
+	private Map<Item, Double> items = new HashMap<>();
 
-    private ProdutoComposto produtocomposto;
+	private ProdutoComposto produtocomposto;
 
-    private double totalitem;
+	private double totalitem;
 
+	@Autowired
+	public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao,
+			FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod,
+			ItemServicoImpl it) {
+		super("produtocomposto");
+		this.produtocompostoService = dao;
+		this.categoriaService = categoriaDao;
+		this.fornecedorService = fornecedorDao;
+		this.userservice = usudao;
+		this.produtoService = daoprod;
+		this.itemService = it;
+		this.items.clear();
 
-    @Autowired
-    public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao, FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod, ItemServicoImpl it) {
-        super("produtocomposto");
-        this.produtocompostoService = dao;
-        this.categoriaService = categoriaDao;
-        this.fornecedorService = fornecedorDao;
-        this.userservice = usudao;
-        this.produtoService = daoprod;
-        this.itemService = it;
-        this.items.clear();
+	}
 
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
+		binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
+		});
 
-    @Override
-    protected void validateDelete(String id) {
+		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
+		});
 
-    }
+		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
+		});
 
+	}
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
+		List<Categoria> categoriaList = categoriaService.findAll();
+		List<Fornecedor> fornecedorList = fornecedorService.findAll();
+		produtoList = produtocompostoService.findAll();
+		produtosList = produtoService.findAll();
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
-        });
+		UnidadeMedida[] umList = UnidadeMedida.values();
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
-        });
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
-        });
+		model.addAttribute("usuarioAtt", usuario);
 
+		if (produtocomposto == null) {
 
-    }
+			items.clear();
 
+		}
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		model.addAttribute("produtosList", produtoList);
+		model.addAttribute("itensList", produtosList);
+		model.addAttribute("fornecedorList", fornecedorList);
+		model.addAttribute("categoriaList", categoriaList);
+		model.addAttribute("umList", umList);
 
-        List<Categoria> categoriaList = categoriaService.findAll();
-        List<Fornecedor> fornecedorList = fornecedorService.findAll();
-        produtoList = produtocompostoService.findAll();
-        produtosList = produtoService.findAll();
+	}
 
-        UnidadeMedida[] umList = UnidadeMedida.values();
+	@RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
+	public ModelAndView NovosProdutos(HttpServletRequest request) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+		ModelAndView novosprodutos = new ModelAndView("novosprodutos");
 
-        model.addAttribute("usuarioAtt", usuario);
+		List<ProdutoComposto> produtos = produtocompostoService.findAll();
 
+		novosprodutos.addObject("produtosList", produtos);
 
-        if (produtocomposto == null) {
+		return novosprodutos;
+	}
 
-            items.clear();
+	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
+	public ModelAndView detalhesProduto(HttpServletRequest request) {
 
-        }
+		String idf = (request.getParameter("id"));
 
+		ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
 
-        model.addAttribute("produtosList", produtoList);
-        model.addAttribute("itensList", produtosList);
-        model.addAttribute("fornecedorList", fornecedorList);
-        model.addAttribute("categoriaList", categoriaList);
-        model.addAttribute("umList", umList);
+		ProdutoComposto produto = produtocompostoService.findOne(idf);
 
+		detalhesproduto.addObject("produto", produto);
 
-    }
+		return detalhesproduto;
+	}
 
-    @RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
-    public ModelAndView NovosProdutos(HttpServletRequest request) {
+	@RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
+	public ModelAndView AdicionarItemProdutoComposto(HttpServletRequest request) {
 
+		if (produtocomposto != null) {
 
-        ModelAndView novosprodutos = new ModelAndView("novosprodutos");
+			produtocomposto.setItens(items);
 
-        List<ProdutoComposto> produtos = produtocompostoService.findAll();
+		} else {
 
-        novosprodutos.addObject("produtosList", produtos);
+			produtocomposto = new ProdutoComposto();
+			items.clear();
+		}
 
+		String idf = (request.getParameter("itenss"));
 
-        return novosprodutos;
-    }
+		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
-    public ModelAndView detalhesProduto(HttpServletRequest request) {
+		Produto produto = produtoService.findOne(idf);
 
+		System.out.println("produto" + produto.toString());
 
-        String idf = (request.getParameter("id"));
+		ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
 
-        ModelAndView detalhesproduto = new ModelAndView("detalhesproduto");
+		cadastroprodutocomposto.addObject("items", items);
+		cadastroprodutocomposto.addObject("produtocomposto", produtocomposto);
 
+		return cadastroprodutocomposto;
+	}
 
-        ProdutoComposto produto = produtocompostoService.findOne(idf);
+	@RequestMapping(value = "additem", method = RequestMethod.GET)
+	public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
-        detalhesproduto.addObject("produto", produto);
+		String idf = (request.getParameter("id"));
+		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
+		this.produtocomposto = produtocompostoService.findOne(idf);
 
-        return detalhesproduto;
-    }
+		produtosList = produtoService.findAll();
 
+		totalitem = 0;
 
-    @RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
-    public ModelAndView AdicionarItemProdutoComposto(HttpServletRequest request) {
+		Money precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
 
+		produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(produtocomposto.getItens()).getAmountMajor());
+		produtocomposto.setPrecovenda(precovenda.multipliedBy(2, RoundingMode.UP).getAmountMajor());
 
-        if (produtocomposto != null) {
+		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+		additemprodutocomposto.addObject("produtosList", produtosList);
+		additemprodutocomposto.addObject("totalitem", totalitem);
 
-            produtocomposto.setItens(items);
+		return additemprodutocomposto;
+	}
 
-        } else {
+	@RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.GET)
+	public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
-            produtocomposto = new ProdutoComposto();
-            items.clear();
-        }
+		String idf = (request.getParameter("id"));
+		String idfprodcomp = (request.getParameter("idprocomp"));
+		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
+		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
-        String idf = (request.getParameter("itenss"));
+		Produto produto;
 
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+		produto = produtoService.findOne(idf);
 
-        Produto produto = produtoService.findOne(idf);
+		if (produto == null) {
 
-        System.out.println("produto" + produto.toString());
+			String erros = "Nao Existe esse Produto";
 
+			additemprodutocomposto.addObject("erros", erros);
+			additemprodutocomposto.addObject("produtocomposto",
+					produtocomposto = produtocompostoService.findOne(idfprodcomp));
+			additemprodutocomposto.addObject("produtosList", produtosList);
 
-        ModelAndView cadastroprodutocomposto = new ModelAndView("cadastroprodutocomposto");
+			return additemprodutocomposto;
+		}
 
+		produtocomposto = produtocompostoService.findOne(idfprodcomp);
 
-        cadastroprodutocomposto.addObject("items", items);
-        cadastroprodutocomposto.addObject("produtocomposto", produtocomposto);
+		Item item = new Item(produto);
 
+		item.setQtd(prodqtd);
 
-        return cadastroprodutocomposto;
-    }
+		itemService.save(item);
 
-    @RequestMapping(value = "additem", method = RequestMethod.GET)
-    public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
+		items = produtocomposto.getItens();
 
+		items.put(item, item.getQtd());
 
-        String idf = (request.getParameter("id"));
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
+		produtocomposto.setItens(items);
 
-        this.produtocomposto = produtocompostoService.findOne(idf);
+		produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).getAmountMajor());
 
+		produtocomposto.setPrecovenda(produtocomposto.getPrecocusto().multiply(new BigDecimal(2)));
 
-        produtosList = produtoService.findAll();
+		produtocompostoService.save(produtocomposto);
 
+		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+		additemprodutocomposto.addObject("produtosList", produtosList);
 
-        totalitem = 0;
+		return additemprodutocomposto;
+	}
 
-        Money precovenda = produtocomposto.CalcularTotal(produtocomposto.getItens());
+	@RequestMapping(value = "salvarfotocomposto", method = RequestMethod.POST)
+	public ModelAndView SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session,
+			HttpServletRequest request) {
 
+		ModelAndView cadastro = new ModelAndView("cadastroprodutocomposto");
 
-        produtocomposto.setPrecocusto(
-                produtocomposto.CalcularTotal(produtocomposto.getItens()).getAmountMajor(
-                ));
-        produtocomposto.setPrecovenda(
-                precovenda.multipliedBy(2, RoundingMode.UP).getAmountMajor()
-        );
+		String mensagem = "Sucesso ao salvar foto";
+		String erros = "Falha ao salvar foto";
 
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-        additemprodutocomposto.addObject("produtosList", produtosList);
-        additemprodutocomposto.addObject("totalitem", totalitem);
+		String path = session.getServletContext().getRealPath("/");
 
+		String d = request.getContextPath();
 
-        return additemprodutocomposto;
-    }
+		String pathh = "/resources/images/produto";
+		// string pathh = file.get
+		String filename = file.getOriginalFilename();
 
-    @RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.GET)
-    public ModelAndView salvaritemproduto(HttpServletRequest request) {
+		System.out.println("Caminho" + path + " " + filename);
 
+		System.out.println("request end" + d + pathh + "/" + filename);
 
-        String idf = (request.getParameter("id"));
-        String idfprodcomp = (request.getParameter("idprocomp"));
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+		try {
 
+			byte barr[] = file.getBytes();
 
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + pathh + "/" + filename));
+			bout.write(barr);
+			bout.flush();
+			bout.close();
 
-        Produto produto;
+			cadastro.addObject("mensagem", mensagem);
+			cadastro.addObject("filename", filename);
+			cadastro.addObject("produto", produtocomposto);
+			cadastro.addObject("acao", "add");
 
-        produto = produtoService.findOne(idf);
+		} catch (Exception e) {
 
-        if (produto == null) {
+			System.out.println(e);
 
+			cadastro.addObject("erros", erros + e);
 
-            String erros = "Nao Existe esse Produto";
+		}
 
-            additemprodutocomposto.addObject("erros", erros);
-            additemprodutocomposto.addObject("produtocomposto", produtocomposto = produtocompostoService.findOne(idfprodcomp));
-            additemprodutocomposto.addObject("produtosList", produtosList);
+		return cadastro;
 
-            return additemprodutocomposto;
-        }
+	}
 
-        produtocomposto = produtocompostoService.findOne(idfprodcomp);
+	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
+	public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
+		String idf = (request.getParameter("id"));
 
-        Item item = new Item(produto);
+		ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
 
-        item.setQtd(prodqtd);
+		ProdutoComposto produto = produtocompostoService.findOne(idf);
 
+		detalhesproduto.addObject("produto", produto);
 
-        itemService.save(item);
+		return detalhesproduto;
+	}
 
-        items = produtocomposto.getItens();
-
-        items.put(item, item.getQtd());
-
-        produtocomposto.setItens(items);
-
-        produtocomposto.setPrecocusto(produtocomposto.CalcularTotal(items).getAmountMajor());
-
-        produtocomposto.setPrecovenda(
-                produtocomposto.getPrecocusto().multiply(new BigDecimal(2))
-        );
-
-        produtocompostoService.save(produtocomposto);
-
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-        additemprodutocomposto.addObject("produtosList", produtosList);
-
-
-        return additemprodutocomposto;
-    }
-
-    @RequestMapping(value = "salvarfotocomposto", method = RequestMethod.POST)
-    public ModelAndView SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request) {
-
-
-        ModelAndView cadastro = new ModelAndView("cadastroprodutocomposto");
-
-        String mensagem = "Sucesso ao salvar foto";
-        String erros = "Falha ao salvar foto";
-
-
-        String path = session.getServletContext().getRealPath("/");
-
-        String d = request.getContextPath();
-
-
-        String pathh = "/resources/images/produto";
-        //string pathh = file.get
-        String filename = file.getOriginalFilename();
-
-        System.out.println("Caminho" + path + " " + filename);
-
-        System.out.println("request end" + d + pathh + "/" + filename);
-
-
-        try {
-
-            byte barr[] = file.getBytes();
-
-            BufferedOutputStream bout = new BufferedOutputStream(
-                    new FileOutputStream(path + pathh + "/" + filename));
-            bout.write(barr);
-            bout.flush();
-            bout.close();
-
-            cadastro.addObject("mensagem", mensagem);
-            cadastro.addObject("filename", filename);
-            cadastro.addObject("produto", produtocomposto);
-            cadastro.addObject("acao", "add");
-
-
-        } catch (Exception e) {
-
-            System.out.println(e);
-
-            cadastro.addObject("erros", erros + e);
-
-        }
-
-        return cadastro;
-
-    }
-
-
-    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
-    public ModelAndView gerenciarProduto(HttpServletRequest request) {
-
-
-        String idf = (request.getParameter("id"));
-
-        ModelAndView detalhesproduto = new ModelAndView("gerenciaproduto");
-
-
-        ProdutoComposto produto = produtocompostoService.findOne(idf);
-
-        detalhesproduto.addObject("produto", produto);
-
-
-        return detalhesproduto;
-    }
-
-    @Override
-    protected AbstractEntityService<ProdutoComposto> getservice() {
-        // TODO Auto-generated method stub
-        return produtocompostoService;
-    }
-
+	@Override
+	protected AbstractEntityService<ProdutoComposto> getservice() {
+		// TODO Auto-generated method stub
+		return produtocompostoService;
+	}
 
 }
