@@ -38,7 +38,7 @@ public class RestauranteTesteAutomatico {
 		WebElement buttonInserir = driver.findElement(By.cssSelector("input[type='submit'"));
 		 buttonInserir.click();
 		
-		// verifica se há resultados
+		// verifica se ha resultados
 		 String codigoPagina = driver.getPageSource();
 		assertThat(codigoPagina, Matchers.containsString("Sucesso!"));
 		assertNotNull(driver.findElement(By.cssSelector("h4.alert-heading")));
@@ -66,7 +66,7 @@ public class RestauranteTesteAutomatico {
 		WebElement buttonInserir = driver.findElement(By.cssSelector("input[type='submit'"));
 		buttonInserir.click();
 		
-		// verifica se há resultados
+		// verifica se ha resultados
 		String codigoPagina = driver.getPageSource();
 		assertThat(codigoPagina, Matchers.containsString("Sucesso!"));
 		assertNotNull(driver.findElement(By.cssSelector("h4.alert-heading")));
@@ -87,7 +87,7 @@ public class RestauranteTesteAutomatico {
 		driver.get("http://localhost:8094/restaurante/");
 		
 		
-		// clica no botão Lost Password
+		// clica no botao Lost Password
 		WebElement buttonlostPassword =  driver.findElement(By.name("lost"));
 		buttonlostPassword.click();
 		
@@ -98,9 +98,9 @@ public class RestauranteTesteAutomatico {
 		WebElement buttonRecovery = driver.findElement(By.name("recovery"));
 		buttonRecovery.click();
 		
-//		// verifica se há resultados
+//		// verifica se ha resultados
 //		String codigoPagina = driver.getPageSource();
-//		assertThat(codigoPagina, Matchers.containsString("Bem - Vindo"));
+//		assertThat(codigoPagina, Matchers.containsString("Bem Vindo"));
 //		assertNotNull(driver.findElement(By.cssSelector("div.quick-actions_homepage")));
 		
 		driver.quit();
@@ -128,11 +128,11 @@ public class RestauranteTesteAutomatico {
 		WebElement inputsenha = driver.findElement(By.name("senha"));
 		inputsenha.sendKeys("123456");
 		
-		// clica no botão login
+		// clica no botao login
 		WebElement buttonlogin = driver.findElement(By.cssSelector("button[type='submit'"));
 		buttonlogin.click();
 		
-		// verifica se há resultados
+		// verifica se ha resultados
 		String codigoPagina = driver.getPageSource();
 		assertThat(codigoPagina, Matchers.containsString("Bem - Vindo"));
 		assertNotNull(driver.findElement(By.cssSelector("div.quick-actions_homepage")));
