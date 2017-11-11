@@ -45,7 +45,7 @@ public class Caixa extends BaseEntity implements Serializable {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "caixa",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "caixa")
     private List<Despesa> despesas;
 
 

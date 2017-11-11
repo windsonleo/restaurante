@@ -41,7 +41,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany()
     private List<PedidoVenda> pedidos;
 
     @ManyToMany(fetch=FetchType.EAGER)
