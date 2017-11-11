@@ -90,30 +90,6 @@ public class Cliente extends BaseEntity implements Serializable {
     }
 
 
-    @PrePersist
-    public void prePersist() {
-
-        if (endereco != null) {
-            this.setEndereco(endereco);
-//        	endereco.setCliente(this);
-
-            System.out.println("endereco diferente de null : " + endereco);
-
-//        }else{
-//        	
-//        	endereco = new Endereco();
-//        	this.setEndereco(endereco);
-//        	endereco.setCliente(this);
-//        	
-//        	System.out.println("endereco igual a null : " + this.id + endereco);
-//
-//        	
-//        }
-
-        }
-        System.out.println("endereco =  null : " + this.nome);
-    }
-
     @Override
     public String toString() {
         return nome.toUpperCase();
