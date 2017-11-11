@@ -90,7 +90,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         cadastroEntity.addObject("acao", "edicao");
-        cadastroEntity.addObject("entity", entitys);
+        cadastroEntity.addObject(entityAlias, entitys);
 
 
 
