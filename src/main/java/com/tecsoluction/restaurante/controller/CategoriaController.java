@@ -54,7 +54,7 @@ public class CategoriaController extends AbstractController<Categoria> {
 	}
 
 	@Override
-	protected AbstractEntityService<Categoria> getservice() {
+	protected CategoriaServicoImpl getservice() {
 		return categoriaService;
 	}
 
