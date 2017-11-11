@@ -246,20 +246,22 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		itemService.save(item);
 		
 		
-//		boolean vazio = produtocomposto.getItens().isEmpty();
+		boolean vazio = produtocomposto.getItens().isEmpty();
 		
-//		if(vazio == true){
+		if(vazio == true){
 			
 			items.put(item, item.getQtd());
 			produtocomposto.setItens(items);
+			getservice().edit(produtocomposto);
+			
 		
-//		}else {
+		}
 			
 			items  = produtocomposto.getItens();
-//			items.put(item, item.getQtd());
+			items.put(item, item.getQtd());
 
 			
-//		}
+		
 		
 				
 //		BigDecimal precovenda = produtocomposto.getPrecovenda();
