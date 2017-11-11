@@ -1,10 +1,13 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.*;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.tecsoluction.restaurante.entidade.*;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,23 +19,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Caixa;
-import com.tecsoluction.restaurante.entidade.Despesa;
-import com.tecsoluction.restaurante.entidade.FormaPagamento;
-import com.tecsoluction.restaurante.entidade.Pagamento;
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.CaixaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.DespesaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.FormaPagamentoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import com.tecsoluction.restaurante.util.OrigemPedido;
-import com.tecsoluction.restaurante.util.StatusPedido;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "caixa/")
@@ -60,9 +49,9 @@ public class CaixaController extends AbstractController<Caixa> {
     UsuarioServicoImpl userservice;
 
 
-    List<PedidoVenda> pedidoVendaLista;
+    List<PedidoVenda> pedidoVendaLista = new ArrayList<>();
 
-    List<FormaPagamento> formapagamentoLista;
+    List<FormaPagamento> formapagamentoLista = new ArrayList<>();
 
 
     @Autowired
@@ -337,7 +326,7 @@ public class CaixaController extends AbstractController<Caixa> {
     }
 
     @Override
-    protected AbstractEntityService<Caixa> getservice() {
+    protected CaixaServicoImpl getservice() {
 
         return caixaService;
     }

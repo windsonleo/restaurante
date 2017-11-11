@@ -34,14 +34,14 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "estoque/")
 public class EstoqueController extends AbstractController<Estoque> {
 
-	private EstoqueServicoImpl estoqueService;
+	private final EstoqueServicoImpl estoqueService;
 
 	// private
 	// ProdutoServicoImpl produtoService;
 
-	private UsuarioServicoImpl userservice;
+	private final UsuarioServicoImpl userservice;
 
-	private ItemServicoImpl itemService;
+	private final ItemServicoImpl itemService;
 
 	@Autowired
 	public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, ItemServicoImpl itdao,
@@ -111,7 +111,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 	}
 
 	@Override
-	protected AbstractEntityService<Estoque> getservice() {
+	protected EstoqueServicoImpl getservice() {
 
 		return estoqueService;
 	}

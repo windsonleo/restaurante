@@ -9,8 +9,6 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
-
-import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -34,21 +29,21 @@ import java.util.*;
 @RequestMapping(value = "recebimento/")
 public class RecebimentoController extends AbstractController<Recebimento> {
 
-    private UsuarioServicoImpl userservice;
+    private final UsuarioServicoImpl userservice;
 
     private Estoque estoque = new Estoque();
 
-    private EstoqueServicoImpl estoqueService;
+    private final EstoqueServicoImpl estoqueService;
 
-    private RecebimentoServicoImpl recebimentoService;
+    private final RecebimentoServicoImpl recebimentoService;
 
-    private PedidoCompraServicoImpl pedidocompraService;
+    private final PedidoCompraServicoImpl pedidocompraService;
 
-    private ItemServicoImpl itemService;
+    private final ItemServicoImpl itemService;
 
-    private ProdutoServicoImpl produtoService;
+    private final ProdutoServicoImpl produtoService;
 
-    private FornecedorServicoImpl fornecedorService;
+    private final FornecedorServicoImpl fornecedorService;
 
     private List<Item> itens = new ArrayList<>();
 
@@ -64,7 +59,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     private
     BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-
+    @Autowired
     public RecebimentoController(UsuarioServicoImpl usudao, EstoqueServicoImpl estdao, RecebimentoServicoImpl recdao, PedidoCompraServicoImpl pcdao,
                                  ItemServicoImpl itdao, ProdutoServicoImpl proddao, FornecedorServicoImpl fordao) {
 
@@ -231,7 +226,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         UUID idf = UUID.fromString(request.getParameter("id"));
 
         UUID idfrec = UUID.fromString(request.getParameter("idrec"));
-        
+
         it = itemService.findOne(idf);
 
         this.recebimento = recebimentoService.findOne(idfrec);
@@ -288,7 +283,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     }
 
     @Override
-    protected AbstractEntityService<Recebimento> getservice() {
+    protected RecebimentoServicoImpl getservice() {
         // TODO Auto-generated method stub
         return recebimentoService;
     }

@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,25 +43,25 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 
-	private
-	UsuarioServicoImpl userservice;
+    private final
+    UsuarioServicoImpl userservice;
 
-    private
+    private final
     PedidoVendaServicoImpl pedidovendaService;
 
-    private
-	ProdutoServicoImpl produtoService;
- 
-    private
+    private final
+    ProdutoServicoImpl produtoService;
+
+    private final
     MesaServicoImpl mesaService;
 
-    private
+    private final
     ClienteServicoImpl clienteService;
 
-    private
+    private final
     RecebimentoServicoImpl recebimentoService;
 
-    private
+    private final
     PedidoCompraServicoImpl pedidocompraService;
     
     private 
@@ -88,7 +89,7 @@ public class HomeController {
     List<Cliente> resultsearch;
 
 
-
+    @Autowired
     public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao) {
 
         this.userservice = dao;

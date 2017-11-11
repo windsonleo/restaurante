@@ -1,10 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Fornecedor;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by clebr on 06/07/2016.
@@ -27,57 +26,57 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "fornecedor/")
 public class FornecedorController extends AbstractController<Fornecedor> {
 
-	private FornecedorServicoImpl fornecedorService;
+    private final FornecedorServicoImpl fornecedorService;
 
-	private UsuarioServicoImpl userservice;
+    private final UsuarioServicoImpl userservice;
 
-	@Autowired
-	public FornecedorController(FornecedorServicoImpl dao, UsuarioServicoImpl daousu) {
-		super("fornecedor");
-		this.fornecedorService = dao;
-		this.userservice = daousu;
-	}
+    @Autowired
+    public FornecedorController(FornecedorServicoImpl dao, UsuarioServicoImpl daousu) {
+        super("fornecedor");
+        this.fornecedorService = dao;
+        this.userservice = daousu;
+    }
 
-	@ModelAttribute
-	public void addAttributes(Model model) {
+    @ModelAttribute
+    public void addAttributes(Model model) {
 
-		List<Fornecedor> fornecedorList = getservice().findAll();
+        List<Fornecedor> fornecedorList = getservice().findAll();
 
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = userservice.findByUsername(usuario.getUsername());
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        usuario = userservice.findByUsername(usuario.getUsername());
 
-		model.addAttribute("usuarioAtt", usuario);
-		model.addAttribute("fornecedorList", fornecedorList);
+        model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("fornecedorList", fornecedorList);
 
-	}
+    }
 
-	@RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
-	public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
+    @RequestMapping(value = "LocalizarFornecedorGerencia", method = RequestMethod.POST)
+    public ModelAndView gerenciarFornecedorLocalizar(HttpServletRequest request) {
 
-		UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 
-		Fornecedor fornecedor = getservice().findOne(idf);
+        Fornecedor fornecedor = getservice().findOne(idf);
 
-		gerencia.addObject("fornecedor", fornecedor);
+        gerencia.addObject("fornecedor", fornecedor);
 
-		return gerencia;
-	}
+        return gerencia;
+    }
 
-	@RequestMapping(value = "gerencia", method = RequestMethod.GET)
-	public ModelAndView gerenciafornecedor(HttpServletRequest request) {
+    @RequestMapping(value = "gerencia", method = RequestMethod.GET)
+    public ModelAndView gerenciafornecedor(HttpServletRequest request) {
 
-		ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
+        ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 
-		return gerencia;
-	}
+        return gerencia;
+    }
 
-	@Override
-	protected AbstractEntityService<Fornecedor> getservice() {
+    @Override
+    protected FornecedorServicoImpl getservice() {
 
-		return fornecedorService;
-	}
+        return fornecedorService;
+    }
 
 }

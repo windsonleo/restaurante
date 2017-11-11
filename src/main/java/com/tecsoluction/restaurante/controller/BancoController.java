@@ -1,62 +1,51 @@
 package com.tecsoluction.restaurante.controller;
 
+import com.tecsoluction.restaurante.entidade.Banco;
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.service.impl.BancoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.tecsoluction.restaurante.entidade.Banco;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.BancoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 @Controller
 @RequestMapping(value = "banco/")
 public class BancoController extends AbstractController<Banco> {
-	
-	
-	@Autowired
-    private
+
+
+    private final
     BancoServicoImpl bancoService;
-	
-	@Autowired
-    private
-	UsuarioServicoImpl userservice;
+
+    private final
+    UsuarioServicoImpl userservice;
 
 
     @Autowired
-    public BancoController(BancoServicoImpl dao, UsuarioServicoImpl daousu) {
+    public BancoController(BancoServicoImpl bancoService, UsuarioServicoImpl userservice) {
         super("banco");
-       
-        this.bancoService = dao;
-        this.userservice = daousu;
+        this.bancoService = bancoService;
+        this.userservice = userservice;
     }
-
 
     @ModelAttribute
     public void addAttributes(Model model) {
-
-
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
-
-
-
     }
 
+    @Override
+    protected BancoServicoImpl getservice() {
 
-	@Override
-	protected AbstractEntityService<Banco> getservice() {
-
-		return bancoService;
-	}
+        return bancoService;
+    }
 
 
 }

@@ -5,7 +5,6 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
@@ -31,11 +30,11 @@ import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 @RequestMapping(value = "mesas/")
 public class MesaController extends AbstractController<Mesa> {
 
-    private UsuarioServicoImpl userservice;
+    private final UsuarioServicoImpl userservice;
 
-    private MesaServicoImpl mesaService;
+    private final MesaServicoImpl mesaService;
 
-    private PedidoVendaServicoImpl pedidovendaService;
+    private final PedidoVendaServicoImpl pedidovendaService;
 
     private List<PedidoVenda> pedidos;
 
@@ -118,7 +117,7 @@ public class MesaController extends AbstractController<Mesa> {
     }
 
     @Override
-    protected AbstractEntityService<Mesa> getservice() {
+    protected MesaServicoImpl getservice() {
 
         return mesaService;
     }

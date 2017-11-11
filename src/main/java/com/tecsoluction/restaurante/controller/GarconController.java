@@ -24,9 +24,9 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @RequestMapping(value = "garcon/")
 public class GarconController extends AbstractController<Garcon> {
 
-	private GarconServicoImpl garconService;
+	private final GarconServicoImpl garconService;
 
-	private UsuarioServicoImpl userservice;
+	private final UsuarioServicoImpl userservice;
 
 	@Autowired
 	public GarconController(GarconServicoImpl dao, UsuarioServicoImpl daousu) {
@@ -71,7 +71,7 @@ public class GarconController extends AbstractController<Garcon> {
 	}
 
 	@Override
-	protected AbstractEntityService<Garcon> getservice() {
+	protected GarconServicoImpl getservice() {
 
 		return garconService;
 	}

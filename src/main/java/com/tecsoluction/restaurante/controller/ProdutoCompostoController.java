@@ -46,17 +46,17 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 @RequestMapping(value = "produtocomposto/")
 public class ProdutoCompostoController extends AbstractController<ProdutoComposto> {
 
-	private UsuarioServicoImpl userservice;
+	private final  UsuarioServicoImpl userservice;
 
-	private ProdutoServicoImpl produtoService;
+	private final  ProdutoServicoImpl produtoService;
 
-	private FornecedorServicoImpl fornecedorService;
+	private final  FornecedorServicoImpl fornecedorService;
 
-	private CategoriaServicoImpl categoriaService;
+	private final  CategoriaServicoImpl categoriaService;
 
-	private ItemServicoImpl itemService;
+	private final  ItemServicoImpl itemService;
 
-	private ProdutoCompostoServicoImpl produtocompostoService;
+	private final  ProdutoCompostoServicoImpl produtocompostoService;
 
 	private List<ProdutoComposto> produtoList;
 
@@ -358,7 +358,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     }
 
     @Override
-    protected AbstractEntityService<ProdutoComposto> getservice() {
+    protected ProdutoCompostoServicoImpl getservice() {
         // TODO Auto-generated method stub
         return produtocompostoService;
     }

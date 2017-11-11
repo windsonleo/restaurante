@@ -1,10 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.tecsoluction.restaurante.entidade.Role;
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.service.impl.RoleServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Role;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.RoleServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Handles requests for the application home page.
@@ -34,7 +32,7 @@ public class UsuarioController extends AbstractController<Usuario> {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
-    private UsuarioServicoImpl usudao;
+    private final UsuarioServicoImpl usudao;
 
     private final UsuarioServicoImpl ususervice;
 
@@ -57,7 +55,7 @@ public class UsuarioController extends AbstractController<Usuario> {
     }
 
     @Override
-    protected AbstractEntityService<Usuario> getservice() {
+    protected UsuarioServicoImpl getservice() {
 
         return ususervice;
     }

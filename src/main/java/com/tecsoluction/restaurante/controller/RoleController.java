@@ -28,18 +28,15 @@ public class RoleController extends AbstractController<Role> {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
-	@Autowired
-	private UsuarioServicoImpl userService;
+	private final UsuarioServicoImpl userService;
+
+	private final RoleServicoImpl roleService;
 
 	@Autowired
-	private RoleServicoImpl roleService;
-
-	@Autowired
-	public RoleController(UsuarioServicoImpl usu, RoleServicoImpl rd) {
+	public RoleController(UsuarioServicoImpl userService, RoleServicoImpl roleService) {
 		super("role");
-		this.userService = usu;
-		this.roleService = rd;
-
+		this.userService = userService;
+		this.roleService = roleService;
 	}
 
 	@InitBinder
@@ -69,7 +66,7 @@ public class RoleController extends AbstractController<Role> {
 	}
 
 	@Override
-	protected AbstractEntityService<Role> getservice() {
+	protected RoleServicoImpl getservice() {
 		// TODO Auto-generated method stub
 		return roleService;
 	}

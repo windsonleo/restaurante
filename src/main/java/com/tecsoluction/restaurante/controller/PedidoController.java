@@ -16,7 +16,7 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @RequestMapping(value = "pedido/")
 public class PedidoController extends AbstractController<Pedido> {
 
-	private PedidoServicoImpl pedidoService;
+	private final PedidoServicoImpl pedidoService;
 
 	@Autowired
 	public PedidoController(PedidoServicoImpl dao) {
@@ -38,7 +38,7 @@ public class PedidoController extends AbstractController<Pedido> {
 	}
 
 	@Override
-	protected AbstractEntityService<Pedido> getservice() {
+	protected PedidoServicoImpl getservice() {
 		// TODO Auto-generated method stub
 		return pedidoService;
 	}

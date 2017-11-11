@@ -1,18 +1,17 @@
 package com.tecsoluction.restaurante.framework;
 
-import java.lang.annotation.Annotation;
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.Entity;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.UUID;
 
 public abstract class AbstractController<Entity> {
 
@@ -33,6 +32,7 @@ public abstract class AbstractController<Entity> {
 
         cadastro.addObject("acao", "add");
 
+
         return cadastro;
 
         // return new ModelAndView("cadastro" + entityAlias);
@@ -46,19 +46,13 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         if (result.hasErrors()) {
-            System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());
-            System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
-            System.out.println(
-                    "erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
-            System.out.println(
-                    "erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
-            attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
+            trataErro(result, attributes);
         } else {
-            getservice().save(entity);
+            entity = getservice().save(entity);
             System.out.println("add: " + entityAlias);
 
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
-            attributes.addFlashAttribute("entity", entity.toString());
+            attributes.addFlashAttribute("entity", entity);
         }
 
         cadastroEntity.addObject("entity", entity);
@@ -74,6 +68,7 @@ public abstract class AbstractController<Entity> {
         ModelAndView movimentacao = new ModelAndView("movimentacao" + entityAlias);
         List<Entity> entityList = getservice().findAll();
         movimentacao.addObject(entityAlias + "List", entityList);
+
         return movimentacao;
     }
 
@@ -83,16 +78,14 @@ public abstract class AbstractController<Entity> {
     public ModelAndView editarEntityForm(HttpServletRequest request) {
 
         Entity entitys;
-        
+
         UUID idf = UUID.fromString(request.getParameter("id"));
         entitys = getservice().findOne(idf);
-        
+
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         cadastroEntity.addObject("acao", "edicao");
         cadastroEntity.addObject(entityAlias, entitys);
-
-
 
         return cadastroEntity;
     }
@@ -102,31 +95,22 @@ public abstract class AbstractController<Entity> {
     @PostMapping(value = "edicao")
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
-    	
-
-    	
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
-
         if (result.hasErrors()) {
-            System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());
-            System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
-            System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
-            System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
-            attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
+            trataErro(result, attributes);
 
         } else {
             getservice().edit(entity);
             System.out.println("edit: " + entityAlias);
 
         }
-
 //		cadastroEntity.addObject("acao", "edicao");
-
-
-        return cadastroEntity;
+//        return cadastroEntity;
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro");
     }
+
 
     @Transactional
     @GetMapping(value = "delete")
@@ -136,6 +120,14 @@ public abstract class AbstractController<Entity> {
         getservice().delete(idf);
 
         return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
+    }
+
+    private void trataErro(BindingResult result, RedirectAttributes attributes) {
+        System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());
+        System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
+        System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
+        System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
+        attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
     }
 
 }

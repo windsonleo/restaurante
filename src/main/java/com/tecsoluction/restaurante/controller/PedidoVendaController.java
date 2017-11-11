@@ -1,18 +1,13 @@
 package com.tecsoluction.restaurante.controller;
 
-import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.joda.money.Money;
+import com.tecsoluction.restaurante.entidade.*;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.*;
+import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,260 +18,245 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Estoque;
-import com.tecsoluction.restaurante.entidade.Garcon;
-import com.tecsoluction.restaurante.entidade.Item;
-import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
-import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
-import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
-import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import com.tecsoluction.restaurante.util.OrigemPedido;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
-import com.tecsoluction.restaurante.util.StatusPedido;
+
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
-	private UsuarioServicoImpl userservice;
+    private final UsuarioServicoImpl userservice;
 
-	private PedidoVendaServicoImpl pedidovendaService;
+    private final PedidoVendaServicoImpl pedidovendaService;
 
-	private ItemServicoImpl itemService;
+    private final ItemServicoImpl itemService;
 
-	private ProdutoServicoImpl produtoService;
+    private final ProdutoServicoImpl produtoService;
 
-	private MesaServicoImpl mesaService;
+    private final MesaServicoImpl mesaService;
 
-	private ClienteServicoImpl clienteService;
+    private final ClienteServicoImpl clienteService;
 
-	private GarconServicoImpl garconService;
+    private final GarconServicoImpl garconService;
 
-	private final EstoqueServicoImpl estoqueService;
+    private final EstoqueServicoImpl estoqueService;
 
-	private List<Produto> produtosList;
+    private List<Produto> produtosList;
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     private PedidoVenda pv;
-    
+
     private Map<Item, BigDecimal> itens = new HashMap<>();
-    
+
     private Estoque estoque;
 
-	@Autowired
-	public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
-			ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
-			UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
-		super("pedidovenda");
-		
-		this.pedidovendaService =dao;
-		this.itemService = daoitem;
-		this.produtoService = produtodao;
-		this.clienteService = daocliente;
-		this.mesaService = daomesa;
-		this.garconService = daogarcon;
-		this.userservice = daousu;
-		this.estoqueService = estdao;
+    @Autowired
+    public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
+                                 ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
+                                 UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
+        super("pedidovenda");
 
+        this.pedidovendaService = dao;
+        this.itemService = daoitem;
+        this.produtoService = produtodao;
+        this.clienteService = daocliente;
+        this.mesaService = daomesa;
+        this.garconService = daogarcon;
+        this.userservice = daousu;
+        this.estoqueService = estdao;
 
-	
-	
-	}
 
-	@InitBinder
-	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+    }
 
-		binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteService) {
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-		});
+        binder.registerCustomEditor(Cliente.class, new AbstractEditor<Cliente>(clienteService) {
 
-		binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
+        });
 
-		});
+        binder.registerCustomEditor(Garcon.class, new AbstractEditor<Garcon>(garconService) {
 
-		binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
+        });
 
-		});
+        binder.registerCustomEditor(Mesa.class, new AbstractEditor<Mesa>(mesaService) {
 
-		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
+        });
 
-		});
+        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
 
-	}
+        });
 
-	@ModelAttribute
-	public void addAttributes(Model model) {
+    }
 
-		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
+    @ModelAttribute
+    public void addAttributes(Model model) {
 
-		// TipoPedido[] tipoList = TipoPedido.values();
-		StatusPedido[] tipoStatusList = StatusPedido.values();
-		OrigemPedido[] origemPedidoList = OrigemPedido.values();
-		SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+        List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
 
-		List<Cliente> clienteList = clienteService.findAll();
+        // TipoPedido[] tipoList = TipoPedido.values();
+        StatusPedido[] tipoStatusList = StatusPedido.values();
+        OrigemPedido[] origemPedidoList = OrigemPedido.values();
+        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
-		List<Garcon> garconList = garconService.findAll();
+        List<Cliente> clienteList = clienteService.findAll();
 
-		List<Mesa> mesaList = mesaService.findAll();
+        List<Garcon> garconList = garconService.findAll();
 
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Mesa> mesaList = mesaService.findAll();
 
-		usuario = userservice.findByUsername(usuario.getUsername());
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
-		model.addAttribute("usuarioAtt", usuario);
+        usuario = userservice.findByUsername(usuario.getUsername());
 
-		model.addAttribute("pedidoVendaList", pedidoVendaList);
-		model.addAttribute("origemPedidoList", origemPedidoList);
-		model.addAttribute("garconList", garconList);
-		model.addAttribute("mesaList", mesaList);
-		model.addAttribute("situacaoPedidoList", situacaoPedidoList);
-		model.addAttribute("tipoStatusList", tipoStatusList);
-		model.addAttribute("clienteList", clienteList);
+        model.addAttribute("usuarioAtt", usuario);
 
-	}
+        model.addAttribute("pedidoVendaList", pedidoVendaList);
+        model.addAttribute("origemPedidoList", origemPedidoList);
+        model.addAttribute("garconList", garconList);
+        model.addAttribute("mesaList", mesaList);
+        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
+        model.addAttribute("tipoStatusList", tipoStatusList);
+        model.addAttribute("clienteList", clienteList);
 
-	@RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
-	public ModelAndView FinalizarVenda(HttpServletRequest request) {
+    }
 
-		this.estoque = estoqueService.findOne(UUID.fromString("49L"));
+    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
+    public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
-		UUID idf = UUID.fromString(request.getParameter("id"));
+        this.estoque = estoqueService.findOne(UUID.fromString("49L"));
 
-		this.pv = pedidovendaService.findOne(idf);
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
+        this.pv = pedidovendaService.findOne(idf);
 
-		for (Item key : pv.getItems().keySet()) {
+        ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
-			Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-			BigDecimal qtd = key.getQtd();
+        for (Item key : pv.getItems().keySet()) {
 
-			key.setEstoque(estoque);
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
+            BigDecimal qtd = key.getQtd();
 
-			estoque.RetirarProdutoEstoque(produto, qtd);
+            key.setEstoque(estoque);
 
-			estoqueService.save(estoque);
+            estoque.RetirarProdutoEstoque(produto, qtd);
 
-			itemService.save(key);
+            estoqueService.save(estoque);
 
-		}
+            itemService.save(key);
 
-		this.pv.setStatus(StatusPedido.FECHADO);
-		this.pv.setIspago(true);
+        }
 
-		pedidovendaService.save(pv);
+        this.pv.setStatus(StatusPedido.FECHADO);
+        this.pv.setIspago(true);
 
-		itens.clear();
+        pedidovendaService.save(pv);
 
-		return finalizacaovenda;
-	}
+        itens.clear();
 
+        return finalizacaovenda;
+    }
 
-	@RequestMapping(value = "additem", method = RequestMethod.GET)
-	public ModelAndView additemvendaForm(HttpServletRequest request) {
 
-		UUID idf = UUID.fromString(request.getParameter("id"));
+    @RequestMapping(value = "additem", method = RequestMethod.GET)
+    public ModelAndView additemvendaForm(HttpServletRequest request) {
 
-		ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		this.pv = pedidovendaService.findOne(idf);
+        ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-		produtosList = produtoService.findAll();
+        this.pv = pedidovendaService.findOne(idf);
 
-		pv.setTotal(pv.CalcularTotal(pv.getItems()));
+        produtosList = produtoService.findAll();
 
-		totalpedido = pv.CalcularTotal(pv.getItems());
+        pv.setTotal(pv.CalcularTotal(pv.getItems()));
 
-		DecimalFormat df = new DecimalFormat("0.##");
-		String totalformatado = df.format(totalpedido);
+        totalpedido = pv.CalcularTotal(pv.getItems());
 
-		additempedidovenda.addObject("pedidovenda", pv);
-		additempedidovenda.addObject("produtosList", produtosList);
-		additempedidovenda.addObject("totalpedido", totalformatado);
+        DecimalFormat df = new DecimalFormat("0.##");
+        String totalformatado = df.format(totalpedido);
 
-		return additempedidovenda;
-	}
+        additempedidovenda.addObject("pedidovenda", pv);
+        additempedidovenda.addObject("produtosList", produtosList);
+        additempedidovenda.addObject("totalpedido", totalformatado);
 
-	@RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
-	public ModelAndView salvaritempedido(HttpServletRequest request) {
+        return additempedidovenda;
+    }
 
-		UUID prodid = UUID.fromString(request.getParameter("produtoescolhido"));
+    @RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
+    public ModelAndView salvaritempedido(HttpServletRequest request) {
 
-		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-		
-		BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+        UUID prodid = UUID.fromString(request.getParameter("produtoescolhido"));
 
+        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-		Produto produto;
+        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
 
-		produto = produtoService.findOne(prodid);
 
-		if (produto == null) {
+        Produto produto;
 
-			ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+        produto = produtoService.findOne(prodid);
 
-			String erros = "Nao Existe esse Produto";
+        if (produto == null) {
 
-			additempedidovenda.addObject("erros", erros);
-			additempedidovenda.addObject("pv", pv);
-			additempedidovenda.addObject("produtosList", produtosList);
+            ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-			return additempedidovenda;
-		}
+            String erros = "Nao Existe esse Produto";
 
-		PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
+            additempedidovenda.addObject("erros", erros);
+            additempedidovenda.addObject("pv", pv);
+            additempedidovenda.addObject("produtosList", produtosList);
 
-		// System.out.println("windson ped"+pedidov.toString());
+            return additempedidovenda;
+        }
 
-		Item item = new Item(produto, pedidov);
+        PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
 
-		item.setQtd(qtdbd);
-		item.setTotalItem(item.getTotalItem());
-		item.setPedido(pedidov);
+        // System.out.println("windson ped"+pedidov.toString());
 
-		itens = pedidov.getItems();
+        Item item = new Item(produto, pedidov);
 
-		itens.put(item, item.getQtd());
+        item.setQtd(qtdbd);
+        item.setTotalItem(item.getTotalItem());
+        item.setPedido(pedidov);
 
-		itemService.save(item);
+        itens = pedidov.getItems();
 
-		pedidov.setItems(itens);
-		pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
-		pedidov.setStatus(StatusPedido.PENDENTE);
+        itens.put(item, item.getQtd());
 
-		pedidovendaService.save(pedidov);
+        itemService.save(item);
 
-		return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
-	}
+        pedidov.setItems(itens);
+        pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
+        pedidov.setStatus(StatusPedido.PENDENTE);
 
-	@RequestMapping(value = "detalhes", method = RequestMethod.GET)
-	public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
+        pedidovendaService.save(pedidov);
 
-		UUID idf = UUID.fromString(request.getParameter("id"));
+        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
+    }
 
-		ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
+    @RequestMapping(value = "detalhes", method = RequestMethod.GET)
+    public ModelAndView detalhesPedidoVenda(HttpServletRequest request) {
 
-		PedidoVenda pedido = pedidovendaService.findOne(idf);
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		detalhespedidovenda.addObject("pedido", pedido);
+        ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
-		return detalhespedidovenda;
-	}
+        PedidoVenda pedido = pedidovendaService.findOne(idf);
+
+        detalhespedidovenda.addObject("pedido", pedido);
+
+        return detalhespedidovenda;
+    }
 
 //	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
 //	public ModelAndView detalhesItem(HttpServletRequest request) {
@@ -294,16 +274,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //		return detalhesitem;
 //	}
 
-	@RequestMapping(value = "/item/delete", method = RequestMethod.GET)
-	public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
+    @RequestMapping(value = "/item/delete", method = RequestMethod.GET)
+    public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
 
-		UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-		itemService.delete(idf);
+        itemService.delete(idf);
 
-		return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
+        return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
 
-	}
+    }
 
 //	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
 //	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
@@ -319,22 +299,22 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 //	}
 
-	@RequestMapping(value = "rapido", method = RequestMethod.GET)
-	public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
+    @RequestMapping(value = "rapido", method = RequestMethod.GET)
+    public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
 
-		ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
+        ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
 
-		// List<PedidoVenda> vendas = pedidovendaService.findAll();
+        // List<PedidoVenda> vendas = pedidovendaService.findAll();
 
-		// novospedidos.addObject("pedidovendasList", vendas);
+        // novospedidos.addObject("pedidovendasList", vendas);
 
-		return novospedidos;
-	}
+        return novospedidos;
+    }
 
-	@Override
-	protected AbstractEntityService<PedidoVenda> getservice() {
-		// TODO Auto-generated method stub
-		return pedidovendaService;
-	}
+    @Override
+    protected PedidoVendaServicoImpl getservice() {
+        // TODO Auto-generated method stub
+        return pedidovendaService;
+    }
 
 }
