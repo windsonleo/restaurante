@@ -210,6 +210,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		UUID idf = (UUID.fromString(request.getParameter("id")));
 		UUID idfprodcomp = UUID.fromString(request.getParameter("idprocomp"));
+		
 		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
 		BigDecimal qtdbc= BigDecimal.valueOf(prodqtd);
@@ -232,13 +233,15 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 			return additemprodutocomposto;
 		}
 
-		produtocomposto = produtocompostoService.findOne(idfprodcomp);
+		produtocomposto = getservice().findOne(idfprodcomp);
 
 		Item item = new Item(produto);
 
 		item.setQtd(qtdbc);
 		
 		item.setTotalItem(item.getTotalItem());
+		
+		item.setIsativo(true);
 
 		itemService.save(item);
 		
@@ -271,9 +274,9 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		
 		produtocomposto.setItens(items);
 
-		produtocompostoService.save(produtocomposto);
+		getservice().edit(produtocomposto);
 		
-		itemService.save(item);
+		itemService.edit(item);
 
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
@@ -359,8 +362,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
     @Override
     protected ProdutoCompostoServicoImpl getservice() {
-        // TODO Auto-generated method stub
-        return produtocompostoService;
+
+    	return produtocompostoService;
     }
 
 

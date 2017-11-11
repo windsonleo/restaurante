@@ -78,11 +78,11 @@ public class Cliente extends BaseEntity implements Serializable {
 
     }
 
-//    public Cliente(Endereco endereco) {
-//        // TODO Auto-generated constructor stub
-//
-//        this.endereco = endereco;
-//    }
+    public Cliente(Endereco endereco) {
+        // TODO Auto-generated constructor stub
+
+        this.endereco = endereco;
+    }
 
 
     @Override

@@ -26,7 +26,7 @@ public abstract class BaseEntity {
     protected UUID id;
     
     @Column(name = "isativo")
-    protected boolean isativo;
+    protected boolean isativo =true;
 
     public boolean isNew() {
         return (this.id == null);
