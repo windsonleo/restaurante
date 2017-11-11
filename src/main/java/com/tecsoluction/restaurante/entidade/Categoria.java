@@ -13,10 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
@@ -49,8 +46,7 @@ public class Categoria extends BaseEntity implements Serializable {
 
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "categoria", cascade = {CascadeType.REFRESH})
+    @OneToMany(mappedBy = "categoria", cascade = {CascadeType.REFRESH},fetch=FetchType.EAGER)
     private List<Produto> produtos;
 
 

@@ -4,12 +4,10 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
 
@@ -42,8 +40,7 @@ public class FormaPagamento extends BaseEntity implements Serializable {
 
     private float percdesconto;
 
-    @ManyToMany(mappedBy = "formaPagamentos")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(mappedBy = "formaPagamentos",fetch=FetchType.EAGER)
     private Set<Pagamento> pagamentos;
 
     //

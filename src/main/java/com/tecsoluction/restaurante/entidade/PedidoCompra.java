@@ -16,10 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -41,9 +37,8 @@ public class PedidoCompra extends Pedido implements Serializable {
 
     private boolean ispago = false;
 
-    @OneToMany(mappedBy = "pedidocompra")
+    @OneToMany(mappedBy = "pedidocompra",fetch=FetchType.EAGER)
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Recebimento> recebimentos;
 
     @ElementCollection(fetch = FetchType.EAGER)

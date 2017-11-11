@@ -10,14 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -66,9 +63,7 @@ public class Cliente extends BaseEntity implements Serializable {
 
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    // cliente pedido de venda
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)
     private List<PedidoVenda> listaPedidoVenda;
 
 

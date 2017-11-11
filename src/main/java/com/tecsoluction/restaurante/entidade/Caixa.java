@@ -6,12 +6,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
@@ -22,7 +20,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @Entity
 @Table(name = "CAIXA")
 public class Caixa extends BaseEntity implements Serializable {
@@ -42,14 +40,12 @@ public class Caixa extends BaseEntity implements Serializable {
 //    private Caixa catpai;
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.TRUE)
-    @OneToMany(mappedBy = "caixa")
+    @OneToMany(mappedBy = "caixa",fetch=FetchType.LAZY)
     private List<Pagamento> pagamentos;
 
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "caixa")
+    @OneToMany(mappedBy = "caixa",fetch=FetchType.EAGER)
     private List<Despesa> despesas;
 
 

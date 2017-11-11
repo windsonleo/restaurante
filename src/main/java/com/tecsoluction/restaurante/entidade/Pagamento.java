@@ -44,8 +44,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<PedidoVenda> pedidos;
 
-    @ManyToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(fetch=FetchType.EAGER)
     private Set<FormaPagamento> formaPagamentos;
 
     private Money valorTotalPagamento;

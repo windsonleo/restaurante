@@ -10,14 +10,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -56,9 +55,8 @@ public abstract class Pedido extends BaseEntity {
 //    @JsonManagedReference
 //    private Map<Item,Double> items = new HashMap<>();
 
-    @ManyToMany(mappedBy = "pedidos")
+    @ManyToMany(mappedBy = "pedidos",fetch=FetchType.EAGER)
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pagamento> pagamento;
 
     //aberto,pendente,fechado,cancelado

@@ -34,6 +34,7 @@ public class Despesa extends BaseEntity implements Serializable {
     @ManyToOne
 //	@JoinColumn(name = "catpai_id", nullable = true)
     private Caixa caixa;
+    
     @Column(name = "isativo")
     private boolean isativo;
 

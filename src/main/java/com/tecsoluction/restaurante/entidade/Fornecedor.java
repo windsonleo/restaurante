@@ -9,10 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
 
@@ -46,14 +42,12 @@ public class Fornecedor extends BaseEntity implements Serializable {
     private String inscricaoestadual;
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
     private List<Produto> produtos;
 
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
     private List<Recebimento> recebimento;
 
     public Fornecedor() {
