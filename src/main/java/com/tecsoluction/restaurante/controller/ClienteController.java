@@ -71,8 +71,8 @@ public class ClienteController extends AbstractController<Cliente> {
 
         List<Cliente> clienteList = getservice().findAll();
        
-         cliente = new Cliente();
-        cliente.setDatanascimento( new Date());
+//         cliente = new Cliente();
+//        cliente.setDatanascimento( new Date());
         
         Usuario usuario = new Usuario();
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -81,7 +81,7 @@ public class ClienteController extends AbstractController<Cliente> {
 
 		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
-        model.addAttribute("cliente",cliente);        
+//        model.addAttribute("cliente",cliente);        
 
 	}
 
