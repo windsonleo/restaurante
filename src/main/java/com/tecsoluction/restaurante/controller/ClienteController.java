@@ -69,7 +69,7 @@ public class ClienteController extends AbstractController<Cliente> {
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
-        List<Cliente> clienteList = clienteService.findAll();
+        List<Cliente> clienteList = getservice().findAll();
        
          cliente = new Cliente();
         cliente.setDatanascimento( new Date());
