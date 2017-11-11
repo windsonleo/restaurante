@@ -176,7 +176,11 @@ public class ClienteController extends AbstractController<Cliente> {
         cliente.setEndereco(endereco);
 
 
-        getservice().save(cliente);
+        getservice().edit(cliente);
+       
+        endereco.setCliente(cliente);
+        
+        enderecoService.edit(endereco);
 
 //  	ModelAndView cadastrocliente= new ModelAndView("cadastrocliente");
 //		

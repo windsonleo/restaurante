@@ -55,11 +55,11 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
     @Override
     protected void validateDelete(UUID id) {
 
-        Categoria catGenericaPai = dao.getOnlyCategoriaPai();
-        List<Categoria> categoriasFilha = dao.getCategoriasFilho(id);
-        for (Categoria cat : categoriasFilha) {
-            cat.setCatpai(catGenericaPai);
-        }
+//        Categoria catGenericaPai = dao.getOnlyCategoriaPai();
+//        List<Categoria> categoriasFilha = dao.getCategoriasFilho(id);
+//        for (Categoria cat : categoriasFilha) {
+//            cat.setCatpai(catGenericaPai);
+//        }
 
     }
 
