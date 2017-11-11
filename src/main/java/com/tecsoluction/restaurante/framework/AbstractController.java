@@ -81,8 +81,13 @@ public abstract class AbstractController<Entity> {
     @Transactional
     @GetMapping(value = "editar")
     public ModelAndView editarEntityForm(@ModelAttribute @Valid Entity entity, BindingResult result,
-                                         RedirectAttributes attributes) {
+                                         RedirectAttributes attributes,HttpServletRequest request) {
 
+        Entity entitys;
+        
+        UUID idf = UUID.fromString(request.getParameter("id"));
+        entitys = getservice().findOne(idf);
+        
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         cadastroEntity.addObject("acao", "edicao");
@@ -96,6 +101,9 @@ public abstract class AbstractController<Entity> {
     @PostMapping(value = "edicao")
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
+    	
+
+    	
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
