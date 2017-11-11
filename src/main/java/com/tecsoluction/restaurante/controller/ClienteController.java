@@ -143,8 +143,10 @@ public class ClienteController extends AbstractController<Cliente> {
         endereco.setBairro(request.getParameter("bairro"));
         endereco.setCidade(request.getParameter("cidade"));
         endereco.setUf(request.getParameter("uf"));
+        endereco.setCep(request.getParameter("cep"));
         endereco.setPontoreferencia(request.getParameter("pontoreferencia"));
         endereco.setComplemento(request.getParameter("complemento"));
+        endereco.setIsativo(true);
 
 //		String datanascimento = request.getParameter("datanascimento");
 
