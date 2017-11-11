@@ -205,7 +205,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		return additemprodutocomposto;
 	}
 
-	@RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.GET)
+	@RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.POST)
 	public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
 		UUID idf = (UUID.fromString(request.getParameter("id")));
@@ -284,7 +284,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList); 
 		
-		
+	
         
 		return additemprodutocomposto;
 
