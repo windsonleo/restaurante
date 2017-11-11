@@ -80,8 +80,7 @@ public abstract class AbstractController<Entity> {
 
     @Transactional
     @GetMapping(value = "editar")
-    public ModelAndView editarEntityForm(@ModelAttribute @Valid Entity entity, BindingResult result,
-                                         RedirectAttributes attributes,HttpServletRequest request) {
+    public ModelAndView editarEntityForm(HttpServletRequest request) {
 
         Entity entitys;
         
@@ -91,6 +90,8 @@ public abstract class AbstractController<Entity> {
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         cadastroEntity.addObject("acao", "edicao");
+        cadastroEntity.addObject("entity", entitys);
+
 
 
         return cadastroEntity;
