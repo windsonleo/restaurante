@@ -8,10 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
@@ -32,7 +32,7 @@ public class Fornecedor extends BaseEntity implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-       @NotBlank
+    @NotBlank
     @Column(name = "nomefantasia")
     private String nomefantasia;
 
