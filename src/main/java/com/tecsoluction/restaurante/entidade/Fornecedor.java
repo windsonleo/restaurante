@@ -42,7 +42,7 @@ public class Fornecedor extends BaseEntity implements Serializable {
     private String inscricaoestadual;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fornecedor")
     private List<Produto> produtos;
 
 

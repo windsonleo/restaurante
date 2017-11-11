@@ -55,7 +55,7 @@ public abstract class Pedido extends BaseEntity {
 //    @JsonManagedReference
 //    private Map<Item,Double> items = new HashMap<>();
 
-    @ManyToMany(mappedBy = "pedidos",fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy = "pedidos")
     @JsonIgnore
     private List<Pagamento> pagamento;
 
