@@ -97,7 +97,7 @@ public class Produto extends BaseEntity implements Serializable {
         this.precovenda = precovenda;
         this.fornecedor = fornecedor;
         this.categoria = cat;
-        this.isativo = ativo;
+        this.ativo = ativo;
         this.esugestao = esugestao;
     }
 

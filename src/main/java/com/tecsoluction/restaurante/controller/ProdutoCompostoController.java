@@ -241,7 +241,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		
 		item.setTotalItem(item.getTotalItem());
 		
-		item.setIsativo(true);
+		item.setAtivo(true);
 
 		itemService.save(item);
 		

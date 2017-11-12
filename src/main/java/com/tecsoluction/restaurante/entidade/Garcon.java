@@ -19,7 +19,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "GARCON")
 //@XmlRootElement(name = "garcon")
@@ -50,7 +50,7 @@ public class Garcon extends BaseEntity implements Serializable {
         this.id = id;
         this.nome = nome;
         this.foto = foto;
-        this.isativo = isativo;
+        this.ativo = isativo;
     }
 
     @Override

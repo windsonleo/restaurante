@@ -26,7 +26,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "CLIENTE")
 public class Cliente extends BaseEntity implements Serializable {

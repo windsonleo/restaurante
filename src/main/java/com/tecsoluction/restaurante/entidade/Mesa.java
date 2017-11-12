@@ -1,23 +1,15 @@
 package com.tecsoluction.restaurante.entidade;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.validator.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,8 +31,7 @@ public class Mesa extends BaseEntity implements Serializable {
     private String status;
 
     @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "mesa")
+    @OneToMany(mappedBy = "mesa", fetch= FetchType.LAZY)
     private List<PedidoVenda> pedidos;
 
 
