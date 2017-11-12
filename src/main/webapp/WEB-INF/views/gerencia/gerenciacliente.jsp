@@ -81,8 +81,8 @@
                             <div class="controls">
                                 <input id="id" name="id" type="text" value="${cliente.id}" placeholder="Digite o Id"
                                        disabled="true"/>
-                                <input id="isativo" class="span3" name="isativo" type="checkbox"
-                                       checked="${cliente.isativo}" disabled="true"/>
+                                <input id="ativo" class="span3" name="ativo" type="checkbox"
+                                       checked="${cliente.ativo}" disabled="true"/>
 
                                 <input type="image" alt="cliente foto"
                                        src="${pageContext.request.contextPath}/resources/images/cliente/${cliente.foto}.jpg"

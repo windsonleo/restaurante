@@ -4,8 +4,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Banco" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Banco</a> <a href="#" class="current">Movimentação de Banco</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Banco" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Banco</a> <a href="#" class="current">Movimentaï¿½ï¿½o de Banco</a> </div>
+    <h1>Listagem e Visï¿½o Geral</h1>
   </div>
   <div class="container-fluid">
     <hr>
@@ -14,7 +14,7 @@
       
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i></span>
-            <h5>Movimentação Banco</h5>
+            <h5>Movimentaï¿½ï¿½o Banco</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/banco/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
@@ -37,7 +37,7 @@
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
               <tbody>
@@ -48,7 +48,7 @@
 			          <td>${banco.id}</td>
                   <td>${banco.nome}</td>
                   <td >${banco.numero}</td>
-                  <td><span class="label label bg_lb">${banco.isativo}</span></td>
+                  <td><span class="label label bg_lb">${banco.ativo}</span></td>
                  <td class="options-width">
 								
 								
@@ -58,15 +58,15 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/banco/informacoes?id=${banco.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informaï¿½ï¿½es" ><i class="icon-info-sign"></i></a>
 									
 
 									<a href="#myAlert${banco.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
 			<div id="myAlert${banco.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -111,7 +111,7 @@
 
         
         <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
 
 

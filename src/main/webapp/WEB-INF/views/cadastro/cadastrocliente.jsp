@@ -67,8 +67,8 @@
 
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-ok-sign">Ativo?</i></span>
-                                            <input id="isativo" name="isativo" class="span11 m-wrap" type="checkbox"
-                                                   checked="${cliente.isativo}"/>
+                                            <input id="ativo" name="ativo" class="span11 m-wrap" type="checkbox"
+                                                   checked="${cliente.ativo}"/>
                                         </div>
 
 

@@ -10,7 +10,7 @@
                     <div class="col-lg-12">
                          
                          <h1 class="page-header">
-                            Modelos <small>Cadastro e Visão Geral</small>
+                            Modelos <small>Cadastro e Visï¿½o Geral</small>
                                                         
                         </h1>
                         
@@ -75,7 +75,7 @@
 		 	 <div class="form-group">
 				   <label>
 				  	<span>Ativo?</span>
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${modelo.isativo}"/>
+						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${modelo.ativo}"/>
 					</label>
 			 </div>
 
@@ -147,7 +147,7 @@
 			   		<label>
 			  		<span>Preferencia</span>
 	            <select id="preferencia" name="preferencia" id="files" class="inp-form">           
-	                <optgroup label="oRIENTAÇÃO do Usuario">
+	                <optgroup label="oRIENTAï¿½ï¿½O do Usuario">
 	           			
 	           				<option value="HETERO">HETERO</option>
 	           				<option value="GAY">GAY</option>
@@ -176,7 +176,7 @@
 		 	 
 		 	 	 		<div class="form-row">
 			   		<label>
-			  		<span>Observações</span>
+			  		<span>Observaï¿½ï¿½es</span>
 						<input id="obs" class="form-control" name="obs" type="text" value="${modelo.obs}" />
 					</label>
 		 	 </div>

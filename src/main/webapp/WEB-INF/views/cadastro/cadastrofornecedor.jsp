@@ -4,12 +4,12 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a> <a href="#">Movimentação Fornecedor</a> <a href="#" class="current">Cadastro Fornecedor</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/fornecedor/movimentacao" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a> <a href="#">Movimentaï¿½ï¿½o Fornecedor</a> <a href="#" class="current">Cadastro Fornecedor</a> </div>
     <h1>Cadastro de Fornecedor</h1>
   </div>
   <div class="container-fluid"><hr>
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -18,7 +18,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -45,7 +45,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}" placeholder="Digite o id" />
-               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${fornecedor.isativo}"/>
+               			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${fornecedor.ativo}"/>
                
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 <label class="control-label">Nome Fantasia</label>
                 <div class="controls">
 						<input id="nomefantasia" class="form-control" name="nomefantasia" type="text" value="${fornecedor.nomefantasia}" placeholder="Digite o Nome da Fornecedor"/>
-               			<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}" placeholder="Digite o Razão Social"/>					
+               			<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${fornecedor.razaosocial}" placeholder="Digite o Razï¿½o Social"/>					
                
                
                 </div>
@@ -128,5 +128,5 @@
 
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>

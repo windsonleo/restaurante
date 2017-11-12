@@ -4,14 +4,14 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" title="Go to Pedido Compra" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Pedido Compra</a> <a href="#">Movimentação Pedido Compra </a><a href="#" class="current">Cadastro Pedido Compra</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" title="Go to Pedido Compra" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Pedido Compra</a> <a href="#">Movimentaï¿½ï¿½o Pedido Compra </a><a href="#" class="current">Cadastro Pedido Compra</a> </div>
     <h1>Cadastro de Pedido Compra</h1>
   </div>
 
             <div class="container-fluid">
             
               <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -20,7 +20,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -41,7 +41,7 @@
 					<div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-				<input id="isativo" name="isativo"  type="checkbox" checked="${pedidocompra.isativo}"/>
+				<input id="ativo" name="ativo"  type="checkbox" checked="${pedidocompra.ativo}"/>
                 </div>
               </div>
               
@@ -76,7 +76,7 @@
 <!--                 <label class="control-label">Situacao Pedido</label> -->
 <!--                 <div class="controls"> -->
 <!--          <select id="situacao"name="situacao"  class="form-control" > -->
-<!-- 	                                  <optgroup label="Situação do Pedido"> -->
+<!-- 	                                  <optgroup label="Situaï¿½ï¿½o do Pedido"> -->
 		           					
 		           					
 <%-- 		           			<c:forEach var="situacao" items="${situacaoPedidoList}"> --%>

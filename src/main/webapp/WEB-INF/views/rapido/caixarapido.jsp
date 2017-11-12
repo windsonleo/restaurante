@@ -7,17 +7,17 @@
 		<div id="breadcrumb">
 			<a href="${pageContext.request.contextPath}/caixa/movimentacao"
 				title="Go to Caixa" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" /></i>
-				Caixa</a> <a href="#">Movimentação Caixa</a> <a href="#"
-				class="current">Caixa Rápido</a>
+				Caixa</a> <a href="#">Movimentaï¿½ï¿½o Caixa</a> <a href="#"
+				class="current">Caixa Rï¿½pido</a>
 		</div>
-<!-- 		<h1>Caixa Rápido</h1> -->
+<!-- 		<h1>Caixa Rï¿½pido</h1> -->
 	</div>
 	<div class="container-fluid">
 		<hr>
 
 		<c:if test="${erros != null }">
 			<div class="alert alert-error alert-block">
-				<a class="close" data-dismiss="alert" href="#">×</a>
+				<a class="close" data-dismiss="alert" href="#">ï¿½</a>
 				<h4 class="alert-heading">Erros!</h4>
 
 				${erros}
@@ -27,7 +27,7 @@
 
 		<c:if test="${mensagem != null }">
 			<div class="alert alert-success alert-block">
-				<a class="close" data-dismiss="alert" href="#">×</a>
+				<a class="close" data-dismiss="alert" href="#">ï¿½</a>
 				<h4 class="alert-heading">Sucesso!</h4>
 
 				${mensagem}
@@ -40,7 +40,7 @@
 					<div class="widget-title">
 						<span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" /></i>
 						</span>
-						<h5>Caixa Rápido</h5>
+						<h5>Caixa Rï¿½pido</h5>
 					</div>
 					<div class="widget-content nopadding">
 
@@ -56,9 +56,9 @@
 											value="${cliente.id}" placeholder="Digite o id" /> 
 											
  										<label
-											class="span1"> <input id="isativo" name="isativo"
+											class="span1"> <input id="ativo" name="ativo"
 											class="span1 m-wrap" type="checkbox"
-											checked="${cliente.isativo}" /> Ativo?
+											checked="${cliente.ativo}" /> Ativo?
 										</label>
 
 									</div>
@@ -184,9 +184,9 @@
 										<div class="controls">
 
 											<div class="input-prepend">
-												<span class="add-on">N°</span> <input id="numero"
+												<span class="add-on">Nï¿½</span> <input id="numero"
 													class="span11 mask text" name="numero" type="text"
-													value="${cliente.endereco.numero}" placeholder="Nº" />
+													value="${cliente.endereco.numero}" placeholder="Nï¿½" />
 
 											</div>
 
@@ -316,7 +316,7 @@
 					<div class="form-actions">
 					<input id="back" class="btn btn-primary" type="reset"
 						value="Voltar" /> <input id="next" class="btn btn-primary"
-						type="submit" value="Próximo" />
+						type="submit" value="Prï¿½ximo" />
 					<div id="status"></div>
 				</div>
 				<div id="submitted"></div>
@@ -338,6 +338,6 @@
 
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
 

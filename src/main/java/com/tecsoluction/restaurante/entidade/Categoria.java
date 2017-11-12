@@ -58,20 +58,20 @@ public class Categoria extends BaseEntity implements Serializable {
     }
 
 
-//    public Categoria(String id, String nome,Categoria catpai,boolean isativo) {
+//    public Categoria(String id, String nome,Categoria catpai,boolean ativo) {
 //        // TODO Auto-generated constructor stub
 //    	this.id = id;
 //    	this.nome = nome;
 //    	this.catpai=catpai;
-//    	this.isativo = isativo;
+//    	this.ativo = ativo;
 //    }
 //
 //
-//    public Categoria(String id, String nome,boolean isativo) {
+//    public Categoria(String id, String nome,boolean ativo) {
 //        // TODO Auto-generated constructor stub
 //    	this.id = id;
 //    	this.nome = nome;
-//    	this.isativo = isativo;
+//    	this.ativo = ativo;
 //    }
 
 

@@ -4,14 +4,14 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/delivery/movimentacao" title="Go to Delivery" class="tip-bottom"><i class="icon-home"></i> Delivery</a> <a href="#">Movimentação Delivery </a> <a href="#" class="current">Cadastro Delivery</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/delivery/movimentacao" title="Go to Delivery" class="tip-bottom"><i class="icon-home"></i> Delivery</a> <a href="#">Movimentaï¿½ï¿½o Delivery </a> <a href="#" class="current">Cadastro Delivery</a> </div>
     <h1> Delivery</h1>
   </div>
 
             <div class="container-fluid">
             
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -20,7 +20,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -140,7 +140,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
-                		<input id="isativo" name="isativo" class="span4"  type="checkbox" checked="${pedidovenda.isativo}"/>
+                		<input id="ativo" name="ativo" class="span4"  type="checkbox" checked="${pedidovenda.ativo}"/>
                 
                 
                 </div>
@@ -169,7 +169,7 @@
                 <label class="control-label">Situacao Pedido</label>
                 <div class="controls">
          <select id="situacao"name="situacao"  class="form-control" >
-	                                  <optgroup label="Situação do Pedido">
+	                                  <optgroup label="Situaï¿½ï¿½o do Pedido">
 		           							           			
 		           				<option value="${pedidovenda.situacao}">${pedidovenda.situacao}</option>
 		           				      				

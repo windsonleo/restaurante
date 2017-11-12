@@ -4,13 +4,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"  title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#">Movimentação Estoque</a> <a href="#" class="current">Informações do Estoque </a> </div>
-    <h1>Informações do Estoque <strong> ${estoque.id }</strong></h1>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"  title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#">Movimentaï¿½ï¿½o Estoque</a> <a href="#" class="current">Informaï¿½ï¿½es do Estoque </a> </div>
+    <h1>Informaï¿½ï¿½es do Estoque <strong> ${estoque.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +19,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -42,7 +42,7 @@
 <!-- 							<div class="controls"> -->
 						
 <%-- 						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" /> --%>
-<%--                			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${estoque.isativo}"/> --%>
+<%--                			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${estoque.ativo}"/> --%>
 <%-- 						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome da Estoque"/> --%>
 							
 <!-- 							</div> -->
@@ -104,9 +104,9 @@
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
 <!-- 									    <th>Qtd</th> -->
-<!-- 									    <th>Preço Custo</th> -->
+<!-- 									    <th>Preï¿½o Custo</th> -->
 <!-- 									    <th>UM</th> -->
 									    
 <!-- 									    <th>Total Item</th> -->
@@ -116,7 +116,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-<!-- 									    <th>Ação</th> -->
+<!-- 									    <th>Aï¿½ï¿½o</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -140,7 +140,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informação" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
@@ -155,8 +155,8 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

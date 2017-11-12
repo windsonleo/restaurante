@@ -10,7 +10,7 @@
 <div id="content-header">
 	<div id="breadcrumb">
 		<a href="${pageContext.request.contextPath}/produtocomposto/movimentacao" title="Ir para Produto Composto" class="tip-bottom"><i
-			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> ProdutoComposto</a> <a href="#">Movimentação ProdutoComposto </a>
+			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> ProdutoComposto</a> <a href="#">Movimentaï¿½ï¿½o ProdutoComposto </a>
 		<a href="#" class="current">Cadastro Produto Composto</a>
 	</div>
 	<h1>Cadastro de ProdutoComposto</h1>
@@ -19,7 +19,7 @@
 <div class="container-fluid">
 
   <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -28,7 +28,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -88,7 +88,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${produtocomposto.id}" placeholder="Digite o Id"/>
-               			<input id="isativo" name="isativo" class="span6" type="checkbox" checked="${produtocomposto.isativo}"/>
+               			<input id="ativo" name="ativo" class="span6" type="checkbox" checked="${produtocomposto.ativo}"/>
                          <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produtocomposto.esugestao}"/>
                
                 </div>
@@ -114,7 +114,7 @@
 						
 					<input id="descricao" class="form-control"
 						name="descricao" type="text" value="${produtocomposto.descricao}"
-						placeholder="Digite a Descrição" />		
+						placeholder="Digite a Descriï¿½ï¿½o" />		
 						
 					<input id="foto" class="form-control" name="foto"
 						type="text" value="${produtocomposto.foto}"
@@ -186,7 +186,7 @@
 
                 
                   <div class="control-group">
-                <label class="control-label">Preço</label>
+                <label class="control-label">Preï¿½o</label>
                 <div class="controls">
 						<input id="precocusto" class="form-control"
 						name="precocusto" type="text" value="<fmt:formatNumber type="currency"

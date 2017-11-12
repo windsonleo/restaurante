@@ -4,14 +4,14 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Garcon" class="tip-bottom"><i class="icon-home"></i> Garcon</a> <a href="#">Gerência Garcon </a> </div>
-    <h1> Gerência de Garcons</h1>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Garcon" class="tip-bottom"><i class="icon-home"></i> Garcon</a> <a href="#">Gerï¿½ncia Garcon </a> </div>
+    <h1> Gerï¿½ncia de Garcons</h1>
   </div>
 
             <div class="container-fluid">
             
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -20,7 +20,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -36,7 +36,7 @@
                 <label class="control-label"></label>
                 <div class="controls">
 			
-								<input type="text" list="${garconsList}" id="id" placeholder="Digite o Código do Garcon" name="id" autocomplete="off" class="form-horizontal">
+								<input type="text" list="${garconsList}" id="id" placeholder="Digite o Cï¿½digo do Garcon" name="id" autocomplete="off" class="form-horizontal">
 								
 									
 									<datalist id="${garconsList}">
@@ -86,7 +86,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id"  name="id" type="text" value="${garcon.id}" placeholder="Digite o Id" disabled="true"/>
-               			<input id="isativo" class="span3"name="isativo"  type="checkbox" checked="${garcon.isativo}" disabled="true"/>               
+               			<input id="ativo" class="span3"name="ativo"  type="checkbox" checked="${garcon.ativo}" disabled="true"/>
 					<input type="image" alt="garcon foto" src="${pageContext.request.contextPath}/resources/images/garcon/${garcon.foto}.jpg" class="span2" disabled="true">				
               
                 </div>

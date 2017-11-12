@@ -88,8 +88,8 @@
                             <div class="controls">
                                 <input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}"
                                        placeholder="Digite o id"/>
-                                <input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox"
-                                       checked="${fornecedor.isativo}"/>
+                                <input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox"
+                                       checked="${fornecedor.ativo}"/>
 
                             </div>
                         </div>

@@ -9,8 +9,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Empresa</a> >> <a href="#" class="current">Movimentação de Empresa</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Empresa</a> >> <a href="#" class="current">Movimentaï¿½ï¿½o de Empresa</a> </div>
+    <h1>Listagem e Visï¿½o Geral</h1>
   </div>
   <div class="container-fluid">
     <hr>
@@ -19,7 +19,7 @@
       
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Movimentação Empresa</h5>
+            <h5>Movimentaï¿½ï¿½o Empresa</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/empresa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
@@ -42,7 +42,7 @@
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +59,7 @@
 			      <td>${empresa.id}</td>
                   <td>${empresa.nome}</td>
                   <td ><input type="text" value="${empresa.logo}"></td>
-                  <td><span class="label label bg_lb">${empresa.isativo}</span></td>
+                  <td><span class="label label bg_lb">${empresa.ativo}</span></td>
                  <td class="options-width">
 								
 								
@@ -69,7 +69,7 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/empresa/informacoes?id=${empresa.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informaï¿½ï¿½es" ><i class="icon-info-sign"></i></a>
 									
 
 
@@ -77,8 +77,8 @@
 									
 			<div id="myAlert${empresa.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -122,6 +122,6 @@
         </div>
         
         <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
         

@@ -4,13 +4,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/formapagamento/movimentacao" title="Go to Forma de Pagamento" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a> <a href="#">Movimentação Forma de Pagamento</a> <a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/formapagamento/movimentacao" title="Go to Forma de Pagamento" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a> <a href="#">Movimentaï¿½ï¿½o Forma de Pagamento</a> <a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
     <h1>Cadastro de Forma de Pagamento</h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +19,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -41,7 +41,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="span2 m-wrap" name="id" type="text" value="${formapagamento.id}" placeholder="Digite o id" />
-               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${formapagamento.isativo}"/>
+               			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${formapagamento.ativo}"/>
                
                 </div>
               </div>
@@ -98,5 +98,5 @@
 
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>

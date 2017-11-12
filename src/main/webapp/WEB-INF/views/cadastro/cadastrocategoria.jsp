@@ -45,8 +45,8 @@
                             <div class="control-group">
                                 <label class="control-label">Ativo?</label>
                                 <div class="controls">
-                                    <input id="isativo" name="isativo" class="form-control" type="checkbox"
-                                           checked="${categoria.isativo}"/>
+                                    <input id="ativo" name="ativo" class="form-control" type="checkbox"
+                                           checked="${categoria.ativo}"/>
                                 </div>
                             </div>
 

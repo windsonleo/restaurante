@@ -5,8 +5,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Despesa" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Despesa</a> <a href="#" class="current">Movimentação de Despesa</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Despesa" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Despesa</a> <a href="#" class="current">Movimentaï¿½ï¿½o de Despesa</a> </div>
+    <h1>Listagem e Visï¿½o Geral</h1>
   </div>
   <div class="container-fluid">
     <hr>
@@ -15,7 +15,7 @@
       
    <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i></span>
-            <h5>Movimentação Despesa</h5>
+            <h5>Movimentaï¿½ï¿½o Despesa</h5>
           
                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/despesa/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
          
@@ -37,7 +37,7 @@
 <!-- 									     <th>Preferencia</th> -->
 									     <th>Ativo</th>
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +58,7 @@
 <%--                    <td>${despesa.datanascimento}</td> --%>
 <%--                    <td>${despesa.genero}</td> --%>
 <%--                    <td>${despesa.preferencia}</td> --%>
-                   <td><span class="label label bg_lb"> ${despesa.isativo}</span></td>
+                   <td><span class="label label bg_lb"> ${despesa.ativo}</span></td>
                  <td class="options-widt">
 								
 								
@@ -68,7 +68,7 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/despesa/informacoes?id=${despesa.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informaï¿½ï¿½es" ><i class="icon-info-sign"></i></a>
 									
 
 
@@ -76,8 +76,8 @@
 									
 			<div id="myAlert${despesa.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
+                <h3>Alerta de Exclusï¿½o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -121,6 +121,6 @@
         </div>
         
         <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
         

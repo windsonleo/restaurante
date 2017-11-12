@@ -4,13 +4,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> <a href="#">Movimentação Pedido Compra </a><a href="#" class="current">Add Item ao Pedido Compra </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> <a href="#">Movimentaï¿½ï¿½o Pedido Compra </a><a href="#" class="current">Add Item ao Pedido Compra </a> </div>
     <h1>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
   
    <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +19,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -94,7 +94,7 @@
           
           			<div class="controls">
 						 
-							<label>Código</label>	
+							<label>Cï¿½digo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }" readonly="readonly"> 
 							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }" readonly="readonly"> 

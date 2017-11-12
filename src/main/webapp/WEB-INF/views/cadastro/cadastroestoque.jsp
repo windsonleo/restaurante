@@ -4,13 +4,13 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao" title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a><a href="#">Movimentação Estoque</a> <a href="#" class="current">Cadastro Estoque</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao" title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a><a href="#">Movimentaï¿½ï¿½o Estoque</a> <a href="#" class="current">Cadastro Estoque</a> </div>
     <h1>Cadastro de Estoque</h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +19,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -46,7 +46,7 @@
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
-               			<input id="isativo" name="isativo" class="span8 m-wrap" type="checkbox" checked="${estoque.isativo}"/>
+               			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${estoque.ativo}"/>
                
                 </div>
               </div>
@@ -127,7 +127,7 @@
 
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
 
 
@@ -146,7 +146,7 @@
                     <div class="col-sm-12">
                          
                          <h1 class="page-header">
-                            Estoque <small>Cadastro e Visão Geral</small>
+                            Estoque <small>Cadastro e Visï¿½o Geral</small>
                                                         
                         </h1>
                         
@@ -178,7 +178,7 @@
 					
 							   <label>
 							  	<span>Ativo?</span>
-									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${estoque.isativo}"/>
+									<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${estoque.ativo}"/>
 								</label>
 						</div>
 
@@ -241,7 +241,7 @@
                     <div class="col-sm-12">
                          
                          <h1 class="page-header">
-                            Estoque <small>Cadastro e Visão Geral</small>
+                            Estoque <small>Cadastro e Visï¿½o Geral</small>
                                                         
                         </h1>
                         
@@ -273,7 +273,7 @@
 					
 							   <label>
 							  	<span>Ativo?</span>
-									<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${estoque.isativo}"/>
+									<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${estoque.ativo}"/>
 								</label>
 						</div>
 

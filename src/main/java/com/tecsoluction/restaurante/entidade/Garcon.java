@@ -45,12 +45,12 @@ public class Garcon extends BaseEntity implements Serializable {
     }
 
 
-    public Garcon(UUID id, String nome, String foto, boolean isativo) {
+    public Garcon(UUID id, String nome, String foto, boolean ativo) {
         super();
         this.id = id;
         this.nome = nome;
         this.foto = foto;
-        this.ativo = isativo;
+        this.ativo = ativo;
     }
 
     @Override

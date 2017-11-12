@@ -9,7 +9,7 @@
                     <div class="col-sm-12">
                          
                          <h1 class="page-header">
-                            Pagamento <small>Cadastro e Visão Geral</small>
+                            Pagamento <small>Cadastro e Visï¿½o Geral</small>
                                                         
                         </h1>
                         
@@ -44,7 +44,7 @@
 		 	 <div class="form-group">
 <!-- 				   <label> -->
 <!-- 				  	<span>Ativo?</span> -->
-<%-- 						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${pagamento.isativo}"/> --%>
+<%-- 						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${pagamento.ativo}"/> --%>
 <!-- 					</label> -->
 					
 <!-- 					</div> -->
@@ -160,7 +160,7 @@
 									     <th>Tipo</th>
 									     <th>Valor</th>
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Aï¿½ï¿½o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -222,7 +222,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
-									title="informação" class="fa fa-info fa-2x"></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
@@ -293,7 +293,7 @@
 								
 								<a
 									href="${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}"
-									title="informação" class="fa fa-info fa-2x"></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"

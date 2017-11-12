@@ -69,7 +69,7 @@
                                                     <%--${produto.precovenda}--%>
                                             </td>
                                             <td>${produto.fornecedor}</td>
-                                            <td><span class="label label bg_lb">${produto.isativo}</span></td>
+                                            <td><span class="label label bg_lb">${produto.ativo}</span></td>
                                             <td class="options-widt">
 
 

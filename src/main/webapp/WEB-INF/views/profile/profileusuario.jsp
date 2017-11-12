@@ -6,7 +6,7 @@
 <div id="content-header">
 	<div id="breadcrumb">
 		<a href="index.html" title="Go to Home" class="tip-bottom"><i
-			class="icon-user"></i> Usuario</a> <a href="#">Movimentação Usuario </a>
+			class="icon-user"></i> Usuario</a> <a href="#">Movimentaï¿½ï¿½o Usuario </a>
 		<a href="#" class="current">Profile Usuario</a>
 	</div>
 	<h1>Profile de Usuario</h1>
@@ -30,7 +30,7 @@
               <div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-						<input id="isativo" name="isativo" class="form-control" type="checkbox" checked="${usuario.isativo}"/>
+						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${usuario.ativo}"/>
 				
 				
                 </div>

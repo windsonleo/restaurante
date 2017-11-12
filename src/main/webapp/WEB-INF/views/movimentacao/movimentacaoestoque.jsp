@@ -62,7 +62,7 @@
 			      <td>${estoque.id}</td>
                   <td>${estoque.nome}</td>
                   <td >${estoque.itens.size()}</td>
-                  <td><span class="label label bg_lb">${estoque.isativo}</span></td>
+                  <td><span class="label label bg_lb">${estoque.ativo}</span></td>
                  <td class="options-width">
 								
 								
@@ -238,11 +238,11 @@
 			      <td>${estoque.id}</td>
                   <td>${estoque.nome}</td>
                   <td ><input type="text" value="${estoque.itens}"></td>
-                  <td>${estoque.isativo}</td>
+                  <td>${estoque.ativo}</td>
 <%--                    <td>${estoque.datanascimento}</td> --%>
 <%--                    <td>${estoque.genero}</td> --%>
 <%--                    <td>${estoque.preferencia}</td> --%>
-<%--                    <td> ${estoque.isativo}</td> --%>
+<%--                    <td> ${estoque.ativo}</td> --%>
 <%--                    <td> ${estoque.obs}</td> --%>
                    
 		
@@ -313,7 +313,7 @@
 			          <td>${estoque.id}</td>
                   <td>${estoque.nome}</td>
                   <td ><input type="text" value="${estoque.itens}"></td>
-                  <td>${estoque.isativo}</td>
+                  <td>${estoque.ativo}</td>
 		
 <!-- 		outras opcoes -->
 

@@ -173,7 +173,7 @@ public class ClienteController extends AbstractController<Cliente> {
 //			cliente.setEmail(request.getParameter("email"));
 //			cliente.setFoto(request.getParameter("foto"));
 //			cliente.setGenero(request.getParameter("genero"));
-//			cliente.setIsativo(true);
+//			cliente.setativo(true);
 
         cliente.setEndereco(endereco);
 

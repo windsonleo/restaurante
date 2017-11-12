@@ -70,7 +70,7 @@
                                             
                                             <td>${cliente.genero}</td>
                                                 <%--                    <td>${cliente.preferencia}</td> --%>
-                                            <td><span class="label label bg_lb">${cliente.isativo}</span></td>
+                                            <td><span class="label label bg_lb">${cliente.ativo}</span></td>
 
 
                                             <td class="options-widt">

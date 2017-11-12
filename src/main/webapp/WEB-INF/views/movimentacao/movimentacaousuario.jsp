@@ -60,7 +60,7 @@
                                             <td>${usuario.senha}</td>
                                             <td>${usuario.email}</td>
                                                 <%--                    <td>${usuario.roles}</td> --%>
-                                                <%--                    <td> ${usuario.isativo}</td> --%>
+                                                <%--                    <td> ${usuario.ativo}</td> --%>
                                             <td class="options-widt">
 
 

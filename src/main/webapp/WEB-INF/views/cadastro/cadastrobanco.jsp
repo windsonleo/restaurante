@@ -7,7 +7,7 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/banco/movimentacao" title="Go to Banco" class="tip-bottom"><i class="icon-home"></i> Banco</a> <a href="#">Movimentação Banco </a> <a href="#" class="current">Cadastro Banco</a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/banco/movimentacao" title="Go to Banco" class="tip-bottom"><i class="icon-home"></i> Banco</a> <a href="#">Movimentaï¿½ï¿½o Banco </a> <a href="#" class="current">Cadastro Banco</a> </div>
     
 <%--     <c:if test="${mensagem}"> --%>
 <!--     	<div class="alert alert-success" > -->
@@ -33,7 +33,7 @@
   <div class="container-fluid"><hr>
   
   <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -42,7 +42,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -79,7 +79,7 @@
 							<div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-				<input id="isativo" name="isativo"  type="checkbox" checked="${banco.isativo}"/>
+				<input id="ativo" name="ativo"  type="checkbox" checked="${banco.ativo}"/>
                 </div>
               </div>
               
@@ -99,7 +99,7 @@
               </div>
 
               <div class="control-group">
-                <label class="control-label">Número</label>
+                <label class="control-label">Nï¿½mero</label>
                 <div class="controls">
 						<input id="numero" class="form-control" name="numero" type="text" value="${banco.numero}" placeholder="Digite o Numero do Banco"/>					
                 </div>
@@ -118,6 +118,6 @@
          
       
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
+  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em Tecnologia</a> </div>
 </div>
 
