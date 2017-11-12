@@ -43,7 +43,7 @@ public class MesaControllerRest extends AbstractRestController<Mesa> {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(Mesa entity) {
+    public ResponseEntity AdicionaMesa(Mesa entity) {
 
         try {
         	getservice().save(entity);

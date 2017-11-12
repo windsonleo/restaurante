@@ -42,7 +42,7 @@ public class ProdutoControllerRest extends AbstractRestController<Produto> {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(Produto entity) {
+    public ResponseEntity AdicionarProduto(Produto entity) {
 
         try {
         	getservice().save(entity);

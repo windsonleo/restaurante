@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -41,7 +42,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     private final ItemServicoImpl itemService;
 
-    private Map<Item, BigDecimal> itens = new HashedMap();
+    private Map<Item, BigDecimal> itens = new HashMap<>();
 
     private final FornecedorServicoImpl fornecedorService;
 

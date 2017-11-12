@@ -46,7 +46,7 @@ public class ProdutoCompostoControllerRest extends AbstractRestController<Produt
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity AdicionarEntity(ProdutoComposto entity) {
+    public ResponseEntity AdicionarPC(ProdutoComposto entity) {
 
         try {
         	getservice().save(entity);
