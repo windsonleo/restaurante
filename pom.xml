@@ -161,27 +161,27 @@
         <!-- @Inject -->
         <dependency>
             <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
+            <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
 
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-            <version>1.2.1</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <!-- tiles -->
@@ -269,7 +269,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>2.0.1.RELEASE</version>
+            <version>1.11.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -300,11 +300,10 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.7.1</version>
+            <version>3.6.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -315,21 +314,13 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework-version}</version>
-            <scope>test</scope>
-        </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>2.12.0</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- 				<dependency> -->
+        <!-- 			<groupId>junit</groupId> -->
+        <!-- 			<artifactId>junit</artifactId> -->
+        <!-- 			<version>4.12</version> -->
+        <!-- 			<scope>test</scope> -->
+        <!-- 		</dependency> -->
 
     </dependencies>
 
