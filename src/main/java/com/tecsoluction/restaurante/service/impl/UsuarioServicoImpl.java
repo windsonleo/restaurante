@@ -61,8 +61,13 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 		
 	}
 
+    @Override
+    protected String getIdEntity(Usuario usuario) {
+        return null;
+    }
 
-	@Override
+
+    @Override
 	protected void validateEdit(Usuario post) {
 		// TODO Auto-generated method stub
 		

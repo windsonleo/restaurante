@@ -40,6 +40,11 @@ public class EmpresaServicoImpl extends AbstractEntityService<Empresa> {
     }
 
     @Override
+    protected String getIdEntity(Empresa empresa) {
+        return null;
+    }
+
+    @Override
     protected void validateEdit(Empresa post) {
         // TODO Auto-generated method stub
 

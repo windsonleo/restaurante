@@ -40,6 +40,11 @@ public class MesaServicoImpl extends AbstractEntityService<Mesa> {
     }
 
     @Override
+    protected String getIdEntity(Mesa mesa) {
+        return null;
+    }
+
+    @Override
     protected void validateEdit(Mesa post) {
         // TODO Auto-generated method stub
 

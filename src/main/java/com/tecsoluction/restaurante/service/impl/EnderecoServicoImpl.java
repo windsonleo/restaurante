@@ -39,7 +39,12 @@ public class EnderecoServicoImpl extends AbstractEntityService<Endereco> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Endereco endereco) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Endereco post) {
 		// TODO Auto-generated method stub
 		

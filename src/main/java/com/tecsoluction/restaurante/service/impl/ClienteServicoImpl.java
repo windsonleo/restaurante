@@ -49,6 +49,11 @@ public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
     }
 
     @Override
+    protected String getIdEntity(Cliente cliente) {
+        return cliente.getId().toString();
+    }
+
+    @Override
     protected void validateEdit(Cliente post) {
         // TODO Auto-generated method stub
 

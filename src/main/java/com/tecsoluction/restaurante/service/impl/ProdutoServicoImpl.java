@@ -50,7 +50,12 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Produto produto) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Produto post) {
 		// TODO Auto-generated method stub
 		

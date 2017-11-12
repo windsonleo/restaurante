@@ -55,7 +55,12 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(PedidoVenda pedidoVenda) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(PedidoVenda post) {
 		// TODO Auto-generated method stub
 		

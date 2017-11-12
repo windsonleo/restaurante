@@ -39,7 +39,12 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Role role) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Role post) {
 		// TODO Auto-generated method stub
 		

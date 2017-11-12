@@ -39,7 +39,12 @@ public class GarconServicoImpl extends AbstractEntityService<Garcon> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Garcon garcon) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Garcon post) {
 		// TODO Auto-generated method stub
 		

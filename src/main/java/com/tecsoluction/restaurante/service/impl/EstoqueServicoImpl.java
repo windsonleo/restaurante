@@ -39,7 +39,12 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Estoque estoque) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Estoque post) {
 		// TODO Auto-generated method stub
 		

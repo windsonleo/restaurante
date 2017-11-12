@@ -39,7 +39,12 @@ public class BancoServicoImpl extends AbstractEntityService<Banco> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Banco banco) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Banco post) {
 		// TODO Auto-generated method stub
 		

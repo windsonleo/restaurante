@@ -46,7 +46,12 @@ public class ProdutoCompostoServicoImpl extends AbstractEntityService<ProdutoCom
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(ProdutoComposto produtoComposto) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(ProdutoComposto post) {
 		// TODO Auto-generated method stub
 		

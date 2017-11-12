@@ -39,7 +39,12 @@ public class RecebimentoServicoImpl extends AbstractEntityService<Recebimento> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Recebimento recebimento) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Recebimento post) {
 		// TODO Auto-generated method stub
 		

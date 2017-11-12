@@ -39,7 +39,12 @@ public class PagamentoServicoImpl extends AbstractEntityService<Pagamento> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Pagamento pagamento) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Pagamento post) {
 		// TODO Auto-generated method stub
 		

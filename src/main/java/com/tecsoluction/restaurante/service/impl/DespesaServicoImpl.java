@@ -39,7 +39,12 @@ public class DespesaServicoImpl extends AbstractEntityService<Despesa> {
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(Despesa despesa) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(Despesa post) {
 		// TODO Auto-generated method stub
 		

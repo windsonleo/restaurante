@@ -39,7 +39,12 @@ public class FormaPagamentoServicoImpl extends AbstractEntityService<FormaPagame
 		
 	}
 
-	@Override
+    @Override
+    protected String getIdEntity(FormaPagamento formaPagamento) {
+        return null;
+    }
+
+    @Override
 	protected void validateEdit(FormaPagamento post) {
 		// TODO Auto-generated method stub
 		

@@ -102,15 +102,14 @@ public abstract class AbstractController<Entity> {
             trataErro(result, attributes);
 
         } else {
-            getservice().edit(entity);
+            entity = getservice().edit(entity);
             System.out.println("edit: " + entityAlias);
-
+            attributes.addFlashAttribute("mensagem", "Sucesso ao editar.");
         }
 //		cadastroEntity.addObject("acao", "edicao");
 //        return cadastroEntity;
-        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro");
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar", "id", getservice().getIdEntity(entity));
     }
-
 
     @Transactional
     @GetMapping(value = "delete")

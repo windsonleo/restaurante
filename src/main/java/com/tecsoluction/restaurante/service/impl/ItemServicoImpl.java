@@ -51,6 +51,11 @@ public class ItemServicoImpl extends AbstractEntityService<Item> {
     }
 
     @Override
+    protected String getIdEntity(Item item) {
+        return null;
+    }
+
+    @Override
     protected void validateEdit(Item post) {
         // TODO Auto-generated method stub
 

@@ -40,6 +40,11 @@ public class FornecedorServicoImpl extends AbstractEntityService<Fornecedor> {
     }
 
     @Override
+    protected String getIdEntity(Fornecedor fornecedor) {
+        return null;
+    }
+
+    @Override
     protected void validateEdit(Fornecedor post) {
         // TODO Auto-generated method stub
 

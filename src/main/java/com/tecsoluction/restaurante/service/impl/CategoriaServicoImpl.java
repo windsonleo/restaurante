@@ -70,6 +70,11 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
     }
 
     @Override
+    protected String getIdEntity(Categoria categoria) {
+        return null;
+    }
+
+    @Override
     protected void validateEdit(Categoria post) {
         // TODO Auto-generated method stub
 
