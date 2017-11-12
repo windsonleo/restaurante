@@ -36,7 +36,7 @@
            
           </div>
           <div class="widget-content nopadding">               
-			<form action="salvaritemprodutocomposto" method="POST" class="form-horizontal">		
+			<form action="salvaritemprodutocomposto" method="GET" class="form-horizontal">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
@@ -164,7 +164,7 @@
                             
                                 <thead>
                                     <tr>
-                                        <th>Nome</th>
+                                        <th>Descrição</th>
 <!-- 									    <th>Código</th> -->
 <!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
