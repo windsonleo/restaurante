@@ -1,17 +1,28 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.util.UnidadeMedida;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.UnidadeMedida;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -86,7 +97,7 @@ public class Produto extends BaseEntity implements Serializable {
         this.precovenda = precovenda;
         this.fornecedor = fornecedor;
         this.categoria = cat;
-        this.ativo = ativo;
+        this.isativo = ativo;
         this.esugestao = esugestao;
     }
 

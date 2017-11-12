@@ -1,128 +1,147 @@
 package com.tecsoluction.restaurante.controller;
 
-import com.tecsoluction.restaurante.entidade.*;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.service.impl.*;
-import com.tecsoluction.restaurante.util.UnidadeMedida;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.joda.money.Money;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import com.tecsoluction.restaurante.entidade.Categoria;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.ProdutoComposto;
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.service.impl.CategoriaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoCompostoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.UnidadeMedida;
+
 @Controller
 @RequestMapping(value = "produtocomposto/")
 public class ProdutoCompostoController extends AbstractController<ProdutoComposto> {
 
-    private final UsuarioServicoImpl userservice;
+	private final  UsuarioServicoImpl userservice;
 
-    private final ProdutoServicoImpl produtoService;
+	private final  ProdutoServicoImpl produtoService;
 
-    private final FornecedorServicoImpl fornecedorService;
+	private final  FornecedorServicoImpl fornecedorService;
 
-    private final CategoriaServicoImpl categoriaService;
+	private final  CategoriaServicoImpl categoriaService;
 
-    private final ItemServicoImpl itemService;
+	private final  ItemServicoImpl itemService;
 
-    private final ProdutoCompostoServicoImpl produtocompostoService;
+	private final  ProdutoCompostoServicoImpl produtocompostoService;
 
-    private List<ProdutoComposto> produtoList;
+	private List<ProdutoComposto> produtoList;
 
-    private List<Produto> produtosList;
+	private List<Produto> produtosList;
 
     private Map<Item, BigDecimal> items = new HashMap<>();
 
-    private ProdutoComposto produtocomposto = null;
+	private ProdutoComposto produtocomposto = null;
 
-    private double totalitem;
+	private double totalitem;
 
-    @Autowired
-    public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao,
-                                     FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod,
-                                     ItemServicoImpl it) {
-        super("produtocomposto");
+	@Autowired
+	public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao,
+			FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod,
+			ItemServicoImpl it) {
+		super("produtocomposto");
+		
+		this.produtocompostoService = dao;
+		this.categoriaService = categoriaDao;
+		this.fornecedorService = fornecedorDao;
+		this.userservice = usudao;
+		this.produtoService = daoprod;
+		this.itemService = it;
+		this.items.clear();
 
-        this.produtocompostoService = dao;
-        this.categoriaService = categoriaDao;
-        this.fornecedorService = fornecedorDao;
-        this.userservice = usudao;
-        this.produtoService = daoprod;
-        this.itemService = it;
-        this.items.clear();
+	}
 
-    }
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-    @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+		binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
+		});
 
-        binder.registerCustomEditor(Categoria.class, new AbstractEditor<Categoria>(this.categoriaService) {
-        });
+		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
+		});
 
-        binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
-        });
+		binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
+		});
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
-        });
+	}
 
-    }
+	@ModelAttribute
+	public void addAttributes(Model model) {
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
+		List<Categoria> categoriaList = categoriaService.findAll();
+		List<Fornecedor> fornecedorList = fornecedorService.findAll();
+		produtoList = getservice().findAll();
+		produtosList = produtoService.findAll();
 
-        List<Categoria> categoriaList = categoriaService.findAll();
-        List<Fornecedor> fornecedorList = fornecedorService.findAll();
-        produtoList = getservice().findAll();
-        produtosList = produtoService.findAll();
+		UnidadeMedida[] umList = UnidadeMedida.values();
 
-        UnidadeMedida[] umList = UnidadeMedida.values();
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+		model.addAttribute("usuarioAtt", usuario);
 
-        model.addAttribute("usuarioAtt", usuario);
+		if (produtocomposto == null) {
 
-        if (produtocomposto == null) {
+			items.clear();
+			
+			produtocomposto = new ProdutoComposto();
 
-            items.clear();
+		}
 
-            produtocomposto = new ProdutoComposto();
+		model.addAttribute("produtosList", produtoList);
+		model.addAttribute("itensList", produtosList);
+		model.addAttribute("fornecedorList", fornecedorList);
+		model.addAttribute("categoriaList", categoriaList);
+		model.addAttribute("umList", umList);
 
-        }
+	}
 
-        model.addAttribute("produtosList", produtoList);
-        model.addAttribute("itensList", produtosList);
-        model.addAttribute("fornecedorList", fornecedorList);
-        model.addAttribute("categoriaList", categoriaList);
-        model.addAttribute("umList", umList);
+	@RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
+	public ModelAndView NovosProdutos(HttpServletRequest request) {
 
-    }
+		ModelAndView novosprodutos = new ModelAndView("novosprodutos");
 
-    @RequestMapping(value = "novosprodutos", method = RequestMethod.GET)
-    public ModelAndView NovosProdutos(HttpServletRequest request) {
+		List<ProdutoComposto> produtos = produtocompostoService.findAll();
 
-        ModelAndView novosprodutos = new ModelAndView("novosprodutos");
+		novosprodutos.addObject("produtosList", produtos);
 
-        List<ProdutoComposto> produtos = produtocompostoService.findAll();
+		return novosprodutos;
+	}
 
-        novosprodutos.addObject("produtosList", produtos);
-
-        return novosprodutos;
-    }
 
 
 //	@RequestMapping(value = "adicionaritensprodutocomposto", method = RequestMethod.GET)
@@ -154,119 +173,124 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 //		return cadastroprodutocomposto;
 //	}
 
-    @RequestMapping(value = "additem", method = RequestMethod.GET)
-    public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
+	@RequestMapping(value = "additem", method = RequestMethod.GET)
+	public ModelAndView additemProdutoCompostoForm(HttpServletRequest request) {
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
+		UUID idf = UUID.fromString(request.getParameter("id"));
+		
+		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
+		produtocomposto = new ProdutoComposto();
+		produtocomposto = produtocompostoService.findOne(idf);
 
-        produtocomposto = new ProdutoComposto();
-        produtocomposto = produtocompostoService.findOne(idf);
-
-        produtosList = produtoService.findAll();
+		produtosList = produtoService.findAll();
 
 //		BigDecimal precovenda = produtocomposto.getPrecovenda();
 //		BigDecimal precocusto = produtocomposto.getPrecocusto();
-
+			
 //		totalitem = produtocomposto.
-
+		
 //		(produtocomposto.getItens());
-
+		
 //		BigDecimal mult = new BigDecimal(2.00);
-
+		
 //		produtocomposto.setPrecocusto(produtocomposto.getPrecocusto());
 //		produtocomposto.setPrecovenda(produtocomposto.getPrecovenda());
 
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-        additemprodutocomposto.addObject("produtosList", produtosList);
+		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+		additemprodutocomposto.addObject("produtosList", produtosList);
 //		additemprodutocomposto.addObject("precovenda", produtocomposto.getPrecovenda());
 //		additemprodutocomposto.addObject("precocusto", produtocomposto.getPrecocusto());
 
-        return additemprodutocomposto;
-    }
+		return additemprodutocomposto;
+	}
 
-    @RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.POST)
-    public ModelAndView salvaritemproduto(HttpServletRequest request) {
+	@RequestMapping(value = "salvaritemprodutocomposto", method = RequestMethod.POST)
+	public ModelAndView salvaritemproduto(HttpServletRequest request) {
 
-        UUID idf = (UUID.fromString(request.getParameter("id")));
-        UUID idfprodcomp = UUID.fromString(request.getParameter("idprocomp"));
+		UUID idf = (UUID.fromString(request.getParameter("id")));
+		UUID idfprodcomp = UUID.fromString(request.getParameter("idprocomp"));
+		
+		Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+		BigDecimal qtdbc= BigDecimal.valueOf(prodqtd);
+		
+		ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
 
-        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
+		Produto produto;
 
-        ModelAndView additemprodutocomposto = new ModelAndView("additemprodutocomposto");
+		produto = produtoService.findOne(idf);
 
-        Produto produto;
+		if (produto == null) {
 
-        produto = produtoService.findOne(idf);
+			String erros = "Nao Existe esse Produto";
 
-        if (produto == null) {
+			additemprodutocomposto.addObject("erros", erros);
+			additemprodutocomposto.addObject("produtocomposto",
+					produtocomposto = produtocompostoService.findOne(idfprodcomp));
+			additemprodutocomposto.addObject("produtosList", produtosList);
 
-            String erros = "Nao Existe esse Produto";
+			return additemprodutocomposto;
+		}
 
-            additemprodutocomposto.addObject("erros", erros);
-            additemprodutocomposto.addObject("produtocomposto",
-                    produtocomposto = produtocompostoService.findOne(idfprodcomp));
-            additemprodutocomposto.addObject("produtosList", produtosList);
+		produtocomposto = getservice().findOne(idfprodcomp);
 
-            return additemprodutocomposto;
-        }
+		Item item = new Item(produto);
 
-        produtocomposto = getservice().findOne(idfprodcomp);
+		item.setQtd(qtdbc);
+		
+		item.setTotalItem(item.getTotalItem());
+		
+		item.setIsativo(true);
 
-        Item item = new Item(produto);
+		itemService.save(item);
+		
+		
+		boolean vazio = produtocomposto.getItens().isEmpty();
+		
+		if(vazio == true){
+			
+			items.put(item, item.getQtd());
+			produtocomposto.setItens(items);
+			getservice().edit(produtocomposto);
+			
+		
+		}
+			
+			items  = produtocomposto.getItens();
+			items.put(item, item.getQtd());
 
-        item.setQtd(qtdbc);
-
-        item.setTotalItem(item.getTotalItem());
-
-        item.setAtivo(true);
-
-        itemService.save(item);
-
-
-        boolean vazio = produtocomposto.getItens().isEmpty();
-
-        if (vazio == true) {
-
-            items.put(item, item.getQtd());
-            produtocomposto.setItens(items);
-            getservice().edit(produtocomposto);
-
-
-        }
-
-        items = produtocomposto.getItens();
-        items.put(item, item.getQtd());
-
-
+			
+		
+		
+				
 //		BigDecimal precovenda = produtocomposto.getPrecovenda();
 //		BigDecimal precocusto = produtocomposto.getPrecocusto();
-
+		
 //		totalitem = produtocomposto.CalcularTotal(items);
 
 
 //		produtocomposto.setPrecocusto(precocusto);
 //
 //		produtocomposto.setPrecovenda(precovenda);
+		
+		produtocomposto.setItens(items);
 
-        produtocomposto.setItens(items);
-
-        getservice().edit(produtocomposto);
-
-        itemService.edit(item);
-
-
-        additemprodutocomposto.addObject("produtocomposto", produtocomposto);
-        additemprodutocomposto.addObject("produtosList", produtosList);
+		getservice().edit(produtocomposto);
+		
+		itemService.edit(item);
 
 
-        return additemprodutocomposto;
+		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
+		additemprodutocomposto.addObject("produtosList", produtosList); 
+		
+	
+        
+		return additemprodutocomposto;
 
-    }
+	}
 
+      
 
     @RequestMapping(value = "salvarfotocomposto", method = RequestMethod.POST)
     public ModelAndView SalvarFoto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request) {
@@ -341,7 +365,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     @Override
     protected ProdutoCompostoServicoImpl getservice() {
 
-        return produtocompostoService;
+    	return produtocompostoService;
     }
 
 

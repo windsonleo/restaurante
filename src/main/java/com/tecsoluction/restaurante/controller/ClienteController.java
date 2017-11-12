@@ -146,7 +146,7 @@ public class ClienteController extends AbstractController<Cliente> {
         endereco.setCep(request.getParameter("cep"));
         endereco.setPontoreferencia(request.getParameter("pontoreferencia"));
         endereco.setComplemento(request.getParameter("complemento"));
-        endereco.setAtivo(true);
+        endereco.setIsativo(true);
 
 //		String datanascimento = request.getParameter("datanascimento");
 

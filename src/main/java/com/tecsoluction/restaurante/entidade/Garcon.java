@@ -1,19 +1,21 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tecsoluction.restaurante.framework.BaseEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.framework.BaseEntity;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -48,7 +50,7 @@ public class Garcon extends BaseEntity implements Serializable {
         this.id = id;
         this.nome = nome;
         this.foto = foto;
-        this.ativo = isativo;
+        this.isativo = isativo;
     }
 
     @Override

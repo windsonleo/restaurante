@@ -22,7 +22,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @Entity
 @Table(name = "ENDERECO")
 public class Endereco extends BaseEntity implements Serializable {
@@ -39,6 +39,9 @@ public class Endereco extends BaseEntity implements Serializable {
 
     @Column(name = "logradouro")
     private String logradouro;
+
+    @Column(name = "isativo")
+    private boolean isativo;
 
     @Column(name = "numero")
     private String numero;
