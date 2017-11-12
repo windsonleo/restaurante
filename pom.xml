@@ -10,7 +10,7 @@
     <properties>
         <java-version>1.8</java-version>
         <org.springframework-version>4.3.12.RELEASE</org.springframework-version>
-        <org.aspectj-version>1.8.12</org.aspectj-version>
+        <org.aspectj-version>1.8.9</org.aspectj-version>
         <org.slf4j-version>1.7.12</org.slf4j-version>
         <org.springsecurity-version>4.2.3.RELEASE</org.springsecurity-version>
         <org.tiles-version>2.2.2</org.tiles-version>
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
+            <version>5.1.29</version>
         </dependency>
 
         <dependency>
@@ -104,7 +104,7 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.5</version>
+            <version>3.2.0</version>
         </dependency>
 
 
@@ -136,7 +136,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>1.2.15</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.mail</groupId>
@@ -169,7 +169,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.0</version>
+            <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
