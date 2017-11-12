@@ -1,14 +1,12 @@
 package com.tecsoluction.restaurante.framework;
 
-import java.util.List;
-import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -24,42 +22,19 @@ public abstract class AbstractRestController<Entity> {
     protected abstract AbstractEntityService<Entity> getservice();
 
 
-    /**
-     * Valida se uma entidade está pronta para ser persistida
-     *
-     * @param entity
-     */
-    protected abstract void validateSave(Entity entity);
-
-
-    /**
-     * Valida o delete de uma entidade
-     *
-     * @param id
-     */
-    protected abstract void validateDelete(String id);
-
-    /**
-     * Valida o update de uma entidade
-     *
-     * @param entity
-     */
-    protected abstract void validateUpdate(Entity entity);
-
-
     @Transactional
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Entity> AdicionarEntity(Entity entity) {
-
-        validateSave(entity);
-        getservice().save(entity);
-
-
-        return new ResponseEntity<>(entity, HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity AdicionarEntity(Entity entity) {
+        try {
+            getservice().validateSave(entity);
+            getservice().save(entity);
+            return new ResponseEntity<>(entity, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
+        }
     }
 
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Entity> buscarEntity(@PathVariable String id) {
 
 
@@ -81,7 +56,7 @@ public abstract class AbstractRestController<Entity> {
     @Transactional
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public void updateEntity(@PathVariable Entity entity) {
-        validateUpdate(entity);
+        getservice().validateEdit(entity);
         getservice().save(entity);
     }
 
@@ -89,8 +64,9 @@ public abstract class AbstractRestController<Entity> {
     //@Transactional
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteEntity(@PathVariable String id) {
-        validateDelete(id);
-        getservice().delete(UUID.fromString(id));
+        UUID idf = UUID.fromString(id);
+        getservice().validateDelete(idf);
+        getservice().delete(idf);
     }
 
 

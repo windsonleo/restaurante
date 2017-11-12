@@ -28,42 +28,10 @@ public class PedidoVendaControllerRest extends AbstractRestController<PedidoVend
       
     	this.pedidovendaService = dao;
     }
-
-
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<PedidoVenda> buscarEntity(@PathVariable String id) {
-    	
-    	UUID idf = UUID.fromString(id);
-    	
-    	PedidoVenda pedidovenda = getservice().findOne(idf);
-        
-    	if (pedidovenda == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(pedidovenda	, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/salvar",method = RequestMethod.POST)
-    public ResponseEntity<PedidoVenda> AdicionarEntity(@RequestBody PedidoVenda entity) {
-
-
-    	getservice().save(entity);
-            return new ResponseEntity<PedidoVenda>(entity, HttpStatus.OK);
-    
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public List<PedidoVenda> listarEntity() {
-        return getservice().findAll();
-
-    }
     
     @RequestMapping(value="/pormesa/{id}",method = RequestMethod.GET)
     public List<PedidoVenda> listarPedidoPorMesa(@PathVariable String id) {
-       
     	UUID idf = UUID.fromString(id);
-
     	return pedidovendaService.getAllPedidoPorMesa(idf);
 
     }
@@ -71,33 +39,9 @@ public class PedidoVendaControllerRest extends AbstractRestController<PedidoVend
 
 
 	@Override
-	protected AbstractEntityService<PedidoVenda> getservice() {
+	protected PedidoVendaServicoImpl getservice() {
 
 		return pedidovendaService;
-	}
-
-
-
-	@Override
-	protected void validateSave(PedidoVenda entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	protected void validateDelete(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	protected void validateUpdate(PedidoVenda entity) {
-		// TODO Auto-generated method stub
-		
 	}
     
 //    @RequestMapping(value = "/enviar",method = RequestMethod.POST)
