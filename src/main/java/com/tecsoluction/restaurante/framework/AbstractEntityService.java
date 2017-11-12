@@ -1,10 +1,9 @@
 package com.tecsoluction.restaurante.framework;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 import java.util.UUID;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by Cleberson on 04/07/2016.
@@ -34,7 +33,7 @@ public abstract class AbstractEntityService<Entity> {
     }
 
     public Entity findOne(UUID id) {
-        return getDao().findOne(id);
+        return getDao().getOne(id);
     }
 
     public Entity save(Entity post) {
@@ -53,7 +52,7 @@ public abstract class AbstractEntityService<Entity> {
 
     public void delete(UUID id) {
         validateDelete(id);
-        getDao().delete(id);
+        getDao().deleteById(id);
     }
 
     protected abstract void validateDelete(UUID id);
