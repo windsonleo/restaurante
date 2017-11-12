@@ -94,7 +94,6 @@
             <version>9.4.1208</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -161,7 +160,7 @@
         <!-- @Inject -->
         <dependency>
             <groupId>javax.inject</groupId>
-                <artifactId>javax.inject</artifactId>
+            <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
 
@@ -304,7 +303,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.7.1</version>
+            <version>3.6.0</version>
             <scope>test</scope>
         </dependency>
 
