@@ -8,6 +8,8 @@ import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.DadosGerenciais;
+
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,7 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
-import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 @Controller
 @RequestMapping(value = "mesas/")
@@ -74,7 +75,7 @@ public class MesaController extends AbstractController<Mesa> {
 
         Mesa mesa = mesaService.findOne(idf);
 
-        Money total = Money.of(usd, 0.00);
+        Money total = Money.of(DadosGerenciais.usd, 0.00);
 
         // mudar para trazer pelo id da mesa e pelo status da mesa
         pedidos = pedidovendaService.getAllPedidoPorMesa(idf);

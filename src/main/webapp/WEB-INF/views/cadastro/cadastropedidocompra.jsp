@@ -97,13 +97,10 @@
                 <div class="controls">
                          <select id="status"name="status"  class="form-control" >
 	                                  <optgroup label="Status do Pedido">
-		           					<c:forEach var="status" items="${tipoStatusList}">
 		           			
-		           				<option value="${status}">${status}</option>
+		           						<option value="ABERTO">ABERTO</option>
 		           				      				
-		           				
-		       				</c:forEach>
-		                </optgroup>
+		      		                </optgroup>
 	                    </select>				
 				
                 </div>

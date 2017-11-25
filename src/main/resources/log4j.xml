@@ -9,6 +9,7 @@
             <param name="ConversionPattern" value="%-5p: %c - %m%n"/>
         </layout>
     </appender>
+    
 
     <!-- Application Loggers -->
     <logger name="br.com.tecsoluction">
@@ -29,6 +30,10 @@
     </logger>
 
     <logger name="org.springframework.web">
+        <level value="trace"/>
+    </logger>
+    
+        <logger name="org.springframework.security">
         <level value="trace"/>
     </logger>
 

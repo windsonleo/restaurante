@@ -6,7 +6,7 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+//import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.joda.money.Money;
@@ -40,24 +40,24 @@ public class EstoqueController extends AbstractController<Estoque> {
 
     private final UsuarioServicoImpl userservice;
 
-    private final ItemServicoImpl itemService;
+//    private final ItemServicoImpl itemService;
 
     @Autowired
-    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, ItemServicoImpl itdao,
+    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, 
                              ProdutoServicoImpl pdao) {
         super("estoque");
         this.estoqueService = dao;
         this.userservice = daousu;
-        this.itemService = itdao;
+//        this.itemService = itdao;
         // this.produtoService = pdao;
     }
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
-
-        });
+//        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(this.itemService) {
+//
+//        });
 
     }
 

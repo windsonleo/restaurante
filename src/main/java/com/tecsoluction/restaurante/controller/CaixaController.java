@@ -49,9 +49,9 @@ public class CaixaController extends AbstractController<Caixa> {
     UsuarioServicoImpl userservice;
 
 
-    List<PedidoVenda> pedidoVendaLista = new ArrayList<>();
+    List<PedidoVenda> pedidoVendaLista = new ArrayList<PedidoVenda>();
 
-    List<FormaPagamento> formapagamentoLista = new ArrayList<>();
+    List<FormaPagamento> formapagamentoLista = new ArrayList<FormaPagamento>();
 
 
     @Autowired

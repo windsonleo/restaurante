@@ -36,7 +36,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     private final PedidoVendaServicoImpl pedidovendaService;
 
-    private final ItemServicoImpl itemService;
+//    private final ItemServicoImpl itemService;
 
     private final ProdutoServicoImpl produtoService;
 
@@ -59,13 +59,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private Estoque estoque;
 
     @Autowired
-    public PedidoVendaController(PedidoVendaServicoImpl dao, ItemServicoImpl daoitem, ProdutoServicoImpl produtodao,
+    public PedidoVendaController(PedidoVendaServicoImpl dao, ProdutoServicoImpl produtodao,
                                  ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
                                  UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
         super("pedidovenda");
 
         this.pedidovendaService = dao;
-        this.itemService = daoitem;
+//        this.itemService = daoitem;
         this.produtoService = produtodao;
         this.clienteService = daocliente;
         this.mesaService = daomesa;
@@ -91,9 +91,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         });
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
-
-        });
+//        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
+//
+//        });
 
     }
 
@@ -143,16 +143,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         for (Item key : pv.getItems().keySet()) {
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigoit());
+            BigDecimal qtd = key.getQtdit();
 
-            key.setEstoque(estoque);
+//            key.setEstoque(estoque);
 
             estoque.RetirarProdutoEstoque(produto, qtd);
 
             estoqueService.save(estoque);
 
-            itemService.save(key);
+//            itemService.save(key);
 
         }
 
@@ -223,17 +223,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         // System.out.println("windson ped"+pedidov.toString());
 
-        Item item = new Item(produto, pedidov);
+        Item item = new Item();
 
-        item.setQtd(qtdbd);
+        item.setQtdit(qtdbd);
         item.setTotalItem(item.getTotalItem());
-        item.setPedido(pedidov);
+//        item.setPedidovenda(pedidov);
 
         itens = pedidov.getItems();
 
-        itens.put(item, item.getQtd());
+        itens.put(item, item.getQtdit());
 
-        itemService.save(item);
+//        itemService.save(item);
 
         pedidov.setItems(itens);
         pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
@@ -279,7 +279,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        itemService.delete(idf);
+//        itemService.delete(idf);
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pv.getId());
 

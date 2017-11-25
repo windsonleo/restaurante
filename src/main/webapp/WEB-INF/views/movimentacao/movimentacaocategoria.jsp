@@ -29,7 +29,7 @@
  					<tr>
                        <th>Id</th>
 						<th>Nome</th>
-<!-- 									    <th>Telefone</th> -->
+									    <th>Categoria Pai</th>
 <!-- 									    <th>Email</th> -->
 <!-- 									    <th>Data Nasciemnto</th> -->
 <!-- 									     <th>Genero</th> -->
@@ -57,7 +57,7 @@
                   
 			      <td>${categoria.id}</td>
                   <td>${categoria.nome}</td>
-                  
+                   <td>${categoria.catpai}</td>
                  <td class="options-widt">
 								
 								

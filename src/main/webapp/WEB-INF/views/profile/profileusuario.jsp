@@ -5,8 +5,8 @@
 
 <div id="content-header">
 	<div id="breadcrumb">
-		<a href="index.html" title="Go to Home" class="tip-bottom"><i
-			class="icon-user"></i> Usuario</a> <a href="#">Movimenta��o Usuario </a>
+		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Movimentacao" class="tip-bottom"><i
+			class="icon-user"></i> Usuario</a> <a href="#">Profile Usuario </a>
 		<a href="#" class="current">Profile Usuario</a>
 	</div>
 	<h1>Profile de Usuario</h1>
@@ -22,7 +22,7 @@
 					<h5>Profile de Usuario</h5>
 				</div>
  
- <form  role="form" id="ds" class="form-horizontal"action="${pageContext.request.contextPath}/usuario/edicao" ModelAttribute="usuario" method="POST">
+ <form  class="form-horizontal"action="${pageContext.request.contextPath}/usuario/edicao" ModelAttribute="usuario" method="POST" name="basic_validate" id="basic_validate" novalidate="novalidate">
  
 
 
@@ -71,7 +71,7 @@
               <div class="control-group">
                 <label class="control-label">Roles</label>
                 <div class="controls">
-	 <select id="roles"name="roles" multiple="multiple" class="form-control" >
+			 <select id="roles"name="roles" multiple="multiple" class="span8" >
 	                                  <optgroup label="Tipos de Permissoes do usuario">
 		           				
 		           					<option value="${usuario.roles}">${usuario.roles}</option>

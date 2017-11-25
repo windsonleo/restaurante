@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
 
@@ -47,7 +48,7 @@ public class Fornecedor extends BaseEntity implements Serializable {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fornecedor")
     private List<Recebimento> recebimento;
 
     public Fornecedor() {

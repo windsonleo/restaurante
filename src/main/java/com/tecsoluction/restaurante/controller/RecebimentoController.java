@@ -9,6 +9,9 @@ import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +32,10 @@ import java.util.*;
 @RequestMapping(value = "recebimento/")
 public class RecebimentoController extends AbstractController<Recebimento> {
 
+	
+    private static final Logger logger = LoggerFactory.getLogger(RecebimentoController.class);
+
+	
     private final UsuarioServicoImpl userservice;
 
     private Estoque estoque = new Estoque();
@@ -39,33 +46,37 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     private final PedidoCompraServicoImpl pedidocompraService;
 
-    private final ItemServicoImpl itemService;
+//    private final ItemServicoImpl itemService;
 
     private final ProdutoServicoImpl produtoService;
 
     private final FornecedorServicoImpl fornecedorService;
 
-    private List<Item> itens = new ArrayList<>();
+    private List<Item> itens = new ArrayList<Item>();
 
-    private List<Produto> produtosList = new ArrayList<>();
+    private List<Produto> produtosList = new ArrayList<Produto>();
+    
+    private List<Fornecedor> fornecedorList = new ArrayList<Fornecedor>();
+
+    private List<Recebimento> recebimentoList = new ArrayList<Recebimento>();
 
     private Recebimento recebimento = new Recebimento();
 
     private PedidoCompra pv = new PedidoCompra();
 
     private
-    Map<Item, BigDecimal> itensRecebimentoCorfirmados = new HashMap<>();
+    Map<Item, BigDecimal> itensRecebimentoCorfirmados = new HashMap<Item, BigDecimal>();
 
     private
-    BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    BigDecimal totalpedido = new BigDecimal(0.0000).setScale(4, RoundingMode.UP);
 
     @Autowired
     public RecebimentoController(UsuarioServicoImpl usudao, EstoqueServicoImpl estdao, RecebimentoServicoImpl recdao, PedidoCompraServicoImpl pcdao,
-                                 ItemServicoImpl itdao, ProdutoServicoImpl proddao, FornecedorServicoImpl fordao) {
+                                  ProdutoServicoImpl proddao, FornecedorServicoImpl fordao) {
 
         super("recebimento");
         this.pedidocompraService = pcdao;
-        this.itemService = itdao;
+//        this.itemService = itdao;
         this.produtoService = proddao;
         this.fornecedorService = fordao;
         this.userservice = usudao;
@@ -85,9 +96,9 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         });
 
-        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
-
-        });
+//        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
+//
+//        });
 
         binder.registerCustomEditor(Estoque.class, new AbstractEditor<Estoque>(estoqueService) {
 
@@ -98,7 +109,9 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Recebimento> RecebimentoList = recebimentoService.findAll();
+//        recebimentoList = getservice().findAll();
+        
+        fornecedorList = fornecedorService.findAll();
 
         TipoPedido[] tipoList = TipoPedido.values();
 
@@ -113,17 +126,44 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         usuario = userservice.findByUsername(usuario.getUsername());
 
-        model.addAttribute("usuarioAtt", usuario);
+		
+        if (recebimento == null) {
 
-        model.addAttribute("RecebimentoList", RecebimentoList);
+			itensRecebimentoCorfirmados.clear();
+			
+			recebimento = new Recebimento();
+
+		}
+//        
+        if (pv == null) {
+
+//			itensRecebimentoCorfirmados.clear();
+			
+			pv = new PedidoCompra();
+
+		}
+        
+        
+        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("RecebimentoList", recebimentoList);
         model.addAttribute("origemPedidoList", origemPedidoList);
         model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
+        model.addAttribute("recebimento", recebimento);
+        model.addAttribute("pedidocompra", pv);
+        model.addAttribute("fornecedorList", fornecedorList);
+
+        
+        
+
 
     }
+    
 
     @RequestMapping(value = "finalizarrecebimento", method = RequestMethod.GET)
     public ModelAndView FinalizarRecebimento(HttpServletRequest request) {
+
+        logger.info("Finalzacao do Recebimento!");
 
         this.estoque = estoqueService.findOne(UUID.fromString("49L"));
 
@@ -131,15 +171,15 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         for (Item key : this.recebimento.getItems().keySet()) {
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigoit());
+            BigDecimal qtd = key.getQtdit();
 
-            key.setEstoque(estoque);
+//            key.setEstoque(estoque);
 
             estoque.AddProdutoEstoque(produto, qtd);
 
             estoqueService.save(estoque);
-            itemService.save(key);
+//            itemService.save(key);
 
         }
 
@@ -151,6 +191,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         recebimentoService.save(recebimento);
 
         itensRecebimentoCorfirmados.clear();
+        
+        
 
         return finalizacaorecebimento;
     }
@@ -160,33 +202,45 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
+        ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
-        this.recebimento = recebimentoService.findOne(idf);
+        this.recebimento = getservice().findOne(idf);
 
 //		totalpedido = Money.of(usd, 0.00);
 
-        this.recebimento.setTotal(totalpedido);
+        recebimento.setTotal(totalpedido);
 
+        logger.info("Add Item ao Recebimento Form!");
+        
+        additemrecebimento.addObject("recebimento", recebimento);
 
-        return additempedidovenda;
+        return additemrecebimento;
     }
 
-    @RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
+    @RequestMapping(value = "localizarpedido", method = RequestMethod.POST)
     public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
+       
         this.pv = pedidocompraService.findOne(idf);
 
-        if (pv == null) {
+        
+        
+        
+        if ((pv == null )||(pv.getStatus()!= StatusPedido.PRONTO)) {
 
-            ModelAndView additempedidovenda = new ModelAndView("additemrecebimento");
+            ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
-            String erros = "Nao Existe esse pEDIDO";
+            String erros = "Nao Existe esse Pedido de Compra Ou Ele não foi Aprovado!";
 
-            additempedidovenda.addObject("erros", erros);
+            additemrecebimento.addObject("erros", erros);
+//            additemrecebimento.addObject("pedidocompra", pv);
+//            additemrecebimento.addObject("acao", "add");
+//            additemrecebimento.addObject("recebimento", recebimento);
 
-            return additempedidovenda;
+            logger.info("Add Item ao Recebimento IF!");
+
+            return additemrecebimento;
         }
 
 //		totalpedido = Money.of(usd, 0.00);
@@ -196,91 +250,97 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         pv.setTotal(totalpedido);
 
         pv.setIspago(false);
+        
+        
 
-        recebimento.setPedidocompra(pv);
-        recebimento.setFornecedor(pv.getFornecedor());
+        this.recebimento.setPedidocompra(pv);
+//        recebimento.setFornecedor(pv.getFornecedor());
 
-        pedidocompraService.save(pv);
+        pedidocompraService.edit(pv);
 
-        recebimentoService.save(recebimento);
+        getservice().edit(recebimento);
+        
+        
 
         ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
 
         additemrecebimento.addObject("pedidocompra", pv);
         additemrecebimento.addObject("acao", "add");
         additemrecebimento.addObject("recebimento", recebimento);
-        additemrecebimento.addObject("itens", itens);
+//        additemrecebimento.addObject("itens", itens);
 
 //        totalpedido = Money.of(usd,0.00);
+        logger.info("Localizar Pedido Compra - Add Item Recebimento Form!");
 
         return additemrecebimento;
     }
 
-    @RequestMapping(value = "confirmaritem", method = RequestMethod.GET)
-    public ModelAndView ConfirmarItem(HttpServletRequest request) {
-
-        Item it = null;
-
-        String erros = null;
-
-        UUID idf = UUID.fromString(request.getParameter("id"));
-
-        UUID idfrec = UUID.fromString(request.getParameter("idrec"));
-
-        it = itemService.findOne(idf);
-
-        this.recebimento = recebimentoService.findOne(idfrec);
-
-        itensRecebimentoCorfirmados = recebimento.getItems();
-
-        ModelAndView additemrecebimento = new ModelAndView("additemrecebimento");
-
-        try {
-
-            it = itemService.getItemPorNome(it.getNome(), recebimento.getPedidocompra().getId());
-
-        } catch (Exception e) {
-
-            erros = "Erro ao Buscar Item GetItemPorNome !";
-
-            additemrecebimento.addObject("pedidocompra", pv);
-            additemrecebimento.addObject("acao", "add");
-            additemrecebimento.addObject("recebimento", recebimento);
-            additemrecebimento.addObject("itens", itens);
-            additemrecebimento.addObject("erros", erros);
-
-            return additemrecebimento;
-        }
-
-//        totalpedido =Money.of(usd,0.00);
-
-        Item itemvar = new Item();
-        itemvar.setNome(it.getNome());
-        itemvar.setCodigo(it.getCodigo());
-        itemvar.setQtd(it.getQtd());
-        itemvar.setPrecoUnitario(it.getPrecoUnitario());
-        itemvar.setPedido(recebimento.getPedidocompra());
-        itemvar.setRecebimento(recebimento);
-        itemvar.setDescricao(it.getDescricao());
-        itemvar.setProdutocomposto(it.getProdutocomposto());
-        itemvar.setTotalItem(it.getTotalItem());
-
-        itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtd());
-
-        itemService.save(itemvar);
-
-        this.recebimento.setItems(itensRecebimentoCorfirmados);
-        this.recebimento.setStatus(StatusPedido.PENDENTE);
-        recebimentoService.save(recebimento);
-
-        additemrecebimento.addObject("pedidocompra", pv);
-        additemrecebimento.addObject("acao", "add");
-        additemrecebimento.addObject("recebimento", recebimento);
-        additemrecebimento.addObject("itens", itens);
-        additemrecebimento.addObject("erros", erros);
-
-        return additemrecebimento;
-    }
+    @RequestMapping(value = "confirmaritem", method = RequestMethod.GET) 
+    public ModelAndView ConfirmarItem(HttpServletRequest request) { 
+ 
+        Item it = null; 
+ 
+        String erros = null; 
+ 
+        UUID idf = UUID.fromString(request.getParameter("id")); 
+ 
+        UUID idfrec = UUID.fromString(request.getParameter("idrec")); 
+ 
+//        it = itemService.findOne(idf); 
+ 
+        this.recebimento = recebimentoService.findOne(idfrec); 
+ 
+        itensRecebimentoCorfirmados = recebimento.getItems(); 
+ 
+        ModelAndView additemrecebimento = new ModelAndView("additemrecebimento"); 
+ 
+        try { 
+ 
+//            it = itemService.getItemPorNome(it.getNome(), recebimento.getPedidocompra().getId()); 
+ 
+        } catch (Exception e) { 
+ 
+            erros = "Erro ao Buscar Item GetItemPorNome !"; 
+ 
+            additemrecebimento.addObject("pedidocompra", pv); 
+            additemrecebimento.addObject("acao", "add"); 
+            additemrecebimento.addObject("recebimento", recebimento); 
+            additemrecebimento.addObject("itens", itens); 
+            additemrecebimento.addObject("erros", erros); 
+ 
+            return additemrecebimento; 
+        } 
+ 
+//        totalpedido =Money.of(usd,0.00); 
+ 
+        Item itemvar = new Item(); 
+        itemvar.setNomeit(it.getNomeit()); 
+        itemvar.setCodigoit(it.getCodigoit()); 
+        itemvar.setQtdit(it.getQtdit()); 
+        itemvar.setPrecoUnitarioit(it.getPrecoUnitarioit()); 
+//        itemvar.setPedidocompra(recebimento.getPedidocompra()); 
+//        itemvar.setRecebimento(recebimento); 
+        itemvar.setDescricaoit(it.getDescricaoit()); 
+//        itemvar.setProduto(it.getProduto()); 
+        itemvar.setTotalItem(it.getTotalItem()); 
+ 
+        itensRecebimentoCorfirmados.put(itemvar, itemvar.getQtdit()); 
+ 
+//        itemService.save(itemvar); 
+ 
+        this.recebimento.setItems(itensRecebimentoCorfirmados); 
+        this.recebimento.setStatus(StatusPedido.PENDENTE); 
+        recebimentoService.save(recebimento); 
+ 
+        additemrecebimento.addObject("pedidocompra", pv); 
+        additemrecebimento.addObject("acao", "add"); 
+        additemrecebimento.addObject("recebimento", recebimento); 
+        additemrecebimento.addObject("itens", itens); 
+        additemrecebimento.addObject("erros", erros); 
+ 
+        return additemrecebimento; 
+    } 
+   
 
     @Override
     protected RecebimentoServicoImpl getservice() {

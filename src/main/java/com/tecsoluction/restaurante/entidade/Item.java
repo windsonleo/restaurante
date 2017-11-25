@@ -3,10 +3,15 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,52 +25,70 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//@Entity
+//@Table(name = "ITEM")
+@Embeddable
+//@Access(AccessType.PROPERTY)
 @EqualsAndHashCode
-@Entity
-@Table(name = "ITEM")
-public class Item extends BaseEntity implements Serializable, Comparable<Item> {
 
+public  class Item implements Serializable {
 
-    private static final long serialVersionUID = 121L;
 
 //	@JoinColumn(name="produto_id", nullable=true)
 //	private Produto produto;
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    @Column(name = "codigo")
-    private String codigo;
+	private UUID idit;
+    
+//    private boolean ativo =true;
 
-    @Column(name = "nome")
-    private String nome;
+    private String codigoit;
 
-    @Column(name = "descricao")
-    private String descricao;
+    private String nomeit;
 
-    @Column(name = "qtd")
-    private BigDecimal qtd;
+    private String descricaoit;
 
-    @Column(name = "precounitario")
-    private BigDecimal precoUnitario;
-
-    @Column(name = "totalitem")
-    private BigDecimal totalItem;
-
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Pedido.class, optional = true)
-    @JsonBackReference
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
-
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Produto.class, optional = true)
-    @JoinColumn(name = "produtocomposto_id", nullable = true)
-    private Produto produtocomposto;
-
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Estoque.class, optional = true)
-    @JoinColumn(name = "estoque_id")
-    private Estoque estoque;
+//    private BigDecimal qtdit = new BigDecimal("0.00");
+    
+    private BigDecimal qtdit ;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Recebimento.class, optional = true)
-    @JoinColumn(name = "recebimento_id")
-    private Recebimento recebimento;
+//    private BigDecimal precoUnitarioit = new BigDecimal("0.00");
+    private BigDecimal precoUnitarioit;
+
+
+    private BigDecimal totalItem ;
+
+//    @ManyToOne(optional = true)
+//    @JsonBackReference
+//    @JoinColumn(name = "pedidocompra_id")
+//    private PedidoCompra pedidocompra;
+//    
+//    @ManyToOne( targetEntity = PedidoVenda.class, optional = true)
+//    @JsonBackReference
+//    @JoinColumn(name = "pedidovenda_id")
+//    private PedidoVenda pedidovenda;
+//
+//    @ManyToOne(targetEntity = ProdutoComposto.class, optional = true)
+//    @JoinColumn(name = "produtocomposto_id", nullable = true)
+//    private Produto produtocomposto;
+//    
+//    @ManyToOne(targetEntity = Produto.class, optional = true)
+//    @JoinColumn(name = "produto_id", nullable = true)
+//    private Produto produto;
+//
+//    @ManyToOne( targetEntity = Estoque.class, optional = true)
+//    @JoinColumn(name = "estoque_id")
+//    private Estoque estoque;
+//
+//
+//    @ManyToOne(targetEntity = Recebimento.class, optional = true)
+//    @JoinColumn(name = "recebimento_id")
+//    private Recebimento recebimento;
 
 //    @ManyToOne
 //    @JoinColumn
@@ -85,63 +108,84 @@ public class Item extends BaseEntity implements Serializable, Comparable<Item> {
         //    cotacoes = new ArrayList<>();
 
     }
+    
+    
+//    public Item(Produto produto , BigDecimal qtd) {
+    	
+//      this.idit = produto.getId();
+//      this.codigoit = produto.getCodebar();
+//      this.nomeit = produto.getNome();
+//      this.descricaoit = produto.getDescricao();
+//      this.precoUnitarioit = produto.getPrecovenda();
+////      this.ativo = true;
+//      this.totalItem = produto.getPrecovenda().multiply(qtd);
 
+//    }
 
-    public Item(Produto produto, PedidoVenda pedido) {
-
-        this.codigo = produto.getCodebar();
-        this.nome = produto.getNome();
-        this.descricao = produto.getDescricao();
-        this.precoUnitario = produto.getPrecovenda();
-        this.pedido = pedido;
+//
+//    public Item(Produto produto, PedidoVenda pedidovenda) {
+//
+//        this.codigo = produto.getCodebar();
+//        this.nome = produto.getNome();
+//        this.descricao = produto.getDescricao();
+//        this.precoUnitario = produto.getPrecovenda();
+//        this.pedidovenda = pedidovenda;
+////        this.produto = produto;
 //        this.produto = produto;
-        this.produtocomposto = produto;
-    }
-
-    public Item(Produto produto, PedidoCompra pedido) {
-
-        this.codigo = produto.getCodebar();
-        this.nome = produto.getNome();
-        this.descricao = produto.getDescricao();
-        this.precoUnitario = produto.getPrecovenda();
-        this.pedido = pedido;
+//    }
+//
+//    public Item(Produto produto, PedidoCompra pedidocompra) {
+//
+//        this.codigo = produto.getCodebar();
+//        this.nome = produto.getNome();
+//        this.descricao = produto.getDescricao();
+//        this.precoUnitario = produto.getPrecovenda();
+//        this.pedidocompra = pedidocompra;
 //        this.produto = produto;
-        this.produtocomposto = produto;
-    }
-
-    public Item(Produto produto) {
-
-        this.codigo = produto.getCodebar();
-        this.nome = produto.getNome();
-        this.descricao = produto.getDescricao();
-        this.precoUnitario = produto.getPrecovenda();
-        this.produtocomposto = produto;
+//    }
+//
+//    public Item(Produto produto) {
+//
+//        this.codigo = produto.getCodebar();
+//        this.nome = produto.getNome();
+//        this.descricao = produto.getDescricao();
+//        this.precoUnitario = produto.getPrecovenda();
 //        this.produto = produto;
-    }
-
-    public Item(Produto produto, Recebimento rec) {
-        this.codigo = produto.getCodebar();
-        this.descricao = produto.getNome();
-        this.precoUnitario = produto.getPrecovenda();
-        this.produtocomposto = produto;
-        this.recebimento = rec;
+////        this.produto = produto;
+//    }
+//
+//    public Item(Produto produto, Recebimento rec) {
+//        this.codigo = produto.getCodebar();
+//        this.descricao = produto.getNome();
+//        this.precoUnitario = produto.getPrecovenda();
 //        this.produto = produto;
-
-    }
-
-    public Item(ProdutoComposto produto) {
-        this.codigo = produto.getCodebar();
-        this.descricao = produto.getNome();
-        this.precoUnitario = produto.getPrecovenda();
-        this.produtocomposto = produto;
-        //this.recebimento = rec;
-//        this.produto = produto;
-    }
-
-    public Item(Recebimento rec) {
-
-        this.recebimento = rec;
-    }
+//        this.recebimento = rec;
+////        this.produto = produto;
+//
+//    }
+//
+//    public Item(ProdutoComposto produtocomposto) {
+//        this.codigo = produto.getCodebar();
+//        this.descricao = produto.getNome();
+//        this.precoUnitario = produto.getPrecovenda();
+//        this.produtocomposto = produtocomposto;
+//        //this.recebimento = rec;
+////        this.produto = produto;
+//    }
+//
+//    public Item(Recebimento rec) {
+//
+//        this.recebimento = rec;
+//    }
+//    
+//    public Item(Pedido produto) {
+//        this.codigo = produto.getCodebar();
+//        this.descricao = produto.getNome();
+//        this.precoUnitario = produto.getPrecovenda();
+//        this.produtocomposto = produto;
+//        //this.recebimento = rec;
+////        this.produto = produto;
+//    }
 
 
 //	public Produto getProduto() {
@@ -182,7 +226,10 @@ public class Item extends BaseEntity implements Serializable, Comparable<Item> {
 //
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-        return precoUnitario.multiply(qtd).setScale(4, RoundingMode.UP);
+//        return precoUnitarioit.multiply(qtdit).setScale(3, RoundingMode.FLOOR);
+    	
+        return precoUnitarioit;
+
     }
 
 
@@ -192,7 +239,9 @@ public class Item extends BaseEntity implements Serializable, Comparable<Item> {
 //
 //        double valor = Double.parseDouble(precoformat.replace(',', '.'));
 
-        this.totalItem = totalItem.setScale(4, RoundingMode.UP);;
+//        this.totalItem = totalItem.setScale(2, RoundingMode.UP);
+        this.totalItem = totalItem;
+
     }
 
 
@@ -214,15 +263,37 @@ public class Item extends BaseEntity implements Serializable, Comparable<Item> {
 
     @Override
     public String toString() {
-        return nome.toUpperCase();
+        return nomeit.toUpperCase();
     }
 
 
-    @Override
-    public int compareTo(Item arg0) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+//    @Override
+//    public int compareTo(Item arg0) {
+//        // TODO Auto-generated method stub
+//        return 0;
+//    }
+    
+//    public void AddItem(PedidoCompra pedidocompra){
+//    	
+//    	pedidocompra.getItems().put(this, this.qtd);
+//    	this.setPedidocompra(pedidocompra);
+//    	
+//    }
+//    
+//    
+//    public void RemoverItem(PedidoCompra pedidocompra){
+//    	
+//    	pedidocompra.getItems().remove(this);
+//    	this.setPedidocompra(null);
+//    	
+//    }
+    
+//    public Map<Item,BigDecimal> PegarItens(){
+//    	
+//    	
+//    	
+//    	return null;
+//    }
 
 
 }

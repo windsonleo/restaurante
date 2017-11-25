@@ -5,15 +5,19 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
@@ -78,8 +82,18 @@ public class PedidoVenda extends Pedido implements Serializable {
 //    @LazyCollection(LazyCollectionOption.FALSE)
 //    @OneToMany(mappedBy="pedidoVenda")
 //    private List<DevolucaoVenda> listaDevolucao;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @MapKeyColumn(name = "id")
+    @Embedded
+    @ElementCollection(fetch=FetchType.EAGER)
+    @AttributeOverrides({
+        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_PEDVEN")),
+        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_PEDVEN")),
+        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_PEDVEN")),
+        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_PEDVEN")),
+        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_PEDVEN")),
+        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_PEDVEN")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_PEDVEN"))
+    })
+    @MapKeyColumn(name = "idit")
     @Column(name = "qtd")
     @CollectionTable(name = "itens_pedidovenda", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
@@ -88,6 +102,8 @@ public class PedidoVenda extends Pedido implements Serializable {
     //CONSTRUTOR PADRÃO
     public PedidoVenda() {
         super();
+        
+        this.items = new HashMap<Item, BigDecimal>();
 
         //   listaDevolucao = new ArrayList<>();
         //  tipo.VENDA.values();
@@ -109,6 +125,7 @@ public class PedidoVenda extends Pedido implements Serializable {
         this.mesa = mesa;
         this.garcon = garcon;
         this.origempedido = origempedido;
+        this.items = new HashMap<Item, BigDecimal>();
     }
 
     @Override

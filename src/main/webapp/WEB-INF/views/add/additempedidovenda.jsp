@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -100,7 +102,7 @@
 							<label>Código</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }" readonly="readonly"> 
 							<label>Data</label>	
-							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidovenda.data}" />" readonly="readonly"> 
 							<label>Status</label>
 							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }" readonly="readonly"> 
 							<label>Mesa</label>

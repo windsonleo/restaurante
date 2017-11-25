@@ -40,8 +40,9 @@
    									    <th>Fornecedor</th>
 <!--    									    <th>Itens</th> -->
 <!--    									    <th>Garcon</th> -->
-									     <th>Itens</th>
+<!-- 									     <th>Itens</th> -->
 									     <th>Ativo</th>
+									     <th>Pago</th>
 									    <th>Ação</th>
                                     </tr>
                                 </thead>
@@ -115,13 +116,36 @@
                  <td>${pedidocompra.fornecedor}</td>
 <%--                  <td>${pedidocompra.mesa}</td> --%>
 <%--                  <td>${pedidocompra.garcon}</td> --%>
-                  <td>${pedidocompra.items}</td>
-                   <td><span class="label label bg_lb"> ${pedidocompra.ativo}</span></td>
+               
+<%--                   <td>${pedidocompra.items}</td> --%>
+                  
+                   <td><span class="label label bg_lb"> ${pedidocompra.ativo}</span>
+                   
+                   </td>
+                   
+                   
+                
+		                   
+                  	<c:choose>
+				    <c:when test="${pedidocompra.ispago}">
+
+                  <td><span class="label label-success">${pedidocompra.ispago}</span></td>
+
+				    </c:when> 
+				    
+				    <c:otherwise>
+
+                  <td><span class="label label-important">${pedidocompra.ispago}</span></td>
+
+				    </c:otherwise>
+				</c:choose>		                   
+		                             
+                                      
                  <td class="options-width">
 								
 								
 								<a
-									href="${pageContext.request.contextPath}/pedidocompra/additem?id=${pedidocompra.id}"
+									href="${pageContext.request.contextPath}/pedidocompra/saveitem?id=${pedidocompra.id}"
 									title="Add Item"><i class="icon-edit"></i> </a>
 									
 										<a
@@ -159,10 +183,13 @@
 											
 									
 										
-					</td>
+				</td>
+				
                   
                   
                 </tr>
+                
+               
                 </c:when>
                 </c:choose>
                 </c:forEach>

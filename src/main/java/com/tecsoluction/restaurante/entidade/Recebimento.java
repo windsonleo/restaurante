@@ -7,15 +7,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -59,12 +63,22 @@ public class Recebimento extends BaseEntity implements Serializable {
 //    private List<Item> items;
 
     //@OneToMany(mappedBy="recebimento")
-    @ElementCollection(fetch = FetchType.EAGER)
-    @MapKeyColumn(name = "ID")
+    @Embedded
+    @ElementCollection(fetch=FetchType.EAGER)
+    @AttributeOverrides({
+        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_REC")),
+        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_REC")),
+        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_REC")),
+        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_REC")),
+        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_REC")),
+        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_REC")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_REC"))
+    } )
+    @MapKeyColumn(name = "idit")
     @Column(name = "qtd")
     @CollectionTable(name = "itens_recebimento", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, BigDecimal> items = new HashMap<>();
+    private Map<Item, BigDecimal> items = new HashMap<Item, BigDecimal>();
 
 
     private boolean ispago = false;
@@ -82,6 +96,8 @@ public class Recebimento extends BaseEntity implements Serializable {
 
         //   listaDevolucao = new ArrayList<>();
         //  tipo.VENDA.values();
+    	
+    	items = new HashMap<Item, BigDecimal>();
     }
 
     public Recebimento(PedidoCompra pedidoompra) {
@@ -93,6 +109,7 @@ public class Recebimento extends BaseEntity implements Serializable {
         this.fornecedor = pedidoompra.getFornecedor();
         this.items = pedidoompra.getItems();
 //    	this.fornecedor=pedidoompra.
+        this.items = new HashMap<Item, BigDecimal>();
     }
 
     /**
@@ -111,7 +128,7 @@ public class Recebimento extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return super.toString().toUpperCase();
+        return "Recebimento : " + items;
     }
 
 

@@ -36,7 +36,7 @@
            
           </div>
           <div class="widget-content nopadding">               
-			<form action="salvaritemprodutocomposto" method="GET" class="form-horizontal">		
+			<form action="salvaritemprodutocomposto" method="POST" class="form-horizontal">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
@@ -134,7 +134,7 @@
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
 					<input id="precovenda" class="form-control"
-						name="precovenda" type="number" value="${produtocomposto.venda}"
+						name="precovenda" type="number" value="${produtocomposto.precovenda}"
 						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
 				
                 </div>
@@ -182,7 +182,7 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="item" items="${produtocomposto.itens}" varStatus="id">
+                                <c:forEach var="item" items="${produtocomposto.itens_prodcomp}" varStatus="id">
 
   
   <tr class="gradeX">

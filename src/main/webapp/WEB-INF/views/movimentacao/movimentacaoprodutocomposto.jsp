@@ -36,7 +36,7 @@
    									    <th>Descrição</th>
 									    <th>Preço Venda</th>
 									    <th>Fornecedor</th>
-									    <th>Itens</th>
+<!-- 									    <th>Itens</th> -->
 									    
 									    <th>Ativo?</th>
 <!-- 									     <th>Genero</th> -->
@@ -64,7 +64,7 @@
                   <td><fmt:formatNumber type="currency"
                        value="${produtocomposto.precovenda}"/></td>
                    <td>${produtocomposto.fornecedor}</td>
-                  <td>${produtocomposto.itens}</td>
+<%--                   <td>${produtocomposto.itens}</td> --%>
                    
                    <td><span class="label label bg_lb">${produtocomposto.ativo}</span></td>
                  <td class="options-widt">

@@ -1,17 +1,20 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.tecsoluction.restaurante.framework.BaseEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import org.joda.money.Money;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+import javax.persistence.*;
+
+import org.joda.money.Money;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.tecsoluction.restaurante.framework.BaseEntity;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -32,7 +35,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     @ManyToMany()
     private List<PedidoVenda> pedidos;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany
     private Set<FormaPagamento> formaPagamentos;
 
     private Money valorTotalPagamento;

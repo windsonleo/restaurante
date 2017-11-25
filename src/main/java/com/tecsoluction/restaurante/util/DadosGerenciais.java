@@ -7,6 +7,7 @@ import org.joda.money.Money;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 
 public class DadosGerenciais implements Serializable {
@@ -38,7 +39,7 @@ public class DadosGerenciais implements Serializable {
 
 
     public DadosGerenciais() {
-        // TODO Auto-generated constructor stub
+//         TODO Auto-generated constructor stub
     }
 
 
@@ -69,7 +70,7 @@ public class DadosGerenciais implements Serializable {
         precovenda = this.precovenda.dividedBy(divisao.getAmountMajor(), RoundingMode.UP);
 
 
-        // this.custo / (100 - this.despesafixa - this.despesavariavel - this.margemlucro) * 100;
+//         this.custo / (100 - this.despesafixa - this.despesavariavel - this.margemlucro) * 100;
         return precovenda;
     }
 
@@ -115,47 +116,47 @@ public class DadosGerenciais implements Serializable {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
+//         TODO Auto-generated method stub
         return super.toString();
     }
 
 
-//    public static String transfomarPreco(double numero) {
-//
-//        boolean isInteiro = (numero == Math.round(numero));
-//
-////	    String pattern = isInteiro ? "#.##" : "0.##";
-////
-////		DecimalFormat formato = new DecimalFormat(pattern);
-//
-////	    NumberFormat formato = NumberFormat.getCurrencyInstance();
-//
-////		formato.setMinimumFractionDigits(2);
-////		formato.setMaximumFractionDigits(2);
-//
-//
-//        DecimalFormat formato = new DecimalFormat();
-//
-//        if (numero % 1 == 0) {
-//
-//            formato = new DecimalFormat("##.##");
-//
-//
-//            System.out.println("inteiro : " + formato.format(numero));
-//
-//
-//        } else {
-//
-//            formato = new DecimalFormat("#.##");
-//
-//            System.out.println("nao inteiro:" + formato.format(numero));
-//
-//
-//        }
-//
-//
-//        return formato.format(numero);
-//    }
+    public static String transfomarPreco(double numero) {
+
+        boolean isInteiro = (numero == Math.round(numero));
+
+//	    String pattern = isInteiro ? "#.##" : "0.##";
+
+//		DecimalFormat formato = new DecimalFormat(pattern);
+
+//	    NumberFormat formato = NumberFormat.getCurrencyInstance();
+
+//		formato.setMinimumFractionDigits(2);
+//		formato.setMaximumFractionDigits(2);
+
+
+        DecimalFormat formato = new DecimalFormat();
+
+        if (numero % 1 == 0) {
+
+            formato = new DecimalFormat("##.##");
+
+
+            System.out.println("inteiro : " + formato.format(numero));
+
+
+        } else {
+
+            formato = new DecimalFormat("#.##");
+
+            System.out.println("nao inteiro:" + formato.format(numero));
+
+
+        }
+
+
+        return formato.format(numero);
+    }
 
 
 }

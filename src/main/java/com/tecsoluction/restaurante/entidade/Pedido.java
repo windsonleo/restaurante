@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -40,7 +39,7 @@ public abstract class Pedido extends BaseEntity {
 
 
     @Column(name = "total")
-    private BigDecimal  total =  new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    private BigDecimal  total =  new BigDecimal("0.00");
 
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE)
@@ -63,6 +62,10 @@ public abstract class Pedido extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
+    
+    private boolean ispago = false;
+
+    
     public Pedido() {
         // TODO Auto-generated constructor stub
         //    items = new ArrayList<>();
@@ -124,4 +127,7 @@ public abstract class Pedido extends BaseEntity {
 
         return totalpedido;
     }
+    
+    
+    
 }

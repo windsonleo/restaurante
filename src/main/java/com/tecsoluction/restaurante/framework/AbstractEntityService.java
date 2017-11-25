@@ -45,6 +45,8 @@ public abstract class AbstractEntityService<Entity> {
     protected abstract void validateSave(Entity post);
 
     protected abstract String getIdEntity(Entity entity);
+    
+    
 
     public Entity edit(Entity post) {
         validateEdit(post);
@@ -59,5 +61,8 @@ public abstract class AbstractEntityService<Entity> {
     }
 
     protected abstract void validateDelete(UUID id);
+    
+    
+   
 
 }

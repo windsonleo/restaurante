@@ -83,7 +83,7 @@ public class UsuarioController extends AbstractController<Usuario> {
 
         ModelAndView profileusuario = new ModelAndView("profileusuario");
 
-        Usuario usuario = ususervice.findOne(idf);
+        Usuario usuario = getservice().findOne(idf);
 
         profileusuario.addObject("usuario", usuario);
 

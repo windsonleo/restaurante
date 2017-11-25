@@ -37,6 +37,7 @@
                                 <th>Username</th>
                                 <th>Senha</th>
                                 <th>Email</th>
+                                <th>Permissoes</th>
                                 <!-- 									    <th>Roles</th> -->
                                 <!-- 									     <th>Ativo</th> -->
                                 <th>Ação</th>
@@ -59,6 +60,8 @@
                                             <td>${usuario.username}</td>
                                             <td>${usuario.senha}</td>
                                             <td>${usuario.email}</td>
+                                             <td>${usuario.roles}</td>
+                                            
                                                 <%--                    <td>${usuario.roles}</td> --%>
                                                 <%--                    <td> ${usuario.ativo}</td> --%>
                                             <td class="options-widt">

@@ -189,7 +189,7 @@ public class ProdutoController extends AbstractController<Produto> {
         dadosgerenciais.setCusto(produto.getPrecocusto());
         dadosgerenciais.setDespesafixa(new BigDecimal(5.00));
         dadosgerenciais.setDespesavariavel(new BigDecimal(10.00));
-        Money precosugerido = dadosgerenciais.getPrecovenda();
+       Money precosugerido = dadosgerenciais.getPrecovenda();
 
         gerencia.addObject("produto", produto);
         gerencia.addObject("dadosgerenciais", dadosgerenciais);

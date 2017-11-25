@@ -73,7 +73,7 @@
                                     <select id="catpai" name="catpai" class="span3">
                                         <optgroup label="Tipos de Catgeoria Pai">
 
-<%--                                             <option value="${categoria.catpai}">${categoria.catpai}</option> --%>
+                                            <option value="${categoria.catpai}">${categoria.catpai}</option>
 
                                             <c:forEach var="categoria" items="${categoriaList}">
 

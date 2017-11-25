@@ -1,19 +1,19 @@
 package com.tecsoluction.restaurante.entidade;
-
-
-import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +21,7 @@ import javax.validation.constraints.NotBlank;
 import org.joda.money.Money;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.DadosGerenciais;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -61,9 +62,18 @@ public class Estoque extends BaseEntity implements Serializable {
 //    @Column(name="qtd")
 //    @CollectionTable(name="itens_estoque",joinColumns=@JoinColumn(name="id"))
 //    private Map<Item, Double> items= new HashMap<>();
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @MapKeyColumn(name = "ID")
+    @Embedded
+    @ElementCollection
+    @AttributeOverrides({
+        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_STQ")),
+        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_STQ")),
+        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_STQ")),
+        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_STQ")),
+        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_STQ")),
+        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_STQ")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_STQ"))
+    })
+    @MapKeyColumn(name = "id")
     @Column(name = "qtd")
     @CollectionTable(name = "produtos_estoque", joinColumns = @JoinColumn(name = "id"))
     private Map<Produto, BigDecimal> items = new HashMap<>();
@@ -88,9 +98,9 @@ public class Estoque extends BaseEntity implements Serializable {
 
     public void AddProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-        BigDecimal vantigo = new BigDecimal("0.0");
+        BigDecimal vantigo = new BigDecimal("0.00");
         BigDecimal vnovo = qtd;
-        BigDecimal novo = new BigDecimal("0.0");
+        BigDecimal novo = new BigDecimal("0.00");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
@@ -109,9 +119,9 @@ public class Estoque extends BaseEntity implements Serializable {
 
     public void RetirarProdutoEstoque(Produto produto, BigDecimal qtd) {
 
-        BigDecimal vantigo = new BigDecimal("0.0");
+        BigDecimal vantigo = new BigDecimal("0.00");
         BigDecimal vnovo = qtd;
-        BigDecimal novo = new BigDecimal("0.0");
+        BigDecimal novo = new BigDecimal("0.00");
 
         for (Produto key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
@@ -132,11 +142,13 @@ public class Estoque extends BaseEntity implements Serializable {
             items.put(produto, qtdnegativa);
         }
     }
+    
+
 
 
     public Money CalcularTotalCusto() {
 
-        Money totalcusto = Money.of(usd, 0.00);
+        Money totalcusto = Money.of(DadosGerenciais.usd, 0.00);
 
 
         for (Produto key : getItems().keySet()) {
@@ -155,7 +167,7 @@ public class Estoque extends BaseEntity implements Serializable {
 
     public Money CalcularTotalVenda() {
 
-        Money totalvenda = Money.of(usd, 0.00);
+        Money totalvenda = Money.of(DadosGerenciais.usd, 0.00);
 
         for (Produto key : getItems().keySet()) {
 
@@ -169,5 +181,7 @@ public class Estoque extends BaseEntity implements Serializable {
 
         }
         return totalvenda;
+
     }
 }
+

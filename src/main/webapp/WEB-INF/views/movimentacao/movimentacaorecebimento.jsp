@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="true" %>
 
 
@@ -38,7 +39,7 @@
 <!--    									    <th>Mesa</th> -->
 <!--    									    <th>Garcon</th> -->
 									     <th>Itens</th>
-									     <th>Pago</th>
+<!-- 									     <th>Pago</th> -->
 									    <th>Ação</th>
                                     </tr>
                                 </thead>
@@ -54,7 +55,14 @@
   <tr class="gradeX">
 
 			      <td>${recebimento.id}</td>
-                  <td>${recebimento.data}</td>
+                  
+                  <td>  
+                     
+                   <fmt:formatDate pattern="dd/MM/yyyy"
+                    value="${recebimento.data}"/>
+                    
+                   </td>
+                   
 <%-- 				<td>${recebimento.situacao}</td> --%>
 			<c:choose>
 				    <c:when test="${recebimento.status=='ABERTO'}">
@@ -107,22 +115,25 @@
 <%--                  <td>${recebimento.garcon}</td> --%>
                   <td>${recebimento.items}</td>
                   
-                  	<c:choose>
-				    <c:when test="${recebimento.ispago}">
+<!--                   <td> -->
+                  
+<%--                   	<c:choose> --%>
+<%-- 				    <c:when test="${recebimento.ispago}"> --%>
 
-                  <td><span class="label label-success">${recebimento.ispago}</span></td>
+<%--                   <td><span class="label label-success">${recebimento.ispago}</span></td> --%>
 
-				    </c:when> 
+<%-- 				    </c:when>  --%>
 				    
-				    <c:otherwise>
+<%-- 				    <c:otherwise> --%>
 
-                  <td><span class="label label-important">${recebimento.ispago}</span></td>
+<%--                   <td><span class="label label-important">${recebimento.ispago}</span></td> --%>
 
-				    </c:otherwise>
-				</c:choose>
-<!--                   class="date badge badge-important"> -->
-<%--                    <td> ${recebimento.ispago}</td> --%>
+<%-- 				    </c:otherwise> --%>
+<%-- 				</c:choose> --%>
+<!-- <!--                   class="date badge badge-important"> --> 
+<%-- <%--                    <td> ${recebimento.ispago}</td> --%> 
                 
+<!--                 </td> -->
                 
                  <td class="options-width">
 								
@@ -169,11 +180,12 @@
 					</td>
                   
                   
-                </tr>
+               </tr>
+                
                 </c:when>
                 </c:choose>
                 </c:forEach>
-
+ 
               </tbody>
               
 

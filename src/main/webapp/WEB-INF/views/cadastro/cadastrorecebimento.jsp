@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -53,7 +55,9 @@
                 <label class="control-label">Data</label>
                 <div class="controls">
 				
-				<input id="text" name="data" type="text" class="span4 m-wrap" value="${recebimento.data }"> 
+				
+				
+				<input id="text" name="data" type="text" class="span4 m-wrap" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.data}"/>">
 				
 				<input id="pedidocompra" name="pedidocompra" type="text" class="span4 m-wrap" value="${recebimento.pedidocompra }" placeholder="Digite o numero do Pedido de Compra"> 				
 				
@@ -77,6 +81,9 @@
 	                    
 	          <select id="fornecedor"name="fornecedor"  class="form-control" >
 	                                  <optgroup label="Escolha o Fornecedor">
+		           					
+		           					<option value="${recebimento.fornecedor}">${recebimento.fornecedor}</option>
+		           					
 		           					<c:forEach var="fornecedor" items="${fornecedorList}">
 		           			
 		           				<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option>
@@ -106,7 +113,7 @@
               <div class="control-group">
                 <label class="control-label">Items</label>
                 <div class="controls">
-	 <select id="items"name="items" multiple="multiple" class="span8" >
+	 				<select id="items"name="items" multiple="multiple" class="span8" >
 	                                  <optgroup label="Items">
 		           						           				
 		           				

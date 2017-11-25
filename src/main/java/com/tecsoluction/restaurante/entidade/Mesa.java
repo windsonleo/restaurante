@@ -1,15 +1,17 @@
 package com.tecsoluction.restaurante.entidade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tecsoluction.restaurante.framework.BaseEntity;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tecsoluction.restaurante.framework.BaseEntity;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -31,7 +33,7 @@ public class Mesa extends BaseEntity implements Serializable {
     private String status;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "mesa", fetch= FetchType.LAZY)
+    @OneToMany(mappedBy = "mesa")
     private List<PedidoVenda> pedidos;
 
 

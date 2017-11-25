@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -97,7 +99,7 @@
 							<label>Cï¿½digo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }" readonly="readonly"> 
 							<label>Data</label>	
-							<input id="data" name="data" type="text" class="form-control" value="${pedidocompra.data }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}"/>" readonly="readonly"> 
 							<label>Status</label>
 							<input id="status" name="status" type="text" class="form-control" value="${pedidocompra.status }" readonly="readonly"> 
 							<label>Fornecedor</label>
@@ -129,40 +131,84 @@
      <div class="widget-content nopadding">               
        <div class="container-fluid">
      
-		  <ul class="quick-actions">
+		 <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                            
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+<!-- 									    <th>Código</th> -->
+<!-- 									    <th>Descrição</th> -->
+									    <th>Qtd</th>
+<!-- 									    <th>Preço Custo</th> -->
+<!-- 									    <th>Total Item</th> -->
+<!-- 									    <th>Total Item</th> -->
+									    
+<!-- 									     <th>Ativo?</th> -->
+<!-- 									     <th>Pagamentos</th> -->
+<!-- 									     <th>Ativo</th> -->
+<!-- 									     <th>Obs</th> -->
+									    <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                
+                                <c:forEach var="item" items="${itens}" varStatus="id">
 
-		  <c:forEach var="item" items="${pedidocompra.items}" varStatus="id">
+  
+  		<tr class="gradeX">
+  					
+			      <td>${item.key}
 
-<%-- 		<c:choose> --%>
-		
-<%-- 		  <c:when test="${item.id != null}"> --%>
-		  
-        <li class="bg_lb"><div><span class="close" data-dismiss="alert" href="#">x</span></div> <a href="${pageContext.request.contextPath}/item/">
-         <i class="icon-barcode"></i> <div class="huge">${item.key}</div>
-                                       <div class="huge">${item.value}</div>
-<%--                                       <div>Total: ${item.totalItem}</div>  --%>
-<%--                                       <div>Qtd: ${item.qtd}</div> --%>
-                                      
-                                      </a> 
-                                      
-                                      </li>
-       
-     
-		                              
-                             
-                                        
-                    
-                    
-                        
-<%--                     </c:when> --%>
-                    
-<%--                     </c:choose> --%>
-                    
-                    </c:forEach>
-                    	            </ul> 
-                    	            
-                    	            </div>      	
-                    
+			     ${item.value}</td>
+			      
+
+								<td class="options-width">
+      								
+      								<a
+									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
+									title="informação" class="fa fa-info fa-2x"></a>
+									
+										<a
+									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
+									title="editar" class="fa fa-pencil fa-2x"></a>
+									
+									
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									
+			<div id="myAlert${item.key}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Alerta de Exclusão</h3>
+              </div>
+              <div class="modal-body">
+                <p>Deseja Realmente Excluir esse Registro</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>		
+								
+								
+								</td>
+								
+								</tr>
+			  
+			 
+
+                </c:forEach>                    
+                                
+                                
+                                
+                                
+                                
+                           
+                                </tbody>
+                            </table>
+                        </div>
+			
+			
+			</div>
 		
 	</div>
 	

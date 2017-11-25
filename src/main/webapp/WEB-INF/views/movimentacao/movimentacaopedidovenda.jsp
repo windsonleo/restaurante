@@ -41,6 +41,7 @@
    									    <th>Garcon</th>
 									     <th>Itens</th>
 									     <th>Ativo</th>
+									    <th> Pago</th>
 									    <th>Ação</th>
                                     </tr>
                                 </thead>
@@ -116,7 +117,26 @@
                  <td>${pedidovenda.mesa}</td>
                  <td>${pedidovenda.garcon}</td>
                   <td>${pedidovenda.items}</td>
+                  
                    <td><span class="label label bg_lb"> ${pedidovenda.ativo}</span></td>
+                   
+              
+		                   
+                  	<c:choose>
+				    <c:when test="${pedidovenda.ispago}">
+
+                  <td><span class="label label-success">${pedidovenda.ispago}</span></td>
+
+				    </c:when> 
+				    
+				    <c:otherwise>
+
+                  <td><span class="label label-important">${pedidovenda.ispago}</span></td>
+
+				    </c:otherwise>
+				</c:choose>		                   
+		                   
+		                   
                  
                  <td class="options-width">
 								

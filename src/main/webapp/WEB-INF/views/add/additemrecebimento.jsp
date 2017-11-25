@@ -1,16 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Recebimento" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> <a href="#">Movimenta��o Recebimento</a><a href="#" class="current">Add Item ao Recebimento </a> </div>
+    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Recebimento" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> <a href="#">Movimentacao Recebimento</a><a href="#" class="current">Add Item ao Recebimento </a> </div>
     <h1>Add Item ao Recebimento <strong> ${recebimento.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +21,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -39,14 +41,14 @@
           <div class="widget-content nopadding">
           
            <div class="control-group">
-                   <form action="${pageContext.request.contextPath}/recebimento/localizarpedido?id=${pedidocompra.id}" method="get" class="form-horizontal">
+                   <form action="${pageContext.request.contextPath}/recebimento/localizarpedido" method="post" class="form-horizontal">
               
               
-                <label class="control-label">N�mero do Pedido Compra</label>
+                <label class="control-label">Numero do Pedido Compra</label>
                 <div class="controls">
 							<input id="id" name="id" class="form-control"
-							type="text" value="${recebimento.pedidocompra.id }"
-							placeholder="Digite o N�mero do Pedido de Compra" />  
+							type="text" value="${pedidocompra.id }"
+							placeholder="Digite o Numero do Pedido de Compra" />  
 							
 							<button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
 							
@@ -62,10 +64,10 @@
           
 		
 						<div class="control-group">
-							<label class="control-label">C�digo</label>
+							<label class="control-label">Codigo</label>
 							<div class="controls">
 							<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra.id }" readonly="readonly"> 
-							<input id="data" name="data" type="text" class="form-control" value="${recebimento.pedidocompra.data }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.pedidocompra.data}"/>" readonly="readonly"> 
 						    <input id="status" name="status" type="text" class="form-control" value="${recebimento.pedidocompra.status }" readonly="readonly"> 
 							
 							
@@ -100,7 +102,7 @@
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>A��o</th>
+									    <th>Acao</th>
 <!-- 									    <th>Qtd</th> -->
 <!-- 									    <th>Pre�o Custo</th> -->
 <!-- 									    <th>UM</th> -->
@@ -152,7 +154,7 @@
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button">�</button>
-                <h3>Alerta de Exclus�o</h3>
+                <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
@@ -208,7 +210,7 @@
                                     <tr>
                                        <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>A��o</th>
+									    <th>Acao</th>
 <!-- 									    <th>UM</th> -->
 									    
 <!-- 									    <th>Total Item</th> -->
@@ -243,7 +245,7 @@
 								<td class="options-width">
 
       								
-      								<a
+      								<a 
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
 									title="informa��o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
 									
@@ -294,7 +296,7 @@
                         </div>
 			
 			               <div class="controls">
- 	                    <button type="submit" class="btn btn-sm btn-success" onClick="window.location='finalizarrecebimento'">Finalizar</button>
+ 	                    <button type="submit" class="btn btn-sm btn-success" formmethod="post" onClick="window.location='finalizarrecebimento'">Finalizar</button>
                
                
                </div>

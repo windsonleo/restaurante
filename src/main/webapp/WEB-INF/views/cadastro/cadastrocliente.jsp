@@ -117,7 +117,7 @@
 
                                 <div class="control-group">
                                     <div class="controls">
-                                        <div class="input-prepend">
+                                        <div class="input-prepen">
                                             <span class="add-on"><i class="icon-question-sign"></i></span>
 
                                             <select id="genero" name="genero" class="span3">
