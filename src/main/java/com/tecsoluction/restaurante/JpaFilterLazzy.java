@@ -37,7 +37,7 @@
 //		try{ 
 //			
 //			entityManager.getTransaction().begin();
-//		// realiza as ações do sistema filterChain.doFilter(request, response);
+//		// realiza as açoes do sistema filterChain.doFilter(request, response);
 //		entityManager.getTransaction().commit(); 
 //		
 //		} catch (Exception ex){

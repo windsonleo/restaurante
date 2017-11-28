@@ -300,7 +300,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
     	
     	String mensagem = "Pedido Compra Aprovado com Sucesso";
-    	String erros = "Erro na Aprovação";
+    	String erros = "Erro na Aprovacao";
     	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
