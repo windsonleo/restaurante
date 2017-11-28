@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -9,7 +11,7 @@
   </div>
   <div class="container-fluid"><hr>
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -18,7 +20,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -197,7 +199,7 @@
 <p></p>
             
             <div class="form-group" align="center">
-				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
+				<button type="submit"class="btn btn-sm btn-primary">${acao}</button>
 				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 			</div> 
 			

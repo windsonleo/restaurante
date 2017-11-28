@@ -266,5 +266,20 @@ public class HomeController {
         return listcanceladas;
     }
 
+    @RequestMapping(value = "/cozinha", method = RequestMethod.GET)
+    public ModelAndView cozinha(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView cozinha = new ModelAndView("cozinha");
+
+        cozinha.addObject("pedidovendasList",pedidovendasnovos );
+
+        return cozinha;
+    }
 
 }

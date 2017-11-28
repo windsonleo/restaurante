@@ -48,7 +48,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 //    private final ItemServicoImpl itemService;
 
-    private Map<Item, BigDecimal> itens = new HashMap<>();
+    private Map<Item, String> itens = new HashMap<>();
 
     private final FornecedorServicoImpl fornecedorService;
 
@@ -61,7 +61,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     private List<Fornecedor> fornecedores;
 
 
-    private PedidoCompra pv =null;
+    private PedidoCompra pv = new PedidoCompra();
 
 
     @Autowired
@@ -111,7 +111,9 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         StatusPedido[] tipoStatusList = StatusPedido.values();
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
         SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
-
+        
+        pv =new PedidoCompra();
+        
         fornecedores = fornecedorService.findAll();
 
         Usuario usuario = new Usuario();
@@ -119,13 +121,6 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         usuario = userservice.findByUsername(usuario.getUsername());
         
         
-		if (pv == null) {
-
-			itens.clear();
-			
-			pv = new PedidoCompra();
-
-		}
 
         model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidoCompraList", pedidoCompraList);
@@ -163,9 +158,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     @RequestMapping(value = "saveitem", method = RequestMethod.GET)
     public ModelAndView saveitemvendaForm(HttpServletRequest request) {
-    		
-    	itens.clear();
-        
+    		        
     	UUID idf = UUID.fromString(request.getParameter("id"));
 
         ModelAndView saveitempedidovenda = new ModelAndView("additempedidocompra");
@@ -173,37 +166,36 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         this.pv = getservice().findOne(idf);
         
-//        this.itens = getservice().EncontraItensPorId(pv);
 
         produtosList = produtoService.findAll();
 
-        totalpedido = pv.CalcularTotal(itens);
-//
+        totalpedido = pv.getTotalCompra();
+
         pv.setTotal(totalpedido);
-//
-//        pedidocompraService.save(pv);
 
         saveitempedidovenda.addObject("pedidocompra", pv);
         saveitempedidovenda.addObject("produtosList", produtosList);
-//        saveitempedidovenda.addObject("totalpedidocompra", pv.CalcularTotal(pv.getItems()));
-        saveitempedidovenda.addObject("itens", itens);
+        saveitempedidovenda.addObject("totalpedido", totalpedido);
 
-//        logger.info("Salvar Item no Pedido Compra Form!", pv);
+        logger.info("Salvar Item no Pedido Compra Form!", pv);
 
         return saveitempedidovenda;
     }
 
     @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
     public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
-    	itens.clear();
+//    	itens.clear();
        
 //    	this.itens = getservice().EncontraItensPorId(pv);
         
     	UUID idf = UUID.fromString(request.getParameter("id"));
+    	
+		UUID idfpedcomp = (UUID.fromString(request.getParameter("idpedcomp")));
+
 
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd);
 
         ModelAndView saveitempedidocompra = new ModelAndView("additempedidocompra");
 
@@ -225,70 +217,34 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 
 
-        pv = pedidocompraService.findOne(pv.getId());
+        this.pv = getservice().findOne(idfpedcomp);
 
         Item item = new Item();
-        item.setQtdit(qtdbd);
-        item.setTotalItem(item.getTotalItem());
-//        item.setPedidocompra(pv);
-//		item.setAtivo(true);
+       
+        item.setId(produto.getId());
+		item.setNome(produto.getNome()); 
+		 item.setCodigo(produto.getCodebar()); 
+		 item.setQtd(qtdbd); 
+		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
-//        itemService.save(item);
-        
-//		item.AddItem(pv);
-		
-//		pv.getItems().size();
-		
-		
-//		compra.getItems().size();
-		
+		 item.setDescricao(produto.getDescricao()); 
+		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
       
-        
-//        boolean vazio = itens.isEmpty();
-//		
-//		if(vazio == true){
-			
-//			itens.clear();
-//			itens.put(item, item.getQtd());
-//			pv.setItems(itens);
-//			getservice().edit(pv);
-			
-//			pv.getItems().put(item, item.getQtd());
-//			getservice().save(pv);
-			
-		
-//		} else {
-			
-//			itens  = pv.getItems();
-//			itens.put(item, item.getQtd());
-//			pv.getItems().put(item, item.getQtd());
-//
-//		}
-		
-      
-//        pv.setItems(itens);
-//        pv.setTotal(pv.CalcularTotal(itens));
-		
-//         itens.put(item, item.getQtd());
-        	
-//        pv.setItems(itens);
-        
-//        pv.setStatus(StatusPedido.PENDENTE);
-        
+			itens = new HashMap<>();
 
-//        getservice().edit(pv);
-        
-    	itens.clear();
+			pv.addItem(item, item.getQtd().toString());
+			pv.setStatus(StatusPedido.PENDENTE);
+
+			
+		getservice().edit(pv);
     	
-//        this.itens = getservice().EncontraItensPorId(pv);
-
 
         saveitempedidocompra.addObject("pedidocompra", pv);
         saveitempedidocompra.addObject("produtosList", produtosList);
-        saveitempedidocompra.addObject("itens", itens);
+//        saveitempedidocompra.addObject("itens", itens);
 
         
-//        logger.info("Salvar Item no Pedido Compra BD!", pv);
+        logger.info("Salvar Item no Pedido Compra BD!", pv);
 
 
         return saveitempedidocompra;
@@ -342,6 +298,10 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
+    	
+    	String mensagem = "Pedido Compra Aprovado com Sucesso";
+    	String erros = "Erro na Aprovação";
+    	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
@@ -353,9 +313,19 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         ModelAndView home = new ModelAndView("home");
         
+        if(pc.getStatus() != StatusPedido.PRONTO){
+        
+        home.addObject("erros",erros);
+        return home;
+        
+        }
+        
+        home.addObject("mensagem",mensagem);
+
+        
         logger.info("Aprovar  Pedido Compra !", pc);
 
-        return new ModelAndView("redirect:/home");
+        return home;
 
     }
 

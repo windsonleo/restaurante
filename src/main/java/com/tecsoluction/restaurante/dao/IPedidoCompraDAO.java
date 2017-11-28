@@ -14,8 +14,11 @@ import org.springframework.data.repository.query.Param;
 @org.springframework.stereotype.Repository
 public interface IPedidoCompraDAO extends org.springframework.data.jpa.repository.JpaRepository<PedidoCompra, UUID> {
 
-//	@Query("SELECT new Map(it.nome, it.qtd) FROM PedidoCompra p join fetch p.items it where p.id =:id")
-//    Map<Item,BigDecimal> EncontraItensPorId(@Param("id")PedidoCompra id);
-//	
+	
+	//traz os itens do pedido de compra ..lembrar de testar quando o fetch for = lazzy
+	
+//	@Query("SELECT new Map(p.nome, p.qtd) FROM itens_pedidocompra p where p.id =:id")
+//    Map<Item,String> FindItems(@Param("id")PedidoCompra id);
+	
 	 
 }

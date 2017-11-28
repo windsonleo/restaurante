@@ -314,6 +314,12 @@
 
 	</definition>
 	
+				<definition name="cozinha" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/cozinha.jsp" />
+
+	</definition>
+	
 	
 <!-- 	DETALHES -->
 
@@ -465,7 +471,7 @@
 
 	</definition>
 	
-							<definition name="finalizacaorecebimento" extends="defaultTemplate"> 
+		<definition name="finalizacaorecebimento" extends="defaultTemplate"> 
 							 
 							 
 		<put-attribute name="conteudo"

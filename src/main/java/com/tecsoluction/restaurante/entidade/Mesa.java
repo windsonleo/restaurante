@@ -33,7 +33,7 @@ public class Mesa extends BaseEntity implements Serializable {
     private String status;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "mesa")
+    @OneToMany(mappedBy = "mesa", fetch=FetchType.EAGER)
     private List<PedidoVenda> pedidos;
 
 

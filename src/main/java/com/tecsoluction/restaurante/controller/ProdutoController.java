@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -170,6 +171,8 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
+               
+        gerencia.addObject("produtoList", produtoList);
 
         return gerencia;
     }
@@ -185,15 +188,19 @@ public class ProdutoController extends AbstractController<Produto> {
 
         DadosGerenciais dadosgerenciais = new DadosGerenciais(produto);
 
-        dadosgerenciais.setMargemlucro(new BigDecimal(40.00));
-        dadosgerenciais.setCusto(produto.getPrecocusto());
-        dadosgerenciais.setDespesafixa(new BigDecimal(5.00));
-        dadosgerenciais.setDespesavariavel(new BigDecimal(10.00));
-       Money precosugerido = dadosgerenciais.getPrecovenda();
+//        dadosgerenciais.setMargemlucro(new BigDecimal(40.00).setScale(4, RoundingMode.UP));
+//        dadosgerenciais.setCusto(produto.getPrecocusto().setScale(4, RoundingMode.UP));
+//        dadosgerenciais.setDespesafixa(new BigDecimal(5.00).setScale(4, RoundingMode.UP));
+//        dadosgerenciais.setDespesavariavel(new BigDecimal(10.00).setScale(4, RoundingMode.UP));
+      
+//        BigDecimal precosugerido = dadosgerenciais.getPrecovenda();
+//                
+//        BigDecimal margemlucro = dadosgerenciais.getMargemlucro();
+
 
         gerencia.addObject("produto", produto);
         gerencia.addObject("dadosgerenciais", dadosgerenciais);
-        gerencia.addObject("precosugerido", precosugerido);
+//        gerencia.addObject("precosugerido", precosugerido);
 
         return gerencia;
     }

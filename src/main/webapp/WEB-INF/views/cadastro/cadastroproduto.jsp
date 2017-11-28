@@ -151,7 +151,7 @@
 						class="form-control">
 							<optgroup label="Categoria">
 
-								<option value=""></option>
+                             <option value="${produto.categoria.id}" selected="selected">${produto.categoria.nome}</option>
 
 
 								<c:forEach var="categoria" items="${categoriaList}">
@@ -166,6 +166,10 @@
 					<select id="un_medida"
 						name="un_medida" class="form-control">
 							<optgroup label="Unidades de Medidas">
+								
+							<option value="${produto.un_medida}">${produto.un_medida}</option>
+								
+								
 								<c:forEach var="un_medida" items="${umList}">
 
 									<option value="${un_medida}">${un_medida}</option>
@@ -190,11 +194,11 @@
                   <div class="control-group">
                 <label class="control-label">Preço</label>
                 <div class="controls">
-	<input id="precocusto" class="form-control"
+					<input id="precocusto" class="form-control"
 						name="precocusto" type="text" value="${produto.precocusto}"
 						placeholder="Digite o Preco de Custo" />
 						
-	<input id="precovenda" class="form-control"
+					<input id="precovenda" class="form-control"
 						name="precovenda" type="text" value="${produto.precovenda}"
 						placeholder="Digite o Preco de Venda" />									
 				
@@ -217,7 +221,7 @@
 							<optgroup label="Fornecedores">
 
 
-								<option value=""></option>
+								<option value="${produto.fornecedor.id}"  selected="selected">${produto.fornecedor.nomefantasia}</option>
 
 
 								<c:forEach var="fornecedor" items="${fornecedorList}">
@@ -234,7 +238,7 @@
 
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-success">Cadastrar</button>
+				<button type="submit" class="btn btn-success">${acao}</button>
 				<a href='javascript:history.back(1)' class="btn btn-sm btn-info">Voltar</a>
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}">

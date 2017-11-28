@@ -1,6 +1,7 @@
 package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,20 +64,19 @@ public class Estoque extends BaseEntity implements Serializable {
 //    @CollectionTable(name="itens_estoque",joinColumns=@JoinColumn(name="id"))
 //    private Map<Item, Double> items= new HashMap<>();
     @Embedded
-    @ElementCollection
+    @ElementCollection(fetch=FetchType.EAGER)
     @AttributeOverrides({
-        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_STQ")),
-        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_STQ")),
-        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_STQ")),
-        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_STQ")),
-        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_STQ")),
-        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_STQ")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_STQ"))
+        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
+        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
+        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
+        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
+        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
+        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "total"))
     })
-    @MapKeyColumn(name = "id")
-    @Column(name = "qtd")
-    @CollectionTable(name = "produtos_estoque", joinColumns = @JoinColumn(name = "id"))
-    private Map<Produto, BigDecimal> items = new HashMap<>();
+    @MapKeyClass(Item.class)
+    @CollectionTable(name = "itens_estoque", joinColumns = @JoinColumn(name = "id"))
+    private Map<Item, String> items = new HashMap<>();
 
 
     public Estoque() {
@@ -84,7 +84,7 @@ public class Estoque extends BaseEntity implements Serializable {
 
     }
 
-    public Estoque(Map<BigDecimal, Item> itens) {
+    public Estoque(Map<Item,String > itens) {
         // TODO Auto-generated constructor stub
 
         //this.items = new HashMap<Produto,Double>();
@@ -96,92 +96,107 @@ public class Estoque extends BaseEntity implements Serializable {
         return nome.toUpperCase();
     }
 
-    public void AddProdutoEstoque(Produto produto, BigDecimal qtd) {
+    public void AddProdutoEstoque(Item produto, BigDecimal qtd) {
 
-        BigDecimal vantigo = new BigDecimal("0.00");
+        String vantigo;
         BigDecimal vnovo = qtd;
         BigDecimal novo = new BigDecimal("0.00");
+        BigDecimal antigo = new BigDecimal("0.00");
 
-        for (Produto key : getItems().keySet()) {
+
+        for (Item key : getItems().keySet()) {
             if (key.getId() == (produto.getId())) {
 
                 vantigo = getItems().get(key);
+               
+                antigo = new BigDecimal(vantigo);
 
-                novo = novo.add(vantigo).add(vnovo);
+                novo = novo.add(antigo).add(vnovo);
+                
 
-                items.replace(key, vantigo, novo);
+                items.replace(key, novo.toString());
             }
         }
         if (!getItems().containsKey(produto)) {
-            items.put(produto, qtd);
+           
+        	items.put(produto, vnovo.toString());
         }
     }
 
-    public void RetirarProdutoEstoque(Produto produto, BigDecimal qtd) {
+    public void RetirarProdutoEstoque(Item produto, BigDecimal qtd) {
+    	
+    	String vantigo;
+         BigDecimal vnovo = qtd;
+         BigDecimal novo = new BigDecimal("0.00");
+         BigDecimal antigo = new BigDecimal("0.00");
 
-        BigDecimal vantigo = new BigDecimal("0.00");
-        BigDecimal vnovo = qtd;
-        BigDecimal novo = new BigDecimal("0.00");
+        for (Item key : getItems().keySet()) {
+          
+        	if (key.getId() == (produto.getId())) {
 
-        for (Produto key : getItems().keySet()) {
-            if (key.getId() == (produto.getId())) {
+            	  vantigo = getItems().get(key);
+                  
+                  antigo = new BigDecimal(vantigo);
 
-                vantigo = getItems().get(key);
-                vnovo = qtd;
+                  novo = novo.add(antigo).subtract(vnovo);
 
-                novo = vantigo.subtract(vnovo);
-
-                items.replace(key, vantigo, novo);
+                  items.replace(key, novo.toString());
             }
+        	
         }
+        
         if (!getItems().containsKey(produto)) {
 
 //        	vantigo = getItems().get(produto);
             vnovo = qtd;
             BigDecimal qtdnegativa = vnovo;
-            items.put(produto, qtdnegativa);
+            items.put(produto, qtdnegativa.toString());
         }
     }
     
 
 
 
-    public Money CalcularTotalCusto() {
+    public BigDecimal CalcularTotalCusto() {
 
-        Money totalcusto = Money.of(DadosGerenciais.usd, 0.00);
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 
-        for (Produto key : getItems().keySet()) {
+        for (Item key : getItems().keySet()) {
 
-            BigDecimal qtd = getItems().get(key);
+            String qtd = getItems().get(key);
 
 //            String qtdstring = BigDecimal.valueOf(qtd);
 
-            BigDecimal quantidadef = qtd;
+            BigDecimal quantidadef = new BigDecimal(qtd);
 
-            totalcusto.plus(totalcusto).plus(key.getPrecocusto().multiply(quantidadef));
+        	totalpedido = totalpedido.add(key.getPrecoUnitario());
         }
 
-        return totalcusto;
+        return totalpedido;
     }
 
-    public Money CalcularTotalVenda() {
+    public BigDecimal CalcularTotalVenda() {
 
-        Money totalvenda = Money.of(DadosGerenciais.usd, 0.00);
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
-        for (Produto key : getItems().keySet()) {
+        for (Item key : getItems().keySet()) {
 
-            BigDecimal qtd = getItems().get(key);
+            String qtd = getItems().get(key);
+            
 
 //        	   String qtdstring = Double.toString(qtd);
 
-            BigDecimal quantidadef = qtd;
+            BigDecimal quantidadef = new BigDecimal(qtd);
 
-            totalvenda.plus(totalvenda).plus(key.getPrecovenda().multiply(quantidadef));
+        	totalpedido = totalpedido.add(key.getPrecoUnitario().multiply(quantidadef));
 
         }
-        return totalvenda;
+        return totalpedido;
 
     }
+    
+    
+    
 }
 

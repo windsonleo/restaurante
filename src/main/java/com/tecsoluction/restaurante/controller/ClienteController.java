@@ -68,12 +68,11 @@ public class ClienteController extends AbstractController<Cliente> {
 
         List<Cliente> clienteList = getservice().findAll();
 
-//         cliente = new Cliente();
+         cliente = new Cliente();
 //        cliente.setDatanascimento( new Date());
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
         usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
@@ -103,7 +102,7 @@ public class ClienteController extends AbstractController<Cliente> {
 
         ModelAndView detalhescliente = new ModelAndView("detalhescliente");
 
-        Cliente cliente = clienteService.findOne(idf);
+        this.cliente = clienteService.findOne(idf);
 
         detalhescliente.addObject("cliente", cliente);
 
@@ -115,7 +114,7 @@ public class ClienteController extends AbstractController<Cliente> {
 
         UUID id = UUID.fromString(request.getParameter("id"));
 
-        cliente = getservice().findOne(id);
+        this.cliente = getservice().findOne(id);
 
 
         ModelAndView cadastroendereco = new ModelAndView("cadastroendereco");
@@ -164,7 +163,7 @@ public class ClienteController extends AbstractController<Cliente> {
         endereco = enderecoService.save(endereco);
 
 
-        cliente = getservice().findOne(id);
+        this.cliente = getservice().findOne(id);
 
 
 //			cliente.setNome(request.getParameter("nome"));
@@ -201,7 +200,7 @@ public class ClienteController extends AbstractController<Cliente> {
 
         ModelAndView gerencia = new ModelAndView("gerenciacliente");
 
-        Cliente cliente = getservice().findOne(idf);
+        this.cliente = getservice().findOne(idf);
 
         gerencia.addObject("cliente", cliente);
 
@@ -212,6 +211,10 @@ public class ClienteController extends AbstractController<Cliente> {
     public ModelAndView gerenciarCliente(HttpServletRequest request) {
 
         ModelAndView gerencia = new ModelAndView("gerenciacliente");
+        
+//        int x = cliente.getListaPedidoVenda().size();
+        
+//        gerencia.addObject("totalpedidos", this.cliente.getListaPedidoVenda().size());
 
         return gerencia;
     }

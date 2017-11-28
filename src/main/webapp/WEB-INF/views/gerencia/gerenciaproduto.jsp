@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
  <div id="content">
@@ -39,7 +41,7 @@
                 <label class="control-label"></label>
                 <div class="controls">
 			
-								<input type="text" list="${produtosList}" id="id" placeholder="Digite o C�digo do Produto" name="id" autocomplete="off" class="form-horizontal">
+								<input type="text" list="${produtosList}" id="id" placeholder="Digite o Codigo do Produto" name="id" autocomplete="off" class="form-horizontal">
 								
 									
 									<datalist id="${produtosList}">
@@ -129,11 +131,13 @@
                 <label class="control-label">Pre�o</label>
                 <div class="controls">
 						<input id="precocusto" class="form-control"
-						name="precocusto" type="text" value="${produto.precocusto}"
+						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
+                 value="${produto.precocusto}"/>"
 						placeholder="Digite o Preco de Custo" disabled="true"/>
 						
 						<input id="precovenda" class="form-control"
-						name="precovenda" type="text" value="${produto.precovenda}"
+						name="precovenda" type="text" value="<fmt:formatNumber type="currency"
+                 value="${produto.precovenda}"/>"
 						placeholder="Digite o Preco de Venda" disabled="true" />
 						
 						  <div class="input-group">
@@ -158,11 +162,13 @@
               <div class="control-group">
                 <label class="control-label">Margem de Lucro</label>
                 <div class="controls">
-						<input id="margemlucro"  name="margemlucro" type="number" value="${dadosgerenciais.margemlucro}" placeholder="Margem de Lucro" disabled="true"/>
+<%-- 						<input id="margemlucro"  name="margemlucro" type="text" value="<fmt:formatNumber type="currency" --%>
+<%--                  value="${dadosgerenciais}"/>" placeholder="Margem de Lucro" disabled="true"/> --%>
                 		<input id="totpedido" name="totpedido" class="span4"  type="text" value="" placeholder="Qunatidades de Pedidos" disabled="true"/>
                 		<input id="lucro" name="lucro" class="span4"  type="text" value="" placeholder="Lucro total" disabled="true"/>
                         <input id="totestoque" name="totestoque" class="span4"  type="text" value="" placeholder="Total no Estoque" disabled="true"/>
-                        <input id="precovenda" name="precovenda" class="span4"  type="number" value="${precosugerido}" placeholder="Pre�o Sugerido" disabled="true"/>
+<%--                         <input id="precovenda" name="precovenda" class="span4"  type="text" value="<fmt:formatNumber type="currency" --%>
+<%--                  value="${precosugerido}"/>" placeholder="Preco Sugerido" disabled="true"/> --%>
                 
               
                 </div>

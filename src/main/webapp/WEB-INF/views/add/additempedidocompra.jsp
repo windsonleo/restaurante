@@ -61,6 +61,7 @@
 									
 										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
 
+										<input type="text"  id="idpedcomp" name="idpedcomp"  class="form-horizontal" value="${pedidocompra.id }" placeholder="Escolha a Quantidade">
 					
 							
 								<input type="submit" class="btn btn-lg btn-success"
@@ -96,7 +97,7 @@
           
           			<div class="controls">
 						 
-							<label>Cï¿½digo</label>	
+							<label>Coodigo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }" readonly="readonly"> 
 							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}"/>" readonly="readonly"> 
@@ -111,7 +112,8 @@
 <%-- 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }">  --%>
 							
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="${pedidocompra.total}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
+							<input id="total" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
+                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 						
 						</div>
 </div>
@@ -140,7 +142,8 @@
 <!-- 									    <th>Código</th> -->
 <!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
-<!-- 									    <th>Preço Custo</th> -->
+									   <th>Preco Unitario</th>
+									    <th>Total</th>
 <!-- 									    <th>Total Item</th> -->
 <!-- 									    <th>Total Item</th> -->
 									    
@@ -154,16 +157,28 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="item" items="${itens}" varStatus="id">
+                                <c:forEach var="item" items="${pedidocompra.items}" varStatus="id">
 
   
   		<tr class="gradeX">
   					
-			      <td>${item.key}
+			      <td>${item.key}</td>
 
-			     ${item.value}</td>
-			      
-
+			     <td>${item.value}</td>
+			     
+			     <td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+  				<td>
+  				 <fmt:formatNumber type="currency"
+                       value="${item.key.totalItem}"/>
+  				
+  				
+  				</td>
+  				
 								<td class="options-width">
       								
       								<a

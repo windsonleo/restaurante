@@ -85,25 +85,24 @@ public class PedidoVenda extends Pedido implements Serializable {
     @Embedded
     @ElementCollection(fetch=FetchType.EAGER)
     @AttributeOverrides({
-        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_PEDVEN")),
-        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_PEDVEN")),
-        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_PEDVEN")),
-        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_PEDVEN")),
-        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_PEDVEN")),
-        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_PEDVEN")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_PEDVEN"))
+        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
+        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
+        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
+        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
+        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
+        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "total"))
     })
-    @MapKeyColumn(name = "idit")
-    @Column(name = "qtd")
+    @MapKeyClass(Item.class)
     @CollectionTable(name = "itens_pedidovenda", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, BigDecimal> items = new HashMap<>();
+    private Map<Item, String> items = new HashMap<>();
 
     //CONSTRUTOR PADRÃO
     public PedidoVenda() {
         super();
         
-        this.items = new HashMap<Item, BigDecimal>();
+        this.items = new HashMap<Item, String>();
 
         //   listaDevolucao = new ArrayList<>();
         //  tipo.VENDA.values();
@@ -125,7 +124,7 @@ public class PedidoVenda extends Pedido implements Serializable {
         this.mesa = mesa;
         this.garcon = garcon;
         this.origempedido = origempedido;
-        this.items = new HashMap<Item, BigDecimal>();
+        this.items = new HashMap<Item, String>();
     }
 
     @Override
@@ -134,5 +133,28 @@ public class PedidoVenda extends Pedido implements Serializable {
         return super.toString().toUpperCase();
     }
 
+    public void addItem(Item item, String qtd){
+    	
+    	
+    	this.getItems().put(item, qtd);
+    	
+    	
+    	
+    }
+    
+    
+    public void removeItem(Item item){
+    	
+    	
+    	this.getItems().remove(item);
+	
+    	
+    }
+    
+    public BigDecimal getTotalVenda(){
+    	
+    	
+    	return  CalcularTotal(getItems());
+    }
 
 }

@@ -130,11 +130,13 @@
 					</select>
 					
 					<input id="precocusto" class="form-control"
-						name="precocusto" type="number" value="${produtocomposto.precocusto}"
+						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
+                       value="${totalitem}"/>"
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
 					<input id="precovenda" class="form-control"
-						name="precovenda" type="number" value="${produtocomposto.precovenda}"
+						name="precovenda" type="text" value="<fmt:formatNumber type="currency"
+                       value="${produtocomposto.precovenda}"/>"
 						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
 				
                 </div>
@@ -168,8 +170,8 @@
 <!-- 									    <th>Código</th> -->
 <!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
-<!-- 									    <th>Preço Custo</th> -->
-<!-- 									    <th>Total Item</th> -->
+									    <th>Preço Unitario</th>
+									    <th>Total</th>
 <!-- 									    <th>Total Item</th> -->
 									    
 <!-- 									     <th>Ativo?</th> -->
@@ -191,8 +193,18 @@
 
 			     <td>${item.value}</td>
 			      
-
-
+			         <td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+  				<td>
+  				 <fmt:formatNumber type="currency"
+                       value="${item.key.totalItem}"/>
+  				
+  				
+  				</td>
 
 
 

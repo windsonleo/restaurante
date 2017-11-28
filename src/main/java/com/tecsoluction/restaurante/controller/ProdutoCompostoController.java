@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,9 +68,12 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
     private Map<Item, String> items = new HashMap<>();
 
-	private ProdutoComposto produtocomposto = new ProdutoComposto();
+	private ProdutoComposto produtocomposto = null;
 
 	private double totalitem = 0.00;
+	
+    private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+
 
 	@Autowired
 	public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao,
@@ -94,6 +98,9 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		binder.registerCustomEditor(Fornecedor.class, new AbstractEditor<Fornecedor>(this.fornecedorService) {
 		});
+		
+		binder.registerCustomEditor(ProdutoComposto.class, new AbstractEditor<ProdutoComposto>(this.produtocompostoService) {
+		});
 
 
 	}
@@ -105,8 +112,14 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		List<Fornecedor> fornecedorList = fornecedorService.findAll();
 		produtoList = getservice().findAll();
 		produtosList = produtoService.findAll();
-		produtocomposto = new ProdutoComposto();
-		items.clear();
+		
+		if(produtocomposto == null) {
+			
+			produtocomposto = new ProdutoComposto();
+//			items.clear();
+
+			
+		}
 
 		UnidadeMedida[] umList = UnidadeMedida.values();
 
@@ -156,9 +169,15 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		produtosList = produtoService.findAll();
 
+		  totalpedido = produtocomposto.getPrecocusto();
+
+//	        DecimalFormat df = new DecimalFormat("0.##");
+//	        String totalformatado = df.format(totalpedido);
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList);
+		additemprodutocomposto.addObject("totalitem", totalpedido);
+
 		
         logger.info("Add Item ao Produto Composto Form!", produtocomposto);
 
@@ -198,6 +217,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 			additemprodutocomposto.addObject("produtocomposto",
 					produtocomposto = produtocompostoService.findOne(idfprodcomp));
 			additemprodutocomposto.addObject("produtosList", produtosList);
+			additemprodutocomposto.addObject("totalitem", produtocomposto.getPrecocusto());
 
 			return additemprodutocomposto;
 		}
@@ -206,19 +226,19 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		Item item = new Item();
 		
-		item.setIdit(produto.getId());
-		item.setNomeit(produto.getNome()); 
-		 item.setCodigoit(produto.getCodebar()); 
-		 item.setQtdit(qtdbc); 
-		 item.setPrecoUnitarioit(produto.getPrecovenda()); 
+		item.setId(produto.getId());
+		item.setNome(produto.getNome()); 
+		 item.setCodigo(produto.getCodebar()); 
+		 item.setQtd(qtdbc); 
+		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
-		 item.setDescricaoit(produto.getDescricao()); 
+		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
 		
 //			
 			items = new HashMap<>();
 
-			produtocomposto.addItem(item, item.getQtdit().toString());
+			produtocomposto.addItem(item, item.getQtd().toString());
 			BigDecimal dec , dicvenda; 
 			dec = produtocomposto.getPrecocusto();
 			dicvenda = produtocomposto.getPrecovenda();
@@ -229,7 +249,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList); 
-		
+		additemprodutocomposto.addObject("totalitem",  produtocomposto.getPrecocusto()); 
+
         logger.info("Salvar Item ao Produto Composto BD!", produtocomposto);
 
 

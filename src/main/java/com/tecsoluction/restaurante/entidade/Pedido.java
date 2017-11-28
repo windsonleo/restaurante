@@ -39,7 +39,7 @@ public abstract class Pedido extends BaseEntity {
 
 
     @Column(name = "total")
-    private BigDecimal  total =  new BigDecimal("0.00");
+    private BigDecimal  total ;
 
 //    @JsonIgnore
 //    @LazyCollection(LazyCollectionOption.FALSE)
@@ -113,14 +113,14 @@ public abstract class Pedido extends BaseEntity {
     
     
 
-    public BigDecimal CalcularTotal(Map<Item, BigDecimal> itens) {
+    public BigDecimal CalcularTotal(Map<Item, String> itens) {
 
-    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
 
 
         for (Item key : itens.keySet()) {
            
-        	totalpedido.add(totalpedido).add(key.getTotalItem());
+        	totalpedido = totalpedido.add(key.getTotalItem());
         }
 
 

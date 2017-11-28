@@ -29,7 +29,7 @@
 		  				<ul class="quick-actions">
 
               
-           					<c:forEach var="mesa" items="${mesasList}" varStatus="id">
+           					<c:forEach var="mesa" items="${mesaList}" varStatus="id">
               
                 				<li class="bg_lo">
                 				 <a href="${pageContext.request.contextPath}/mesas/detalhes?id=${mesa.id}">

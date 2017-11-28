@@ -58,12 +58,12 @@ public class Cliente extends BaseEntity implements Serializable {
     @Column(name = "genero")
     private String genero;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Endereco endereco;
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente",fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)
     private List<PedidoVenda> listaPedidoVenda;
 
 

@@ -23,11 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.UUID;
-
-import static com.tecsoluction.restaurante.util.DadosGerenciais.usd;
 
 @Controller
 @RequestMapping(value = "estoque/")
@@ -81,13 +80,14 @@ public class EstoqueController extends AbstractController<Estoque> {
         Estoque estoque = getservice().findOne(idf);
 
         double totalitens = 0.0;
-        Money totalcusto = Money.of(usd, 0.00);
-        Money totalvenda = Money.of(usd, 0.00);
+        BigDecimal totalcusto  = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
+        BigDecimal totalvenda = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY); ;
 
-        Collection<BigDecimal> itenstotal = estoque.getItems().values();
+        Collection<String> itenstotal = estoque.getItems().values();
 
-        for (BigDecimal anItenstotal : itenstotal) {
-            Double double1 = anItenstotal.doubleValue();
+        for (String anItenstotal : itenstotal) {
+           
+        	Double double1 = Double.valueOf(anItenstotal) ;
 
             totalitens = totalitens + double1;
 
@@ -98,13 +98,13 @@ public class EstoqueController extends AbstractController<Estoque> {
         totalcusto = estoque.CalcularTotalCusto();
         totalvenda = estoque.CalcularTotalVenda();
 
-        String stringcusto = df.format(totalcusto);
-        String stringvenda = df.format(totalvenda);
+//        String stringcusto = df.format(totalcusto);
+//        String stringvenda = df.format(totalvenda);
 
         informacoesestoque.addObject("estoque", estoque);
         informacoesestoque.addObject("qtditens", totalitens);
-        informacoesestoque.addObject("totalcusto", stringcusto);
-        informacoesestoque.addObject("totalvenda", stringvenda);
+        informacoesestoque.addObject("totalcusto", totalcusto);
+        informacoesestoque.addObject("totalvenda", totalvenda);
 
         return informacoesestoque;
     }

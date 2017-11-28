@@ -100,10 +100,11 @@ public class CaixaController extends AbstractController<Caixa> {
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
         List<Caixa> caixaList = caixaService.findAll();
         List<Despesa> despesaList = despesaService.findAll();
+        this.pedidoVendaLista = pedidovendaService.findAll();
 
 
         model.addAttribute("caixaList", caixaList);
-        model.addAttribute("pedidoList", pedidoList);
+        model.addAttribute("pedidoVendaLista", pedidoVendaLista);
         model.addAttribute("formapagamentoList", formapagamentoList);
         model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
@@ -160,7 +161,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         List<FormaPagamento> pagcartaodebito = new ArrayList<>();
 
-        Money total = Money.of(DadosGerenciais.usd, 0.0);
+//        Money total = Money.of(DadosGerenciais.usd, 0.0);
 
 
         String Dti = request.getParameter("dataini");
@@ -219,7 +220,7 @@ public class CaixaController extends AbstractController<Caixa> {
                     if (Objects.equals(valor.getTipo(), "CDEBITO")) {
                         pagcartaodebito.add(valor);
                     }
-                    total = pagamento.getValorPago().plus(total);
+//                    total = pagamento.getValorPago().plus(total);
                 }
             }
         }
@@ -232,7 +233,7 @@ public class CaixaController extends AbstractController<Caixa> {
         fecharcaixa.addObject("pedidoVendaListabalcao", pedidoVendaListabalcao);
         fecharcaixa.addObject("pedidoVendaListainternet", pedidoVendaListainternet);
         fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
-        fecharcaixa.addObject("total", total);
+//        fecharcaixa.addObject("total", total);
         fecharcaixa.addObject("pagdinheiro", pagdinheiro);
         fecharcaixa.addObject("pagcartaocredito", pagcartaocredito);
         fecharcaixa.addObject("pagcartaodebito", pagcartaodebito);
@@ -319,10 +320,15 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView CaixaRapido(HttpServletRequest request) {
 
 
-        ModelAndView novospedidos = new ModelAndView("caixarapido");
+    	List<PedidoVenda> ls = pedidovendaService.findAll();
+    	
+    	
+        ModelAndView caixarapido = new ModelAndView("caixarapido");
+        
+        caixarapido.addObject("ls",ls);
 
 
-        return novospedidos;
+        return caixarapido;
     }
 
     @Override

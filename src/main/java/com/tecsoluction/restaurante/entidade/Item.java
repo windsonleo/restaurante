@@ -30,8 +30,7 @@ import lombok.Setter;
 @Embeddable
 //@Access(AccessType.PROPERTY)
 @EqualsAndHashCode
-
-public  class Item implements Serializable {
+public  class Item implements Serializable, Comparable<Item>{
 
 
 //	@JoinColumn(name="produto_id", nullable=true)
@@ -42,23 +41,23 @@ public  class Item implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private UUID idit;
+	private UUID id;
     
 //    private boolean ativo =true;
 
-    private String codigoit;
+    private String codigo;
 
-    private String nomeit;
+    private String nome;
 
-    private String descricaoit;
+    private String descricao;
 
 //    private BigDecimal qtdit = new BigDecimal("0.00");
     
-    private BigDecimal qtdit ;
+    private BigDecimal qtd ;
 
 
 //    private BigDecimal precoUnitarioit = new BigDecimal("0.00");
-    private BigDecimal precoUnitarioit;
+    private BigDecimal precoUnitario;
 
 
     private BigDecimal totalItem ;
@@ -120,7 +119,7 @@ public  class Item implements Serializable {
 ////      this.ativo = true;
 //      this.totalItem = produto.getPrecovenda().multiply(qtd);
 
-//    }
+//    }ser
 
 //
 //    public Item(Produto produto, PedidoVenda pedidovenda) {
@@ -144,15 +143,16 @@ public  class Item implements Serializable {
 //        this.produto = produto;
 //    }
 //
-//    public Item(Produto produto) {
-//
-//        this.codigo = produto.getCodebar();
-//        this.nome = produto.getNome();
-//        this.descricao = produto.getDescricao();
-//        this.precoUnitario = produto.getPrecovenda();
-//        this.produto = produto;
-////        this.produto = produto;
-//    }
+    public Item(Produto produto) {
+    	
+    	this.id = produto.getId();
+        this.codigo = produto.getCodebar();
+        this.nome = produto.getNome();
+        this.descricao = produto.getDescricao();
+        this.precoUnitario = produto.getPrecovenda();
+        
+
+    }
 //
 //    public Item(Produto produto, Recebimento rec) {
 //        this.codigo = produto.getCodebar();
@@ -228,7 +228,7 @@ public  class Item implements Serializable {
 
 //        return precoUnitarioit.multiply(qtdit).setScale(3, RoundingMode.FLOOR);
     	
-        return precoUnitarioit;
+        return totalItem;
 
     }
 
@@ -263,8 +263,15 @@ public  class Item implements Serializable {
 
     @Override
     public String toString() {
-        return nomeit.toUpperCase();
+        return nome.toUpperCase();
     }
+
+
+@Override
+public int compareTo(Item arg0) {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
 
 //    @Override

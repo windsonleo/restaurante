@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
  <div id="content">
@@ -11,7 +13,7 @@
             <div class="container-fluid">
             
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -20,7 +22,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -56,7 +58,7 @@
 					
 							
 								<input type="submit" class="btn btn-lg btn-success"
-										value="Localizar">
+										value="${acao}">
 											
 			   
               </div>
@@ -215,7 +217,7 @@
 
 			
 			<div class="form-actions" align="center">
-				<button type="submit"class="btn btn-success">Cadastrar</button>
+				<button type="submit"class="btn btn-success">${acao}</button>
 			</div>
 			
 </form>

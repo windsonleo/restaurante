@@ -19,7 +19,7 @@
 <div class="container-fluid">
 
   <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -28,7 +28,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -140,7 +140,7 @@
 						class="form-control">
 							<optgroup label="Categoria">
 
-<%-- 								<option value="${produtocomposto.categoria}"></option> --%>
+								<option value="${produtocomposto.categoria.id}" selected="selected">${produtocomposto.categoria.nome}</option>
 
 
 								<c:forEach var="categoria" items="${categoriaList}">
@@ -155,6 +155,10 @@
 					<select id="un_medida" name="un_medida"
 									class="form-control">
 									<optgroup label="Unidades de Medidas">
+										
+									<option value="${produtocomposto.un_medida}">${produtocomposto.un_medida}</option>
+										
+										
 										<c:forEach var="un_medida" items="${umList}">
 
 											<option value="${un_medida}">${un_medida}</option>
@@ -169,7 +173,7 @@
 							<optgroup label="Fornecedores">
 
 
-								<option value=""></option>
+								<option value="${produtocomposto.fornecedor.id}"  selected="selected">${produtocomposto.fornecedor.nomefantasia}</option>
 
 
 								<c:forEach var="fornecedor" items="${fornecedorList}">
@@ -186,7 +190,7 @@
 
                 
                   <div class="control-group">
-                <label class="control-label">Pre�o</label>
+                <label class="control-label">Preco</label>
                 <div class="controls">
 						<input id="precocusto" class="form-control"
 						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
@@ -205,18 +209,16 @@
                         <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-     				<select id="itens"name="itens" multiple="multiple" class="span6" >
+     				<select id="itens_prodcomp"name="itens_prodcomp" multiple="multiple" class="span6" >
 	                                  <optgroup label="Itens ">
 		           				
-<%-- 		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option> --%>
+		           				<c:forEach var="item" items="${produtocomposto.itens_prodcomp}">
 		           				
+		           					<option value="${item.key.id},${item.value}" selected="selected">${item.key.nome} = ${item.value}</option>
 		           				
-		           					<c:forEach var="item" items="${items}">
-		           			
-		           				<option value="${item.id}">${item.descricao}</option>
-		           				      				
+		           				</c:forEach>
 		           				
-		       				</c:forEach>
+
 		                </optgroup>
 	                    </select>	
 	                    
@@ -228,7 +230,7 @@
               
               
 			<div class="form-actions">
-				<button type="submit" class="btn btn-success">Cadastrar</button>
+				<button type="submit" class="btn btn-success">${acao}</button>
 				<a href='javascript:history.back(1)' class="btn btn-sm btn-info">Voltar</a>
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}">

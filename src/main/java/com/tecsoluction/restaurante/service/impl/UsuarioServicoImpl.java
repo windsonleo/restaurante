@@ -10,14 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
+import javax.persistence.PersistenceContext;
+
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
 @Service("userService")
 @Transactional
+//@PersistenceContext
 public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
-
+	
     @Autowired
     private IUsuarioDAO dao;
 

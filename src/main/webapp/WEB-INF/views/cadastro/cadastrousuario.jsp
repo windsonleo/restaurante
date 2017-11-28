@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 <div id="content">
@@ -114,7 +116,7 @@
 	 	 
 			
 			<div class="form-actions">
-				<button type="submit"class="btn btn-success">Cadastrar</button>
+				<button type="submit"class="btn btn-success">${acao}</button>
 				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 			</div>
 			

@@ -1,16 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"  title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#">Movimenta��o Estoque</a> <a href="#" class="current">Informa��es do Estoque </a> </div>
-    <h1>Informa��es do Estoque <strong> ${estoque.id }</strong></h1>
+    <h1>Informacoes do Estoque <strong> ${estoque.id }</strong></h1>
   </div>
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -19,7 +21,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -55,7 +57,7 @@
             <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
               <canvas width="50" height="24"></canvas>
               </span>+10%</div>
-            <div class="right"> <strong>${estoque.itens.size()}</strong>Produtos </div>
+            <div class="right"> <strong>${estoque.items.size()}</strong>Produtos </div>
           </li>
           <li>
             <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
@@ -67,21 +69,23 @@
             <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
               <canvas width="50" height="24"></canvas>
               </span>-40%</div>
-            <div class="right"> <strong>${totalcusto }</strong> CR$</div>
+            <div class="right"> <strong> <fmt:formatNumber type="currency"
+                 value="${totalcusto}"/> </strong> CR$</div>
           </li>
           <li>
             <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
               <canvas width="50" height="24"></canvas>
               </span>+60%</div>
-            <div class="right"> <strong>${totalvenda}</strong> VR$</div>
+            <div class="right"> <strong> <fmt:formatNumber type="currency"
+                 value="${totalvenda}"/> </strong> VR$</div>
           </li>
-          <li>
-            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
+<!--           <li> -->
+<!--             <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30% -->
             
-            </div>
+<!--             </div> -->
             
-            <div class="right"> <strong>335</strong> XXX</div>
-          </li>
+<!--             <div class="right"> <strong>335</strong> XXX</div> -->
+<!--           </li> -->
         </ul>
       </div>
     </div>
@@ -104,7 +108,7 @@
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
-									    <th>A��o</th>
+									    <th>Ativoo</th>
 <!-- 									    <th>Qtd</th> -->
 <!-- 									    <th>Pre�o Custo</th> -->
 <!-- 									    <th>UM</th> -->
@@ -122,7 +126,7 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="item" items="${estoque.itens}" varStatus="id">
+                                <c:forEach var="item" items="${estoque.items}" varStatus="id">
 
   
   <tr class="gradeX">

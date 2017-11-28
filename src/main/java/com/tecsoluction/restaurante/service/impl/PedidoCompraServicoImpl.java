@@ -66,12 +66,12 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
 
     }
     
-//    
-//   public  Map<Item,BigDecimal> EncontraItensPorId(PedidoCompra pv){
-//			
-//	   Map<Item,BigDecimal> seila = dao.EncontraItensPorId(pv);
-////	   pv.getItems().size();
-//	   
+////    
+//   public  Map<Item,String> FindItems(PedidoCompra pv){
+////			
+//	   Map<Item,String> seila = dao.FindItems(pv);
+//////	   pv.getItems().size();
+////	   
 //		return seila;
 		
 		

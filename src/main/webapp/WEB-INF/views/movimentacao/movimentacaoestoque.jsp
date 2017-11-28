@@ -3,13 +3,6 @@
 
 
 
-
-
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
-
-
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#" class="current">Movimentação de Estoque</a> </div>
@@ -38,6 +31,8 @@
                                         <th>Id</th>
 									    <th>Nome</th>
 									    <th>Produtos</th>
+									    <th>Itens</th>
+									    
 									    <th>Ativo?</th>
 									    
 <!-- 									    <th>Data Nasciemnto</th> -->
@@ -61,7 +56,9 @@
 
 			      <td>${estoque.id}</td>
                   <td>${estoque.nome}</td>
-                  <td >${estoque.itens.size()}</td>
+                  <td >${estoque.items.size()}</td>
+                   <td >${estoque.items}</td>
+                  
                   <td><span class="label label bg_lb">${estoque.ativo}</span></td>
                  <td class="options-width">
 								

@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
  <div id="content">
@@ -11,7 +13,7 @@
             <div class="container-fluid">
             
               <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -20,7 +22,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -60,7 +62,8 @@
 <%-- 				<input id="data" name="data" class="form-control" type="datetime" value="${pedidocompra.data}"placeholder="Digite a Data"/> --%>
 				
 					<div  data-date="12-02-2012" class="input-append date datepicker">
-		                  <input type="text" value="${pedidocompra.data}" id="data" name="data" data-date-format="dd-mm-yyyy" class="span11" >
+		                  <input type="text" value="    <fmt:formatDate pattern="dd/MM/yyyy" 
+                 value="${pedidcompra.total}"/>" id="data" name="data" data-date-format="dd-mm-yyyy" class="span11" >
 		                  <span class="add-on"><i class="icon-th"></i></span> 
                   
                   </div>
@@ -96,6 +99,8 @@
                 <label class="control-label">Status Pedido</label>
                 <div class="controls">
                          <select id="status"name="status"  class="form-control" >
+	                                 
+	                                 
 	                                  <optgroup label="Status do Pedido">
 		           			
 		           						<option value="ABERTO">ABERTO</option>
@@ -135,7 +140,7 @@
 								<optgroup label="fornecedor">
 
 
-									<option value=""></option>
+									<option value="${pedidocompra.fornecedor.id}" , selected="selected"> ${pedidocompra.fornecedor.nomefantasia}</option>
 
 
 									<c:forEach var="fornecedor" items="${fornecedores}">
@@ -210,7 +215,7 @@
 
 			
 			<div class="form-actions" align="center">
-				<button type="submit"class="btn btn-success">Cadastrar</button>
+				<button type="submit"class="btn btn-success">${acao}</button>
 			</div>
 			
 </form>

@@ -11,6 +11,7 @@
 
 
 		<div id="blink" name="blink"><h1>Recebimento Finalizado</h1></div>
+		<div id="blink" name="blink"><h3>Recebimento: ${recebimento.id}</h3></div>
 
 
 

@@ -70,6 +70,9 @@
                 <div class="controls">
                          <select id="status"name="status"  class="form-control" >
 	                                  <optgroup label="Status do Recebimento">
+		           					
+		           					<option value="${recebimento.status}">${recebimento.status}</option>
+		           					
 		           					<c:forEach var="status" items="${tipoStatusList}">
 		           			
 		           				<option value="${status}">${status}</option>
@@ -130,7 +133,7 @@
               </div>
               
               	   <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
+                <input type="submit" value="${acao}" class="btn btn-success">
               </div>						
 				</form>						
 		</div> 

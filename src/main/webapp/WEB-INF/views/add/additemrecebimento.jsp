@@ -80,7 +80,8 @@
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
 				<input id="fornecedor" name="fornecedor" type="text" class="form-control" value="${recebimento.pedidocompra.fornecedor }" readonly="readonly"> 
-				<input id="totalpc" name="total" type="text" class="form-control" value="${recebimento.pedidocompra.total}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
+				<input id="totalpc" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
+                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 				
 				
                 </div>
@@ -102,7 +103,11 @@
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
+									    <th>Preco Unitario</th>
+									  <th>Total</th> 
+									    
 									    <th>Acao</th>
+									    
 <!-- 									    <th>Qtd</th> -->
 <!-- 									    <th>Pre�o Custo</th> -->
 <!-- 									    <th>UM</th> -->
@@ -127,7 +132,18 @@
 
 			      <td>${item.key}</td>
                   <td>${item.value}</td>
-
+                    <td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+  				<td>
+  				 <fmt:formatNumber type="currency"
+                       value="${item.key.totalItem}"/>
+  				
+  				
+  				</td>
 
 
 
@@ -145,7 +161,7 @@
 									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
 									
 																			<a
-									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}"
+									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key.id}&idrec=${recebimento.id}&qtd=${item.value}"
 									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a>
 									
 									
@@ -153,7 +169,7 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">�</button>
+                <button data-dismiss="modal" class="close" type="button">x</button>
                 <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
@@ -210,6 +226,8 @@
                                     <tr>
                                        <th>Descricao</th>
 									    <th>Qtd</th>
+									      <th>Preco Unitario</th>
+									  <th>Total</th> 
 									    <th>Acao</th>
 <!-- 									    <th>UM</th> -->
 									    
@@ -236,7 +254,18 @@
 
 			      <td>${item.key}</td>
                   <td>${item.value}</td>
-
+                    <td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+  				<td>
+  				 <fmt:formatNumber type="currency"
+                       value="${item.key.totalItem}"/>
+  				
+  				
+  				</td>
 
 
 

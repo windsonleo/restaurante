@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -73,7 +75,7 @@
                                     <select id="catpai" name="catpai" class="span3">
                                         <optgroup label="Tipos de Catgeoria Pai">
 
-                                            <option value="${categoria.catpai}">${categoria.catpai}</option>
+                                            <option value="${categoria.catpai}" selected="selected">${categoria.catpai}</option>
 
                                             <c:forEach var="categoria" items="${categoriaList}">
 
@@ -88,7 +90,7 @@
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <input type="submit" value="Inserir" class="btn btn-success">
+                                <input type="submit" value="${acao}" class="btn btn-success">
                             </div>
                         </form>
                     </div>

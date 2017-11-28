@@ -74,7 +74,7 @@
 			 <select id="roles"name="roles" multiple="multiple" class="span8" >
 	                                  <optgroup label="Tipos de Permissoes do usuario">
 		           				
-		           					<option value="${usuario.roles}">${usuario.roles}</option>
+		           					<option value="${usuario.roles}" selected="selected">${usuario.roles}</option>
 		           				
 		           				
 		           					<c:forEach var="role" items="${roleList}">

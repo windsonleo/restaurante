@@ -66,19 +66,18 @@ public class Recebimento extends BaseEntity implements Serializable {
     @Embedded
     @ElementCollection(fetch=FetchType.EAGER)
     @AttributeOverrides({
-        @AttributeOverride(name = "key.idit",  column = @Column(name = "ID_IT_REC")),
-        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT_REC")),
-        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT_REC")),
-        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT_REC")),
-        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTD_IT_REC")),
-        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT_REC")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT_REC"))
+        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
+        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
+        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
+        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
+        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
+        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "total"))
     } )
-    @MapKeyColumn(name = "idit")
-    @Column(name = "qtd")
+    @MapKeyClass(Item.class)
     @CollectionTable(name = "itens_recebimento", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, BigDecimal> items = new HashMap<Item, BigDecimal>();
+    private Map<Item, String> items = new HashMap<>();
 
 
     private boolean ispago = false;
@@ -97,7 +96,7 @@ public class Recebimento extends BaseEntity implements Serializable {
         //   listaDevolucao = new ArrayList<>();
         //  tipo.VENDA.values();
     	
-    	items = new HashMap<Item, BigDecimal>();
+    	items = new HashMap<Item, String>();
     }
 
     public Recebimento(PedidoCompra pedidoompra) {
@@ -109,7 +108,7 @@ public class Recebimento extends BaseEntity implements Serializable {
         this.fornecedor = pedidoompra.getFornecedor();
         this.items = pedidoompra.getItems();
 //    	this.fornecedor=pedidoompra.
-        this.items = new HashMap<Item, BigDecimal>();
+        this.items = new HashMap<Item, String>();
     }
 
     /**
@@ -132,20 +131,37 @@ public class Recebimento extends BaseEntity implements Serializable {
     }
 
 
-    public BigDecimal CalcularTotal(Map<Item, BigDecimal> itens) {
+    public BigDecimal CalcularTotal(Map<Item, String> itens) {
 
-    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    	BigDecimal totalpedido = new BigDecimal(0.00).setScale(4, RoundingMode.UP);
 
 
-        for (Item key : itens.keySet()) {
-
-            totalpedido.add(totalpedido).add(key.getTotalItem());
-
-        }
+    	 for (Item key : itens.keySet()) {
+             
+         	totalpedido = totalpedido.add(key.getTotalItem());
+         }
 
 
         return totalpedido;
     }
 
+    public void addItem(Item item, String qtd){
+    	
+    	
+    	this.getItems().put(item, qtd);
+    	
+    	
+    	
+    }
+    
+    
+    public void removeItem(Item item){
+    	
+    	
+    	this.getItems().remove(item);
+    	
+    	
+    	
+    }
 
 }

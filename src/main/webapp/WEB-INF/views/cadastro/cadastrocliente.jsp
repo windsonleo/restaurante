@@ -343,7 +343,7 @@
 <!--                                                                type="submit" value="SALVAR"/> -->
 <!--                                 <div id="status"></div> --> 
 
-                <input type="submit" value="Cadastrar" class="btn btn-success">
+                <input type="submit" value="${acao}" class="btn btn-success">
 
                             </div>
 <!--                             <div id="submitted"></div> -->

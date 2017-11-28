@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 <div id="content">
@@ -45,9 +47,9 @@
 
                                 <datalist id="${clientesList}">
 
-                                    <c:forEach var="cliente" items="${clientesList}" varStatus="id">
+                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
 
-                                        <option value="${cliente.id }"> ${cliente.nome } </option>
+                                        <option value="${client.id }"> ${client.nome } </option>
 
                                     </c:forEach>
 
@@ -123,11 +125,14 @@
                                 <!-- 										<div class="input-prepend"> -->
 
                                 <select id="genero" name="genero" class="span4">
+                                   
+                                   
                                     <optgroup label="Genero do Cliente">
 
                                         <option value="MASCULINO">MASCULINO</option>
                                         <option value="FEMININO">FEMININO</option>
 
+                                  
                                     </optgroup>
                                 </select>
                                 <!-- 										</div> -->
@@ -155,7 +160,8 @@
 
                                     <input id="datanascimento" type="text" data-date="01-02-2013"
                                            data-date-format="dd-mm-yyyy"
-                                           value="${cliente.datanascimento}" class=".datepicker" name="datanascimento">
+                                           value="<fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${cliente.datanascimento}"/>" class=".datepicker" name="datanascimento">
                                     <span class="add-on"><i class="icon-th"></i></span>
 
 
@@ -177,8 +183,8 @@
                             <div class="controls">
                                 <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
                                        disabled="true"/>
-                                <input id="totpedido" name="totpedido" class="span4" type="text" value=""
-                                       placeholder="Qunatidades de Pedidos" disabled="true"/>
+<%--                                 <input id="totpedido" name="totpedido" class="span4" type="text" value="${totalpedidos}" --%>
+<!--                                        placeholder="Qunatidades de Pedidos" disabled="true"/> -->
                                 <input id="lucro" name="lucro" class="span4" type="text" value=""
                                        placeholder="Lucro total" disabled="true"/>
                                 <input id="totestoque" name="totestoque" class="span4" type="text" value=""

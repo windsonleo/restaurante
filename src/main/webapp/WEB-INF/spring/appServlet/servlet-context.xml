@@ -37,7 +37,8 @@
         </property>
     </bean>
 
-
+<!--    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> -->
+    
     <tx:advice transaction-manager="transactionManager" id="txAdvice">
         <tx:attributes>
             <tx:method name="*"/>
@@ -47,6 +48,8 @@
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
+                <property name="dataSource" ref="dataSourceHeroku"/>
+        
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -54,7 +57,7 @@
 
     </bean>
 
-    <tx:annotation-driven/>
+ 
 
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="defaultContentType" value="application/json"/>

@@ -59,6 +59,7 @@
 									
 										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
 
+										<input type="text"  id="idpedvend" name="idpedvend"  class="form-horizontal" value="${pedidovenda.id }" placeholder="Escolha a Quantidade">
 					
 							
 								<input type="submit" class="btn btn-lg btn-success"
@@ -114,7 +115,8 @@
 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }" readonly="readonly"> 
 							
 							<label>Total</label>
-							<input id="total" name="total" type="text" class="form-control" value="${totalpedido}" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
+							<input id="total" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
+                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
 						
 						</div>
 </div>
@@ -125,7 +127,7 @@
 			
 			</div>
 
- <div class="widget-box">
+  <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
             <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5>
            
@@ -134,41 +136,98 @@
      <div class="widget-content nopadding">               
        <div class="container-fluid">
      
-		  <ul class="quick-actions">
-
-		  <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
-
-<%-- 		<c:choose> --%>
-		
-<%-- 		  <c:when test="${item.id != null}"> --%>
-		
-        <li class="bg_lb"><div><span class="close" data-dismiss="alert" href="#">x</span></div> <a href="${pageContext.request.contextPath}/item/">
-         <i class="icon-barcode"></i> <div class="huge">${item.key}</div>
-                                       <div class="huge">${item.value}</div>
-<!--                                   		<p class="huge"></p> -->
-                                       
-<%--                                       <div>Total: ${item.totalItem}</div>  --%>
-<%--                                       <div>Qtd: ${item.qtd}</div> --%>
-                                      
-                                      </a> 
-                                      
-                                      </li>
-     
-		                              
+		 <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
                             
-                                        
-                    
-                    
-                        
-<%--                     </c:when> --%>
-                    
-<%--                     </c:choose> --%>
-                    
-                    </c:forEach>
-                    	            </ul> 
-                    	            
-                    	            </div>      	
-                    
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+<!-- 									    <th>Código</th> -->
+<!-- 									    <th>Descrição</th> -->
+									    <th>Qtd</th>
+									    
+									    <th>Preco Unitario</th>
+									    <th>Total</th>
+<!-- 									    <th>Total Item</th> -->
+<!-- 									    <th>Total Item</th> -->
+									    
+<!-- 									     <th>Ativo?</th> -->
+<!-- 									     <th>Pagamentos</th> -->
+<!-- 									     <th>Ativo</th> -->
+<!-- 									     <th>Obs</th> -->
+									    <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                
+                                <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
+
+  
+  		<tr class="gradeX">
+  					
+			      <td>${item.key}</td>
+
+			     <td>${item.value}</td>
+			     
+			 	<td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+  				<td>
+  				 <fmt:formatNumber type="currency"
+                       value="${item.key.totalItem}"/>
+  				
+  				
+  				</td>
+  				
+								<td class="options-width">
+      								
+      								<a
+									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
+									title="informação" class="fa fa-info fa-2x"></a>
+									
+										<a
+									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
+									title="editar" class="fa fa-pencil fa-2x"></a>
+									
+									
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									
+			<div id="myAlert${item.key}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Alerta de Exclusão</h3>
+              </div>
+              <div class="modal-body">
+                <p>Deseja Realmente Excluir esse Registro</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>		
+								
+								
+								</td>
+								
+								</tr>
+			  
+			 
+
+                </c:forEach>                    
+                                
+                                
+                                
+                                
+                                
+                           
+                                </tbody>
+                            </table>
+                        </div>
+			
+			
+			</div>
 		
 	</div>
 	

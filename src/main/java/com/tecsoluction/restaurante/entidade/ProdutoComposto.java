@@ -37,13 +37,13 @@ public class ProdutoComposto extends Produto implements Serializable {
     @ElementCollection(fetch=FetchType.EAGER)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "key.idit",  column = @Column(name = "idit")),
-        @AttributeOverride(name = "codigoit", column = @Column(name = "COD_IT")),
-        @AttributeOverride(name = "nomeit", column = @Column(name = "NOME_IT")),
-        @AttributeOverride(name = "descricaoit", column = @Column(name = "DESC_IT")),
-        @AttributeOverride(name = "value.qtdit", column = @Column(name = "QTDIT")),
-        @AttributeOverride(name = "precoUnitarioit", column = @Column(name = "PRECO_UNIT_IT")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "TOTAL_IT"))
+        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
+        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
+        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
+        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
+        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
+        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
+        @AttributeOverride(name = "totalItem", column = @Column(name = "total"))
     })
     @MapKeyClass(Item.class)
 //    @MapKeyColumn(name = "idit")
@@ -96,7 +96,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     public BigDecimal getPrecocusto() {
     
     	
-    	return  CalcularTotal(getItens_prodcomp());
+    	return  CalcularTotalCusto(getItens_prodcomp());
     }
 //    
 //    
@@ -105,7 +105,7 @@ public class ProdutoComposto extends Produto implements Serializable {
 
 		BigDecimal mult = new BigDecimal(2.00);
 		
-		return CalcularTotal(getItens_prodcomp()).multiply(mult);
+		return CalcularTotalVenda(getItens_prodcomp());
 
 		}
     
@@ -126,16 +126,30 @@ public class ProdutoComposto extends Produto implements Serializable {
     
     
   
-    public BigDecimal CalcularTotal(Map<Item, String> pitens) {
+    public BigDecimal CalcularTotalCusto(Map<Item, String> pitens) {
 
     	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 
         for (Item key : pitens.keySet()) {
-            totalpedido.add(totalpedido).add(key.getTotalItem().setScale(4, RoundingMode.UP));
+            
+        	totalpedido = totalpedido.add(key.getTotalItem());
         }
 
         return totalpedido;
+    }
+    
+    public BigDecimal CalcularTotalVenda(Map<Item, String> pitens) {
+
+    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+
+
+        for (Item key : pitens.keySet()) {
+            
+        	totalpedido = totalpedido.add(key.getTotalItem());
+        }
+
+        return totalpedido.multiply(new BigDecimal("1.5"));
     }
     
     public void addItem(Item item, String qtd){
@@ -146,8 +160,28 @@ public class ProdutoComposto extends Produto implements Serializable {
     	
     	
     }
+    
+    
+    public void removeItem(Item item){
+    	
+    	
+    	this.getItens_prodcomp().remove(item);
+    	
+    	
+    	
+    }
 
-
+    public BigDecimal getTotalCompostoCusto(){
+    	
+    	
+    	return  CalcularTotalCusto(getItens_prodcomp());
+    }
+    
+    public BigDecimal getTotalCompostoVenda(){
+    	
+    	
+    	return  CalcularTotalVenda(getItens_prodcomp());
+    }
 
 
     

@@ -1,13 +1,11 @@
 package com.tecsoluction.restaurante.util;
 
-import com.tecsoluction.restaurante.entidade.Produto;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+
+import com.tecsoluction.restaurante.entidade.Produto;
 
 
 public class DadosGerenciais implements Serializable {
@@ -17,20 +15,20 @@ public class DadosGerenciais implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    public static final CurrencyUnit usd = CurrencyUnit.of("BRL");
+//    public static final CurrencyUnit usd = new CurrencyUnit("BRL");
 
 
-    private Money custo = Money.of(usd, 0.00);
+    private BigDecimal custo = new BigDecimal(0.00);
 
-    private Money despesafixa = Money.of(usd, 10.00);
+    private BigDecimal despesafixa = new BigDecimal( 10.00);
 
-    private Money despesavariavel = Money.of(usd, 5.00);
+    private BigDecimal despesavariavel = new BigDecimal( 5.00);
 
-    private Money margemlucro = Money.of(usd, 40.00);
+    private BigDecimal margemlucro = new BigDecimal( 40.00);
 
-    private Money precovenda = Money.of(usd, 0.00);
+    private BigDecimal precovenda = new BigDecimal( 0.00);
 
-    private Money markup = Money.of(usd, 0.00);
+    private BigDecimal markup = new BigDecimal( 2.00);
 
 
     /**
@@ -44,16 +42,16 @@ public class DadosGerenciais implements Serializable {
 
 
     public DadosGerenciais(Produto produto) {
-        this.custo = Money.of(usd, produto.getPrecocusto());
+        this.custo = new BigDecimal( produto.getPrecocusto().toString());
     }
 
     /**
      * @return the margemlucro
      */
-    public Money getMargemlucro() {
+    public BigDecimal getMargemlucro() {
 
-        margemlucro = (((this.precovenda).minus(this.custo))
-                .dividedBy(this.precovenda.getAmountMajor(), RoundingMode.UP)).multipliedBy(100);
+        margemlucro = margemlucro.add(((getPrecovenda()).min(getCusto()))
+                .divide(getPrecovenda(), RoundingMode.UP)).multiply( new BigDecimal (100));
 
         return margemlucro;
     }
@@ -62,56 +60,56 @@ public class DadosGerenciais implements Serializable {
     /**
      * @return the precovenda
      */
-    public Money getPrecovenda() {
+    public BigDecimal getPrecovenda() {
 
-        Money divisao = Money.of(usd, 100).minus(this.despesafixa).minus(this.despesavariavel)
-                .minus(this.margemlucro);
+        BigDecimal divisao = new BigDecimal(100.00).min(getDespesafixa()).min(getDespesavariavel())
+                .min(getMargemlucro());
 
-        precovenda = this.precovenda.dividedBy(divisao.getAmountMajor(), RoundingMode.UP);
+        precovenda = getPrecovenda().divide(divisao, RoundingMode.UP);
 
 
 //         this.custo / (100 - this.despesafixa - this.despesavariavel - this.margemlucro) * 100;
         return precovenda;
     }
 
-    public Money getCusto() {
+    public BigDecimal getCusto() {
         return custo;
     }
 
     public void setCusto(BigDecimal custo) {
-        this.custo = Money.of(usd, custo);
+        this.custo = custo;
     }
 
-    public Money getDespesafixa() {
+    public BigDecimal getDespesafixa() {
         return despesafixa;
     }
 
     public void setDespesafixa(BigDecimal despesafixa) {
-        this.despesafixa = Money.of(usd, despesafixa);
+        this.despesafixa = despesafixa;
     }
 
-    public Money getDespesavariavel() {
+    public BigDecimal getDespesavariavel() {
         return despesavariavel;
     }
 
     public void setDespesavariavel(BigDecimal despesavariavel) {
-        this.despesavariavel = Money.of(usd, despesavariavel);
+        this.despesavariavel = despesavariavel;
     }
 
     public void setMargemlucro(BigDecimal margemlucro) {
-        this.margemlucro = Money.of(usd, margemlucro);
+        this.margemlucro = margemlucro;
     }
 
     public void setPrecovenda(BigDecimal precovenda) {
-        this.precovenda = Money.of(usd, precovenda);
+        this.precovenda = precovenda;
     }
 
-    public Money getMarkup() {
+    public BigDecimal getMarkup() {
         return markup;
     }
 
     public void setMarkup(BigDecimal markup) {
-        this.markup = Money.of(usd, markup);
+        this.markup = markup;
     }
 
     @Override

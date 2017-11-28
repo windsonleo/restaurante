@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,14 +77,14 @@ public class MesaController extends AbstractController<Mesa> {
 
         Mesa mesa = mesaService.findOne(idf);
 
-        Money total = Money.of(DadosGerenciais.usd, 0.00);
+        BigDecimal total =  new BigDecimal(0.00);
 
         // mudar para trazer pelo id da mesa e pelo status da mesa
         pedidos = pedidovendaService.getAllPedidoPorMesa(idf);
 
         for (PedidoVenda pedidoVenda : pedidos) {
 
-            total = total.plus(pedidoVenda.getTotal());
+            total = total.add(pedidoVenda.getTotal());
 
         }
 
@@ -110,9 +112,9 @@ public class MesaController extends AbstractController<Mesa> {
 
         ModelAndView mesassalao = new ModelAndView("salao");
 
-        List<Mesa> mesas = mesaService.findAll();
+        List<Mesa> mesas = getservice().findAll();
 
-        mesassalao.addObject("mesasList", mesas);
+        mesassalao.addObject("mesaList", mesas);
 
         return mesassalao;
     }

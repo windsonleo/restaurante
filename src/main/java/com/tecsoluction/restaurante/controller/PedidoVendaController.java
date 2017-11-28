@@ -54,7 +54,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     private PedidoVenda pv;
 
-    private Map<Item, BigDecimal> itens = new HashMap<>();
+    private Map<Item, String> itens = new HashMap<>();
 
     private Estoque estoque;
 
@@ -112,6 +112,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         List<Garcon> garconList = garconService.findAll();
 
         List<Mesa> mesaList = mesaService.findAll();
+    
+//        if(pv == null) {
+        	
+            pv = new PedidoVenda();
+
+        	
+//        }
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -127,39 +134,47 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
         model.addAttribute("clienteList", clienteList);
+        model.addAttribute("pedidovenda", pv);
+
 
     }
 
     @RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
     public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
-        this.estoque = estoqueService.findOne(UUID.fromString("49L"));
+        this.estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        this.pv = pedidovendaService.findOne(idf);
+        this.pv = getservice().findOne(idf);
 
         ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
         for (Item key : pv.getItems().keySet()) {
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigoit());
-            BigDecimal qtd = key.getQtdit();
+            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
+            BigDecimal qtd = key.getQtd();
+            
+            Item item = new Item(produto);
+            item.setQtd(qtd);
+            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
 
-//            key.setEstoque(estoque);
 
-            estoque.RetirarProdutoEstoque(produto, qtd);
+            estoque.RetirarProdutoEstoque(item, qtd);
 
-            estoqueService.save(estoque);
+//            estoqueService.save(estoque);
 
 //            itemService.save(key);
 
         }
 
-        this.pv.setStatus(StatusPedido.FECHADO);
-        this.pv.setIspago(true);
+        pv.setStatus(StatusPedido.FECHADO);
+        pv.setIspago(true);
+        pv.getTotalVenda();
 
-        pedidovendaService.save(pv);
+        getservice().edit(pv);
+        estoqueService.edit(estoque);
+
 
         itens.clear();
 
@@ -178,16 +193,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         produtosList = produtoService.findAll();
 
-        pv.setTotal(pv.CalcularTotal(pv.getItems()));
+//        pv.setTotal(pv.CalcularTotal(pv.getItems()));
 
-        totalpedido = pv.CalcularTotal(pv.getItems());
+        totalpedido = pv.getTotalVenda();
 
         DecimalFormat df = new DecimalFormat("0.##");
         String totalformatado = df.format(totalpedido);
 
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
-        additempedidovenda.addObject("totalpedido", totalformatado);
+        additempedidovenda.addObject("totalpedido", totalpedido);
 
         return additempedidovenda;
     }
@@ -199,7 +214,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
 
-        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd).setScale(4, RoundingMode.UP);
+        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd);
+        
+		UUID idfpedvend = (UUID.fromString(request.getParameter("idpedvend")));
+
 
 
         Produto produto;
@@ -219,27 +237,41 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
             return additempedidovenda;
         }
 
-        PedidoVenda pedidov = pedidovendaService.findOne(this.pv.getId());
+        PedidoVenda pedidov = pedidovendaService.findOne(idfpedvend);
 
         // System.out.println("windson ped"+pedidov.toString());
 
         Item item = new Item();
 
-        item.setQtdit(qtdbd);
-        item.setTotalItem(item.getTotalItem());
-//        item.setPedidovenda(pedidov);
+        item.setId(produto.getId());
+		item.setNome(produto.getNome()); 
+		 item.setCodigo(produto.getCodebar()); 
+		 item.setQtd(qtdbd); 
+		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
-        itens = pedidov.getItems();
+		 item.setDescricao(produto.getDescricao()); 
+		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+      
+//        itens = pedidov.getItems();
 
-        itens.put(item, item.getQtdit());
+//        itens.put(item, item.getQtd().toString());
 
 //        itemService.save(item);
+		 
+		 itens = new HashMap<>();
 
-        pedidov.setItems(itens);
-        pedidov.setTotal(pedidov.CalcularTotal(pedidov.getItems()));
-        pedidov.setStatus(StatusPedido.PENDENTE);
+		 pedidov.addItem(item, item.getQtd().toString());
+	    
+		 pedidov.setTotal(pedidov.getTotalVenda());
 
-        pedidovendaService.save(pedidov);
+	     pedidov.setStatus(StatusPedido.PENDENTE);
+			
+		getservice().edit(pedidov);
+
+//        pedidov.setItems(itens);
+
+
+//        pedidovendaService.save(pedidov);
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
     }

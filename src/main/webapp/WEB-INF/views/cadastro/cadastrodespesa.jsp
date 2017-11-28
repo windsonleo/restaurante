@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -80,7 +82,7 @@
               
               
               <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
+                <input type="submit" value="${acao}" class="btn btn-success">
               </div>
             </form>
           </div>
