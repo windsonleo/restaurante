@@ -41,7 +41,7 @@ public class FornecedorServicoImpl extends AbstractEntityService<Fornecedor> {
 
     @Override
     protected String getIdEntity(Fornecedor fornecedor) {
-        return null;
+        return fornecedor.getId().toString();
     }
 
     @Override

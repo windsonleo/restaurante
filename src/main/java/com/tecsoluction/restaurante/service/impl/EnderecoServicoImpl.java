@@ -41,7 +41,7 @@ public class EnderecoServicoImpl extends AbstractEntityService<Endereco> {
 
     @Override
     protected String getIdEntity(Endereco endereco) {
-        return null;
+        return endereco.getId().toString();
     }
 
     @Override

@@ -41,7 +41,7 @@ public class GarconServicoImpl extends AbstractEntityService<Garcon> {
 
     @Override
     protected String getIdEntity(Garcon garcon) {
-        return null;
+        return garcon.getId().toString();
     }
 
     @Override

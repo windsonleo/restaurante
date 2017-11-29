@@ -41,7 +41,7 @@ public class BancoServicoImpl extends AbstractEntityService<Banco> {
 
     @Override
     protected String getIdEntity(Banco banco) {
-        return null;
+        return banco.getId().toString();
     }
 
     @Override

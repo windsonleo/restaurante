@@ -41,7 +41,7 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
 
     @Override
     protected String getIdEntity(Role role) {
-        return null;
+        return role.getId().toString();
     }
 
     @Override

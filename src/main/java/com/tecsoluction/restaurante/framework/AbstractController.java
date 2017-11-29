@@ -95,26 +95,27 @@ public abstract class AbstractController<Entity> {
     @PostMapping(value = "edicao")
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
-    	
-    	String mensagem ="Sucesso ao editar !";
-    	String erros ="Erros ao Editar !";
+
+        String mensagem = "Sucesso ao editar !";
+        String erros = "Erros ao Editar !";
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         if (result.hasErrors()) {
             trataErro(result, attributes);
-            cadastroEntity.addObject("erros", erros + result.getFieldError() );
+            cadastroEntity.addObject("erros", erros + result.getFieldError());
 
         } else {
             entity = getservice().edit(entity);
             System.out.println("edit: " + entityAlias);
-//            attributes.addFlashAttribute("mensagem", "Sucesso ao editar.");
+            attributes.addFlashAttribute("mensagem", mensagem);
             cadastroEntity.addObject("mensagem", mensagem);
         }
-		 cadastroEntity.addObject("acao", "");
-		
-        return cadastroEntity;
-//        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + entity);
+        cadastroEntity.addObject("acao", "");
+
+//        return cadastroEntity;
+//        return new ModelAndView("cadastro" + entityAlias, entityAlias, entity);
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity));
     }
 
     @Transactional

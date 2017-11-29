@@ -6,14 +6,10 @@ import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.query.Jpa21Utils;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -31,9 +27,7 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
     public PedidoCompraServicoImpl() {
 
         super(PedidoCompra.class, "pedidocompra");
-        
-        
-      
+
 
     }
 
@@ -51,7 +45,7 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
 
     @Override
     protected String getIdEntity(PedidoCompra pedidoCompra) {
-        return null;
+        return pedidoCompra.getId().toString();
     }
 
     @Override
@@ -65,7 +59,7 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
         // TODO Auto-generated method stub
 
     }
-    
+
 ////    
 //   public  Map<Item,String> FindItems(PedidoCompra pv){
 ////			
@@ -73,20 +67,16 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
 //////	   pv.getItems().size();
 ////	   
 //		return seila;
-		
-		
+
 
 //	}
-   
-   
-   public Map<Item,BigDecimal> getItems(){
-	   
-	   
-	   
-	   return null;
-   }
-   
-   
+
+
+    public Map<Item, BigDecimal> getItems() {
+
+
+        return null;
+    }
 
 
 }

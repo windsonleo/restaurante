@@ -48,7 +48,7 @@ public class ProdutoCompostoServicoImpl extends AbstractEntityService<ProdutoCom
 
     @Override
     protected String getIdEntity(ProdutoComposto produtoComposto) {
-        return null;
+        return produtoComposto.getId().toString();
     }
 
     @Override
