@@ -41,7 +41,7 @@ public class EmpresaServicoImpl extends AbstractEntityService<Empresa> {
 
     @Override
     protected String getIdEntity(Empresa empresa) {
-        return null;
+        return empresa.getId().toString();
     }
 
     @Override

@@ -95,15 +95,15 @@ public abstract class AbstractController<Entity> {
     @PostMapping(value = "edicao")
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
-    	
-    	String mensagem ="Sucesso ao editar !";
-    	String erros ="Erros ao Editar !";
+
+        String mensagem = "Sucesso ao editar !";
+        String erros = "Erros ao Editar !";
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         if (result.hasErrors()) {
             trataErro(result, attributes);
-            cadastroEntity.addObject("erros", erros + result.getFieldError() );
+            cadastroEntity.addObject("erros", erros + result.getFieldError());
 
         } else {
             entity = getservice().edit(entity);
@@ -111,10 +111,11 @@ public abstract class AbstractController<Entity> {
 //            attributes.addFlashAttribute("mensagem", "Sucesso ao editar.");
             cadastroEntity.addObject("mensagem", mensagem);
         }
-		 cadastroEntity.addObject("acao", "");
-		
-        return cadastroEntity;
-//        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + entity);
+        cadastroEntity.addObject("acao", "");
+
+//        return cadastroEntity;
+
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity));
     }
 
     @Transactional
@@ -132,7 +133,7 @@ public abstract class AbstractController<Entity> {
         System.out.println("erro ap add Entidade: " + entityAlias + " fields erro: " + result.getFieldError());
         System.out.println("erro ao add Entidade: " + entityAlias + " outros erros global: " + result.getGlobalError());
         System.out.println("erro ao add Entidade: " + entityAlias + " outros erros nestedPatch: " + result.getNestedPath());
-        attributes.addFlashAttribute("erros", "Erro ao Salvar." + result.getFieldError());
+        attributes.addFlashAttribute("erros", "Erro ao Salvar.\n" + result.getFieldError());
     }
 
 }

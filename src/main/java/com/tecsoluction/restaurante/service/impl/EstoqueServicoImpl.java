@@ -41,7 +41,7 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
 
     @Override
     protected String getIdEntity(Estoque estoque) {
-        return null;
+        return estoque.getId().toString();
     }
 
     @Override

@@ -66,7 +66,7 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
     @Override
     protected String getIdEntity(Usuario usuario) {
-        return null;
+        return usuario.getId().toString();
     }
 
 

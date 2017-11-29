@@ -41,7 +41,7 @@ public class MesaServicoImpl extends AbstractEntityService<Mesa> {
 
     @Override
     protected String getIdEntity(Mesa mesa) {
-        return null;
+        return mesa.getId().toString();
     }
 
     @Override

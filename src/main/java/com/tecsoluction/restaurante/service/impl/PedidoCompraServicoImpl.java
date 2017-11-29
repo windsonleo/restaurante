@@ -51,7 +51,7 @@ public class PedidoCompraServicoImpl extends AbstractEntityService<PedidoCompra>
 
     @Override
     protected String getIdEntity(PedidoCompra pedidoCompra) {
-        return null;
+        return pedidoCompra.getId().toString();
     }
 
     @Override

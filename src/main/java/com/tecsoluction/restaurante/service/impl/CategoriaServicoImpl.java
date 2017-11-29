@@ -71,7 +71,7 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
     @Override
     protected String getIdEntity(Categoria categoria) {
-        return null;
+        return categoria.getId().toString();
     }
 
     @Override

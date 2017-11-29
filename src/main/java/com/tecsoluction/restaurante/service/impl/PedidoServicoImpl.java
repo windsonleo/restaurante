@@ -41,7 +41,7 @@ public class PedidoServicoImpl extends AbstractEntityService<Pedido> {
 
     @Override
     protected String getIdEntity(Pedido pedido) {
-        return null;
+        return pedido.getId().toString();
     }
 
     @Override

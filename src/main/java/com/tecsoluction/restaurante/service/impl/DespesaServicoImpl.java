@@ -41,7 +41,7 @@ public class DespesaServicoImpl extends AbstractEntityService<Despesa> {
 
     @Override
     protected String getIdEntity(Despesa despesa) {
-        return null;
+        return despesa.getId().toString();
     }
 
     @Override
