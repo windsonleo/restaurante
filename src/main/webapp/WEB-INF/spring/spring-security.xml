@@ -9,7 +9,6 @@
     <security:http auto-config="true" use-expressions="true">
         <security:csrf disabled="true"/>
 
-        <security:access-denied-handler error-page="/acessonegado"/>
 
         <security:form-login
                 login-page="/login"
@@ -17,6 +16,9 @@
                 authentication-failure-url="/erro"
                 username-parameter="username"
                 password-parameter="senha"/>
+
+        <security:access-denied-handler error-page="/acessonegado"/>
+
 
         <!--         		<security:custom-filter position="LAST" ref="usernamePasswordAuthenticationFilter"/> -->
 
