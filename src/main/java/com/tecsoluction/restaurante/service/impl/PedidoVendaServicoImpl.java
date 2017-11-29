@@ -49,28 +49,28 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
         return dao.getAllPedidoDelivery();
     }
 
-	@Override
-	protected void validateSave(PedidoVenda post) {
-		// TODO Auto-generated method stub
-		
-	}
-
     @Override
-    protected String getIdEntity(PedidoVenda pedidoVenda) {
-        return null;
+    protected void validateSave(PedidoVenda post) {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
-	protected void validateEdit(PedidoVenda post) {
-		// TODO Auto-generated method stub
-		
-	}
+    protected String getIdEntity(PedidoVenda pedidoVenda) {
+        return pedidoVenda.getId().toString();
+    }
 
-	@Override
-	protected void validateDelete(UUID id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateEdit(PedidoVenda post) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void validateDelete(UUID id) {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }

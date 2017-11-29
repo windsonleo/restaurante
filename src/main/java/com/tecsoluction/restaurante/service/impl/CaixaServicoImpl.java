@@ -47,7 +47,7 @@ public class CaixaServicoImpl extends AbstractEntityService<Caixa> {
 
     @Override
     protected String getIdEntity(Caixa caixa) {
-        return null;
+        return caixa.getId().toString();
     }
 
     @Override
