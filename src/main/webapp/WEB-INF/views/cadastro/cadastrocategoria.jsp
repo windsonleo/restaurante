@@ -9,14 +9,14 @@
         <div id="breadcrumb"><a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Categoria"
                                 class="tip-bottom"><i class="icon-icon"><img
                 src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> Categoria</a> <a
-                href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div>
+                href="#">MovimentaÃ§Ã£o Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div>
         <h1>Cadastro de Categoria</h1>
     </div>
     <div class="container-fluid">
         <hr>
 
         <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"><a class="close" data-dismiss="alert" href="#">x</a>
                 <h4 class="alert-heading">Erros!</h4>
 
                     ${erros}
@@ -25,7 +25,7 @@
         </c:if>
 
         <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">x</a>
                 <h4 class="alert-heading">Sucesso!</h4>
 
                     ${mensagem}
@@ -57,7 +57,7 @@
                                 <label class="control-label">Id</label>
                                 <div class="controls">
                                     <input id="id" class="span2" name="id" type="text" value="${categoria.id}"
-                                           placeholder="Digite o id"/>
+                                           placeholder="Digite o id" readonly/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -75,7 +75,7 @@
                                     <select id="catpai" name="catpai" class="span3">
                                         <optgroup label="Tipos de Catgeoria Pai">
 
-                                            <option value="${categoria.catpai}" selected="selected">${categoria.catpai}</option>
+                                            <option value="${categoria.catpai.id}" selected="selected">${categoria.catpai}</option>
 
                                             <c:forEach var="categoria" items="${categoriaList}">
 
@@ -102,7 +102,7 @@
 
 
 <div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em
+    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluï¿½ï¿½es em
         Tecnologia</a></div>
 </div>
 

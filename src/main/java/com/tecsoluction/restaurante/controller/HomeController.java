@@ -12,11 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Mesa;
@@ -126,7 +122,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView home(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
@@ -143,7 +139,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView Login(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
