@@ -2,23 +2,19 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ page session="false" %>
+<%@ page session="true" %>
 
 <!--main-container-part-->
 
-<div id="content">
-<!--breadcrumbs-->
-  <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-  </div>
-<!--End-breadcrumbs-->
 
-<!--Action boxes-->
-  <div class="container-fluid">
 <!--    <div class="span12"> -->
 
+
+<!-- </br> -->
 </br>
 </br>
+</br>
+
  <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
@@ -36,83 +32,348 @@
             </div>
             
     </c:if>
+    
+    <div id="content">
+
+  <div class="container-fluid">
+
 
   <sec:authorize access="hasRole('ROLE_ADM')">
-     <div class="row-fluid">
   
-          <div class="widget-box widget-plain">
-      <div class="center">
-        <ul class="stat-boxes2">
-          <li>
-            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+10%</div>
-            <div class="right"> <strong>${pedidocomprasnovos.size()}</strong>Compras </div>
-          </li>
-          <li>
-            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
-              <canvas width="50" height="24"></canvas>
-              </span>10%</div>
-            <div class="right"> <strong>${recebimentosnovos.size()}</strong> Recebimentos</div>
-          </li>
-          <li>
-            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
-              <canvas width="50" height="24"></canvas>
-              </span>-40%</div>
-            <div class="right"> <strong>${pedidovendasnovos.size()}</strong> Vendas</div>
-          </li>
-          <li>
-            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+60%</div>
-            <div class="right"> <strong>${clientesnovos.size()}</strong> Clientes</div>
-          </li>
-          <li>
-            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
-            
+     <div class="row">
+  
+      <div class="span12">
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Clientes</p>
             </div>
-            
-            <div class="right"> <strong>${clientesnovos.size()}</strong> Vendas Canceladas</div>
-          </li>
-        </ul>
+            <div class="icon">
+			<i class="icon icon-user" ></i>
+			</div>
+            <a href="${pageContext.request.contextPath}/cliente/gerencia" class="small-box-footer"> Mais info </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Produtos</p>
+            </div>
+            <div class="icon">
+			<i class="icon icon-barcode"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/produto/gerencia" class="small-box-footer">Mais info </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>Vendas</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-shopping-cart"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Mais info </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Mesas</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-th-large"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/mesa/salao" class="small-box-footer">Mais info</a>
+          </div>
+        </div>
+        
+        
+                <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>         
+
+              <p>Garcon</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-user-md"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/garcon/gerencia" class="small-box-footer">Mais info</a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Pagamentos</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-calendar"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/pagamento/movimentacao" class="small-box-footer">Mais Inf </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>Fornecedor</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-truck"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/fornecedor/gerencia" class="small-box-footer"> More info</a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Estoque</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-briefcase"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/estoque/movimentacao" class="small-box-footer">Mais info </a>
+          </div>
+        </div>
+        
+                <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Delivery</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-truck"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/delivery/movimentacao" class="small-box-footer">Mais info </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      
+        <div class="span2">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Caixa</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-money"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/caixa/rapido" class="small-box-footer">Mais Info </a>
+          </div>
+        </div>
+        <!-- ./col -->
+
+        
+        <!-- ./span -->
+        </div>
+      
       </div>
-    </div>
-    </div>
+      </sec:authorize>
+      
+<!--       </div> -->
+      
+      
+      
+      
+<!--       </div>                     -->
+   
+                    <div class="span12">
+                    
+                        
+                       
+                        <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="green">
+                                    <i class="icon icon-barcode"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Produtos</p>
+                                    <h3 class="title"> ${pedidovendasnovos.size()} </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">Detalhes</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                         <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="orange">
+                                    <i class="icon icon-shopping-cart"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Pedido Venda</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+<!--                                         <small>Pedido Venda</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="red">
+                                    <i class="icon icon-th-large"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Mesas</p>
+                                    <h3 class="title">5</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">Ocupadasr</i> T
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+                                    <i class="icon icon-truck"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Delivery</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">Entregas</i> Clique Aqui
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="purple">
+                                    <i class="icon icon-money"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Caixa</p>
+                                    <h3 class="title">75</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">Total</i>Clique Aqui
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+						</div>
+<!--                     </div> -->
 	
-	<div class="row-fluid"> 
-<!-- 	<div class="widget-box"> -->
-<!-- 	          <div class="widget-title"> <span class="icon"> <i class="icon-file"></i> </span> -->
-<!--                      <h5>Atalhos Gerenciais</h5> -->
-         
-<!--         	 </div> -->
-<!-- 		          <div class="widget-content"> -->
-		          
-<!-- 		          		<div class="container-fluid"> -->
-		          	
-		          
-				      <div class="quick-actions_homepage">
-				    	  <ul class="quick-actions">
-						        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/cliente/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/cliente.png" ></i> <span class="label label-important">${clientesnovos.size()}</span> Clientes </a> </li>
-						        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/produto/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/produto.png" ></i> Produtos</a> </li>
-						        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i><span class="label label-success">${pedidovendasnovos.size()}</span> Pedido venda Fast</a> </li>
-						        <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesas/salao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> Mesas</a> </li>
-						        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/garcon/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/garcon.png" ></i> Garçon</a> </li>
-						        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png" ></i> Pagamentos</a> </li>
-						        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/fornecedor/gerencia"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/fornecedor.png" ></i> Fornecedor</a> </li>
-						        <li class="bg_lb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/estoque.png" ></i>Estoque</a> </li>
-						        <li class="bg_lg"> <a href="${pageContext.request.contextPath}/delivery/movimentacao"> <i class="icon icon-truck" ></i>Delivery</a> </li>
-								<li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li>
-						 
-				 		</ul>
-					</div>
-<!-- 				</div> -->
-				</div>
-<!-- 	</div> -->
-<!-- 	</div> -->
- 
-<!--   	<div class="span12"> -->
+		
+<!--                        <div class="row"> -->
+                       <div class="span12">
+                       
+                        <div class="span3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="green">
+                                    <div class="ct-chart" id="dailySalesChart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Daily Sales</h4>
+                                    <p class="category">
+                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                        <div class="span3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="orange">
+                                    <div class="ct-chart" id="emailsSubscriptionChart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Email Subscriptions</h4>
+                                    <p class="category">Last Campaign Performance</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="span3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="red">
+                                    <div class="ct-chart" id="completedTasksChart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Completed Tasks</h4>
+                                    <p class="category">Last Campaign Performance</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                     </div> -->
+
   	
-  <div class="row-fluid">
+  	<div class="row-fluid">
       
         	<div class="widget-box collapsible">
          		 <div class="widget-title">
@@ -169,97 +430,7 @@
         </div>
         </div>
      	
-<!--   	  <div class="row-fluid"> -->
-<!--   	 <div class="widget-box collapsible"> -->
-  	   	 
-  	 
-<!--           <div class="widget-title"> -->
-<!--            <a href="#collapseTwo" data-toggle="collapse">  -->
-<!--            <span class="icon"> -->
-<!--            <i class="icon icon-money"></i> -->
-<!--            </span> -->
-<!--             <h5>Contas a Receber  </h5> -->
-<!--             </a> -->
-            
-<!--             <span class="label label bg_lg">R$:1880</span> -->
-            
-<!--           </div> -->
-<!--           <div class="collapse" id="collapseTwo"> -->
-<!--             <div class="widget-content"> Contas a Receber  -->
-          
-<!--            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div> -->
-          
-<!--           </div> -->
-          
-          
-<!--           </div> -->
-          
-          
-<!--           <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon icon-money"></i></span> -->
-<!--             <h5>Contas a Pagar </h5> -->
-<!--             </a> -->
-<!--             <span class="label label bg_lb">R$:1880</span> -->
-<!--           </div> -->
-          
-<!--           <div class="collapse" id="collapseThree"> -->
-<!--             <div class="widget-content"> Contas a Pagar  -->
-          
-<!--            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div> -->
-          
-<!--       		</div>     -->
-<!--           </div> -->
-          
-<!--   	  <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon icon-money"></i></span> -->
-<!--             <h5>Saldo </h5></a> -->
-<!--             <span class="label label bg_ly">R$:0.00</span> -->
-<!--           </div> -->
-          
-<!--           <div class="collapse" id="collapseOne"> -->
-<!--             <div class="widget-content"> Saldo  -->
-          
-<!--            <div class="new-update clearfix"> <i class="icon-gift"></i>  <span class="update-notice"> <a href="#" title=""><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a href="#" title=""><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a href="#" title=""><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div> -->
-<!--             <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a href="#" title=""><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div> -->
-          
-<!--       		</div>     -->
-<!--           </div>  -->
-          
-          
-<!--         </div> -->
-        
-<!--         </div> -->
-
-<!--         <div class="widget-box collapsible"> -->
-<!--           <div class="widget-title"> <a href="#collapseOne" data-toggle="collapse"> <span class="icon"><i class="icon-arrow-right"></i></span> -->
-<!--             <h5>Toggle, Open by default</h5> -->
-<!--             </a> </div> -->
-<!--           <div class="collapse in" id="collapseOne"> -->
-<!--             <div class="widget-content"> This box is opened by default </div> -->
-<!--           </div> -->
-<!--           <div class="widget-title"> <a href="#collapseTwo" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span> -->
-<!--             <h5>Toggle, closed by default</h5> -->
-<!--             </a> </div> -->
-<!--           <div class="collapse" id="collapseTwo"> -->
-<!--             <div class="widget-content"> This box is now open </div> -->
-<!--           </div> -->
-<!--           <div class="widget-title"> <a href="#collapseThree" data-toggle="collapse"> <span class="icon"><i class="icon-remove"></i></span> -->
-<!--             <h5>Toggle, closed by default</h5> -->
-<!--             </a> </div> -->
-<!--           <div class="collapse" id="collapseThree"> -->
-<!--             <div class="widget-content"> This box is now open </div> -->
-<!--           </div> -->
-<!--         </div> -->
-       
-        
-                          </sec:authorize>
-      
+              
 
   <sec:authorize access="hasRole('ROLE_COZINHA')">
        
@@ -304,16 +475,6 @@
 	</sec:authorize>
   
 		 
-	        
-
-
-<!--         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li> -->
-<!--         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
-<!--       		</div> -->
-      		
-      
-    
-<!--End-Action boxes-->   
 
           
         
@@ -455,14 +616,6 @@
 
 	</sec:authorize>
                 
-                
                 </div>
-                
-				</div>
-<!-- 				</div> -->
+                </div>
 
-<!--                 </div> -->
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
-</div>

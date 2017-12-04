@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/gerencia/gerenciacliente.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/gerencia/gerenciafornecedor.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/gerencia/gerenciagarcon.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/gerencia/gerenciaproduto.jsp=UTF-8

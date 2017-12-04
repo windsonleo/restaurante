@@ -4,12 +4,12 @@
 
 
 <div id="content">
-    <div id="content-header">
-        <div id="breadcrumb"><a href="#" title="Go to Cliente" class="tip-bottom"><i><img
-                src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i> Cliente</a> <a
-                href="#" class="current">Movimentação de Cliente</a></div>
-        <h1>Listagem e Visão Geral</h1>
-    </div>
+<!--     <div id="content-header"> -->
+<!--         <div id="breadcrumb"><a href="#" title="Go to Cliente" class="tip-bottom"><i><img -->
+<%--                 src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i> Cliente</a> <a --%>
+<!--                 href="#" class="current">Movimentação de Cliente</a></div> -->
+<!--         <h1>Listagem e Visão Geral</h1> -->
+<!--     </div> -->
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">

@@ -96,6 +96,13 @@
  
  $(document).ready(function() {
 	 
+	   $('#menu li a').click(function () {
+		   
 
+       	$('#menu').find('li.active').removeClass('active');
+       	$(this).parents("li").addClass('active');
+	
+       	
+       });
    
  });

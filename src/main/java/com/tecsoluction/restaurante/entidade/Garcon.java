@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -35,7 +36,7 @@ public class Garcon extends BaseEntity implements Serializable {
     private String foto;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "garcon")
+    @OneToMany(mappedBy = "garcon",fetch=FetchType.EAGER)
     private List<PedidoVenda> pedidos;
 
 

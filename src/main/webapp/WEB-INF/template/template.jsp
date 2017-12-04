@@ -15,156 +15,103 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-style.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-media.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joint.min.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/uniform.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select2.css" />
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-style.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-media.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/joint.min.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/uniform.css" /> --%>
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select2.css" /> --%>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css"  />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.gritter.css" />
-	   	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" />
- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-wysihtml5.css" />
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.gritter.css" /> --%>
+<!-- 	   	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800"> -->
+<%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" /> --%>
+<%--  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-wysihtml5.css" /> --%>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
 
 
 
 
+		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"
+			 ></script>
+			
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" "   ></script>
+
+		<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"
+			    ></script>
+
+		<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"
+			   ></script>
+			
+								
+			<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"
+			    ></script>
+
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"
+			></script>
+		
+			<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"
+			 ></script>
+		
+			
+		<script src="${pageContext.request.contextPath}/resources/js/demo.js"
+			  ></script>
+
+			
+			
+		<script src="${pageContext.request.contextPath}/resources/js/material.min.js"
+			  ></script>
+	
+	
+	   <script src="https://www.gstatic.com/charts/loader.js"
+		  ></script>
+		  
+<!-- 		  //fim js -->
 
 	
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-			
-					<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-			
-						
-		<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.ui.custom.js"></script>
-		
-
-			
-							
-
-			
-		<script src="${pageContext.request.contextPath}/resources/js/masked.js"></script>
-
-				
-			
-		<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>							
-
-				<script 
-			src="${pageContext.request.contextPath}/resources/js/jquery.uniform.js"></script>			
-
-			
-
-			
-	<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.peity.min.js"></script>
-			
-	
-<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.min.js"></script> 
-
-			
-				<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>	
-			
-				
-			
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.tables.js"></script>
-		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/matrix.wizard.js"></script>
-			
-			
-<!-- 			<script -->
-<%-- 			 src="${pageContext.request.contextPath}/resources/js/matrix.calendar.js"></script>					 --%>
-				
-<%-- 			<script src="${pageContext.request.contextPath}/resources/js/matrix.js"></script>			 --%>
-		
-	
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.dashboard.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.interface.js"></script> 
-			
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.chat.js"></script> 
-			<script src="${pageContext.request.contextPath}/resources/js/matrix.popover.js"></script> 	
-
-				<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
-			
-				<script
-			src="${pageContext.request.contextPath}/resources/js/jquery.wizard.js"></script>			
-			
-					<script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.gritter.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/resources/js/excanvas.min.js"></script>
-
-			 <script src="${pageContext.request.contextPath}/resources/js/matrix.form_common.js"></script>	
-		<script src="${pageContext.request.contextPath}/resources/js/matrix.form_validation.js"></script> 
-			
-
-				
-			
-
-<!-- 			<script -->
-<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap-colorpicker.js"></script>			 --%>
 		
 <!-- 		<script -->
-<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>	 --%>
-			
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.min.js"></script> 
-									
-		<script 
-			src="${pageContext.request.contextPath}/resources/js/joint.min.js"></script>	
-		
-		<script 
-			src="${pageContext.request.contextPath}/resources/js/joint.shapes.devs.min.js"></script>		
-				
-		<script 
-			src="${pageContext.request.contextPath}/resources/js/backbone-min.js"></script>
-							
-				
-		<script
-			src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
-			
-			<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.resize.min.js"></script> 
-		
-	
-		
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.flot.pie.js"></script>
-		
+<%-- 			src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> --%>
+					
 			
 	
  	 	
  	 	<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
 			
 	
 		
 		
-			
+				<link rel="icon" href="${pageContext.request.contextPath}/images/favicon.png"  />
+				<link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css"  type="text/css"/>
+				<link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" type="text/css"/>
+		       	<link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/demo.css"  type="text/css" />
+		        <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/material-dashboard.css" type="text/css"/>
+				<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" type='text/css'/>
+				<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css' />
+
+		        <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/customizado.css" type="text/css"/>
 				
 
 
 
 			
 			
-				<script src="${pageContext.request.contextPath}/resources/js/wysihtml5-0.3.0.js"></script>
+<%-- 				<script src="${pageContext.request.contextPath}/resources/js/wysihtml5-0.3.0.js"></script> --%>
 
 		
 				
 		
-		<script
-			src="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.js"></script>
+<!-- 		<script -->
+<%-- 			src="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.js"></script> --%>
 					 	
  	
- 	
+ 				
+<!-- 			<script -->
+<%-- 			src="${pageContext.request.contextPath}/resources/js/demo.js"></script>	 --%>
  	
  	
 <%--   	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> --%>
@@ -464,6 +411,8 @@ $(function () {
              alert("CEP não encontrado.");
          }
      }
+     
+     
          
      function pesquisacep(valor) {
 
@@ -511,7 +460,86 @@ $(function () {
 
     </script>
  
+  <script type="text/javascript">
+ 	
+    $(document).ready(function() {
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+        
+		   $('#menu li a').click(function () {
+			   
+
+	        	$('#menu').find('li.active').removeClass('active');
+	        	$(this).parents("li").addClass('active');
+		
+	        	
+	        });
+
+    });
+    
+	</script> 
  
+ 
+ <script type ="text/javascript">
+	
+    $(document).ready(function() {
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+    
+	</script>    
+	
+<script type="text/javascript" >  
+/*<![CDATA[*/
+	
+		   $(document).ready(function () {
+			   
+			   
+			   $('#menu li a').click(function () {
+				   
+
+		        	$('#menu').find('li.active').removeClass('active');
+		        	$(this).parents("li").addClass('active');
+			
+		        	
+		        });
+			   
+
+			   $(function () {
+				    $( '.table primary table-hover table-primary data-table' ).searchable({
+				        striped: true,
+				        oddRow: { 'background-color': '#f5f5f5' },
+				        evenRow: { 'background-color': '#fff' },
+				        searchType: 'fuzzy'
+				    });
+				    
+				    $( '#searchable-container' ).searchable({
+				        searchField: '#container-search',
+				        selector: '.row',
+				        childSelector: '.col-xs-4',
+				        show: function( elem ) {
+				            elem.slideDown(100);
+				        },
+				        hide: function( elem ) {
+				            elem.slideUp( 100 );
+				        }
+				    })
+				});
+			   
+	
+			        
+
+			    });
+			    
+			
+		   /*]]>*/	
+	
+
+	     
+</script>
  
  
 </head>
@@ -519,15 +547,19 @@ $(function () {
 
 <body>
 
+	<div class="wrapper">
+	
+		<div class="main-panel">
 		
-		<tiles:insertAttribute name="navegacao" />
-
-
-		<tiles:insertAttribute name="conteudo" />
+				<tiles:insertAttribute name="navegacao" />
+		
+		
+				<tiles:insertAttribute name="conteudo" />
 		
 <%-- 		<tiles:insertAttribute name="footer" /> --%>
 		
-			
+		</div>
+	</div>	
 
 </body>
 </html>

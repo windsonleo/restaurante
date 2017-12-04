@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 <div id="content">
@@ -6,14 +8,14 @@
     <div id="content-header">
         <div id="breadcrumb"><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"
                                 title="Go to Fornecedor" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a> <a
-                href="#">Gerência Fornecedor </a></div>
-        <h1> Gerência de Fornecedores</h1>
+                href="#">Gerencia Fornecedor </a></div>
+        <h1> Gerencia de Fornecedores</h1>
     </div>
 
     <div class="container-fluid">
 
         <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"><a class="close" data-dismiss="alert" href="#">Ã—</a>
                 <h4 class="alert-heading">Erros!</h4>
 
                     ${erros}
@@ -22,7 +24,7 @@
         </c:if>
 
         <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">Ã—</a>
                 <h4 class="alert-heading">Sucesso!</h4>
 
                     ${mensagem}
@@ -30,17 +32,148 @@
 
         </c:if>
         <div class="row-fluid">
-            <div class="span12">
+            
+            
+            <div class="span8">
                 <div class="widget-content nopadding">
-                    <form action="LocalizarFornecedorGerencia" method="POST" class="form-horizontal">
 
-                        <div class="control-group">
-                            <label class="control-label"></label>
-                            <div class="controls">
 
+
+                    <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="">
+                                    <h4 class="title">Dados do Fornecedor</h4>
+                                    <p class="category">Informacoes Pessoais</p>
+                                </div>
+           
+
+
+						<div class="form-group label-floating is-empty">
+                              <label class="control-label">Ativo</label>
+                                <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
+                                       checked="${fornecedor.ativo}" disabled="true"/>
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+									<div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Nome Fantasia</label>
+                                                    <input id="nome" class="form-control" name="nome"
+                                                                            type="text"
+                                                                            value="${fornecedor.nomefantasia}"
+                                                                            placeholder="Digite o Nome da fornecedor"/>
+
+                                                <span class="material-input"></span>
+                                    </div>
+
+
+
+									<div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Razao Social</label>
+                                                    <input id="nome" class="form-control" name="nome"
+                                                                            type="text"
+                                                                            value="${fornecedor.razaosocial}"
+                                                                            placeholder="Digite a Razao Social"/>
+
+                                                <span class="material-input"></span>
+                                    </div>
+
+									<div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Cnpj</label>
+                                                    <input id="nome" class="form-control" name="nome"
+                                                                            type="text"
+                                                                            value="${fornecedor.cnpj}"
+                                                                            placeholder="Digite a Cnpj"/>
+
+                                                <span class="material-input"></span>
+                                    </div>
+
+									<div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Inscricao Estaduala</label>
+                                                    <input id="nome" class="form-control" name="nome"
+                                                                            type="text"
+                                                                            value="${fornecedor.inscricaoestadual}"
+                                                                            placeholder="Digite a Inscricao Estadual"/>
+
+                                                <span class="material-input"></span>
+                                    </div>
+
+
+
+                    </div>
+				</div>
+				
+				
+
+ 					<div class="card">
+                    		<div class="card-content">
+                       
+                                <div class="card-header" data-background-color="">
+                                    <h4 class="title">Dados Gerenciais do Fornecedor</h4>
+                                    <p class="category">Informacoes Gerenciais</p>
+                                </div>
+
+
+<div class="form-group label-floating is-empty">
+                                          <label class="control-label">Margem de Lucro</label>
+											 <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
+                                       disabled="true" class="form-control"/>
+                               				  <span class="material-input"></span>
+                                    </div>
+                                    
+                                    
+									<div class="form-group label-floating is-empty">
+                                          <label class="control-label">Lucro</label>
+  										<input id="lucro" name="lucro" class="form-control" type="text" value=""
+                                       		placeholder="Lucro total" disabled="true"/>
+                               				  <span class="material-input"></span>
+                                    </div> 
+                                    
+                                    
+                                    <div class="form-group label-floating is-empty">
+                                          <label class="control-label">Total de Pedidos Compras</label>
+  										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
+                                       		placeholder="Pedidos total" disabled="true"/>
+                               				  <span class="material-input"></span>
+                                    </div>                                    
+
+
+
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        					<div class="span4">
+					
+                     
+					
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/produto/vazio.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                           <form action="LocalizarFornecedorGerencia" method="POST" class="">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">fornecedor</label> -->
                                 <input type="text" list="${fornecedorList}" id="id"
-                                       placeholder="Digite o Código do Fornecedor" name="id" autocomplete="off"
-                                       class="form-horizontal">
+                                       placeholder="Digite o Codigo do fornecedor" name="id" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
 
 
                                 <datalist id="${fornecedorList}">
@@ -53,140 +186,33 @@
 
 
                                 </datalist>
+                                    
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">fornecedor</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarFornecedorGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
 
-                                <%-- 									<input type="text"  id="telefone" name="telefone"  class="" value="${cliente.telefone }" placeholder="Digite o Telefone"> --%>
-
-
-                                <input type="submit" class="btn btn-lg btn-success"
-                                       value="Localizar">
-
-
-                            </div>
-
-
-                        </div>
-
-
-                    </form>
-
-
-                    <div class="widget-box">
-                        <div class="widget-title"><span class="icon"> <i class="icon-info-sign"></i> </span>
-                            <h5>Dados do Fornecedor</h5>
-                        </div>
-
-
-                        <div class="control-group">
-                            <label class="control-label">Ativo?</label>
-                            <div class="controls">
+                                       
+                                 <span class="material-input"></span>
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${fornecedor.nomefantasia} ${fornecedor.razaosocial}
+                                     <p class="card-content pull-left">Cnpj:${fornecedor.cnpj} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owensâ€™ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="control-group">
-                            <label class="control-label">Id</label>
-                            <div class="controls">
-                                <input id="id" class="form-control" name="id" type="text" value="${fornecedor.id}"
-                                       placeholder="Digite o id"/>
-                                <input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox"
-                                       checked="${fornecedor.ativo}"/>
-
-                            </div>
-                        </div>
-
-                        <!--                 <div class="control-group"> -->
-                        <!--                 <label class="control-label">Foto</label> -->
-                        <!--                 <div class="controls"> -->
-                        <%--              <input id="foto" class="form-control" name="foto" type="image" value="${fornecedor.foto}" placeholder="Digite o Foto"/>					 --%>
-                        <!--                 </div> -->
-                        <!--               </div>                 -->
-
-
-                        <div class="control-group">
-                            <label class="control-label">Nome Fantasia</label>
-                            <div class="controls">
-                                <input id="nomefantasia" class="form-control" name="nomefantasia" type="text"
-                                       value="${fornecedor.nomefantasia}" placeholder="Digite o Nome da Fornecedor"/>
-                                <input id="razaosocial" class="form-control" name="razaosocial" type="text"
-                                       value="${fornecedor.razaosocial}" placeholder="Digite o Razão Social"/>
-
-
-                            </div>
-                        </div>
-
-                        <!--               <div class="control-group"> -->
-                        <!--                 <label class="control-label">Genero</label> -->
-                        <!--                 <div class="controls"> -->
-
-                        <!--                  <select id="genero" name="genero" id="genero" class="form-control">            -->
-                        <!-- 	                <optgroup label="Genero do Usuario"> -->
-
-                        <!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
-                        <!-- 	           				<option value="FEMININO">FEMININO</option> -->
-
-                        <!-- 	                </optgroup> -->
-                        <!-- 	            </select> -->
-
-
-                        <!--                 </div> -->
-                        <!--               </div> -->
-
-
-                        <div class="control-group">
-                            <label class="control-label">Cnpj</label>
-                            <div class="controls">
-                                <input id="cnpj" class="form-control" name="cnpj" type="text" value="${fornecedor.cnpj}"
-                                       placeholder="Digite o Cnpj"/>
-                                <input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text"
-                                       value="${fornecedor.inscricaoestadual}" placeholder="Digite o IE"/>
-
-                            </div>
-                        </div>
-
-                        <!--             <div class="control-group"> -->
-                        <!--                 <label class="control-label">I.E</label> -->
-                        <!--                 <div class="controls"> -->
-                        <!--                 </div> -->
-                        <!--               </div>       -->
-
-                    </div>
-
-
-                    <div class="widget-box">
-
-                        <div class="widget-title"><span class="icon"> <i class="icon-info-sign"></i> </span>
-                            <h5>Dados Gerenciais</h5>
-                        </div>
-
-
-                        <div class="control-group">
-                            <label class="control-label">Margem de Lucro</label>
-                            <div class="controls">
-                                <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
-                                       disabled="true"/>
-                                <input id="totpedido" name="totpedido" class="span4" type="text" value=""
-                                       placeholder="Qunatidades de Pedidos" disabled="true"/>
-                                <input id="lucro" name="lucro" class="span4" type="text" value=""
-                                       placeholder="Lucro total" disabled="true"/>
-                                <input id="totestoque" name="totestoque" class="span4" type="text" value=""
-                                       placeholder="Total no Estoque" disabled="true"/>
-
-                            </div>
-                        </div>
-
-
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-
-
-                        <!-- 			<div class="form-actions" align="center"> -->
-                        <!-- 				<button type="submit"class="btn btn-success">Cadastrar</button> -->
-                        <!-- 			</div> -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
+</div>
 </div>
 
 

@@ -84,7 +84,8 @@ public class ProdutoController extends AbstractController<Produto> {
         categoriaList = categoriaService.findAll();
 
         fornecedorList = fornecedorService.findAll();
-
+       
+        produtoList = getservice().findAll();
 
         model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("produtosList", produtoList);
