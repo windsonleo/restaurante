@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
-import javax.persistence.PersistenceContext;
-
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
 
@@ -20,7 +18,7 @@ import javax.persistence.PersistenceContext;
 //@PersistenceContext
 public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
-	
+
     @Autowired
     private IUsuarioDAO dao;
 
@@ -44,7 +42,7 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
 
     }
 
-    
+
     public Usuario findByUsername(String username) {
 
         return dao.findByUsername(username);
@@ -58,30 +56,30 @@ public class UsuarioServicoImpl extends AbstractEntityService<Usuario> {
     }
 
 
-	@Override
-	protected void validateSave(Usuario post) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateSave(Usuario post) {
+        // TODO Auto-generated method stub
+
+    }
 
     @Override
     protected String getIdEntity(Usuario usuario) {
-        return null;
+        return usuario.getId().toString();
     }
 
 
     @Override
-	protected void validateEdit(Usuario post) {
-		// TODO Auto-generated method stub
-		
-	}
+    protected void validateEdit(Usuario post) {
+        // TODO Auto-generated method stub
+
+    }
 
 
-	@Override
-	protected void validateDelete(UUID id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void validateDelete(UUID id) {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }

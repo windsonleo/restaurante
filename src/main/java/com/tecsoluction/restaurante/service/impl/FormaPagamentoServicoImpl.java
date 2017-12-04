@@ -41,7 +41,7 @@ public class FormaPagamentoServicoImpl extends AbstractEntityService<FormaPagame
 
     @Override
     protected String getIdEntity(FormaPagamento formaPagamento) {
-        return null;
+        return formaPagamento.getId().toString();
     }
 
     @Override

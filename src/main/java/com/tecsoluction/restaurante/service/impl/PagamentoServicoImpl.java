@@ -41,7 +41,7 @@ public class PagamentoServicoImpl extends AbstractEntityService<Pagamento> {
 
     @Override
     protected String getIdEntity(Pagamento pagamento) {
-        return null;
+        return pagamento.getId().toString();
     }
 
     @Override

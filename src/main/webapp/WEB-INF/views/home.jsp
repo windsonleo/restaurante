@@ -486,8 +486,10 @@
     <div class="row-fluid">
          		<div class="widget-box collapsible">
           
-	          <div class="widget-title"><span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png">
-	          </img></i>
+	          <div class="widget-title"><span class="icon">
+				  <i class="icon-icon">
+                      <img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png"/>
+                  </i>
 	          </span>
 	           <a href="#collapsesalao" data-toggle="collapse">
 	          

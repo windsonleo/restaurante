@@ -9,22 +9,26 @@
     <security:http auto-config="true" use-expressions="true">
         <security:csrf disabled="true"/>
 
-        <security:access-denied-handler error-page="/acessonegado"/>
 
         <security:form-login
-                login-page="/"
-                default-target-url="/home"
+                login-page="/login"
+                default-target-url="/"
                 authentication-failure-url="/erro"
                 username-parameter="username"
                 password-parameter="senha"/>
+
+        <security:access-denied-handler error-page="/acessonegado"/>
+
 
         <!--         		<security:custom-filter position="LAST" ref="usernamePasswordAuthenticationFilter"/> -->
 
         <!--     	 <security:logout logout-success-url="/" /> -->
         <security:intercept-url pattern="/resources/**" access="permitAll"/>
         <security:intercept-url pattern="/login**" access="permitAll"/>
+        <security:intercept-url pattern="/erro**" access="permitAll"/>
+        <security:intercept-url pattern="/acessonegado**" access="permitAll"/>
         <security:intercept-url pattern="/cardapio**" access="permitAll"/>
-        <security:intercept-url pattern="/home**" access="hasRole('ROLE_MEMBRO')"/>
+        <security:intercept-url pattern="/**" access="hasRole('ROLE_MEMBRO')"/>
         <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/pedidocompra/movimentacao" access="hasRole('ROLE_COMPRA')"/>

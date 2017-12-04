@@ -41,7 +41,7 @@ public class RecebimentoServicoImpl extends AbstractEntityService<Recebimento> {
 
     @Override
     protected String getIdEntity(Recebimento recebimento) {
-        return null;
+        return recebimento.getId().toString();
     }
 
     @Override

@@ -52,7 +52,7 @@ public class ProdutoServicoImpl extends AbstractEntityService<Produto> {
 
     @Override
     protected String getIdEntity(Produto produto) {
-        return null;
+        return produto.getId().toString();
     }
 
     @Override
