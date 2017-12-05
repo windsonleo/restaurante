@@ -4,8 +4,8 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/garcon/movimentacao" title="Go to Garcon" class="tip-bottom"><i class="icon-home"></i> Garcon</a> <a href="#">Gerencia Garcon </a> </div>
-    <h1> Gerencia de Garcons</h1>
+</br>
+    <h2> Gerencia de Garcons</h2>
   </div>
 
             <div class="container-fluid">

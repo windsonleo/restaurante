@@ -6,8 +6,8 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" title="Go to Pedido Compra" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Pedido Compra</a> <a href="#">Movimenta��o Pedido Compra </a><a href="#" class="current">Cadastro Pedido Compra</a> </div>
-    <h1>Cadastro de Pedido Compra</h1>
+</br>
+    <h2>Cadastro de Pedido Compra</h2>
   </div>
 
             <div class="container-fluid">
@@ -31,10 +31,19 @@
     </c:if>
 <div class="row-fluid">
       <div class="span12">
-               <div class="widget-box">
-     <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> </span>
-            <h5>Cadastro de Pedido de Compra</h5>
-          </div>                         
+                      <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Pedido Compra</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">   
 					 
 					 <form  role="form" id="ds" class="form-horizontal"
 					 action="${pageContext.request.contextPath}/pedidocompra/${acao}"
@@ -73,7 +82,7 @@
                 </div>
 				
                 </div>
-              </div>
+<!--               </div> -->
               
 <!--                <div class="control-group"> -->
 <!--                 <label class="control-label">Situacao Pedido</label> -->
@@ -206,19 +215,22 @@
 				
 				
                 </div>
-              </div>             
-              
-                                                  
-                           			 
-			  
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                
+                
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
 			
-			<div class="form-actions" align="center">
+
+              </div>             
+              
+               			<div class="form-actions" align="center">
 				<button type="submit"class="btn btn-success">${acao}</button>
 			</div>
 			
-</form>
+</form>                                   
+                           			 
+			  
+
 </div>
 </div>
 
@@ -227,5 +239,7 @@
 									
 
 </div>	
+</div>
+</div>
 
 

@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao" title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a><a href="#">Movimenta��o Estoque</a> <a href="#" class="current">Cadastro Estoque</a> </div>
-    <h1>Cadastro de Estoque</h1>
+	</br>
+    <h2>Cadastro de Estoque</h2>
   </div>
   <div class="container-fluid"><hr>
   
@@ -30,11 +30,19 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro de Estoque</h5>
-          </div>
-          <div class="widget-content nopadding">
+               <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Estoque</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/estoque/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
                <div class="control-group">
@@ -47,8 +55,8 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
-               			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${estoque.ativo}"/>
+						<input id="id" class="form-control" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" />
+               			<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${estoque.ativo}"/>
                
                 </div>
               </div>
@@ -127,196 +135,4 @@
             </div>
           </div>
 
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
 </div>
-
-
-
-
-
-
-
-
-
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Estoque <small>Cadastro e Vis�o Geral</small>
-                                                        
-                        </h1>
-                        
-                              		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-user"></i> Estoque
-                            </li>
-                        </ol>
-                                      <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/estoque/${acao}" ModelAttribute="estoque" method="POST">
- 
- 			<div class="panel panel-primary">
-					<div class="panel-heading">
-							<h3 class="panel-title">Cadastro de Estoque </h3>
-					</div>
-					<div class="panel-body">
-					
-					
- 
-							<div class="form-group" align="">
-<%-- 							<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image"> --%>
-					
-							   <label>
-							  	<span>Ativo?</span>
-									<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${estoque.ativo}"/>
-								</label>
-						</div>
-
-				   <label>
-						<input id="id" class="form-control" name="id" type="text" value="${estoque.id}" placeholder="Digite o Id"/>
-					</label>
-			 
-		
-			 
-			   		<label>
-						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome"/>
-					</label>
-		 	 
-
-			
-			   		<label>
-						<input id="foto" class="form-control" name="foto" type="text" value="${estoque.logo}" placeholder="Digite Caminho da Foto"/>					
-					</label>
-			
-              
-              
-           
-		 	 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<p></p>
-<p></p>
-            
-            <div class="form-group" align="center">
-				<button type="submit"class="btn btn-sm btn-primary">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-			</div> 
-			
-			</div>
-			</div>
-			
-										
-
-</form>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Estoque <small>Cadastro e Vis�o Geral</small>
-                                                        
-                        </h1>
-                        
-                              		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-user"></i> Estoque
-                            </li>
-                        </ol>
-                                      <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/estoque/${acao}" ModelAttribute="estoque" method="POST">
- 
- 			<div class="panel panel-primary">
-					<div class="panel-heading">
-							<h3 class="panel-title">Cadastro de Estoque </h3>
-					</div>
-					<div class="panel-body">
-					
-					
- 
-							<div class="form-group" align="">
-<%-- 							<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image"> --%>
-					
-							   <label>
-							  	<span>Ativo?</span>
-									<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${estoque.ativo}"/>
-								</label>
-						</div>
-
-				   <label>
-						<input id="id" class="form-control" name="id" type="text" value="${estoque.id}" placeholder="Digite o Id"/>
-					</label>
-			 
-		
-			 
-			   		<label>
-						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome"/>
-					</label>
-		 	 
-
-			
-<!-- 			   		<label> -->
-<%-- 						<input id="foto" class="form-control" name="foto" type="text" value="${estoque.foto}" placeholder="Digite Caminho da Foto"/>					 --%>
-<!-- 					</label> -->
-			
-              
-              
-           
-		 	 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<p></p>
-<p></p>
-            
-            <div class="form-group" align="center">
-				<button type="submit"class="btn btn-sm btn-primary">${acao}</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-			</div> 
-			
-			</div>
-			</div>
-			
-										
-
-</form>
-</div>
-</div>
-</div>
-</div>
-
-

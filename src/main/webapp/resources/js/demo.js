@@ -50,7 +50,7 @@ demo = {
         /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
         dataDailySalesChart = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            labels: ['S', 'T', 'Q', 'QT', 'SX', 'SB', 'D'],
             series: [
                 [12, 17, 7, 17, 23, 18, 38]
             ]
@@ -103,9 +103,9 @@ demo = {
         /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
         dataCompletedTasksChart = {
-            labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
+            labels: ['15min', '30min', '45min', '90min', '120min'],
             series: [
-                [230, 750, 450, 300, 280, 240, 200, 190]
+                [1, 2, 3, 4, 5]
             ]
         };
 
@@ -114,7 +114,7 @@ demo = {
                 tension: 0
             }),
             low: 0,
-            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -173,11 +173,11 @@ demo = {
             
 //        	var key = document.getElementById("incidencia");
 //        		Object.keys(grafs)
-        	labels: ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
-//            labels: [Object.keys(grafs)],
+        		 labels: ['S', 'T', 'Q', 'QT', 'SX', 'SB', 'D'],
+        		 //            labels: [Object.keys(grafs)],
 
             series: [
-                [230, 750, 450, 300, 280, 240, 200, 190, 350, 550, 410, 750, 650,150,89]
+                [230, 750, 450, 300, 280, 240, 200]
             ]
         };
         var optionsEmailsSubscriptionChart = {
@@ -212,9 +212,9 @@ demo = {
         var dataEmailsSubscriptionChartlotofacil = {
             
 
-        	labels: ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14'],
+        		labels: ['S', 'T', 'Q', 'QT', 'SX', 'SB', 'D'],
             series: [
-                [210, 720, 40, 30, 230, 290, 200, 190, 330, 580, 430, 70, 655,159,890]
+                [210, 720, 40, 30, 230, 290, 200]
             ]
         };
         var optionsEmailsSubscriptionChartlotofacil = {

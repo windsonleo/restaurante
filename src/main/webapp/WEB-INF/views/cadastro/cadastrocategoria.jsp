@@ -6,11 +6,12 @@
 
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Categoria"
-                                class="tip-bottom"><i class="icon-icon"><img
-                src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> Categoria</a> <a
-                href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div>
-        <h1>Cadastro de Categoria</h1>
+<%--         <div id="breadcrumb"><a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Categoria" --%>
+<!--                                 class="tip-bottom"><i class="icon-icon"><img -->
+<%--                 src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> Categoria</a> <a --%>
+<!--                 href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div> -->
+       </br>
+        <h2>Cadastro de Categoria</h2>
     </div>
     <div class="container-fluid">
         <hr>
@@ -34,12 +35,19 @@
         </c:if>
         <div class="row-fluid">
             <div class="span12">
-                <div class="widget-box">
-                    <div class="widget-title"><span class="icon"> <i class="icon-icon"> <img
-                            src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> </span>
-                        <h5>Cadastro de Categoria</h5>
-                    </div>
-                    <div class="widget-content nopadding">
+                        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Categoria</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
                         <form class="form-horizontal" method="post"
                               action="${pageContext.request.contextPath}/categoria/${acao}" name="basic_validate"
                               id="basic_validate" novalidate="novalidate">
@@ -47,7 +55,7 @@
                             <div class="control-group">
                                 <label class="control-label">Ativo?</label>
                                 <div class="controls">
-                                    <input id="ativo" name="ativo" class="form-control" type="checkbox"
+                                    <input id="ativo" name="ativo" class="" type="checkbox"
                                            checked="${categoria.ativo}"/>
                                 </div>
                             </div>
@@ -56,14 +64,14 @@
                             <div class="control-group">
                                 <label class="control-label">Id</label>
                                 <div class="controls">
-                                    <input id="id" class="span2" name="id" type="text" value="${categoria.id}"
+                                    <input id="id" class="form-control" name="id" type="text" value="${categoria.id}"
                                            placeholder="Digite o id" readonly/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Nome</label>
                                 <div class="controls">
-                                    <input id="nome" class="span4" name="nome" type="text" value="${categoria.nome}"
+                                    <input id="nome" class="form-control" name="nome" type="text" value="${categoria.nome}"
                                            placeholder="Digite o Nome da Categoria"/>
                                 </div>
                             </div>
@@ -72,7 +80,7 @@
                                 <label class="control-label">Categoria Pai</label>
                                 <div class="controls">
 
-                                    <select id="catpai" name="catpai" class="span3">
+                                    <select id="catpai" name="catpai" class="form-control">
                                         <optgroup label="Tipos de Catgeoria Pai">
 
                                             <option value="${categoria.catpai.id}" selected="selected">${categoria.catpai}</option>
@@ -100,9 +108,6 @@
     </div>
 </div>
 
-
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em
-        Tecnologia</a></div>
 </div>
+
 

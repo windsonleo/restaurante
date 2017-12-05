@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/formapagamento/movimentacao" title="Go to Forma de Pagamento" class="tip-bottom"><i class="icon-home"></i> Forma de Pagamento</a> <a href="#">Movimenta��o Forma de Pagamento</a> <a href="#" class="current">Cadastro Forma de Pagamento</a> </div>
-    <h1>Cadastro de Forma de Pagamento</h1>
+	</br>
+    <h2>Cadastro de Forma de Pagamento</h2>
   </div>
   <div class="container-fluid"><hr>
   
@@ -31,12 +31,20 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png"></i> </span>
-            <h5>Cadastro de Forma de Pagamento</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}">
+                <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Forma de Pagamento</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">    
+           <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}">
               
               
               <div class="control-group">
@@ -98,7 +106,4 @@
             </div>
           </div>
 
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
 </div>

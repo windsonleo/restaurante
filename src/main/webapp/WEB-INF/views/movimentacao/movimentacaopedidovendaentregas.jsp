@@ -4,27 +4,30 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Delivery" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> Delivery</a> <a href="#" class="current">Movimenta��o de  Delivery</a> </div>
-    <h1>Listagem e Vis�o Geral</h1>
+	</br>
+    <h2>Listagem e Visao Geral</h2>
     
   </div>
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
+    
       <div class="span12">
       
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /></i> 	     
-         
-            <h5>Movimenta��o Delivery</h5>
-          <button type="submit" class="btn btn-sm btn-success" onClick="window.location='AdicionarDelivery'">Add</button> </span>
-<%--              <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon" color="blue"></i></a> </span> --%>
-         
-<!--             </div> -->
-          </div>
-          
-          
-          <div class="widget-content nopadding">
+           <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Movimentacao Delivery</h4>
+                                    <p class="category">Todos</p>
+                                     <button type="submit" class="btn btn-sm btn-success pull-right" onClick="window.location='AdicionarDelivery'">Add</button>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/delivery/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
             <table class="table table-bordered data-table">
             
                      
@@ -32,7 +35,7 @@
                <tr>
                                         <th>Id</th>
 									    <th>Data</th>
-									    <th>Situa��o</th>
+									    <th>Situacao</th>
 									    
 									    <th>Status</th>
 									    <th>Origem</th>
@@ -43,7 +46,7 @@
 									     <th>Itens</th>
 									     <th>Ativo</th>
 									     <th>Pago</th>
-									    <th>A��o</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,9 +113,9 @@
 		                 <td>${pedidovenda.mesa}</td>
 		                 <td>${pedidovenda.garcon}</td>
 		                  <td>${pedidovenda.items}</td>
-		                   <td><span class="label label bg_lb"> ${pedidovenda.ativo}</span></td>
+		                   <td><span class="badge label bg_lb"> ${pedidovenda.ativo}</span></td>
 		                   
-		                   <td>
+<!-- 		                   <td> -->
 		                   
                   	<c:choose>
 				    <c:when test="${pedidovenda.ispago}">
@@ -123,13 +126,13 @@
 				    
 				    <c:otherwise>
 
-                  <td><span class="label label-important">${pedidovenda.ispago}</span></td>
+                  <td><span class="badge badge-primary">${pedidovenda.ispago}</span></td>
 
 				    </c:otherwise>
 				</c:choose>		                   
 		                   
 		                   
-		                   </td>
+<!-- 		                   </td> -->
 		                   
 		                   
 		                   
@@ -193,6 +196,4 @@
         
         </div>
         
-        <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
 </div>

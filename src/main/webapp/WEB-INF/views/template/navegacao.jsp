@@ -20,7 +20,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Senpai</a>
+                         <img class="image-responsive" src="${pageContext.request.contextPath}/resources/images/logosenpai.png"></img>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -93,10 +93,16 @@
 			            <div class="logo">
 <!-- 			                <a href="http://www.creative-tim.com" class="simple-text"> -->
 
-  <img class="image-responsive" src="${pageContext.request.contextPath}/resources/images/logosenpai.png"></img>
+<%--   <img class="image-responsive" src="${pageContext.request.contextPath}/resources/images/logosenpai.png"></img> --%>
 
 <!-- 			                   <i class="fa fa-paw"></i> Senpai -->
+<!-- 			                </a> -->
+
+	            <div class="logo">
+			                <a href="http://www.creative-tim.com" class="simple-text">
+			                   <i class="fa fa-paw"></i> Tecsoluction
 			                </a>
+			            </div>
 			            </div>
 			            
 			            <div class="sidebar-wrapper">
@@ -116,7 +122,7 @@
 			                    </li>
 
 			                    <li class="">
-			                        <a  href="${pageContext.request.contextPath}/cliente/movimentacao/" >
+			                        <a  href="${pageContext.request.contextPath}/cliente/movimentacao" >
 			                            <i class="material-icons">person</i>
 			                            <p>Cliente</p>
 			                        </a>

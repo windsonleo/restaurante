@@ -6,8 +6,8 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/delivery/movimentacao" title="Go to Delivery" class="tip-bottom"><i class="icon-home"></i> Delivery</a> <a href="#">Movimenta��o Delivery </a> <a href="#" class="current">Cadastro Delivery</a> </div>
-    <h1> Delivery</h1>
+  </br>
+    <h2> Delivery</h2>
   </div>
 
             <div class="container-fluid">
@@ -29,68 +29,31 @@
             </div>
             
     </c:if>
-<div class="row-fluid">
+<div class="row-fluid">                  
+                        
       <div class="span12">
-                <div class="widget-content nopadding">               
-			<form action="LocalizarClienteFone" method="POST" class="form-horizontal">		
-  
-				<div class="control-group">
-                <label class="control-label"></label>
-                <div class="controls">
-			
-								<input type="text" list="${clientesList}" id="telefone" placeholder="Digite o Telefone" name="telefone" autocomplete="off" class="form-horizontal">
-								
-									
-									<datalist id="${clientesList}">
-								
-									 	<c:forEach var="cliente" items="${clientesList}" varStatus="id">
-										
-											  <option  value="${cliente.telefone }"> ${cliente.nome } </option>
-										
-										  </c:forEach>
-								  
-								  
-									</datalist>
-									
-<%-- 									<input type="text"  id="telefone" name="telefone"  class="" value="${cliente.telefone }" placeholder="Digite o Telefone"> --%>
-									
-
-					
-							
-								<input type="submit" class="btn btn-lg btn-success"
-										value="${acao}">
-											
-			   
-              </div>
-
-
-									
-									
-									
-								
-              </div>
-              
-              
+      	<div class="span8">
+      	
+      	                       <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
                                 
-							</form>
-							
-			 							 
-			 		
-					 
-                        </div>
-                        
-                        
-               <div class="widget-box">
-     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Dados do Cliente</h5>
-          </div>                         
+                                    <h4 class="title">Cadastro Delivery</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
 
 
  <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome"  name="nome" type="text" class="span6" value="${cliente.nome}" placeholder="Digite o nome" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
-                		<input id="telefone" name="telefone" class="span4"  type="text" value="${cliente.telefone}" readonly="readonly"/>
+						<input id="nome"  name="nome" type="text" class="form-control" value="${cliente.nome}" placeholder="Digite o nome" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+                		<input id="telefone" name="telefone" class="form-control"  type="text" value="${cliente.telefone}" readonly="readonly"/>
                 
                 
                 </div>
@@ -100,25 +63,25 @@
                 <label class="control-label">Endereco </label>
                 <div class="controls">
 				
-				<input id="id" name="id"class="span2" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
+				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
 				
-				<input id="cep" name="cep"class="span2" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
+				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
 				
-				<input id="logradouro" name="logradouro"class="span4" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
-				<input id="numero" name="numero"class="span2" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
+				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
 				
 				
-           		<input id="bairro" name="bairro" class="span2"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
+           		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
 
-           		<input id="cidade" name="cidade" class="span2"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
+           		<input id="cidade" name="cidade" class="form-control"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
 
-           		<input id="uf" name="uf"class="span2" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/>
+           		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/>
            		
-           		<input id="pontoreferencia" name="pontoreferencia" class="span4"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
+           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
 				
-				<input id="complemento" name="complemento" class="span4"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
+				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
 				
-				 <input id="ibge" name="ibge" class="span2 m-wrap" type="text" value=""/>
+				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/>
 								
 				
                 </div>
@@ -128,9 +91,19 @@
 
 
 
-  <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Dados do Pedido</h5>
-          </div>  
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Dados do Pedido</h4>
+                                    <p class="category">Confira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">  
 					 
 					 <form  role="form" id="ds" class="form-horizontal"
 					 action="${pageContext.request.contextPath}/pedidovenda/add"
@@ -141,8 +114,8 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" value="${pedidovenda.id}" placeholder="Digite o Id"/>
-                		<input id="ativo" name="ativo" class="span4"  type="checkbox" checked="${pedidovenda.ativo}"/>
+						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder="Digite o Id"/>
+                		<input id="ativo" name="ativo" class="form-control"  type="checkbox" checked="${pedidovenda.ativo}"/>
                 
                 
                 </div>
@@ -152,7 +125,8 @@
                 <label class="control-label">Data </label>
                 <div class="controls">
 				
-				<input id="data" name="data" class="form-control" type="text" value="${pedidovenda.data}"placeholder="Digite a Data"/>
+				<input id="data" name="data" class="form-control" type="text" value="<fmt:formatDate 
+                pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder="Digite a Data"/>
 				
 									<select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
@@ -171,7 +145,7 @@
                 <label class="control-label">Situacao Pedido</label>
                 <div class="controls">
          <select id="situacao"name="situacao"  class="form-control" >
-	                                  <optgroup label="Situa��o do Pedido">
+	                                  <optgroup label="Situaï¿½ï¿½o do Pedido">
 		           							           			
 		           				<option value="${pedidovenda.situacao}">${pedidovenda.situacao}</option>
 		           				      				
@@ -229,5 +203,74 @@
 									
 
 </div>	
+
+</div>
+</div>
+							<div class="span4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                        <form action="LocalizarClienteFone" method="POST" class="form-control">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">Cliente</label> -->
+                                <input type="text" list="${clientesList}" id="telefone"
+                                       placeholder="Digite o Codigo do Cliente" name="telefone" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${clientesList}">
+
+                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                   
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">Cliente</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarClienteFone" class="btn btn-danger btn-round btn-md">Localizar</button>
+
+                                   <button type="submit" formaction="add" class="btn btn-primary btn-round btn-md">Adicionar</button>
+
+                                       
+<!--                                  <span class="material-input"></span> -->
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                   
+                                    </br>
+                                   
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
+<%--                                      <p class="card-content pull-left">${cliente.id} </p> </h4> </p> --%>
+                                    <p class="card-content">
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+                                    </p>
+                                    
+                                     </div>
+                                </div>
+                            </div>
+                            </div>
+</div>
+</div>
+</div>
 
 

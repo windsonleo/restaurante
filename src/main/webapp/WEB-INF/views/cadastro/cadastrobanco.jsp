@@ -9,7 +9,6 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/banco/movimentacao" title="Go to Banco" class="tip-bottom"><i class="icon-home"></i> Banco</a> <a href="#">Movimenta��o Banco </a> <a href="#" class="current">Cadastro Banco</a> </div>
     
 <%--     <c:if test="${mensagem}"> --%>
 <!--     	<div class="alert alert-success" > -->
@@ -27,8 +26,8 @@
 
   
     
-    
-    <h1>Cadastro de Banco</h1>
+    </br>
+    <h2>Cadastro de Banco</h2>
 
     
   </div>
@@ -55,13 +54,24 @@
                
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-        
-
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro de Banco</h5>
-          </div>
-          <div class="widget-content nopadding">
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Banco</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/banco/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          
+          
+          
+          <div class="">
+           
+           
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/banco/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
 
 						
@@ -81,7 +91,7 @@
 							<div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-				<input id="ativo" name="ativo"  type="checkbox" checked="${banco.ativo}"/>
+				<input id="ativo" name="ativo"  type="checkbox" checked="${banco.ativo}" class="checkbox"/>
                 </div>
               </div>
               
@@ -89,19 +99,19 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" value="${banco.id}" placeholder="Digite o Id"/>
+						<input id="id" class="form-control"  name="id" type="text" value="${banco.id}" placeholder="Digite o Id"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
                 <form:errors path="banco.nome" cssStyle="color:red"/>
-                  <input type="text" name="nome" id="nome" placeholder="Digite o Nome do Banco" class="has-error">
+                  <input type="text" name="nome" id="nome" placeholder="Digite o Nome do Banco" class="form-control">
                 </div>
               </div>
 
               <div class="control-group">
-                <label class="control-label">N�mero</label>
+                <label class="control-label">Numero</label>
                 <div class="controls">
 						<input id="numero" class="form-control" name="numero" type="text" value="${banco.numero}" placeholder="Digite o Numero do Banco"/>					
                 </div>
@@ -118,8 +128,5 @@
             </div>
             </div>
          
-      
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
-</div>
+      </div>
 

@@ -6,14 +6,8 @@
 
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb">
-            <a href="${pageContext.request.contextPath}/cliente/movimentacao"
-               title="Go to Cliente" class="tip-bottom"><i class="icon-icon"><img
-                    src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i>
-                Cliente</a> <a href="#">Movimenta��o Cliente</a> <a href="#"
-                                                                    class="current">Cadastro Cliente</a>
-        </div>
-        <h1>Cadastro de Cliente</h1>
+		</br>
+        <h2>Cadastro de Cliente</h2>
     </div>
     <div class="container-fluid">
         <hr>
@@ -39,16 +33,19 @@
         </c:if>
         <div class="row-fluid">
             <div class="span12">
-                <div class="widget-box">
-                    <div class="widget-title">
-						<span class="icon"> <i class="icon-icon"><img
-                                src="${pageContext.request.contextPath}/resources/images/icons/16/cliente.png"/></i>
-						</span>
-                        <h5>Cadastro de Cliente</h5>
+                        <div class="card">
+                    <div class="card-content">
                        
-                    </div>
-                    <div class="widget-content nopadding">
-
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Cliente</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
 
 						<form id="form" class="form-horizontal" method="post"
 							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente">
@@ -59,15 +56,15 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-key"></i></span>
 
-                                            <input id="id" class="span11 m-wrap" name="id" type="text"
+                                            <input id="id" class="form-control" name="id" type="text"
                                                    value="${cliente.id}" placeholder="Digite o id"/>
 
 
                                         </div>
 
                                         <div class="input-prepend">
-                                            <span class="add-on"><i class="icon-ok-sign">Ativo?</i></span>
-                                            <input id="ativo" name="ativo" class="span11 m-wrap" type="checkbox"
+                                            <span class="add-on pull-left"><i class="icon-ok-sign"></i></span>
+                                            <input id="ativo" name="ativo" class="" type="checkbox"
                                                    checked="${cliente.ativo}"/>
                                         </div>
 
@@ -84,7 +81,7 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-picture"></i></span>
 
-                                            <input type="text" id="foto" name="foto" class="span11 m-wrap"
+                                            <input type="text" id="foto" name="foto" class="form-control"
                                                    value="${cliente.foto}" placeholder="Digite o caminho da Foto">
                                         </div>
                                     </div>
@@ -95,7 +92,7 @@
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-user"></i></span> <input id="nome"
-                                                                                                         class="span11 m-wrap"
+                                                                                                         class="form-control"
                                                                                                          name="nome"
                                                                                                          type="text"
                                                                                                          value="${cliente.nome}"
@@ -109,7 +106,7 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-envelope"></i></span> <input
                                                 id="mask-mail"
-                                                class="span12 mask text" name="email" type="text"
+                                                class="form-control" name="email" type="text"
                                                 value="${cliente.email}" placeholder="Digite o Email"/>
                                         </div>
                                     </div>
@@ -120,7 +117,7 @@
                                         <div class="input-prepen">
                                             <span class="add-on"><i class="icon-question-sign"></i></span>
 
-                                            <select id="genero" name="genero" class="span3">
+                                            <select id="genero" name="genero" class="form-control">
                                                 <optgroup label="Genero do Cliente">
 													
 												  <option value="${cliente.genero }">${cliente.genero }</option>
@@ -140,7 +137,7 @@
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-phone"></i></span> <input
                                                 id="mask-phone"
-                                                class="span11 mask text" name="telefone" type="text"
+                                                class="form-control" name="telefone" type="text"
                                                 value="${cliente.telefone}" placeholder="Digite o Telefone"/>
                                             <br>
                                         </div>
@@ -153,7 +150,7 @@
                                         <div data-date="12-02-2012"
                                              class="input-append date datepicker ">
 
-                                            <input id="datanascimento" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.datanascimento}"/>" class="datepicker" name="datanascimento">
+                                            <input id="datanascimento" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.datanascimento}"/>" class="form-control" name="datanascimento">
 <%--                                              --%>
                                             <span class="add-on"><i class="icon-th"></i></span>
                                             
@@ -361,9 +358,6 @@
     </div>
 </div>
 
-
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em
-        Tecnologia</a></div>
 </div>
+
 

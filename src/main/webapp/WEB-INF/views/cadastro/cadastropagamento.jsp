@@ -8,8 +8,9 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pagamento/movimentacao" title="Go to Pagamento" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Pagamento</a> <a href="#">Movimenta��o Pagamento </a><a href="#" class="current">Cadastro Pagamento</a> </div>
-    <h1>Cadastro de Pagamento</h1>
+    
+    </br>
+    <h2>Cadastro de Pagamento</h2>
   </div>
   <div class="container-fluid"><hr>
   
@@ -32,23 +33,29 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> </span>
-            <h5>Cadastro de Pagamento</h5>
-          </div>
-          
-          
-          <div class="widget-content nopadding">
+                <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Pagamento</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
           
           
                    <form action="${pageContext.request.contextPath}/pagamento/localizarpedido?id=${pedidovenda.id}" method="get" class="form-horizontal">
               
                <div class="control-group">
-                <label class="control-label">N�mero do Pedido</label>
+                <label class="control-label">Numero do Pedido</label>
                 <div class="controls">
-							<input id="id" name="id" class="span4"
+							<input id="id" name="id" class="form-control"
 							type="text" value="${pedidovenda.id }"
-							placeholder="Digite o N�mero do Pedido de Venda" />                
+							placeholder="Digite o Numero do Pedido de Venda" />                
               
                	            <button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
               
@@ -61,20 +68,29 @@
           
           
           
-          <div class="widget-content nopadding">
-          
-                  <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Pedido Venda : ${pedidovenda.id}</h5>
-          </div>
+                  <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Detalhes Pedido de Venda</h4>
+                                    <p class="category">Confira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+                                
+          <div class="widget-content">
           
 <%-- 		     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/pagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate"> --%>
 		
 						<div class="control-group">
-							<label class="control-labe">C�digo</label>
+							<label class="control-labe">Codigo</label>
 							<div class="controls">
-							<input id="id" name="id" type="text" class="span2" value="${pedidovenda.id }" readonly="readonly"> 
-							<input id="data" name="data" type="text" class="span2" value="${pedidovenda.data }" readonly="readonly"> 
-							<input id="status" name="status" type="text" class="span3" value="${pedidovenda.status }" readonly="readonly"> 
+							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }" readonly="readonly"> 
+							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }" readonly="readonly"> 
+							<input id="status" name="status" type="text" class="form-control" value="${pedidovenda.status }" readonly="readonly"> 
 							
 							
 							</div>
@@ -85,9 +101,9 @@
               <div class="control-group">
                 <label class="control-label">Cliente</label>
                 <div class="controls">
-				<input id="cliente" name="cliente" type="text" class="span4" value="${pedidovenda.cliente }" readonly="readonly"> 
-				<input id="mesa" name="mesa" type="text" class="span2" value="${pedidovenda.mesa }" readonly="readonly"> 
-				<input id="garcon" name="garcon" type="text" class="span3" value="${pedidovenda.garcon }" readonly="readonly"> 
+				<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }" readonly="readonly"> 
+				<input id="mesa" name="mesa" type="text" class="form-control" value="${pedidovenda.mesa }" readonly="readonly"> 
+				<input id="garcon" name="garcon" type="text" class="form-control" value="${pedidovenda.garcon }" readonly="readonly"> 
 				
 				
                 </div>
@@ -107,18 +123,26 @@
 
 			
 				
-		          <div class="widget-content nopadding">
-          
-           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Adicionar Forma de Pagamento</h5>
-          </div>
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Adicionar Forma de Pagamento</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
 			
 			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizontal">
 			 		    
           <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-     				<select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="span6" >
+     				<select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Formas de Pagamento">
 		           				
 <%-- 		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option> --%>
@@ -160,7 +184,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>A��o</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -320,8 +344,10 @@
             </div>
             </div>
             
-
-      
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

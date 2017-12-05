@@ -8,12 +8,9 @@
  <div id="content">
 
 <div id="content-header">
-	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/produtocomposto/movimentacao" title="Ir para Produto Composto" class="tip-bottom"><i
-			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i> ProdutoComposto</a> <a href="#">Movimenta��o ProdutoComposto </a>
-		<a href="#" class="current">Cadastro Produto Composto</a>
-	</div>
-	<h1>Cadastro de ProdutoComposto</h1>
+
+	</br>
+	<h2>Cadastro de ProdutoComposto</h2>
 </div>
 
 <div class="container-fluid">
@@ -37,13 +34,21 @@
     </c:if>
 	<div class="row-fluid">
 		<div class="span12">
-			<div class="widget-box">
-         
-				<div class="widget-title">
-					<span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/produto.png" ></i>
-					</span>
-					<h5>Cadastro de Produto Composto</h5>
-				</div>
+		
+		<div class="span8">
+			        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Produto Composto</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
 				
 			<form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizontal">  		
 							
@@ -72,7 +77,7 @@
 					 
 					
 					
-				<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				
+				<input type="image" alt="produto foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="form-control">				
 					</div>
 					
 					</div>
@@ -87,9 +92,9 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" value="${produtocomposto.id}" placeholder="Digite o Id"/>
-               			<input id="ativo" name="ativo" class="span6" type="checkbox" checked="${produtocomposto.ativo}"/>
-                         <input id="esugestao" class="span3"name="esugestao"  type="checkbox" checked="${produtocomposto.esugestao}"/>
+						<input id="id"  name="id" type="text" value="${produtocomposto.id}" placeholder="Digite o Id" class="form-control"/>
+               			<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${produtocomposto.ativo}"/>
+                         <input id="esugestao" class="form-control"name="esugestao"  type="checkbox" checked="${produtocomposto.esugestao}"/>
                
                 </div>
               </div>
@@ -114,7 +119,7 @@
 						
 					<input id="descricao" class="form-control"
 						name="descricao" type="text" value="${produtocomposto.descricao}"
-						placeholder="Digite a Descri��o" />		
+						placeholder="Digite a Descriï¿½ï¿½o" />		
 						
 					<input id="foto" class="form-control" name="foto"
 						type="text" value="${produtocomposto.foto}"
@@ -209,7 +214,7 @@
                         <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-     				<select id="itens_prodcomp"name="itens_prodcomp" multiple="multiple" class="span6" >
+     				<select id="itens_prodcomp"name="itens_prodcomp" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Itens ">
 		           				
 		           				<c:forEach var="item" items="${produtocomposto.itens_prodcomp}">
@@ -246,4 +251,68 @@
 
 </div>
 
+
+<div class="span4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                        <form action="LocalizarClienteGerencia" method="POST" class="">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">Cliente</label> -->
+                                <input type="text" list="${clientesList}" id="id"
+                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${clientesList}">
+
+                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                    
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">Cliente</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">Localizar</button>
+
+                                       
+                                 <span class="material-input"></span>
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
+                                     <p class="card-content pull-left">${cliente.id} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
+                            </div>
+
+						</div>
+
+</div>
+</div>
+</div>
 </div>

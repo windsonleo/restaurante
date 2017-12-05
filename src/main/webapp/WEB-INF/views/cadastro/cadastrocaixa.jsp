@@ -7,8 +7,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/caixa/movimentacao" title="Go to Caixa" class="tip-bottom"><i class="icon-money"></i> Caixa</a> <a href="#">Movimentação Caixa</a> <a href="#" class="current">Cadastro Caixa</a> </div>
-    <h1>Cadastro de Caixa</h1>
+	</br>
+    <h2>Cadastro de Caixa</h2>
   </div>
   <div class="container-fluid"><hr>
   
@@ -32,17 +32,26 @@
   
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro de Caixa</h5>
-          </div>
-          <div class="widget-content nopadding">
+       
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Caixa</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/caixa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
                <div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${caixa.ativo}"/>
+						<input id="ativo" name="ativo" class="" type="checkbox" checked="${caixa.ativo}"/>
                 </div>
               </div>
               
@@ -134,9 +143,6 @@
             </div>
           </div>
       
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
 
 

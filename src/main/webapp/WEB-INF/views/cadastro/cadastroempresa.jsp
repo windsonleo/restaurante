@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/empresa/movimentacao" title="Go to Empresa" class="tip-bottom"><i class="icon-home"></i> Empresa</a><a href="#">Movimenta��o Empresa</a> <a href="#" class="current">Cadastro Empresa</a> </div>
-    <h1>Cadastro de Empresa</h1>
+</br>
+    <h2>Cadastro de Empresa</h2>
   </div>
   <div class="container-fluid"><hr>
     <c:if test="${erros != null }">
@@ -29,12 +29,20 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Cadastro de Empresa</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/empresa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+               <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Empresa</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">   
+          <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/empresa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
               
               
@@ -213,5 +221,7 @@
 </div>
 </div>
 </div>
+</div>
+
 
 

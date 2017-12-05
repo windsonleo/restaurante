@@ -7,7 +7,7 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h1>Listagem e Visão Geral</h1>
+    <h2>Listagem e Visão Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>

@@ -134,6 +134,7 @@
 
 
 <div class="pagination alternate"></div>
+</div>
 
 
         

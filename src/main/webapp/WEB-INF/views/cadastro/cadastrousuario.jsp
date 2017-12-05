@@ -6,17 +6,14 @@
 <div id="content">
 
 <div id="content-header">
-	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Usuario" class="tip-bottom"><i
-			class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png" ></i> Usuario</a> <a href="#">Movimentação Usuario </a>
-		<a href="#" class="current">Cadastro Usuario</a>
-	</div>
-	<h1>Cadastro de Usuario</h1>
+
+	</br>
+	<h2>Cadastro de Usuario</h2>
 </div>
 
 <div class="container-fluid">
   <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">Ã—</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -25,7 +22,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">Ã—</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -34,12 +31,20 @@
     </c:if>
 	<div class="row-fluid">
 		<div class="span12">
-			<div class="widget-box">
-				<div class="widget-title">
-					<span class="icon-icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png" ></i>
-					</span>
-					<h5>Cadastro de Usuario</h5>
-				</div>
+		<div class="span8">
+			        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Usuario</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
  
  <form  role="form" id="ds" class="form-horizontal"action="${pageContext.request.contextPath}/usuario/${acao}" ModelAttribute="usuario" method="POST">
  
@@ -130,7 +135,72 @@
 			
 										
 
-</div>	
+</div>
+	
+</div>
+
+<div class="span4">
+					
+                     
+					
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                        <form action="LocalizarClienteGerencia" method="POST" class="">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">Cliente</label> -->
+                                <input type="text" list="${clientesList}" id="id"
+                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${clientesList}">
+
+                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                    
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">Cliente</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">Localizar</button>
+
+                                       
+                                 <span class="material-input"></span>
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
+                                     <p class="card-content pull-left">${cliente.id} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owensâ€™ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+
 </div>
 </div>
 

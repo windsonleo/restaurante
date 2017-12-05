@@ -8,8 +8,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao" title="Go to Recebimento" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Recebimento</a><a href="#">Movimentação Recebimento </a> <a href="#" class="current">Cadastro Recebimento</a> </div>
-    <h1>Cadastro de Recebimento</h1> ${recebimento.id }
+	</br>
+    <h2>Cadastro de Recebimento</h2> ${recebimento.id }
   </div>
   <div class="container-fluid"><hr>
   
@@ -32,10 +32,19 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> </span>
-            <h5>Recebimento</h5>
-          </div>
+               <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Recebimento</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
           
 		
           
@@ -57,9 +66,9 @@
 				
 				
 				
-				<input id="text" name="data" type="text" class="span4 m-wrap" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.data}"/>">
+				<input id="text" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.data}"/>">
 				
-				<input id="pedidocompra" name="pedidocompra" type="text" class="span4 m-wrap" value="${recebimento.pedidocompra }" placeholder="Digite o numero do Pedido de Compra"> 				
+				<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra }" placeholder="Digite o numero do Pedido de Compra"> 				
 				
                 </div>
               </div>
@@ -116,7 +125,7 @@
               <div class="control-group">
                 <label class="control-label">Items</label>
                 <div class="controls">
-	 				<select id="items"name="items" multiple="multiple" class="span8" >
+	 				<select id="items"name="items" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Items">
 		           						           				
 		           				
@@ -142,9 +151,6 @@
             </div>
             </div>
             </div>
+            </div>
+            </div>
             
-
-      
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
-</div>

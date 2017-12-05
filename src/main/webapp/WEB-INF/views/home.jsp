@@ -47,9 +47,9 @@
         <div class="card">
             <div class="card-content">
                        
-               <div class="card-header" data-background-color="blue">
-               <h3>Dashbord</h3>
-               </div>
+<!--                <div class="card-header" data-background-color="blue"> -->
+<!--                <h3>Dashbord</h3> -->
+<!--                </div> -->
                
                </br>
                </br>
@@ -61,12 +61,12 @@
                          <div class="span2">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
-									<i class="icon "></i>
+									<i class="icon"></i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Produtos</p>
                                     <h3 class="title">${pedidovendasnovos.size()}
-                                        <small>120</small>
+<!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -87,7 +87,7 @@
                                 <div class="card-content">
                                     <p class="category"> Vendas</p>
                                     <h3 class="title">${pedidovendasnovos.size()}
-                                        <small>67</small>
+<!--                                         <small>hoje</small> -->
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -108,7 +108,7 @@
                                 <div class="card-content">
                                     <p class="category"> Mesas</p>
                                     <h3 class="title">${pedidovendasnovos.size()}
-                                        <small>8</small>
+<!--                                         <small>Ocupadas</small> -->
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -128,7 +128,7 @@
                                 <div class="card-content">
                                     <p class="category"> Delivery</p>
                                     <h3 class="title">${pedidovendasnovos.size()}
-                                        <small>19</small>
+<!--                                         <small>hoje</small> -->
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -171,11 +171,11 @@
                                 <div class="card-content">
                                     <h4 class="title">Vendas Diarias</h4>
                                     <p class="category">
-                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> aumento em relação Semana Anterior.</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                                        <i class="material-icons">access_time</i> atualizado 4 minutes.
                                     </div>
                                 </div>
                             </div>
@@ -187,12 +187,12 @@
                                     <div class="ct-chart" id="emailsSubscriptionChart"></div>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="title">Cadastro de Clientes</h4>
-                                    <p class="category">Last Campaign Performance</p>
+                                    <h4 class="title">Clientes por Dia</h4>
+                                    <p class="category">Performace Semanas Anteriores</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                        <i class="material-icons">access_time</i> campanha iniciada 2 dias 
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                                 </div>
                                 <div class="card-content">
                                     <h4 class="title">Tempo Medio Por Mesa</h4>
-                                    <p class="category">Last Campaign Performance</p>
+                                    <p class="category">Performace Semanas Anteriores</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">

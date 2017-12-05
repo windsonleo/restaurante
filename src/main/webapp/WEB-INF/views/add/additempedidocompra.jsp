@@ -6,8 +6,9 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" " title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Compra</a> <a href="#">Movimenta��o Pedido Compra </a><a href="#" class="current">Add Item ao Pedido Compra </a> </div>
-    <h1>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h1>
+	</br>
+	
+    <h3>Add Item ao Pedido de Compra <strong> ${pedidocompra.id }</strong></h3>
   </div>
   <div class="container-fluid"><hr>
   
@@ -34,18 +35,26 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Buscar Produto</h5>
-           
-          </div>
-          <div class="widget-content nopadding">               
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Buscar Produtos</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
 			<form action="salvaritempedidocompra" method="POST" class="form-horizontal">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
 			
-								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-horizontal">
+								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-control">
 								
 									
 									<datalist id="${produtosList}">
@@ -59,12 +68,12 @@
 								  
 									</datalist>
 									
-										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
+										<input type="text"  id="qtd" name="qtd"  class="form-control" value="" placeholder="Digite a Quantidade">
 
-										<input type="text"  id="idpedcomp" name="idpedcomp"  class="form-horizontal" value="${pedidocompra.id }" placeholder="Escolha a Quantidade">
+										<input type="text"  id="idpedcomp" name="idpedcomp"  class="form-control" value="${pedidocompra.id }" placeholder="Escolha a Quantidade" hidden="true">
 					
 							
-								<input type="submit" class="btn btn-lg btn-success"
+								<input type="submit" class="btn btn-sm btn-success"
 										value="ADD">
 											
 			   
@@ -84,8 +93,19 @@
                         
                         
                         
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+                <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Detalhes Pedido Compra</h4>
+                                    <p class="category">Confira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
             <h5>Detalhes do Pedido Compra : ${pedidocompra.id} <strong> ${pedidocompra.id }</strong></h5>
            
           </div>
@@ -113,7 +133,7 @@
 							
 							<label>Total</label>
 							<input id="total" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
-                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly"> 
+                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly" class="form-control"> 
 						
 						</div>
 </div>
@@ -124,8 +144,19 @@
 			
 			</div>
 
- <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Itens do Pedido Compra</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
             <h5>Itens do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5>
            
           </div>
@@ -227,6 +258,8 @@
 		
 	</div>
 	
+	</div>
+	</div>
 	</div>
 	</div>
 	</div>

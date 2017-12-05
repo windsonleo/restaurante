@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/despesa/movimentacao" title="Go to Despesa" class="tip-bottom"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png"></i> Despesa</a> <a href="#">Movimentação Despesa</a> <a href="#" class="current">Cadastro Despesa</a> </div>
-    <h1>Cadastro de Despesa</h1>
+	</br>
+    <h2>Cadastro de Despesa</h2>
   </div>
   <div class="container-fluid"><hr>
   
@@ -30,11 +30,20 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png"></i> </span>
-            <h5>Cadastro de Despesa</h5>
-          </div>
-          <div class="widget-content nopadding">
+                <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Despesa</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
+
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/despesa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
                <div class="control-group">
@@ -92,10 +101,8 @@
             </div>
           </div>
 
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>
+
 
 
 

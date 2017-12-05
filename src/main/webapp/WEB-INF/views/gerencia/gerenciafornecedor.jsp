@@ -6,10 +6,9 @@
 <div id="content">
 
     <div id="content-header">
-        <div id="breadcrumb"><a href="${pageContext.request.contextPath}/fornecedor/movimentacao"
-                                title="Go to Fornecedor" class="tip-bottom"><i class="icon-home"></i> Fornecedor</a> <a
-                href="#">Gerencia Fornecedor </a></div>
-        <h1> Gerencia de Fornecedores</h1>
+
+		</br>
+        <h2> Gerencia de Fornecedores</h2>
     </div>
 
     <div class="container-fluid">

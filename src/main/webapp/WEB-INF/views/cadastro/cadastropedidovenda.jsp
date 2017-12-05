@@ -6,8 +6,9 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao" title="Go to Pedido Venda" class="tip-bottom"><i class="icon-icon"> <img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /> </i> Pedido Venda</a> <a href="#">Movimenta��o Pedido Venda </a> <a href="#" class="current">Cadastro Pedido Venda</a> </div>
-    <h1>Cadastro de Pedido Venda</h1>
+
+</br>
+    <h2>Cadastro de Pedido Venda</h2>
   </div>
 
             <div class="container-fluid">
@@ -31,12 +32,20 @@
     </c:if>
 <div class="row-fluid">
       <div class="span12">
-               <div class="widget-box">
-     <div class="widget-title"> <span class="icon"> <i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/entregas.png" /> </i> </span>
-            <h5>Cadastro de Pedido de Venda</h5>
-          </div>                         
-					 
-					 <form  role="form" id="ds" class="form-inline"
+                      <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Cadastro Pedido Venda</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
+          <div class="widget-content">
+					 <form  role="form" id="ds" class="form"
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
@@ -52,7 +61,7 @@
                 		
 						
 						
-				<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="datepicker span3" type="text" value="<fmt:formatDate 
+				<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="form-control" type="text" value="<fmt:formatDate 
                 pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder="Digite a Data"/>
 <!--                 <span class="help-block">Data com Formato  (dd-mm-yy)</span> -->
                 
@@ -191,4 +200,7 @@
 </div>
 </div>
 
+</div>
+</div>
+</div>
 
