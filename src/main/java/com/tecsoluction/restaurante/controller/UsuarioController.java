@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -88,6 +93,28 @@ public class UsuarioController extends AbstractController<Usuario> {
         profileusuario.addObject("usuario", usuario);
 
         return profileusuario;
+    }
+    
+    @GetMapping(value = "/home")
+    public ModelAndView Login(Locale locale, Model model) {
+        logger.info("Welcome home! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        Usuario usuario = new Usuario();
+        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        usuario = getservice().findByUsername(usuario.getUsername());
+
+
+        ModelAndView home = new ModelAndView("home");
+
+        home.addObject("serverTime", formattedDate);
+        home.addObject("usuarioAtt", usuario);
+
+        return home;
     }
 
 }

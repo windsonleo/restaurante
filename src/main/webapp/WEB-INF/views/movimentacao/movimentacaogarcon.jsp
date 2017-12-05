@@ -1,28 +1,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+
 <%@ page session="true" %>
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Garcon" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garcon.png" ></i> Garcon</a> <a href="#" class="current">Movimentação de Garcon</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+	</br>
+    <h2>Listagem e Visão Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
       <div class="span12">
       
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/garcon.png" ></i></span>
-            <h5>Movimentação Garcon</h5>
-          
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/garcon/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
-         
-            </div>
-          </div>
-          
+<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Movimentacao Garcon</h4>
+                                    <p class="category">Todos</p>
+                                <span class="icon "><a href="${pageContext.request.contextPath}/garcon/cadastro"><i
+                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                </div>
+                                
+                                </br>
           
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+            <table class="table table-hover table-bordered data-table">
 
               <thead>
                 <tr>
@@ -115,7 +122,5 @@
         
         </div>
         
-        <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
-</div>
+<!-- </div> -->
         

@@ -2,25 +2,23 @@
 <%@ page session="true" %>
 
  <div id="content">
+    <div id="content-header">
 
-<div id="content-header">
-	<div id="breadcrumb">
-		<a href="${pageContext.request.contextPath}/usuario/movimentacao" title="Go to Movimentacao" class="tip-bottom"><i
-			class="icon-user"></i> Usuario</a> <a href="#">Profile Usuario </a>
-		<a href="#" class="current">Profile Usuario</a>
-	</div>
-	<h1>Profile de Usuario</h1>
-</div>
+</br>
+        <h2> Profile Usuario</h2>
+    </div>
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span12">
-			<div class="widget-box">
-				<div class="widget-title">
-					<span class="icon"> <i class="icon-info-sign"></i>
-					</span>
-					<h5>Profile de Usuario</h5>
-				</div>
+		<div class="span8">
+			
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="">
+                                    <h4 class="title">Dados do Usuario</h4>
+                                    <p class="category">Informacoes Pessoais</p>
+                                </div>
  
  <form  class="form-horizontal"action="${pageContext.request.contextPath}/usuario/edicao" ModelAttribute="usuario" method="POST" name="basic_validate" id="basic_validate" novalidate="novalidate">
  
@@ -106,7 +104,71 @@
 			
 			</div>
 			</div>
+			</div>
 		
+							<div class="span4">
+					
+                     
+					
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/cliente/sof.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                        <form action="LocalizarClienteGerencia" method="POST" class="">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">Cliente</label> -->
+                                <input type="text" list="${usuarioList}" id="id"
+                                       placeholder="Digite o Codigo do Usuario" name="id" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${usuarioList}">
+
+                                    <c:forEach var="client" items="${usuarioList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.username } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                    
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">Cliente</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
+
+                                       
+                                 <span class="material-input"></span>
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${usuario.username} ${usuario.roles}
+                                     <p class="card-content pull-left">${usuario.id} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
 			
 			
 										

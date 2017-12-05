@@ -14,17 +14,17 @@
 				
 		<div class="container-fluid">
 		
-              <nav class="pull-right">
+              <nav class="pull-left">
                     <ul>
                          <li>
                               <a href="#">
-                                    Home
+                                    Tecsoluction
                               </a>
                         </li>
                         
                          <li>
                              <a href="#">
-                                 Company
+                                 Suporte
                              </a>
                          </li>
                          
@@ -38,7 +38,7 @@
                             
                             <li>
                                 <a href="#">
-                                    Blog
+                                    Site
                                 </a>
                           </li>
                             
@@ -49,7 +49,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                        <a href="http://www.tecsoluction.com">Tecsoluction</a>
                     </p>
                     
                     

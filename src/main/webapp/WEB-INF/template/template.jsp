@@ -556,7 +556,7 @@ $(function () {
 		
 				<tiles:insertAttribute name="conteudo" />
 		
-<%-- 		<tiles:insertAttribute name="footer" /> --%>
+				<tiles:insertAttribute name="footer" />
 		
 		</div>
 	</div>	

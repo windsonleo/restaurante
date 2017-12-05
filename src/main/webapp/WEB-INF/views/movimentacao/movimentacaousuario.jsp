@@ -3,32 +3,38 @@
 
 
 <div id="content">
+    
     <div id="content-header">
-        <div id="breadcrumb"><a href="#" title="Go to Usuario" class="tip-bottom"><i><img
-                src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png"></i> Usuario</a> <a
-                href="#" class="current">Movimentação de Usuario</a></div>
-        <h1>Listagem e Visão Geral</h1>
+
+</br>
+        <h2>Listagem e Visão Geral</h2>
     </div>
+    
+    
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
             <div class="span12">
 
-                <div class="widget-box">
-                    <div class="widget-title"><span class="icon"><i clas="icon-icon"><img
-                            src="${pageContext.request.contextPath}/resources/images/icons/16/usuario.png"></i></span>
-                        <h5>Movimentação Usuario</h5>
-
-                        <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i
-                                class="icon-plus" color="blue"></i></a> </span>
-
-                        <%--                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/usuario/cadastro"><i class="icon-plus" color="blue"></i></a> </span> --%>
-
-                        <!--             		</div> -->
-                    </div>
 
 
-                    <div class="widget-content nopadding">
+
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+
+                                
+                                    <h4 class="title">Movimentacao Usuario</h4>
+                                    <p class="category">Todos</p>
+                                <span class="icon "><a href="${pageContext.request.contextPath}/usuario/cadastro"><i
+                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                </div>
+                                
+                                </br>
+                               
+
+                    <div class="">
                         <!--              <div  class="table-responsive">            	 -->
                         <table class="table table-hover table-bordered data-table">
                             <thead>
@@ -118,15 +124,4 @@
 
     </div>
 </div>
-
-
-<!-- <div class="pagination alternate"> </div> -->
-
-
-<!-- </div> -->
-
-
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em
-        Tecnologia</a></div>
 </div>

@@ -6,10 +6,9 @@
 <div id="content">
 
     <div id="content-header">
-        <div id="breadcrumb"><a href="${pageContext.request.contextPath}/cliente/movimentacao" title="Go to Cliente"
-                                class="tip-bottom"><i class="icon-home"></i> Cliente</a> <a href="#">Gerencia
-            Cliente </a></div>
-        <h1> Gerencia de Clientes</h1>
+
+</br>
+        <h2> Gerencia de Clientes</h2>
     </div>
 
     <div class="container-fluid">
@@ -61,7 +60,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${cliente.nome}"
-                                                                            placeholder="Digite o Nome da Cliente"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -73,7 +72,7 @@
 															<input id="mask-mail" class="form-control" name="email"
                                                                              type="text"
                                                                              value="${cliente.email}"
-                                                                             placeholder="Digite o Email"/>                                                <span class="material-input"></span>
+                                                                             placeholder=""/>                                                <span class="material-input"></span>
                                     </div>
 
 
@@ -93,7 +92,7 @@
 											<input id="mask-phone" class="form-control" name="telefone"
                                                                                 type="text"
                                                                                 value="${cliente.telefone}"
-                                                                                placeholder="Digite o Telefone"/>
+                                                                                placeholder=""/>
                                				  <span class="material-input"></span>
                                     </div>
 
@@ -202,7 +201,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">Localizar</button>
 
                                        
                                  <span class="material-input"></span>

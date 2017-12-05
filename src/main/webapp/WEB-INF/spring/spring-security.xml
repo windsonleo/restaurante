@@ -11,8 +11,8 @@
 
 
         <security:form-login
-                login-page="/login"
-                default-target-url="/"
+                login-page="/"
+                default-target-url="/usuario/home"
                 authentication-failure-url="/erro"
                 username-parameter="username"
                 password-parameter="senha"/>

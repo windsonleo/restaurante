@@ -9,7 +9,7 @@
         <!--         <put-attribute name="barra_usuario_topo" value="/WEB-INF/views/barra_usuario_topo.jsp" /> -->
         <put-attribute name="navegacao" value="/WEB-INF/views/template/navegacao.jsp"/>
         <put-attribute name="conteudo" value=""/>
-<!--         <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/> -->
+        <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
         
     </definition>
     

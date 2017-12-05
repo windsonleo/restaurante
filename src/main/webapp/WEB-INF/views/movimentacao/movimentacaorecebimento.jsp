@@ -5,26 +5,31 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Recebimento" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i> Recebimento</a> <a href="#" class="current">Movimentação de Recebimento</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+	
+	</br>
+    <h2>Listagem e Visão Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
       <div class="span12">
       
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/16/compras.png" /></i></span>
-            <h5>Movimentação Recebimento</h5>
+		<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Movimentacao Recebimento</h4>
+                                    <p class="category">Todos</p>
+                                <span class="icon "><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i
+                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                </div>
+                                
+                                </br>
           
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
-         
-            </div>
-          </div>
           
-          
-          <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+          <div class="">
+            <table class="table table-hover table-bordered data-table">
                  
               <thead>
                <tr>
@@ -202,9 +207,4 @@
         
         </div>
 
-
-          
-        
-        <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
 </div>

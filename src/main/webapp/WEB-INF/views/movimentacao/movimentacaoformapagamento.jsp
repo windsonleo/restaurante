@@ -1,37 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
-
-
-
-
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
 
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Forma de Pagamento" class="tip-bottom"><i ><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i> Forma de Pagamento</a> <a href="#" class="current">Movimentação de Forma de Pagamento</a> </div>
-    <h1>Listagem e Visão Geral</h1>
+	</br>
+    <h2>Listagem e Visão Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
       <div class="span12">
       
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/16/financeiro.png" ></i></span>
-            <h5>Movimentação Forma de Pagamento</h5>
+		<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Movimentacao Forma de Pagamento</h4>
+                                    <p class="category">Todos</p>
+                                <span class="icon "><a href="${pageContext.request.contextPath}/formapagamento/cadastro"><i
+                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                </div>
+                                
+                                </br>
           
-                     <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/formapagamento/cadastro"><i class="icon-plus" color="blue"></i></a> </span>
-         
-            </div>
-          </div>
           
-          
-          <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+          <div class="">
+            <table class="table table-hover table-bordered data-table">
 
               <thead>
                 <tr>
@@ -126,8 +125,5 @@
         
         
         </div>
-        
-        <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
-</div>
+        </div>
         
