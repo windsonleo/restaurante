@@ -153,7 +153,7 @@ public class HomeController {
         usuario = userservice.findByUsername(usuario.getUsername());
 
 
-        ModelAndView home = new ModelAndView("login");
+        ModelAndView home = new ModelAndView("home");
 
         home.addObject("serverTime", formattedDate);
         home.addObject("usuarioAtt", usuario);

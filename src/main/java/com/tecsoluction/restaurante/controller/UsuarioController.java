@@ -96,7 +96,7 @@ public class UsuarioController extends AbstractController<Usuario> {
     }
     
     @GetMapping(value = "/home")
-    public ModelAndView Login(Locale locale, Model model) {
+    public ModelAndView HomeUser(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
         Date date = new Date();

@@ -12,7 +12,7 @@
 
         <security:form-login
                 login-page="/"
-                default-target-url="/usuario/home"
+                default-target-url="/home"
                 authentication-failure-url="/erro"
                 username-parameter="username"
                 password-parameter="senha"/>

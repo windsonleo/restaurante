@@ -102,7 +102,7 @@
 			            <div class="sidebar-wrapper">
 			                <ul class="nav" id="menu">
 			                    <li class="active">
-			                        <a  href="${pageContext.request.contextPath}/usuario/home">
+			                        <a  href="${pageContext.request.contextPath}/home">
 										<i class="material-icons">dashboard</i>		
 											<p>Dashbord</p>
 			                        </a>
