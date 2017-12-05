@@ -11,8 +11,8 @@
 
 
         <security:form-login
-                login-page="/"
-                default-target-url="/home"
+                login-page="/login"
+                default-target-url="/"
                 authentication-failure-url="/erro"
                 username-parameter="username"
                 password-parameter="senha"/>
@@ -52,7 +52,7 @@
 
     <b:bean id="successHandler"
             class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-        <b:property name="defaultTargetUrl" value="/home"/>
+        <b:property name="defaultTargetUrl" value="/"/>
     </b:bean>
     <b:bean id="failureHandler"
             class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
