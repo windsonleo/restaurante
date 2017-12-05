@@ -8,7 +8,7 @@
 
 .login {
 	
-width: 60%;
+width: 30%;
 height: auto;
 margin-left: 35%;
 	
@@ -17,7 +17,7 @@ margin-left: 35%;
 
 .login input {
 	
-	margin:1em;
+	margin:0;
 	height: 3em;
 	width: 100%;
 	
