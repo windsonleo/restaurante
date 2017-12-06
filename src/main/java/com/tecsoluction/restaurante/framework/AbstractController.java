@@ -96,8 +96,8 @@ public abstract class AbstractController<Entity> {
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
 
-        String mensagem = "Sucesso ao editar !";
-        String erros = "Erros ao Editar !";
+        String mensagem = "Sucesso ao editar! ";
+        String erros = "Erros ao Editar! ";
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
