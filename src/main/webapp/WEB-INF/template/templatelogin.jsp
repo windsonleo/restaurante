@@ -38,6 +38,32 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png"/>
 
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
+
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+
 
 </head>
 <body>
@@ -46,34 +72,6 @@
 <tiles:insertAttribute name="conteudo"/>
 
 <tiles:insertAttribute name="footer"/>
-
-
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-
-
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-
-<script src="https://www.gstatic.com/charts/loader.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
 
 </body>
