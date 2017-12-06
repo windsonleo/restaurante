@@ -20,27 +20,6 @@
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
-
-
-    <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
-
-    <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
-
-
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
-
-    <script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
-
-    <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
-
-
-    <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
-
-
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" /> --%>
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" /> --%>
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-style.css" /> --%>
@@ -502,6 +481,26 @@
 
     </div>
 </div>
+
+<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
+
+
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
+
+
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
+
+
+<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
 </body>
 </html>
