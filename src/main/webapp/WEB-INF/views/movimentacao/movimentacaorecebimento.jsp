@@ -1,210 +1,222 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true" %>
 
 
 <div id="content">
-  <div id="content-header">
-	
-	</br>
-    <h2>Listagem e Visão Geral</h2>
-  </div>
-  <div class="container-fluid">
-    <hr>
-    <div class="row-fluid">
-      <div class="span12">
-      
-		<div class="card">
+    <div id="content-header">
+
+        </br>
+        <h2>Listagem e Visï¿½o Geral</h2>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <div class="card">
                     <div class="card-content">
-                       
-                                <div class="card-header" data-background-color="blue">
-                                
-                                    <h4 class="title">Movimentacao Recebimento</h4>
-                                    <p class="category">Todos</p>
-                                <span class="icon "><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i
-                                class="icon-plus pull-right" color="blue"></i></a> </span>
-                                </div>
-                                
-                                </br>
-          
-          
-          <div class="">
-            <table class="table table-hover table-bordered data-table">
-                 
-              <thead>
-               <tr>
-                                        <th>Id</th>
-									    <th>Data</th>
-<!-- 									    <th>Situação</th> -->
-									    
-									    <th>Status</th>
-<!-- 									    <th>Origem</th> -->
-<!-- 									    <th>Total</th> -->
-   									    <th>Fornecedor</th>
-<!--    									    <th>Mesa</th> -->
-<!--    									    <th>Garcon</th> -->
-									     <th>Itens</th>
-<!-- 									     <th>Pago</th> -->
-									    <th>Ação</th>
-                                    </tr>
+
+                        <div class="card-header" data-background-color="blue">
+
+                            <h4 class="title">Movimentacao Recebimento</h4>
+                            <p class="category">Todos</p>
+                            <span class="icon "><a href="${pageContext.request.contextPath}/recebimento/cadastro"><i
+                                    class="icon-plus pull-right" color="blue"></i></a> </span>
+                        </div>
+
+                        </br>
+
+
+                        <div class="">
+                            <table class="table table-hover table-bordered data-table">
+
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Data</th>
+                                    <!-- 									    <th>Situaï¿½ï¿½o</th> -->
+
+                                    <th>Status</th>
+                                    <!-- 									    <th>Origem</th> -->
+                                    <!-- 									    <th>Total</th> -->
+                                    <th>Fornecedor</th>
+                                    <!--    									    <th>Mesa</th> -->
+                                    <!--    									    <th>Garcon</th> -->
+                                    <th>Itens</th>
+                                    <!-- 									     <th>Pago</th> -->
+                                    <th>AÃ§Ã£o</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                
-                                
+
+
                                 <c:forEach var="recebimento" items="${recebimentoList}" varStatus="id">
 
-		<c:choose>
-		
-		  <c:when test="${recebimento.id != null}">
-  
-  <tr class="gradeX">
+                                    <c:choose>
 
-			      <td>${recebimento.id}</td>
-                  
-                  <td>  
-                     
-                   <fmt:formatDate pattern="dd/MM/yyyy"
-                    value="${recebimento.data}"/>
-                    
-                   </td>
-                   
-<%-- 				<td>${recebimento.situacao}</td> --%>
-			<c:choose>
-				    <c:when test="${recebimento.status=='ABERTO'}">
+                                        <c:when test="${recebimento.id != null}">
 
-                  <td><span class="label label-info">${recebimento.status}</span></td>
+                                            <tr class="gradeX">
 
-				
-				    </c:when> 
-				    
-				   <c:when test="${recebimento.status=='PENDENTE'}">
+                                                <td>${recebimento.id}</td>
 
-                  <td><span class="label label-warning">${recebimento.status}</span></td>
+                                                <td>
 
-				
-				    </c:when>
-				    
-				    <c:when test="${recebimento.status=='PRONTO'}">
+                                                    <fmt:formatDate pattern="dd/MM/yyyy"
+                                                                    value="${recebimento.data}"/>
 
-                  <td><span class="label label-success">${recebimento.status}</span></td>
+                                                </td>
 
-				
-				    </c:when> 
-				    
-				    <c:when test="${recebimento.status=='CANCELADO'}">
+                                                    <%-- 				<td>${recebimento.situacao}</td> --%>
+                                                <c:choose>
+                                                    <c:when test="${recebimento.status=='ABERTO'}">
 
-                  <td><span class="label label-important">${recebimento.status}</span></td>
-
-				
-				    </c:when>  
-				    
-				    <c:when test="${recebimento.status=='FECHADO'}">
-
-                  <td><span class="label label-ly">${recebimento.status}</span></td>
-
-				
-				    </c:when> 
-				    
-				    <c:otherwise>
+                                                        <td><span class="label label-info">${recebimento.status}</span>
+                                                        </td>
 
 
-				    </c:otherwise>
-				
-				</c:choose>
+                                                    </c:when>
 
-<%--                   <td><span class="label label-info">${recebimento.status}</span></td> --%>
-<%--                  <td>${recebimento.origempedido}</td> --%>
-<%--                  <td>${recebimento.total}</td> --%>
-                 <td>${recebimento.fornecedor}</td>
-<%--                  <td>${recebimento.mesa}</td> --%>
-<%--                  <td>${recebimento.garcon}</td> --%>
-                  <td>${recebimento.items}</td>
-                  
-<!--                   <td> -->
-                  
-<%--                   	<c:choose> --%>
-<%-- 				    <c:when test="${recebimento.ispago}"> --%>
+                                                    <c:when test="${recebimento.status=='PENDENTE'}">
 
-<%--                   <td><span class="label label-success">${recebimento.ispago}</span></td> --%>
+                                                        <td><span
+                                                                class="label label-warning">${recebimento.status}</span>
+                                                        </td>
 
-<%-- 				    </c:when>  --%>
-				    
-<%-- 				    <c:otherwise> --%>
 
-<%--                   <td><span class="label label-important">${recebimento.ispago}</span></td> --%>
+                                                    </c:when>
 
-<%-- 				    </c:otherwise> --%>
-<%-- 				</c:choose> --%>
-<!-- <!--                   class="date badge badge-important"> --> 
-<%-- <%--                    <td> ${recebimento.ispago}</td> --%> 
-                
-<!--                 </td> -->
-                
-                 <td class="options-width">
-								
-								
-								<a
-									href="${pageContext.request.contextPath}/recebimento/additem?id=${recebimento.id}"
-									title="Add Item"><i class="icon-edit"></i> </a>
-									
-										<a
-									href="${pageContext.request.contextPath}/recebimento/addpagamento?id=${recebimento.id}"
-									title="Pagamento" ><i class="icon-info-sign"></i></a>									
-								
-								
-								<a
-									href="${pageContext.request.contextPath}/recebimento/editar?id=${recebimento.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
-									
-										<a
-									href="${pageContext.request.contextPath}/recebimento/informacoes?id=${recebimento.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
-									
-									
-									<a href="#myAlert${recebimento.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
-									
-			<div id="myAlert${recebimento.id}" class="modal hide">
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Excluir esse Registro</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
-           
+                                                    <c:when test="${recebimento.status=='PRONTO'}">
+
+                                                        <td><span
+                                                                class="label label-success">${recebimento.status}</span>
+                                                        </td>
+
+
+                                                    </c:when>
+
+                                                    <c:when test="${recebimento.status=='CANCELADO'}">
+
+                                                        <td><span
+                                                                class="label label-important">${recebimento.status}</span>
+                                                        </td>
+
+
+                                                    </c:when>
+
+                                                    <c:when test="${recebimento.status=='FECHADO'}">
+
+                                                        <td><span class="label label-ly">${recebimento.status}</span>
+                                                        </td>
+
+
+                                                    </c:when>
+
+                                                    <c:otherwise>
+
+
+                                                    </c:otherwise>
+
+                                                </c:choose>
+
+                                                    <%--                   <td><span class="label label-info">${recebimento.status}</span></td> --%>
+                                                    <%--                  <td>${recebimento.origempedido}</td> --%>
+                                                    <%--                  <td>${recebimento.total}</td> --%>
+                                                <td>${recebimento.fornecedor}</td>
+                                                    <%--                  <td>${recebimento.mesa}</td> --%>
+                                                    <%--                  <td>${recebimento.garcon}</td> --%>
+                                                <td>${recebimento.items}</td>
+
+                                                <!--                   <td> -->
+
+                                                    <%--                   	<c:choose> --%>
+                                                    <%-- 				    <c:when test="${recebimento.ispago}"> --%>
+
+                                                    <%--                   <td><span class="label label-success">${recebimento.ispago}</span></td> --%>
+
+                                                    <%-- 				    </c:when>  --%>
+
+                                                    <%-- 				    <c:otherwise> --%>
+
+                                                    <%--                   <td><span class="label label-important">${recebimento.ispago}</span></td> --%>
+
+                                                    <%-- 				    </c:otherwise> --%>
+                                                    <%-- 				</c:choose> --%>
+                                                <!-- <!--                   class="date badge badge-important"> -->
+                                                    <%-- <%--                    <td> ${recebimento.ispago}</td> --%>
+
+                                                <!--                 </td> -->
+
+                                                <td class="options-width">
+
+
+                                                    <a
+                                                            href="${pageContext.request.contextPath}/recebimento/additem?id=${recebimento.id}"
+                                                            title="Add Item"><i class="icon-edit"></i> </a>
+
+                                                    <a
+                                                            href="${pageContext.request.contextPath}/recebimento/addpagamento?id=${recebimento.id}"
+                                                            title="Pagamento"><i class="icon-info-sign"></i></a>
+
+
+                                                    <a
+                                                            href="${pageContext.request.contextPath}/recebimento/editar?id=${recebimento.id}"
+                                                            title="Editar"><i class="icon-edit"></i> </a>
+
+                                                    <a
+                                                            href="${pageContext.request.contextPath}/recebimento/informacoes?id=${recebimento.id}"
+                                                            title="Informaï¿½ï¿½es"><i class="icon-info-sign"></i></a>
+
+
+                                                    <a href="#myAlert${recebimento.id}" data-toggle="modal"
+                                                       class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+
+                                                    <div id="myAlert${recebimento.id}" class="modal hide">
+                                                        <div class="modal-header">
+                                                            <button data-dismiss="modal" class="close" type="button">x
+                                                            </button>
+                                                            <h3>Alerta de ExclusÃ£o</h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Deseja Realmente Excluir esse Registro</p>
+                                                        </div>
+                                                        <div class="modal-footer"><a data-dismiss=""
+                                                                                     class="btn btn-danger"
+                                                                                     href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}">Confirma</a>
+                                                            <a data-dismiss="modal" class="btn" href="#">Cancela</a>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- 									 <a -->
+                                                        <%-- 									href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}" --%>
+                                                    <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
+
+
+                                                </td>
+
+
+                                            </tr>
+
+                                        </c:when>
+                                    </c:choose>
+                                </c:forEach>
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-									
-<!-- 									 <a -->
-<%-- 									href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}" --%>
-<!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
-											
-									
-										
-					</td>
-                  
-                  
-               </tr>
-                
-                </c:when>
-                </c:choose>
-                </c:forEach>
- 
-              </tbody>
-              
+        <!--         <div class="pagination alternate"> </div> -->
 
-              
-            </table>
-          </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        
-<!--         <div class="pagination alternate"> </div> -->
 
-        
-        </div>
+    </div>
 
 </div>
