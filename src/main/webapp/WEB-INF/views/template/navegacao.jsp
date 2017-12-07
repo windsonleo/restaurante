@@ -25,9 +25,9 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">dashboard</i>
-                            <p class="hidden-lg hidden-md">Dashboard</p>
+                        <a href="${pageContext.request.contextPath}/empresa/movimentacao" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons">store</i>
+                            <p class="hidden-lg hidden-md">Empresa</p>
                         </a>
                     </li>
                     <li class="dropdown">
@@ -53,14 +53,7 @@
                                 <a href="#">Another One</a>
                             </li>
                             
-                            <li>
-<%--                                 <a href="${pageContext.request.contextPath}/usuario/profile" class="dropdown-toggle" data-toggle="dropdown"> --%>
-                                   <a href="/logout">
-                                    
-                                    <i class="material-icons">power_off</i>
-                                    <p class="hidden-lg hidden-md">Profile</p>
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
 
@@ -72,6 +65,15 @@
                             <p class="hidden-lg hidden-md">Profile</p>
                         </a>
                     </li>
+                    
+                        <li>
+<%--                                 <a href="${pageContext.request.contextPath}/usuario/profile" class="dropdown-toggle" data-toggle="dropdown"> --%>
+                                   <a href="${pageContext.request.contextPath}/logout">
+                                    
+                                    <i class="material-icons">power_off</i>
+                                    <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
                 </ul>
                 <!--                         <form class="navbar-form navbar-right" role="search"> -->
                 <!--                             <div class="form-group  is-empty"> -->

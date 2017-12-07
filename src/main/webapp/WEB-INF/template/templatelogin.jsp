@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
 
 
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.png"/>
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
     <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 

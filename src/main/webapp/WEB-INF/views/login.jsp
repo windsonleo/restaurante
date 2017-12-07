@@ -3,7 +3,7 @@
 
 
         <div id="loginbox">  
-        				 <div class="control-group normal_text"> <h2><img src="${pageContext.request.contextPath}/resources/images/logologin.png" alt="Logo" /></h2></div>
+        	<div class="control-group normal_text"> <h2><img src="${pageContext.request.contextPath}/resources/images/logologin.png" alt="Logo" /></h2></div>
                   
             <form id="loginform" class="form-vertical" action="login" method="post">
                 <div class="control-group">
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class=""><a href="#" class="flip-link btn btn bg_ly" name="lost" id="to-recover">Lost password?</a></span>
-                    <span class=""><button type="submit" class="btn btn-success" > Login</button></span>
+                    <span class=""><a href="#" class="flip-link btn btn-primary" name="lost" id="to-recover">Lost password?</a></span>
+                    <span class=""><button type="submit" class="btn btn-info" > Login</button></span>
                 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 
                 </div>

@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo.png.ico"
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"
           type="image/x-icon"/>
 
     <meta charset="UTF-8"/>
