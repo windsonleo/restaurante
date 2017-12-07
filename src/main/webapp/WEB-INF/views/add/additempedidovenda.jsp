@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"  title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Pedido Venda</a> <a href="#">Movimentação Pedido Venda </a> <a href="#" class="current">Add Item ao Pedido Venda </a> </div>
-    <h1>Add Item ao Pedido de Venda <strong> ${pedidovenda.id }</strong></h1>
+</br>
+    <h3>Add Item ao Pedido de Venda <strong> ${pedidovenda.id }</strong></h3>
   </div>
   <div class="container-fluid"><hr>
   
@@ -30,20 +30,29 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Buscar Produto</h5>
+       <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Buscar Produto</h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+            
            
-          </div>
-          <div class="widget-content nopadding">               
-			<form action="salvaritempedido" method="GET" class="form-horizontal">		
+<!--           </div> -->
+<!--           <div class="widget-content">                -->
+			<form action="salvaritempedido" method="GET" class="">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-			   <div class="form-inline"> 
+			   <div class=""> 
 			
-								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="off" class="form-horizontal">
+								<input type="text" list="${produtosList}" id="produtoescolhido" placeholder="Escolha a Produto" name="produtoescolhido" autocomplete="off" class="form-control">
 								
 									
 									<datalist id="${produtosList}">
@@ -57,12 +66,12 @@
 								  
 									</datalist>
 									
-										<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
+										<input type="text"  id="qtd" name="qtd"  class=form-control value="" placeholder="Escolha a Quantidade">
 
-										<input type="text"  id="idpedvend" name="idpedvend"  class="form-horizontal" value="${pedidovenda.id }" placeholder="Escolha a Quantidade">
+										<input type="text"  id="idpedvend" name="idpedvend"  class="form-control" value="${pedidovenda.id }" placeholder="" disabled="disabled">
 					
 							
-								<input type="submit" class="btn btn-lg btn-success"
+								<input type="submit" class="btn btn-sm btn-success"
 										value="ADD">
 											
 			   
@@ -83,16 +92,25 @@
 			 							 
 			 		
 					 
-                        </div>
+<!--                         </div> -->
                         
                         
                         
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Pedido Venda : ${pedidovenda.id} <strong> ${pedidovenda.id }</strong></h5>
+				<div class="card">
+                  		  <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Detalhes do Pedido Venda :<strong> ${pedidovenda.id }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+            
            
           </div>
-                    <div class="widget-content nopadding">               
+                    <div class="widget-content">               
           
           					<div class="form-inline"> 
           
@@ -127,13 +145,22 @@
 			
 			</div>
 
-  <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5>
+<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"> <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+           
            
           </div>
      
-     <div class="widget-content nopadding">               
+     <div class="widget-content ">               
        <div class="container-fluid">
      
 		 <div class="table-responsive">
@@ -236,6 +263,7 @@
 	</div>
 	
 
+</div>
 </div>
 </div>
 </div>

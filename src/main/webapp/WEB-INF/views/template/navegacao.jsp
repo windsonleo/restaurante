@@ -63,6 +63,15 @@
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
                             </li>
+                            
+                            <li>
+<%--                                 <a href="${pageContext.request.contextPath}/usuario/profile" class="dropdown-toggle" data-toggle="dropdown"> --%>
+                                   <a href="/logout">
+                                    
+                                    <i class="material-icons">power_off</i>
+                                    <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
                         </ul>
 <!--                         <form class="navbar-form navbar-right" role="search"> -->
 <!--                             <div class="form-group  is-empty"> -->

@@ -8,7 +8,7 @@
 <div id="content-header">
 
 	</br>
-	<h2>Cadastro de Usuario</h2>
+	<h3>Cadastro de Usuario</h3>
 </div>
 
 <div class="container-fluid">
@@ -154,34 +154,48 @@
                         <form action="LocalizarClienteGerencia" method="POST" class="">
 
 
-						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
-                                <input type="text" list="${clientesList}" id="id"
-                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
-                                       class="form-control">
+<!-- 						<div class="form-group label-floating"> -->
+<!-- <!--                               <label class="control-label">Cliente</label> --> 
+<%--                                 <input type="text" list="${clientesList}" id="id" --%>
+<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
+<!--                                        class="form-control"> -->
                                        
-                                 <span class="material-input"></span>
-                         </div>
+<!--                                  <span class="material-input"></span> -->
+<!--                          </div> -->
 
 
 
 
-                                <datalist id="${clientesList}">
+<%--                                 <datalist id="${clientesList}"> --%>
 
-                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
 
-                                        <option value="${client.id }"> ${client.nome } </option>
+<%--                                         <option value="${client.id }"> ${client.nome } </option> --%>
 
-                                    </c:forEach>
+<%--                                     </c:forEach> --%>
 
 
-                                </datalist>
+<!--                                 </datalist> -->
                                     
+                                    </br>
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">Localizar</button>
-
+									
+									<div class="form-group is-empty is-fileinput">
+									    <input type="file" id="inputFile4" multiple="">
+									    <div class="input-group">
+									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">
+									        <span class="input-group-btn input-group-sm">
+									          <button type="button" class="btn btn-fab btn-fab-mini">
+									            <i class="material-icons">attach_file</i>
+									          </button>
+									        </span>
+									    </div>
+									</div>
+									
+									 <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">Salvar Foto</button>
+									
                                        
                                  <span class="material-input"></span>
                          		</div>

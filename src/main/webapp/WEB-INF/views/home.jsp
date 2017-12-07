@@ -51,12 +51,11 @@
 <!--                <h3>Dashbord</h3> -->
 <!--                </div> -->
                
-               </br>
-               </br>
+<!--                </br> -->
+<!--                </br> -->
                
                <div class="span12">
-                    
-                        
+                     
                        
                          <div class="span2">
                             <div class="card card-stats">
@@ -215,7 +214,9 @@
                             </div>
                         </div>
                     </div>
-
+                    
+   
+                    
   <sec:authorize access="hasRole('ROLE_ADM')">
   
      <div class="row">
@@ -388,7 +389,394 @@
         </div>
       
       </div>
+      
+      
+      
+      					 <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card card-nav-tabs">
+                                <div class="card-header" data-background-color="blue">
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <span class="nav-tabs-title">Compras:</span>
+                                          
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                              
+                                                <li class="active">
+                                                    <a href="#profile" data-toggle="tab">
+                                                        <i class="material-icons">room_service</i> PENDENTE
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                </li>
+                                               
+                                                <li class="">
+                                                    <a href="#messages" data-toggle="tab">
+                                                        <i class="material-icons">check</i> APROVADA
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li class="">
+                                                    <a href="#settings" data-toggle="tab">
+                                                        <i class="material-icons">warning</i> RECUSADA
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                
+                                                </li>
+                                           
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="profile">
+                                            <table class="table">
+                                                <tbody>
+                                                   
+                                                       		<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+                                                       		 <tr>
+                                                       		
+                                                      		
+                                                       		
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pedidocompra.status=='PENDENTE'}">
+																    
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:orange;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 
+																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                 <span class="user-info"> ${pedidocompra.id} </span></br>
+															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
+															                  <a href="#"></a> Itens : ${pedidocompra.items} </span></p>
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                           
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </td>
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              									</tr>
+			              								</c:forEach>
+			              								
+			              								
+			              								</tbody>
+			              								</table>
+			              								</div>
+
+                                                        
+                                                       
+                                        <div class="tab-pane" id="messages">
+                                            <table class="table">
+                                                <tbody>
+                                                  <c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+                                                    			<tr>
+                                                           
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pedidocompra.status=='PRONTO'}">
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:green;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                
+															                 <span class="user-info"> ${pedidocompra.id} </span></br>
+															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
+															                  <a href="#"></a> Itens : ${pedidocompra.items} </span></p>
+															                  
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </td>
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              	
+                                                         </tr>
+			              								</c:forEach>
+             
+                                                       
+			              								</tbody>
+			              								</table>
+			              								</div>
+                                                    
+                                                    
+                                                    <div class="tab-pane" id="settings">
+                                            			<table class="table">
+                                                			<tbody>
+
+                                                                <c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+                                                                 <tr>
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pedidocompra.status=='FECHADO'}">
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:red;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                 <span class="user-info"> ${pedidocompra.id} </span></br>
+															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
+															                  <a href="#"></a> Itens : ${pedidocompra.items} </span></p>
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                <i class="material-icons">edit</i>
+                                                            </button>
+                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </td>
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              									 </tr>
+			              								</c:forEach>
+                                                   	
+			              								</tbody>
+			              								</table>
+			              								</div>
+                                                    
+       
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					
+          
+				 	<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Acesso Rápido</h4>
+                                    <p class="category">...</p>
+
+                                </div>
+                                
+                                </br>
+          				
+          				
+          				<div class="row">
+          				
+          				<div class="widget-content" style="margin-left:2em;">                
+				                    
+				 <ul class="nav nav-pills nav-pills-icons nav-pills-info" role="tablist">
+					
+					
+					<li class="active">
+						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta">
+							<i class="fa fa-cutlery"></i>
+							Cozinha
+						</a>
+					</li>
+					<li >
+						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
+							<i class="material-icons">table</i>
+							Salão
+						</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta">
+							<i class="material-icons">money</i>
+							Caixa
+						</a>
+					</li>
+					
+					<li >
+						<a href="#schedule" role="tab" data-toggle="tab">
+							<i class="material-icons">table</i>
+							Financeiro
+						</a>
+					</li>
+					<li>
+						<a href="#tasks" role="tab" data-toggle="tab">
+							<i class="material-icons">money</i>
+							Reserva
+						</a>
+					</li>
+					
+					
+					<li >
+						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="ta" data-toggle="ta">
+							<i class="material-icons">table</i>
+							Compras
+						</a>
+					</li>
+					
+					<li>
+						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
+							<i class="material-icons">money</i>
+							Vendas
+						</a>
+					</li>
+					
+					<li>
+						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
+							<i class="material-icons">view_list</i>
+							Estoque
+						</a>
+					</li>
+				
+				
+				</ul>
+				 
+				 </div> 
+          				
+          				
+          				</div>
+          				            
+            </div>
+            </div>
+            
+            
+            
+            
+              
+          
+		  				<ul class="quick-actions">
+
+              
+           					<c:forEach var="pv" items="${ls}" varStatus="status">
+              
+  
+                				<li class="bg_ly">
+                				   <a href="myAlert${pv.id}" data-toggle="modal" class="fa fa-remove">
+                				
+			       					<i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i>
+         	
+						         		 <div class="huge">${pv.id}</div>
+						         		 <div>${pv.cliente}</div>
+						         		 
+						                 <div>${pv.mesa}</div>
+						                  <div> ${pv.status}</div> 
+						                 <div>  <label class="badge badge-info">${pv.origempedido}</label>  <div>
+                                     	<span class="label label-success">${pv.items.size()}</span>
+
+
+                                 </a>
+                                 
+
+                                      </li>
+                                      
+            <div id="myAlert${pv.id}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h3>Alerta de Mudanca de Status</h3>
+              </div>
+              <div class="modal-body">
+                <p>Deseja Realmente Mudar o Staus desse Item</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/pv/pronto?id=${pv.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>
+                                      
+
+                </c:forEach>
+
+			</ul>
+          </div>
+      
+      
+      
+      
+      
       </sec:authorize>
+      
+      
+
+      
+<!--       <div class="form-group is-empty is-fileinput"> -->
+<!--     <input type="file" id="inputFile4" multiple=""> -->
+<!--     <div class="input-group"> -->
+<!--       <input type="text" readonly="" class="form-control" placeholder="Placeholder w/file chooser..."> -->
+<!--         <span class="input-group-btn input-group-sm"> -->
+<!--           <button type="button" class="btn btn-fab btn-fab-mini"> -->
+<!--             <i class="material-icons">attach_file</i> -->
+<!--           </button> -->
+<!--         </span> -->
+<!--     </div> -->
+<!-- </div> -->
+      
+      
+      
+      
+      
+      
       
 <!--       </div> -->
       

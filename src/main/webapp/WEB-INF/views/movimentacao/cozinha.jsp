@@ -6,18 +6,12 @@
 <div id="content">
 
   <div id="content-header">
-    <div id="breadcrumb"> 
-    <a href="#" title="Go to Salão" class="tip-bottom"><i class="icon-icon"></i> Cozinha</a>
-     <a href="#" class="current">Movimentação de Cozinha</a> 
-     </div>
-     
-    <h1>Cozinha Visão Geral <span class="pull-right"> TMP :   </span></h1>
-    
-    
-  </div>
+
+	<br>
+     <h3>Movimentação de Cozinha</h3> 
+     </div>    
+      
   
-  
-  <div class="container-fluid">
   
   <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
@@ -39,67 +33,144 @@
     
     <hr>
     
+      <div class="container-fluid">
+    
          <div class="row-fluid">
-         
-		<div class="badge badge-important pull-right" title="Produzir Produto Composto" >
-		<a href="/produzircomposto" class="tip-bottom">
-		<i class="icon-icon" >
-		<img src="${pageContext.request.contextPath}/resources/images/icons/32/chef.png"/>
-		</i>
-		</a> 
-		</div>
+
+		
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+					
+					
+					<li >
+						<a href="${pageContext.request.contextPath}/produzircomposto" role="ta" data-toggle="ta">
+							<i class="fa fa-cutlery"></i>
+							Produzir Produto Composto
+						</a>
+					</li>
+					
+					<li >
+						<a href="#" role="tab" data-toggle="tab">
+							<i class="fa fa-cutlery"></i>
+							Retirar Insumo
+						</a>
+					</li>
+					
+					<li class="active" >
+						<a href="#" role="tab" data-toggle="tab" >
+							<i class="material-icons"> timer</i>
+							Tempo Médio Preparo
+						</a>
+					</li>
+		</ul>
+		
   
-          <div class="widget-box widget-plain">
-      <div class="center">
-        <ul class="stat-boxes2">
-          <li>
-            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+10%</div>
-            <div class="right"> <strong>${pedidocomprasnovos.size()}</strong>Abertos </div>
-          </li>
-          <li>
-            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
-              <canvas width="50" height="24"></canvas>
-              </span>10%</div>
-            <div class="right"> <strong>${recebimentosnovos.size()}</strong> Pendentes</div>
-          </li>
-          <li>
-            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
-              <canvas width="50" height="24"></canvas>
-              </span>-40%</div>
-            <div class="right"> <strong>${pedidovendasnovos.size()}</strong> Prontos</div>
-          </li>
-          <li>
-            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+60%</div>
-            <div class="right"> <strong>${clientesnovos.size()}</strong> Em Preparacao</div>
-          </li>
-          <li>
-            <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30%
-            
-            </div>
-            
-            <div class="right"> <strong>${clientesnovos.size()}</strong>Cancelados</div>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     </div>
     
     
     <div class="row-fluid">
       <div class="span12">
       
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon-icon"><i class="icon-th"></i></span>
-            <h5>Movimentação Pedidos</h5>
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Movimentação Pedidos Vendas</h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+                                
+                                  			 <div class="span12">                       
+                         <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+									<i class="fa fa-money"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Abertos</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="orange">
+									<i class="fa fa-credit-card"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Pendentes</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="green">
+									<i class="fa fa-credit-card-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Pronto</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="red">
+									<i class="material-icons">account_balance_wallet</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Cancelados</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </div>
           
-<%--                      <div class="widget-title"> <span class="icon"><a href="${pageContext.request.contextPath}/pedidovenda/cadastro"><i class="icon-plus" color="blue"></i></a> </span> --%>
-         
-            </div>
-<!--         <div class="widget-content nopadding"> -->
+          
+          <div class="">            
           
 			   <div class="container-fluid">
                   
@@ -358,8 +429,6 @@
         </div>
         </div>
         
+        </div>
+        </div>
         
-        
- <div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Soluções em Tecnologia</a> </div>
-</div>

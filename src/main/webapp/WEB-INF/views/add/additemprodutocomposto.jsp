@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produtocomposto/movimentacao"  title="Go to " class="tip-bottom"><i class="icon-home"></i> Produto Composto</a> <a href="#">Movimentação Produto Composto </a> <a href="#" class="current">Add Item ao Produto Composto </a> </div>
-    <h1>Add Item ao Produto Composto <strong> ${produtocomposto.nome }</strong></h1>
+  </br>
+    <h3>Add Item ao Produto Composto <strong> ${produtocomposto.nome }</strong></h3>
   </div>
   <div class="container-fluid"><hr>
    <c:if test="${erros != null }">
@@ -29,20 +29,29 @@
     </c:if>
   
     <div class="row-fluid">
-      <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Buscar Produto</h5>
+      	<div class="span12">
+				<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Buscar Produto</h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+            
            
           </div>
-          <div class="widget-content nopadding">               
-			<form action="salvaritemprodutocomposto" method="POST" class="form-horizontal">		
+          <div class="widget-content ">               
+			<form action="salvaritemprodutocomposto" method="POST" class="">		
   
 				<div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
 			
-								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-horizontal">
+								<input type="text" list="${produtosList}" id="id" placeholder="Escolha a Produto" name="id" autocomplete="off" class="form-control">
 								
 									
 									<datalist id="${produtosList}">
@@ -56,13 +65,13 @@
 								  
 									</datalist>
 									
-									<input type="text"  id="qtd" name="qtd"  class="" value="1" placeholder="Escolha a Quantidade">
+									 <input type="text"  id="qtd" name="qtd"  class="form-control" value="" placeholder="Escolha a Quantidade">
 									
-										<input type="text"  id="idprocomp" name="idprocomp"  class="form-horizontal" value="${produtocomposto.id }" placeholder="Escolha a Quantidade">
+										<input type="text"  id="idprocomp" name="idprocomp"  class="form-control" value="${produtocomposto.id }" placeholder="Escolha a Quantidade" disabled="disabled">
 
 					
 							
-								<input type="submit" class="btn btn-lg btn-success"
+								<input type="submit" class="btn btn-sm btn-success"
 										value="ADD">
 											
 			   
@@ -85,10 +94,18 @@
                         </div>
                         
                         
-                        
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Produto Composto :  <strong> ${produtocomposto.nome}</strong></h5>
+				<div class="card">
+                    		<div class="card-content">
+                       
+                                	<div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"> <h5>Detalhes do Produto Composto :  <strong> ${produtocomposto.nome}</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+           
            
           </div>
                     <div class="widget-content nopadding">               			 						
@@ -145,16 +162,25 @@
 						
 						
 </div>
-						</div>
-						</div>
+<!-- 						</div> -->
+<!-- 						</div> -->
 
 <!-- 			<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a> -->
 			
 			</div>
 
- <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Produto Composto : <strong> ${produtocomposto.nome }</strong></h5>
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Itens do Produto Composto : <strong> ${produtocomposto.nome }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+            
            
           </div>
      

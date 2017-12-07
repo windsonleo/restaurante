@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true"%>
 
 
@@ -10,13 +12,20 @@
   <div class="container-fluid"><hr>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Fechar Caixa</h5>
-          </div>
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Movimentacao Caixa</h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
           
           
-          <div class="widget-content nopadding">
+          <div class="widget-content ">
           		
 					<form action="${pageContext.request.contextPath}/caixa/fechamentocaixa" method="get" >
 
@@ -24,7 +33,8 @@
                 <label class="control-label"></label>
                 <div class="controls">
 							<input id="dataini" name="dataini" class="form-control"
-							type="date" value="${pedidovenda.data }"
+							type="text" value=" <fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${pedidovenda.data}"/>"
 							placeholder="Digite a Data" />
 							
 				
@@ -49,10 +59,17 @@
 
 
 
-<div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes dos Pedidos</h5>
-          </div>
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Detalhes dos Pedidos de Venda</h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
         <ul> 
           
      <li class="content"> <span>Quantidade Pedidos ${pedidovendaList.size()}</span>

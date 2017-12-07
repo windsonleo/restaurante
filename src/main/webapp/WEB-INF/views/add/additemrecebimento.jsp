@@ -6,9 +6,12 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/recebimento/movimentacao"  title="Go to Recebimento" class="tip-bottom"><i class="icon-home"></i> Recebimento</a> <a href="#">Movimentacao Recebimento</a><a href="#" class="current">Add Item ao Recebimento </a> </div>
-    <h1>Add Item ao Recebimento <strong> ${recebimento.id }</strong></h1>
+
+</br>
+    <h3>Add Item ao Recebimento <strong> ${recebimento.id }</strong></h3>
+    
   </div>
+  
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
@@ -32,11 +35,17 @@
   
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Buscar Pedido Compra</h5>
-           
-          </div>
+        <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Add Item ao Recebimento</h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
           
           <div class="widget-content nopadding">
           
@@ -50,7 +59,7 @@
 							type="text" value="${pedidocompra.id }"
 							placeholder="Digite o Numero do Pedido de Compra" />  
 							
-							<button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
+							<button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Localizar</button>
 							
 							
 							              </div>
@@ -58,9 +67,19 @@
               </form>
               </div>
             
-            <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Pedido Compra : ${recebimento.pedidocompra.id}</h5>
-          </div>
+				<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Detalhes do Pedido Compra : ${recebimento.pedidocompra.id}</h5></h4>
+                                    <p class="category">Todos</p>
+                                <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i
+                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                </div>
+                                
+                                </br>            
+<!--          				</div> -->
           
 		
 						<div class="control-group">
@@ -87,9 +106,17 @@
                 </div>
               </div>							
      
-               <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Pedido de Compra  : <strong> ${recebimento.pedidocompra.id }</strong></h5>
+				<div class="card">
+                    		<div class="card-content">
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"> <h5>Itens do Pedido de Compra  : <strong> ${recebimento.pedidocompra.id }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+           
            
           </div>
      
@@ -210,9 +237,18 @@
           <div class="widget-content nopadding">
           
 
-		 <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens Confirmados do Recebimento  : <strong> ${recebimento.id }</strong></h5>
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Itens Confirmados do Recebimento  : <strong> ${recebimento.id }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+            
            
           </div>
      
@@ -337,6 +373,9 @@
 	</div>
 	
 
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -6,10 +6,11 @@
 
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/estoque/movimentacao"  title="Go to Estoque" class="tip-bottom"><i class="icon-home"></i> Estoque</a> <a href="#">Movimenta��o Estoque</a> <a href="#" class="current">Informa��es do Estoque </a> </div>
-    <h1>Informacoes do Estoque <strong> ${estoque.id }</strong></h1>
+	
+	</br>
+    <h3>Informacoes do Estoque <strong> ${estoque.nome }</strong></h3>
   </div>
-  <div class="container-fluid"><hr>
+
   
     <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
@@ -29,72 +30,133 @@
             
     </c:if>
   
-  
+    <div class="container-fluid"><hr>
     <div class="row-fluid">
       <div class="span12">
-        <div class="widget-box">
-   
-            <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Estoque : ${estoque.nome}</h5>
-          </div>
-             <div class="widget-content nopadding">
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">  <h5>Detalhes do Estoque : ${estoque.nome}</h5></h4>
+                                    <p class="category">Todos</p>
+                                </div>
+                                
+                                </br>
+                                
+                                
+                                 <div class="span12">
+                    
+                        
+                       
+                         <div class="span2" style="margin-left:7em;">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+									<i class="icon icon-barcode"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Produtos</p>
+                                    <h3 class="title"><small>${estoque.items.size()}</small>
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+									<i class="material-icons">style</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Itens</p>
+                                    <h3 class="title"><small>${qtditens}</small>
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+									<i class="fa fa-money"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Total Custo</p>
+                                    <h3 class="title"><small> <fmt:formatNumber type="currency"
+                 										value="${totalcusto}"/> </small>
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                          <div class="span2">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+									<i class="material-icons">money</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Total Venda</p>
+                                    <h3 class="title"><small> <fmt:formatNumber type="currency"
+               											  value="${totalvenda}"/> </small>
+<!--                                         <small>Total</small> -->
+                                    </h3>
+                                </div>
+                               
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </div>
+          
+             <div class="widget-content">
 		
-<!-- 						<div class="control-group"> -->
-<!-- 							<label class="control-label">...</label> -->
-<!-- 							<div class="controls"> -->
-						
-<%-- 						<input id="id" class="span2 m-wrap" name="id" type="text" value="${estoque.id}" placeholder="Digite o id" /> --%>
-<%--                			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${estoque.ativo}"/> --%>
-<%-- 						<input id="nome" class="form-control" name="nome" type="text" value="${estoque.nome}" placeholder="Digite o Nome da Estoque"/> --%>
-							
-<!-- 							</div> -->
-<!-- 						</div> -->
-           						
-   <div class="widget-box widget-plain">
-      <div class="center">
-        <ul class="stat-boxes2">
-          <li>
-            <div class="left peity_bar_neutral"><span><span style="display: none;">2,4,9,7,12,10,12</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+10%</div>
-            <div class="right"> <strong>${estoque.items.size()}</strong>Produtos </div>
-          </li>
-          <li>
-            <div class="left peity_line_neutral"><span><span style="display: none;">10,15,8,14,13,10,10,15</span>
-              <canvas width="50" height="24"></canvas>
-              </span>10%</div>
-            <div class="right"> <strong>${qtditens}</strong> Itens</div>
-          </li>
-          <li>
-            <div class="left peity_bar_bad"><span><span style="display: none;">3,5,6,16,8,10,6</span>
-              <canvas width="50" height="24"></canvas>
-              </span>-40%</div>
-            <div class="right"> <strong> <fmt:formatNumber type="currency"
-                 value="${totalcusto}"/> </strong> CR$</div>
-          </li>
-          <li>
-            <div class="left peity_line_good"><span><span style="display: none;">12,6,9,23,14,10,17</span>
-              <canvas width="50" height="24"></canvas>
-              </span>+60%</div>
-            <div class="right"> <strong> <fmt:formatNumber type="currency"
-                 value="${totalvenda}"/> </strong> VR$</div>
-          </li>
-<!--           <li> -->
-<!--             <div class="left peity_bar_good"><span>12,6,9,23,14,10,13</span>+30% -->
+
+
+			<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title"><h5>Itens do Estoque : <strong> ${estoque.nome }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
+                                </div>
+                                
+                                </br>
+          
+          
+          <div class="">
+            <table class="table table-hover table-bordered data-table">
             
-<!--             </div> -->
-            
-<!--             <div class="right"> <strong>335</strong> XXX</div> -->
-<!--           </li> -->
-        </ul>
-      </div>
-    </div>
-              
-             							
-     
-               <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Itens do Estoque  : <strong> ${estoque.nome }</strong></h5>
            
           </div>
      
@@ -204,6 +266,8 @@
 	</div>
 	
 
+</div>
+</div>
 </div>
 </div>
 </div>

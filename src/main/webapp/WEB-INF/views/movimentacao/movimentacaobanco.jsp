@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -12,7 +14,7 @@
     <div class="row-fluid">
       <div class="span12">
       
-<div class="card">
+			<div class="card">
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="blue">
@@ -50,7 +52,7 @@
 			          <td>${banco.id}</td>
                   <td>${banco.nome}</td>
                   <td >${banco.numero}</td>
-                  <td><span class="label label bg_lb">${banco.ativo}</span></td>
+                  <td><span class="label label-info">${banco.ativo}</span></td>
                  <td class="options-width">
 								
 								
@@ -109,7 +111,7 @@
         </div>
         
        
-
+</div>
 
 
 

@@ -98,7 +98,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Detalhes Pedido Compra</h4>
+                                    <h4 class="title"> <h5>Detalhes do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5></h4>
                                     <p class="category">Confira os Dados</p>
 <%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
 <!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
@@ -106,10 +106,10 @@
                                 
                                 </br>
           <div class="widget-content">
-            <h5>Detalhes do Pedido Compra : ${pedidocompra.id} <strong> ${pedidocompra.id }</strong></h5>
+           
            
           </div>
-                    <div class="widget-content nopadding">               
+                    <div class="widget-content ">               
           
           					<div class="form-inline"> 
           
@@ -117,7 +117,7 @@
           
           			<div class="controls">
 						 
-							<label>Coodigo</label>	
+							<label>Codigo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidocompra.id }" readonly="readonly"> 
 							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}"/>" readonly="readonly"> 
@@ -130,7 +130,7 @@
 							
 <!-- 							<label>Cliente</label> -->
 <%-- 							<input id="cliente" name="cliente" type="text" class="form-control" value="${pedidovenda.cliente }">  --%>
-							
+							</br>
 							<label>Total</label>
 							<input id="total" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
                        value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly" class="form-control"> 
@@ -149,7 +149,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Itens do Pedido Compra</h4>
+                                    <h4 class="title"> <h5>Itens do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5></h4>
                                     <p class="category">Insira os Dados</p>
 <%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
 <!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
@@ -157,11 +157,11 @@
                                 
                                 </br>
           <div class="widget-content">
-            <h5>Itens do Pedido Compra : <strong> ${pedidocompra.id }</strong></h5>
+           
            
           </div>
      
-     <div class="widget-content nopadding">               
+     <div class="widget-content ">               
        <div class="container-fluid">
      
 		 <div class="table-responsive">
@@ -265,6 +265,8 @@
 	</div>
 	
 
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -28,14 +28,14 @@
                                 </br>
           
           
-          <div class="">
+          <div class="table-responsive ">
             <table class="table table-hover table-bordered data-table">
 
               <thead>
                <tr>
                                         <th>Id</th>
 									    <th>Data</th>
-									    <th>Situação</th>
+<!-- 									    <th>Situação</th> -->
 									    
 									    <th>Status</th>
 									    <th>Origem</th>
@@ -66,11 +66,11 @@
                                              value="${pedidovenda.data}"/>
                   
                   </td>
-				<td>${pedidovenda.situacao}</td>
+<%-- 				<td>${pedidovenda.situacao}</td> --%>
 				<c:choose>
 				    <c:when test="${pedidovenda.status=='ABERTO'}">
 
-                  <td><span class="label label-info">${pedidovenda.status}</span></td>
+                  <td><span class="label label-primary">${pedidovenda.status}</span></td>
 
 				
 				    </c:when> 
@@ -91,14 +91,14 @@
 				    
 				    <c:when test="${pedidovenda.status=='CANCELADO'}">
 
-                  <td><span class="label label-important">${pedidovenda.status}</span></td>
+                  <td><span class="label label-inverse">${pedidovenda.status}</span></td>
 
 				
 				    </c:when>  
 				    
 				    <c:when test="${pedidovenda.status=='FECHADO'}">
 
-                  <td><span class="label label-ly">${pedidovenda.status}</span></td>
+                  <td><span class="label label-primary">${pedidovenda.status}</span></td>
 
 				
 				    </c:when> 
@@ -122,7 +122,7 @@
                  <td>${pedidovenda.garcon}</td>
                   <td>${pedidovenda.items}</td>
                   
-                   <td><span class="label label bg_lb"> ${pedidovenda.ativo}</span></td>
+                   <td><span class="label label-info"> ${pedidovenda.ativo}</span></td>
                    
               
 		                   
@@ -135,7 +135,7 @@
 				    
 				    <c:otherwise>
 
-                  <td><span class="label label-important">${pedidovenda.ispago}</span></td>
+                  <td><span class="label label-danger">${pedidovenda.ispago}</span></td>
 
 				    </c:otherwise>
 				</c:choose>		                   

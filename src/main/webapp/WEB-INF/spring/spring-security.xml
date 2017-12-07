@@ -35,7 +35,7 @@
         <security:intercept-url pattern="/formapagamento/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
 
 
-        <security:logout logout-success-url="/" invalidate-session="true" delete-cookies="true"/>
+        <security:logout logout-url="/logout"   logout-success-url="/login"  invalidate-session="true" delete-cookies="true"/>
         <!--         		<security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 
     </security:http>
@@ -56,7 +56,7 @@
     </b:bean>
     <b:bean id="failureHandler"
             class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-        <b:property name="defaultFailureUrl" value="/erro"/>
+        <b:property name="defaultFailureUrl" value="/acessonegado"/>
     </b:bean>
 
     <!--  <b:bean id="myAuthenticationProvider" class="com.tecsoluction.reuniao.security.MyAuthenticationProvider"></b:bean> -->
