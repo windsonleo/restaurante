@@ -62,7 +62,7 @@
                   <td >${formapagamento.tipo}</td>
                   <td>${formapagamento.parcelas}</td>
                    <td>${formapagamento.percdesconto}</td>
-                   <td><span class="label label bg_lb">${formapagamento.ativo}</span></td>
+                   <td><span class="label label-success">${formapagamento.ativo}</span></td>
                  <td class="options-width">
 								
 								

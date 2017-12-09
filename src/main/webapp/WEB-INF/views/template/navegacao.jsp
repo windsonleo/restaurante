@@ -24,12 +24,34 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
+                   
                     <li>
                         <a href="${pageContext.request.contextPath}/empresa/movimentacao" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="material-icons">store</i>
                             <p class="hidden-lg hidden-md">Empresa</p>
                         </a>
+                        
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/empresa/movimentacao">Movimentacao</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/empresa/cadastro">Cadastro</a>
+                            </li>
+                            <li>
+                                <a href="#">Fiscal</a>
+                            </li>
+<!--                             <li> -->
+<!--                                 <a href="#">Another Notification</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a href="#">Another One</a> -->
+<!--                             </li> -->
+                            
+
+                        </ul>
                     </li>
+                   
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="material-icons">notifications</i>

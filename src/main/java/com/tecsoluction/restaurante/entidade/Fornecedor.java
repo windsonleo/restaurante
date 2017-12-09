@@ -41,6 +41,9 @@ public class Fornecedor extends BaseEntity implements Serializable {
 
     @Column(name = "inscricaoestadual")
     private String inscricaoestadual;
+    
+    @Column(name = "foto")
+    private String foto;
 
     @JsonIgnore
     @OneToMany(mappedBy = "fornecedor")
@@ -51,6 +54,9 @@ public class Fornecedor extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "fornecedor")
     private List<Recebimento> recebimento;
 
+    
+    
+    
     public Fornecedor() {
         //    produtos = new ArrayList<>();
     }

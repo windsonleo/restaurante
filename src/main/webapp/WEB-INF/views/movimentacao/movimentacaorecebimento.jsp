@@ -7,7 +7,7 @@
     <div id="content-header">
 
         </br>
-        <h2>Listagem e Vis�o Geral</h2>
+        <h2>Listagem e Visao Geral</h2>
     </div>
     <div class="container-fluid">
         <hr>
@@ -45,7 +45,7 @@
                                     <!--    									    <th>Garcon</th> -->
                                     <th>Itens</th>
                                     <!-- 									     <th>Pago</th> -->
-                                    <th>Ação</th>
+                                    <th>Acaoo</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -99,7 +99,7 @@
                                                     <c:when test="${recebimento.status=='CANCELADO'}">
 
                                                         <td><span
-                                                                class="label label-important">${recebimento.status}</span>
+                                                                class="label label-danger">${recebimento.status}</span>
                                                         </td>
 
 
@@ -107,7 +107,7 @@
 
                                                     <c:when test="${recebimento.status=='FECHADO'}">
 
-                                                        <td><span class="label label-ly">${recebimento.status}</span>
+                                                        <td><span class="label label-primary">${recebimento.status}</span>
                                                         </td>
 
 

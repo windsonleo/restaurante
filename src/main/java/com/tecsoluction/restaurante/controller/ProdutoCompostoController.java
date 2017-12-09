@@ -135,7 +135,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		model.addAttribute("fornecedorList", fornecedorList);
 		model.addAttribute("categoriaList", categoriaList);
 		model.addAttribute("umList", umList);
-		model.addAttribute("produtocomposto", produtocomposto);
+//		model.addAttribute("produtocomposto", produtocomposto);
 
 		
 

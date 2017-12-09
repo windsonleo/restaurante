@@ -56,7 +56,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${garcon.nome}"
-                                                                            placeholder="Digite o Nome da garcon"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -68,7 +68,7 @@
 															<input id="mask-mail" class="form-control" name="foto"
                                                                              type="text"
                                                                              value="${garcon.foto}"
-                                                                             placeholder="Digite o Email"/>                                                <span class="material-input"></span>
+                                                                             placeholder=""/>                                                <span class="material-input"></span>
                                     </div>
 
 
@@ -76,7 +76,7 @@
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Pedidos</label>
 											  <select id="pedidos"name="pedidos" multiple="multiple" class="form-control" >
-	                                  <optgroup label="Todos os Pedidos do Garcon">
+	                                  <optgroup label="">
 		           				
 		           					<option value="${garcon.pedidos}" selected="selected" >${garcon.pedidos}</option>
 		           				
@@ -104,7 +104,7 @@
 
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Margem de Lucro</label>
-											 <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
+											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
                                				  <span class="material-input"></span>
                                     </div>
@@ -113,7 +113,7 @@
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
-                                       		placeholder="Lucro total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div> 
                                     
@@ -121,7 +121,7 @@
                                     <div class="form-group label-floating is-empty">
                                           <label class="control-label">Total de Pedidos Compra</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
-                                       		placeholder="Pedidos total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div>                                    
 
@@ -148,7 +148,7 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/vazio.jpg">
+                                        <img class="img" src="../resources/images/garcon/${garcon.foto}.jpg">
                                     </a>
                                     
 

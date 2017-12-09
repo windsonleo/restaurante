@@ -45,7 +45,7 @@
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>A��o</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +62,7 @@
 			      <td>${empresa.id}</td>
                   <td>${empresa.nome}</td>
                   <td ><input type="text" value="${empresa.logo}"></td>
-                  <td><span class="label label bg_lb">${empresa.ativo}</span></td>
+                  <td><span class="label label-success">${empresa.ativo}</span></td>
                  <td class="options-width">
 								
 								

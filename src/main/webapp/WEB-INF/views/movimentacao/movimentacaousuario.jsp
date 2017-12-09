@@ -7,7 +7,7 @@
     <div id="content-header">
 
 </br>
-        <h3>Listagem e Vis�o Geral</h3>
+        <h3>Listagem e Visao Geral</h3>
     </div>
 
 
@@ -23,7 +23,7 @@
                         <div class="card-header" data-background-color="blue">
 
 
-                            <h4 class="title">Movimenta��o Usu�rio</h4>
+                            <h4 class="title">Movimentacao Usuario</h4>
                             <p class="category">Todos</p>
                             <span class="icon "><a href="${pageContext.request.contextPath}/usuario/cadastro"><i
                                     class="icon-plus pull-right" color="blue"></i></a> </span>
@@ -41,10 +41,10 @@
                                     <th>Username</th>
                                     <th>Senha</th>
                                     <th>Email</th>
-                                    <th>Permiss�es</th>
+                                    <th>Permissoes</th>
                                     <!-- 									    <th>Roles</th> -->
                                     <!-- 									     <th>Ativo</th> -->
-                                    <th>A��o</th>
+                                    <th>Acao</th>
                                 </tr>
                                 </thead>
 
@@ -77,7 +77,7 @@
 
                                                     <a
                                                             href="${pageContext.request.contextPath}/usuario/informacoes?id=${usuario.id}"
-                                                            title="Informa��es"><i class="icon-info-sign"></i></a>
+                                                            title="Informacoes"><i class="icon-info-sign"></i></a>
 
 
                                                     <a href="#myAlert${usuario.id}" data-toggle="modal"

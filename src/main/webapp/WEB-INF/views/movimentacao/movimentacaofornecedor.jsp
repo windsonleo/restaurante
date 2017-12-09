@@ -62,7 +62,7 @@
                   <td >${fornecedor.razaosocial}</td>
                   <td>${fornecedor.cnpj}</td>
                    <td>${fornecedor.inscricaoestadual}</td>
-                   <td><span class="label label bg_lb">${fornecedor.ativo}</span></td>
+                   <td><span class="label label-success">${fornecedor.ativo}</span></td>
                  <td class="options-width">
 								
 								

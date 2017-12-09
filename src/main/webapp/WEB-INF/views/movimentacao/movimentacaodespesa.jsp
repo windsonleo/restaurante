@@ -43,7 +43,7 @@
 <!-- 									     <th>Preferencia</th> -->
 									     <th>Ativo</th>
 <!-- 									     <th>Obs</th> -->
-									    <th>A��o</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +64,7 @@
 <%--                    <td>${despesa.datanascimento}</td> --%>
 <%--                    <td>${despesa.genero}</td> --%>
 <%--                    <td>${despesa.preferencia}</td> --%>
-                   <td><span class="label label bg_lb"> ${despesa.ativo}</span></td>
+                   <td><span class="label label-success"> ${despesa.ativo}</span></td>
                  <td class="options-widt">
 								
 								

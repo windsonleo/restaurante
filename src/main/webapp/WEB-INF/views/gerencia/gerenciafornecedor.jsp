@@ -62,7 +62,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.nomefantasia}"
-                                                                            placeholder="Digite o Nome da fornecedor"/>
+                                                                            placeholder"/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -74,7 +74,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.razaosocial}"
-                                                                            placeholder="Digite a Razao Social"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -84,7 +84,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.cnpj}"
-                                                                            placeholder="Digite a Cnpj"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -94,7 +94,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.inscricaoestadual}"
-                                                                            placeholder="Digite a Inscricao Estadual"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -117,7 +117,7 @@
 
 <div class="form-group label-floating is-empty">
                                           <label class="control-label">Margem de Lucro</label>
-											 <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
+											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
                                				  <span class="material-input"></span>
                                     </div>
@@ -126,7 +126,7 @@
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
-                                       		placeholder="Lucro total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div> 
                                     
@@ -134,7 +134,7 @@
                                     <div class="form-group label-floating is-empty">
                                           <label class="control-label">Total de Pedidos Compras</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
-                                       		placeholder="Pedidos total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div>                                    
 

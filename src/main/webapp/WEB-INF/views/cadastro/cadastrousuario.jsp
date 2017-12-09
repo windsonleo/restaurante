@@ -50,55 +50,86 @@
  
 
 
+<!-- 		<div class="form-group label-floating is-empty">    -->
+<!--              <div class="control-group"> -->
+<!--                 <label class="control-label">Sugestao?</label> -->
+<!--                 <div class="controls"> -->
+<%--                          <input id="esugestao" class="form-control"name="esugestao"  type="checkbox" checked="${produto.esugestao}"/> --%>
 
+               
+<!--                 </div> -->
+<!--               </div> -->
+              
+<!--               </div> -->
+              
+              <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
-						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${usuario.ativo}"/>
+						<input id="ativo" name="ativo" class="form-contro" type="checkbox" checked="${usuario.ativo}"/>
 				
 				
                 </div>
               </div>
+              </div>
+<!--               </div> -->
               
+              <div class="form-group label-floating is-empty">
                <div class="control-group">
                 <label class="control-label">UserName</label>
                 <div class="controls">
-							<input id="username" name="username" class="form-control" type="text" value="${usuario.username}" placeholder="Digite o UserName"/>
+							<input id="username" name="username" class="form-control" type="text" value="${usuario.username}" placeholder=""/>
 				
 				
                 </div>
               </div>             
+				</div>
+				
 
-
-
+			<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Senha</label>
                 <div class="controls">
-							<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}" placeholder="Digite a Senha"/>					
+							<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}" placeholder=""/>					
 				
 				
                 </div>
               </div>
 
-
-
+			</div>
+			
+			<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Email</label>
                 <div class="controls">
 				
-							<input id="email" name="email" class="form-control" type="text" value="${usuario.email}" placeholder="Digite o Email" />
+							<input id="email" name="email" class="form-control" type="text" value="${usuario.email}" placeholder="" />
 				
                 </div>
               </div>
 
+				</div>
+				
+			<div class="form-group label-floating is-empty">
+              <div class="control-group">
+                <label class="control-label">Foto</label>
+                <div class="controls">
+				
+							<input id="foto" name="foto" class="form-control" type="text" value="${usuario.foto}" placeholder="" />
+				
+                </div>
+              </div>
 
+				</div>
+				
+				<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Roles</label>
                 <div class="controls">
 	 <select id="roles"name="roles" multiple="multiple" class="form-control" >
-	                                  <optgroup label="Tipos de Permissoes do usuario">
+	                                  <optgroup label="">
 		           				
-		           					<option value="${usuario.roles}">${usuario.roles}</option>
+		           					<option value="${usuario.roles}" selected="selected">${usuario.roles}</option>
 		           				
 		           				
 		           					<c:forEach var="role" items="${roleList}">
@@ -112,7 +143,7 @@
 				
                 </div>
               </div>
-	
+			</div>
            
 		 	 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -121,8 +152,8 @@
 	 	 
 			
 			<div class="form-actions">
-				<button type="submit"class="btn btn-success">${acao}</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
+				<button type="submit"class="btn-sm btn-info">${acao}</button>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-warning" >Voltar</a>
 			</div>
 			
 			</form>
@@ -139,43 +170,21 @@
 	
 </div>
 
-<div class="span4">
+								<div class="span4">
 					
                      
 					
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                        <img class="img" src="../resources/images/usuario/${usuario.foto}.jpg">
                                     </a>
                                     
 
                                 </div>
-                        <form action="LocalizarClienteGerencia" method="POST" class="">
+          <form method="post" action="salvarfoto" enctype="multipart/form-data" class="form-horizonta">       
 
 
-<!-- 						<div class="form-group label-floating"> -->
-<!-- <!--                               <label class="control-label">Cliente</label> --> 
-<%--                                 <input type="text" list="${clientesList}" id="id" --%>
-<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
-<!--                                        class="form-control"> -->
-                                       
-<!--                                  <span class="material-input"></span> -->
-<!--                          </div> -->
-
-
-
-
-<%--                                 <datalist id="${clientesList}"> --%>
-
-<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
-
-<%--                                         <option value="${client.id }"> ${client.nome } </option> --%>
-
-<%--                                     </c:forEach> --%>
-
-
-<!--                                 </datalist> -->
                                     
                                     </br>
                                <div class="form-group label-floating is-empty">
@@ -183,7 +192,7 @@
                                    
 									
 									<div class="form-group is-empty is-fileinput">
-									    <input type="file" id="inputFile4" multiple="">
+									    <input name="file" type="file" id="file" multiple="">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">
 									        <span class="input-group-btn input-group-sm">
@@ -194,7 +203,7 @@
 									    </div>
 									</div>
 									
-									 <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">Salvar Foto</button>
+									 <button type="submit" formaction="salvarfoto" class="btn btn-info btn-round btn-md">Salvar Foto</button>
 									
                                        
                                  <span class="material-input"></span>
@@ -204,8 +213,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
-                                     <p class="card-content pull-left">${cliente.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${usuario.username} ${usuario.email}
+                                     <p class="card-content pull-left">${usuario.id} </p> </h4> </p>
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->
@@ -214,7 +223,14 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
 
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
 

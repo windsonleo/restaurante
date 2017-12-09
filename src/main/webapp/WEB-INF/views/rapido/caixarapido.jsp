@@ -214,258 +214,202 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 
                                 <div class="card-content">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="profile">
                                             <table class="table">
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                       
-                                                       
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
                                                    
-                                                   
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                                       		<c:forEach var="pv" items="${ls }">
+                                                       		 <tr>
+                                                       		
+                                                      		
+                                                       		
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pv.status=='PENDENTE'}">
+																    
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:orange;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 
+																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                 <span class="user-info"> ${pv.id} </span></br>
+															                  <span class="user-info"> Cliente : ${pv.cliente} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pv.data}" /> 
+															                  <a href="#"></a> Itens : ${pv.items} </span></p>
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                           
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              									</tr>
+			              								</c:forEach>
+			              								
+			              								
+			              								</tbody>
+			              								</table>
+			              								</div>
+
+                                                        
+                                                       
                                         <div class="tab-pane" id="messages">
                                             <table class="table">
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                                  <c:forEach var="pv" items="${ls }">
+                                                    			<tr>
+                                                           
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pv.status=='PRONTO'}">
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:green;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                
+															                 <span class="user-info"> ${pv.id} </span></br>
+															                  <span class="user-info"> cliente : ${pv.cliente} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pv.data}" /> 
+															                  <a href="#"></a> Itens : ${pv.items} </span></p>
+															                  
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              	
+                                                         </tr>
+			              								</c:forEach>
+             
+                                                       
+			              								</tbody>
+			              								</table>
+			              								</div>
+                                                    
+                                                    
+                                                    <div class="tab-pane" id="settings">
+                                            			<table class="table">
+                                                			<tbody>
+
+                                                                <c:forEach var="pv" items="${ls }">
+                                                                 <tr>
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pv.status=='FECHADO'}">
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:red;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                 <span class="user-info"> ${pv.id} </span></br>
+															                  <span class="user-info"> Cliente : ${pv.cliente} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pv.data}" /> 
+															                  <a href="#"></a> Itens : ${pv.items} </span></p>
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+														 <td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="tab-pane" id="settings">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes" checked>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              									 </tr>
+			              								</c:forEach>
+                                                   	
+			              								</tbody>
+			              								</table>
+			              								</div>
+                                                    
+       
+                                     
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
 					
-          
-		  				<ul class="quick-actions">
-
-              
-           					<c:forEach var="pv" items="${ls}" varStatus="status">
-              
-  
-                				<li class="bg_ly">
-                				   <a href="myAlert${pv.id}" data-toggle="modal" class="fa fa-remove">
-                				
-			       					<i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/venda.png" ></i>
-         	
-						         		 <div class="huge">${pv.id}</div>
-						         		 <div>${pv.cliente}</div>
-						         		 
-						                 <div>${pv.mesa}</div>
-						                  <div> ${pv.status}</div> 
-						                 <div>  <label class="badge badge-info">${pv.origempedido}</label>  <div>
-                                     	<span class="label label-success">${pv.items.size()}</span>
-
-
-                                 </a>
-                                 
-
-                                      </li>
-                                      
-            <div id="myAlert${pv.id}" class="modal hide">
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Mudanca de Status</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Mudar o Staus desse Item</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/pv/pronto?id=${pv.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
-           
-            </div>
-                                      
-
-                </c:forEach>
-
-			</ul>
           </div>
-        </div>
-
-
-
-					</div>
-				</div>
-
-
-
-
-<!-- 			</div> -->
-
-
-		</div>
+          </div>
+          </div>
+          </div>
+          
 
 
 

@@ -20,10 +20,10 @@
                         <div class="card-header" data-background-color="blue">
 
                             <h4 class="title">Movimentacao Delivery</h4>
-                            <p class="category">Todos</p>
+                            <p class="category">Todos
                             <button type="submit" class="btn btn-sm btn-success pull-right"
                                     onClick="window.location='AdicionarDelivery'">Add
-                            </button>
+                            </button></p>
                             <%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/delivery/cadastro"><i --%>
                             <!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
                         </div>
@@ -89,7 +89,7 @@
 
                                             <c:when test="${pedidovenda.status=='CANCELADO'}">
 
-                                                <td><span class="label label-important">${pedidovenda.status}</span>
+                                                <td><span class="label label-danger">${pedidovenda.status}</span>
                                                 </td>
 
 
@@ -97,7 +97,7 @@
 
                                             <c:when test="${pedidovenda.status=='FECHADO'}">
 
-                                                <td><span class="label label-ly">${pedidovenda.status}</span></td>
+                                                <td><span class="label label-primary">${pedidovenda.status}</span></td>
 
 
                                             </c:when>
@@ -116,7 +116,7 @@
                                         <td>${pedidovenda.mesa}</td>
                                         <td>${pedidovenda.garcon}</td>
                                         <td>${pedidovenda.items}</td>
-                                        <td><span class="badge label bg_lb"> ${pedidovenda.ativo}</span></td>
+                                        <td><span class="badge label-success"> ${pedidovenda.ativo}</span></td>
 
                                         <!-- 		                   <td> -->
 
@@ -129,7 +129,7 @@
 
                                             <c:otherwise>
 
-                                                <td><span class="badge badge-primary">${pedidovenda.ispago}</span></td>
+                                                <td><span class="label label-danger">${pedidovenda.ispago}</span></td>
 
                                             </c:otherwise>
                                         </c:choose>

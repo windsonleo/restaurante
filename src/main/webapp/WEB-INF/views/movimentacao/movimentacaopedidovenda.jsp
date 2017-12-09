@@ -122,14 +122,14 @@
                  <td>${pedidovenda.garcon}</td>
                   <td>${pedidovenda.items}</td>
                   
-                   <td><span class="label label-info"> ${pedidovenda.ativo}</span></td>
+                   <td><span class="label label-success"> ${pedidovenda.ativo}</span></td>
                    
               
 		                   
                   	<c:choose>
 				    <c:when test="${pedidovenda.ispago}">
 
-                  <td><span class="label label-success">${pedidovenda.ispago}</span></td>
+                  <td><span class="label label-info">${pedidovenda.ispago}</span></td>
 
 				    </c:when> 
 				    

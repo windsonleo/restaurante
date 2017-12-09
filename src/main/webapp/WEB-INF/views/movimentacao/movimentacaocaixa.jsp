@@ -60,7 +60,7 @@
 <%--                    <td>${caixa.datanascimento}</td> --%>
 <%--                    <td>${caixa.genero}</td> --%>
 <%--                    <td>${caixa.preferencia}</td> --%>
-                   <td> <span class="label label bg_lb">${caixa.ativo}</span></td>
+                   <td> <span class="label label-success">${caixa.ativo}</span></td>
 <%--                    <td> ${caixa.obs}</td> --%>
                  <td class="options-widt">
 								

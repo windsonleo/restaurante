@@ -1,1 +1,1 @@
-web:  java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
+web:  java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war java $JAVA_OPTS='-Xmx384m -Xss512k -XX:+UseCompressedOops -Dfile.encoding=UTF-8'

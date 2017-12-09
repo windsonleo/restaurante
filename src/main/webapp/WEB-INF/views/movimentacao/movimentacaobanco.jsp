@@ -52,7 +52,7 @@
 			          <td>${banco.id}</td>
                   <td>${banco.nome}</td>
                   <td >${banco.numero}</td>
-                  <td><span class="label label-info">${banco.ativo}</span></td>
+                  <td><span class="label label-success">${banco.ativo}</span></td>
                  <td class="options-width">
 								
 								

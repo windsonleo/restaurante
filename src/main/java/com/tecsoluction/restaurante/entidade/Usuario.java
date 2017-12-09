@@ -35,6 +35,9 @@ public class Usuario extends BaseEntity implements Serializable {
     private String senha;
     
     private String email;
+    
+    @Column(name = "foto")
+    private String foto;
 
     //	@LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore

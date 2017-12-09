@@ -29,6 +29,7 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
+      	<div class="span8">
                <div class="card">
                     <div class="card-content">
                        
@@ -49,9 +50,9 @@
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="span3 m-wrap" name="id" type="text" value="${empresa.id}" placeholder="Digite o id" />
+						<input id="id" class="form-control" name="id" type="text" value="${empresa.id}" placeholder="Digite o id" />
                 		                		
-                		<input id="ativo" name="ativo" class="span2 m-wrap" type="checkbox" checked="${empresa.ativo}"/>
+                		<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${empresa.ativo}"/>
                 
                 
                 </div>
@@ -62,9 +63,9 @@
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="span7 m-wrap" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome da Empresa"/>
+						<input id="nome" class="form-control" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome da Empresa"/>
                         
-                         <input id="logo" class="span5 m-wrap" name="logo" type="text" value="${empresa.logo}" placeholder="Inclua Sua Logomarca"/>					
+                         <input id="logo" class="form-control" name="logo" type="text" value="${empresa.logo}" placeholder="Inclua Sua Logomarca"/>					
                
                 </div>
               </div>
@@ -115,112 +116,82 @@
               
               
               <div class="form-actions">
-                <input type="submit" value="Inserir" class="btn btn-success">
+                <input type="submit" value="Inserir" class="btn-sm btn-success">
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    
+    
+    
+    <div class="span4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                    </a>
+                                    
+
+                                </div>
+                        <form action="LocalizarClienteGerencia" method="POST" class="">
+
+
+						<div class="form-group label-floating">
+<!--                               <label class="control-label">Cliente</label> -->
+                                <input type="text" list="${clientesList}" id="id"
+                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${clientesList}">
+
+                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                    
+                               <div class="form-group label-floating is-empty">
+<!--                               <label class="control-label">Cliente</label> -->
+                                   
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-sm">Upload</button>
+
+                                       
+                                 <span class="material-input"></span>
+                         		</div>
+                                    
+                                  </form>
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
+                                     <p class="card-content pull-left">${cliente.id} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
+                            </div>
+
+						</div>
+    
+    
+    </div>
             </div>
           </div>
 
 
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div>
-</div>
-
-
-
-
-
-
-
-
-
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-               <div class="row">
-                    <div class="col-sm-12">
-                         
-                         <h1 class="page-header">
-                            Empresa <small>Cadastro e Vis�o Geral</small>
-                                                        
-                        </h1>
-                        
-                              		<ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-user"></i> Empresa
-                            </li>
-                        </ol>
-                                      <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i> 
-                        </div>
-                    </div>
-                </div>
- <form  role="form" id="ds" class="form-labels-on-top"action="${pageContext.request.contextPath}/empresa/${acao}" ModelAttribute="empresa" method="POST">
- 
- 			<div class="panel panel-primary">
-					<div class="panel-heading">
-							<h3 class="panel-title">Cadastro de Empresa </h3>
-					</div>
-					<div class="panel-body">
-					
-					
- 
-							<div class="form-group" align="">
-<%-- 							<img src="${pageContext.request.contextPath}/resources/images/images.png" class=".img-thumbnail" alt="Responsive image"> --%>
-					
-							   <label>
-							  	<span>Ativo?</span>
-									<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${empresa.ativo}"/>
-								</label>
-						</div>
-
-				   <label>
-						<input id="id" class="form-control" name="id" type="text" value="${empresa.id}" placeholder="Digite o Id"/>
-					</label>
-			 
-		
-			 
-			   		<label>
-						<input id="nome" class="form-control" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome"/>
-					</label>
-		 	 
-
-			
-			   		<label>
-						<input id="foto" class="form-control" name="foto" type="text" value="${empresa.logo}" placeholder="Digite Caminho da Foto"/>					
-					</label>
-			
-              
-              
-           
-		 	 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<p></p>
-<p></p>
-            
-            <div class="form-group" align="center">
-				<button type="submit"class="btn btn-sm btn-primary">${acao}</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
-			</div> 
-			
-			</div>
-			</div>
-			
-										
-
-</form>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 

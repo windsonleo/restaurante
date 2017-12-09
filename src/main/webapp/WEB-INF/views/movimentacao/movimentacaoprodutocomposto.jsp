@@ -70,7 +70,7 @@
                    <td>${produtocomposto.fornecedor}</td>
 <%--                   <td>${produtocomposto.itens}</td> --%>
                    
-                   <td><span class="label label bg_lb">${produtocomposto.ativo}</span></td>
+                   <td><span class="label label-success">${produtocomposto.ativo}</span></td>
                  <td class="options-widt">
 								
 									<a

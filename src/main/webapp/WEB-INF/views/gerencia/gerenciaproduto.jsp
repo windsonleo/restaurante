@@ -6,14 +6,15 @@
  <div id="content">
  
   <div id="content-header">
-    <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produto/movimentacao" title="Go to Produto" class="tip-bottom"><i class="icon-home"></i> Produto</a> <a href="#">Gerencia Produto </a> </div>
-    <h1> Gerencia de Produtos</h1>
+<%--     <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produto/movimentacao" title="Go to Produto" class="tip-bottom"><i class="icon-home"></i> Produto</a> <a href="#">Gerencia Produto </a> </div> --%>
+    </br>
+    <h3> Gerencia de Produtos</h3>
   </div>
 
             <div class="container-fluid">
             
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -22,7 +23,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">ï¿½</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -41,7 +42,10 @@
                                     <p class="category">Informacoes Basicas</p>
                                 </div>
 
- 										<div class="form-group label-floating is-empty">
+ 							
+ 							
+ 							
+ 							<div class="form-group label-floating is-empty">
                               <label class="control-label">Ativo</label>
                                 <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
                                        checked="${produto.ativo}" disabled="true"/>
@@ -54,7 +58,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.nome}"
-                                                                            placeholder="Digite o Nome "/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -65,7 +69,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.codebar}"
-                                                                            placeholder="Digite o CodeBar"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>	
@@ -75,7 +79,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.fornecedor}"
-                                                                            placeholder="Digite o Nome do Fornecedor"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>	
@@ -86,7 +90,7 @@
                                                                             type="text"
                                                                             value="<fmt:formatNumber type="currency"
                 															 value="${produto.precocusto}"/>"
-                                                                            placeholder="Digite o Nome da produto"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -98,7 +102,7 @@
                                                                             type="text"
                                                                             value="<fmt:formatNumber type="currency"
                  															value="${produto.precovenda}"/>"
-                                                                            placeholder="Digite o Nome da produto"/>
+                                                                            placeholder=""/>
 
                                                 <span class="material-input"></span>
                                     </div>		 
@@ -120,7 +124,7 @@
 
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Margem de Lucro</label>
-											 <input id="margem" name="margem" type="text" value="" placeholder="Margem de Lucro"
+											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
                                				  <span class="material-input"></span>
                                     </div>
@@ -129,7 +133,7 @@
 									<div class="form-group label-floating is-empty">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
-                                       		placeholder="Lucro total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div> 
                                     
@@ -137,7 +141,7 @@
                                     <div class="form-group label-floating is-empty">
                                           <label class="control-label">Total de Pedidos</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
-                                       		placeholder="Pedidos total" disabled="true"/>
+                                       		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div>                                    
 
@@ -161,7 +165,7 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/vazio.jpg">
+                                        <img class="img" src="../resources/images/produto/${produto.foto}.jpg">
                                     </a>
                                     
 
@@ -172,7 +176,7 @@
 						<div class="form-group label-floating">
 <!--                               <label class="control-label">produto</label> -->
                                 <input type="text" list="${produtoList}" id="id"
-                                       placeholder="Digite o Codigo do produto" name="id" autocomplete="off"
+                                       placeholder="" name="id" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>

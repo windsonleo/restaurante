@@ -64,7 +64,7 @@
                   <td >${estoque.items.size()}</td>
                    <td >${estoque.items}</td>
                   
-                  <td><span class="label label bg_lb">${estoque.ativo}</span></td>
+                  <td><span class="label label-success">${estoque.ativo}</span></td>
                  <td class="options-width">
 								
 								

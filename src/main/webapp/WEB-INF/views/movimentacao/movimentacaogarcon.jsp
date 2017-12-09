@@ -59,7 +59,7 @@
 			      <td>${garcon.id}</td>
                   <td>${garcon.nome}</td>
                   <td >${garcon.foto}</td>
-                  <td><span class="label label bg_lb">${garcon.ativo}</span></td>
+                  <td><span class="label label-success">${garcon.ativo}</span></td>
                  <td class="options-widt">
 								
 								

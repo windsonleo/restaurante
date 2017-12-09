@@ -1,5 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/add/additemprodutocomposto.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cadastro/cadastrocliente.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/cadastro/cadastrodelivery.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cadastro/cadastroempresa.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cadastro/cadastrofornecedor.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cadastro/cadastrogarcon.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/cadastro/cadastroproduto.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/cadastro/cadastroprodutocomposto.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/cadastro/cadastrousuario.jsp=UTF-8

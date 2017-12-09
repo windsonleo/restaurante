@@ -53,18 +53,18 @@
                
 <!--                </br> -->
 <!--                </br> -->
-               
+         <sec:authorize access="hasRole('ROLE_ADM')">
                <div class="span12">
                      
                        
-                         <div class="span2">
+                         <div class="span2.5">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
-									<i class="icon"></i>
+									<i class="icon-barcode"></i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Produtos</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${produtosnovos.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -78,7 +78,7 @@
                         </div>
                         
                         
-                         <div class="span2">
+                         <div class="span2.5">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
                                     <i class="icon icon-shopping-cart"></i>
@@ -99,14 +99,14 @@
                         </div>
                         
                         
-                         <div class="span2">
+                         <div class="span2.5">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
                                     <i class="icon icon-table"></i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Mesas</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${mesasocupadas.size()}
 <!--                                         <small>Ocupadas</small> -->
                                     </h3>
                                 </div>
@@ -119,25 +119,25 @@
                             </div>
                         </div>
                         
-                                                   <div class="span2">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="purple">
-                                    <i class="icon icon-truck"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category"> Delivery</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
-<!--                                         <small>hoje</small> -->
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                            <div class="span2.5"> -->
+<!--                             <div class="card card-stats"> -->
+<!--                                 <div class="card-header" data-background-color="purple"> -->
+<!--                                     <i class="icon icon-truck"></i> -->
+<!--                                 </div> -->
+<!--                                 <div class="card-content"> -->
+<!--                                     <p class="category"> Delivery</p> -->
+<%--                                     <h3 class="title">${pedidovendasnovos.size()} --%>
+<!-- <!--                                         <small>hoje</small> --> 
+<!--                                     </h3> -->
+<!--                                 </div> -->
+<!--                                 <div class="card-footer"> -->
+<!--                                     <div class="stats"> -->
+<!--                                         <i class="material-icons text-danger">clique aqui</i> -->
+<!--                                         <a href="#pablo">Detalhes..</a> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
                         
                         
 <!--                           <div class="span2"> -->
@@ -217,19 +217,17 @@
                     
    
                     
-  <sec:authorize access="hasRole('ROLE_ADM')">
+
   
      <div class="row">
   
       <div class="span12">
-      
 
-      
         <div class="span2">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>150</h3>
+              <h3>${clientesnovos.size()}</h3>
 
               <p>Clientes</p>
             </div>
@@ -245,7 +243,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
 
               <p>Produtos</p>
             </div>
@@ -261,7 +259,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>${pedidovendasnovos.size()}</h3>
 
               <p>Vendas</p>
             </div>
@@ -277,7 +275,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>${mesasocupadas.size()}</h3>
 
               <p>Mesas</p>
             </div>
@@ -293,7 +291,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>         
+              <h3>${produtosnovos.size()}</h3>         
 
               <p>Garcon</p>
             </div>
@@ -309,7 +307,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
 
               <p>Pagamentos</p>
             </div>
@@ -325,7 +323,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>${produtosnovos.size()}</h3>
 
               <p>Fornecedor</p>
             </div>
@@ -356,7 +354,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>${produtosnovos.size()}</h3>
 
               <p>Delivery</p>
             </div>
@@ -372,7 +370,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
 
               <p>Caixa</p>
             </div>
@@ -392,7 +390,7 @@
       
       
       
-      					 <div class="row">
+      					<div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="card card-nav-tabs">
                                 <div class="card-header" data-background-color="blue">
@@ -616,8 +614,9 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
 					
-          
+              </sec:authorize>
 				 	<div class="card">
                     <div class="card-content">
                        
@@ -637,19 +636,24 @@
 				                    
 				 <ul class="nav nav-pills nav-pills-icons nav-pills-info" role="tablist">
 					
-					
-					<li class="active">
+					<sec:authorize access="hasRole('ROLE_COZINHA')">
+					<li >
 						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta">
 							<i class="fa fa-cutlery"></i>
 							Cozinha
 						</a>
 					</li>
-					<li >
+					</sec:authorize>
+					
+					
+					<li class="active" >
 						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
 							<i class="material-icons">table</i>
 							Salão
 						</a>
 					</li>
+					
+					<sec:authorize access="hasRole('ROLE_CAIXA')">
 					<li>
 						<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta">
 							<i class="material-icons">money</i>
@@ -657,12 +661,19 @@
 						</a>
 					</li>
 					
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_FINANCEIRO')">
+					
 					<li >
 						<a href="#schedule" role="tab" data-toggle="tab">
 							<i class="material-icons">table</i>
 							Financeiro
 						</a>
 					</li>
+					
+					</sec:authorize>
+					
 					<li>
 						<a href="#tasks" role="tab" data-toggle="tab">
 							<i class="material-icons">money</i>
@@ -670,6 +681,7 @@
 						</a>
 					</li>
 					
+				<sec:authorize access="hasRole('ROLE_COMPRA')">
 					
 					<li >
 						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="ta" data-toggle="ta">
@@ -678,6 +690,10 @@
 						</a>
 					</li>
 					
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_VENDA')">
+					
 					<li>
 						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
 							<i class="material-icons">money</i>
@@ -685,8 +701,11 @@
 						</a>
 					</li>
 					
+					</sec:authorize>
+					
+					
 					<li>
-						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/estoque/consulta" role="ta" data-toggle="ta">
 							<i class="material-icons">view_list</i>
 							Estoque
 						</a>
@@ -755,7 +774,7 @@
       
       
       
-      </sec:authorize>
+  
       
       
 

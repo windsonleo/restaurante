@@ -93,14 +93,14 @@
 				    
 				    <c:when test="${pedidocompra.status=='CANCELADO'}">
 
-                  <td><span class="label label-important">${pedidocompra.status}</span></td>
+                  <td><span class="label label-danger">${pedidocompra.status}</span></td>
 
 				
 				    </c:when>  
 				    
 				    <c:when test="${pedidocompra.status=='FECHADO'}">
 
-                  <td><span class="label label-ly">${pedidocompra.status}</span></td>
+                  <td><span class="label label-primary">${pedidocompra.status}</span></td>
 
 				
 				    </c:when> 
@@ -123,7 +123,7 @@
                
 <%--                   <td>${pedidocompra.items}</td> --%>
                   
-                   <td><span class="label label bg_lb"> ${pedidocompra.ativo}</span>
+                   <td><span class="label label-success"> ${pedidocompra.ativo}</span>
                    
                    </td>
                    
@@ -133,13 +133,13 @@
                   	<c:choose>
 				    <c:when test="${pedidocompra.ispago}">
 
-                  <td><span class="label label-success">${pedidocompra.ispago}</span></td>
+                  <td><span class="label label-info">${pedidocompra.ispago}</span></td>
 
 				    </c:when> 
 				    
 				    <c:otherwise>
 
-                  <td><span class="label label-important">${pedidocompra.ispago}</span></td>
+                  <td><span class="label label-danger">${pedidocompra.ispago}</span></td>
 
 				    </c:otherwise>
 				</c:choose>		                   
