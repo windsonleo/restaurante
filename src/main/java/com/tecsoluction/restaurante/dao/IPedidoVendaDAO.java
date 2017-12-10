@@ -25,5 +25,5 @@ public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
     List<PedidoVenda> getAllPedidoDelivery();
 
 
-    List<PedidoVenda> findAllByStatusIsAndSituacaoIs(StatusPedido status, SituacaoPedido situacao);
+    List<PedidoVenda> findAllByStatusIsAndSituacaoIsOOrderByDataAtivoAsc(StatusPedido status, SituacaoPedido situacao);
 }

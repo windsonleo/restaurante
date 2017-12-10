@@ -52,7 +52,7 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
     }
 
     public List<PedidoVenda> findAllByStatusIsAndSituacaoIs(StatusPedido status, SituacaoPedido situacao) {
-        return dao.findAllByStatusIsAndSituacaoIs(status, situacao);
+        return dao.findAllByStatusIsAndSituacaoIsOOrderByDataAtivoAsc(status, situacao);
     }
 
     @Override

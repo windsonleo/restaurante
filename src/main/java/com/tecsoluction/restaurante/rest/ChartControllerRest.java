@@ -7,6 +7,7 @@ import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +24,11 @@ public class ChartControllerRest {
         this.pedidoVendaServico = pedidoVendaServico;
     }
 
-    @GetMapping
-    public List<PedidoVenda> vendasDiarias() {
+    @GetMapping("/{status}/situacao/{situacao}")
+    public List<PedidoVenda> vendasDiarias(@PathVariable String status,@PathVariable String situacao) {
 
         List<PedidoVenda> pedidovenda = pedidoVendaServico.
-                findAllByStatusIsAndSituacaoIs(StatusPedido.FECHADO, SituacaoPedido.PRONTO);
+                findAllByStatusIsAndSituacaoIs(StatusPedido.valueOf(status), SituacaoPedido.valueOf(situacao));
         return pedidovenda;
     }
 }
