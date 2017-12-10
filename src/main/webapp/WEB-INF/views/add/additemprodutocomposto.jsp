@@ -68,7 +68,7 @@
 									
 									 <input type="text"  id="qtd" name="qtd"  class="form-control" value="" placeholder="Escolha a Quantidade">
 									
-										<input type="text"  id="idprocomp" name="idprocomp"  class="form-control" value="${produtocomposto.id }" placeholder="Escolha a Quantidade" disabled="disabled">
+										<input type="text"  id="idprocomp" name="idprocomp"  class="form-control" value="${produtocomposto.id }" placeholder="">
 
 					
 							

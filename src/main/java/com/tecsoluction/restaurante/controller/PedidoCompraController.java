@@ -229,11 +229,14 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+		 
+		
       
 			itens = new HashMap<>();
 
 			pv.addItem(item, item.getQtd().toString());
 			pv.setStatus(StatusPedido.PENDENTE);
+			pv.setTotal(pv.CalcularTotal(pv.getItems()));
 
 			
 		getservice().edit(pv);
@@ -241,7 +244,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         saveitempedidocompra.addObject("pedidocompra", pv);
         saveitempedidocompra.addObject("produtosList", produtosList);
-//        saveitempedidocompra.addObject("itens", itens);
+        saveitempedidocompra.addObject("totalpedido", pv.getTotal());
 
         
         logger.info("Salvar Item no Pedido Compra BD!", pv);

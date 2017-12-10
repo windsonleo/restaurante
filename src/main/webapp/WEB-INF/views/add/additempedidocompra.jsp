@@ -133,7 +133,7 @@
 							</br>
 							<label>Total</label>
 							<input id="total" name="total" type="text" class="form-control" value="<fmt:formatNumber type="currency"
-                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonly" class="form-control"> 
+                       value="${totalpedido}"/>" size="20px" style="color: blue; font-size: 15px" readonly="readonl" class="form-control"> 
 						
 						</div>
 </div>

@@ -68,7 +68,7 @@
 									
 										<input type="text"  id="qtd" name="qtd"  class=form-control value="" placeholder="Escolha a Quantidade">
 
-										<input type="text"  id="idpedvend" name="idpedvend"  class="form-control" value="${pedidovenda.id }" placeholder="" disabled="disabled">
+										<input type="text"  id="idpedvend" name="idpedvend"  class="form-control" value="${pedidovenda.id }" placeholder="">
 					
 							
 								<input type="submit" class="btn btn-sm btn-success"

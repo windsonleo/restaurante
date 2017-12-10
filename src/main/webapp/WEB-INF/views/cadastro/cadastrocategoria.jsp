@@ -10,8 +10,10 @@
 <!--                                 class="tip-bottom"><i class="icon-icon"><img -->
 <%--                 src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> Categoria</a> <a --%>
 <!--                 href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div> -->
-       </br>
-        <h2>Cadastro de Categoria</h2>
+       	</br>
+	</br>
+	</br>
+<!--         <h2>Cadastro de Categoria</h2> -->
     </div>
     <div class="container-fluid">
         <hr>

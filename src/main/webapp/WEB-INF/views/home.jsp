@@ -247,7 +247,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos.size()}<sup style="font-size: 20px"></sup></h3>
 
               <p>Produtos</p>
             </div>
@@ -565,7 +565,7 @@
                                                                  <tr>
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pedidocompra.status=='FECHADO'}">
+																    <c:when test="${pedidocompra.status=='CANCELADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
