@@ -3,6 +3,8 @@ package com.tecsoluction.restaurante.service.impl;
 import com.tecsoluction.restaurante.dao.IPedidoVendaDAO;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,10 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
     public List<PedidoVenda> getAllPedidoDelivery() {
 
         return dao.getAllPedidoDelivery();
+    }
+
+    public List<PedidoVenda> findAllByStatusIsAndSituacaoIs(StatusPedido status, SituacaoPedido situacao) {
+        return dao.findAllByStatusIsAndSituacaoIs(status, situacao);
     }
 
     @Override
