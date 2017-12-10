@@ -15,7 +15,13 @@
 <!-- </br> -->
 <!-- </br> -->
 
- <c:if test="${erros != null }">
+ 
+    
+    <div id="content">
+    
+        <div id="content-header">
+        
+        <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
@@ -32,10 +38,6 @@
             </div>
             
     </c:if>
-    
-    <div id="content">
-    
-        <div id="content-header">
 
 </br>
 </br>
