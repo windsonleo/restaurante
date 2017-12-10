@@ -24,11 +24,11 @@ public class ChartControllerRest {
         this.pedidoVendaServico = pedidoVendaServico;
     }
 
-    @GetMapping("/{status}/situacao/{situacao}")
-    public List<PedidoVenda> vendasDiarias(@PathVariable String status,@PathVariable String situacao) {
+    @GetMapping
+    public List<PedidoVenda> vendasDiarias() {
 
         List<PedidoVenda> pedidovenda = pedidoVendaServico.
-                findAllByStatusIsAndSituacaoIs(StatusPedido.valueOf(status), SituacaoPedido.valueOf(situacao));
+                findAllByStatusIsAndSituacaoIs(StatusPedido.PRONTO, null);
         return pedidovenda;
     }
 }
