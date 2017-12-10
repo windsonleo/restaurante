@@ -105,7 +105,7 @@ public class DeliveryController {
   		return delivery;
   	}
     
-    @RequestMapping(value = "LocalizarClienteFone", method = RequestMethod.POST)
+    @RequestMapping(value = "LocalizarClienteFone", method = RequestMethod.GET)
   	public ModelAndView  LocalizarClienteFone(HttpServletRequest request){
     	
     	ModelAndView delivery = new ModelAndView("cadastrodelivery");

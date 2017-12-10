@@ -34,26 +34,13 @@
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
 					
 					
-					<li >
-						<a href="${pageContext.request.contextPath}/delivery/AdicionarDelivery" role="ta" data-toggle="ta">
-							<i class="fa fa-cutlery"></i>
-							Adicionar
-						</a>
-					</li>
-					
-					<li class="active" >
+					<li class="" >
 						<a href="#" role="tab" data-toggle="tab">
-							<i class="fa fa-cutlery"></i>
+							<i class="fa fa-search></i>
 							LocalizarEntregador
 						</a>
 					</li>
 					
-<!-- 					<li class="active" > -->
-<!-- 						<a href="#" role="tab" data-toggle="tab" > -->
-<!-- 							<i class="material-icons"> timer</i> -->
-<!-- 							Tempo Médio Preparo -->
-<!-- 						</a> -->
-<!-- 					</li> -->
 		</ul>              
                         
       <div class="span12">
@@ -93,7 +80,7 @@
 				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
 				
 				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
-				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> />
 				
 				
            		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
@@ -102,9 +89,9 @@
 
            		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/>
            		
-           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
+           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
 				
-				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
+				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
 				
 				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/>
 								
@@ -289,7 +276,7 @@
 <%--                                      <p class="card-content pull-left">${cliente.id} </p>  --%>
                                     <p class="card-content">
                                     
-                                     <button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone?id=${pedidovenda.id}' " class="btn btn-danger btn-round btn-md">Localizar</button>
+                                     <button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone?telefone=${cliente.telefone}' " class="btn btn-danger btn-round btn-md">Localizar</button>
 
                                    <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro' "  class="btn btn-primary btn-round btn-md">Adicionar</button>
                                    
