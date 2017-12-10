@@ -296,7 +296,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+    @RequestMapping(value = "/aprovar", method = RequestMethod.POST)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
     	
     	String mensagem = "Pedido Compra Aprovado com Sucesso";
@@ -316,6 +316,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         if(pc.getStatus() != StatusPedido.PRONTO){
         
         home.addObject("erros",erros);
+       
         return home;
         
         }
@@ -329,7 +330,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
+    @RequestMapping(value = "/cancelar", method = RequestMethod.POST)
     public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));

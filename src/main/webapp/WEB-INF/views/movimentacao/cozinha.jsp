@@ -245,11 +245,11 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs">
+                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/pronto?id=${pedidovenda.id}' ">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
-                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs">
+                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/pronto?id=${pedidovenda.id}' " >
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>

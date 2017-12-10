@@ -49,20 +49,27 @@
 					 action="${pageContext.request.contextPath}/pedidocompra/${acao}"
 					 ModelAttribute="pedidocompra" method="POST">
 
-					<div class="control-group">
+			<div class="form-group label-floating is-empty">
+
+				<div class="control-group">
                 <label class="control-label">Ativo?</label>
                 <div class="controls">
 				<input id="ativo" name="ativo"  type="checkbox" checked="${pedidocompra.ativo}"/>
                 </div>
               </div>
+              </div>
               
+            <div class="form-group label-floating is-empty">
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" value="${pedidocompra.id}" placeholder="Digite o Id"/>
+						<input id="id"  name="id" type="text" value="${pedidocompra.id}" placeholder="" class="form-control"/>
                 </div>
               </div>
+              </div>
+			 
+			 			<div class="form-group label-floating is-empty">
 			 
               <div class="control-group">
                 <label class="control-label">Data </label>
@@ -72,7 +79,7 @@
 				
 					<div  data-date="12-02-2012" class="input-append date datepicker">
 		                  <input type="text" value="    <fmt:formatDate pattern="dd/MM/yyyy" 
-                 value="${pedidcompra.total}"/>" id="data" name="data" data-date-format="dd-mm-yyyy" class="span11" >
+                 value="${pedidcompra.total}"/>" id="data" name="data" data-date-format="dd-mm-yyyy" class="form-control" >
 		                  <span class="add-on"><i class="icon-th"></i></span> 
                   
                   </div>
@@ -82,7 +89,7 @@
                 </div>
 				
                 </div>
-<!--               </div> -->
+              </div>
               
 <!--                <div class="control-group"> -->
 <!--                 <label class="control-label">Situacao Pedido</label> -->
@@ -104,6 +111,8 @@
 <!--                 </div> -->
 <!--               </div>             			  -->
 		
+					<div class="form-group label-floating is-empty">
+		
               <div class="control-group">
                 <label class="control-label">Status Pedido</label>
                 <div class="controls">
@@ -119,7 +128,7 @@
 				
                 </div>
               </div>
-              
+              </div>
               
 <!--                <div class="control-group"> -->
 <!--                 <label class="control-label">Origem Pedido</label> -->
@@ -142,6 +151,8 @@
 <!--               </div> -->
               
               
+              			<div class="form-group label-floating is-empty">
+              
                 <div class="control-group">
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
@@ -162,6 +173,7 @@
 						</select>				
 				
                 </div>
+              </div>
               </div>
               
 <!--               <div class="control-group"> -->
@@ -208,6 +220,8 @@
 <!--                 </div> -->
 <!--               </div>  -->
               
+              			<div class="form-group label-floating is-empty">
+              
                <div class="control-group">
                 <label class="control-label">Total</label>
                 <div class="controls">
@@ -221,7 +235,8 @@
 
 			
 
-              </div>             
+              </div>   
+              </div>          
               
                			<div class="form-actions" align="center">
 				<button type="submit"class="btn btn-success">${acao}</button>

@@ -465,11 +465,11 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
-                                                           
-                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs">
+                                                           															
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
@@ -525,14 +525,14 @@
 															                
 														                </td>
 														                
-														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
+<!-- 														 <td class="td-actions text-right"> -->
+<!--                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+<!--                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">close</i> -->
+<!--                                                             </button> -->
+<!--                                                         </td> -->
 																
 																    </c:when>    
 																    
@@ -583,14 +583,14 @@
 															                
 														                </td>
 														                
-														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
+<!-- 														 <td class="td-actions text-right"> -->
+<!--                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+<!--                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">close</i> -->
+<!--                                                             </button> -->
+<!--                                                         </td> -->
 																
 																    </c:when>    
 																    

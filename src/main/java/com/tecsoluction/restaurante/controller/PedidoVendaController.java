@@ -342,6 +342,37 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         return novospedidos;
     }
+    
+    
+    @RequestMapping(value = "/pronto", method = RequestMethod.POST)
+    public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
+    	
+    	String mensagem = "Pedido Compra Aprovado com Sucesso";
+    	String erros = "Erro na Aprovacao";
+    	
+
+        UUID idf = UUID.fromString(request.getParameter("id"));
+
+        PedidoVenda pc = getservice().findOne(idf);
+
+        pc.setStatus(StatusPedido.PRONTO);
+
+        getservice().save(pc);
+
+        ModelAndView home = new ModelAndView("home");
+        
+        if(pc.getStatus() != StatusPedido.PRONTO) {
+        
+        home.addObject("erros",erros);
+       
+        
+        }
+        
+        return home;
+        
+       
+        
+        }
 
     @Override
     protected PedidoVendaServicoImpl getservice() {
