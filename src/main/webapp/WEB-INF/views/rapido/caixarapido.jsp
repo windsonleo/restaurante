@@ -16,7 +16,7 @@
 
 		<c:if test="${erros != null }">
 			<div class="alert alert-error alert-block">
-				<a class="close" data-dismiss="alert" href="#">�</a>
+				<a class="close" data-dismiss="alert" href="#">x</a>
 				<h4 class="alert-heading">Erros!</h4>
 
 				${erros}
@@ -26,7 +26,7 @@
 
 		<c:if test="${mensagem != null }">
 			<div class="alert alert-success alert-block">
-				<a class="close" data-dismiss="alert" href="#">�</a>
+				<a class="close" data-dismiss="alert" href="#">x</a>
 				<h4 class="alert-heading">Sucesso!</h4>
 
 				${mensagem}
@@ -45,14 +45,14 @@
 					
 					
 					<li class="active" >
-						<a href="${pageContext.request.contextPath}/produzircomposto" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/produtocomposto/produzircomposto" role="ta" data-toggle="ta">
 							<i class="fa fa-cutlery"></i>
 							Abrir Caixa
 						</a>
 					</li>
 					
 					<li >
-						<a href="#" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/caixa/fecharcaixa?id=${caixa.id}" role="tab" data-toggle="tab">
 							<i class="fa fa-cutlery"></i>
 							Fechar Caixa
 						</a>
