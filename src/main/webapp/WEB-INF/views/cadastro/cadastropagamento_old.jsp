@@ -9,7 +9,7 @@
                     <div class="col-sm-12">
                          
                          <h1 class="page-header">
-                            Pagamento <small>Cadastro e Vis�o Geral</small>
+                            Pagamento <small>Cadastro e Visao Geral</small>
                                                         
                         </h1>
                         

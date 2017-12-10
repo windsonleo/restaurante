@@ -10,7 +10,7 @@
 <div id="content-header">
 
 	</br>
-	<h2>Cadastro de produtocompostoComposto</h2>
+	<h2>Cadastro de Produto Composto</h2>
 </div>
 
 <div class="container-fluid">
@@ -41,7 +41,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Cadastro produtocomposto Composto</h4>
+                                    <h4 class="title">Cadastro Produto Composto</h4>
                                     <p class="category">Insira os Dados</p>
 <%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
 <!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
@@ -53,8 +53,8 @@
 			
 
 			<form role="form" id="ds" class="form-horizontal"
-					action="${pageContext.request.contextPath}/produtocompostocomposto/${acao}"
-					ModelAttribute="produtocompostocomposto" method="POST">
+					action="${pageContext.request.contextPath}/produtocomposto/${acao}"
+					ModelAttribute="produtocomposto" method="POST">
 
               
              <div class="form-group label-floating is-empty">
@@ -285,7 +285,19 @@
 				
                 </div>
               </div>  
-              </div> 
+              </div>
+              
+                             <div class="form-group label-floating is-empty">
+                  <div class="control-group">
+                <label class="control-label">Foto</label>
+                <div class="controls">					<input id="foto" class="form-control"
+						name="foto" type="text" value="${produtocomposto.foto}"/>
+															
+				
+                </div>
+              </div>  
+              
+              </div>  
               
               <div class="form-group label-floating is-empty">
                <div class="control-group">

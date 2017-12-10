@@ -291,7 +291,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${produtosnovos.size()}</h3>         
+              <h3>${garcons.size()}</h3>         
 
               <p>Garcon</p>
             </div>
@@ -307,7 +307,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
+              <h3>${pagamentos.size()}<sup style="font-size: 20px">%</sup></h3>
 
               <p>Pagamentos</p>
             </div>
@@ -323,7 +323,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>${produtosnovos.size()}</h3>
+              <h3>${fornecedores.size()}</h3>
 
               <p>Fornecedor</p>
             </div>

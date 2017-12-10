@@ -15,14 +15,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.Pagamento;
 import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
@@ -41,6 +47,15 @@ public class HomeController {
 
     private final
     UsuarioServicoImpl userservice;
+    
+    private final
+    GarconServicoImpl garconservice;
+    
+    private final
+    FornecedorServicoImpl fornecedorservice;
+    
+    private final
+    PagamentoServicoImpl pagamentoservice;
 
     private final
     PedidoVendaServicoImpl pedidovendaService;
@@ -83,10 +98,21 @@ public class HomeController {
 
     private 
     List<Cliente> resultsearch;
+    
+    private 
+    List<Garcon> garcons;
+    
+    private 
+    List<Fornecedor> fornecedores;
+    
+    private 
+    List<Pagamento> pagamentos;
+    
+
 
 
     @Autowired
-    public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao) {
+    public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao, GarconServicoImpl ga, FornecedorServicoImpl fo, PagamentoServicoImpl pag) {
 
         this.userservice = dao;
         this.pedidovendaService = vendadao;
@@ -95,6 +121,10 @@ public class HomeController {
         this.produtoService = proddao;
         this.pedidocompraService = compradao;
         this.recebimentoService = recdao;
+        this.garconservice = ga;
+        this.fornecedorservice =fo;
+        this.pagamentoservice = pag;
+        
     }
 
 
@@ -109,6 +139,10 @@ public class HomeController {
         usuarios = userservice.findAll();
         pedidocomprasnovos = pedidocompraService.findAll();
         recebimentosnovos = recebimentoService.findAll();
+        garcons = garconservice.findAll();
+        fornecedores = fornecedorservice.findAll();
+        pagamentos = pagamentoservice.findAll();
+        
 
         model.addAttribute("clientesnovos", clientesnovos);
         model.addAttribute("pedidovendasnovos", pedidovendasnovos);
@@ -118,6 +152,9 @@ public class HomeController {
         model.addAttribute("produtosnovos", produtosnovos);
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("mesas", mesas);
+        model.addAttribute("garcons", garcons);
+        model.addAttribute("fornecedores", fornecedores);
+        model.addAttribute("pagamentos", pagamentos);
 
     }
 

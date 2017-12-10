@@ -15,7 +15,7 @@
   <div class="container-fluid"><hr>
   
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -24,7 +24,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">�</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}

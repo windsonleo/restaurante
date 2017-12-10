@@ -50,7 +50,7 @@
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/customizado.css"
           type="text/css"/>
 
-<%--     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/> --%>
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
 
    
