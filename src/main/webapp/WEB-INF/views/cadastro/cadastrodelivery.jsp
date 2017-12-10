@@ -29,7 +29,32 @@
             </div>
             
     </c:if>
-<div class="row-fluid">                  
+<div class="row-fluid">    
+
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+					
+					
+					<li >
+						<a href="${pageContext.request.contextPath}/delivery/AdicionarDelivery" role="ta" data-toggle="ta">
+							<i class="fa fa-cutlery"></i>
+							Adicionar
+						</a>
+					</li>
+					
+					<li class="active" >
+						<a href="#" role="tab" data-toggle="tab">
+							<i class="fa fa-cutlery"></i>
+							LocalizarEntregador
+						</a>
+					</li>
+					
+<!-- 					<li class="active" > -->
+<!-- 						<a href="#" role="tab" data-toggle="tab" > -->
+<!-- 							<i class="material-icons"> timer</i> -->
+<!-- 							Tempo Médio Preparo -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+		</ul>              
                         
       <div class="span12">
       	<div class="span8">
@@ -65,7 +90,7 @@
 				
 				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
 				
-				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
+				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
 				
 				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
 				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
@@ -264,9 +289,9 @@
 <%--                                      <p class="card-content pull-left">${cliente.id} </p>  --%>
                                     <p class="card-content">
                                     
-                                     <button type="submit" formaction="LocalizarClienteFone" class="btn btn-danger btn-round btn-md">Localizar</button>
+                                     <button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone?id=${pedidovenda.id}' " class="btn btn-danger btn-round btn-md">Localizar</button>
 
-                                   <button type="submit" formaction="add" class="btn btn-primary btn-round btn-md">Adicionar</button>
+                                   <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro' "  class="btn btn-primary btn-round btn-md">Adicionar</button>
                                    
                                     
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
