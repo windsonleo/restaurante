@@ -344,7 +344,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     }
     
     
-    @RequestMapping(value = "/pronto", method = RequestMethod.POST)
+    @RequestMapping(value = "/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
     	String mensagem = "Pedido Compra Aprovado com Sucesso";

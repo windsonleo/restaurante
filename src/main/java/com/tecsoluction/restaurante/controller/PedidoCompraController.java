@@ -296,7 +296,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/aprovar", method = RequestMethod.POST)
+    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
     	
     	String mensagem = "Pedido Compra Aprovado com Sucesso";
@@ -330,7 +330,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/cancelar", method = RequestMethod.POST)
+    @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
     public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
