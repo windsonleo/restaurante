@@ -12,7 +12,7 @@
   </div>
   <div class="container-fluid"><hr>
     <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">◊</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">√ó</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -21,7 +21,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">◊</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">√ó</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -67,7 +67,7 @@
 
                   <select id="status"name="status"  class="form-control">
 	                                  <optgroup label="Status Da Mesa">		           			
-		           				<option value="DISPONIVEL">DISPONÕVEL</option>
+		           				<option value="DISPONIVEL">DISPON√çVEL</option>
 		           				<option value="OCUPADA">OCUPADA</option> 				
 		           				      				
 		       	                </optgroup>
@@ -82,7 +82,7 @@
               
               
               <div class="control-group">
-                <label class="control-label">N˙mero</label>
+                <label class="control-label">N√∫mero</label>
                 <div class="controls">
 						<input id="numero" class="form-control" name="numero" type="text" value="${mesa.numero}" placeholder="Digite o Nome da Mesa"/>
                 </div>

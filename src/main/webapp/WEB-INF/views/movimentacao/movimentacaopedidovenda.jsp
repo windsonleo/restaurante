@@ -7,7 +7,7 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Listagem e Visão Geral</h2>
+    <h2>Listagem e VisÃ£o Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
@@ -35,7 +35,7 @@
                <tr>
                                         <th>Id</th>
 									    <th>Data</th>
-<!-- 									    <th>Situação</th> -->
+<!-- 									    <th>SituaÃ§Ã£o</th> -->
 									    
 									    <th>Status</th>
 									    <th>Origem</th>
@@ -46,7 +46,7 @@
 									     <th>Itens</th>
 									     <th>Ativo</th>
 									    <th> Pago</th>
-									    <th>Ação</th>
+									    <th>AÃ§Ã£o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,7 +160,7 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/pedidovenda/informacoes?id=${pedidovenda.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="InformaÃ§Ãµes" ><i class="icon-info-sign"></i></a>
 									
 												<a
 									href="${pageContext.request.contextPath}/pedidovenda/finalizacaovenda?id=${pedidovenda.id}"
@@ -171,8 +171,8 @@
 									
 			<div id="myAlert${pedidovenda.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">Ã—</button>
+                <h3>Alerta de ExclusÃ£o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

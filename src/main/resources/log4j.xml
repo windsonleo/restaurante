@@ -9,7 +9,7 @@
             <param name="ConversionPattern" value="%-5p: %c - %m%n"/>
         </layout>
     </appender>
-    
+
 
     <!-- Application Loggers -->
     <logger name="br.com.tecsoluction">
@@ -32,11 +32,15 @@
     <logger name="org.springframework.web">
         <level value="trace"/>
     </logger>
-    
-        <logger name="org.springframework.security">
+
+    <logger name="org.springframework.security">
         <level value="trace"/>
     </logger>
 
+
+    <logger name="net.jawr">
+        <level value="trace"/>
+    </logger>
 
     <!-- Root Logger -->
     <root>

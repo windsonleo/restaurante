@@ -6,7 +6,7 @@
 <div id="content">
     <div id="content-header">
         </br>
-        <h2>Listagem e Visão Geral</h2>
+        <h2>Listagem e VisÃ£o Geral</h2>
     </div>
     <div class="container-fluid">
         <hr>
@@ -36,15 +36,15 @@
                                     <th>Codebar</th>
                                     <th>Nome</th>
 
-                                    <th>Descrição</th>
-                                    <th>Preço Venda</th>
+                                    <th>DescriÃ§Ã£o</th>
+                                    <th>PreÃ§o Venda</th>
                                     <th>Fornecedor</th>
                                     <th>Ativo?</th>
                                     <!-- 									     <th>Genero</th> -->
                                     <!-- 									     <th>Preferencia</th> -->
                                     <!-- 									     <th>Ativo</th> -->
                                     <!-- 									     <th>Obs</th> -->
-                                    <th>Ação</th>
+                                    <th>AÃ§Ã£o</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -78,7 +78,7 @@
 
                                                     <a
                                                             href="${pageContext.request.contextPath}/produto/informacoes?id=${produto.id}"
-                                                            title="Informações"><i class="icon-info-sign"></i></a>
+                                                            title="InformaÃ§Ãµes"><i class="icon-info-sign"></i></a>
 
 
                                                     <a href="#myAlert${produto.id}" data-toggle="modal"
@@ -86,9 +86,9 @@
 
                                                     <div id="myAlert${produto.id}" class="modal hide">
                                                         <div class="modal-header">
-                                                            <button data-dismiss="modal" class="close" type="button">×
+                                                            <button data-dismiss="modal" class="close" type="button">Ã—
                                                             </button>
-                                                            <h3>Alerta de Exclusão</h3>
+                                                            <h3>Alerta de ExclusÃ£o</h3>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Deseja Realmente Excluir esse Registro</p>

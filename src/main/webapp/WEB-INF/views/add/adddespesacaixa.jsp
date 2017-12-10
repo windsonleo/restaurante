@@ -104,7 +104,7 @@
 						
 						 <div class="form-inline">
 						 
-<!-- 							<label>CÓDIGO</label>	 -->
+<!-- 							<label>CÃ“DIGO</label>	 -->
 <%-- 							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }">  --%>
 <!-- 							<label>DATA</label>	 -->
 <%-- 							<input id="data" name="data" type="text" class="form-control" value="${pedidovenda.data }">  --%>

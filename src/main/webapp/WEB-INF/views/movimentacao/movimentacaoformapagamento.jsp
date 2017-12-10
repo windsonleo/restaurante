@@ -8,7 +8,7 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Listagem e Visão Geral</h2>
+    <h2>Listagem e VisÃ£o Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
@@ -43,7 +43,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>AÃ§Ã£o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,7 +72,7 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/formapagamento/informacoes?id=${formapagamento.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="InformaÃ§Ãµes" ><i class="icon-info-sign"></i></a>
 									
 
 
@@ -80,8 +80,8 @@
 									
 			<div id="myAlert${formapagamento.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">Ã—</button>
+                <h3>Alerta de ExclusÃ£o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

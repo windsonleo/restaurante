@@ -7,7 +7,7 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Listagem e Vis„o Geral</h2>
+    <h2>Listagem e Vis√£o Geral</h2>
   </div>
   <div class="container-fluid">
     <hr>
@@ -36,14 +36,14 @@
                   <tr>
                                         <th>Id</th>
 									    <th>Nome Fatasia</th>
-									    <th>Raz„o Social</th>
+									    <th>Raz√£o Social</th>
 									    <th>Cnpj</th>
-									    <th>InscriÁ„o Estadual</th>
+									    <th>Inscri√ß√£o Estadual</th>
 									     <th>Ativo?</th>
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>AÁ„o</th>
+									    <th>A√ß√£o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,15 +72,15 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/fornecedor/informacoes?id=${fornecedor.id}"
-									title="InformaÁıes" ><i class="icon-info-sign"></i></a>
+									title="Informa√ß√µes" ><i class="icon-info-sign"></i></a>
 									
 
 	<a href="#myAlert${fornecedor.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
 									
 			<div id="myAlert${fornecedor.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">◊</button>
-                <h3>Alerta de Exclus„o</h3>
+                <button data-dismiss="modal" class="close" type="button">√ó</button>
+                <h3>Alerta de Exclus√£o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

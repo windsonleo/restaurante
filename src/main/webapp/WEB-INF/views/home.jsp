@@ -174,7 +174,7 @@
                                 <div class="card-content">
                                     <h4 class="title">Vendas Diarias</h4>
                                     <p class="category">
-                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> aumento em relação Semana Anterior.</p>
+                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> aumento em relaÃ§Ã£o Semana Anterior.</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -626,7 +626,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Acesso Rápido</h4>
+                                    <h4 class="title">Acesso RÃ¡pido</h4>
                                     <p class="category">...</p>
 
                                 </div>
@@ -653,7 +653,7 @@
 					<li class="active" >
 						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
 							<i class="material-icons">table</i>
-							Salão
+							SalÃ£o
 						</a>
 					</li>
 					
@@ -758,7 +758,7 @@
                                       
             <div id="myAlert${pv.id}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
+                <button data-dismiss="modal" class="close" type="button">Ã—</button>
                 <h3>Alerta de Mudanca de Status</h3>
               </div>
               <div class="modal-body">
@@ -825,7 +825,7 @@
 <!--          		 <span class="icon"> -->
 <!--          		  <i class="icon-check"></i> -->
 <!--          		   </span> -->
-<!--            			 <h5>Pedidos de Compras Pedente de Aprovação</h5> -->
+<!--            			 <h5>Pedidos de Compras Pedente de AprovaÃ§Ã£o</h5> -->
 <!--            			 </a> -->
 <%--            			   <span class="label label bg_lg">${pedidocomprasnovos.size()}</span> --%>
 <!--           		</div> -->
@@ -937,7 +937,7 @@
 <!-- 	          </span> -->
 <!-- 	           <a href="#collapsesalao" data-toggle="collapse"> -->
 	          
-<!-- 	             <h5>Salão </h5> -->
+<!-- 	             <h5>SalÃ£o </h5> -->
 <!-- 	             </a> -->
 	             
 <%-- 	             <span class="label label bg_lo">${pedidocomprasnovos.size()}</span> --%>

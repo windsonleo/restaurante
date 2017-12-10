@@ -12,7 +12,7 @@
   <div class="container-fluid"><hr>
   
    <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">Ã—</a>
               <h4 class="alert-heading">Erros!</h4>
               
               ${erros}
@@ -21,7 +21,7 @@
     </c:if>
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
+            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">Ã—</a>
               <h4 class="alert-heading">Sucesso!</h4>
               
               ${mensagem}
@@ -118,7 +118,7 @@
           
           			<div class="controls">
 						 
-							<label>Código</label>	
+							<label>CÃ³digo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }" readonly="readonly"> 
 							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidovenda.data}" />" readonly="readonly"> 
@@ -168,9 +168,9 @@
                             
                                 <thead>
                                     <tr>
-                                        <th>Descrição</th>
-<!-- 									    <th>Código</th> -->
-<!-- 									    <th>Descrição</th> -->
+                                        <th>DescriÃ§Ã£o</th>
+<!-- 									    <th>CÃ³digo</th> -->
+<!-- 									    <th>DescriÃ§Ã£o</th> -->
 									    <th>Qtd</th>
 									    
 									    <th>Preco Unitario</th>
@@ -182,7 +182,7 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>AÃ§Ã£o</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -214,7 +214,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informação" class="fa fa-info fa-2x"></a>
+									title="informaÃ§Ã£o" class="fa fa-info fa-2x"></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
@@ -225,8 +225,8 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">Ã—</button>
+                <h3>Alerta de ExclusÃ£o</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

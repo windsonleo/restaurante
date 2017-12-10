@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	
+
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
@@ -18,8 +18,56 @@
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
-<!--     	<filter> -->
+
+    <!-- Servlet para lidar com Javascript -->
+    <servlet>
+        <servlet-name>JavascriptServlet</servlet-name>
+        <servlet-class>net.jawr.web.servlet.JawrServlet</servlet-class>
+
+        <!-- Aonde se encontra o arquivo de configuracao -->
+        <init-param>
+            <param-name>configLocation</param-name>
+            <param-value>/jawrJavascript.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>mapping</param-name>
+            <param-value>/bundle/js/</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!-- O mapeamento de URL -->
+    <servlet-mapping>
+        <servlet-name>JavascriptServlet</servlet-name>
+        <url-pattern>/bundle/js/*</url-pattern>
+    </servlet-mapping>
+
+    <!--TODO: Configurar para compactar e gerenciar css também-->
+
+    <!--&lt;!&ndash; Servlet para lidar com CSS &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>CSSServlet</servlet-name>-->
+        <!--<servlet-class>net.jawr.web.servlet.JawrServlet</servlet-class>-->
+
+        <!--&lt;!&ndash; Aonde se encontra o arquivo de configuracao &ndash;&gt;-->
+        <!--<init-param>-->
+            <!--<param-name>configLocation</param-name>-->
+            <!--<param-value>/jawrJavascript.properties</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>mapping</param-name>-->
+            <!--<param-value>/bundle/css/</param-value>-->
+        <!--</init-param>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
+    <!--&lt;!&ndash; O mapeamento de URL &ndash;&gt;-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>CSSServlet</servlet-name>-->
+        <!--<url-pattern>/bundle/css/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+
+    <!--     	<filter> -->
 <!-- 		<filter-name>transactionFilter</filter-name> -->
 <!-- 		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class> -->
 <!-- 	</filter> -->
@@ -27,12 +75,12 @@
 <!-- 		<filter-name>transactionFilter</filter-name> -->
 <!-- 		<url-pattern>/*</url-pattern> -->
 <!-- 	</filter-mapping> -->
-    
+
         <!-- Creates the Spring Container shared by all Servlets and Filters -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    
+
         <listener>
         <listener-class>
             org.springframework.web.context.request.RequestContextListener
@@ -44,20 +92,20 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-                 
+
             /WEB-INF/spring/root-context.xml
             <!--Security-->
             /WEB-INF/spring/spring-security.xml
-            
-           
+
+
         </param-value>
-        
-        
+
+
     </context-param>
-    
-    <context-param>  
-    <param-name>spring.profiles.active</param-name>  
-    <param-value>dev</param-value>  
+
+    <context-param>
+    <param-name>spring.profiles.active</param-name>
+    <param-value>dev</param-value>
 	</context-param>
 		<context-param>
 			<param-name>spring.profiles.default</param-name>
@@ -77,7 +125,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
+
     	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/erro/erro.jsp</location>
