@@ -1,11 +1,8 @@
 package com.tecsoluction.restaurante.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
+import com.tecsoluction.restaurante.entidade.*;
+import com.tecsoluction.restaurante.service.impl.*;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,46 +11,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import com.tecsoluction.restaurante.entidade.Cliente;
-import com.tecsoluction.restaurante.entidade.Fornecedor;
-import com.tecsoluction.restaurante.entidade.Garcon;
-import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.Pagamento;
-import com.tecsoluction.restaurante.entidade.PedidoCompra;
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.entidade.Recebimento;
-import com.tecsoluction.restaurante.entidade.Usuario;
-import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
-import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
-import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
-import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
-import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import com.tecsoluction.restaurante.util.StatusPedido;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
-	
+
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 
     private final
     UsuarioServicoImpl userservice;
-    
+
     private final
     GarconServicoImpl garconservice;
-    
+
     private final
     FornecedorServicoImpl fornecedorservice;
-    
+
     private final
     PagamentoServicoImpl pagamentoservice;
 
@@ -74,41 +56,39 @@ public class HomeController {
 
     private final
     PedidoCompraServicoImpl pedidocompraService;
-    
-    private 
+
+    private
     List<Cliente> clientesnovos;
-    
-    private 
+
+    private
     List<PedidoVenda> pedidovendasnovos;
-    
-    private 
+
+    private
     List<Mesa> mesasocupadas;
-    
-    private 
+
+    private
     List<Produto> produtosnovos;
-    
-    private 
+
+    private
     List<Usuario> usuarios;
-    
-    private 
+
+    private
     List<PedidoCompra> pedidocomprasnovos;
-    
-    private 
+
+    private
     List<Recebimento> recebimentosnovos;
 
-    private 
+    private
     List<Cliente> resultsearch;
-    
-    private 
-    List<Garcon> garcons;
-    
-    private 
-    List<Fornecedor> fornecedores;
-    
-    private 
-    List<Pagamento> pagamentos;
-    
 
+    private
+    List<Garcon> garcons;
+
+    private
+    List<Fornecedor> fornecedores;
+
+    private
+    List<Pagamento> pagamentos;
 
 
     @Autowired
@@ -122,9 +102,9 @@ public class HomeController {
         this.pedidocompraService = compradao;
         this.recebimentoService = recdao;
         this.garconservice = ga;
-        this.fornecedorservice =fo;
+        this.fornecedorservice = fo;
         this.pagamentoservice = pag;
-        
+
     }
 
 
@@ -142,15 +122,20 @@ public class HomeController {
         garcons = garconservice.findAll();
         fornecedores = fornecedorservice.findAll();
         pagamentos = pagamentoservice.findAll();
-        
 
-        model.addAttribute("clientesnovos", clientesnovos);
+        //Count
+        long produtosNovos = produtoService.count();
+        long users = userservice.count();
+        long clientesNovos = clienteService.count();
+        long garconsCount = garconservice.count();
+
+        model.addAttribute("clientesnovos", clientesNovos);
         model.addAttribute("pedidovendasnovos", pedidovendasnovos);
         model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
         model.addAttribute("recebimentosnovos", recebimentosnovos);
         model.addAttribute("mesasocupadas", mesasocupadas);
-        model.addAttribute("produtosnovos", produtosnovos);
-        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("produtosnovos", produtosNovos);
+        model.addAttribute("usuarios", users);
         model.addAttribute("mesas", mesas);
         model.addAttribute("garcons", garcons);
         model.addAttribute("fornecedores", fornecedores);
@@ -238,7 +223,7 @@ public class HomeController {
 
         List<Cliente> listAllobjetos = new ArrayList<Cliente>();
         resultsearch = new ArrayList<Cliente>();
-        
+
         listAllobjetos.addAll(clienteService.findAll());
 
 
@@ -256,12 +241,11 @@ public class HomeController {
         }
 
 
-
         return resultsearch;
     }
 
     @SuppressWarnings("null")
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public List<Object> ResultSearch(Locale locale, Model model) {
 
         logger.info("Welcome ResultSearch! The client locale is {}.", locale);
@@ -310,7 +294,7 @@ public class HomeController {
 
         ModelAndView cozinha = new ModelAndView("cozinha");
 
-        cozinha.addObject("pedidovendasList",pedidovendasnovos );
+        cozinha.addObject("pedidovendasList", pedidovendasnovos);
 
         return cozinha;
     }

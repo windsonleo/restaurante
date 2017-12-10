@@ -64,8 +64,6 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>

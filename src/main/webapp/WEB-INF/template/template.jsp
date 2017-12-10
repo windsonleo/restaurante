@@ -16,11 +16,6 @@
 
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <%--<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>--%>
-
-    <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>--%>
-
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" /> --%>
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" /> --%>
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/matrix-style.css" /> --%>
@@ -53,7 +48,7 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
-    <jwr:script src="/bundle/js/material-dash.js"/>
+    <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
 </head>
 
 

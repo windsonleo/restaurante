@@ -60,6 +60,10 @@ public abstract class AbstractEntityService<Entity> {
         getDao().delete(id);
     }
 
+    public Long count(){
+        return getDao().count();
+    }
+
     protected abstract void validateDelete(UUID id);
     
     
