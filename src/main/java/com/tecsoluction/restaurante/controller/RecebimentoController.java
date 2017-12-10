@@ -60,9 +60,9 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     private List<Recebimento> recebimentoList = new ArrayList<Recebimento>();
 
-    private Recebimento recebimento = null;
+    private Recebimento recebimento ;
 
-    private PedidoCompra pv = null;
+    private PedidoCompra pv ;
 
     private
     Map<Item, String> itensRecebimentoCorfirmados = new HashMap<Item, String>();

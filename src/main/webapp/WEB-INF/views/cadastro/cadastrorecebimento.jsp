@@ -9,7 +9,9 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Cadastro de Recebimento</h2> ${recebimento.id }
+	</br>
+	</br>
+<%--     <h2>Cadastro de Recebimento</h2> ${recebimento.id } --%>
   </div>
   <div class="container-fluid"><hr>
   
