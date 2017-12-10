@@ -5,20 +5,21 @@
          pageEncoding="UTF-8" %>
 
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib uri="http://jawr.net/tags" prefix="jwr" %>
 
 <html lang="pt-br">
 <head>
 
     <title>Restaurante Sushi Senpai</title>
-<%--     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logosup.png" --%>
-<!--           type="image/x-icon"/> -->
+    <%--     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logosup.png" --%>
+    <!--           type="image/x-icon"/> -->
 
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>--%>
 
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>--%>
 
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" /> --%>
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" /> --%>
@@ -52,9 +53,7 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
-
-   
-
+    <jwr:script src="/bundle/js/material-dash.js"/>
 </head>
 
 
@@ -74,25 +73,20 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
 
+<%--<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>--%>
 
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>--%>
 
-<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>--%>
 
+<%--<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>--%>
 
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
-
-
-<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-<script src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+<%--<script src="https://www.gstatic.com/charts/loader.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>--%>
 
 </body>
 </html>
