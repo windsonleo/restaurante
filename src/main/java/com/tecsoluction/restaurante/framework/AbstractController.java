@@ -115,7 +115,7 @@ public abstract class AbstractController<Entity> {
 
 //        return cadastroEntity;
 //        return new ModelAndView("cadastro" + entityAlias, entityAlias, entity);
-        return new ModelAndView("forward:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity));
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity));
     }
 
     @Transactional
