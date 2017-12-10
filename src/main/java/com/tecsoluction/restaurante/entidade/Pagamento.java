@@ -1,20 +1,18 @@
 package com.tecsoluction.restaurante.entidade;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
-
-import org.joda.money.Money;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.tecsoluction.restaurante.framework.BaseEntity;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -38,7 +36,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     @ManyToMany
     private Set<FormaPagamento> formaPagamentos;
 
-    private Money valorTotalPagamento;
+    private BigDecimal valorTotalPagamento = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     @Override
     public String toString() {
@@ -49,7 +47,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     // REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
     private String status;
 
-    private Money valorPago;
+    private BigDecimal valorPago = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     @ManyToOne
     @JoinColumn(name = "caixa_id")

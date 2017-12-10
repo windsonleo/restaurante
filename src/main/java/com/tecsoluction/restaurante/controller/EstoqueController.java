@@ -1,15 +1,11 @@
 package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.Estoque;
-import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
-//import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,6 +24,8 @@ import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.UUID;
 
+//import com.tecsoluction.restaurante.service.impl.ItemServicoImpl;
+
 @Controller
 @RequestMapping(value = "estoque/")
 public class EstoqueController extends AbstractController<Estoque> {
@@ -42,7 +40,7 @@ public class EstoqueController extends AbstractController<Estoque> {
 //    private final ItemServicoImpl itemService;
 
     @Autowired
-    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu, 
+    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu,
                              ProdutoServicoImpl pdao) {
         super("estoque");
         this.estoqueService = dao;
@@ -80,14 +78,15 @@ public class EstoqueController extends AbstractController<Estoque> {
         Estoque estoque = getservice().findOne(idf);
 
         double totalitens = 0.0;
-        BigDecimal totalcusto  = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
-        BigDecimal totalvenda = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY); ;
+        BigDecimal totalcusto = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
+        BigDecimal totalvenda = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
+        ;
 
         Collection<String> itenstotal = estoque.getItems().values();
 
         for (String anItenstotal : itenstotal) {
-           
-        	Double double1 = Double.valueOf(anItenstotal) ;
+
+            Double double1 = Double.valueOf(anItenstotal);
 
             totalitens = totalitens + double1;
 
