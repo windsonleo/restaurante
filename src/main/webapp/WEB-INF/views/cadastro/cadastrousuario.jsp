@@ -8,7 +8,8 @@
 <div id="content-header">
 
 	</br>
-	<h3>Cadastro de Usuario</h3>
+	</br>
+<!-- 	<h3>Cadastro de Usuario</h3> -->
 </div>
 
 <div class="container-fluid">

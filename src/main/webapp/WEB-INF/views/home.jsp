@@ -21,7 +21,16 @@
     
         <div id="content-header">
         
-        <c:if test="${erros != null }">
+
+
+</br>
+</br>
+        
+    </div>
+
+  <div class="container-fluid">
+  
+          <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Erros!</h4>
               
@@ -38,13 +47,6 @@
             </div>
             
     </c:if>
-
-</br>
-</br>
-        
-    </div>
-
-  <div class="container-fluid">
 
         <div class="card">
             <div class="card-content">
