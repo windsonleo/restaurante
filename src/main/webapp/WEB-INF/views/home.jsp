@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Produtos</p>
-                                    <h3 class="title">${produtosnovos.size()}
+                                    <h3 class="title">${produtosnovos}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -231,7 +231,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>${clientesnovos.size()}</h3>
+              <h3>${clientesnovos}</h3>
 
               <p>Clientes</p>
             </div>
@@ -247,7 +247,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${produtosnovos.size()}<sup style="font-size: 20px"></sup></h3>
+              <h3>${produtosnovos}<sup style="font-size: 20px"></sup></h3>
 
               <p>Produtos</p>
             </div>
@@ -358,7 +358,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${produtosnovos.size()}</h3>
+              <h3>${produtosnovos}</h3>
 
               <p>Delivery</p>
             </div>
@@ -374,7 +374,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>${produtosnovos.size()}<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos}<sup style="font-size: 20px">%</sup></h3>
 
               <p>Caixa</p>
             </div>
@@ -1067,5 +1067,3 @@
  
                 </div>
                 </div>
-                
-
