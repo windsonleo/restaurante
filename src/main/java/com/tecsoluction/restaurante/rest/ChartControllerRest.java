@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "chart/")
+@RequestMapping(value = "chart")
 public class ChartControllerRest {
 
     private final PedidoVendaServicoImpl pedidoVendaServico;
@@ -24,11 +24,11 @@ public class ChartControllerRest {
         this.pedidoVendaServico = pedidoVendaServico;
     }
 
-    @GetMapping
-    public List<PedidoVenda> vendasDiarias() {
+    @GetMapping(value = "/{status}/situacao/{situacao}")
+    public List<PedidoVenda> vendasDiarias(@PathVariable String status, @PathVariable String situacao) {
 
         List<PedidoVenda> pedidovenda = pedidoVendaServico.
-                findAllByStatusIsAndSituacaoIs(StatusPedido.PRONTO, null);
+                findAllByStatusIsAndSituacaoIs(status, situacao);
         return pedidovenda;
     }
 }
