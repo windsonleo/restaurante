@@ -29,21 +29,22 @@
             </div>
             
     </c:if>
+
 <div class="row-fluid">    
 
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
 					
 					
-					<li class="" >
+					<li class="">
 						<a href="#" role="tab" data-toggle="tab">
 							<i class="fa fa-search></i>
 							LocalizarEntregador
 						</a>
 					</li>
-					
-		</ul>              
+		</ul>          
                         
       <div class="span12">
+      	
       	<div class="span8">
       	
       	                       <div class="card">
@@ -207,17 +208,23 @@
 			</div>
 			
 </form>
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
 
-			</div>
-			</div>
+<!-- 			</div> -->
+<!-- 			</div> -->
+		
 									
 
 </div>	
 
 </div>
+
 </div>
+</div>
+</div>
+</div>
+
 							<div class="span4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
@@ -227,7 +234,7 @@
                                     
 
                                 </div>
-                        <form action="LocalizarClienteFone" method="POST" class="form-control">
+                        <form action="LocalizarClienteFone" method="GET" class="form-control">
 
 
 						<div class="form-group label-floating">
@@ -287,9 +294,7 @@
                                      </div>
                                 </div>
                             </div>
-                            </div>
-</div>
-</div>
-</div>
+
+
 
 
