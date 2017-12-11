@@ -28,7 +28,7 @@ public class ChartControllerRest {
     public List<PedidoVenda> vendasDiarias() {
 
         List<PedidoVenda> pedidovenda = pedidoVendaServico.
-                findAllByStatusIsAndSituacaoIs(StatusPedido.PRONTO, null);
+                findAllByStatusIsAndSituacaoIs(StatusPedido.PRONTO, SituacaoPedido.PRONTO);
         return pedidovenda;
     }
 }
