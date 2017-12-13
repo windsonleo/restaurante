@@ -53,7 +53,9 @@
             </p>
 
 
+        </div>
 
+    </div>
 
     <div id="script">
 
@@ -114,7 +116,7 @@
 
         </script>
         
-    <script type="text/javascript">
+         <script type="text/javascript">
         // This function is called from the pop-up menus to transfer to
         // a different page. Ignore if the value returned is a null string:
         function goPage(newURL) {
@@ -140,7 +142,7 @@
 
     </script>
     <!--   #w-input-search -->
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
 
             $('#searchnow').autocomplete({
@@ -522,11 +524,25 @@
 
 
     </script>
-    
-    </div>
+        
+
+
+        <!-- 					FIM    -->
+
+
+        <!-- 					<script src="${pageContext.request.contextPath}/resourcesjs/smartresize.js" -->
+        <!-- 			 src="@{${pageContext.request.contextPath}/resourcesjs/smartresize.js}"></script> -->
+
+
+        <!-- 								<script src="${pageContext.request.contextPath}/resourcesjs/jquery.reverseorder.js" -->
+        <!-- 			 src="@{${pageContext.request.contextPath}/resourcesjs/jquery.reverseorder.js}"></script> -->
+
+
+        <!-- 								<script src="${pageContext.request.contextPath}/resourcesjs/jquery.equalizer.js" -->
+        <!-- 			 src="@{${pageContext.request.contextPath}/resourcesjs/jquery.equalizer.js}"></script> -->
+
 
     </div>
-    </div>
-
 
 </footer>
+
