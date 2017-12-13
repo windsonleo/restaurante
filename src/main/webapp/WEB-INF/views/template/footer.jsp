@@ -10,7 +10,7 @@
 
 <footer id="footer">
 
-    <div class="row-fluid">
+    <div class="row">
 
         <div class="container-fluid">
 
