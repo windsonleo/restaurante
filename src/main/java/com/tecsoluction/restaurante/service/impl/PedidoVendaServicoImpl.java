@@ -54,7 +54,7 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
     public List<PedidoVenda> findAllByStatusIsAndSituacaoIs(String status) {
         StatusPedido statusPedido = Enum.valueOf(StatusPedido.class, status.toUpperCase());
 
-        return dao.findAllByStatusIsAndSituacaoIsOrderByDataAsc(statusPedido);
+        return dao.findAllByStatusIsOrderByDataAsc(statusPedido);
     }
 
     @Override
