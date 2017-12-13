@@ -6,26 +6,9 @@
 
 <!--main-container-part-->
 
-
-<!--    <div class="span12"> -->
-
-
-<!-- </br> -->
-<!-- </br> -->
-<!-- </br> -->
-<!-- </br> -->
-
- 
+    <div id="content" class="content">
     
-    <div id="content">
-    
-        <div id="content-header">
-        
-
-
-</br>
-</br>
-        
+        <div id="content-header" class="content-header">
     </div>
 
   <div class="container-fluid">
