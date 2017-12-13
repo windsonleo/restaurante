@@ -31,4 +31,11 @@ public class ChartControllerRest {
                 findAllByStatusIsAndSituacaoIs(status);
         return pedidovenda;
     }
+    
+    @GetMapping(value = "/clientesdiarios")
+    public long clientesDia() {
+
+       long countCliente = pedidoVendaServico.findClienteByPedidoVenda();
+        return countCliente;
+    }
 }
