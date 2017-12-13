@@ -25,7 +25,7 @@ public class ChartControllerRest {
     }
 
     @GetMapping(value = "/status/{status}")
-    public List<PedidoVenda> vendasDiarias(@PathVariable String status, @PathVariable String situacao) {
+    public List<PedidoVenda> vendasDiarias(@PathVariable String status) {
 
         List<PedidoVenda> pedidovenda = pedidoVendaServico.
                 findAllByStatusIsAndSituacaoIs(status);
