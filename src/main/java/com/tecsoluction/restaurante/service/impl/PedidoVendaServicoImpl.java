@@ -57,6 +57,11 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
         return dao.findAllByStatusIsOrderByDataAsc(statusPedido);
     }
 
+    public long findClienteByPedidoVenda() {
+
+        return dao.findClienteByPedidoVenda();
+    }
+    
     @Override
     protected void validateSave(PedidoVenda post) {
         // TODO Auto-generated method stub
