@@ -5,8 +5,8 @@
 <%@ page session="true" %>
 
 <!--main-container-part-->
-
-    <div id="content" class="content">
+<div class="main-panel ps-container ps-theme-default ps-active-y">
+  <div id="content" class="content">
     
         <div id="content-header" class="content-header">
     </div>
