@@ -369,7 +369,7 @@
 
         //alert("entrou now template");
 
-        function limpa_formul�rio_cep() {
+        function limpa_formulario_cep() {
             //Limpa valores do formul�rio de cep.
             document.getElementById('logradouro').value = ("");
             document.getElementById('bairro').value = ("");
@@ -393,8 +393,8 @@
 
             else {
                 //CEP n�o Encontrado.
-                limpa_formul�rio_cep();
-                alert("CEP n�o encontrado.");
+                limpa_formulario_cep();
+                alert("CEP não encontrado.");
             }
         }
 
@@ -431,14 +431,14 @@
 
                 } //end if.
                 else {
-                    //cep � inv�lido.
-                    limpa_formul�rio_cep();
-                    alert("Formato de CEP inv�lido.");
+                    //cep é inválido.
+                    limpa_formulario_cep();
+                    alert("Formato de CEP inválido.");
                 }
             } //end if.
             else {
                 //cep sem valor, limpa formul�rio.
-                limpa_formul�rio_cep();
+                limpa_formulario_cep();
             }
         }
 
