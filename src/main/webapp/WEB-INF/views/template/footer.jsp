@@ -8,7 +8,7 @@
 <!-- </div> -->
 
 
-<footer id="footer">
+<footer id="footer" class = "footer">
 
     <div class="row-fluid">
 
