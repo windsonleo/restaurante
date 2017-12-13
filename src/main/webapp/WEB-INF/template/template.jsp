@@ -56,7 +56,6 @@
 
 <div class="wrapper">
 
-    <div class="main-panel">
 
         <tiles:insertAttribute name="navegacao"/>
 
@@ -64,8 +63,6 @@
         <tiles:insertAttribute name="conteudo"/>
 
         <tiles:insertAttribute name="footer"/>
-
-    </div>
 </div>
 
 
