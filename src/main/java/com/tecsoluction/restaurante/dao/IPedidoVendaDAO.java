@@ -27,6 +27,6 @@ public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
 
     List<PedidoVenda> findAllByStatusIsOrderByDataAsc(StatusPedido status);
     
-    @Query("SELECT count(c.cliente) FROM PedidoVenda p, Cliente c where p.cliente_id = c.id order by p.data desc")
+    @Query("SELECT count(c) FROM PedidoVenda p, Cliente c where p.cliente_id = c.id order by p.data desc")
     long findClienteByPedidoVenda();
 }
