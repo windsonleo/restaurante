@@ -527,6 +527,7 @@
 
     </div>
     </div>
+  </div>
 
 
 </footer>
