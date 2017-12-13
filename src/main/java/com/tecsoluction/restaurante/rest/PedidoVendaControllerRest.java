@@ -36,13 +36,6 @@ public class PedidoVendaControllerRest extends AbstractRestController<PedidoVend
 
     }
 
-    @GetMapping(value = "/clientesdiarios")
-    public long clientesDia() {
-
-       long countCliente = pedidoVendaServico.findClienteByPedidoVenda();
-        return countCliente;
-    }
-
 
 
 	@Override
