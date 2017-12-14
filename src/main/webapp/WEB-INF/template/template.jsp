@@ -58,12 +58,14 @@
          
 
         <tiles:insertAttribute name="navegacao"/>
+        <div class="main-panel ps-container ps-theme-default ps-active-y">
 
-        <tiles:insertAttribute name="header"/>
+            <tiles:insertAttribute name="header"/>
          
-        <tiles:insertAttribute name="conteudo"/>
+            <tiles:insertAttribute name="conteudo"/>
 
-        <tiles:insertAttribute name="footer"/>
+            <tiles:insertAttribute name="footer"/>
+         </div>
 </div>
 
 
