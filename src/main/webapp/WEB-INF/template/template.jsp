@@ -55,11 +55,12 @@
 <body>
 
 <div class="wrapper">
-
+         
 
         <tiles:insertAttribute name="navegacao"/>
 
-
+        <tiles:insertAttribute name="header"/>
+         
         <tiles:insertAttribute name="conteudo"/>
 
         <tiles:insertAttribute name="footer"/>
