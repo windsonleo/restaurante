@@ -527,7 +527,6 @@
 
     </div>
     </div>
-  </div>
 
 
 </footer>
