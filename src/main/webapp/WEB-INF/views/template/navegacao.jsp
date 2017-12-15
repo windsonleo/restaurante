@@ -7,9 +7,9 @@
 
 <!-- </div> -->
 
-<div id="header">
+<!-- <div id="header"> -->
 
-    <div class="sidebar" data-color="blue" data-image="../resources/images/sidebar-3.jpg"
+    <div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/images/sidebar-3.png"
          data-image="${pageContext.request.contextPath}/resources/images/sidebar-1.jpg}">
         <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -185,7 +185,7 @@
         </div>
     </div>
 
-</div>
+<!-- </div> -->
 			        
 			  
         

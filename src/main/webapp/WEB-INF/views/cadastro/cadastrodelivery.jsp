@@ -35,10 +35,10 @@
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
 					
 					
-					<li class="">
+					<li class="active">
 						<a href="#" role="tab" data-toggle="tab">
-							<i class="fa fa-search></i>
-							LocalizarEntregador
+							<i class="material-icons">place</i>
+							Find Moto
 						</a>
 					</li>
 		</ul>          
@@ -47,7 +47,7 @@
       	
       	<div class="span8">
       	
-      	                       <div class="card">
+      	         <div class="card">
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="blue">
@@ -224,6 +224,8 @@
 </div>
 </div>
 </div>
+</div>
+<!-- </div> -->
 
 							<div class="span4">
                             <div class="card card-profile">
@@ -253,28 +255,29 @@
 
                                     <c:forEach var="client" items="${clientesList}" varStatus="id">
 
-                                        <option value="${client.telefone }"> ${client.nome } </option>
+                                        <option value="${client.telefone}"> ${client.nome} </option>
 
                                     </c:forEach>
 
 
                                 </datalist>
                                    
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group">
 <!--                               <label class="control-label">Cliente</label> -->
 
 <!-- </br></br> -->
                                    
-                                 
-                                       
+<%--   									<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-danger btn-round btn-md">Localizar</button> --%>
+
+<%--                                    <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button> --%>
+                                                                       
 <!--                                  <span class="material-input"></span> -->
                          		</div>
                                     
-                                  </form>
-                                  
-                                   
-<!--                                     </br> -->
-                                   
+                                 
+       
+        						
+                                    </form>
                                 <div class="content">
                                 
                                     
@@ -283,18 +286,23 @@
 <%--                                      <p class="card-content pull-left">${cliente.id} </p>  --%>
                                     <p class="card-content">
                                     
-                                     <button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone?telefone=${cliente.telefone}' " class="btn btn-danger btn-round btn-md">Localizar</button>
+                                    	<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-danger btn-round btn-md">Localizar</button>
 
-                                   <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro' "  class="btn btn-primary btn-round btn-md">Adicionar</button>
-                                   
+                                   <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button>
+                          
                                     
-<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+                                    
                                     </p>
-                                    
+                                     
                                      </div>
+                                    
+                                   
                                 </div>
                             </div>
-
+</div>
+</div>
+</div>
+</div>
 
 
 

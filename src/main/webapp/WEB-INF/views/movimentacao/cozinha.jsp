@@ -8,7 +8,8 @@
   <div id="content-header">
 
 	<br>
-     <h3>Movimentação de Cozinha</h3> 
+	</br>
+<!--      <h3>Movimentação de Cozinha</h3>  -->
      </div>    
       
   
@@ -76,7 +77,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title"><h5>Movimentação Pedidos Vendas</h5></h4>
+                                    <h4 class="title"><h5>Movimentação Cozinha</h5></h4>
                                     <p class="category">Todos</p>
 
                                 </div>

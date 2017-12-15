@@ -1,12 +1,18 @@
 package com.tecsoluction.restaurante.controller;
 
+import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
 
@@ -36,27 +42,58 @@ public class MesaController extends AbstractController<Mesa> {
     private final UsuarioServicoImpl userservice;
 
     private final MesaServicoImpl mesaService;
+    
+    private final GarconServicoImpl garconService;
+    
+    private final ClienteServicoImpl clienteService;
+    
+    private final ProdutoServicoImpl produtoService;
+
 
     private final PedidoVendaServicoImpl pedidovendaService;
 
     private List<PedidoVenda> pedidos;
+    
+    private List<Cliente> clientes;
+
+    private List<Garcon> garcons;
+
+    private List<Produto> produtos;
+
+    private List<Mesa> mesas;
+
 
     @Autowired
-    public MesaController(MesaServicoImpl dao, PedidoVendaServicoImpl pv, UsuarioServicoImpl daousu) {
+    public MesaController(MesaServicoImpl dao, PedidoVendaServicoImpl pv, UsuarioServicoImpl daousu,ProdutoServicoImpl prod,ClienteServicoImpl cli,GarconServicoImpl gar) {
         super("mesas");
+       
         this.mesaService = dao;
         this.pedidovendaService = pv;
         this.userservice = daousu;
+        this.clienteService = cli;
+        this.garconService = gar;
+        this.produtoService = prod;
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
+    	
+    	
+    	mesas = getservice().findAll();
+    	clientes = clienteService.findAll();
+    	garcons =garconService.findAll();
+    	produtos = produtoService.findAll();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         usuario = userservice.findByUsername(usuario.getUsername());
 
         model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("mesasList", mesas);
+        model.addAttribute("clientesList", clientes);
+        model.addAttribute("garconsList", garcons);
+        model.addAttribute("produtosList", produtos);
+
 
     }
 
@@ -112,9 +149,16 @@ public class MesaController extends AbstractController<Mesa> {
 
         ModelAndView mesassalao = new ModelAndView("salao");
 
-        List<Mesa> mesas = getservice().findAll();
+//        List<Mesa> mesas = getservice().findAll();
+//
+//        mesassalao.addObject("mesasList", mesas);
+//        
+//        mesassalao.addObject("clientesList", clientes);
+//
+//        mesassalao.addObject("garconsList", garcons);
+//
+//        mesassalao.addObject("produtosList", produtos);
 
-        mesassalao.addObject("mesaList", mesas);
 
         return mesassalao;
     }

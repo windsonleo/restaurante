@@ -49,6 +49,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
     <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
+
 </head>
 
 
@@ -56,9 +57,12 @@
 
 <div class="wrapper">
          
-
         <tiles:insertAttribute name="navegacao"/>
-        <div class="main-panel ps-container ps-theme-default ps-active-y">
+        
+<!--         <div class="main-panel ps-container ps-theme-default ps-active-y"> -->
+
+        <div class="main-panel">
+
 
             <tiles:insertAttribute name="header"/>
          
@@ -69,17 +73,17 @@
 </div>
 
 
-<%--<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
 
-<%--<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
 
-<%--<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
-<%--<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>--%>
-<%--<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>--%>
-<%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
 
-<%--<script src="https://www.gstatic.com/charts/loader.js"></script>--%>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 <%--<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>--%>
 

@@ -3,6 +3,8 @@
 
 <%@ page session="false" %>
 
+
+
 <nav class="navbar navbar-transparent navbar-absolute">
    <div class="container-fluid">
       <div class="navbar-header">

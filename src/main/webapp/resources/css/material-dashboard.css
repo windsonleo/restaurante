@@ -919,12 +919,14 @@ h2.title {
 .sidebar .sidebar-wrapper,
 .perfect-scrollbar-on .main-panel,
 .main-panel {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y:auto; 
+
 }
 
 .perfect-scrollbar-off .sidebar .sidebar-wrapper,
 .perfect-scrollbar-off .main-panel {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .main-panel {

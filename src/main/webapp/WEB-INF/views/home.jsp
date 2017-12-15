@@ -5,12 +5,17 @@
 <%@ page session="true" %>
 
 <!--main-container-part-->
-  <div id="content" class="content">
+<!--   <div id="content"> -->
     
         <div id="content-header" class="content-header">
+   
+   
     </div>
 
   <div class="container-fluid">
+  
+  </br>
+  </br>
   
           <c:if test="${erros != null }">
             <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
@@ -172,7 +177,7 @@
                                     <div class="ct-chart" id="emailsSubscriptionChart"></div>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="title">Clientes por Dia</h4>
+                                    <h4 class="title">Ranking Produtos</h4>
                                     <p class="category">Performace Semanas Anteriores</p>
                                 </div>
                                 <div class="card-footer">
@@ -199,6 +204,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                     
    
@@ -293,7 +299,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${pagamentos.size()}<sup style="font-size: 20px">%</sup></h3>
+<%--               <h3>${pagamentos.size()}<sup style="font-size: 20px">%</sup></h3> --%>
+              <h3>${pagamentos.size()}</h3>
+
 
               <p>Pagamentos</p>
             </div>
@@ -356,7 +364,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>${produtosnovos}<sup style="font-size: 20px">%</sup></h3>
+              <h3>${produtosnovos}</h3>
 
               <p>Caixa</p>
             </div>
@@ -1047,4 +1055,4 @@
                 </div>
                 </div>
  
-                </div>
+<!--                 </div> -->
