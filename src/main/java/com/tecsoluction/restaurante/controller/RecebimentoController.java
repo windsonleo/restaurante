@@ -7,7 +7,6 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
@@ -120,7 +119,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
 
-        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+//        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -145,7 +144,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         model.addAttribute("usuarioAtt", usuario);
 //        model.addAttribute("RecebimentoList", recebimentoList);
         model.addAttribute("origemPedidoList", origemPedidoList);
-        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
+//        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
         model.addAttribute("recebimento", recebimento);
         model.addAttribute("pedidocompra", pv);

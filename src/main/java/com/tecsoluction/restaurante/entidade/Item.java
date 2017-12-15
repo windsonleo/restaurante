@@ -21,7 +21,6 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tecsoluction.restaurante.framework.BaseEntity;
 import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

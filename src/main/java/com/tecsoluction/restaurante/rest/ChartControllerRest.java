@@ -3,7 +3,6 @@ package com.tecsoluction.restaurante.rest;
 
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +34,7 @@ public class ChartControllerRest {
     @GetMapping(value = "/clientesdiarios")
     public long clientesDia() {
 
-       long countCliente = pedidoVendaServico.findClienteByPedidoVenda();
+       long countCliente = 1;//pedidoVendaServico.findClienteByPedidoVenda();
         return countCliente;
     }
 }
