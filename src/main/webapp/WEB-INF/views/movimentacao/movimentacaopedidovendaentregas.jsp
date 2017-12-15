@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Data</th>
-                                    <th>Situacao</th>
+<!--                                     <th>Situacao</th> -->
 
                                     <th>Status</th>
                                     <th>Origem</th>
@@ -61,7 +61,7 @@
 
                                         <td>${pedidovenda.id}</td>
                                         <td>${pedidovenda.data}</td>
-                                        <td>${pedidovenda.situacao}</td>
+<%--                                         <td>${pedidovenda.situacao}</td> --%>
 
                                             <%-- 		                  <td><span class="label label-info">${pedidovenda.status}</span></td> --%>
 

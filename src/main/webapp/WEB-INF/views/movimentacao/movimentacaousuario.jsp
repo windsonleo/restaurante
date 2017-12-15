@@ -34,9 +34,8 @@
                         </br>
 
 
-                        <div class="">
-                            <!--              <div  class="table-responsive">            	 -->
-                            <table class="table table-hover table-bordered data-table">
+ <div class="widget-content nopadding"> 
+                        <table class="table table-bordered data-table"> 
                                 <thead>
                                 <tr>
                                     <th>Id</th>

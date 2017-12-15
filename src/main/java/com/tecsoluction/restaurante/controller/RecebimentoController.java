@@ -6,6 +6,7 @@ import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
@@ -175,6 +176,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
             Item item = new Item(produto);
             item.setQtd(qtd);
             item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
+            item.setSituacao(SituacaoItem.PRONTO);
+
 
 //            key.setEstoque(estoque);
 
@@ -335,6 +338,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
         it.setQtd(new BigDecimal(qtd));
         it.setTotalItem(prod.getPrecovenda().multiply(new BigDecimal(qtd)));
+		 it.setSituacao(SituacaoItem.EM_PREPARACAO);
+
         
         recebimento.addItem(it, it.getQtd().toString());
         

@@ -10,7 +10,8 @@
   <div id="content-header">
     
     </br>
-    <h2>Cadastro de Pagamento</h2>
+    </br>
+<!--     <h2>Cadastro de Pagamento</h2> -->
   </div>
   <div class="container-fluid"><hr>
   
@@ -33,6 +34,42 @@
     </c:if>
     <div class="row-fluid">
       <div class="span12">
+      
+
+      
+      <div class="span8">
+      
+                 <div class="row-fluid">
+
+		
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+					
+					
+					<li class="active">
+						<a href="${pageContext.request.contextPath}/produzircomposto" role="ta" data-toggle="ta">
+							<i class="fa fa-money"></i>
+							Desconto
+						</a>
+					</li>
+					
+					<li >
+						<a href="#" role="tab" data-toggle="tab">
+							<i class="fa fa-money"> </i>
+							Acrescimo
+						</a>
+					</li>
+					
+					<li  >
+						<a href="#" role="tab" data-toggle="tab" >
+							<i class="material-icons"> money</i>
+							Cupom
+						</a>
+					</li>
+		</ul>
+		
+  
+
+    </div>
                 <div class="card">
                     <div class="card-content">
                        
@@ -137,7 +174,7 @@
                                 </br>
           <div class="widget-content">
 			
-			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizontal">
+			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="get" class="form-horizontal">
 			 		    
           <div class="control-group">
                 <label class="control-label"></label>
@@ -156,7 +193,7 @@
 		       				</c:forEach>
 		                </optgroup>
 	                    </select>	
-	                    	                    <button type="submit" class="btn  btn-success" onClick="window.location='adicionarformapagamentopagamento'">Add</button>
+	                <button type="submit" class="btn  btn-success" onClick="window.location='adicionarformapagamentopagamento'">Add</button>
 	                    
 	         		
 				
@@ -190,7 +227,7 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="formapagamento" items="${formas}" varStatus="id">
+            <c:forEach var="formapagamento" items="${pagamento.formaPagamentos}" varStatus="id">
 
 <%-- 		<c:choose> --%>
 		
@@ -217,7 +254,7 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}"
-									title="informa��o" class="fa fa-info fa-2x"></a>
+									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}"
@@ -250,11 +287,18 @@
 			
 			
           
-          <div class="widget-content nopadding">
-          
-                  <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Detalhes do Pagamento</h5>
-          </div>
+         <div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="blue">
+                                
+                                    <h4 class="title">Detalhes Pagamento</h4>
+                                    <p class="category">Confira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
+                                </br>
 			
 			 <form  role="form" id="ds" class="form-horizontal" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
 			
@@ -347,6 +391,132 @@
 </div>
 </div>
 </div>
+</div>
+
+
+<div class="span4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../resources/images/produto/vazio.jpg">
+                                    </a>
+                                    
+
+                                </div>
+          <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizonta">       
+
+
+<!-- 						<div class="form-group label-floating"> -->
+<!-- <!--                               <label class="control-label">Cliente</label> --> 
+<%--                                 <input type="text" list="${clientesList}" id="id" --%>
+<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
+<!--                                        class="form-control"> -->
+                                       
+<!--                                  <span class="material-input"></span> -->
+<!--                          </div> -->
+
+
+
+
+
+                                   </br> 
+                                   
+                                   
+            <div class="form-group label-floating is-empty">
+               <div class="control-group">
+
+                <label class="control-label">Pedido</label>
+                <div class="controls">
+                
+                <input type="text" value="" class="form-control">
+				
+				
+                </div>
+              </div>  
+              </div>
+                                   
+                                   
+                                   
+                                   
+          <div class="form-group label-floating is-empty">
+               <div class="control-group">
+
+                <label class="control-label">Formas Pagamento</label>
+                <div class="controls">
+					<select id="fornecedor"
+						name="fornecedor" class="form-control">
+							<optgroup label="Formas de PAgamento">
+
+
+								<option value="${produto.fornecedor.id}"  selected="selected">${produto.fornecedor.nomefantasia}</option>
+
+
+								<c:forEach var="fornecedor" items="${fornecedorList}">
+									<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option>
+								</c:forEach>
+
+
+							</optgroup>
+					</select>				
+				
+                </div>
+              </div>  
+              </div>
+              
+              <div class="form-group label-floating is-empty">
+               <div class="control-group">
+
+                <label class="control-label">Total</label>
+                <div class="controls">
+                
+                <input type="text" value="" class="form-control">
+				
+				
+                </div>
+              </div>  
+              </div>
+              
+              
+            <div class="form-group label-floating is-empty">
+               <div class="control-group">
+
+                <label class="control-label">Caixa</label>
+                <div class="controls">
+                
+                <input type="text" value="" class="form-control">
+				
+				
+                </div>
+              </div>  
+              </div>
+                                   
+                                   <button type="submit"  class="btn btn-danger btn-round btn-sm">Confirmar</button>
+
+                                       
+                                 <span class="material-input"></span>
+                         		
+                         		
+                         		 </form>
+                         		</div>
+                                    
+                                 
+                                  
+                                <div class="content">
+                                    
+                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.categoria}
+                                     <p class="card-content pull-left">${produto.id} </p> </h4> </p>
+<!--                                     <p class="card-content"> -->
+<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
+<!--                                     </p> -->
+                                    
+                                    
+                                </div>
+                            </div>
+
+						</div>
+
+
+
 </div>
 </div>
 </div>

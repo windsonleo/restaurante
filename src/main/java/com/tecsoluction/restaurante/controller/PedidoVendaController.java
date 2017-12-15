@@ -6,6 +6,7 @@ import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -251,6 +252,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+		 item.setSituacao(SituacaoItem.AGUARDANDO_PREPARACAO);
       
 //        itens = pedidov.getItems();
 
@@ -347,8 +349,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @RequestMapping(value = "/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
-    	String mensagem = "Pedido Compra Aprovado com Sucesso";
-    	String erros = "Erro na Aprovacao";
+    	String mensagem = "Pedido Venda Pronto com Sucesso";
+    	String erros = "Erro no Pronto";
     	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
@@ -359,16 +361,47 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         getservice().save(pc);
 
-        ModelAndView home = new ModelAndView("home");
+        ModelAndView cozinha = new ModelAndView("cozinha");
         
         if(pc.getStatus() != StatusPedido.PRONTO) {
         
-        home.addObject("erros",erros);
+        	cozinha.addObject("erros",erros);
        
         
         }
         
-        return home;
+        return cozinha;
+        
+       
+        
+        }
+    
+    
+    @RequestMapping(value = "/cancelado", method = RequestMethod.GET)
+    public ModelAndView CanceladoPedidovENDA(HttpServletRequest request) {
+    	
+    	String mensagem = "Pedido Venda Cancelado com Sucesso";
+    	String erros = "Erro no Cancelamento";
+    	
+
+        UUID idf = UUID.fromString(request.getParameter("id"));
+
+        PedidoVenda pc = getservice().findOne(idf);
+
+        pc.setStatus(StatusPedido.CANCELADO);
+
+        getservice().save(pc);
+
+        ModelAndView cozinha = new ModelAndView("cozinha");
+        
+        if(pc.getStatus() != StatusPedido.CANCELADO) {
+        
+        	cozinha.addObject("erros",erros);
+       
+        
+        }
+        
+        return cozinha;
         
        
         

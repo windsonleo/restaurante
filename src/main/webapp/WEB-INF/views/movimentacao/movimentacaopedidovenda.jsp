@@ -70,7 +70,7 @@
 				<c:choose>
 				    <c:when test="${pedidovenda.status=='ABERTO'}">
 
-                  <td><span class="label label-primary">${pedidovenda.status}</span></td>
+                  <td><span class="label label-info">${pedidovenda.status}</span></td>
 
 				
 				    </c:when> 
@@ -91,7 +91,7 @@
 				    
 				    <c:when test="${pedidovenda.status=='CANCELADO'}">
 
-                  <td><span class="label label-inverse">${pedidovenda.status}</span></td>
+                  <td><span class="label label-danger">${pedidovenda.status}</span></td>
 
 				
 				    </c:when>  
@@ -207,7 +207,7 @@
         </div>
         </div>
         
-<!--         <div class="pagination alternate"> </div> -->
+        <div class="pagination alternate"> </div>
 
         
         </div>

@@ -137,7 +137,7 @@ public class DeliveryController {
     	pedido.setData(new Date());
     	pedido.setOrigempedido(OrigemPedido.TELEVENDAS);
     	pedido.setStatus(StatusPedido.ABERTO);
-    	pedido.setSituacao(SituacaoPedido.AGUARDANDO_PREPARACAO);
+//    	pedido.setSituacao(SituacaoPedido.AGUARDANDO_PREPARACAO);
     	delivery.addObject("cliente", cli);
     	delivery.addObject("pedidovenda", pedido);
 

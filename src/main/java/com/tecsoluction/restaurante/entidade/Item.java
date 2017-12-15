@@ -12,12 +12,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.SituacaoPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -61,6 +65,13 @@ public  class Item implements Serializable, Comparable<Item>{
 
 
     private BigDecimal totalItem ;
+    
+    
+    @Enumerated(EnumType.STRING)
+    
+    
+    private SituacaoItem situacao;
+
 
 //    @ManyToOne(optional = true)
 //    @JsonBackReference

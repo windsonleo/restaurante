@@ -45,7 +45,7 @@
 					
 					
 					<li class="active" >
-						<a href="${pageContext.request.contextPath}/produtocomposto/produzircomposto" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/caixa/abrir" role="ta" data-toggle="ta">
 							<i class="fa fa-cutlery"></i>
 							Abrir Caixa
 						</a>
@@ -190,7 +190,7 @@
                                               
                                                 <li class="active">
                                                     <a href="#profile" data-toggle="tab">
-                                                        <i class="material-icons">room_service</i> PRONTA
+                                                        <i class="material-icons">room_service</i> PRONTO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 </li>
@@ -222,19 +222,19 @@
                                             <table class="table">
                                                 <tbody>
                                                    
-                                                       		<c:forEach var="pv" items="${ls }">
+                                                       		<c:forEach var="pv" items="${pedidoVendaLista}">
                                                        		 <tr>
                                                        		
                                                       		
                                                        		
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='PENDENTE'}">
+																    <c:when test="${pv.status=='PRONTO'}">
 																    
 																    
 																    <td>
 			                                                            <div class="image-responsive">
-																			<i class="material-icons" style="color:orange;"> shopping_cart</i>
+																			<i class="material-icons" style="color:green;"> shopping_cart</i>
 			                                                            </div>
 			                                                        </td> 
 																    
@@ -285,16 +285,16 @@
                                         <div class="tab-pane" id="messages">
                                             <table class="table">
                                                 <tbody>
-                                                  <c:forEach var="pv" items="${ls }">
+                                                  <c:forEach var="pv" items="${ls}">
                                                     			<tr>
                                                            
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='PRONTO'}">
+																    <c:when test="${pv.status=='FECHADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
-																			<i class="material-icons" style="color:green;"> shopping_cart</i>
+																			<i class="material-icons" style="color:blue;"> shopping_cart</i>
 			                                                            </div>
 			                                                        </td> 																    
 																    
@@ -346,11 +346,11 @@
                                             			<table class="table">
                                                 			<tbody>
 
-                                                                <c:forEach var="pv" items="${ls }">
+                                                                <c:forEach var="pv" items="${ls}">
                                                                  <tr>
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='FECHADO'}">
+																    <c:when test="${pv.status=='CANCELADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">

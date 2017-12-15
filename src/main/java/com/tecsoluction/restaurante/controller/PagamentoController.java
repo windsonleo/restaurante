@@ -55,6 +55,8 @@ public class PagamentoController extends AbstractController<Pagamento> {
         this.caixaService = CDAO;
         this.formapagamentoService = formdao;
         this.pedidovendaService = peddao;
+        
+       
     }
 
     @InitBinder
@@ -103,6 +105,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         if (pagamento == null) {
             this.pagamento = new Pagamento();
+//            pagamento.setFormaPagamentos(formaPagamentos);
 
         }
 
@@ -121,7 +124,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         //
         // }
 
-        pv.setTotal(totalpedido);
+//        pv.setTotal(totalpedido);
 
         ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
 
@@ -131,21 +134,31 @@ public class PagamentoController extends AbstractController<Pagamento> {
         System.out.println("pedidovenda:" + pv.toString());
         System.out.println("pagamento:" + pagamento.toString());
 
-        formas.clear();
+//        formas.clear();
 
         return cadastropagamento;
     }
+    
+    
 
     @RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.GET)
     public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("formaPagamentos"));
-
-        FormaPagamento formapag = new FormaPagamento();
+        
+        FormaPagamento formapag= null ;
 
         formapag = formapagamentoService.findOne(idf);
 
         System.out.println("formaPag" + formapag.toString());
+        
+//        this.pagamento.getFormaPagamentos().add(formapag);
+        
+        	this.formas.add(formapag);
+        	
+        	this.pagamento.setFormaPagamentos(formas);
+        
+//        getservice().save(pagamento);
 
 
         ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");

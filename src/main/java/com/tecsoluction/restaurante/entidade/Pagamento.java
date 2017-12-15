@@ -30,10 +30,10 @@ public class Pagamento extends BaseEntity implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
-    @ManyToMany()
+    @ManyToMany(fetch=FetchType.EAGER)
     private List<PedidoVenda> pedidos;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     private Set<FormaPagamento> formaPagamentos;
 
     private BigDecimal valorTotalPagamento = new BigDecimal(0.000).setScale(4, RoundingMode.UP);

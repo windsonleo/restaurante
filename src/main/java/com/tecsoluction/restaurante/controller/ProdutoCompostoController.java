@@ -42,6 +42,7 @@ import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoCompostoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 @Controller
@@ -233,7 +234,8 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
-		
+		 item.setSituacao(SituacaoItem.AGUARDANDO_PREPARACAO);
+
 //			
 			items = new HashMap<>();
 

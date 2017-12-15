@@ -57,7 +57,9 @@ public class Estoque extends BaseEntity implements Serializable {
             @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
             @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
             @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
-            @AttributeOverride(name = "totalItem", column = @Column(name = "total"))
+            @AttributeOverride(name = "totalItem", column = @Column(name = "total")),
+            @AttributeOverride(name = "situacao", column = @Column(name = "situacao"))
+
     })
     @MapKeyClass(Item.class)
     @CollectionTable(name = "itens_estoque", joinColumns = @JoinColumn(name = "id"))

@@ -5,6 +5,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
@@ -229,7 +230,8 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
-		 
+		 item.setSituacao(SituacaoItem.AGUARDANDO_PREPARACAO);
+
 		
       
 			itens = new HashMap<>();
@@ -324,12 +326,12 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         }
         
-        home.addObject("mensagem",mensagem);
+//        home.addObject("mensagem",mensagem);
 
         
         logger.info("Aprovar  Pedido Compra !", pc);
 
-        return home;
+        return new ModelAndView("redirect:/");
 
     }
 

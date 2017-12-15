@@ -327,6 +327,8 @@ public class CaixaController extends AbstractController<Caixa> {
 
         return caixarapido;
     }
+    
+    
 
     @Override
     protected CaixaServicoImpl getservice() {

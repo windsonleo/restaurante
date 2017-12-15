@@ -616,7 +616,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Acesso Rápido</h4>
+                                    <h4 class="title">Acesso Rapido</h4>
                                     <p class="category">...</p>
 
                                 </div>
@@ -631,19 +631,19 @@
 				 <ul class="nav nav-pills nav-pills-icons nav-pills-info" role="tablist">
 					
 					<sec:authorize access="hasRole('ROLE_COZINHA')">
-					<li >
+					<li class="active" >
 						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta">
-							<i class="fa fa-cutlery"></i>
+							<i class="material-icons">room_service</i>
 							Cozinha
 						</a>
 					</li>
 					</sec:authorize>
 					
 					
-					<li class="active" >
+					<li  >
 						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
 							<i class="material-icons">table</i>
-							Salão
+							Salao
 						</a>
 					</li>
 					

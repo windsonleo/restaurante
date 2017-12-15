@@ -277,7 +277,7 @@
                                  
        
         						
-                                    </form>
+                                   
                                 <div class="content">
                                 
                                     
@@ -296,6 +296,7 @@
                                      
                                      </div>
                                     
+                                     </form>
                                    
                                 </div>
                             </div>

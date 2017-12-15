@@ -43,7 +43,7 @@
 					
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/produzircomposto" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/produzircomposto" role="tab" data-toggle="ta">
 							<i class="fa fa-cutlery"></i>
 							Produzir Produto Composto
 						</a>
@@ -214,7 +214,7 @@
                                             <table class="table">
                                                 <tbody>
                                                    
-                                                       		<c:forEach var="pv" items="${pedidovendasnovos }">
+                                                       		<c:forEach var="pv" items="${pedidovendasList }">
                                                        		 <tr>
                                                        		
                                                       		

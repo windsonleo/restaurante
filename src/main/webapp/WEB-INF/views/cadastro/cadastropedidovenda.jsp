@@ -123,21 +123,21 @@
 	
 	
 	
-  						<select id="situacao"name="situacao"  class="form-control" >
-	                                  <optgroup label="Situacao do Pedido">
+<!--   						<select id="situacao"name="situacao"  class="form-control" > -->
+<!-- 	                                  <optgroup label="Situacao do Pedido"> -->
 		           				
-		           		<option value="${pedidovenda.situacao}" selected="selected">${pedidovenda.situacao}</option>
+<%-- 		           		<option value="${pedidovenda.situacao}" selected="selected">${pedidovenda.situacao}</option> --%>
 		           					
 		           					
-		           			<c:forEach var="situacao" items="${situacaoPedidoList}">
+<%-- 		           			<c:forEach var="situacao" items="${situacaoPedidoList}"> --%>
 		           			
-		           				<option value="${situacao}">${situacao}</option>
+<%-- 		           				<option value="${situacao}">${situacao}</option> --%>
 		           				      				
 		           				
-		       				</c:forEach>
+<%-- 		       				</c:forEach> --%>
 		       				
-		                </optgroup>
-	                    </select>	
+<!-- 		                </optgroup> -->
+<!-- 	                    </select>	 -->
 	                    
 	                    
 	                    
