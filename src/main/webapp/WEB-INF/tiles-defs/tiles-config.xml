@@ -448,11 +448,11 @@
 
 	</definition>
 	
-			<definition name="fecharcaixa" extends="defaultTemplate">
-		<put-attribute name="conteudo"
-			value="/WEB-INF/views/caixa/fecharcaixa.jsp" />
+<!-- 			<definition name="fecharcaixa" extends="defaultTemplate"> -->
+<!-- 		<put-attribute name="conteudo" -->
+<!-- 			value="/WEB-INF/views/caixa/fecharcaixa.jsp" /> -->
 
-	</definition>
+<!-- 	</definition> -->
 	
 				<definition name="salao" extends="defaultTemplate">
 		<put-attribute name="conteudo"
@@ -544,7 +544,33 @@
 			value="/WEB-INF/views/informacoes/informacoesestoque.jsp" />
 
 	</definition>
+	
+	
+<!-- 	CAIXA -->
 
+		<definition name="abrircaixa" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/caixa/abrircaixa.jsp" />
+
+	</definition>
+	
+	
+	
+	
+	
+			<definition name="produzirprodutocomposto" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/rapido/produzirprodutocomposto.jsp" />
+
+	</definition>
+	
+				<definition name="findmotoqueiro" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/findmotoqueiro.jsp" />
+
+	</definition>
+	
+	
 
 </tiles-definitions>
 

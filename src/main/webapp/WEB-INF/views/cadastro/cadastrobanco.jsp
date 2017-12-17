@@ -27,7 +27,8 @@
   
     
     </br>
-    <h2>Cadastro de Banco</h2>
+     </br>
+<!--     <h2>Cadastro de Banco</h2> -->
 
     
   </div>

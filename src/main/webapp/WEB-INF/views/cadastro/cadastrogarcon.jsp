@@ -7,7 +7,8 @@
 <div id="content">
   <div id="content-header">
 </br>
-    <h3>Cadastro de Garcon</h3>
+ </br>
+<!--     <h3>Cadastro de Garcon</h3> -->
   </div>
   <div class="container-fluid"><hr>
     <c:if test="${erros != null }">

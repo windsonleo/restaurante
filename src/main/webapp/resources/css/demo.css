@@ -19,10 +19,17 @@
 
 #map {
     position: relative;
-    width: 100%;
-    height: calc(100% - 60px);
-    margin-top: 70px;
+    width: 95%;
+    height: 25em;
+    margin:1em;
 }
+
+/* .map { */
+/*     position: inherit; */
+/*     width: 100%; */
+/*     height: calc(100% - 60px); */
+/*     margin-top:; */
+/* } */
 
 .places-buttons .btn {
     margin-bottom: 30px

@@ -81,19 +81,32 @@
 
       <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
        ></script> 
-       
-
+<!--        																		maps			AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8 -->
+<!-- 																				matrix distance	AIzaSyDmetyiOpMKNnJtkmWEMVYduRKj5DSBXmY -->
         
         <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script> 
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8"></script>
+       
+       
+       
         <script type="text/javascript">
         
         /*<![CDATA[*/
 
             $(document).ready(function () {
+            	
+            	  if ($('.main-panel > .content').length == 0) {
+                      $('.main-panel').css('height', '100%');
+                  }
+
+
+                  // Javascript method's body can be found in assets/js/demos.js
+                
 
                 // Javascript method's body can be found in assets/js/demos.js
                 demo.initDashboardPageCharts();
+                  
+                demo.initGoogleMaps();
 
             });
         

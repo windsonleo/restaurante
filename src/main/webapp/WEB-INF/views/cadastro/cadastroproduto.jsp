@@ -10,7 +10,8 @@
 <div id="content-header">
 
 </br>
-	<h2>Cadastro de Produto</h2>
+ </br>
+<!-- 	<h2>Cadastro de Produto</h2> -->
 
 
 <!-- 			<div class="control-group"> -->

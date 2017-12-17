@@ -451,14 +451,30 @@
 															                 <span class="user-info"> ${pedidocompra.id} </span></br>
 															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
 															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
-															                  <a href="#"></a> Itens : ${pedidocompra.items} </span></p>
-<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
-															                  
-															                </div>
-															                
-														                </td>
-														                
-														 <td class="td-actions text-right">
+															                  <a href="#"></a> Total Pedido Compra :  ${pedidocompra.total}</span></p>
+															                    <c:forEach var="item" items="${pedidocompra.items}">
+															                  <tr>
+																	                  <td>
+																	                  ${item.key }
+																	                  </td>
+																	                  
+																	                  	<td>																                 <td >
+																	                 <label class=""> ${item.key.precoUnitario }</label> 
+																	                  </td>
+																	                  
+																	                 <td>
+																	                  ${item.value }
+																	                  </td>
+																	                  
+																	                  																	                  	<td>																                 <td >
+																	                 <label class=""> ${item.key.totalItem }</label> 
+																	                  </td>
+																	                  
+																	                 <td >
+																	                 <label class="badge label-warning"> ${item.key.situacao }</label> 
+																	                  </td> 
+																	                  
+																	                  														 <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
@@ -467,6 +483,17 @@
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
+															                  
+															                  </tr>
+															                  
+															                  </c:forEach>
+															                  
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
 																
 																    </c:when>    
 																    

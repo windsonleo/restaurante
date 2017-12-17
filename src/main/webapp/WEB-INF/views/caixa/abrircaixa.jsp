@@ -6,7 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Caixa</a> <a href="#">Movimenta��o Caixa </a><a href="#" class="current">Fechar Caixa</a> </div>
+    <h1>Abrir de Caixa </h1>
   </div>
   <div class="container-fluid"><hr>
     <div class="row-fluid">
@@ -16,7 +17,7 @@
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Fechar Caixa</h4>
+                                    <h4 class="title">Abrir Caixa</h4>
                                     <p class="category">Todos</p>
 
                                 </div>
@@ -33,14 +34,14 @@
                 <div class="controls">
 							<input id="dataini" name="dataini" class="form-control"
 							type="text" value=" <fmt:formatDate pattern="dd/MM/yyyy"
-                                             value="${pedidovenda.data}"/>"
+                                             value=""/>"
 							placeholder="Digite a Data" />
 							
 				
 							
 				 </div>
 				 
-				 	<button type="submit"class="btn btn-sm btn-success">Fechar Caixa</button>
+				 	<button type="submit"class="btn btn-sm btn-success" onClick="window.location='fechamentocaixa'">Fechar Caixa</button>
 					<button type="button"class="btn btn-sm btn-success">Imprimir Caixa</button>
               </div>
 						
@@ -124,10 +125,10 @@
 				 	  
 			  <ul>
 			 
-			   <c:forEach var="formapagamento" items="${formapagamentoList}" varStatus="id">
+			   <c:forEach var="formapagamento" items="" varStatus="id">
 			     
 			     
-	<li class="content"> <span>${formapagamento.nome} ${formapagamento.pagamentos}</span>
+	<li class="content"> <span></span>
       <div class="progress progress-mini progress-primary active progress-striped">
         <div style="width: 77%;" class="bar"></div>
       </div>
@@ -149,9 +150,9 @@
           </div>
 				
 		 <ul>
-			   <c:forEach var="despesa" items="${despesaList}" varStatus="id">
+			   <c:forEach var="despesa" items="" varStatus="id">
 			     
-	<li class="content"> <span>${despesa.nome} </span>
+	<li class="content"> <span></span>
       <div class="progress progress-mini progress-primary active progress-striped">
         <div style="width: 77%;" class="bar"></div>
       </div>
@@ -171,10 +172,10 @@
           </div>
 
 			 <ul>
-			   <c:forEach var="formapagamento" items="${formapagamentoList}" varStatus="id">
+			   <c:forEach var="formapagamento" items="" varStatus="id">
 			     
 			     
-	<li class="content"> <span>${formapagamento.nome} </span>
+	<li class="content"> <span></span>
       <div class="progress progress-mini progress-primary active progress-striped">
         <div style="width: 77%;" class="bar"></div>
       </div>
@@ -197,9 +198,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
 
+</div>
+</div>
 
 
 

@@ -7,7 +7,8 @@
  
   <div id="content-header">
   </br>
-    <h2> Delivery</h2>
+   </br>
+<!--     <h2> Delivery</h2> -->
   </div>
 
             <div class="container-fluid">
@@ -36,7 +37,7 @@
 					
 					
 					<li class="active">
-						<a href="#" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/delivery/findmotoqueiro" role="ta" data-toggle="ta">
 							<i class="material-icons">place</i>
 							Find Moto
 						</a>
@@ -155,16 +156,16 @@
                             
               
                <div class="control-group">
-                <label class="control-label">Situacao Pedido</label>
-                <div class="controls">
-         <select id="situacao"name="situacao"  class="form-control" >
-	                                  <optgroup label="Situaï¿½ï¿½o do Pedido">
+<!--                 <label class="control-label">Situacao Pedido</label> -->
+<!--                 <div class="controls"> -->
+<!--          <select id="situacao"name="situacao"  class="form-control" > -->
+<!-- 	                                  <optgroup label="Situaï¿½ï¿½o do Pedido"> -->
 		           							           			
-		           				<option value="${pedidovenda.situacao}">${pedidovenda.situacao}</option>
+<%-- 		           				<option value="${pedidovenda.situacao}">${pedidovenda.situacao}</option> --%>
 		           				      				
 		           						       				
-		                </optgroup>
-	                    </select>
+<!-- 		                </optgroup> -->
+<!-- 	                    </select> -->
 	                    
          <select id="status"name="status"  class="form-control" >
                 <optgroup label="Status do Pedido">
@@ -224,7 +225,7 @@
 </div>
 </div>
 </div>
-</div>
+<!-- </div> -->
 <!-- </div> -->
 
 							<div class="span4">
@@ -303,7 +304,7 @@
 </div>
 </div>
 </div>
-</div>
 
+</div>
 
 

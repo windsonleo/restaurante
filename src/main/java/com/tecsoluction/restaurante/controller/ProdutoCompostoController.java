@@ -234,7 +234,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
-		 item.setSituacao(SituacaoItem.AGUARDANDO_PREPARACAO);
+		 item.setSituacao(SituacaoItem.AGUARDANDO);
 
 //			
 			items = new HashMap<>();
@@ -336,6 +336,29 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
         return detalhesproduto;
     }
+    
+    @RequestMapping(value = "produzirprodutocomposto", method = RequestMethod.GET)
+    public ModelAndView ProduzirProdutoCompsotoForm(HttpServletRequest request) {
+
+
+//        UUID idf = (UUID.fromString(request.getParameter("id")));
+
+        ModelAndView produzirprodutocomposto = new ModelAndView("produzirprodutocomposto");
+
+
+//        ProdutoComposto produto = produtocompostoService.findOne(idf);
+
+//        detalhesproduto.addObject("produto", produto);
+
+//        logger.info(""
+//        		+ "Gerencia  Produto Composto !", produto);
+
+
+        return produzirprodutocomposto;
+    }
+    
+    
+    
 
     @Override
     protected ProdutoCompostoServicoImpl getservice() {

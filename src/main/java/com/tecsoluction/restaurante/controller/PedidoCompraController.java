@@ -229,7 +229,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
 		 item.setDescricao(produto.getDescricao()); 
 		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
-		 item.setSituacao(SituacaoItem.AGUARDANDO_PREPARACAO);
+		 item.setSituacao(SituacaoItem.AGUARDANDO);
 
 		
       

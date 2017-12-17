@@ -111,19 +111,35 @@ public class CaixaController extends AbstractController<Caixa> {
 
     }
 
-    @RequestMapping(value = "/fecharcaixa", method = RequestMethod.GET)
+    @RequestMapping(value = "fecharcaixa", method = RequestMethod.GET)
     public ModelAndView FecharCaixaForm(HttpServletRequest request) {
 
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
-
-        Caixa cx = caixaService.findOne(idf);
+//        UUID idf = UUID.fromString(request.getParameter("id"));
+//
+//        Caixa cx = caixaService.findOne(idf);
 
         ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
 
-        fecharcaixa.addObject("caixa", cx);
+//        fecharcaixa.addObject("caixa", cx);
 
         return fecharcaixa;
+
+    }
+    
+    @RequestMapping(value = "abrircaixa", method = RequestMethod.GET)
+    public ModelAndView AbrirCaixa(HttpServletRequest request) {
+
+
+//        UUID idf = UUID.fromString(request.getParameter("id"));
+//
+//        Caixa cx = caixaService.findOne(idf);
+
+        ModelAndView abrircaixa = new ModelAndView("abrircaixa");
+
+//        fecharcaixa.addObject("caixa", cx);
+
+        return abrircaixa;
 
     }
 
@@ -345,22 +361,23 @@ public class CaixaController extends AbstractController<Caixa> {
     	  
     	  pagamento.setStatus("ABERTO");
     	  pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
+    	  
 //    	  pedvenda.getPagamento().add(pagamento);
+    	  
     	  pedvenda.setStatus(StatusPedido.FECHADO);
     	  
     	  
-    	  
-    	  pagamentoService.save(pagamento);
+//    	  pagamentoService.save(pagamento);
     	  pedidovendaService.edit(pedvenda);
     	  
     	
 
-    	List<PedidoVenda> ls = pedidovendaService.findAll();
+//    	List<PedidoVenda> ls = pedidovendaService.findAll();
     	
     	
         ModelAndView caixarapido = new ModelAndView("caixarapido");
         
-        caixarapido.addObject("ls",ls);
+//        caixarapido.addObject("ls",ls);
 
 
         return caixarapido;

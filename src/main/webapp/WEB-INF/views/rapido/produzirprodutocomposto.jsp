@@ -9,7 +9,7 @@
 	<div id="content-header">
 
 		</br>
-		<h3>Caixa Rapido</h3>
+		<h3>Produzir Produto Composto</h3>
 	</div>
 	
 		<hr>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Dinheiro</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Cartao Credito</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Cartao Debito</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Despesas</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>

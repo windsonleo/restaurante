@@ -10,7 +10,8 @@
 <div id="content-header">
 
 	</br>
-	<h2>Cadastro de Produto Composto</h2>
+	 </br>
+<!-- 	<h2>Cadastro de Produto Composto</h2> -->
 </div>
 
 <div class="container-fluid">

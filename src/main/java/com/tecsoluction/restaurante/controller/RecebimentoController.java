@@ -337,7 +337,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
         it.setQtd(new BigDecimal(qtd));
         it.setTotalItem(prod.getPrecovenda().multiply(new BigDecimal(qtd)));
-		 it.setSituacao(SituacaoItem.EM_PREPARACAO);
+		 it.setSituacao(SituacaoItem.EM_EXECUCAO);
 
         
         recebimento.addItem(it, it.getQtd().toString());

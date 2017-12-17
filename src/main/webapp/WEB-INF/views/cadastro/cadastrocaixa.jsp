@@ -8,7 +8,8 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Cadastro de Caixa</h2>
+	 </br>
+<!--     <h2>Cadastro de Caixa</h2> -->
   </div>
   <div class="container-fluid"><hr>
   

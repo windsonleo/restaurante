@@ -146,6 +146,13 @@ public class DeliveryController {
   	}
     
     
+    @RequestMapping(value = "findmotoqueiro", method = RequestMethod.GET)
+  	public ModelAndView  FindMooqueiroDelivery(HttpServletRequest request){
+    	
+       	ModelAndView findmotoqueiro = new ModelAndView("findmotoqueiro");
+
+  		return findmotoqueiro;
+  	}
     
 
 }

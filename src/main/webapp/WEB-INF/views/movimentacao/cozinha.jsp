@@ -43,7 +43,7 @@
 					
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/produzircomposto" role="tab" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/produtocomposto/produzirprodutocomposto" role="tab" data-toggle="ta">
 							<i class="fa fa-cutlery"></i>
 							Produzir Produto Composto
 						</a>
@@ -238,14 +238,22 @@
 															                 <span class="user-info"> ${pv.id} </span></br>
 															                  <span class="user-info"> Cliente : ${pv.cliente} </span>
 															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pv.data}" /> 
-															                  <a href="#"></a> Itens : ${pv.items} </span></p>
-<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
-															                  
-															                </div>
-															                
-														                </td>
-														                
-														 <td class="td-actions text-right">
+															                  <a href="#"></a> Itens : </span></p>
+															                   <c:forEach var="item" items="${pv.items}">
+															                  <tr>
+																	                  <td>
+																	                  ${item.key }
+																	                  </td>
+																	                  
+																	                 <td>
+																	                  ${item.value }
+																	                  </td>
+																	                  
+																	                 <td >
+																	                 <label class="label label-warning"> ${item.key.situacao }</label> 
+																	                  </td> 
+																	                  
+																	                  														 <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/pronto?id=${pv.id}' ">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
@@ -254,6 +262,21 @@
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
+															                  
+															                  </tr>
+															                  
+															                  </c:forEach>
+															                  
+															                  
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                
+															                
+															                  
+															                </div>
+															                
+														                </td>
+														                
+
 																
 																    </c:when>    
 																    
