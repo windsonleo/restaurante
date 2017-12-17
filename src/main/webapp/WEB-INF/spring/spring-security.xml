@@ -68,7 +68,7 @@
 
         <security:authentication-provider>
 
-            <security:jdbc-user-service data-source-ref="dataSourceLocalDinho"
+            <security:jdbc-user-service data-source-ref="dataSourceHeroku"
 
                                         users-by-username-query="SELECT username, senha ,'true' as enable FROM usuario WHERE username=?"
 

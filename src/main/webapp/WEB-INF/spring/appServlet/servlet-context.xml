@@ -31,7 +31,7 @@
 
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="PU-RESTAURANTE"/>
-        <property name="dataSource" ref="dataSourceLocalDinho"/>
+        <property name="dataSource" ref="dataSourceHeroku"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -48,7 +48,7 @@
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
-                <property name="dataSource" ref="dataSourceLocalDinho"/>
+                <property name="dataSource" ref="dataSourceHeroku"/>
         
     </bean>
 
