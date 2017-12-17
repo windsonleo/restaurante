@@ -6,7 +6,6 @@ import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 import org.apache.commons.collections.map.HashedMap;
@@ -111,7 +110,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
-        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+//        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
         
         pv =new PedidoCompra();
         

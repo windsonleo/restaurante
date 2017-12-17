@@ -2,8 +2,6 @@ package com.tecsoluction.restaurante.dao;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,6 +25,6 @@ public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
 
     List<PedidoVenda> findAllByStatusIsOrderByDataAsc(StatusPedido status);
     
-    @Query("SELECT count(c) FROM PedidoVenda p, Cliente c where p.cliente = c.id order by p.data desc")
-    long findClienteByPedidoVenda();
+//    @Query("SELECT count(c) FROM PedidoVenda p, Cliente c where p.cliente = c.id order by p.data desc")
+//    long findClienteByPedidoVenda();
 }

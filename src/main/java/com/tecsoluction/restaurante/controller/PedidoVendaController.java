@@ -7,7 +7,6 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -106,7 +105,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         // TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
-        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+//        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
         List<Cliente> clienteList = clienteService.findAll();
 
@@ -132,7 +131,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         model.addAttribute("origemPedidoList", origemPedidoList);
         model.addAttribute("garconList", garconList);
         model.addAttribute("mesaList", mesaList);
-        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
+//        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
         model.addAttribute("clienteList", clienteList);
         model.addAttribute("pedidovenda", pv);

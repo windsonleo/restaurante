@@ -3,7 +3,6 @@ package com.tecsoluction.restaurante.service.impl;
 import com.tecsoluction.restaurante.dao.IPedidoVendaDAO;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.util.SituacaoPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -57,10 +56,11 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
         return dao.findAllByStatusIsOrderByDataAsc(statusPedido);
     }
 
-    public long findClienteByPedidoVenda() {
-
-        return dao.findClienteByPedidoVenda();
-    }
+    //TODO ajeitar metodo de buscar cliente por pedidos de venda
+//    public long findClienteByPedidoVenda() {
+//
+//        return dao.findClienteByPedidoVenda();
+//    }
     
     @Override
     protected void validateSave(PedidoVenda post) {
