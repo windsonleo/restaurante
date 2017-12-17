@@ -52,12 +52,27 @@
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
+
                                     
                                 </div>
+                                
                                 <div class="card-footer">
                                     <div class="stats">
-                                        <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
+                                   <i class="material-icons">shopping_basket</i>
+                                    
+                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                    
+                                     <i class="material-icons">supervisor_account</i>
+                                    
+                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                    
+                                    
+                                    <i class="material-icons">list</i>
+                                    
+                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                                                         
+<!--                                         <a href="#pablo">Detalhes..</a> -->
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@
  <div id="content">
  
   <div id="content-header">
+  
   </br>
    </br>
 <!--     <h2> Delivery</h2> -->
@@ -33,7 +34,7 @@
 
 <div class="row-fluid">    
 
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin:2.5em;">
 					
 					
 					<li class="active">
@@ -60,7 +61,7 @@
                                 </div>
                                 
                                 </br>
-          <div class="widget-content">
+          <div class="card-content">
 
 
  <div class="control-group">
@@ -176,7 +177,7 @@
          </select>			
 				
                 </div>
-              </div>             			 
+<!--               </div>             			  -->
 		             
               
                <div class="control-group">
@@ -225,7 +226,7 @@
 </div>
 </div>
 </div>
-<!-- </div> -->
+</div>
 <!-- </div> -->
 
 							<div class="span4">
@@ -237,7 +238,7 @@
                                     
 
                                 </div>
-                        <form action="LocalizarClienteFone" method="GET" class="form-control">
+                        <form action="LocalizarClienteFone" method="GET" class="form-horizontal">
 
 
 						<div class="form-group label-floating">

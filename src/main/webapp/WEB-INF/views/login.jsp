@@ -15,7 +15,7 @@
                     <div class="controls">
                         <div class="main_input_box">
                             <span class="add-on"><i class="icon-user"> </i></span>
-                            <input type="text" id="username" name="username" placeholder="Digite seu Usuario" style="margin-left:-5px;" />
+                            <input type="text" id="username" name="username" placeholder="" style="margin-left:-5px;" />
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <label class="control-label"></label>
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="Digite uma Senha" />
+                            <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="" />
                         </div>
                     </div>
                 </div>

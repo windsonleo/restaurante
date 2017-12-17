@@ -101,6 +101,8 @@ public class DeliveryController {
   	public ModelAndView  AdicionarDeliveryForm(HttpServletRequest request){
     	
        	ModelAndView delivery = new ModelAndView("cadastrodelivery");
+		delivery.addObject("acao","add");
+
     	
   		return delivery;
   	}
@@ -115,6 +117,8 @@ public class DeliveryController {
     		
     		String Erros = "Preencha o Telefone";
     		delivery.addObject("erros",Erros);
+    		delivery.addObject("acao","add");
+
     		
     		return delivery;
     	}
@@ -127,6 +131,8 @@ public class DeliveryController {
     		String mensagem = "Nao Existe esse Cliente,Caddastre-o Agora";
     		delivery.addObject("mensagem",mensagem);
     		delivery.addObject("cliente",cli);
+    		delivery.addObject("acao","add");
+
 
     		return delivery;
     	}
@@ -140,6 +146,8 @@ public class DeliveryController {
 //    	pedido.setSituacao(SituacaoPedido.AGUARDANDO_PREPARACAO);
     	delivery.addObject("cliente", cli);
     	delivery.addObject("pedidovenda", pedido);
+		delivery.addObject("acao","add");
+
 
   		
   		return delivery;
