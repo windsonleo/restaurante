@@ -208,7 +208,7 @@
                                 </div>
 
                                 
-                                <div class="card-content">
+                                <div class="card-content table-responsive">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="profile">
                                             <table class="table">

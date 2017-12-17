@@ -123,10 +123,9 @@
      <div class="widget-content nopadding">               
 <!--        <div class="container-fluid"> -->
      
-<!-- 		 <div class="table-responsive"> -->
-                            <table class="table table-bordered data-table">
-                            
-                                <thead>
+          <div class="card-content table-responsive">
+            <table class="table table-hover table-bordered data-table">
+                                        <thead class="card-header" data-background-color="blue">
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
@@ -228,7 +227,7 @@
                                 </tbody>
                             </table>
                         </div>
-			
+			</div>
 			
 			</div>
           
@@ -255,10 +254,9 @@
      <div class="widget-content nopadding">               
 <!--        <div class="container-fluid"> -->
      
-<!-- 		 <div class="table-responsive"> -->
-                            <table class="table table-bordered data-table">
-                            
-                                <thead>
+          <div class="card-content table-responsive">
+            <table class="table table-hover table-bordered data-table">
+                                        <thead class="card-header" data-background-color="blue">
                                     <tr>
                                        <th>Descricao</th>
 									    <th>Qtd</th>
@@ -358,6 +356,7 @@
                            
                                 </tbody>
                             </table>
+                        </div>
                         </div>
 			
 			               <div class="controls">

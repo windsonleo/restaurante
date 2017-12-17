@@ -46,21 +46,21 @@
 					
 					
 					<li class="active">
-						<a href="${pageContext.request.contextPath}/produzircomposto" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/pagamento/desconto" role="ta" data-toggle="ta">
 							<i class="fa fa-money"></i>
 							Desconto
 						</a>
 					</li>
 					
 					<li >
-						<a href="#" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/pagamento/acrescimo" role="tab" data-toggle="tab">
 							<i class="fa fa-money"> </i>
 							Acrescimo
 						</a>
 					</li>
 					
 					<li  >
-						<a href="#" role="tab" data-toggle="tab" >
+						<a href="${pageContext.request.contextPath}/pagamento/cupom" role="tab" data-toggle="tab" >
 							<i class="material-icons"> money</i>
 							Cupom
 						</a>
@@ -85,7 +85,7 @@
           <div class="widget-content">
           
           
-                   <form action="${pageContext.request.contextPath}/pagamento/localizarpedido?id=${pedidovenda.id}" method="get" class="form-horizontal">
+                   <form action="${pageContext.request.contextPath}/pagamento/localizarpedido" method="post" class="form-horizontal">
               
                <div class="control-group">
                 <label class="control-label">Numero do Pedido</label>
@@ -94,7 +94,7 @@
 							type="text" value="${pedidovenda.id }"
 							placeholder="Digite o Numero do Pedido de Venda" />                
               
-               	            <button type="submit" class="btn btn-sm btn-success" onClick="window.location='localizarpedido'">Loc Pedido</button>
+               	            <button type="submit" class="btn btn-sm btn-success">Loc Pedido</button>
               
               </div>
               
@@ -172,9 +172,9 @@
                                 </div>
                                 
                                 </br>
-          <div class="widget-content">
+<!--           <div class="widget-content"> -->
 			
-			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="get" class="form-horizontal">
+			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizontal">
 			 		    
           <div class="control-group">
                 <label class="control-label"></label>
@@ -182,7 +182,7 @@
      				<select id="formaPagamentos"name="formaPagamentos" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Formas de Pagamento">
 		           				
-<%-- 		           					<option value="${pagamento.formaPagamentos}">${pagamento.formaPagamentos}</option> --%>
+		           					<option value="${pagamento.formaPagamentos}" selected="selected">${pagamento.formaPagamentos}</option>
 		           				
 		           				
 		           					<c:forEach var="formapagamento" items="${formapagamentoList}">
@@ -193,7 +193,7 @@
 		       				</c:forEach>
 		                </optgroup>
 	                    </select>	
-	                <button type="submit" class="btn  btn-success" onClick="window.location='adicionarformapagamentopagamento'">Add</button>
+	                <button type="submit" class="btn  btn-success">Add</button>
 	                    
 	         		
 				
@@ -205,19 +205,18 @@
 							
 									
 			
-					<div class="table-responsive">
-                            <table class="table table-bordered data-table">
-                            
-                                <thead>
+          <div class="card-content table-responsive">
+            <table class="table table-hover table-bordered data-table">
+                                        <thead class="card-header" data-background-color="blue">
                                     <tr>
                                         <th>Id</th>
 									    <th>Nome</th>
 									    <th>Tipo</th>
-									    <th>Parcela</th>
-									    <th>% Desconto</th>
+<!-- 									    <th>Parcela</th> -->
+<!-- 									    <th>% Desconto</th> -->
 									    <th>Valor</th>
 									    
-									     <th>Ativo?</th>
+<!-- 									     <th>Ativo?</th> -->
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
@@ -238,10 +237,10 @@
 			      <td>${formapagamento.id}</td>
                   <td>${formapagamento.nome}</td>
                   <td ><input type="text" value="${formapagamento.tipo}"></td>
-                  <td><input type="text" value="${formapagamento.parcelas}"></td>
-                   <td>${formapagamento.percdesconto}</td>
+<%--                   <td><input type="text" value="${formapagamento.parcelas}"></td> --%>
+<%--                    <td>${formapagamento.percdesconto}</td> --%>
                     <td><input name="valorpagoform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculapagamento();"/></td>
-                   <td>${formapagamento.ativo}</td>
+<%--                    <td>${formapagamento.ativo}</td> --%>
 
 
 
@@ -252,18 +251,18 @@
 							 
 							
       								
-      								<a
-									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}"
-									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a>
+<!--       								<a -->
+<%-- 									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}" --%>
+<!-- 									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a> -->
 									
-										<a
-									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}"
-									title="editar" class="fa fa-pencil fa-2x"></a>
+<!-- 										<a -->
+<%-- 									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}" --%>
+<!-- 									title="editar" class="fa fa-pencil fa-2x"></a> -->
 									
 									
 									 <a
 									href="${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}"
-									title="deletar" class="fa fa-remove fa-2x"></a>
+									title="deletar" class="icon icon-remove"></a>
 										
 								</td>
 								
@@ -307,12 +306,13 @@
                 <label class="control-label">Id do Pedido</label>
                 <div class="controls">
 				
-				<input id="pedidos" class="span2" name="pedidos" type="text" value="${pedidovenda}" placeholder="Digite o Pedido de Venda"/>
-				<input id="id" class="span2" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
+				<input id="pedidos" class="form-control" name="pedidos" type="text" value="${pedidovenda.id}" placeholder="Digite o Pedido de Venda"/>
+				<input id="id" class="form-control" name="id" type="text" value="${pagamento.id}" placeholder="Digite o Id"/>
 				
-				<input id="datapagamento" class="span4" name="datapagamento" type="datetime" value="${pagamento.datapagamento}" placeholder="Digite o Data"/>
+				<input id="datapagamento" class="form-control" name="datapagamento" type="datetime" value="<fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${pagamento.datapagamento}"/>" placeholder="Digite o Data"/>
 				
-				<input id="status" class="span4" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
+				<input id="status" class="form-control" name="status" type="text" value="${pagamento.status}" placeholder="Digite Status"/>
 				
 				
                 </div>
@@ -328,7 +328,7 @@
 					multiple="multiple" class="form-control">
 						<optgroup label="Selecione o Caixa">
 
-							<option value="${pagamento.caixa}">${pagamento.caixa}</option>
+							<option value="${pagamento.caixa}" selected="selected">${pagamento.caixa}</option>
 
 
 							<c:forEach var="caixa" items="${caixaList}">
@@ -344,7 +344,7 @@
 					multiple="multiple" class="form-control">
 						<optgroup label="Confira as Formas de Pagamento">
 
-							<c:forEach var="f" items="${formas}">
+							<c:forEach var="f" items="${pagamento.formaPagamentos}">
 
 								<option value="${f.id}" selected="selected">${f.nome}</option>
 
@@ -391,10 +391,10 @@
 </div>
 </div>
 </div>
-</div>
+<!-- </div> -->
 
 
-<div class="span4">
+					<div class="span4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
@@ -403,7 +403,7 @@
                                     
 
                                 </div>
-          <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizonta">       
+          <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizontal">       
 
 
 <!-- 						<div class="form-group label-floating"> -->
@@ -428,7 +428,7 @@
                 <label class="control-label">Pedido</label>
                 <div class="controls">
                 
-                <input type="text" value="" class="form-control">
+                <input type="text" value="${pedidovenda.id}" class="form-control">
 				
 				
                 </div>
@@ -448,12 +448,12 @@
 							<optgroup label="Formas de PAgamento">
 
 
-								<option value="${produto.fornecedor.id}"  selected="selected">${produto.fornecedor.nomefantasia}</option>
+								<option value="${pagamento.formaPagamentos}"  selected="selected">${pagamento.formaPagamentos}</option>
 
 
-								<c:forEach var="fornecedor" items="${fornecedorList}">
-									<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option>
-								</c:forEach>
+<%-- 								<c:forEach var="fornecedor" items="${fornecedorList}"> --%>
+<%-- 									<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option> --%>
+<%-- 								</c:forEach> --%>
 
 
 							</optgroup>
@@ -469,7 +469,8 @@
                 <label class="control-label">Total</label>
                 <div class="controls">
                 
-                <input type="text" value="" class="form-control">
+                <input type="text" value=" <fmt:formatNumber type="currency"
+                 value="${pedidovenda.total}"/>" class="form-control">
 				
 				
                 </div>
@@ -483,7 +484,7 @@
                 <label class="control-label">Caixa</label>
                 <div class="controls">
                 
-                <input type="text" value="" class="form-control">
+                <input type="text" value="${pagamento.caixa}" class="form-control">
 				
 				
                 </div>
@@ -503,8 +504,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.categoria}
-                                     <p class="card-content pull-left">${produto.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${pagamento.pedidovenda}
+                                     <p class="card-content pull-left">${pagamento.id} </p> </h4> </p>
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

@@ -254,11 +254,11 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs">
+                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
-                                                            <button type="button" rel="tooltip" title="Cancelar" class="btn btn-danger btn-simple btn-xs">
+                                                            <button type="button" rel="tooltip" title="Cancelar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/recusarpagamento?id=${pv.id}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>

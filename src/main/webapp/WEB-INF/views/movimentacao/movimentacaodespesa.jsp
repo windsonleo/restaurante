@@ -29,10 +29,9 @@
                                 </br>
           
           
-          <div class="">
+          <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-
-              <thead>
+                                        <thead class="card-header" data-background-color="blue">
                  <tr>
                                         <th>Id</th>
 									    <th>Nome</th>

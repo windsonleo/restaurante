@@ -188,10 +188,9 @@
      <div class="widget-content nopadding">               
        <div class="container-fluid">
      
-		 <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                            
-                                <thead>
+          <div class="card-content table-responsive">
+            <table class="table table-hover table-bordered data-table">
+                                        <thead class="card-header" data-background-color="blue">
                                     <tr>
                                         <th>Descrição</th>
 <!-- 									    <th>Código</th> -->

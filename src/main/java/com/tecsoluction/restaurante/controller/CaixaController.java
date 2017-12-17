@@ -49,6 +49,8 @@ public class CaixaController extends AbstractController<Caixa> {
     List<PedidoVenda> pedidoVendaLista = new ArrayList<PedidoVenda>();
 
     List<FormaPagamento> formapagamentoLista = new ArrayList<FormaPagamento>();
+    
+    private Pagamento pagamento;
 
 
     @Autowired
@@ -328,6 +330,60 @@ public class CaixaController extends AbstractController<Caixa> {
         return caixarapido;
     }
     
+    
+ 
+    
+    @RequestMapping(value = "receberpagamento", method = RequestMethod.GET)
+    public ModelAndView CaixaRapidoRceberPagamento(HttpServletRequest request) {
+
+    	
+    	  UUID idf = UUID.fromString(request.getParameter("id"));
+    	  
+    	  PedidoVenda pedvenda = pedidovendaService.findOne(idf);
+    	  
+    	  pagamento = new Pagamento();
+    	  
+    	  pagamento.setStatus("ABERTO");
+    	  pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
+//    	  pedvenda.getPagamento().add(pagamento);
+    	  pedvenda.setStatus(StatusPedido.FECHADO);
+    	  
+    	  
+    	  
+    	  pagamentoService.save(pagamento);
+    	  pedidovendaService.edit(pedvenda);
+    	  
+    	
+
+    	List<PedidoVenda> ls = pedidovendaService.findAll();
+    	
+    	
+        ModelAndView caixarapido = new ModelAndView("caixarapido");
+        
+        caixarapido.addObject("ls",ls);
+
+
+        return caixarapido;
+        
+        
+    }
+    
+    @RequestMapping(value = "recusarpagamento", method = RequestMethod.GET)
+    public ModelAndView CaixaRapidoRecusarPagamento(HttpServletRequest request) {
+
+
+    	List<PedidoVenda> ls = pedidovendaService.findAll();
+    	
+    	
+        ModelAndView caixarapido = new ModelAndView("caixarapido");
+        
+        caixarapido.addObject("ls",ls);
+
+
+        return caixarapido;
+        
+        
+    }
     
 
     @Override

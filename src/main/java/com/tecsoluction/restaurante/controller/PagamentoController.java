@@ -92,10 +92,12 @@ public class PagamentoController extends AbstractController<Pagamento> {
         model.addAttribute("pedidoList", pedidoList);
         model.addAttribute("formapagamentoList", formapagamentoList);
         model.addAttribute("usuarioAtt", usuario);
+        model.addAttribute("acao", "add");
+
 
     }
 
-    @RequestMapping(value = "localizarpedido", method = RequestMethod.GET)
+    @RequestMapping(value = "localizarpedido", method = RequestMethod.POST)
     public ModelAndView LocalizarPedido(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
@@ -105,6 +107,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         if (pagamento == null) {
             this.pagamento = new Pagamento();
+            
 //            pagamento.setFormaPagamentos(formaPagamentos);
 
         }
@@ -112,6 +115,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         // LocalDate dataDeInscricao = LocalDate.now();
 
         this.pagamento.setDatapagamento(new Date());
+        this.pagamento.setStatus("ABERTO");
 
 //		totalpedido = Money.of(usd, 0.00);
 
@@ -130,6 +134,8 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         cadastropagamento.addObject("pedidovenda", pv);
         cadastropagamento.addObject("pagamento", pagamento);
+        cadastropagamento.addObject("acao", "add");
+
 
         System.out.println("pedidovenda:" + pv.toString());
         System.out.println("pagamento:" + pagamento.toString());
@@ -141,7 +147,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
     
     
 
-    @RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.GET)
+    @RequestMapping(value = "adicionarformapagamentopagamento", method = RequestMethod.POST)
     public ModelAndView AdicionarFormaPagamentoPagamento(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("formaPagamentos"));
@@ -157,6 +163,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         	this.formas.add(formapag);
         	
         	this.pagamento.setFormaPagamentos(formas);
+        	this.pagamento.setStatus("ABERTO");
         
 //        getservice().save(pagamento);
 
@@ -165,7 +172,9 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
         cadastropagamento.addObject("pedidovenda", pv);
         cadastropagamento.addObject("pagamento", pagamento);
-        cadastropagamento.addObject("formas", formas);
+//        cadastropagamento.addObject("formas", formas);
+        cadastropagamento.addObject("acao", "add");
+
 
         System.out.println("pedidovenda methodo add:" + pv.toString());
         System.out.println("pagamento method add:" + pagamento.toString());
@@ -174,9 +183,9 @@ public class PagamentoController extends AbstractController<Pagamento> {
     }
 
     @Override
-    protected AbstractEntityService<Pagamento> getservice() {
-        // TODO Auto-generated method stub
-        return pagamentoService;
+    protected PagamentoServicoImpl getservice() {
+
+    	return pagamentoService;
     }
 
 }
