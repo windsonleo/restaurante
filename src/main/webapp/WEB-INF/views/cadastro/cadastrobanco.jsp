@@ -34,23 +34,47 @@
   </div>
   <div class="container-fluid"><hr>
   
-  <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
-              <h4 class="alert-heading">Erros!</h4>
-              
-              ${erros}
-            </div>
-            
-    </c:if>
+           <c:if test="${erros != null }">
+</br>
+			<div class="alert alert-danger">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">error_outline</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Error:</b> ${erros}
+				</div>
+			</div>
+
+
+		</c:if>
+    
+    
+    
+    
+
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
-              <h4 class="alert-heading">Sucesso!</h4>
-              
-              ${mensagem}
-            </div>
-            
-    </c:if>
+      </br>
+			<div class="alert alert-success">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">check</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Sucesso:</b> ${mensagem}
+				</div>
+			</div>
+
+		</c:if>
+		
+        <hr>
                
                
     <div class="row-fluid">
@@ -73,7 +97,7 @@
           <div class="">
            
            
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/banco/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/banco/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
 
 						
 <!-- 				<div class="row-fluid"> -->
@@ -89,32 +113,31 @@
     
 
 
-							<div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-				<input id="ativo" name="ativo"  type="checkbox" checked="${banco.ativo}" class="checkbox"/>
-                </div>
+			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${banco.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
               
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control"  name="id" type="text" value="${banco.id}" placeholder="Digite o Id"/>
+						<input id="id" class="form-control"  name="id" type="text" value="${banco.id}" placeholder=""/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
                 <form:errors path="banco.nome" cssStyle="color:red"/>
-                  <input type="text" name="nome" id="nome" placeholder="Digite o Nome do Banco" class="form-control">
+                  <input type="text" name="nome" id="nome" placeholder="" class="form-control">
                 </div>
               </div>
 
               <div class="control-group">
                 <label class="control-label">Numero</label>
                 <div class="controls">
-						<input id="numero" class="form-control" name="numero" type="text" value="${banco.numero}" placeholder="Digite o Numero do Banco"/>					
+						<input id="numero" class="form-control" name="numero" type="text" value="${banco.numero}" placeholder=""/>					
                 </div>
               </div>
               <div class="form-actions">

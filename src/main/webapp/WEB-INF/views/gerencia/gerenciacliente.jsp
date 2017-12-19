@@ -201,7 +201,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">Localizar</button>
+                                   <button type="submit"  class="btn btn-danger btn-round btn-md">Localizar</button>
 
                                        
                                  <span class="material-input"></span>

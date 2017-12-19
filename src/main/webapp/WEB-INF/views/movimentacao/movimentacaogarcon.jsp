@@ -42,7 +42,7 @@
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +60,8 @@
                   <td>${garcon.nome}</td>
                   <td >${garcon.foto}</td>
                   <td><span class="label label-success">${garcon.ativo}</span></td>
+                
+                
                  <td class="options-widt">
 								
 								
@@ -69,23 +71,26 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/garcon/informacoes?id=${garcon.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 
-	<a href="#myAlert${garcon.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
-									
-			<div id="myAlert${garcon.id}" class="modal hide">
+	<a href="#myAlert${garcon.id}" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${garcon.id}"></a>
+
+          <div id="myAlert${garcon.id}" class="modal fade" role="dialog" tabindex="-1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">x</button>
+                <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/garcon/delete?id=${garcon.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn-sm btn-danger" href="${pageContext.request.contextPath}/garcon/delete?id=${garcon.id}">Confirma</a> <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a> </div>
            
             </div>
-
+</div>
+</div>
 
 
 

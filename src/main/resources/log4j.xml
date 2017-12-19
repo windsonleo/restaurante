@@ -12,7 +12,7 @@
 
 
     <!-- Application Loggers -->
-    <logger name="br.com.tecsoluction">
+    <logger name="br.com.tecsoluction.restaurante">
         <level value="trace"/>
     </logger>
 

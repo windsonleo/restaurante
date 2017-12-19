@@ -2,6 +2,8 @@ package com.tecsoluction.restaurante.entidade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.StatusMesa;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,16 +30,21 @@ public class Mesa extends BaseEntity implements Serializable {
     private String numero;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusMesa status;
 
     @JsonIgnore
     @OneToMany(mappedBy = "mesa", fetch = FetchType.EAGER)
     private List<PedidoVenda> pedidos;
 
+    
+    
 
     public Mesa() {
         // TODO Auto-generated constructor stub
     }
+    
+    
 
     @Override
     public String toString() {

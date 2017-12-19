@@ -81,26 +81,32 @@
                                                             title="Informacoes"><i class="icon-info-sign"></i></a>
 
 
-                                                    <a href="#myAlert${usuario.id}" data-toggle="modal"
-                                                       class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+                                                    <a href="#" data-toggle="modal" data-target="#myAlert${usuario.id}"
+                                                       class="fa fa-remove"></a>
 
-                                                    <div id="myAlert${usuario.id}" class="modal hide">
+                                                   
+                                                   
+                                                   
+                                                    <div id="myAlert${usuario.id}" class="modal fade" role="dialog" tabindex="-1">
+										               <div class="modal-dialog" role="document">
+										                 <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button data-dismiss="modal" class="close" type="button">�
+                                                            <button data-dismiss="modal" class="close" type="button">x
                                                             </button>
-                                                            <h3>Alerta de Exclus�o</h3>
+                                                            <h3>Alerta de Exclusao</h3>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Deseja Realmente Excluir esse Registro?</p>
                                                         </div>
                                                         <div class="modal-footer"><a data-dismiss=""
-                                                                                     class="btn btn-danger"
+                                                                                     class="btn-sm btn-danger"
                                                                                      href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}">Confirma</a>
-                                                            <a data-dismiss="modal" class="btn" href="#">Cancela</a>
+                                                            <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a>
                                                         </div>
 
                                                     </div>
-
+													</div>
+													</div>
 
                                                     <!-- 														 <a -->
                                                         <%-- 														href="${pageContext.request.contextPath}/usuario/delete?id=${usuario.id}" --%>

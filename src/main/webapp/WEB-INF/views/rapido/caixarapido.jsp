@@ -9,30 +9,52 @@
 	<div id="content-header">
 
 		</br>
-		<h3>Caixa Rapido</h3>
+<!-- 		<h3>Caixa Rapido</h3> -->
 	</div>
 	
 		<hr>
 
-		<c:if test="${erros != null }">
-			<div class="alert alert-error alert-block">
-				<a class="close" data-dismiss="alert" href="#">x</a>
-				<h4 class="alert-heading">Erros!</h4>
+		         <c:if test="${erros != null }">
+</br>
+			<div class="alert alert-danger">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">error_outline</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Error:</b> ${erros}
+				</div>
+			</div>
 
-				${erros}
+
+		</c:if>
+    
+    
+    
+    
+
+    
+      <c:if test="${mensagem != null }">
+      </br>
+			<div class="alert alert-success">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">check</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Sucesso:</b> ${mensagem}
+				</div>
 			</div>
 
 		</c:if>
-
-		<c:if test="${mensagem != null }">
-			<div class="alert alert-success alert-block">
-				<a class="close" data-dismiss="alert" href="#">x</a>
-				<h4 class="alert-heading">Sucesso!</h4>
-
-				${mensagem}
-			</div>
-
-		</c:if>
+		
+        <hr>
 		
 		
 		
@@ -45,14 +67,18 @@
 					
 					
 					<li class="active" >
-						<a href="${pageContext.request.contextPath}/caixa/abrircaixa" role="ta" data-toggle="ta">
+<%-- 						<a href="${pageContext.request.contextPath}/caixa/abrircaixa" role="ta" data-toggle="ta"> --%>
+							<a href="#" role="ta" data-toggle="modal" data-target="#ModalAbrirCaixa">
+							
 							<i class="fa fa-cutlery"></i>
 							Abrir Caixa
 						</a>
 					</li>
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/caixa/fecharcaixa" role="ta" data-toggle="ta">
+<%-- 						<a href="${pageContext.request.contextPath}/caixa/fecharcaixa" role="ta" data-toggle="ta"> --%>
+							<a href="#" role="ta" data-toggle="modal" data-target="#ModalFecharCaixa">
+							
 							<i class="fa fa-cutlery"></i>
 							Fechar Caixa
 						</a>
@@ -407,6 +433,115 @@
 					
           </div>
           </div>
+          
+          
+          <!--                         modal da abertura e fechamento de mesa -->
+
+<div class="modal fade" id="ModalAbrirCaixa" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Selecione o Caixa</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+            		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Caixa</label>
+									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+
+         
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" >Abrir Caixa</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="ModalFecharCaixa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Selecione o Caixa</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="fecharcaixa" method="get">
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Caixa</label>
+									<input id="id" name="id" list="${caixaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+
+        <button type="submit" class="btn btn-info">Fechar Caixa</button>
+
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+          
+          
           </div>
           </div>
           

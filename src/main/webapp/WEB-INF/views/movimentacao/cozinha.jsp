@@ -14,25 +14,48 @@
       
   
   
-  <c:if test="${erros != null }">
-            <div class="alert alert-error alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
-              <h4 class="alert-heading">Erros!</h4>
-              
-              ${erros}
-            </div>
-            
-    </c:if>
+           <c:if test="${erros != null }">
+</br>
+			<div class="alert alert-danger">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">error_outline</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Error:</b> ${erros}
+				</div>
+			</div>
+
+
+		</c:if>
+    
+    
+    
+    
+
     
       <c:if test="${mensagem != null }">
-            <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">x</a>
-              <h4 class="alert-heading">Sucesso!</h4>
-              
-              ${mensagem}
-            </div>
-            
-    </c:if>
-    
-    <hr>
+      </br>
+			<div class="alert alert-success">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">check</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Sucesso:</b> ${mensagem}
+				</div>
+			</div>
+
+		</c:if>
+		
+        <hr>
+
     
       <div class="container-fluid">
     
@@ -42,21 +65,26 @@
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
 					
 					
-					<li >
-						<a href="${pageContext.request.contextPath}/produtocomposto/produzirprodutocomposto" role="tab" data-toggle="ta">
+					<li class="active" >
+					
+<%-- 						<a href="${pageContext.request.contextPath}/produtocomposto/produzirprodutocomposto" role="tab" data-toggle="ta"> --%>
+						<a href="#" role="ta" data-toggle="modal" data-target="#ModalProduzirComposto">
+							
 							<i class="fa fa-cutlery"></i>
 							Produzir Produto Composto
 						</a>
 					</li>
 					
 					<li >
-						<a href="#" role="tab" data-toggle="tab">
+					
+					
+						<a href="#" role="ta" data-toggle="modal" data-target="#ModalRetirarInsumo">
 							<i class="fa fa-cutlery"></i>
 							Retirar Insumo
 						</a>
 					</li>
 					
-					<li class="active" >
+					<li >
 						<a href="#" role="tab" data-toggle="tab" >
 							<i class="material-icons"> timer</i>
 							Tempo Médio Preparo
@@ -421,17 +449,120 @@
                         </div>
           
           
-          <div class="">            
-          
-			   <div class="container-fluid">
+
+
+
 
         </div>
-<!--         </div> -->
+        </div>
+        </div>
+        
+           <!--                         modal da abertura e fechamento de mesa -->
+
+<div class="modal fade" id="ModalRetirarInsumo" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Selecione o Produto</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+            		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Produto</label>
+									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+
+                 <button type="button" class="btn btn-info" >Retirar Insumo</button>
+         
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
       
-        </div>
-        </div>
-        </div>
-        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="ModalProduzirComposto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Selecione o Produto Composto</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form>
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Caixa</label>
+									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+                  <button type="button" class="btn btn-info">Produzir Produto Composto</button>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+        
+        
         </div>
         
         </div>

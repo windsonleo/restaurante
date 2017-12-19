@@ -16,6 +16,48 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
+      
+               <c:if test="${erros != null }">
+</br>
+			<div class="alert alert-danger">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">error_outline</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Error:</b> ${erros}
+				</div>
+			</div>
+
+
+		</c:if>
+    
+    
+    
+    
+
+    
+      <c:if test="${mensagem != null }">
+      </br>
+			<div class="alert alert-success">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">check</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Sucesso:</b> ${mensagem}
+				</div>
+			</div>
+
+		</c:if>
+		
+        <hr>
  			<div class="card">
                     <div class="card-content">
                        
@@ -45,7 +87,7 @@
 <!-- 									     <th>Preferencia</th> -->
 									     <th>Ativo</th>
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
               <tbody>
@@ -71,26 +113,30 @@
 									
 																	<a
 									href="${pageContext.request.contextPath}/caixa/fecharcaixa?id=${caixa.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+									title="FecharCaixa"><i class="icon-edit"></i> </a>
 									
 										<a
 									href="${pageContext.request.contextPath}/caixa/informacoes?id=${caixa.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 									
-	<a href="#myAlert${caixa.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+	<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${caixa.id}"></a>
 									
-			<div id="myAlert${caixa.id}" class="modal hide">
+			<div id="myAlert${caixa.id}" class="modal fade" role="dialog" tabindex="-1">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">x�</button>
+                <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn-sm btn-danger" href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}">Confirma</a> <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a> </div>
            
             </div>									
+					</div>
+					</div>
 									
 <!-- 									 <a -->
 <%-- 									href="${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}" --%>

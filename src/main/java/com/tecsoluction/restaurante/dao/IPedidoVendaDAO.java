@@ -13,7 +13,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
 
 
-    @Query("SELECT p FROM PedidoVenda p where p.mesa=:mesa")
+    @Query("SELECT p FROM PedidoVenda p where p.mesa=:mesa AND p.status='ABERTO' OR p.status='PENDENTE' OR p.status='PRONTO'")
     List<PedidoVenda> getAllPedidoPorMesa(@Param("mesa") UUID idmesa);
 
     @Query("SELECT p FROM PedidoVenda p where p.data=:dataini")

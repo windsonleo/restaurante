@@ -115,13 +115,13 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView FecharCaixaForm(HttpServletRequest request) {
 
 
-//        UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("id"));
 //
-//        Caixa cx = caixaService.findOne(idf);
+        Caixa cx = caixaService.findOne(idf);
 
         ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
 
-//        fecharcaixa.addObject("caixa", cx);
+        fecharcaixa.addObject("caixa", cx);
 
         return fecharcaixa;
 

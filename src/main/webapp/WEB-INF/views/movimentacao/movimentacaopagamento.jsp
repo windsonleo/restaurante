@@ -42,7 +42,7 @@
 									     <th>Caixa</th>
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,24 +73,27 @@
 									
 										<a
 									href="${pageContext.request.contextPath}/pagamento/informacoes?id=${pagamento.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 
 
-	<a href="#myAlert${pagamento.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+	<a href="#myAlert${pagamento.id}" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${pagamento.id}"></a>
 									
-			<div id="myAlert${pagamento.id}" class="modal hide">
+			<div id="myAlert${pagamento.id}" class="modal fade" role="dialog" tabindex="-1">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
+                <button data-dismiss="modal" class="close" type="button">x</button>
                 <h3>Alerta de Exclusão</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/pagamento/delete?id=${pagamento.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn-sm btn-danger" href="${pageContext.request.contextPath}/pagamento/delete?id=${pagamento.id}">Confirma</a> <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a> </div>
            
             </div>
-
+</div>
+</div>
 
 									
 <!-- 									 <a -->

@@ -15,6 +15,7 @@ import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import com.tecsoluction.restaurante.util.StatusMesa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -167,6 +168,103 @@ public class MesaController extends AbstractController<Mesa> {
     protected MesaServicoImpl getservice() {
 
         return mesaService;
+    }
+    
+    @RequestMapping(value = "abrirmesa", method = RequestMethod.GET)
+    public ModelAndView AbrirMesa(HttpServletRequest request) {
+    	
+    	String mensagem = "Mesa Aberta com Sucesso";
+
+//
+    	ModelAndView salao = new ModelAndView("salao");
+
+        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+//        UUID idfc = UUID.fromString(request.getParameter("id"));
+//        UUID idfg = UUID.fromString(request.getParameter("idgar"));
+        String qtd = request.getParameter("qtd");
+
+        
+        Mesa mesa = getservice().findOne(idfm);
+        
+        
+        
+        if(mesa.getStatus() != StatusMesa.DISPONIVEL){
+        	
+        	String erros = "Mesa Nao esta Disponivel para ser aberta";
+       
+        	salao.addObject("erros", erros);
+        	
+        	return salao;
+        	
+        }
+        
+        mesa.setStatus(StatusMesa.ABERTA);
+        
+        getservice().edit(mesa);
+    	
+    	
+        
+//        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+        
+
+        List<Mesa> mesas = mesaService.findAll();
+
+        salao.addObject("mesasList", mesas);
+        salao.addObject("mensagem", mensagem);
+
+//        mesasocupadas.addObject("vendasmesa", vendasmesa);
+
+
+        return salao;
+        
+        
+    }
+    
+    @RequestMapping(value = "fecharmesa", method = RequestMethod.GET)
+    public ModelAndView FecharMesa(HttpServletRequest request) {
+
+       	String mensagem = "Mesa Fechada com Sucesso";
+
+       	//
+       	    	ModelAndView salao = new ModelAndView("salao");
+
+       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+       	       
+
+       	        
+       	        Mesa mesa = getservice().findOne(idfm);
+       	        
+       	        
+       	        
+       	        if(mesa.getStatus() != StatusMesa.ABERTA){
+       	        	
+       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
+       	       
+       	        	salao.addObject("erros", erros);
+       	        	
+       	        	return salao;
+       	        	
+       	        }
+       	        
+       	        mesa.setStatus(StatusMesa.FECHADA);
+       	        
+       	        getservice().edit(mesa);
+       	    	
+       	    	
+       	        
+//       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+       	        
+
+       	        List<Mesa> mesas = mesaService.findAll();
+
+       	        salao.addObject("mesasList", mesas);
+       	        salao.addObject("mensagem", mensagem);
+
+//       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
+
+
+       	        return salao;
+       	        
     }
 
 }
