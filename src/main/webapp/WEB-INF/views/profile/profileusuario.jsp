@@ -5,7 +5,8 @@
     <div id="content-header">
 
 </br>
-        <h2> Profile Usuario</h2>
+</br>
+<!--         <h2> Profile Usuario</h2> -->
     </div>
 
 <div class="container-fluid">

@@ -3,12 +3,17 @@
 
 <%@ page session="true" %>
 
+</br>
+</br>
+
 <div id="content">
 
     <div id="content-header">
 
 </br>
-        <h2> Gerencia de Clientes</h2>
+</br>
+</br>
+
     </div>
 
     <div class="container-fluid">
@@ -42,7 +47,7 @@
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="">
-                                    <h4 class="title">Dados do Cliente</h4>
+       							 <h3 class="title"> Gerencia de Clientes</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
                        

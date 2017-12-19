@@ -5,7 +5,9 @@
  
   <div id="content-header">
 </br>
-    <h2> Gerencia de Garcons</h2>
+</br>
+</br>
+<!--     <h2> </h2> -->
   </div>
 
             <div class="container-fluid">
@@ -38,7 +40,7 @@
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="">
-                                    <h4 class="title">Dados do Garcon</h4>
+                                    <h3 class="title">Gerencia Garcon</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
                        

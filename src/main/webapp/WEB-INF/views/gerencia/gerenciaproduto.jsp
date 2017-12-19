@@ -8,7 +8,9 @@
   <div id="content-header">
 <%--     <div id="breadcrumb"> <a href="${pageContext.request.contextPath}/produto/movimentacao" title="Go to Produto" class="tip-bottom"><i class="icon-home"></i> Produto</a> <a href="#">Gerencia Produto </a> </div> --%>
     </br>
-    <h3> Gerencia de Produtos</h3>
+    </br>
+    </br>
+<!--     <h3> </h3> -->
   </div>
 
             <div class="container-fluid">
@@ -38,7 +40,7 @@
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="">
-                                    <h4 class="title">Dados do Produto</h4>
+                                    <h3 class="title">Gerencia de Produtos</h3>
                                     <p class="category">Informacoes Basicas</p>
                                 </div>
 

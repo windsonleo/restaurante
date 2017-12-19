@@ -57,27 +57,27 @@
 
     <div id="script">
     
-        <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> 
+        <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script> 
         
      
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script> 
 
- <script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
  
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js" type="text/javascript"></script> 
  
-            <script src="${pageContext.request.contextPath}/resources/js/material.min.js" 
+            <script src="${pageContext.request.contextPath}/resources/js/material.min.js" type="text/javascript"
         ></script>
         
-         <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js" 
+         <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js" type="text/javascript"
           ></script> 
           
-             <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js" 
+             <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js" type="text/javascript"
       ></script>
 
 
-<script src="${pageContext.request.contextPath}/resources/sass/material-dashboard.scss"></script> 
+<script src="${pageContext.request.contextPath}/resources/sass/material-dashboard.scss" ></script> 
 
       <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
        ></script> 

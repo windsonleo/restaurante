@@ -7,8 +7,11 @@
 
     <div id="content-header">
 
-		</br>
-        <h2> Gerencia de Fornecedores</h2>
+</br>
+</br>
+</br>
+
+      
     </div>
 
     <div class="container-fluid">
@@ -42,7 +45,7 @@
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="">
-                                    <h4 class="title">Dados do Fornecedor</h4>
+                                    <h3 class="title">Gerencia de Fornecedores</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
            

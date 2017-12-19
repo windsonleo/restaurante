@@ -26,25 +26,32 @@
           type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
           type='text/css'/>
-    <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/matrix-login.css"
-          type="text/css"/>
+<%--     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/matrix-login.css" --%>
+         
 
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/customizado.css"
           type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/material-kit.css"/>
+    
+    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
 
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+    
+     <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
 
 
 </head>
-<body>
+
+
+<body class="signup-page">
 
 
 <tiles:insertAttribute name="conteudo"/>
@@ -58,7 +65,7 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script> --%>
 
 <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
@@ -66,9 +73,12 @@
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script> --%>
 
 <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/material-kit.js"></script>
+
 
 </body>
 </html>
