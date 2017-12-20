@@ -11,17 +11,6 @@
 
 </br>
  </br>
-<!-- 	<h2>Cadastro de Produto</h2> -->
-
-
-<!-- 			<div class="control-group"> -->
-<!--                 <label class="control-label">Foto</label> -->
-<!--                 <div class="controls"> -->
-
-<%--                		<input type="image" alt="foto" src="${pageContext.request.contextPath}/resources/images/produto/${filename}" class="span3">				 --%>
-               
-<!--                 </div> -->
-<!--               </div> -->
 
 </div>
 
@@ -79,8 +68,7 @@
                                 
                                     <h4 class="title">Cadastro Produto</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
@@ -89,33 +77,27 @@
 
 					
 					
-				<form role="form" id="ds" class="form-horizontal"
+				<form role="form" id="ds" class="form-horizonta"
 					action="${pageContext.request.contextPath}/produto/${acao}"
 					ModelAttribute="produto" method="POST"  enctype="application/x-www-form-urlencoded">
 					
 					
 			<div class="form-group label-floating is-empty">
               
-              <div class="control-group">
-                <label class="control-label">Ativo</label>
-                <div class="controls">
-                  <input id="ativo" class="form-contr"name="ativo"  type="checkbox" checked="${produto.ativo}"/>
-
-               
-                </div>
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
               </div>
               
               <div class="form-group label-floating is-empty">
               
-             <div class="control-group">
-                <label class="control-label">Sugestao?</label>
-                <div class="controls">
-                         <input id="esugestao" class="form-contro"name="esugestao"  type="checkbox" checked="${produto.esugestao}"/>
-
-               
-                </div>
+              <div class="checkbox">
+                <label>
+				<input id="esugestao" name="optionsCheckboxes"  type="checkbox" checked="${produto.esugestao}" class="checkbox"/>Sugestao?
+				</label>
               </div>
               
               </div>
@@ -133,31 +115,7 @@
               </div>
               
               </div>
-              
-
-              
-              
-
-              
-              
-              
-              
-              
-<!--             <div class="form-group label-floating is-empty"> -->
-              
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Ativo</label> -->
-<!--                 <div class="controls"> -->
-<%--                   <input id="ativo" class="form-control"name="ativo"  type="checkbox" checked="${produto.ativo}"/> --%>
-
-               
-<!--                 </div> -->
-<!--               </div> -->
-              
-<!--               </div> -->
-              
-              
-            
+         
 		<div class="form-group label-floating is-empty">
 			
               <div class="control-group">
@@ -257,13 +215,6 @@
               </div>
 
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label"> Unidade Medidas</label> -->
-<!--                 <div class="controls"> -->
-							
-				
-<!--                 </div> -->
-<!--               </div> -->
             
                <div class="form-group label-floating is-empty">
                   <div class="control-group">
@@ -291,13 +242,7 @@
               
               </div>        
               
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Preço de Venda</label> -->
-<!--                 <div class="controls"> -->
-				
-				
-<!--                 </div> -->
-<!--               </div>               -->
+
               <div class="form-group label-floating is-empty">
                <div class="control-group">
                 <label class="control-label">Fornecedor</label>
@@ -339,7 +284,6 @@
 </div>
 
 </div>
-<!-- </div> -->
 
 </br>
 </br>
@@ -353,19 +297,6 @@
 
                                 </div>
           <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizonta">       
-
-
-<!-- 						<div class="form-group label-floating"> -->
-<!-- <!--                               <label class="control-label">Cliente</label> --> 
-<%--                                 <input type="text" list="${clientesList}" id="id" --%>
-<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
-<!--                                        class="form-control"> -->
-                                       
-<!--                                  <span class="material-input"></span> -->
-<!--                          </div> -->
-
-
-
 
 
                                    </br> 
@@ -384,8 +315,7 @@
 									    </div>
 									</div>
                                    
-                                   <button type="submit"  class="btn btn-danger btn-round btn-sm">Upload</button>
-
+ 										<button type="submit"  class="btn btn-info btn-round btn-md">Salvar Foto</button>
                                        
                                  <span class="material-input"></span>
                          		</div>
@@ -394,8 +324,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.categoria}
-                                     <p class="card-content pull-left">${produto.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.categoria} </p> </h4>
+                                     <p class="card-content pull-left">${produto.id} </p> 
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

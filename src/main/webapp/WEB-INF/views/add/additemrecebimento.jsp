@@ -153,7 +153,7 @@
                                         <th>Descricao</th>
 									    <th>Qtd</th>
 									    <th>Preco Unitario</th>
-									  <th>Total</th> 
+									  <th>Situacao</th> 
 									    
 									    <th>Acao</th>
 									    
@@ -187,15 +187,16 @@
                        
                 </td>
 			     
-  				<td>
-  				 <fmt:formatNumber type="currency"
-                       value="${item.key.totalItem}"/>
+<!--   				<td> -->
+<%--   				 <fmt:formatNumber type="currency" --%>
+<%--                        value="${item.key.totalItem}"/> --%>
   				
   				
-  				</td>
+<!--   				</td> -->
 
 
 
+                  <td>${item.key.situacao}</td>
 
 
 								<td class="options-width">
@@ -284,7 +285,7 @@
                                        <th>Descricao</th>
 									    <th>Qtd</th>
 									      <th>Preco Unitario</th>
-									  <th>Total</th> 
+									  <th>Situacao</th> 
 									    <th>Acao</th>
 <!-- 									    <th>UM</th> -->
 									    
@@ -317,14 +318,15 @@
                        
                 </td>
 			     
-  				<td>
-  				 <fmt:formatNumber type="currency"
-                       value="${item.key.totalItem}"/>
+<!--   				<td> -->
+<%--   				 <fmt:formatNumber type="currency" --%>
+<%--                        value="${item.key.totalItem}"/> --%>
   				
   				
-  				</td>
+<!--   				</td> -->
 
 
+                  <td>${item.key.situacao}</td>
 
 
 

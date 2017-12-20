@@ -8,7 +8,7 @@
   <div id="content-header">
 </br>
  </br>
-<!--     <h3>Cadastro de Garcon</h3> -->
+
   </div>
   <div class="container-fluid"><hr>
              <c:if test="${erros != null }">
@@ -62,27 +62,25 @@
                                 
                                     <h4 class="title">Cadastro Garcon</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/garcon/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/garcon/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
               
               
               
             <div class="form-group label-floating is-empty">
               
-              <div class="control-group">
-                <label class="control-label">Ativo</label>
-                <div class="controls">
-               			<input id="ativo" name="ativo" class="span8" type="checkbox" checked="${garcon.ativo}"/>
-               
-               
-                </div>
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${garcon.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
+              
               </div>
               
               

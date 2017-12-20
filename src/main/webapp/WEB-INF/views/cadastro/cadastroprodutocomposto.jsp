@@ -11,7 +11,6 @@
 
 	</br>
 	 </br>
-<!-- 	<h2>Cadastro de Produto Composto</h2> -->
 </div>
 
 <div class="container-fluid">
@@ -68,8 +67,7 @@
                                 
                                     <h4 class="title">Cadastro Produto Composto</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
@@ -84,26 +82,20 @@
               
              <div class="form-group label-floating is-empty">
               
-              <div class="control-group">
-                <label class="control-label">Ativo</label>
-                <div class="controls">
-                  <input id="ativo" class="form-contr"name="ativo"  type="checkbox" checked="${produtocomposto.ativo}"/>
-
-               
-                </div>
+              			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produtocomposto.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
               </div>
               
               <div class="form-group label-floating is-empty">
               
-             <div class="control-group">
-                <label class="control-label">Sugestao?</label>
-                <div class="controls">
-                         <input id="esugestao" class="form-contro"name="esugestao"  type="checkbox" checked="${produtocomposto.esugestao}"/>
-
-               
-                </div>
+              <div class="checkbox">
+                <label>
+				<input id="esugestao" name="optionsCheckboxes"  type="checkbox" checked="${produtocomposto.esugestao}" class="checkbox"/>Sugestao?
+				</label>
               </div>
               
               </div>
@@ -123,28 +115,7 @@
               </div>
               
 
-              
-              
-
-              
-              
-              
-              
-              
-<!--             <div class="form-group label-floating is-empty"> -->
-              
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Ativo</label> -->
-<!--                 <div class="controls"> -->
-<%--                   <input id="ativo" class="form-control"name="ativo"  type="checkbox" checked="${produtocomposto.ativo}"/> --%>
-
-               
-<!--                 </div> -->
-<!--               </div> -->
-              
-<!--               </div> -->
-              
-              
+ 
             
 		<div class="form-group label-floating is-empty">
 			
@@ -245,13 +216,6 @@
               </div>
 
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label"> Unidade Medidas</label> -->
-<!--                 <div class="controls"> -->
-							
-				
-<!--                 </div> -->
-<!--               </div> -->
             
                <div class="form-group label-floating is-empty">
                   <div class="control-group">
@@ -281,13 +245,7 @@
               
               </div>        
               
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Preço de Venda</label> -->
-<!--                 <div class="controls"> -->
-				
-				
-<!--                 </div> -->
-<!--               </div>               -->
+
               <div class="form-group label-floating is-empty">
                <div class="control-group">
                 <label class="control-label">Fornecedor</label>
@@ -374,15 +332,7 @@
                                     
 
                                 </div>
-                      <!-- 						<div class="form-group label-floating"> -->
-<!-- <!--                               <label class="control-label">Cliente</label> --> 
-<%--                                 <input type="text" list="${clientesList}" id="id" --%>
-<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
-<!--                                        class="form-control"> -->
-                                       
-<!--                                  <span class="material-input"></span> -->
-<!--                          </div> -->
-
+ 
 
           <form method="post" action="salvarfotocomposto" enctype="multipart/form-data" class="form-horizonta">       
 
@@ -390,7 +340,6 @@
 
                                    </br> 
                                <div class="form-group label-floating is-empty">
-<!--                               <label class="control-label">Cliente</label> -->
 
 									<div class="form-group is-empty is-fileinput">
 									    <input type="file" id="file" name="file" multiple="">
@@ -404,7 +353,7 @@
 									    </div>
 									</div>
                                    
-                                   <button type="submit"  class="btn btn-danger btn-round btn-sm">Upload</button>
+                                    <button type="submit"  class="btn btn-info btn-round btn-md">Salvar Foto</button>
 
                                        
                                  <span class="material-input"></span>

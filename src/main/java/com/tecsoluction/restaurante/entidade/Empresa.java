@@ -28,12 +28,21 @@ public class Empresa extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank
-    @Column(name = "nome", nullable = false)
-    private String nome;
-
-    @NotBlank
     private String logo;
 
+    @NotBlank
+    @Column(name = "nomefantasia")
+    private String nomefantasia;
+
+    @Column(name = "razaosocial")
+    private String razaosocial;
+
+    @Column(name = "cnpj")
+    private String cnpj;
+
+    @Column(name = "inscricaoestadual")
+    private String inscricaoestadual;
+    
     public Empresa() {
         // TODO Auto-generated constructor stub
 
@@ -41,7 +50,7 @@ public class Empresa extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return nome.toUpperCase();
+        return nomefantasia.toUpperCase();
     }
 
 }

@@ -54,7 +54,7 @@ public class Pagamento extends BaseEntity implements Serializable {
     private Caixa caixa;
 
     public Pagamento() {
-        // TODO Auto-generated constructor stub
+
     }
 
 //    /**

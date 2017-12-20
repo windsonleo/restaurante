@@ -116,7 +116,7 @@
 							<form class="form" method="post" action="login">
 								<div class="header header-danger text-center">
 									<img class="image-responsive"
-            src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/>
+            src="${pageContext.request.contextPath}/resources/images/logosenpaii.png"/>
             
 									<div class="social-line">
 										<a href="#pablo" class="btn btn-simple btn-just-icon">

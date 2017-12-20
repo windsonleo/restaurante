@@ -41,19 +41,6 @@ public abstract class Pedido extends BaseEntity {
     @Column(name = "total")
     private BigDecimal  total ;
 
-//    @JsonIgnore
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @OneToMany(mappedBy = "pedido")
-//    private List<Pagamento> pagamentos;
-
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @ElementCollection(fetch=FetchType.EAGER)
-//    @MapKeyColumn(name = "id")
-//    @Column(name="qtd")
-//    @CollectionTable(name="itens_pedido",joinColumns=@JoinColumn(name="id"))
-//    @JsonManagedReference
-//    private Map<Item,Double> items = new HashMap<>();
-
     @ManyToMany(mappedBy = "pedidos")
     @JsonIgnore
     private List<Pagamento> pagamento;
@@ -67,42 +54,20 @@ public abstract class Pedido extends BaseEntity {
 
     
     public Pedido() {
-        // TODO Auto-generated constructor stub
-        //    items = new ArrayList<>();
-//        pagamentos = new ArrayList<>();
+
+    	
     }
 
     public BigDecimal getTotal() {
 
-//        String precoformat = DadosGerenciais.transfomarPreco(total);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
+
         return total;
     }
 
     public void setTotal(BigDecimal total) {
-
-//        String precoformat = DadosGerenciais.transfomarPreco(total);
-//        double valor = Double.parseDouble(precoformat.replace(',', '.'));
        
     	this.total = total;
     }
-
-//    public List<Pagamento> getPagamentos() {
-//        return pagamentos;
-//    }
-//
-//    public void setPagamentos(List<Pagamento> pagamentos) {
-//        this.pagamentos = pagamentos;
-//    }
-
-
-//    public Map<Item,Double> getItems() {
-//        return items;
-//    }
-//
-//    public void setItems(Map<Item,Double> items) {
-//        this.items = items;
-//    }
 
 
     @Override
@@ -116,11 +81,22 @@ public abstract class Pedido extends BaseEntity {
     public BigDecimal CalcularTotal(Map<Item, String> itens) {
 
     	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
 
 
         for (Item key : itens.keySet()) {
-           
-        	totalpedido = totalpedido.add(key.getTotalItem());
+        	
+        	//QTD ITEM
+        	String total = itens.get(key);
+        	
+        	totalpedidoaux = new  BigDecimal(total);
+        	
+        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+        	
+        	totalped.multiply(totalpedidoaux);
+        	
+
+        	totalpedido = totalpedido.add(totalped);
         }
 
 

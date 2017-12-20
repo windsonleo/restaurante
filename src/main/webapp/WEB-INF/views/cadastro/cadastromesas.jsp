@@ -9,7 +9,7 @@
 	
 	</br>
 	 </br>
-<!--     <h2>Cadastro de Mesa</h2> -->
+
   </div>
   <div class="container-fluid"><hr>
              <c:if test="${erros != null }">
@@ -62,29 +62,34 @@
                                 
                                     <h4 class="title">Cadastro Mesa</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/mesas/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
-              
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${mesa.ativo}"/>
-                </div>
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/mesas/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+			
+			
+			<div class="form-group label-floating is-empty">
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${mesa.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
+              </div>
               
+			<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${mesa.id}" placeholder="Digite o id" />
+						<input id="id" class="form-control" name="id" type="text" value="${mesa.id}" placeholder="" />
                 </div>
               </div>
-              
+				</div>
+				
+				
+				<div class="form-group label-floating">
                 <div class="control-group">
                 <label class="control-label">Status</label>
                 <div class="controls">
@@ -92,27 +97,31 @@
 
                   <select id="status"name="status"  class="form-control">
 	                                  <optgroup label="Status Da Mesa">		           			
-		           				<option value="DISPONIVEL">DISPONÍVEL</option>
-		           				<option value="OCUPADA">OCUPADA</option> 				
-		           				      				
+		           			
+		           			
+		           				<c:forEach  var="status" items="${status }">
+		           					<option value="${status}">${status }</option>
+		           								
+		           				</c:forEach>      				
 		       	                </optgroup>
 	                    </select>
 
 
                 </div>
               </div>                
+              </div>
               
               
               
-              
+              <div class="form-group label-floating is-empty">
               
               <div class="control-group">
-                <label class="control-label">Número</label>
+                <label class="control-label">Numero</label>
                 <div class="controls">
-						<input id="numero" class="form-control" name="numero" type="text" value="${mesa.numero}" placeholder="Digite o Nome da Mesa"/>
+						<input id="numero" class="form-control" name="numero" type="text" value="${mesa.numero}" placeholder=""/>
                 </div>
               </div>
-
+			</div>
 
               
        

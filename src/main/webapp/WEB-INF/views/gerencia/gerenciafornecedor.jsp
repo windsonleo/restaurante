@@ -52,10 +52,11 @@
 
 
 						<div class="form-group label-floating is-empty">
-                              <label class="control-label">Ativo</label>
-                                <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
-                                       checked="${fornecedor.ativo}" disabled="true"/>
-                                 <span class="material-input"></span>
+                         <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${fornecedor.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
                          </div>
 
 
@@ -167,9 +168,9 @@
 
 
 						<div class="form-group label-floating">
-<!--                               <label class="control-label">fornecedor</label> -->
+                              <label class="control-label">Fornecedor</label>
                                 <input type="text" list="${fornecedorList}" id="id"
-                                       placeholder="Digite o Codigo do fornecedor" name="id" autocomplete="off"
+                                       placeholder="" name="id" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>
@@ -190,10 +191,9 @@
                                 </datalist>
                                     
                                <div class="form-group label-floating is-empty">
-<!--                               <label class="control-label">fornecedor</label> -->
+<!--                               <label class="control-label">Fornecedor</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarFornecedorGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
-
+ 								<button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>
                                        
                                  <span class="material-input"></span>
                          		</div>
@@ -202,8 +202,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${fornecedor.nomefantasia} ${fornecedor.razaosocial}
-                                     <p class="card-content pull-left">Cnpj:${fornecedor.cnpj} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${fornecedor.nomefantasia} ${fornecedor.razaosocial}</p> </h4>
+                                     <p class="card-content pull-left">Cnpj:${fornecedor.cnpj} </p>  
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

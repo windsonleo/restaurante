@@ -8,7 +8,7 @@
   <div id="content-header">
 	</br>
 	 </br>
-<!--     <h2>Cadastro de Despesa</h2> -->
+
   </div>
   <div class="container-fluid"><hr>
   
@@ -62,8 +62,7 @@
                                 
                                     <h4 class="title">Cadastro Despesa</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
@@ -71,11 +70,10 @@
 
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/despesa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${despesa.ativo}"/>
-                </div>
+              			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${despesa.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
               
@@ -92,27 +90,6 @@
                 </div>
               </div>
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Despesa Pai</label> -->
-<!--                 <div class="controls"> -->
-                    
-<!--                          <select id="catpai"name="catpai"  class="form-control"> -->
-<!-- 	                                  <optgroup label="Tipos de Catgeoria Pai"> -->
-		           				
-<%-- 		           					<option value="${despesa.catpai}">${despesa.catpai}</option> --%>
-		           				
-<%-- 		           					<c:forEach var="despesa" items="${despesaList}"> --%>
-		           			
-<%-- 		           				<option value="${despesa.id}">${despesa.nome}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-<!-- 		                </optgroup> -->
-<!-- 	                    </select> -->
-	                    
-	                                        
-<!--                 </div> -->
-<!--               </div> -->
               
               
               <div class="form-actions">

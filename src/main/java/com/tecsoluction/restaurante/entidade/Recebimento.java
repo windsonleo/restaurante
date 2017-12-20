@@ -18,6 +18,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
@@ -57,30 +58,13 @@ public class Recebimento extends BaseEntity implements Serializable {
     private Fornecedor fornecedor;
 
 
-//    @OneToMany(targetEntity=Item.class,fetch=FetchType.EAGER,mappedBy="recebimento")
-//    @JsonManagedReference
-//    @JoinColumn(name="fornecedor_id")
-//    private List<Item> items;
-
-    //@OneToMany(mappedBy="recebimento")
-    @Embedded
     @ElementCollection(fetch=FetchType.EAGER)
-    @AttributeOverrides({
-        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
-        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
-        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
-        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
-        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
-        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "total")),
-        @AttributeOverride(name = "situacao", column = @Column(name = "situacao"))
-
-    } )
-    @MapKeyClass(Item.class)
     @CollectionTable(name = "itens_recebimento", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    private Map<Item, String> items = new HashMap<>();
-
+    @Lob
+    @Column(name = "qtd")
+    @MapKeyColumn(name = "idit")
+    private Map<Item, String> items = new HashMap<Item, String>();
 
     private boolean ispago = false;
 
@@ -89,27 +73,20 @@ public class Recebimento extends BaseEntity implements Serializable {
     private StatusPedido status;
 
     @Column(name = "total")
-    private BigDecimal total = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    private BigDecimal total = new BigDecimal("0.000").setScale(3, RoundingMode.UP);
 
 
-    //CONSTRUTOR PADRÃO
     public Recebimento() {
-
-        //   listaDevolucao = new ArrayList<>();
-        //  tipo.VENDA.values();
     	
     	items = new HashMap<Item, String>();
     }
 
     public Recebimento(PedidoCompra pedidoompra) {
 
-        //   listaDevolucao = new ArrayList<>();
-        //  tipo.VENDA.values();
 
         this.pedidocompra = pedidoompra;
         this.fornecedor = pedidoompra.getFornecedor();
         this.items = pedidoompra.getItems();
-//    	this.fornecedor=pedidoompra.
         this.items = new HashMap<Item, String>();
     }
 
@@ -117,7 +94,8 @@ public class Recebimento extends BaseEntity implements Serializable {
      * @return the fornecedor
      */
     public Fornecedor getFornecedor() {
-        if (pedidocompra != null) {
+       
+    	if (pedidocompra != null) {
 
             this.fornecedor = pedidocompra.getFornecedor();
         }
@@ -136,12 +114,23 @@ public class Recebimento extends BaseEntity implements Serializable {
     public BigDecimal CalcularTotal(Map<Item, String> itens) {
 
     	BigDecimal totalpedido = new BigDecimal(0.00).setScale(4, RoundingMode.UP);
+    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
 
 
     	 for (Item key : itens.keySet()) {
              
-         	totalpedido = totalpedido.add(key.getTotalItem());
-         }
+    		 String total = itens.get(key);
+         	
+         	totalpedidoaux = new  BigDecimal(total);
+         	
+         	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+         	
+         	totalped.multiply(totalpedidoaux);
+         	
+
+         	totalpedido = totalpedido.add(totalped);
+    	 
+    	 }
 
 
         return totalpedido;

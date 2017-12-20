@@ -15,6 +15,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.MapKey;
 import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
 
@@ -35,24 +37,11 @@ public class ProdutoComposto extends Produto implements Serializable {
 
 
     @ElementCollection(fetch=FetchType.EAGER)
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
-        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
-        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
-        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
-        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
-        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "total")),
-        @AttributeOverride(name = "situacao", column = @Column(name = "situacao"))
-
-    })
-    @MapKeyClass(Item.class)
-//    @MapKeyColumn(name = "idit")
-//    @Convert(converter=BigDecimalConverter.class)
-//    @Column(name = "qtd")
+    @MapKeyColumn(name = "idit")
+    @Column(name = "qtd")
     @CollectionTable(name = "itens_produtocompostos", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
+    @Lob
     private Map<Item,String> itens_prodcomp = new HashMap<>();
 
     
@@ -60,32 +49,12 @@ public class ProdutoComposto extends Produto implements Serializable {
     
     
    public ProdutoComposto() {
-	// TODO Auto-generated constructor stub
-}
+
+   }
     
     
 
-//    public ProdutoComposto(HashMap<Item, BigDecimal> list) {
-//        // TODO Auto-generated constructor stub
-//        // items = new ArrayList<Item>();
-//    	this.itens_prodcomp = list;
-//    }
 
-
-    
-//    public ProdutoComposto(UUID  id, String foto, String nome, String codebar,
-//                           String descricao, UnidadeMedida un, BigDecimal precocusto,
-//                           BigDecimal precovenda, Fornecedor fornecedor, Categoria cat,
-//                           boolean ativo, Map<Item, BigDecimal> itens, boolean esugestao) {
-//
-//        super(id, foto, nome, codebar, descricao, un, precocusto, precovenda, fornecedor, cat, ativo, esugestao);
-//       
-//        this.itens_prodcomp =itens;
-////        this.itens_prodcomp = itens;
-//    }
-    
-    
-    
 
     @Override
     public String toString() {
@@ -111,23 +80,7 @@ public class ProdutoComposto extends Produto implements Serializable {
 
 		}
     
-	
-//	@Override
-//	public void setPrecocusto(BigDecimal preco) {
-//		// TODO Auto-generated method stub
-//		super.setPrecocusto(getPrecocusto());
-//	}
-//	
-//	
-//	@Override
-//	public void setPrecovenda(BigDecimal precoVenda) {
-//		// TODO Auto-generated method stub
-//		super.setPrecovenda(getPrecovenda());
-//	}
-//	
-    
-    
-  
+
     public BigDecimal CalcularTotalCusto(Map<Item, String> pitens) {
 
     	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
@@ -135,7 +88,7 @@ public class ProdutoComposto extends Produto implements Serializable {
 
         for (Item key : pitens.keySet()) {
             
-        	totalpedido = totalpedido.add(key.getTotalItem());
+//        	totalpedido = totalpedido.add(key.getTotalItem());
         }
 
         return totalpedido;
@@ -143,15 +96,31 @@ public class ProdutoComposto extends Produto implements Serializable {
     
     public BigDecimal CalcularTotalVenda(Map<Item, String> pitens) {
 
-    	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+
 
 
         for (Item key : pitens.keySet()) {
+        	
+        	//QTD ITEM
+        	String total = pitens.get(key);
+        	
+        	totalpedidoaux = new  BigDecimal(total);
+        	
+        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+        	
+        	totalped.multiply(totalpedidoaux);
+        	
+
+        	totalpedido = totalpedido.add(totalped);
             
-        	totalpedido = totalpedido.add(key.getTotalItem());
         }
 
-        return totalpedido.multiply(new BigDecimal("1.5"));
+//        return totalpedido.multiply(new BigDecimal("1.5"));
+        
+      return totalpedido;
+
     }
     
     public void addItem(Item item, String qtd){
@@ -178,6 +147,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     	
     	return  CalcularTotalCusto(getItens_prodcomp());
     }
+    
     
     public BigDecimal getTotalCompostoVenda(){
     	

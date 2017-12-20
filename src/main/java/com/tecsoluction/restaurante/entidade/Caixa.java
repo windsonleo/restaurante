@@ -43,15 +43,16 @@ public class Caixa extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "caixa",fetch=FetchType.LAZY)
     private List<Pagamento> pagamentos;
 
-
     @JsonIgnore
     @OneToMany(mappedBy = "caixa")
     private List<Despesa> despesas;
+    
+    
 
 
     //CONSTRUTOR PADRAO
     public Caixa() {
-        // TODO Auto-generated constructor stub
+
     }
 
 

@@ -48,10 +48,11 @@
  							
  							
  							<div class="form-group label-floating is-empty">
-                              <label class="control-label">Ativo</label>
-                                <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
-                                       checked="${produto.ativo}" disabled="true"/>
-                                 <span class="material-input"></span>
+                                          <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
                          </div>
 
                                        
@@ -176,7 +177,7 @@
 
 
 						<div class="form-group label-floating">
-<!--                               <label class="control-label">produto</label> -->
+                              <label class="control-label">Produto</label>
                                 <input type="text" list="${produtoList}" id="id"
                                        placeholder="" name="id" autocomplete="off"
                                        class="form-control">
@@ -201,8 +202,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">produto</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarProdutoGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
-
+						 <button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>
                                        
                                  <span class="material-input"></span>
                          		</div>
@@ -211,8 +211,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.descricao}
-                                     <p class="card-content pull-left">${produto.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${produto.nome} ${produto.descricao}</p> </h4> 
+                                     <p class="card-content pull-left">${produto.id} </p> 
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

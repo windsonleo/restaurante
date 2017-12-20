@@ -7,8 +7,8 @@
 <div id="content">
   <div id="content-header">
 	</br>
-	 </br>
-<!--     <h2>Cadastro de Forma de Pagamento</h2> -->
+<!-- 	 </br> -->
+
   </div>
   <div class="container-fluid"><hr>
   
@@ -62,30 +62,44 @@
                                 
                                     <h4 class="title">Cadastro Forma de Pagamento</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">    
-           <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}">
+           <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/formapagamento/${acao}">
               
               
+               <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${formapagamento.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
+              
+              <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="span2 m-wrap" name="id" type="text" value="${formapagamento.id}" placeholder="Digite o id" />
-               			<input id="ativo" name="ativo" class="span8 m-wrap" type="checkbox" checked="${formapagamento.ativo}"/>
+						<input id="id" class="form-control" name="id" type="text" value="${formapagamento.id}" placeholder="" />
                
                 </div>
               </div>
-              
-    
+              </div>
+    			
+    			<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder="Digite o Nome da Forma de Pagamento"/>
+						<input id="nome" class="form-control" name="nome" type="text" value="${formapagamento.nome}" placeholder=""/>
                
+               
+               </div>
+               </div>
+               </div>
+               
+             <div class="form-group label-floating is-empty">
+              <div class="control-group">
+                <label class="control-label">Tipos</label>
                                     <select id="tipo"name="tipo"  class="form-control">
 	                                  <optgroup label="Tipos de Formas de Pagamento">
 		           				
@@ -105,18 +119,19 @@
 
               
               
+         <div class="form-group label-floating is-empty">
               
             <div class="control-group">
                 <label class="control-label">Parcelas</label>
                 <div class="controls">
-						<input id="parcelas" class="form-control" name="parcelas" type="text" value="${formapagamento.parcelas}" placeholder="Digite a Quant. Parcelas"/>
-              			<input id="percdesconto" class="form-control" name="percdesconto" type="text" value="${formapagamento.percdesconto}" placeholder="Digite o % de Desconto"/>
+						<input id="parcelas" class="form-control" name="parcelas" type="text" value="${formapagamento.parcelas}" placeholder=""/>
+              			<input id="percdesconto" class="form-control" name="percdesconto" type="text" value="${formapagamento.percdesconto}" placeholder="%"/>
               
                 </div>
             
                 
               </div>
-             
+             </div>
               
       
               <div class="form-actions">

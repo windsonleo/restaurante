@@ -53,10 +53,11 @@
                        
 
 						<div class="form-group label-floating is-empty">
-                              <label class="control-label">Ativo</label>
-                                <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
-                                       checked="${cliente.ativo}" disabled="true"/>
-                                 <span class="material-input"></span>
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
                          </div>
 
                                        
@@ -86,6 +87,7 @@
 											<select id="genero" name="genero" class="">
                                    
 												<option selected="selected" value="${cliente.genero}">${cliente.genero}</option>
+
 
                                   
                                				 </select> 
@@ -181,9 +183,9 @@
 
 
 						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
+                              <label class="control-label">Cliente</label>
                                 <input type="text" list="${clientesList}" id="id"
-                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
+                                       placeholder="" name="id" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>
@@ -206,8 +208,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit"  class="btn btn-danger btn-round btn-md">Localizar</button>
-
+ 								<button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>
                                        
                                  <span class="material-input"></span>
                                  
@@ -217,8 +218,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}
-                                     <p class="card-content pull-left">${cliente.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${cliente.nome} ${cliente.email}  </p> </h4>
+                                     <p class="card-content pull-left">${cliente.id} </p> 
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

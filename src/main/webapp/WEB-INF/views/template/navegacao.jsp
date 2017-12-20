@@ -26,7 +26,10 @@
 
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/" class="simple-text">
-                    <i class="fa fa-paw"></i> Tecsoluction
+                   
+             <img class="image-responsive"
+            src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/>
+                    
                 </a>
             </div>
         </div>

@@ -26,18 +26,17 @@ public class Role extends BaseEntity implements Serializable {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-//    @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Usuario> users;
 
 
     public Role() {
-        // TODO Auto-generated constructor stub
+
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return name;
+
+    	return name;
     }
 
 }

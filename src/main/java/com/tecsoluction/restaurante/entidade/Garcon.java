@@ -41,8 +41,8 @@ public class Garcon extends BaseEntity implements Serializable {
 
 
     public Garcon() {
-        // TODO Auto-generated constructor stub
-//        pedidos = new ArrayList<>();
+
+    	
     }
 
 

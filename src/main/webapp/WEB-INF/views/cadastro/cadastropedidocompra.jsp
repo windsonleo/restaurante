@@ -8,7 +8,6 @@
   <div id="content-header">
 </br>
  </br>
-<!--     <h2>Cadastro de Pedido Compra</h2> -->
   </div>
 
             <div class="container-fluid">
@@ -62,25 +61,25 @@
                                 
                                     <h4 class="title">Cadastro Pedido Compra</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">   
 					 
-					 <form  role="form" id="ds" class="form-horizontal"
+					 <form  role="form" id="ds" class="form-horizonta"
 					 action="${pageContext.request.contextPath}/pedidocompra/${acao}"
 					 ModelAttribute="pedidocompra" method="POST">
 
 			<div class="form-group label-floating is-empty">
 
-				<div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-				<input id="ativo" name="ativo"  type="checkbox" checked="${pedidocompra.ativo}"/>
-                </div>
+              			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${pedidocompra.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
+              
+              
               </div>
               
             <div class="form-group label-floating is-empty">
@@ -99,7 +98,6 @@
                 <label class="control-label">Data </label>
                 <div class="controls">
 				
-<%-- 				<input id="data" name="data" class="form-control" type="datetime" value="${pedidocompra.data}"placeholder="Digite a Data"/> --%>
 				
 					<div  data-date="12-02-2012" class="input-append date datepicker">
 		                  <input type="text" value="    <fmt:formatDate pattern="dd/MM/yyyy" 
@@ -115,25 +113,7 @@
                 </div>
               </div>
               
-<!--                <div class="control-group"> -->
-<!--                 <label class="control-label">Situacao Pedido</label> -->
-<!--                 <div class="controls"> -->
-<!--          <select id="situacao"name="situacao"  class="form-control" > -->
-<!-- 	                                  <optgroup label="Situa��o do Pedido"> -->
-		           					
-		           					
-<%-- 		           			<c:forEach var="situacao" items="${situacaoPedidoList}"> --%>
-		           			
-<%-- 		           				<option value="${situacao}">${situacao}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-		       				
-<!-- 		                </optgroup> -->
-<!-- 	                    </select>				 -->
-				
-<!--                 </div> -->
-<!--               </div>             			  -->
+
 		
 					<div class="form-group label-floating is-empty">
 		
@@ -154,26 +134,7 @@
               </div>
               </div>
               
-<!--                <div class="control-group"> -->
-<!--                 <label class="control-label">Origem Pedido</label> -->
-<!--                 <div class="controls"> -->
-<!--                          <select id="origempedido"name="origempedido"  class="form-control" > -->
-<!-- 	                                  <optgroup label="Origem do Pedido"> -->
-		           					
-		           					
-<%-- 		           			<c:forEach var="origem" items="${origemPedidoList}"> --%>
-		           			
-<%-- 		           				<option value="${origem}">${origem}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-		       				
-<!-- 		                </optgroup> -->
-<!-- 	                    </select>				 -->
-				
-<!--                 </div> -->
-<!--               </div> -->
-              
+
               
               			<div class="form-group label-floating is-empty">
               
@@ -200,49 +161,7 @@
               </div>
               </div>
               
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Mesa</label> -->
-<!--                 <div class="controls"> -->
-<!-- 					<select id="mesa" name="mesa" class="form-control"> -->
-<!-- 								<optgroup label="Mesa"> -->
 
-
-<!-- 									<option value=""></option> -->
-
-
-<%-- 									<c:forEach var="mesa" items="${mesaList}"> --%>
-
-<%-- 										<option value="${mesa.id}">${mesa.numero}</option> --%>
-
-
-<%-- 									</c:forEach> --%>
-<!-- 								</optgroup> -->
-<!-- 						</select> 				 -->
-				
-<!--                 </div> -->
-<!--               </div> -->
-              
-<!--                  <div class="control-group"> -->
-<!--                 <label class="control-label">Garcon</label> -->
-<!--                 <div class="controls"> -->
-<!-- 					<select id="garcon" name="garcon" class="form-control"> -->
-<!-- 								<optgroup label="Garcon"> -->
-
-
-<!-- 									<option value=""></option> -->
-
-
-<%-- 									<c:forEach var="garcon" items="${garconList}"> --%>
-
-<%-- 										<option value="${garcon.id}">${garcon.nome}</option> --%>
-
-
-<%-- 									</c:forEach> --%>
-<!-- 								</optgroup> -->
-<!-- 						</select>				 -->
-				
-<!--                 </div> -->
-<!--               </div>  -->
               
               			<div class="form-group label-floating is-empty">
               

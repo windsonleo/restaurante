@@ -216,19 +216,19 @@
             <table class="table table-hover table-bordered data-table">
                                         <thead class="card-header" data-background-color="blue">
                                     <tr>
-                                        <th>Descrição</th>
+                                        <th>Descricao</th>
 <!-- 									    <th>Código</th> -->
 <!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
-									    <th>Preço Unitario</th>
-									    <th>Total</th>
+									    <th>Preco Unitario</th>
+									    <th>Situacao</th>
 <!-- 									    <th>Total Item</th> -->
 									    
 <!-- 									     <th>Ativo?</th> -->
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -249,13 +249,14 @@
                        
                 </td>
 			     
-  				<td>
-  				 <fmt:formatNumber type="currency"
-                       value="${item.key.totalItem}"/>
+<!--   				<td> -->
+<%--   				 <fmt:formatNumber type="currency" --%>
+<%--                        value="${item.key.totalItem}"/> --%>
   				
   				
-  				</td>
+<!--   				</td> -->
 
+  <td>${item.key.situacao}</td>
 
 
 								<td class="options-width">

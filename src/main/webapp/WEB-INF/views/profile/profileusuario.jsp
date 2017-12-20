@@ -63,18 +63,15 @@
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
  
- <form  class="form-horizontal"action="${pageContext.request.contextPath}/usuario/edicao" ModelAttribute="usuario" method="POST" name="basic_validate" id="basic_validate" novalidate="novalidate">
+ <form  class="form-horizonta"action="${pageContext.request.contextPath}/usuario/edicao" ModelAttribute="usuario" method="POST" name="basic_validate" id="basic_validate" novalidate="novalidate">
  
 
 
 
-              <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${usuario.ativo}"/>
-				
-				
-                </div>
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${usuario.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
                <div class="control-group">
@@ -138,8 +135,8 @@
 	 	 
 			
 			<div class="form-actions">
-				<button type="submit"class="btn btn-success">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
+				<button type="submit"class="btn btn-md btn-success">Cadastrar</button>
+				<a href='javascript:history.back(1)' class="btn btn-md btn-info" >Voltar</a>
 			</div>
 			
 			</form>
@@ -165,9 +162,9 @@
 
 
 						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
+                              <label class="control-label">Usuario</label>
                                 <input type="text" list="${usuarioList}" id="id"
-                                       placeholder="Digite o Codigo do Usuario" name="id" autocomplete="off"
+                                       placeholder="" name="id" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>
@@ -190,7 +187,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-lg">Localizar</button>
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">Localizar</button>
 
                                        
                                  <span class="material-input"></span>
@@ -200,8 +197,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${usuario.username} ${usuario.roles}
-                                     <p class="card-content pull-left">${usuario.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${usuario.username} ${usuario.roles} </p> </h4> 
+                                     <p class="card-content pull-left">${usuario.id} </p> 
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

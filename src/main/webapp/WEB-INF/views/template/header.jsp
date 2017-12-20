@@ -14,8 +14,10 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          </button>
-         <img class="image-responsive"
-            src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/>
+         
+<!--          <i class="fa fa-paw"> Tecsoluction </i>  -->
+<!--          <img class="image-responsive" -->
+<%--             src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/> --%>
       </div>
       <div class="collapse navbar-collapse">
          <ul class="nav navbar-nav navbar-right">

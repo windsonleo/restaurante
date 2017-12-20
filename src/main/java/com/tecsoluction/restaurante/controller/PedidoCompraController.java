@@ -224,18 +224,18 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
 		 item.setCodigo(produto.getCodebar()); 
-		 item.setQtd(qtdbd); 
+//		 item.setQtd(qtdbd); 
 		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
 		 item.setDescricao(produto.getDescricao()); 
-		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+//		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
 		 item.setSituacao(SituacaoItem.AGUARDANDO);
 
 		
       
 			itens = new HashMap<>();
 
-			pv.addItem(item, item.getQtd().toString());
+			pv.addItem(item, qtdbd.toString());
 			pv.setStatus(StatusPedido.PENDENTE);
 			pv.setTotal(pv.CalcularTotal(pv.getItems()));
 
@@ -300,16 +300,18 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+    @RequestMapping(value = "/item/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
     	
-    	String mensagem = "Pedido Compra Aprovado com Sucesso";
-    	String erros = "Erro na Aprovacao";
+    	String mensagem = "Item do Pedido Compra Aprovado com Sucesso";
+    	String erros = "Erro na Aprovacao do Item";
     	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
         PedidoCompra pc = pedidocompraService.findOne(idf);
+        
+//        pc.getItems().containsKey(key)
 
         pc.setStatus(StatusPedido.PRONTO);
 
@@ -334,7 +336,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "/cancelar", method = RequestMethod.GET)
+    @RequestMapping(value = "/item/cancelar", method = RequestMethod.GET)
     public ModelAndView CancelarPedidoCompra(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));

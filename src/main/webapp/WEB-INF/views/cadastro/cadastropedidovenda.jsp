@@ -9,10 +9,9 @@
 
 </br>
  </br>
-<!--     <h2>Cadastro de Pedido Venda</h2> -->
   </div>
 
-            <div class="container-fluid">
+<div class="container-fluid">
             
                     <c:if test="${erros != null }">
 </br>
@@ -64,33 +63,44 @@
                                 
                                     <h4 class="title">Cadastro Pedido Venda</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
-					 <form  role="form" id="ds" class="form"
+					 <form  role="form" id="ds" class="for"
 					 action="${pageContext.request.contextPath}/pedidovenda/${acao}"
 					 ModelAttribute="pedidovenda" method="POST">
 
 
-
-
-						<div class="form-group">
+              	<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${pedidovenda.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
+			
+			<div class="form-group label-floating is-empty">
+ 				<div class="control-group">
+                	<label class="control-label">Id</label>
+                		<div class="controls">						
+						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder=""/>
+                		</div>
+                		</div>
+                		</div>
+                		                		
 						
-						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder="Digite o Id"/>
-                		
-                		
-                		<label><input id="ativo" name="ativo" class="form-control"  type="checkbox" checked="${pedidovenda.ativo}" />Ativo?</label>
-                		
-						
-						
+				<div class="form-group label-floating is-empty">
+ 				<div class="control-group">
+                	<label class="control-label">Data</label>	
 				<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="form-control" type="text" value="<fmt:formatDate 
-                pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder="Digite a Data"/>
-<!--                 <span class="help-block">Data com Formato  (dd-mm-yy)</span> -->
+                pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder=""/>
+                </div>
+                </div>
                 
                 
+               <div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Cliente</label>	
                 <select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
 
@@ -107,11 +117,13 @@
 								</optgroup>
 						</select>
 						
-<!-- 					 <span class="help-block">Escolha o Cliente</span> -->
-
-
-
+						</div>
+						</div>
 						
+
+			<div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Mesa</label>	
 						<select id="mesa" name="mesa" class="form-control">
 								<optgroup label="Mesa">
 
@@ -127,9 +139,13 @@
 									</c:forEach>
 								</optgroup>
 						</select>   
+						</div>
+						</div>
 						
 						
-						
+			<div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Garcon</label>	
 						<select id="garcon" name="garcon" class="form-control">
 			<optgroup label="Garcon">
 
@@ -144,29 +160,14 @@
 
 				</c:forEach>
 			</optgroup>
-	</select>		
-	
-	
-	
-<!--   						<select id="situacao"name="situacao"  class="form-control" > -->
-<!-- 	                                  <optgroup label="Situacao do Pedido"> -->
-		           				
-<%-- 		           		<option value="${pedidovenda.situacao}" selected="selected">${pedidovenda.situacao}</option> --%>
-		           					
-		           					
-<%-- 		           			<c:forEach var="situacao" items="${situacaoPedidoList}"> --%>
-		           			
-<%-- 		           				<option value="${situacao}">${situacao}</option> --%>
-		           				      				
-		           				
-<%-- 		       				</c:forEach> --%>
-		       				
-<!-- 		                </optgroup> -->
-<!-- 	                    </select>	 -->
+	</select>			                    
+	    </div>
+	    </div>
 	                    
 	                    
-	                    
-	                    
+	       <div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Status</label>	    
 	                  <select id="status"name="status"  class="form-control" >
                 <optgroup label="Status do Pedido">
  					
@@ -181,10 +182,14 @@
 					
       			</optgroup>
          </select>		   
+	       </div>
+	       </div>
 	                    
 	
 	
-	
+					<div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Origem</label>	
 	 <select id="origempedido"name="origempedido"  class="form-control" >
 	                                  <optgroup label="Origem do Pedido">
 
@@ -201,16 +206,20 @@
 		                </optgroup>
 	                    </select>
 	                    
-	                      			 <input id="total" name="total" class="form-control" type="text" value="${pedidovenda.total }" readonly="readonly"/>					
-						
-						
-						
-						
-						
-						
-						
+	                    </div>
+	                    </div>
+	                    
+	       
+	       
+	       				<div class="form-group label-floating is-empty">
+ 				<div class="control-group">
+                	<label class="control-label">Total</label>	             
+	    <input id="total" name="total" class="form-control" type="text" value="${pedidovenda.total }" readonly="readonly"/>					
 						</div>
-
+						</div>
+						
+						
+						
 									
 		  
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -219,6 +228,7 @@
 			<div class="form-actions" align="center">
 				<button type="submit"class="btn btn-success">${acao}</button>
 			</div>
+			
 		</form>		
 </div>
 </div>

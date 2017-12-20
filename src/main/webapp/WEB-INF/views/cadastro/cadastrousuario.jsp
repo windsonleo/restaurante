@@ -10,7 +10,7 @@
 	</br>
 	</br>
 	</br>
-<!-- 	<h3>Cadastro de Usuario</h3> -->
+
 </div>
 
 <div class="container-fluid">
@@ -65,37 +65,23 @@
                                 
                                     <h4 class="title">Cadastro Usuario</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
  
- <form  role="form" id="ds" class="form-horizontal"action="${pageContext.request.contextPath}/usuario/${acao}" ModelAttribute="usuario" method="POST">
+ <form  role="form" id="ds" class="form-horizonta"action="${pageContext.request.contextPath}/usuario/${acao}" ModelAttribute="usuario" method="POST">
  
 
 
-<!-- 		<div class="form-group label-floating is-empty">    -->
-<!--              <div class="control-group"> -->
-<!--                 <label class="control-label">Sugestao?</label> -->
-<!--                 <div class="controls"> -->
-<%--                          <input id="esugestao" class="form-control"name="esugestao"  type="checkbox" checked="${produto.esugestao}"/> --%>
 
-               
-<!--                 </div> -->
-<!--               </div> -->
-              
-<!--               </div> -->
               
               <div class="form-group label-floating is-empty">
-              <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="ativo" name="ativo" class="form-contro" type="checkbox" checked="${usuario.ativo}"/>
-				
-				
-                </div>
+              			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${usuario.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               </div>
 <!--               </div> -->
@@ -253,10 +239,5 @@
                         </div>
                         </div>
                         </div>
-                        
-
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div> -->
+                       
 

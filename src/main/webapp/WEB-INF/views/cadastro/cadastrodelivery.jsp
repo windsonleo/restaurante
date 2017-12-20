@@ -5,17 +5,15 @@
 
  <div id="content">
  
+ </br>
   <div id="content-header">
   
-  </br>
-   </br>
-<!--     <h2> Delivery</h2> -->
+
   </div>
 
             <div class="container-fluid">
             
             <c:if test="${erros != null }">
-</br>
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -39,6 +37,7 @@
     
       <c:if test="${mensagem != null }">
       </br>
+       </br>
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -54,24 +53,20 @@
 
 		</c:if>
 		
+
         <hr>
 
 <div class="row-fluid">    
 
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin:2.5em;">
-					
-					
-					<li class="active">
-						<a href="${pageContext.request.contextPath}/delivery/findmotoqueiro" role="ta" data-toggle="ta">
-							<i class="material-icons">place</i>
-							Find Moto
-						</a>
-					</li>
-		</ul>          
+         
                         
       <div class="span12">
+      
+
       	
       	<div class="span8">
+      	
+
       	
       	         <div class="card">
                     <div class="card-content">
@@ -80,52 +75,53 @@
                                 
                                     <h4 class="title">Cadastro Delivery</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
-                                </br>
+<!--                                 </br> -->
           <div class="card-content">
 
-
- <div class="control-group">
+			<div class="form-group label-floating is-empty">
+ 			<div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome"  name="nome" type="text" class="form-control" value="${cliente.nome}" placeholder="Digite o nome" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+						<input id="nome"  name="nome" type="text" class="form-control" value="${cliente.nome}" placeholder="" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
                 		<input id="telefone" name="telefone" class="form-control"  type="text" value="${cliente.telefone}" readonly="readonly"/>
                 
                 
                 </div>
               </div>
+              </div>
 			 
+			 <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Endereco </label>
                 <div class="controls">
 				
-				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
+				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder=" " readonly="readonly"/>
 				
-				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
+				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
 				
-				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/>
-				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> />
+				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="" readonly="readonly"/>
+				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> />
 				
 				
            		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
 
            		<input id="cidade" name="cidade" class="form-control"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
 
-           		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/>
+           		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="" readonly="readonly"/>
            		
-           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  />
+           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder=""  />
 				
-				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" />
+				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="" />
 				
 				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/>
 								
 				
                 </div>
               </div>
-
+				</div>
 
 
 
@@ -144,28 +140,33 @@
                                 </br>
           <div class="widget-content">  
 					 
-					 <form  role="form" id="ds" class="form-horizontal"
+					 <form  role="form" id="ds" class="form-horizonta"
 					 action="${pageContext.request.contextPath}/pedidovenda/add"
 					 ModelAttribute="pedidovenda" method="POST">
 
+              <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${pedidovenda.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>  
               
-              
+                          
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder="Digite o Id"/>
-                		<input id="ativo" name="ativo" class="form"  type="checkbox" checked="${pedidovenda.ativo}"/>
+						<input id="id"  name="id" type="text" class="form-control" value="${pedidovenda.id}" placeholder=""/>
                 
                 
                 </div>
               </div>
-			 
+              
+              
               <div class="control-group">
                 <label class="control-label">Data </label>
                 <div class="controls">
 				
 				<input id="data" name="data" class="form-control" type="text" value="<fmt:formatDate 
-                pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder="Digite a Data"/>
+                pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder=""/>
 				
 									<select id="cliente" name="cliente" class="form-control">
 								<optgroup label="Cliente">
@@ -181,16 +182,6 @@
                             
               
                <div class="control-group">
-<!--                 <label class="control-label">Situacao Pedido</label> -->
-<!--                 <div class="controls"> -->
-<!--          <select id="situacao"name="situacao"  class="form-control" > -->
-<!-- 	                                  <optgroup label="Situaï¿½ï¿½o do Pedido"> -->
-		           							           			
-<%-- 		           				<option value="${pedidovenda.situacao}">${pedidovenda.situacao}</option> --%>
-		           				      				
-		           						       				
-<!-- 		                </optgroup> -->
-<!-- 	                    </select> -->
 	                    
          <select id="status"name="status"  class="form-control" >
                 <optgroup label="Status do Pedido">
@@ -201,7 +192,7 @@
          </select>			
 				
                 </div>
-<!--               </div>             			  -->
+
 		             
               
                <div class="control-group">
@@ -234,11 +225,7 @@
 			</div>
 			
 </form>
-<!-- </div> -->
-<!-- </div> -->
 
-<!-- 			</div> -->
-<!-- 			</div> -->
 		
 									
 
@@ -251,7 +238,7 @@
 </div>
 </div>
 </div>
-<!-- </div> -->
+
 
 							<div class="span4">
                             <div class="card card-profile">
@@ -262,13 +249,13 @@
                                     
 
                                 </div>
-                        <form action="LocalizarClienteFone" method="GET" class="form-horizontal">
+                        <form action="LocalizarClienteFone" method="GET" class="for">
 
 
 						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
+                              <label class="control-label">Cliente</label>
                                 <input type="text" list="${clientesList}" id="telefone"
-                                       placeholder="Digite o Codigo do Cliente" name="telefone" autocomplete="off"
+                                       placeholder="" name="telefone" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>
@@ -312,11 +299,13 @@
 <%--                                      <p class="card-content pull-left">${cliente.id} </p>  --%>
                                     <p class="card-content">
                                     
-                                    	<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-danger btn-round btn-md">Localizar</button>
+                                    	<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-info btn-round btn-md">Find Cliente</button>
 
-                                   <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button>
+                                   		<button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button>
+                                         
+                                         <button type="button" onclick="window.location='${pageContext.request.contextPath}/delivery/findmotoqueiro'"  class="btn btn-red btn-round btn-md">Find Moto</button>
                           
-                                    
+                                    																					
                                     
                                     </p>
                                      
@@ -325,6 +314,17 @@
                                      </form>
                                    
                                 </div>
+                                
+<!--            <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-top:auto;"> -->
+					
+					
+<!-- 					<li class="active"> -->
+<%-- 						<a href="${pageContext.request.contextPath}/delivery/findmotoqueiro" role="tab" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">place</i> -->
+<!-- 							Find Moto -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+<!-- 				</ul>  -->
                             </div>
 </div>
 </div>

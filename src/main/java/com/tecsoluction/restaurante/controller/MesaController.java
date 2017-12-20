@@ -84,6 +84,8 @@ public class MesaController extends AbstractController<Mesa> {
     	clientes = clienteService.findAll();
     	garcons =garconService.findAll();
     	produtos = produtoService.findAll();
+    	
+    	StatusMesa[] status = StatusMesa.values();
 
         Usuario usuario = new Usuario();
         usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -94,6 +96,9 @@ public class MesaController extends AbstractController<Mesa> {
         model.addAttribute("clientesList", clientes);
         model.addAttribute("garconsList", garcons);
         model.addAttribute("produtosList", produtos);
+        
+        model.addAttribute("status", status);
+
 
 
     }

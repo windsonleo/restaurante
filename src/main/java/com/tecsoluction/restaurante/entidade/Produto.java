@@ -32,9 +32,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Produto extends BaseEntity implements Serializable {
 
-    /**
-     *
-     */
+	
     private static final long serialVersionUID = -5401174413867896341L;
 
     @Column(name = "foto")
@@ -65,18 +63,11 @@ public class Produto extends BaseEntity implements Serializable {
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
-    // @OneToMany(mappedBy = "produto")
-    // private List<Item> items;
 
 
     @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
-
-
-//    @ManyToOne(cascade={CascadeType.REFRESH})
-//    @JoinColumn(name="estoque_id",nullable=true)
-//    private Estoque estoque;
 
 
     @Column(name = "esugestao", nullable = true)

@@ -11,7 +11,7 @@
 	</br>
 	</br>
 	</br>
-<%--     <h2>Cadastro de Recebimento</h2> ${recebimento.id } --%>
+
   </div>
   <div class="container-fluid"><hr>
   
@@ -65,8 +65,7 @@
                                 
                                     <h4 class="title">Cadastro Recebimento</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
@@ -74,7 +73,7 @@
           
 		
           
- 	<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/recebimento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+ 	<form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/recebimento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
 
            
              <div class="control-group">
@@ -136,16 +135,6 @@
                 </div>
               </div>           						
 
-              
-<!--                           <div class="control-group"> -->
-<!--                 <label class="control-label">isPago</label> -->
-<!--                 <div class="controls"> -->
-<!-- 					<input id="ispago" name="ispago" type="checkbox" class="form-control" value="false">  -->
-				
-				
-<!--                 </div> -->
-                
-<!--               </div> -->
               
 
               <div class="control-group">

@@ -8,7 +8,7 @@
   <div id="content-header">
 </br>
  </br>
-<!--     <h2>Cadastro de Empresa</h2> -->
+
   </div>
   <div class="container-fluid"><hr>
             <c:if test="${erros != null }">
@@ -62,13 +62,23 @@
                                 
                                     <h4 class="title">Cadastro Empresa</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">   
-          <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/empresa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+          <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/empresa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+              
+              
+              
+               <div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${empresa.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
+              
+              
               
               
               
@@ -94,47 +104,6 @@
                
                 </div>
               </div>
-
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Genero</label> -->
-<!--                 <div class="controls"> -->
-                    
-<!--                  <select id="genero" name="genero" id="genero" class="form-control">            -->
-<!-- 	                <optgroup label="Genero do Usuario"> -->
-	           			
-<!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
-<!-- 	           				<option value="FEMININO">FEMININO</option> -->
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-	                    
-	                                        
-<!--                 </div> -->
-<!--               </div> -->
-              
-              
-              
-<!--             <div class="control-group"> -->
-<!--                 <label class="control-label">Telefone</label> -->
-<!--                 <div class="controls"> -->
-<%--              <input id="telefone" class="form-control" name="telefone" type="text" value="${empresa.telefone}" placeholder="Digite o Telefone"/>					 --%>
-<!--                 </div> -->
-<!--               </div> -->
-
-<!--             <div class="control-group"> -->
-<!--                 <label class="control-label">Email</label> -->
-<!--                 <div class="controls"> -->
-<%--              <input id="telefone" class="form-control" name="telefone" type="text" value="${empresa.telefone}" placeholder="Digite o Telefone"/>					 --%>
-<!--                 </div> -->
-<!--               </div>               -->
-              
-<!--             <div class="control-group"> -->
-<!--                 <label class="control-label">Data de Nascimento</label> -->
-<!--                 <div class="controls"> -->
-<%--              <input id="telefone" class="form-control" name="datanascimento" type="date" value="${empresa.telefone}" placeholder="Digite o Telefone"/>					 --%>
-<!--                 </div> -->
-<!--               </div>       -->
-              
               
        
               
@@ -151,15 +120,16 @@
     
     
     
-    <div class="span4">
+    				<div class="span4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                        <img class="img" src="../resources/images/empresa/${empresa.logo}.jpg">
                                     </a>
                                     
 
                                 </div>
+                        
                         <form action="LocalizarClienteGerencia" method="POST" class="">
 
 

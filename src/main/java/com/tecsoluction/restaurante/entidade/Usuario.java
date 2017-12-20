@@ -39,7 +39,6 @@ public class Usuario extends BaseEntity implements Serializable {
     @Column(name = "foto")
     private String foto;
 
-    //	@LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_role",

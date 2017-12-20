@@ -300,6 +300,7 @@
                                     
 
                                 </div>
+                        
                         <form action="LocalizarClienteGerencia" method="POST" class="">
 
 
@@ -398,7 +399,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-md">AddPedidoMesa</button>
+                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">AddPedidoMesa</button>
 
                                        
                                  <span class="material-input"></span>
@@ -513,6 +514,13 @@
 
           </div>
           
+                                          <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Hora</label>
+									<input id="hora" name="hora" class="form-control" type="text"
+                                    		placeholder="" />
+                            				  <span class="material-input"></span>
+                                 </div> 
+          
           <button type="submit"  class="btn btn-info" >Abrir Mesa</button>
           
         </form>
@@ -560,6 +568,14 @@
 
 
                                 </datalist>
+                                
+                                
+                                 <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Hora</label>
+									<input id="horafinal" name="horafinal" class="form-control" type="text"
+                                    		placeholder="" />
+                            				  <span class="material-input"></span>
+                                 </div> 
          
           </div>
           

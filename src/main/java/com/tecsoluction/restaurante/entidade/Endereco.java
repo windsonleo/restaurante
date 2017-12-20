@@ -54,13 +54,10 @@ public class Endereco extends BaseEntity implements Serializable {
 
 
     public Endereco() {
-        // TODO Auto-generated constructor stub
-//        pedidos = new ArrayList<>();
+
     }
 
     public Endereco(Cliente cliente) {
-        // TODO Auto-generated constructor stub
-//        pedidos = new ArrayList<>();
 
         this.cliente = cliente;
     }

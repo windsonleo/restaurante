@@ -31,9 +31,7 @@ import lombok.Setter;
 @Table(name = "CLIENTE")
 public class Cliente extends BaseEntity implements Serializable {
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     @NotBlank
@@ -74,12 +72,10 @@ public class Cliente extends BaseEntity implements Serializable {
 //
 
     public Cliente() {
-        // TODO Auto-generated constructor stub
 
     }
 
     public Cliente(Endereco endereco) {
-        // TODO Auto-generated constructor stub
 
         this.endereco = endereco;
     }

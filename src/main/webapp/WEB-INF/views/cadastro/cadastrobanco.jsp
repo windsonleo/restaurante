@@ -119,13 +119,18 @@
 				</label>
               </div>
               
-              
+             <div class="form-group label-floating is-empty">
+	
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
 						<input id="id" class="form-control"  name="id" type="text" value="${banco.id}" placeholder=""/>
                 </div>
               </div>
+              
+              </div>
+              
+              <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
@@ -133,15 +138,22 @@
                   <input type="text" name="nome" id="nome" placeholder="" class="form-control">
                 </div>
               </div>
+              </div>
 
+
+			<div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Numero</label>
                 <div class="controls">
 						<input id="numero" class="form-control" name="numero" type="text" value="${banco.numero}" placeholder=""/>					
                 </div>
               </div>
+              </div>
+              
+              <div class="form-group label-floating is-empty">
               <div class="form-actions">
                 <input type="submit" value="${acao}" class="btn btn-success">
+              </div>
               </div>
             </form>
           </div>

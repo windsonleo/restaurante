@@ -167,14 +167,19 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         for (Item key : pv.getItems().keySet()) {
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
+//            BigDecimal qtd = key.getQtd();
+            String qtd = pv.getItems().get(key);
+            BigDecimal qtdb = new BigDecimal(qtd);
+
             
             Item item = new Item(produto);
-            item.setQtd(qtd);
-            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
+            item.setSituacao(SituacaoItem.PRONTO);
+
+//            item.setQtd(qtd);
+//            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
 
 
-            estoque.RetirarProdutoEstoque(item, qtd);
+            estoque.RetirarProdutoEstoque(item, qtdb);
 
 //            estoqueService.save(estoque);
 
@@ -187,6 +192,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         pv.getTotalVenda();
 
         getservice().edit(pv);
+       
         estoqueService.edit(estoque);
 
 
@@ -260,11 +266,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
 		 item.setCodigo(produto.getCodebar()); 
-		 item.setQtd(qtdbd); 
+//		 item.setQtd(qtdbd); 
 		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
 		 item.setDescricao(produto.getDescricao()); 
-		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+//		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
 		 item.setSituacao(SituacaoItem.AGUARDANDO);
       
 //        itens = pedidov.getItems();
@@ -275,7 +281,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 		 
 		 itens = new HashMap<>();
 
-		 pedidov.addItem(item, item.getQtd().toString());
+		 pedidov.addItem(item, qtdbd.toString());
 	    
 		 pedidov.setTotal(pedidov.getTotalVenda());
 

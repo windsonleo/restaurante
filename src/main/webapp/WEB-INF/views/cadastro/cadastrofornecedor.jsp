@@ -8,7 +8,7 @@
   <div id="content-header">
 </br>
  </br>
-<!--     <h2>Cadastro de Fornecedor</h2> -->
+
   </div>
   <div class="container-fluid"><hr>
              <c:if test="${erros != null }">
@@ -63,24 +63,24 @@
                                 
                                     <h4 class="title">Cadastro Fornecedor</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/fornecedor/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/fornecedor/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
               
                <div class="form-group label-floating is-empty">
               
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-               			<input id="ativo" name="ativo" class="form-contro" type="checkbox" checked="${fornecedor.ativo}"/>
-                
-                </div>
+              			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${fornecedor.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
+              
+              
+              
               </div>
               
               <div class="form-group label-floating is-empty">
@@ -93,12 +93,6 @@
               </div>
               </div>
               
-<!--                 <div class="control-group"> -->
-<!--                 <label class="control-label">Foto</label> -->
-<!--                 <div class="controls"> -->
-<%--              <input id="foto" class="form-control" name="foto" type="image" value="${fornecedor.foto}" placeholder="Digite o Foto"/>					 --%>
-<!--                 </div> -->
-<!--               </div>                 -->
               
               
               
@@ -127,23 +121,6 @@
               </div>
               </div>
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Genero</label> -->
-<!--                 <div class="controls"> -->
-                    
-<!--                  <select id="genero" name="genero" id="genero" class="form-control">            -->
-<!-- 	                <optgroup label="Genero do Usuario"> -->
-	           			
-<!-- 	           				<option value="MASCULINO">MASCULINO</option> -->
-<!-- 	           				<option value="FEMININO">FEMININO</option> -->
-	           				      				
-<!-- 	                </optgroup> -->
-<!-- 	            </select> -->
-	                    
-	                                        
-<!--                 </div> -->
-<!--               </div> -->
-              
               
 
               
@@ -182,16 +159,6 @@
               </div>  
               
               </div>            
-              
-<!--             <div class="control-group"> -->
-<!--                 <label class="control-label">I.E</label> -->
-<!--                 <div class="controls"> -->
-<!--                 </div> -->
-<!--               </div>       -->
-              
-              
-       
-              
               
               
               <div class="form-actions">
@@ -247,8 +214,8 @@
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${fornecedor.nomefantasia} ${fornecedor.cnpj}
-                                     <p class="card-content pull-left">${fornecedor.id} </p> </h4> </p>
+                                    <h4><p class="card-content text-gray">${fornecedor.nomefantasia} ${fornecedor.cnpj}</p> </h4> 
+                                     <p class="card-content pull-left">${fornecedor.id} </p> 
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->
@@ -259,4 +226,5 @@
                         </div>
             </div>
           </div>
+</div>
 </div>

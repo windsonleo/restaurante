@@ -146,7 +146,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         model.addAttribute("origemPedidoList", origemPedidoList);
 //        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
-        model.addAttribute("recebimento", recebimento);
+//        model.addAttribute("recebimento", recebimento);
         model.addAttribute("pedidocompra", pv);
         model.addAttribute("fornecedorList", fornecedorList);
 
@@ -170,17 +170,18 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         for (Item key : recebimento.getItems().keySet()) {
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-            BigDecimal qtd = key.getQtd();
-            
+//            BigDecimal qtd = key.getQtd();
+            String qtd = recebimento.getItems().get(key);
+            BigDecimal qtdb = new BigDecimal(qtd);
             Item item = new Item(produto);
-            item.setQtd(qtd);
-            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
+//            item.setQtd(qtd);
+//            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
             item.setSituacao(SituacaoItem.PRONTO);
 
 
 //            key.setEstoque(estoque);
 
-            estoque.AddProdutoEstoque(item, qtd);
+            estoque.AddProdutoEstoque(item, qtdb);
 
 
 //            itemService.save(key);
@@ -335,12 +336,12 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
         Item it = new Item(prod);
         
-        it.setQtd(new BigDecimal(qtd));
-        it.setTotalItem(prod.getPrecovenda().multiply(new BigDecimal(qtd)));
+//        it.setQtd(new BigDecimal(qtd));
+//        it.setTotalItem(prod.getPrecovenda().multiply(new BigDecimal(qtd)));
 		 it.setSituacao(SituacaoItem.EM_EXECUCAO);
 
         
-        recebimento.addItem(it, it.getQtd().toString());
+        recebimento.addItem(it, qtd);
         
         recebimento.setTotal(recebimento.CalcularTotal(recebimento.getItems()));
         

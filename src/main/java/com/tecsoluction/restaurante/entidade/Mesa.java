@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -36,6 +37,12 @@ public class Mesa extends BaseEntity implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "mesa", fetch = FetchType.EAGER)
     private List<PedidoVenda> pedidos;
+    
+    // recebe a hora de abertura menos a hora de fechamento da mesa
+    
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable(name = "mesa_permanencia", joinColumns = @JoinColumn(name = "id"))
+    private Set<Integer> minutos;
 
     
     

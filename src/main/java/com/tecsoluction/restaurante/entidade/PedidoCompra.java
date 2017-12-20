@@ -15,6 +15,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
@@ -49,37 +50,26 @@ public class PedidoCompra extends Pedido implements Serializable {
     @JsonIgnore
     private List<Recebimento> recebimentos;
 
-    @Embedded
     @ElementCollection(fetch=FetchType.EAGER)
-    @AttributeOverrides({
-        @AttributeOverride(name = "key.id",  column = @Column(name = "idit")),
-        @AttributeOverride(name = "codigo", column = @Column(name = "cod")),
-        @AttributeOverride(name = "nome", column = @Column(name = "nome")),
-        @AttributeOverride(name = "descricao", column = @Column(name = "descricao")),
-        @AttributeOverride(name = "value.qtd", column = @Column(name = "qtd")),
-        @AttributeOverride(name = "precoUnitario", column = @Column(name = "precounitario")),
-        @AttributeOverride(name = "totalItem", column = @Column(name = "total")),
-        @AttributeOverride(name = "situacao", column = @Column(name = "situacao"))
-
-    })
-    @MapKeyClass(Item.class)
     @CollectionTable(name = "itens_pedidocompra", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
+    @Lob
+    @Column(name = "qtd")
+    @MapKeyColumn(name = "idit")
     private Map<Item, String> items = new HashMap<>();
 
-    //CONSTRUTOR PADRÃO
+    //CONSTRUTOR PADRAO
     public PedidoCompra() {
         super();
         this.items = new HashMap<Item, String>();
 
-        //   listaDevolucao = new ArrayList<>();
-        //  tipo.VENDA.values();
+        
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString().toUpperCase();
+
+    	return super.toString().toUpperCase();
     }
     
     

@@ -454,7 +454,7 @@
                                             <table class="table">
                                                 <tbody>
                                                    
-                                                       		<c:forEach var="pedidocompra" items="${pedidocomprasnovos }">
+                                                       		<c:forEach var="pedidocompra" items="${pedidocomprasnovos}">
                                                        		 <tr>
                                                        		
                                                       		
@@ -493,20 +493,20 @@
 																	                  ${item.value }
 																	                  </td>
 																	                  
-																	                  																	                  	<td>																                 <td >
-																	                 <label class=""> ${item.key.totalItem }</label> 
-																	                  </td>
+<!-- 																	                  	<td>																                  	<td>																                 <td > -->
+<%-- 																	                 <label class=""> ${item.key.totalItem }</label>  --%>
+<!-- 																	                  </td> -->
 																	                  
 																	                 <td >
 																	                 <label class="badge label-warning"> ${item.key.situacao }</label> 
 																	                  </td> 
 																	                  
 																	                  														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}'">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/aprovar?id=${pedidocompra.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            															
-                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}'">
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/cancelar?id=${pedidocompra.id}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>

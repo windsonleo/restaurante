@@ -143,7 +143,7 @@
           
           			<div class="controls">
 						 
-							<label>Código</label>	
+							<label>Codigo</label>	
 							<input id="id" name="id" type="text" class="form-control" value="${pedidovenda.id }" readonly="readonly"> 
 							<label>Data</label>	
 							<input id="data" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${pedidovenda.data}" />" readonly="readonly"> 
@@ -192,21 +192,21 @@
             <table class="table table-hover table-bordered data-table">
                                         <thead class="card-header" data-background-color="blue">
                                     <tr>
-                                        <th>Descrição</th>
+                                        <th>Descricao</th>
 <!-- 									    <th>Código</th> -->
 <!-- 									    <th>Descrição</th> -->
 									    <th>Qtd</th>
 									    
 									    <th>Preco Unitario</th>
-									    <th>Total</th>
+<!-- 									    <th>Total</th> -->
 <!-- 									    <th>Total Item</th> -->
-<!-- 									    <th>Total Item</th> -->
+									    <th>Situacao</th>
 									    
 <!-- 									     <th>Ativo?</th> -->
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -227,12 +227,15 @@
                        
                 </td>
 			     
-  				<td>
-  				 <fmt:formatNumber type="currency"
-                       value="${item.key.totalItem}"/>
+<!--   				<td> -->
+<%--   				 <fmt:formatNumber type="currency" --%>
+<%--                        value="${item.key.totalItem}"/> --%>
   				
   				
-  				</td>
+<!--   				</td> -->
+
+			     <td>${item.key.situacao}</td>
+
   				
 								<td class="options-width">
       								
@@ -249,8 +252,8 @@
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <button data-dismiss="modal" class="close" type="button">x</button>
+                <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

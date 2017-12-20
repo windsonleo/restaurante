@@ -7,7 +7,7 @@
 <div id="content">
   <div id="content-header">
 	</br>
-    <h2>Cadastro de Endereco :  ${cliente.nome }</h2>
+    <h4>Cadastro de Endereco :  ${cliente.nome }</h4>
   </div>
   <div class="container-fluid"><hr>
   
@@ -61,16 +61,15 @@
                                 
                                     <h4 class="title">Cadastro Endereco</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
                                 
           <div class="widget-content">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/cliente/addEndereco?id=${cliente.id}">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/cliente/addEndereco?id=${cliente.id}">
  
-                                              <div class="control-group">
+                           <div class="control-group">
 
                                     <div class="controls">
 
@@ -84,6 +83,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                
+                                    <div class="control-group">
+
+                                        <div class="controls">
+
+                                            <div class="input-prepend">
+                                                <span class="add-on">Cep</span>
+                                                <input id="cep" class="form-control" name="cep"
+                                                       type="text" value="${endereco.cep}"
+                                                       placeholder="Digite o Cep" onblur="pesquisacep(this.value);"/>
+
+                                            </div>
+                                        </div>
+                                    </div>                                
 
                                 <div class="control-group">
 
@@ -163,19 +177,7 @@
                                     </div>
 
 
-                                    <div class="control-group">
 
-                                        <div class="controls">
-
-                                            <div class="input-prepend">
-                                                <span class="add-on">Cep</span>
-                                                <input id="cep" class="form-control" name="cep"
-                                                       type="text" value="${endereco.cep}"
-                                                       placeholder="Digite o Cep" onblur="pesquisacep(this.value);"/>
-
-                                            </div>
-                                        </div>
-                                    </div>
 
 
                                     <div class="control-group">

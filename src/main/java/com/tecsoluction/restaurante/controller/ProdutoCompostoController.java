@@ -229,17 +229,17 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
 		 item.setCodigo(produto.getCodebar()); 
-		 item.setQtd(qtdbc); 
+//		 item.setQtd(qtdbc); 
 		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
 		 item.setDescricao(produto.getDescricao()); 
-		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
+//		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
 		 item.setSituacao(SituacaoItem.AGUARDANDO);
 
 //			
 			items = new HashMap<>();
 
-			produtocomposto.addItem(item, item.getQtd().toString());
+			produtocomposto.addItem(item, qtdbc.toString());
 			BigDecimal dec , dicvenda; 
 			dec = produtocomposto.getPrecocusto();
 			dicvenda = produtocomposto.getPrecovenda();

@@ -8,7 +8,6 @@
     <div id="content-header">
 		</br>
 		 </br>
-<!--         <h2>Cadastro de Cliente</h2> -->
     </div>
     <div class="container-fluid">
         <hr>
@@ -71,7 +70,7 @@
                                 </br>
           <div class="widget-content">
 
-						<form id="form" class="form-horizontal" method="post"
+						<form id="form" class="form-horizonta" method="post"
 							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente">
 
 								
@@ -91,12 +90,11 @@
                                         </div>
                                         </div>
 
-                                       <div class="form-group label-floating is-empty">
-                              <label class="control-label">Ativo</label>
-                                <input id="ativo" class="form-control pull-right" name="ativo" type="checkbox"
-                                       checked="${cliente.ativo}" disabled="true"/>
-                                 <span class="material-input"></span>
-                         </div>
+			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${cliente.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
 
                                        
 									<div class="form-group label-floating is-empty">

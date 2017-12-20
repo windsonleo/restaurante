@@ -11,7 +11,7 @@
     
     </br>
     </br>
-<!--     <h2>Cadastro de Pagamento</h2> -->
+
   </div>
   <div class="container-fluid"><hr>
   
@@ -70,21 +70,21 @@
 					
 					
 					<li class="active">
-						<a href="${pageContext.request.contextPath}/pagamento/desconto" role="ta" data-toggle="ta">
+						<a href="${pageContext.request.contextPath}/pagamento/desconto" role="tab" data-toggle="ta">
 							<i class="fa fa-money"></i>
 							Desconto
 						</a>
 					</li>
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/pagamento/acrescimo" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/pagamento/acrescimo" role="tab" data-toggle="ta">
 							<i class="fa fa-money"> </i>
 							Acrescimo
 						</a>
 					</li>
 					
 					<li  >
-						<a href="${pageContext.request.contextPath}/pagamento/cupom" role="tab" data-toggle="tab" >
+						<a href="${pageContext.request.contextPath}/pagamento/cupom" role="tab" data-toggle="ta" >
 							<i class="material-icons"> money</i>
 							Cupom
 						</a>
@@ -101,8 +101,7 @@
                                 
                                     <h4 class="title">Cadastro Pagamento</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
@@ -136,15 +135,13 @@
                                 
                                     <h4 class="title">Detalhes Pedido de Venda</h4>
                                     <p class="category">Confira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
                                 
           <div class="widget-content">
           
-<%-- 		     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/pagamento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate"> --%>
 		
 						<div class="control-group">
 							<label class="control-labe">Codigo</label>
@@ -191,14 +188,12 @@
                                 
                                     <h4 class="title">Adicionar Forma de Pagamento</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
-<!--           <div class="widget-content"> -->
 			
-			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizontal">
+			 <form action="${pageContext.request.contextPath}/pagamento/adicionarformapagamentopagamento" method="post" class="form-horizonta">
 			 		    
           <div class="control-group">
                 <label class="control-label"></label>
@@ -252,19 +247,14 @@
                                 
             <c:forEach var="formapagamento" items="${pagamento.formaPagamentos}" varStatus="id">
 
-<%-- 		<c:choose> --%>
-		
-<%-- 		  <c:when test="${formapagamento.id % 2 == 0}"> --%>
+
   
   <tr class="gradeX">
 
 			      <td>${formapagamento.id}</td>
                   <td>${formapagamento.nome}</td>
                   <td ><input type="text" value="${formapagamento.tipo}"></td>
-<%--                   <td><input type="text" value="${formapagamento.parcelas}"></td> --%>
-<%--                    <td>${formapagamento.percdesconto}</td> --%>
                     <td><input name="valorpagoform" type="text" value="" class="effect soma" onkeyup="up(this)" onBlur="calculapagamento();"/></td>
-<%--                    <td>${formapagamento.ativo}</td> --%>
 
 
 
@@ -272,17 +262,7 @@
 
 								<td class="options-width">
 								
-							 
-							
-      								
-<!--       								<a -->
-<%-- 									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}" --%>
-<!-- 									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"></a> -->
-									
-<!-- 										<a -->
-<%-- 									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}" --%>
-<!-- 									title="editar" class="fa fa-pencil fa-2x"></a> -->
-									
+							 				
 									
 									 <a
 									href="${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}"
@@ -317,16 +297,15 @@
                                 
                                     <h4 class="title">Detalhes Pagamento</h4>
                                     <p class="category">Confira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
 			
-			 <form  role="form" id="ds" class="form-horizontal" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
+			 <form  role="form" id="ds" class="form-horizonta" action="${pageContext.request.contextPath}/pagamento/add" ModelAttribute="pagamento" method="POST">
 			
 			
-			              <div class="control-group">
+			      <div class="control-group">
                 <label class="control-label">Id do Pedido</label>
                 <div class="controls">
 				
@@ -415,7 +394,6 @@
 </div>
 </div>
 </div>
-<!-- </div> -->
 
 
 					<div class="span4">
@@ -427,23 +405,10 @@
                                     
 
                                 </div>
-          <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizontal">       
+          <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizonta">       
 
 
-<!-- 						<div class="form-group label-floating"> -->
-<!-- <!--                               <label class="control-label">Cliente</label> --> 
-<%--                                 <input type="text" list="${clientesList}" id="id" --%>
-<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
-<!--                                        class="form-control"> -->
-                                       
-<!--                                  <span class="material-input"></span> -->
-<!--                          </div> -->
-
-
-
-
-
-                                   </br> 
+                              </br> 
                                    
                                    
             <div class="form-group label-floating is-empty">
@@ -474,10 +439,6 @@
 
 								<option value="${pagamento.formaPagamentos}"  selected="selected">${pagamento.formaPagamentos}</option>
 
-
-<%-- 								<c:forEach var="fornecedor" items="${fornecedorList}"> --%>
-<%-- 									<option value="${fornecedor.id}">${fornecedor.nomefantasia}</option> --%>
-<%-- 								</c:forEach> --%>
 
 
 							</optgroup>

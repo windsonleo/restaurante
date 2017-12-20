@@ -6,14 +6,11 @@
 
 <div id="content">
     <div id="content-header">
-<%--         <div id="breadcrumb"><a href="${pageContext.request.contextPath}/categoria/movimentacao" title="Go to Categoria" --%>
-<!--                                 class="tip-bottom"><i class="icon-icon"><img -->
-<%--                 src="${pageContext.request.contextPath}/resources/images/icons/16/categoria.png"/></i> Categoria</a> <a --%>
-<!--                 href="#">Movimentação Categoria</a> <a href="#" class="current">Cadastro Categoria</a></div> -->
-       	</br>
+
+     </br>
 	</br>
 	</br>
-<!--         <h2>Cadastro de Categoria</h2> -->
+
     </div>
     <div class="container-fluid">
         <hr>
@@ -68,40 +65,42 @@
                                 
                                     <h4 class="title">Cadastro Categoria</h4>
                                     <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+
                                 </div>
                                 
                                 </br>
           <div class="widget-content">
-                        <form class="form-horizontal" method="post"
+                        <form class="form-horizonta" method="post"
                               action="${pageContext.request.contextPath}/categoria/${acao}" name="basic_validate"
                               id="basic_validate" novalidate="novalidate">
 
-                            <div class="control-group">
-                                <label class="control-label">Ativo?</label>
-                                <div class="controls">
-                                    <input id="ativo" name="ativo" class="" type="checkbox"
-                                           checked="${categoria.ativo}"/>
-                                </div>
-                            </div>
+			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${categoria.ativo}" class="checkbox"/>Ativo?
+				</label>
+              </div>
 
-
+						<div class="form-group label-floating is-empty">
                             <div class="control-group">
                                 <label class="control-label">Id</label>
                                 <div class="controls">
                                     <input id="id" class="form-control" name="id" type="text" value="${categoria.id}"
-                                           placeholder="Digite o id" readonly/>
+                                           placeholder="" readonly/>
                                 </div>
                             </div>
+                            </div>
+                            
+                            <div class="form-group label-floating is-empty">
                             <div class="control-group">
                                 <label class="control-label">Nome</label>
                                 <div class="controls">
                                     <input id="nome" class="form-control" name="nome" type="text" value="${categoria.nome}"
-                                           placeholder="Digite o Nome da Categoria"/>
+                                           placeholder=""/>
                                 </div>
                             </div>
-
+                            </div>
+							
+							<div class="form-group label-floating is-empty">
                             <div class="control-group">
                                 <label class="control-label">Categoria Pai</label>
                                 <div class="controls">
@@ -123,6 +122,9 @@
 
                                 </div>
                             </div>
+                            </div>
+                            
+                            
                             <div class="form-actions">
                                 <input type="submit" value="${acao}" class="btn btn-success">
                             </div>

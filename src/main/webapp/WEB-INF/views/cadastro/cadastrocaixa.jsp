@@ -71,35 +71,33 @@
                                 
                                 </br>
           <div class="widget-content">
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/caixa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/caixa/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
-               <div class="control-group">
-                <label class="control-label">Ativo?</label>
-                <div class="controls">
-						<input id="ativo" name="ativo" class="" type="checkbox" checked="${caixa.ativo}"/>
-                </div>
+			<div class="checkbox">
+                <label>
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${caixa.ativo}" class="checkbox"/>Ativo?
+				</label>
               </div>
               
-              
+              <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${caixa.id}" placeholder="Digite o id" />
+						<input id="id" class="form-control" name="id" type="text" value="${caixa.id}" placeholder="" />
                 </div>
               </div>
+              </div>
+              
+              <div class="form-group label-floating is-empty">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${caixa.nome}" placeholder="Digite o Nome da Caixa"/>
+						<input id="nome" class="form-control" name="nome" type="text" value="${caixa.nome}" placeholder=""/>
                 </div>
               </div>
+              </div>
 
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">URL (Start with http://)</label> -->
-<!--                 <div class="controls"> -->
-<!--                   <input type="text" name="url" id="url"> -->
-<!--                 </div> -->
-<!--               </div> -->
+
               <div class="form-actions">
                 <input type="submit" value="${acao}" class="btn btn-success">
               </div>
@@ -108,63 +106,7 @@
         </div>
       </div>
     </div>
-<!--     <div class="row-fluid"> -->
-<!--       <div class="span12"> -->
-<!--         <div class="widget-box"> -->
-<!--           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
-<!--             <h5>Numeric validation</h5> -->
-<!--           </div> -->
-<!--           <div class="widget-content nopadding"> -->
-<!--             <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate"> -->
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Minimal Salary</label> -->
-<!--                 <div class="controls"> -->
-<!--                   <input type="text" name="min" id="min" /> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Maximum Salary</label> -->
-<!--                 <div class="controls"> -->
-<!--                   <input type="text" name="max" id="max" /> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="control-group"> -->
-<!--                 <label class="control-label">Only digit</label> -->
-<!--                 <div class="controls"> -->
-<!--                   <input type="text" name="number" id="number" /> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="form-actions"> -->
-<!--                 <input type="submit" value="Validate" class="btn btn-success"> -->
-<!--               </div> -->
-<!--             </form> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--       <div class="row-fluid"> -->
-<!--         <div class="span12"> -->
-<!--           <div class="widget-box"> -->
-<!--             <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span> -->
-<!--               <h5>Security validation</h5> -->
-<!--             </div> -->
-<!--             <div class="widget-content nopadding"> -->
-<!--               <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate"> -->
-<!--                 <div class="control-group"> -->
-<!--                   <label class="control-label">Password</label> -->
-<!--                   <div class="controls"> -->
-<!--                     <input type="password" name="pwd" id="pwd" /> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--                 <div class="control-group"> -->
-<!--                   <label class="control-label">Confirm password</label> -->
-<!--                   <div class="controls"> -->
-<!--                     <input type="password" name="pwd2" id="pwd2" /> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--                 <div class="form-actions"> -->
-<!--                   <input type="submit" value="Validate" class="btn btn-success"> -->
-<!--                 </div> -->
-<!--               </form> -->
+
             </div>
           </div>
       
