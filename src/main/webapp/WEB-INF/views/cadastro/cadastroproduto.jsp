@@ -82,7 +82,7 @@
 					ModelAttribute="produto" method="POST"  enctype="application/x-www-form-urlencoded">
 					
 					
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               
               <div class="checkbox">
                 <label>
@@ -92,7 +92,7 @@
               
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               
               <div class="checkbox">
                 <label>
@@ -103,7 +103,7 @@
               </div>
 					
 					         
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
               
               <div class="control-group">
                 <label class="control-label">Id</label>
@@ -116,7 +116,7 @@
               
               </div>
          
-		<div class="form-group label-floating is-empty">
+		<div class="form-group label-floating ">
 			
               <div class="control-group">
                 <label class="control-label">Codigo Barras</label>
@@ -133,7 +133,7 @@
              
              
              
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
@@ -148,7 +148,7 @@
 					</div>
 					
 					
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Descricao</label>
                 <div class="controls">						
@@ -164,7 +164,7 @@
 	
 
 
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
 
               <div class="control-group">
                 <label class="control-label">Categoria</label>
@@ -189,7 +189,7 @@
 					</div>
 					</div>
 					
-		<div class="form-group label-floating is-empty">
+		<div class="form-group label-floating ">
 
               <div class="control-group">
                 <label class="control-label">Unidade de Medida</label>
@@ -216,7 +216,7 @@
 
 
             
-               <div class="form-group label-floating is-empty">
+               <div class="form-group label-floating ">
                   <div class="control-group">
                 <label class="control-label">Preco Custo</label>
                 <div class="controls">
@@ -230,7 +230,7 @@
 						</div>
 					
 					
-               <div class="form-group label-floating is-empty">
+               <div class="form-group label-floating ">
                   <div class="control-group">
                 <label class="control-label">Preco Venda</label>
                 <div class="controls">					<input id="precovenda" class="form-control"
@@ -243,7 +243,7 @@
               </div>        
               
 
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
                <div class="control-group">
                 <label class="control-label">Fornecedor</label>
                 <div class="controls">
@@ -291,19 +291,34 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/${produto.foto}.jpg">
-                                    </a>
+                                        <c:choose>
+                                        
+											    <c:when test="${produto != null }">
+											    	
+											    	<img class="img" src="../resources/images/produto/${produto.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/produto/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>              
+			                      </a>
                                     
 
                                 </div>
+         
           <form method="post" action="salvarfotoproduto" enctype="multipart/form-data" class="form-horizonta">       
 
 
                                    </br> 
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
 
-									<div class="form-group is-empty is-fileinput">
+									<div class="form-group  is-fileinput">
 									    <input type="file" id="file" name="file" multiple="">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">

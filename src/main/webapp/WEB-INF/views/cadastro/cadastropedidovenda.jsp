@@ -79,7 +79,7 @@
 				</label>
               </div>
 			
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
  				<div class="control-group">
                 	<label class="control-label">Id</label>
                 		<div class="controls">						
@@ -89,10 +89,10 @@
                 		</div>
                 		                		
 						
-				<div class="form-group label-floating is-empty">
+				<div class="form-group label-floating-is-null">
  				<div class="control-group">
                 	<label class="control-label">Data</label>	
-				<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="form-control" type="text" value="<fmt:formatDate 
+				<input id="data" name="data" data-date="01-02-2013" data-date-format="dd-mm-yyyy" class="datepicker form-control" type="text" value="<fmt:formatDate 
                 pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder=""/>
                 </div>
                 </div>
@@ -211,7 +211,7 @@
 	                    
 	       
 	       
-	       				<div class="form-group label-floating is-empty">
+	       				<div class="form-group label-floating ">
  				<div class="control-group">
                 	<label class="control-label">Total</label>	             
 	    <input id="total" name="total" class="form-control" type="text" value="${pedidovenda.total }" readonly="readonly"/>					

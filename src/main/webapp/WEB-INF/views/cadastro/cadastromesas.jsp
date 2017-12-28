@@ -9,6 +9,7 @@
 	
 	</br>
 	 </br>
+<%-- 	 <p>${mesas.id}</p> --%>
 
   </div>
   <div class="container-fluid"><hr>
@@ -67,23 +68,23 @@
                                 
                                 </br>
           <div class="widget-content">
-            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/mesas/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/mesas/${acao}" ModelAttribute="mesa">
 			
 			
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               <div class="checkbox">
                 <label>
-				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${mesa.ativo}" class="checkbox"/>Ativo?
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${mesas.ativo}" class="checkbox"/>Ativo?
 				</label>
               </div>
               
               </div>
               
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${mesa.id}" placeholder="" />
+						<input id="id" class="form-control" name="id" type="text" value="${mesas.id}" placeholder="" />
                 </div>
               </div>
 				</div>
@@ -98,6 +99,7 @@
                   <select id="status"name="status"  class="form-control">
 	                                  <optgroup label="Status Da Mesa">		           			
 		           			
+		           					<option value="${mesas.status}">${mesas.status }</option>
 		           			
 		           				<c:forEach  var="status" items="${status }">
 		           					<option value="${status}">${status }</option>
@@ -113,12 +115,12 @@
               
               
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating">
               
               <div class="control-group">
                 <label class="control-label">Numero</label>
                 <div class="controls">
-						<input id="numero" class="form-control" name="numero" type="text" value="${mesa.numero}" placeholder=""/>
+						<input id="numero" class="form-control" name="numero" type="text" value="${mesas.numero}" placeholder=""/>
                 </div>
               </div>
 			</div>

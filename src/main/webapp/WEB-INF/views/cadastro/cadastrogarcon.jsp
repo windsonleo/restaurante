@@ -73,7 +73,7 @@
               
               
               
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
               
               <div class="checkbox">
                 <label>
@@ -87,7 +87,7 @@
               
               
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               
               <div class="control-group">
                 <label class="control-label">Id</label>
@@ -99,7 +99,7 @@
               </div>
               </div>
 
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
                 <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
@@ -112,7 +112,7 @@
               
               
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               
               <div class="control-group">
                 <label class="control-label">Nome</label>
@@ -143,7 +143,23 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/garcon/${garcon.foto}.jpg">
+                                     
+                                        <c:choose>
+                                        
+											    <c:when test="${garcon != null }">
+											    	
+											    	<img class="img" src="../resources/images/garcon/${garcon.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/garcon/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                  
+                                  
                                     </a>
                                     
 
@@ -153,11 +169,11 @@
 
                                     
                                     </br>
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
 									
-									<div class="form-group is-empty is-fileinput">
+									<div class="form-group  is-fileinput">
 									    <input type="file" id="file" name="file" multiple="">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">

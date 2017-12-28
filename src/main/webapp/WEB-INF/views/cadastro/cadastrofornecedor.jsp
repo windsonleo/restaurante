@@ -71,7 +71,7 @@
             <form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/fornecedor/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
               
               
-               <div class="form-group label-floating is-empty">
+               <div class="form-group label-floating ">
               
               			<div class="checkbox">
                 <label>
@@ -83,7 +83,7 @@
               
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
@@ -97,7 +97,7 @@
               
               
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Nome Fantasia</label>
                 <div class="controls">
@@ -110,7 +110,7 @@
               
               
                             
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Razao Social</label>
                 <div class="controls">
@@ -124,7 +124,7 @@
               
 
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Cnpj</label>
                 <div class="controls">
@@ -136,7 +136,7 @@
               </div>              
               
         
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
 
             <div class="control-group">
                 <label class="control-label">IE</label>
@@ -148,7 +148,7 @@
               
               </div> 
               
-                            <div class="form-group label-floating is-empty">
+                            <div class="form-group label-floating ">
 
             <div class="control-group">
                 <label class="control-label">Logo</label>
@@ -178,7 +178,24 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/fornecedor/${fornecedor.foto}.jpg">
+                                       
+                                        <c:choose>
+                                        
+											    <c:when test="${fornecedor != null }">
+											    	
+											    	<img class="img" src="../resources/images/fornecedor/${fornecedor.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/fornecedor/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                       
+                                   
+                                   
                                     </a>
                                     
 
@@ -188,11 +205,11 @@
 
                                     
                                     </br>
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
 									
-									<div class="form-group is-empty is-fileinput">
+									<div class="form-group  is-fileinput">
 									    <input type="file" id="file" name="file" multiple="">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">

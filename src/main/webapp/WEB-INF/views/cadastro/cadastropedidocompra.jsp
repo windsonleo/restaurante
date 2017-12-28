@@ -71,7 +71,7 @@
 					 action="${pageContext.request.contextPath}/pedidocompra/${acao}"
 					 ModelAttribute="pedidocompra" method="POST">
 
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
 
               			<div class="checkbox">
                 <label>
@@ -82,7 +82,7 @@
               
               </div>
               
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
               
               <div class="control-group">
                 <label class="control-label">Id</label>
@@ -92,7 +92,7 @@
               </div>
               </div>
 			 
-			 			<div class="form-group label-floating is-empty">
+			 			<div class="form-group label-floating ">
 			 
               <div class="control-group">
                 <label class="control-label">Data </label>
@@ -101,7 +101,7 @@
 				
 					<div  data-date="12-02-2012" class="input-append date datepicker">
 		                  <input type="text" value="    <fmt:formatDate pattern="dd/MM/yyyy" 
-                 value="${pedidcompra.total}"/>" id="data" name="data" data-date-format="dd-mm-yyyy" class="form-control" >
+                 value="${pedidcompra.total}"/>" id="data" name="data" data-date-format="dd-mm-yyyy" class="datepicker form-control" >
 		                  <span class="add-on"><i class="icon-th"></i></span> 
                   
                   </div>
@@ -115,7 +115,7 @@
               
 
 		
-					<div class="form-group label-floating is-empty">
+					<div class="form-group label-floating ">
 		
               <div class="control-group">
                 <label class="control-label">Status Pedido</label>
@@ -136,7 +136,7 @@
               
 
               
-              			<div class="form-group label-floating is-empty">
+              			<div class="form-group label-floating ">
               
                 <div class="control-group">
                 <label class="control-label">Fornecedor</label>
@@ -163,7 +163,7 @@
               
 
               
-              			<div class="form-group label-floating is-empty">
+              			<div class="form-group label-floating ">
               
                <div class="control-group">
                 <label class="control-label">Total</label>

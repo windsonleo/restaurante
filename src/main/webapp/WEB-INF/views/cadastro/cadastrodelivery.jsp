@@ -81,7 +81,7 @@
 <!--                                 </br> -->
           <div class="card-content">
 
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
  			<div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
@@ -93,7 +93,7 @@
               </div>
               </div>
 			 
-			 <div class="form-group label-floating is-empty">
+			 <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Endereco </label>
                 <div class="controls">
@@ -165,7 +165,7 @@
                 <label class="control-label">Data </label>
                 <div class="controls">
 				
-				<input id="data" name="data" class="form-control" type="text" value="<fmt:formatDate 
+				<input id="data" name="data" class="datepicker form-control" type="text" value="<fmt:formatDate 
                 pattern="dd/MM/yyyy"  value="${pedidovenda.data}"/>" placeholder=""/>
 				
 									<select id="cliente" name="cliente" class="form-control">
@@ -244,7 +244,22 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                      
+                                        <c:choose>
+                                        
+											    <c:when test="${cliente != null }">
+											    	
+											    	<img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+													<img class="img" src="../resources/images/cliente/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                    
                                     </a>
                                     
 

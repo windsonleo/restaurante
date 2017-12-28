@@ -58,7 +58,7 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="">
+                                <div class="card-header" data-background-color="blue">
                                     <h4 class="title">Dados do Usuario</h4>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
@@ -74,7 +74,7 @@
 				</label>
               </div>
               
-               <div class="control-group">
+               <div class="control-group label-floating">
                 <label class="control-label">UserName</label>
                 <div class="controls">
 							<input id="username" name="username" class="form-control" type="text" value="${usuario.username}" placeholder="Digite o UserName"/>
@@ -85,7 +85,7 @@
 
 
 
-              <div class="control-group">
+              <div class="control-group label-floating">
                 <label class="control-label">Senha</label>
                 <div class="controls">
 							<input id="senha" name="senha" class="form-control" type="text" value="${usuario.senha}" placeholder="Digite a Senha"/>					
@@ -96,7 +96,7 @@
 
 
 
-              <div class="control-group">
+              <div class="control-group label-floating">
                 <label class="control-label">Email</label>
                 <div class="controls">
 				
@@ -106,10 +106,10 @@
               </div>
 
 
-              <div class="control-group">
+              <div class="control-group label-floating">
                 <label class="control-label">Roles</label>
                 <div class="controls">
-			 <select id="roles"name="roles" multiple="multiple" class="span8" >
+			 <select id="roles"name="roles" multiple="multiple" class="form-control" >
 	                                  <optgroup label="Tipos de Permissoes do usuario">
 		           				
 		           					<option value="${usuario.roles}" selected="selected">${usuario.roles}</option>
@@ -135,8 +135,8 @@
 	 	 
 			
 			<div class="form-actions">
-				<button type="submit"class="btn btn-md btn-success">Cadastrar</button>
-				<a href='javascript:history.back(1)' class="btn btn-md btn-info" >Voltar</a>
+				<button type="submit"class="btn btn-sm btn-success">Cadastrar</button>
+				<a href='javascript:history.back(1)' class="btn btn-sm btn-info" >Voltar</a>
 			</div>
 			
 			</form>

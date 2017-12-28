@@ -58,6 +58,7 @@ public class PedidoCompra extends Pedido implements Serializable {
     @MapKeyColumn(name = "idit")
     private Map<Item, String> items = new HashMap<>();
 
+    
     //CONSTRUTOR PADRAO
     public PedidoCompra() {
         super();

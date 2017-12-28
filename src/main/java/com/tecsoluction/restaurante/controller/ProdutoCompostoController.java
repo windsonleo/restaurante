@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tecsoluction.restaurante.entidade.Categoria;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.ProdutoComposto;
 import com.tecsoluction.restaurante.entidade.Usuario;
@@ -70,7 +71,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 	private ProdutoComposto produtocomposto = null;
 
-	private double totalitem = 0.00;
+	private BigDecimal totalitem = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 	
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
@@ -169,14 +170,37 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		produtosList = produtoService.findAll();
 
-		  totalpedido = produtocomposto.getPrecocusto();
+//		  totalpedido = produtocomposto.getPrecocusto();
+//		  totalitem ;
+
+//		produtocomposto.setPrecocusto(produtocomposto.CalcularTotalCusto());
+//		produtocomposto.setPrecovenda(produtocomposto.CalcularTotalVenda());
 
 //	        DecimalFormat df = new DecimalFormat("0.##");
 //	        String totalformatado = df.format(totalpedido);
+		
+		
+//		 BigDecimal total =  new BigDecimal(0.00);
+		 
+//		 BigDecimal qtd =  new BigDecimal(0.00);
+
+
+	        // mudar para trazer pelo id da mesa e pelo status da mesa
+
+//	        for (Item item : produtocomposto.getItens_prodcomp().keySet()) {
+//	        	
+//	        	BigDecimal qtd =  new BigDecimal(produtocomposto.getItens_prodcomp().get(item));
+//	        
+//
+//	            total = total.add(item.getPrecoUnitario().multiply(qtd));
+//	            
+//	            item.setTotalItem(total);
+//
+//	        }
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList);
-		additemprodutocomposto.addObject("totalitem", totalpedido);
+//		additemprodutocomposto.addObject("totalpedido", totalpedido);
 
 		
         logger.info("Add Item ao Produto Composto Form!", produtocomposto);
@@ -240,17 +264,18 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 			items = new HashMap<>();
 
 			produtocomposto.addItem(item, qtdbc.toString());
-			BigDecimal dec , dicvenda; 
-			dec = produtocomposto.getPrecocusto();
-			dicvenda = produtocomposto.getPrecovenda();
-			produtocomposto.setPrecocusto(dec);
-			produtocomposto.setPrecovenda(dicvenda);
+//			BigDecimal dec , dicvenda; 
+//			dec = produtocomposto.getPrecocusto();
+//			dicvenda = produtocomposto.getPrecovenda();
+			
+			produtocomposto.setPrecocusto(produtocomposto.getPrecocusto());
+			produtocomposto.setPrecovenda(produtocomposto.CalcularTotalVenda());
 			
 		getservice().edit(produtocomposto);
 
 		additemprodutocomposto.addObject("produtocomposto", produtocomposto);
 		additemprodutocomposto.addObject("produtosList", produtosList); 
-		additemprodutocomposto.addObject("totalitem",  produtocomposto.getPrecocusto()); 
+//		additemprodutocomposto.addObject("totalitem",  produtocomposto.getPrecocusto()); 
 
         logger.info("Salvar Item ao Produto Composto BD!", produtocomposto);
 

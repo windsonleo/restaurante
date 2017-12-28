@@ -76,7 +76,7 @@
 				</label>
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Id</label>
                 <div class="controls">
@@ -86,7 +86,7 @@
               </div>
               </div>
     			
-    			<div class="form-group label-floating is-empty">
+    			<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
@@ -97,10 +97,11 @@
                </div>
                </div>
                
-             <div class="form-group label-floating is-empty">
+             <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Tipos</label>
-                                    <select id="tipo"name="tipo"  class="form-control">
+                               
+			    <select id="tipo"name="tipo"  class="form-control">
 	                                  <optgroup label="Tipos de Formas de Pagamento">
 		           				
 		           					<option value="${formapagamento.tipo}">${formapagamento.tipo}</option>
@@ -119,7 +120,7 @@
 
               
               
-         <div class="form-group label-floating is-empty">
+         <div class="form-group label-floating ">
               
             <div class="control-group">
                 <label class="control-label">Parcelas</label>

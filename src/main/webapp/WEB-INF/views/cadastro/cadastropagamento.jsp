@@ -411,7 +411,7 @@
                               </br> 
                                    
                                    
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
                <div class="control-group">
 
                 <label class="control-label">Pedido</label>
@@ -427,7 +427,7 @@
                                    
                                    
                                    
-          <div class="form-group label-floating is-empty">
+          <div class="form-group label-floating ">
                <div class="control-group">
 
                 <label class="control-label">Formas Pagamento</label>
@@ -448,7 +448,7 @@
               </div>  
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
                <div class="control-group">
 
                 <label class="control-label">Total</label>
@@ -463,7 +463,7 @@
               </div>
               
               
-            <div class="form-group label-floating is-empty">
+            <div class="form-group label-floating ">
                <div class="control-group">
 
                 <label class="control-label">Caixa</label>

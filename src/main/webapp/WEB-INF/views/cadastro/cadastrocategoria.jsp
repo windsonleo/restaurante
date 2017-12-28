@@ -80,7 +80,7 @@
 				</label>
               </div>
 
-						<div class="form-group label-floating is-empty">
+						<div class="form-group label-floating ">
                             <div class="control-group">
                                 <label class="control-label">Id</label>
                                 <div class="controls">
@@ -90,7 +90,7 @@
                             </div>
                             </div>
                             
-                            <div class="form-group label-floating is-empty">
+                            <div class="form-group label-floating ">
                             <div class="control-group">
                                 <label class="control-label">Nome</label>
                                 <div class="controls">
@@ -100,7 +100,7 @@
                             </div>
                             </div>
 							
-							<div class="form-group label-floating is-empty">
+							<div class="form-group label-floating ">
                             <div class="control-group">
                                 <label class="control-label">Categoria Pai</label>
                                 <div class="controls">

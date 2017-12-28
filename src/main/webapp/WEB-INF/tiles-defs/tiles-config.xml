@@ -190,13 +190,37 @@
 
 	</definition>
 	
-<!-- 		<definition name="cadastroproduto" extends="defaultTemplate"> -->
-<!-- 		<put-attribute name="conteudo" -->
-<!-- 			value="/WEB-INF/views/cadastro/cadastroproduto.jsp" /> -->
+		<definition name="cadastroreserva" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastroreserva.jsp" />
 
-<!-- 	</definition> -->
+	</definition>
+	
+			<definition name="cadastrodevolucaocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrodevolucaocompra.jsp" />
+
+	</definition>
 	
 	
+				<definition name="cadastrodevolucaovenda" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrodevolucaovenda.jsp" />
+
+	</definition>
+	
+					<definition name="cadastrocontaspagar" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrocontaspagar.jsp" />
+
+	</definition>
+	
+	
+						<definition name="cadastrocontasreceber" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cadastro/cadastrocontasreceber.jsp" />
+
+	</definition>
 	
 
 <!-- MOVIMENTAÇÃO -->
@@ -315,9 +339,39 @@
 
 	</definition>
 	
-				<definition name="cozinha" extends="defaultTemplate">
+	<definition name="cozinha" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/movimentacao/cozinha.jsp" />
+
+	</definition>
+	
+		<definition name="movimentacaoreserva" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaoreserva.jsp" />
+
+	</definition>
+	
+			<definition name="movimentacaodevolucaocompra" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaodevolucaocompra.jsp" />
+
+	</definition>
+	
+				<definition name="movimentacaodevolucaovenda" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaodevolucaovenda.jsp" />
+
+	</definition>
+	
+					<definition name="movimentacaocontaspagar" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaocontaspagar.jsp" />
+
+	</definition>
+	
+						<definition name="movimentacaocontasreceber" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/movimentacao/movimentacaocontasreceber.jsp" />
 
 	</definition>
 	

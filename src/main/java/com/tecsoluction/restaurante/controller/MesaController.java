@@ -95,8 +95,7 @@ public class MesaController extends AbstractController<Mesa> {
         model.addAttribute("mesasList", mesas);
         model.addAttribute("clientesList", clientes);
         model.addAttribute("garconsList", garcons);
-        model.addAttribute("produtosList", produtos);
-        
+        model.addAttribute("produtosList", produtos); 
         model.addAttribute("status", status);
 
 
@@ -163,7 +162,7 @@ public class MesaController extends AbstractController<Mesa> {
 //
 //        mesassalao.addObject("garconsList", garcons);
 //
-//        mesassalao.addObject("produtosList", produtos);
+//        mesassalao.addObject("total",);
 
 
         return mesassalao;

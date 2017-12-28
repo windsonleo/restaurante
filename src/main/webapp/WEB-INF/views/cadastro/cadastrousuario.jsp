@@ -77,7 +77,7 @@
 
 
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
               			<div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${usuario.ativo}" class="checkbox"/>Ativo?
@@ -86,7 +86,7 @@
               </div>
 <!--               </div> -->
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating ">
                <div class="control-group">
                 <label class="control-label">UserName</label>
                 <div class="controls">
@@ -98,7 +98,7 @@
 				</div>
 				
 
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Senha</label>
                 <div class="controls">
@@ -110,7 +110,7 @@
 
 			</div>
 			
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Email</label>
                 <div class="controls">
@@ -122,7 +122,7 @@
 
 				</div>
 				
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
@@ -134,7 +134,7 @@
 
 				</div>
 				
-				<div class="form-group label-floating is-empty">
+				<div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Roles</label>
                 <div class="controls">
@@ -189,7 +189,22 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/usuario/${usuario.foto}.jpg">
+                                    
+                                        <c:choose>
+                                        
+											    <c:when test="${usuario != null }">
+											    	
+											    	<img class="img" src="../resources/images/usuario/${usuario.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/usuario/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                    
                                     </a>
                                     
 
@@ -199,11 +214,11 @@
 
                                     
                                     </br>
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
 									
-									<div class="form-group is-empty is-fileinput">
+									<div class="form-group  is-fileinput">
 									    <input name="file" type="file" id="file" multiple="">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">

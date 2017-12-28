@@ -1,22 +1,24 @@
 package com.tecsoluction.restaurante.entidade;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.util.StatusConta;
+import com.tecsoluction.restaurante.util.StatusDevolucao;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 @Getter
@@ -27,14 +29,13 @@ import java.util.List;
 public abstract class Devolucao extends BaseEntity {
 
 
-    private static final long serialVersionUID = 1L;
-
-
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
-    private String status;
+    
+    @Enumerated(EnumType.STRING)
+    private StatusDevolucao status;
 
     
     public Devolucao() {
@@ -45,6 +46,10 @@ public abstract class Devolucao extends BaseEntity {
     public String toString() {
         return "ID DEVOLUCAO:" + id;
     }
+    
+    
+    
+    
 
 
 }

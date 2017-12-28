@@ -136,7 +136,8 @@
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
-                                    <h3 class="title">R$ 100,00
+                                    <h3 class="title"><fmt:formatNumber type="currency"
+                       value="${total}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
@@ -182,7 +183,8 @@
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
-                                    <h3 class="title">R$ 100,00
+                                    <h3 class="title"><fmt:formatNumber type="currency"
+                       value="${total}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
@@ -219,7 +221,7 @@
                      
                         <div class="span4">
                             <div class="card card-stats">
-                                <div class="card-header" data-background-color="purple">
+                                <div class="card-header" data-background-color="">
 									<i class="icon-table"></i>
                                 </div>
                                 <div class="card-content">
@@ -228,7 +230,8 @@
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
-                                    <h3 class="title">R$ 100,00
+                                    <h3 class="title"><fmt:formatNumber type="currency"
+                       value="${mesa.CalcularTotal}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
@@ -427,7 +430,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Selecione a Mesa</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Abrir Mesa</h4>
       </div>
       <div class="modal-body">
         <form action="abrirmesa" method="get" >
@@ -505,7 +508,7 @@
           <div class="form-group">
                     <div class="form-group label-floating is-empty">
                         <label class="control-label">Qtd Pessoas</label>
-							<input id="qtd" name="qtd"  class="form-control" type="text" value="1"
+							<input id="qtd" name="qtd"  class="form-control" type="text" value=""
                              		autocomplete="off"/>
                      				  <span class="material-input"></span>
                     </div>
@@ -522,6 +525,7 @@
                                  </div> 
           
           <button type="submit"  class="btn btn-info" >Abrir Mesa</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           
         </form>
         
@@ -529,7 +533,6 @@
       
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         
       </div>
       
@@ -544,7 +547,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Selecione a Mesa</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Fechar Mesa</h4>
       </div>
       <div class="modal-body">
        
@@ -580,6 +583,7 @@
           </div>
           
                   <button type="submit" class="btn btn-info">Fechar Mesa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           
           
 <!--           <div class="form-group"> -->
@@ -596,7 +600,6 @@
       </div>
       <div class="modal-footer">
       
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
       
     </div>

@@ -173,7 +173,7 @@
 					
 					<input id="precocusto" class="form-control"
 						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
-                       value="${totalitem}"/>"
+                       value="${produtocomposto.precocusto}"/>"
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
 					<input id="precovenda" class="form-control"
@@ -222,7 +222,7 @@
 									    <th>Qtd</th>
 									    <th>Preco Unitario</th>
 									    <th>Situacao</th>
-<!-- 									    <th>Total Item</th> -->
+									    <th>Total </th>
 									    
 <!-- 									     <th>Ativo?</th> -->
 <!-- 									     <th>Pagamentos</th> -->
@@ -249,15 +249,18 @@
                        
                 </td>
 			     
-<!--   				<td> -->
+
+
+  					<td>${item.key.situacao}</td>
+  					
+<%--   					 <td>${}</td> --%>
+  					
+  				<td>
 <%--   				 <fmt:formatNumber type="currency" --%>
-<%--                        value="${item.key.totalItem}"/> --%>
+<%--                        value="${item.totalItem}"/> --%>
   				
   				
-<!--   				</td> -->
-
-  <td>${item.key.situacao}</td>
-
+  				</td>
 
 								<td class="options-width">
 								
@@ -324,18 +327,33 @@
                      
 					
                             <div class="card card-profile">
+                               
                                 <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/${produtocomposto.foto}.jpg">
-                                    </a>
+                                     <a href="#pablo">
+                                        <c:choose>
+                                        
+											    <c:when test="${produtocomposto != null }">
+											    	
+											    	<img class="img" src="../resources/images/produtocomposto/${produtocomposto.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/produtocomposto/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>              
+			                      </a>
                                     
 
                                 </div>
-                        <form action="LocalizarClienteGerencia" method="POST" class="">
+                        <form action="LocalizarClienteGerencia" method="POST" class="form">
 
 
                                     
-                                    </br>
+<!--                                     </br> -->
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
@@ -345,25 +363,45 @@
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">
 									        <span class="input-group-btn input-group-sm">
-									          <button type="button" class="btn btn-fab btn-fab-mini">
+									          <button type="button" class="btn btn-fab btn-fab-mini btn-danger ">
 									            <i class="material-icons">attach_file</i>
 									          </button>
 									        </span>
 									    </div>
 									</div>
+									<span class="material-input"></span>
+                         		</div>
 									
 									 <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">Salvar Foto</button>
-									
-                                       
-                                 <span class="material-input"></span>
-                         		</div>
+
                                     
                                   </form>
                                   
                                 <div class="content">
                                     
-                                    <h4><p class="card-content text-gray">${produtocomposto.nome} ${produtocomposto.categoria}
-                                     <p class="card-content pull-left">${produtocomposto.id} </p> </h4> </p>
+			 
+             <h3 class="text-gray">
+                
+           
+                 <p class="text-success">
+                 	
+     				<sup style="font-size:1em;">${produtocomposto.nome} </sup> 
+     				
+     				 <label class="small-box-footer">${produtocomposto.descricao}</label>
+			                       
+                  </p>
+                  
+                    <strong> 
+                 	 
+                 	 	<fmt:formatNumber type="currency" value="${produtocomposto.precocusto}"/>
+                 	 	
+					</strong> 
+                                   
+                                   
+                                   
+                                     <label class="text-lg text-danger">${produtocomposto.id} </label>  
+                                     
+                                     </h3>
 <!--                                     <p class="card-content"> -->
 <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
 <!--                                     </p> -->

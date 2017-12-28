@@ -76,14 +76,19 @@
  	<form class="form-horizonta" method="post" action="${pageContext.request.contextPath}/recebimento/${acao}" name="basic_validate" id="basic_validate" novalidate="novalidate">
 
            
-             <div class="control-group">
+              <div class="form-group label-floating ">
+                            <div class="control-group">
+              
 							<label class="control-label">Código</label>
 							<div class="controls">
 							<input id="id" name="id" type="text" class="form-control" value="${recebimento.id }"> 
 							
 							
 							</div>
+							</div>
 						</div>
+
+              <div class="form-group label-floating ">
 
              <div class="control-group">
                 <label class="control-label">Data</label>
@@ -91,14 +96,30 @@
 				
 				
 				
-				<input id="text" name="data" type="text" class="form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.data}"/>">
+				<input id="text" name="data" type="text" class="datepicker form-control" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${recebimento.data}"/>">
 				
-				<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra }" placeholder="Digite o numero do Pedido de Compra"> 				
 				
                 </div>
               </div>
+              </div>
               
-           		        
+            <div class="form-group label-floating ">
+              
+             <div class="control-group">
+                <label class="control-label">Pedido Compra</label>
+                <div class="controls">
+				
+				
+				
+           		<input id="pedidocompra" name="pedidocompra" type="text" class="form-control" value="${recebimento.pedidocompra }" placeholder=""> 				
+				
+				
+                </div>
+              </div>
+              </div> 
+              
+                           
+              <div class="form-group label-floating ">
                  <div class="control-group">
                 <label class="control-label">Status Pedido</label>
                 <div class="controls">
@@ -114,8 +135,20 @@
 		           				
 		       				</c:forEach>
 		                </optgroup>
-	                    </select>	
+	                    </select>
 	                    
+	                    </div>
+	                    </div>
+	                    </div>
+	                    
+	             
+	             
+	             
+	              <div class="form-group label-floating ">
+                 <div class="control-group">
+                <label class="control-label">Fornecedor</label>
+                <div class="controls">
+                       
 	          <select id="fornecedor"name="fornecedor"  class="form-control" >
 	                                  <optgroup label="Escolha o Fornecedor">
 		           					
@@ -130,18 +163,19 @@
 		                </optgroup>
              </select>	
 	                    
-	                    			
+	               </div>
+	               </div>     			
 				
                 </div>
-              </div>           						
 
               
+ 			<div class="form-group label-floating ">
 
               <div class="control-group">
                 <label class="control-label">Items</label>
                 <div class="controls">
 	 				<select id="items"name="items" multiple="multiple" class="form-control" >
-	                                  <optgroup label="Items">
+	                                  <optgroup label="">
 		           						           				
 		           				
 		           					<c:forEach var="item" items="${recebimento.items}">
@@ -154,6 +188,8 @@
 	                    </select>			
 				
                 </div>
+              </div>
+              
               </div>
               
               	   <div class="form-actions">

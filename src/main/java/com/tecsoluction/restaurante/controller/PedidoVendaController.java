@@ -186,6 +186,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //            itemService.save(key);
 
         }
+        
 
         pv.setStatus(StatusPedido.FECHADO);
         pv.setIspago(true);
@@ -388,6 +389,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
         
         }
+        
+        
         
         return cozinha;
         

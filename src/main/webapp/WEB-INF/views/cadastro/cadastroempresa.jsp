@@ -72,35 +72,73 @@
               
               
               
-               <div class="checkbox">
+             <div class="form-group label-floating ">
+              
+              <div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${empresa.ativo}" class="checkbox"/>Ativo?
 				</label>
+              </div>
+              
               </div>
               
               
               
               
               
-              <div class="control-group">
+              <div class="form-group label-floating">
                 <label class="control-label">Id</label>
                 <div class="controls">
-						<input id="id" class="form-control" name="id" type="text" value="${empresa.id}" placeholder="Digite o id" />
-                		                		
-                		<input id="ativo" name="ativo" class="form-control" type="checkbox" checked="${empresa.ativo}"/>
-                
+						<input id="id" class="form-control" name="id" type="text" value="${empresa.id}" placeholder="" />
+                		                		                
                 
                 </div>
               </div>           
               
               
               
-              <div class="control-group">
-                <label class="control-label">Nome</label>
+              <div class="form-group label-floating">
+                <label class="control-label">Nome Fantasia</label>
                 <div class="controls">
-						<input id="nome" class="form-control" name="nome" type="text" value="${empresa.nome}" placeholder="Digite o Nome da Empresa"/>
+						<input id="nomefantasia" class="form-control" name="nomefantasia" type="text" value="${empresa.nomefantasia}" placeholder=""/>
                         
-                         <input id="logo" class="form-control" name="logo" type="text" value="${empresa.logo}" placeholder="Inclua Sua Logomarca"/>					
+               
+                </div>
+              </div>
+              
+               
+                             <div class="form-group label-floating">
+                <label class="control-label">Razao Social</label>
+                <div class="controls">
+						<input id="razaosocial" class="form-control" name="razaosocial" type="text" value="${empresa.razaosocial}" placeholder=""/>
+                        
+               
+                </div>
+              </div> 
+              
+                 <div class="form-group label-floating">
+                <label class="control-label">CNPJ</label>
+                <div class="controls">
+						<input id="cnpj" class="form-control" name="cnpj" type="text" value="${empresa.cnpj}" placeholder=""/>
+                        
+               
+                </div>
+              </div>
+              
+              <div class="form-group label-floating">
+                <label class="control-label">Inscricao Estadual</label>
+                <div class="controls">
+						<input id="inscricaoestadual" class="form-control" name="inscricaoestadual" type="text" value="${empresa.inscricaoestadual}" placeholder=""/>
+                        
+               
+                </div>
+              </div>                
+                
+                <div class="form-group label-floating">
+                <label class="control-label">Logo</label>
+                <div class="controls">
+                                <input id="logo" class="form-control" name="logo" type="text" value="${empresa.logo}" placeholder=""/>					
+                        
                
                 </div>
               </div>
@@ -124,42 +162,70 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/empresa/${empresa.logo}.jpg">
+                                       
+                                        <c:choose>
+                                        
+											    <c:when test="${empresa != null }">
+											    	
+											    	<img class="img" src="../resources/images/empresa/${empresa.logo}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/empresa/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>
                                     </a>
                                     
 
                                 </div>
                         
-                        <form action="LocalizarClienteGerencia" method="POST" class="">
+                        <form action="salvarfotoempresa" enctype="multipart/form-data"  method="POST" class="">
+                        
+                        
+                        <div class="form-group  is-fileinput">
+									    <input type="file" id="file" name="file" multiple="">
+									    <div class="input-group">
+									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">
+									        <span class="input-group-btn input-group-sm">
+									          <button type="button" class="btn btn-fab btn-fab-mini">
+									            <i class="material-icons">attach_file</i>
+									          </button>
+									        </span>
+									    </div>
+									</div>
 
 
-						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
-                                <input type="text" list="${clientesList}" id="id"
-                                       placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off"
-                                       class="form-control">
+<!-- 						<div class="form-group label-floating"> -->
+<!-- <!--                               <label class="control-label">Cliente</label> --> 
+<%--                                 <input type="text" list="${clientesList}" id="id" --%>
+<!--                                        placeholder="Digite o Codigo do Cliente" name="id" autocomplete="off" -->
+<!--                                        class="form-control"> -->
                                        
-                                 <span class="material-input"></span>
-                         </div>
+<!--                                  <span class="material-input"></span> -->
+<!--                          </div> -->
 
 
 
 
-                                <datalist id="${clientesList}">
+<%--                                 <datalist id="${clientesList}"> --%>
 
-                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
 
-                                        <option value="${client.id }"> ${client.nome } </option>
+<%--                                         <option value="${client.id }"> ${client.nome } </option> --%>
 
-                                    </c:forEach>
+<%--                                     </c:forEach> --%>
 
 
-                                </datalist>
+<!--                                 </datalist> -->
                                     
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-danger btn-round btn-sm">Upload</button>
+                                   <button type="submit" class="btn btn-info btn-round btn-md">Upload</button>
 
                                        
                                  <span class="material-input"></span>

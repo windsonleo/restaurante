@@ -67,55 +67,79 @@ public class ProdutoComposto extends Produto implements Serializable {
     public BigDecimal getPrecocusto() {
     
     	
-    	return  CalcularTotalCusto(getItens_prodcomp());
+    	return  CalcularTotalCusto();
     }
 //    
 //    
 	@Override
 	public BigDecimal getPrecovenda() {
 
-		BigDecimal mult = new BigDecimal(2.00);
+//		BigDecimal mult = new BigDecimal(2.00);
 		
-		return CalcularTotalVenda(getItens_prodcomp());
+		return CalcularTotalVenda();
 
 		}
     
 
-    public BigDecimal CalcularTotalCusto(Map<Item, String> pitens) {
+    public BigDecimal CalcularTotalCusto() {
 
     	BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
+    	BigDecimal qtdBigaux = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
 
-        for (Item key : pitens.keySet()) {
-            
-//        	totalpedido = totalpedido.add(key.getTotalItem());
+        for (Item key : getItens_prodcomp().keySet()) {
+                    	
+        	
+        	String qtd = getItens_prodcomp().get(key);
+        	
+        	qtdBigaux = new  BigDecimal(qtd);
+        	
+        	
+        	BigDecimal itemvalor = new BigDecimal(key.getPrecoUnitario().toString());
+        	
+        	
+        	totalpedido = totalpedido.add(itemvalor.multiply(qtdBigaux));
+
+        	
+//        	totalpedido = totalpedido.add(totalped);
+        	
+//        	totalpedido = totalpedido.add(totalped);
+
+        	
+        	
         }
+        
+        
 
         return totalpedido;
     }
     
-    public BigDecimal CalcularTotalVenda(Map<Item, String> pitens) {
+    public BigDecimal CalcularTotalVenda() {
 
-    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
-    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+    	BigDecimal totalpedido = new BigDecimal("0.000").setScale(4, RoundingMode.UP);
+    	BigDecimal qtdAuxBig = new BigDecimal("0.000").setScale(2, RoundingMode.UP);
+    	BigDecimal lucro = new BigDecimal("1.50").setScale(2, RoundingMode.UP);
 
 
 
-        for (Item key : pitens.keySet()) {
+        for (Item key : getItens_prodcomp().keySet()) {
         	
         	//QTD ITEM
-        	String total = pitens.get(key);
         	
-        	totalpedidoaux = new  BigDecimal(total);
+        	String qtd = getItens_prodcomp().get(key);
         	
-        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+        	qtdAuxBig = new  BigDecimal(qtd);
         	
-        	totalped.multiply(totalpedidoaux);
+        	BigDecimal itemvalor = new BigDecimal(key.getPrecoUnitario().toString());
         	
-
-        	totalpedido = totalpedido.add(totalped);
+        	totalpedido = totalpedido.add(itemvalor.multiply(qtdAuxBig));
+        	
+        	//total custo
+//        	 = totalpedido.add(totalped);
             
         }
+        
+        totalpedido = totalpedido.multiply(lucro);
 
 //        return totalpedido.multiply(new BigDecimal("1.5"));
         
@@ -145,14 +169,14 @@ public class ProdutoComposto extends Produto implements Serializable {
     public BigDecimal getTotalCompostoCusto(){
     	
     	
-    	return  CalcularTotalCusto(getItens_prodcomp());
+    	return  CalcularTotalCusto();
     }
     
     
     public BigDecimal getTotalCompostoVenda(){
     	
     	
-    	return  CalcularTotalVenda(getItens_prodcomp());
+    	return  CalcularTotalVenda();
     }
 
 

@@ -11,6 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -43,6 +44,9 @@ public class Mesa extends BaseEntity implements Serializable {
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name = "mesa_permanencia", joinColumns = @JoinColumn(name = "id"))
     private Set<Integer> minutos;
+    
+    @Transient
+    private BigDecimal total ;
 
     
     
@@ -56,6 +60,26 @@ public class Mesa extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         return numero.toUpperCase();
+    }
+    
+    
+    public BigDecimal CalcularTotal(){
+    	
+    	  total =  new BigDecimal(0.00);
+
+         // mudar para trazer pelo id da mesa e pelo status da mesa
+         
+    	  if(this.status == StatusMesa.ABERTA){
+    	  
+         for (PedidoVenda pedidoVenda : getPedidos()) {
+
+             total = total.add(pedidoVenda.getTotal());
+
+         }
+         
+    	  } // if
+    	
+    	return total;
     }
 
 }

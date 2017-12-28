@@ -46,13 +46,13 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="">
+                                <div class="card-header" data-background-color="blue">
        							 <h3 class="title"> Gerencia de Clientes</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
                        
 
-						<div class="form-group label-floating is-empty">
+						<div class="form-group label-floating  ">
               <div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
@@ -61,7 +61,7 @@
                          </div>
 
                                        
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Nome</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -73,7 +73,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Email</label>
 															<input id="mask-mail" class="form-control" name="email"
                                                                              type="text"
@@ -82,7 +82,7 @@
                                     </div>
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="form-control">Genero</label>
 											<select id="genero" name="genero" class="">
                                    
@@ -94,7 +94,7 @@
                                				  <span class="material-input"></span>
                                     </div>
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Telefone</label>
 											<input id="mask-phone" class="form-control" name="telefone"
                                                                                 type="text"
@@ -103,12 +103,12 @@
                                				  <span class="material-input"></span>
                                     </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Data de Nascimento</label>
 											 <input id="datanascimento" type="text" data-date="01-02-2013"
                                            data-date-format="dd-mm-yyyy"
                                            value="<fmt:formatDate pattern="dd/MM/yyyy"
-                                             value="${cliente.datanascimento}"/>" class="form-control" name="datanascimento">
+                                             value="${cliente.datanascimento}"/>" class="datepicker form-control" name="datanascimento">
                                				  <span class="material-input"></span>
                                     </div>
                                     
@@ -128,7 +128,7 @@
                                     <p class="category">Informacoes Gerenciais</p>
                                 </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Margem de Lucro</label>
 											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
@@ -136,7 +136,7 @@
                                     </div>
                                     
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -144,7 +144,7 @@
                                     </div> 
                                     
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -174,7 +174,28 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                       
+<%--                                        <c:if test="${cliente != null }"> <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg"></c:if> --%>
+<%--                                         <c:if test="${cliente == null }"> <img class="img" src="../resources/images/cliente/vazio.jpg"></c:if> --%>
+                                        
+                                        <c:choose>
+                                        
+											    <c:when test="${cliente != null }">
+											    	
+											    	<img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+													<img class="img" src="../resources/images/cliente/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>
+                                       
+<%--                                         <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg"> --%>
+                                   
                                     </a>
                                     
 
@@ -205,7 +226,7 @@
 
                                 </datalist>
                                     
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating  ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
  								<button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>

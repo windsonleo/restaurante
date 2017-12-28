@@ -39,13 +39,13 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="">
+                                <div class="card-header" data-background-color="blue">
                                     <h3 class="title">Gerencia Garcon</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
                        
 
-						<div class="form-group label-floating is-empty">
+						<div class="form-group label-floating  ">
               <div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${garcon.ativo}" class="checkbox"/>Ativo?
@@ -54,7 +54,7 @@
                          </div>
 
                                        
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Nome</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -66,7 +66,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Foto</label>
 															<input id="mask-mail" class="form-control" name="foto"
                                                                              type="text"
@@ -76,7 +76,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Pedidos</label>
 											  <select id="pedidos"name="pedidos" multiple="multiple" class="form-control" >
 	                                  <optgroup label="">
@@ -105,7 +105,7 @@
                                     <p class="category">Informacoes Gerenciais</p>
                                 </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Margem de Lucro</label>
 											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
@@ -113,7 +113,7 @@
                                     </div>
                                     
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -121,7 +121,7 @@
                                     </div> 
                                     
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos Compra</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -151,8 +151,22 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/garcon/${garcon.foto}.jpg">
-                                    </a>
+                      					
+                      					<c:choose>
+                                        
+											    <c:when test="${garcon != null }">
+											    	
+											    	<img class="img" src="../resources/images/empresa/${garcon.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/garcon/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                      </a>
                                     
 
                                 </div>
@@ -182,7 +196,7 @@
 
                                 </datalist>
                                     
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating  ">
 <!--                               <label class="control-label">garcon</label> -->
                                    
  							<button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>

@@ -1,22 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<%@ page session="false" %>
+<%@ page session="true" %>
 
-<!-- <div class="profile clearfix"> -->
 
-<!-- </div> -->
-
-<!-- <div id="header"> -->
 
     <div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/images/sidebar-3.png"
-         data-image="${pageContext.request.contextPath}/resources/images/sidebar-1.jpg}">
+        >
         <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
     Tip 2: you can also add an image using data-image tag
 -->
-        <div class="logo">
+<!--         <div class="logo"> -->
             <!-- 			                <a href="http://www.creative-tim.com" class="simple-text"> -->
 
             <%--   <img class="image-responsive" src="${pageContext.request.contextPath}/resources/images/logosenpai.png"></img> --%>
@@ -32,39 +28,39 @@
                     
                 </a>
             </div>
-        </div>
+<!--         </div> -->
 
         <div class="sidebar-wrapper">
-            <ul class="nav" id="menu">
+            
+            <ul class="nav navbar-footer" id="menu">
+             
                 <li class="active">
                     <a href="${pageContext.request.contextPath}/">
                         <i class="material-icons">dashboard</i>
-                        <p>Dashbord</p>
+                        Dashbord
                     </a>
                 </li>
 
                 <li class="">
                     <a href="${pageContext.request.contextPath}/usuario/movimentacao">
                         <i class="material-icons">person</i>
-                        <p>Usuario</p>
+                        Usuario
                     </a>
                 </li>
 
-                <li class="">
+                <li class="focus">
                     <a href="${pageContext.request.contextPath}/cliente/movimentacao">
                         <i class="material-icons">person</i>
-                        <p>Cliente</p>
+                       Cliente
                     </a>
                 </li>
 
                 <li class="">
                     <a href="${pageContext.request.contextPath}/categoria/movimentacao">
-                        <p>
-
-                            <!--                                     <img alt="" src="img/lotofacilf.png" class="material-icons"></img> -->
+                        
                             <i class="material-icons">account_balance_wallet</i>
 
-                            Categoria </p>
+                            Categoria
                     </a>
                 </li>
 
@@ -104,15 +100,44 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <p><i class="material-icons">shopping_basket</i>Compras</p>
+                        <i class="material-icons">shopping_basket</i>
+                        Compras
+                        <b class="caret"></b>
 
                     </a>
+                    
                     <ul class="dropdown-menu">
 
-                        <li><a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">Pedido Compra</a>
+                        <li> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
+                       
+	                        <i class="material-icons">shopping_basket</i>
+	                        Pedido Compra
+	
+	                        </a>
+	                         
+                        
                         </li>
-                        <li><a href="${pageContext.request.contextPath}/recebimento/movimentacao">Recebimento</a></li>
-                        <li><a href="#">Devolucao de Compra</a></li>
+                        
+                        <li><a href="${pageContext.request.contextPath}/devolucaocompra/movimentacao">
+                        
+                        <i class="material-icons">shopping_basket</i>
+                        
+                        Devolucao de Compra
+                        
+                        </a>
+                        
+                        </li>
+                        
+                     <li><a href="${pageContext.request.contextPath}/recebimento/movimentacao">
+                        
+                        <i class="material-icons">shopping_basket</i>
+                        
+                        Recebimento
+                        
+                        </a>
+                        
+                        </li>
+<!--                         <li><a href="#">Devolucao de Compra</a></li> -->
                     </ul>
 
                 </li>
@@ -122,20 +147,23 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <p><i class="material-icons">monetization_on</i>Financeiro</p>
+                        <p><i class="material-icons">monetization_on</i>Financeiro
+                          <b class="caret"></b>
+                        
+                        </p>
 
                     </a>
                     <ul class="dropdown-menu">
 
-                        <li><a href="${pageContext.request.contextPath}/banco/movimentacao">Banco</a></li>
-                        <li><a href="${pageContext.request.contextPath}/caixa/movimentacao">Caixa</a></li>
-                        <li><a href="${pageContext.request.contextPath}/conta/movimentacao">Conta</a></li>
-                        <li><a href="${pageContext.request.contextPath}/formapagamento/movimentacao">Forma de
+                        <li><a href="${pageContext.request.contextPath}/banco/movimentacao"><i class="material-icons">monetization_on</i>Banco</a></li>
+                        <li><a href="${pageContext.request.contextPath}/caixa/movimentacao"><i class="material-icons">monetization_on</i>Caixa</a></li>
+                        <li><a href="${pageContext.request.contextPath}/conta/movimentacao"><i class="material-icons">monetization_on</i>Conta</a></li>
+                        <li><a href="${pageContext.request.contextPath}/formapagamento/movimentacao"><i class="material-icons">monetization_on</i>Forma de
                             Pagamento</a></li>
-                        <li><a href="chat.html">A Pagar</a></li>
-                        <li><a href="chat.html">A Receber</a></li>
-                        <li><a href="${pageContext.request.contextPath}/despesa/movimentacao">Despesa</a></li>
-                        <li><a href="${pageContext.request.contextPath}/pagamento/movimentacao">Pagamento</a></li>
+                        <li><a href="${pageContext.request.contextPath}/contaspagar/movimentacao"><i class="material-icons">monetization_on</i>A Pagar</a></li>
+                        <li><a href="${pageContext.request.contextPath}/contasreceber/movimentacao"><i class="material-icons">monetization_on</i>A Receber</a></li>
+                        <li><a href="${pageContext.request.contextPath}/despesa/movimentacao"><i class="material-icons">monetization_on</i>Despesa</a></li>
+                        <li><a href="${pageContext.request.contextPath}/pagamento/movimentacao"><i class="material-icons">monetization_on</i>Pagamento</a></li>
                     </ul>
 
                 </li>
@@ -145,15 +173,17 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <p><i class="material-icons">business_center</i>Produto</p>
-
+                       <p> <i class="material-icons">business_center</i>Produto
+                       <b class="caret"></b>
+						</p>
                     </a>
+                     
                     <ul class="dropdown-menu">
 
-                        <li><a href="${pageContext.request.contextPath}/produto/movimentacao">Produto</a></li>
-                        <li><a href="${pageContext.request.contextPath}/produtocomposto/movimentacao">Produto
+                        <li><a href="${pageContext.request.contextPath}/produto/movimentacao"><i class="material-icons">business_center</i>Produto</a></li>
+                        <li><a href="${pageContext.request.contextPath}/produtocomposto/movimentacao"><i class="material-icons">business_center</i>Produto
                             Composto</a></li>
-                        <li><a href="#">Conf Produto</a></li>
+                       <li><a href="#"> <i class="material-icons">business_center</i>Conf Produto</a></li>
 
                     </ul>
 
@@ -163,14 +193,17 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <p><i class="material-icons">shopping_cart</i>Vendas</p>
-
+                        <p><i class="material-icons">shopping_cart</i>Vendas
+                         <b class="caret"></b>
+                        
+                        </p>
+						
                     </a>
                     <ul class="dropdown-menu">
 
-                        <li><a href="${pageContext.request.contextPath}/pedidovenda/movimentacao">Pedido Venda</a></li>
-                        <li><a href="form-validation.html">Devolucao Venda</a></li>
-                        <li><a href="#">Conf Vendas</a></li>
+                        <li><a href="${pageContext.request.contextPath}/pedidovenda/movimentacao"><i class="material-icons">shopping_cart</i>Pedido Venda</a></li>
+                        <li><a href="${pageContext.request.contextPath}/devolucaovenda/movimentacao"><i class="material-icons">shopping_cart</i>Devolucao Venda</a></li>
+                        <li><a href="#"><i class="material-icons">shopping_cart</i>Conf Vendas</a></li>
 
                     </ul>
 
@@ -186,6 +219,10 @@
                 <!-- 			                    </li> -->
             </ul>
         </div>
+        
+        
+
+        
     </div>
 
 <!-- </div> -->

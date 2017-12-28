@@ -44,14 +44,14 @@
                     <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="">
+                                <div class="card-header" data-background-color="blue">
                                     <h3 class="title">Gerencia de Fornecedores</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
            
 
 
-						<div class="form-group label-floating is-empty">
+						<div class="form-group label-floating  ">
                          <div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${fornecedor.ativo}" class="checkbox"/>Ativo?
@@ -61,7 +61,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Nome Fantasia</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -73,7 +73,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Razao Social</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -83,7 +83,7 @@
                                                 <span class="material-input"></span>
                                     </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Cnpj</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -93,7 +93,7 @@
                                                 <span class="material-input"></span>
                                     </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                                     <label class="control-label">Inscricao Estaduala</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -119,7 +119,7 @@
                                 </div>
 
 
-<div class="form-group label-floating is-empty">
+<div class="form-group label-floating  ">
                                           <label class="control-label">Margem de Lucro</label>
 											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
@@ -127,7 +127,7 @@
                                     </div>
                                     
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -135,7 +135,7 @@
                                     </div> 
                                     
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos Compras</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -159,8 +159,21 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/vazio.jpg">
-                                    </a>
+                                        <c:choose>
+                                        
+											    <c:when test="${fornecedor != null }">
+											    	
+											    	<img class="img" src="../resources/images/fornecedor/${fornecedor.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/fornecedor/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                      </a>
                                     
 
                                 </div>
@@ -190,7 +203,7 @@
 
                                 </datalist>
                                     
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating  ">
 <!--                               <label class="control-label">Fornecedor</label> -->
                                    
  								<button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>

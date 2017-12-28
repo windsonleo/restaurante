@@ -74,11 +74,11 @@
 							action="${pageContext.request.contextPath}/cliente/${acao}" modelAttribute="cliente">
 
 								
-							 <div class="form-group label-floating is-empty">
+							 <div class="form-group label-floating ">
+							  <label class="control-label">Id</label>
+							 
 								<div class="control-group">
                                     <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on"><i class="icon-key"></i></span>
 
                                             <input id="id" class="form-control" name="id" type="text"
                                                    value="${cliente.id}" placeholder=""/>
@@ -88,16 +88,16 @@
                                         
                                         </div>
                                         </div>
-                                        </div>
+<!--                                         </div> -->
 
 			<div class="checkbox">
-                <label>
-				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${cliente.ativo}" class="checkbox"/>Ativo?
+                <label class="pull-right">Ativo?
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${cliente.ativo}" class="checkbox"/>
 				</label>
               </div>
 
                                        
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating ">
                                                     <label class="control-label">Nome</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -109,7 +109,7 @@
 
 
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating ">
                                                     <label class="control-label">Email</label>
 															<input id="mask-mail" class="form-control" name="email"
                                                                              type="text"
@@ -118,20 +118,22 @@
                                     </div>
 
 
-									<div class="form-group label-floating is-empty">
-                                          <label class="form-control">Genero</label>
+									<div class="form-group label-floating ">
+                                          <label class="control-label">Genero</label>
 											<select id="genero" name="genero" class="form-control">
+                                   	               <optgroup label="Escolha o Genero">
                                    
 												<option selected="selected" value="${cliente.genero}">${cliente.genero}</option>
 
                                   				<option  value="MASCULINO">MASCULINO</option>
                                   				<option  value="FEMININO">FEMININO</option>
-                                  
+                                  </optgroup>
                                				 </select> 
+                               				 
                                				  <span class="material-input"></span>
                                     </div>
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating ">
                                           <label class="control-label">Telefone</label>
 											<input id="mask-phone" class="form-control" name="telefone"
                                                                                 type="text"
@@ -140,16 +142,21 @@
                                				  <span class="material-input"></span>
                                     </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label">
                                           <label class="control-label">Data de Nascimento</label>
-											 <input id="datanascimento" type="text" data-date="01-02-2013"
-                                           data-date-format="dd-mm-yyyy"
+											 
+											 <input id="datanascimento" type="text" 
                                            value="<fmt:formatDate pattern="dd/MM/yyyy"
-                                             value="${cliente.datanascimento}"/>" class="form-control" name="datanascimento">
+                                             value="${cliente.datanascimento}"/>" class="datepicker form-control" name="datanascimento"
+                                             />
+                                           
+                                           
                                				  <span class="material-input"></span>
                                     </div>
                                     
-                                    			<div class="form-group label-floating is-empty">
+
+                                    
+           <div class="form-group label-floating ">
               <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
@@ -163,8 +170,8 @@
                                     
                                     
 
-                    </div>
-					</div>
+<!--                     </div> -->
+<!-- 					</div> -->
 
 
 
@@ -177,8 +184,14 @@
 
                         </form>
 
-                    </div>
-                    </div>
+<!--                     </div> -->
+<!--                     </div> -->
+
+
+</div>
+</div>
+</div>
+</div>
                     
                     <div class="span4">
 					
@@ -187,7 +200,24 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+                                       
+                                       
+                                        <c:choose>
+                                        
+											    <c:when test="${cliente != null }">
+											    	
+											    	<img class="img" src="../resources/images/cliente/${cliente.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+													<img class="img" src="../resources/images/cliente/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>                                   
+                                   
                                     </a>
                                     
 
@@ -196,11 +226,11 @@
 
 
 					          </br>
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating ">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
 									
-									<div class="form-group is-empty is-fileinput">
+									<div class="form-group  is-fileinput">
 									    <input type="file" id="file" multiple="" name="file">
 									    <div class="input-group">
 									      <input type="text" readonly="" class="form-control" placeholder="Selecione a Foto...">

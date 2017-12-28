@@ -93,7 +93,7 @@ public abstract class Pedido extends BaseEntity {
         	
         	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
         	
-        	totalped.multiply(totalpedidoaux);
+        	totalped = totalped.multiply(totalpedidoaux);
         	
 
         	totalpedido = totalpedido.add(totalped);

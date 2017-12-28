@@ -119,7 +119,7 @@
 				</label>
               </div>
               
-             <div class="form-group label-floating is-empty">
+             <div class="form-group label-floating  ">
 	
               <div class="control-group">
                 <label class="control-label">Id</label>
@@ -130,18 +130,18 @@
               
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating  ">
               <div class="control-group">
                 <label class="control-label">Nome</label>
                 <div class="controls">
                 <form:errors path="banco.nome" cssStyle="color:red"/>
-                  <input type="text" name="nome" id="nome" placeholder="" class="form-control">
+                  <input type="text" name="nome" id="nome" placeholder="" value="${banco.nome}" class="form-control">
                 </div>
               </div>
               </div>
 
 
-			<div class="form-group label-floating is-empty">
+			<div class="form-group label-floating  ">
               <div class="control-group">
                 <label class="control-label">Numero</label>
                 <div class="controls">
@@ -150,7 +150,7 @@
               </div>
               </div>
               
-              <div class="form-group label-floating is-empty">
+              <div class="form-group label-floating  ">
               <div class="form-actions">
                 <input type="submit" value="${acao}" class="btn btn-success">
               </div>

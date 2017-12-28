@@ -60,7 +60,12 @@
         <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script> 
         
      
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+
+ 
+
+ <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
 
  <script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
@@ -99,14 +104,24 @@
                       $('.main-panel').css('height', '100%');
                   }
 
-
-                  // Javascript method's body can be found in assets/js/demos.js
+                 
+            	  $('.datepicker').datepicker({
+                	  
+                	format:'dd/mm/yyyy',
+                  	weekStart:1,
+                  	pickerPosition: 'top-right',
+                  	orientation: "top right",
+                  	minViewMode:1
+                  		
+                  });
                 
 
                 // Javascript method's body can be found in assets/js/demos.js
                 demo.initDashboardPageCharts();
                   
                 demo.initGoogleMaps();
+                
+
 
             });
         
@@ -298,11 +313,15 @@
             $('#menu li a').click(function () {
 
 
-                $('#menu').find('li.active').removeClass('active');
-                $(this).parents("li").addClass('active');
+                $('#menu li').removeClass('active');
+//                 $(this).closest("li").addClass('active');
+                $(this).addClass('active');
+
 
 
             });
+            
+            
 
 
 //             $(function () {

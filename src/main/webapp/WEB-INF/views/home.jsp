@@ -694,7 +694,7 @@
 					</sec:authorize>
 					
 					
-					<li  >
+					<li >
 						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
 							<i class="material-icons">table</i>
 							Salao
@@ -715,7 +715,7 @@
 					
 					<li >
 						<a href="#schedule" role="tab" data-toggle="tab">
-							<i class="material-icons">table</i>
+							<i class="material-icons">attach_money</i>
 							Financeiro
 						</a>
 					</li>
@@ -723,7 +723,7 @@
 					</sec:authorize>
 					
 					<li>
-						<a href="#tasks" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="tab" data-toggle="ta">
 							<i class="material-icons">money</i>
 							Reserva
 						</a>
@@ -732,8 +732,8 @@
 				<sec:authorize access="hasRole('ROLE_COMPRA')">
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="ta" data-toggle="ta">
-							<i class="material-icons">table</i>
+						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="tab" data-toggle="tab">
+							<i class="material-icons">shopping_cart</i>
 							Compras
 						</a>
 					</li>

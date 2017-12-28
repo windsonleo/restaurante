@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -63,6 +64,10 @@ public class Cliente extends BaseEntity implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)
     private List<PedidoVenda> listaPedidoVenda;
+    
+    
+    @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)
+    private Set<Reserva> reservas;
 
 
 //    @JsonIgnore

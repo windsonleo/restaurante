@@ -39,7 +39,7 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="">
+                                <div class="card-header" data-background-color="blue">
                                     <h3 class="title">Gerencia de Produtos</h3>
                                     <p class="category">Informacoes Basicas</p>
                                 </div>
@@ -47,7 +47,7 @@
  							
  							
  							
- 							<div class="form-group label-floating is-empty">
+ 							<div class="form-group label-floating  ">
                                           <div class="checkbox">
                 <label>
 				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
@@ -56,7 +56,7 @@
                          </div>
 
                                        
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating">
                                                     <label class="control-label">Nome</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -67,7 +67,7 @@
                                     </div>
                                     
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating">
                                                     <label class="control-label">CodeBar</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -77,7 +77,7 @@
                                                 <span class="material-input"></span>
                                     </div>	
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                                     <label class="control-label">Fornecedor</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -87,7 +87,7 @@
                                                 <span class="material-input"></span>
                                     </div>	
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                                     <label class="control-label">Preco Custo</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -99,7 +99,7 @@
                                     </div>
                                     
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                                     <label class="control-label">Preco Venda</label>
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
@@ -125,7 +125,7 @@
                                     <p class="category">Informacoes Gerenciais</p>
                                 </div>
 
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Margem de Lucro</label>
 											 <input id="margem" name="margem" type="text" value="" placeholder=""
                                        disabled="true" class="form-control"/>
@@ -133,7 +133,7 @@
                                     </div>
                                     
                                     
-									<div class="form-group label-floating is-empty">
+									<div class="form-group label-floating  ">
                                           <label class="control-label">Lucro</label>
   										<input id="lucro" name="lucro" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -141,7 +141,7 @@
                                     </div> 
                                     
                                     
-                                    <div class="form-group label-floating is-empty">
+                                    <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos</label>
   										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
                                        		placeholder="" disabled="true"/>
@@ -168,7 +168,24 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
-                                        <img class="img" src="../resources/images/produto/${produto.foto}.jpg">
+                                       
+                                      <c:choose>
+                                        
+											    <c:when test="${produto != null }">
+											    	
+											    	<img class="img" src="../resources/images/produto/${produto.foto}.jpg">
+											   
+											    </c:when>
+
+											    <c:otherwise>
+													
+											    	<img class="img" src="../resources/images/produto/vazio.jpg">
+											   
+											    </c:otherwise>
+										
+										</c:choose>
+                                       
+                                   
                                     </a>
                                     
 
@@ -199,7 +216,7 @@
 
                                 </datalist>
                                     
-                               <div class="form-group label-floating is-empty">
+                               <div class="form-group label-floating  ">
 <!--                               <label class="control-label">produto</label> -->
                                    
 						 <button type="submit"  class="btn btn-info btn-round btn-md">Buscar</button>

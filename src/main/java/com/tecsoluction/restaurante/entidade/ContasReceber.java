@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,35 @@ public class ContasReceber extends Conta implements Serializable {
         super();
 
         
+    }
+    
+    
+    
+    
+    public BigDecimal CalcularTotal() {
+
+    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+
+
+        for (Item key : pedidovenda.getItems().keySet()) {
+        	
+        	//QTD ITEM
+        	String total = pedidovenda.getItems().get(key);
+        	
+        	totalpedidoaux = new  BigDecimal(total);
+        	
+        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+        	
+        	totalped = totalped.multiply(totalpedidoaux);
+        	
+
+        	totalpedido = totalpedido.add(totalped);
+        }
+
+
+
+        return totalpedido;
     }
 
     @Override
