@@ -231,7 +231,7 @@
                                     </h3>
                                     
                                     <h3 class="title"><fmt:formatNumber type="currency"
-                       value="${mesa.CalcularTotal}"/>
+                       value="${mesa.CalcularTotal()}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
