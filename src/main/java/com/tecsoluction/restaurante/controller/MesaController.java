@@ -266,7 +266,7 @@ public class MesaController extends AbstractController<Mesa> {
        	        
        	        mesa.setStatus(StatusMesa.FECHADA);
        	        
-       	        //guardará os pedido pronto da mesa
+       	        //guardara os pedido pronto da mesa
        	        List<PedidoVenda> pedidos = new ArrayList<>();
        	        
        	     for (PedidoVenda pv : mesa.getPedidos()) {
