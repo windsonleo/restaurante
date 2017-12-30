@@ -28,8 +28,7 @@
     <%-- 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fullcalendar.css" /> --%>
     <%--  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-wysihtml5.css" /> --%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
+
     <link rel="stylesheet" media="screen"
           href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.min.css" type="text/css"/>
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
@@ -49,6 +48,9 @@
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
     <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
+    
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
 
 </head>
 
@@ -74,17 +76,17 @@
 </div>
 
 
-<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script> --%>
 
-<script src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <script src="https://www.gstatic.com/charts/loader.js"></script> -->
 <%--<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>--%>
 
