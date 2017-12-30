@@ -22,6 +22,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tecsoluction.restaurante.framework.BaseEntity;
 import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,6 +46,10 @@ public  class Item implements Serializable, Comparable<Item>{
     private String descricao;
 
     private BigDecimal precoUnitario;
+    
+  
+    @Enumerated(EnumType.STRING)
+    private UnidadeMedida un_medida;
 
     @Transient
     private BigDecimal totalItem ;
@@ -58,6 +63,8 @@ public  class Item implements Serializable, Comparable<Item>{
 
 
     public Item() {
+    	
+    	this.un_medida = UnidadeMedida.UND;
 
     }
     
@@ -70,6 +77,7 @@ public  class Item implements Serializable, Comparable<Item>{
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
         this.precoUnitario = produto.getPrecovenda();
+        this.un_medida = produto.getUn_medida();
 
         
 
@@ -101,7 +109,15 @@ public int compareTo(Item arg0) {
 	return 0;
 }
 
+public BigDecimal CalcularTotaItem(String qtd) {
 
+	BigDecimal qtdAuxBig = new BigDecimal(qtd).setScale(2, RoundingMode.UP);
+
+
+    
+  return precoUnitario.multiply(qtdAuxBig);
+
+}
 
 
 }

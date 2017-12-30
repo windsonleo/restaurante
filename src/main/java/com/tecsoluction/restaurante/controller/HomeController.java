@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Handles requests for the application home page.
@@ -56,6 +58,9 @@ public class HomeController {
 
     private final
     PedidoCompraServicoImpl pedidocompraService;
+    
+    private final 
+    EstoqueServicoImpl estoqueService;
 
     private
     List<Cliente> clientesnovos;
@@ -92,7 +97,10 @@ public class HomeController {
 
 
     @Autowired
-    public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao, UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService, MesaServicoImpl mesaService, ProdutoServicoImpl proddao, GarconServicoImpl ga, FornecedorServicoImpl fo, PagamentoServicoImpl pag) {
+    public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao,
+    		UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService,
+    		MesaServicoImpl mesaService, ProdutoServicoImpl proddao, GarconServicoImpl ga, 
+    		FornecedorServicoImpl fo, PagamentoServicoImpl pag,EstoqueServicoImpl est) {
 
         this.userservice = dao;
         this.pedidovendaService = vendadao;
@@ -104,6 +112,7 @@ public class HomeController {
         this.garconservice = ga;
         this.fornecedorservice = fo;
         this.pagamentoservice = pag;
+        this.estoqueService =est;
 
     }
 
@@ -128,6 +137,7 @@ public class HomeController {
         long users = userservice.count();
         long clientesNovos = clienteService.count();
         long garconsCount = garconservice.count();
+        long estqueprod = estoqueService.count();
 
         model.addAttribute("clientesnovos", clientesNovos);
         model.addAttribute("pedidovendasnovos", pedidovendasnovos);
@@ -137,9 +147,10 @@ public class HomeController {
         model.addAttribute("produtosnovos", produtosNovos);
         model.addAttribute("usuarios", users);
         model.addAttribute("mesas", mesas);
-        model.addAttribute("garcons", garcons);
+        model.addAttribute("garcons", garconsCount);
         model.addAttribute("fornecedores", fornecedores);
         model.addAttribute("pagamentos", pagamentos);
+        model.addAttribute("estoques", estqueprod);
 
     }
 
@@ -287,16 +298,56 @@ public class HomeController {
     public ModelAndView cozinha(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//        Date date = new Date();
+//        
+//        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//
+//        String formattedDate = dateFormat.format(date);
+        
+        
+        List<PedidoVenda> padaberto = new ArrayList<>();
 
-        String formattedDate = dateFormat.format(date);
+        List<PedidoVenda> padpendente = new ArrayList<>();
 
-        ModelAndView cozinha = new ModelAndView("cozinha");
+        List<PedidoVenda> padpronto = new ArrayList<>();
+        
+        List<PedidoVenda> padcancelado = new ArrayList<>();
+        
+        for (PedidoVenda pv : pedidovendasnovos) {
 
-        cozinha.addObject("pedidovendasList", pedidovendasnovos);
+            
+                    if (pv.getStatus() == StatusPedido.ABERTO) {
+                    	padaberto.add(pv);
+                    }
 
-        return cozinha;
+                    if (pv.getStatus() == StatusPedido.PENDENTE) {
+                        padpendente.add(pv);
+                    }
+
+                    if (pv.getStatus() == StatusPedido.PRONTO) {
+                        padpronto.add(pv);
+                    }
+                    
+                    if (pv.getStatus() == StatusPedido.CANCELADO) {
+                        padcancelado.add(pv);
+                    }
+//                    total = pagamento.getValorPago().plus(total);
+                }
+            
+        	ModelAndView cozinha = new ModelAndView("cozinha");
+        
+        
+
+        	cozinha.addObject("pedidovendasList", pedidovendasnovos);
+        	cozinha.addObject("padaberto", padaberto);
+        	cozinha.addObject("padpendente", padpendente);
+        	cozinha.addObject("padpronto", padpronto);
+        	cozinha.addObject("padcancelado", padcancelado);
+
+        	
+        	return cozinha;
     }
-
-}
+    
+    }
+        
+        

@@ -169,8 +169,6 @@
 
 					<div class="span4">
 					
-                     
-					
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">

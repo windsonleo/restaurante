@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Dinheiro</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${pagdinheiro.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Cartao Credito</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${pagcartaocredito.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Cartao Debito</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${pagcartaodebito.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Despesas</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${pagcartaodebito.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -216,21 +216,21 @@
                                               
                                                 <li class="active">
                                                     <a href="#profile" data-toggle="tab">
-                                                        <i class="material-icons">room_service</i> PRONTO
+                                                        <i class="material-icons">room_service</i> FECHADO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 </li>
                                                
                                                 <li class="">
                                                     <a href="#messages" data-toggle="tab">
-                                                        <i class="material-icons">money</i> PAGA
+                                                        <i class="material-icons">money</i> FINALIZADO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 </li>
                                                 
                                                 <li class="">
                                                     <a href="#settings" data-toggle="tab">
-                                                        <i class="material-icons">delete</i> CANCELADA
+                                                        <i class="material-icons">delete</i> CANCELADO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 
@@ -255,7 +255,7 @@
                                                        		
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='PRONTO'}">
+																    <c:when test="${pv.status=='FECHADO'}">
 																    
 																    
 																    <td>
@@ -316,7 +316,7 @@
                                                            
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='FECHADO'}">
+																    <c:when test="${pv.status=='FINALIZADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">

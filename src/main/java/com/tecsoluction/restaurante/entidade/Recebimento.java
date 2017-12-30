@@ -61,7 +61,7 @@ public class Recebimento extends BaseEntity implements Serializable {
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name = "itens_recebimento", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    @Lob
+//    @Lob
     @Column(name = "qtd")
     @MapKeyColumn(name = "idit")
     private Map<Item, String> items = new HashMap<Item, String>();

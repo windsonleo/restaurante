@@ -103,6 +103,13 @@
 				
 				    </c:when> 
 				    
+				    <c:when test="${pedidovenda.status=='FINALIZADO'}">
+
+                  <td><span class="label label-inverse">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
 				    <c:otherwise>
 
 

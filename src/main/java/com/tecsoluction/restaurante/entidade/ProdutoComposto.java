@@ -41,7 +41,7 @@ public class ProdutoComposto extends Produto implements Serializable {
     @Column(name = "qtd")
     @CollectionTable(name = "itens_produtocompostos", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    @Lob
+//    @Lob
     private Map<Item,String> itens_prodcomp = new HashMap<>();
 
     

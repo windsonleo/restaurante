@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -41,7 +42,7 @@ public abstract class Pedido extends BaseEntity {
     @Column(name = "total")
     private BigDecimal  total ;
 
-    @ManyToMany(mappedBy = "pedidos")
+    @ManyToMany(mappedBy = "pedidos",fetch=FetchType.EAGER)
     @JsonIgnore
     private List<Pagamento> pagamento;
 

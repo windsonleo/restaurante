@@ -310,7 +310,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${garcons.size()}</h3>         
+              <h3>${garcons}</h3>         
 
               <p>Garcon</p>
             </div>
@@ -360,7 +360,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>${estoques}</h3>
 
               <p>Estoque</p>
             </div>
@@ -375,7 +375,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${produtosnovos}</h3>
+              <h3>${pedidovendasnovos.size()}</h3>
 
               <p>Delivery</p>
             </div>
@@ -421,7 +421,7 @@
                                           
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                               
-                                                <li class="active">
+                                                <li class="">
                                                     <a href="#profile" data-toggle="tab">
                                                         <i class="material-icons">room_service</i> PENDENTE
                                                         <div class="ripple-container"></div>
@@ -453,20 +453,23 @@
                                         <div class="tab-pane active" id="profile">
                                             <table class="table">
                                                 <tbody>
-                                                   
+                                                    <tr>
                                                        		<c:forEach var="pedidocompra" items="${pedidocomprasnovos}">
-                                                       		 <tr>
+                                                       		
                                                        		
                                                       		
                                                        		
                                                        		
 								                                  <c:choose> 
+																  
 																    <c:when test="${pedidocompra.status=='PENDENTE'}">
 																    
 																    
-																    <td>
-			                                                            <div class="image-responsive">
-																			<i class="material-icons" style="color:orange;"> shopping_cart</i>
+																    <td class="td-actions">
+			                                                            <div class="">
+																			<i class="icon-icon" style="color:orange;">
+											    							<img class="" alt="" src="${pageContext.request.contextPath}/resources/images/fornecedor/${pedidocompra.fornecedor.foto}.jpg">
+			                                                            </i>
 			                                                            </div>
 			                                                        </td> 
 																    
@@ -476,16 +479,35 @@
 															                
 															                <div class="article-post">
 															                 <span class="user-info"> ${pedidocompra.id} </span></br>
+															                  
 															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
-															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
-															                  <a href="#"></a> Total Pedido Compra :  ${pedidocompra.total}</span></p>
+																                  
+																                  <p>
+																                  		<span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
+																                  			<a href="#"></a> Total Pedido Compra :  ${pedidocompra.total}</span>
+																                  			
+													                  			</p>
+															               
+															               </td>
+															               
+															               <td clas="td-actions">
+															               	<span class="pull-right">
+																			 <button type="button" rel="tooltip" title="Aprovar Tudo" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}'">
+				                                                                <i class="material-icons pull-right">done_all</i>
+				                                                            </button>
+				                                                            </span>
+				                                                            
+															               </td>
+
 															                    <c:forEach var="item" items="${pedidocompra.items}">
+															                
+															                
 															                  <tr>
 																	                  <td>
 																	                  ${item.key }
 																	                  </td>
 																	                  
-																	                  	<td>																                 <td >
+																	                  	<td>																                 
 																	                 <label class=""> ${item.key.precoUnitario }</label> 
 																	                  </td>
 																	                  
@@ -501,38 +523,38 @@
 																	                 <label class="badge label-warning"> ${item.key.situacao }</label> 
 																	                  </td> 
 																	                  
-																	                  														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/aprovar?id=${pedidocompra.id}'">
+															<td class="td-actions text-right">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/aprovar?id=${pedidocompra.id}&key=${item.key}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            															
-                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/cancelar?id=${pedidocompra.id}'">
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/cancelar?id=${pedidocompra.id}&key=${item.key}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
 															                  
 															                  </tr>
 															                  
-															                  </c:forEach>
+															                 </c:forEach>
+															                 
+															                 </div>
+															                 
 															                  
-<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                 </td>
 															                  
-															                </div>
-															                
-														                </td>
-														                
-																
-																    </c:when>    
-																    
-																    <c:otherwise>
+															                  </c:when>
+															                  
+															           <c:otherwise>
 								
 								
 																    </c:otherwise>
-																
-																</c:choose>
-			              	
-			              									</tr>
-			              								</c:forEach>
+																    
+															                  </c:choose>
+															                 
+															                  </tr>
+															                  
+															                  </c:forEach>
+															                 
 			              								
 			              								
 			              								</tbody>
@@ -551,9 +573,11 @@
 								                                  <c:choose> 
 																    <c:when test="${pedidocompra.status=='PRONTO'}">
 																    
-																    <td>
-			                                                            <div class="image-responsive">
-																			<i class="material-icons" style="color:green;"> shopping_cart</i>
+																    <td class="td-actions">
+			                                                            <div class="icon">
+<!-- 																			<i class="material-icons" style="color:green;"> shopping_cart</i> -->
+																			<img class="" src="${pageContext.request.contextPath}/resources/images/fornecedor/${pedidocompra.fornecedor.foto}.jpg">
+																			
 			                                                            </div>
 			                                                        </td> 																    
 																    
@@ -611,9 +635,11 @@
 								                                  <c:choose> 
 																    <c:when test="${pedidocompra.status=='CANCELADO'}">
 																    
-																    <td>
-			                                                            <div class="image-responsive">
-																			<i class="material-icons" style="color:red;"> shopping_cart</i>
+																    <td class="td-actions">
+			                                                            <div class="icon">
+<!-- 																			<i class="material-icons" style="color:red;"> shopping_cart</i> -->
+											    							<img class="" alt="Circle Image" src="${pageContext.request.contextPath}/resources/images/fornecedor/${pedidocompra.fornecedor.foto}.jpg">
+																			
 			                                                            </div>
 			                                                        </td> 																    
 																    

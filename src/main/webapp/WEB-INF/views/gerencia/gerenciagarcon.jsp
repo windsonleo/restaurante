@@ -156,7 +156,7 @@
                                         
 											    <c:when test="${garcon != null }">
 											    	
-											    	<img class="img" src="../resources/images/empresa/${garcon.foto}.jpg">
+											    	<img class="img" src="../resources/images/garcon/${garcon.foto}.jpg">
 											   
 											    </c:when>
 

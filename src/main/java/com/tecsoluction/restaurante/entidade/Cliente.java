@@ -63,7 +63,7 @@ public class Cliente extends BaseEntity implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)
-    private List<PedidoVenda> listaPedidoVenda;
+    private Set<PedidoVenda> listaPedidoVenda;
     
     
     @OneToMany(mappedBy = "cliente",fetch=FetchType.EAGER)

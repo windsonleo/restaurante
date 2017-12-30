@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.StatusCaixa;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -46,6 +49,10 @@ public class Caixa extends BaseEntity implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "caixa")
     private List<Despesa> despesas;
+    
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusCaixa status;
     
     
 

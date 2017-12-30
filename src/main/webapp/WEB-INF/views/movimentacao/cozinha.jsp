@@ -119,8 +119,8 @@
 									<i class="fa fa-money"></i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Abertos</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <p class="category">Aguardando</p>
+                                    <h3 class="title">${padaberto.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -140,8 +140,8 @@
 									<i class="fa fa-credit-card"></i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Pendentes</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <p class="category">Em Prepracao</p>
+                                    <h3 class="title">${padpendente.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Pronto</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <h3 class="title">${padpronto.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -182,8 +182,8 @@
 									<i class="material-icons">account_balance_wallet</i>
                                 </div>
                                 <div class="card-content">
-                                    <p class="category">Cancelados</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+                                    <p class="category">Cancelado</p>
+                                    <h3 class="title">${padcancelado.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -281,12 +281,18 @@
 																	                 <label class="label label-warning"> ${item.key.situacao }</label> 
 																	                  </td> 
 																	                  
-																	                  														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/pronto?id=${pv.id}' ">
+															 <td class="td-actions text-right">
+                                                           
+                                                           
+                                                            <button type="button" rel="tooltip" title="preparando" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/preparar?id=${pv.id}&key=${item.key }' " >
+                                                                <i class="material-icons">done_all</i>
+                                                            </button>                                                           
+                                                           
+                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/pronto?id=${pv.id}&key=${item.key }' ">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
-                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/pronto?id=${pv.id}' " >
+                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/cancelar?id=${pv.id}&key=${item.key }' " >
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
@@ -357,14 +363,14 @@
 															                
 														                </td>
 														                
-														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
+<!-- 														 <td class="td-actions text-right"> -->
+<!--                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+<!--                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">close</i> -->
+<!--                                                             </button> -->
+<!--                                                         </td> -->
 																
 																    </c:when>    
 																    
@@ -393,7 +399,7 @@
                                                                  <tr>
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='FECHADO'}">
+																    <c:when test="${pv.status=='CANCELADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
@@ -415,14 +421,14 @@
 															                
 														                </td>
 														                
-														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
+<!-- 														 <td class="td-actions text-right"> -->
+<!--                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+<!--                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">close</i> -->
+<!--                                                             </button> -->
+<!--                                                         </td> -->
 																
 																    </c:when>    
 																    

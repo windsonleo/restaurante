@@ -248,7 +248,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		this.produtocomposto = getservice().findOne(idfprodcomp);
 
-		Item item = new Item();
+		Item item = new Item(produto);
 		
 		item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
@@ -259,6 +259,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 		 item.setDescricao(produto.getDescricao()); 
 //		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbc)); 
 		 item.setSituacao(SituacaoItem.AGUARDANDO);
+		 item.setUn_medida(produto.getUn_medida());
 
 //			
 			items = new HashMap<>();

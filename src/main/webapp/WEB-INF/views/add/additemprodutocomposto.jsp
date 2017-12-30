@@ -133,7 +133,7 @@
            
            
           </div>
-                    <div class="widget-content nopadding">               			 						
+              <div class="widget-content nopadding">               			 						
 						
 			 <div class="control-group">
                 <label class="control-label">CodeBar</label>
@@ -142,19 +142,36 @@
 						name="codebar" type="text" value="${produtocomposto.codebar}"
 						placeholder="Digite o CodeBar" readonly="readonly"/>
 						
-					<input id="nome" class="form-control"
-						name="nome" type="text" value="${produtocomposto.nome}"
-						placeholder="Digite a Nome"  readonly="readonly"/>
+	
 						
-					<input id="descricao" class="form-control"
-						name="descricao" type="text" value="${produtocomposto.descricao}"
-						placeholder="Digite a Descrição" readonly="readonly" />		
+	
 								
 				
                 </div>
               </div>
               
-
+                        <div class="control-group">
+                <label class="control-label">Nome</label>
+                <div class="controls">
+                
+				<input id="nome" class="form-control"
+						name="nome" type="text" value="${produtocomposto.nome}"
+						placeholder="Digite a Nome"  readonly="readonly"/>
+						
+						</div>
+						</div>
+						
+						                
+                          <div class="control-group">
+                <label class="control-label">Descricao</label>
+                <div class="controls">
+					<input id="descricao" class="form-control"
+						name="descricao" type="text" value="${produtocomposto.descricao}"
+						placeholder="Digite a Descrição" readonly="readonly" />	
+						
+						</div>
+						</div>
+						
 
               <div class="control-group">
                 <label class="control-label">Categoria</label>
@@ -171,21 +188,35 @@
 							</optgroup>
 					</select>
 					
+
+						
+					
+				
+                </div>
+              </div>
+              
+                        <div class="control-group">
+                <label class="control-label">Preco custo</label>
+                <div class="controls">
 					<input id="precocusto" class="form-control"
 						name="precocusto" type="text" value="<fmt:formatNumber type="currency"
                        value="${produtocomposto.precocusto}"/>"
 						placeholder="Digite o Preco de Custo"  readonly="readonly"/>
 						
-					<input id="precovenda" class="form-control"
+						
+						</div>
+						</div>
+						
+				<div class="control-group">
+                <label class="control-label">Preco venda</label>
+                <div class="controls">
+             								<input id="precovenda" class="form-control"
 						name="precovenda" type="text" value="<fmt:formatNumber type="currency"
                        value="${produtocomposto.precovenda}"/>"
-						placeholder="Digite o Preco de Venda"  readonly="readonly"/>			
-				
-                </div>
-              </div>
-             						
+						placeholder="Digite o Preco de Venda"  readonly="readonly"/>	
 						
-						
+						</div>
+						</div>
 </div>
 <!-- 						</div> -->
 <!-- 						</div> -->
@@ -222,6 +253,7 @@
 									    <th>Qtd</th>
 									    <th>Preco Unitario</th>
 									    <th>Situacao</th>
+									      <th>UM</th>
 									    <th>Total </th>
 									    
 <!-- 									     <th>Ativo?</th> -->
@@ -253,11 +285,17 @@
 
   					<td>${item.key.situacao}</td>
   					
+  				<td>
+
+  				${item.key.un_medida}
+  				
+  				</td>
+  					
 <%--   					 <td>${}</td> --%>
   					
   				<td>
 <%--   				 <fmt:formatNumber type="currency" --%>
-<%--                        value="${item.totalItem}"/> --%>
+<%--                         value="${item.CalcularTotaItem()}"/> --%>
   				
   				
   				</td>

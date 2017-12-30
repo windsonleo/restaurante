@@ -56,14 +56,8 @@
 		</c:if>
 		
         <hr>
-    <div class="row-fluid">
-      <div class="span12">
-      
-
-      
-      <div class="span8">
-      
-                 <div class="row-fluid">
+        
+         <div class="row-fluid">
 
 		
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
@@ -94,6 +88,15 @@
   
 
     </div>
+        
+    <div class="row-fluid">
+      <div class="span12">
+      
+
+      
+      <div class="span8">
+      
+     
                 <div class="card">
                     <div class="card-content">
                        
@@ -427,7 +430,7 @@
                                    
                                    
                                    
-          <div class="form-group label-floating ">
+          <div class="form-group label-floating">
                <div class="control-group">
 
                 <label class="control-label">Formas Pagamento</label>
@@ -448,14 +451,13 @@
               </div>  
               </div>
               
-              <div class="form-group label-floating ">
+            <div class="form-group label-floating ">
                <div class="control-group">
 
                 <label class="control-label">Total</label>
                 <div class="controls">
                 
-                <input type="text" value=" <fmt:formatNumber type="currency"
-                 value="${pedidovenda.total}"/>" class="form-control">
+                <input type="text" value="${pedidovenda.total}" class="form-control">
 				
 				
                 </div>

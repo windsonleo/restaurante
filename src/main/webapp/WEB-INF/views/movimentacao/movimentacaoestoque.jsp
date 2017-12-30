@@ -45,7 +45,7 @@
 <!-- 									     <th>Preferencia</th> -->
 <!-- 									     <th>Ativo</th> -->
 <!-- 									     <th>Obs</th> -->
-									    <th>Ação</th>
+									    <th>Acao</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,7 +83,7 @@
 			<div id="myAlert${estoque.id}" class="modal hide">
               <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
+                <h3>Alerta de Exclusao</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>

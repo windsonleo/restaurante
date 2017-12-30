@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
@@ -137,7 +137,7 @@
                                     </h3>
                                     
                                     <h3 class="title"><fmt:formatNumber type="currency"
-                       value="${total}"/>
+                       value="${mesa.CalcularTotal()}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
@@ -153,7 +153,7 @@
                                     
                                      <i class="material-icons">supervisor_account</i>
                                     
-                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-danger"> ${qtdpessoas}</span>
                                     
                                     
                                     <i class="material-icons">list</i>
@@ -184,7 +184,7 @@
                                     </h3>
                                     
                                     <h3 class="title"><fmt:formatNumber type="currency"
-                       value="${total}"/>
+                       value="${mesa.CalcularTotal()}"/>
 <!--                                         <small>Total</small> -->
                                     </h3>
                                     
@@ -304,7 +304,7 @@
 
                                 </div>
                         
-                        <form action="LocalizarClienteGerencia" method="POST" class="">
+                        <form action="addPedidoSalao" method="POST" class="">
 
 
 				    <div class="form-group label-floating is-empty">
@@ -376,8 +376,8 @@
 
 						<div class="form-group label-floating  is-empty">
                               <label class="control-label">Cliente</label>
-                                <input type="text" list="${clientesList}" id="id"
-                                       placeholder="" name="id" autocomplete="off"
+                                <input type="text" list="${clientesList}" id="idcli"
+                                       placeholder="" name="idcli" autocomplete="off"
                                        class="form-control">
                                        
                                  <span class="material-input"></span>
@@ -402,7 +402,7 @@
                                <div class="form-group label-floating is-empty">
 <!--                               <label class="control-label">Cliente</label> -->
                                    
-                                   <button type="submit" formaction="LocalizarClienteGerencia" class="btn btn-info btn-round btn-md">AddPedidoMesa</button>
+                                   <button type="submit"  class="btn btn-info btn-round btn-md">AddPedidoMesa</button>
 
                                        
                                  <span class="material-input"></span>

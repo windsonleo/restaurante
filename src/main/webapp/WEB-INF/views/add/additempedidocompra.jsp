@@ -201,6 +201,8 @@
 <!-- 									     <th>Pagamentos</th> -->
 <!-- 									     <th>Ativo</th> -->
 									     <th>Situacao</th>
+									      <th>UM</th>
+									    <th>Total </th>
 									    <th>Açao</th>
                                     </tr>
                                 </thead>
@@ -231,6 +233,10 @@
 
 
 			     <td>${item.key.situacao}</td>
+			     
+			     <td>${item.key.un_medida}</td>
+			     
+			     <td>${item.key.totalItem}</td>
   				
 								<td class="options-width">
       								

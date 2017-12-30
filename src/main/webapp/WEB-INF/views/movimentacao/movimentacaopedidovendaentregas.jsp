@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page session="true" %>
 
 
@@ -44,7 +46,7 @@
                                     <th>Cliente</th>
                                     <th>Mesa</th>
                                     <th>Garcon</th>
-                                    <th>Itens</th>
+<!--                                     <th>Itens</th> -->
                                     <th>Ativo</th>
                                     <th>Pago</th>
                                     <th>Acao</th>
@@ -59,7 +61,8 @@
                                     <tr class="gradeX">
 
                                         <td>${pedidovenda.id}</td>
-                                        <td>${pedidovenda.data}</td>
+                                        <td>   <fmt:formatDate pattern="dd/MM/yyyy"
+                                             value="${pedidovenda.data}"/></td>
 <%--                                         <td>${pedidovenda.situacao}</td> --%>
 
                                             <%-- 		                  <td><span class="label label-info">${pedidovenda.status}</span></td> --%>
@@ -110,11 +113,12 @@
 
 
                                         <td>${pedidovenda.origempedido}</td>
-                                        <td>${pedidovenda.total}</td>
+                                        <td>  <fmt:formatNumber type="currency"
+                									 value="${pedidovenda.total}"/></td>
                                         <td>${pedidovenda.cliente}</td>
                                         <td>${pedidovenda.mesa}</td>
                                         <td>${pedidovenda.garcon}</td>
-                                        <td>${pedidovenda.items}</td>
+<%--                                         <td>${pedidovenda.items}</td> --%>
                                         <td><span class="badge label-success"> ${pedidovenda.ativo}</span></td>
 
                                         <!-- 		                   <td> -->

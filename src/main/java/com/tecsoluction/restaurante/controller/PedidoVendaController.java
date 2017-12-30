@@ -26,6 +26,7 @@ import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.entidade.Usuario;
@@ -262,7 +263,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         // System.out.println("windson ped"+pedidov.toString());
 
-        Item item = new Item();
+        Item item = new Item(produto);
 
         item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
@@ -366,65 +367,129 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     }
     
     
-    @RequestMapping(value = "/pronto", method = RequestMethod.GET)
+    @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
-    	String mensagem = "Pedido Venda Pronto com Sucesso";
-    	String erros = "Erro no Pronto";
-    	
+    	  UUID idf = UUID.fromString(request.getParameter("id"));
+          
+          
+          String keyy = request.getParameter("key");
+          
+      
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
+          PedidoVenda pv = getservice().findOne(idf);
+          
 
-        PedidoVenda pc = getservice().findOne(idf);
+          Map<Item,String> pcitens = pv.getItems();
+          
+          
+          
+          for (Item key : pcitens.keySet()) {
+          	
+          	System.out.println("key" + key.getNome());
+          	System.out.println("keyy" + keyy);
+          	
+          	if(key.getNome().equals(keyy)){
+          		
+          		key.setSituacao(SituacaoItem.PRONTO);
+          		
+          	}
+          	
 
-        pc.setStatus(StatusPedido.PRONTO);
+          }
+          
+          pv.setItems(pcitens);
+          
+//          pc.setStatus(StatusPedido.PRONTO);
+          
+          getservice().edit(pv);
 
-        getservice().save(pc);
-
-        ModelAndView cozinha = new ModelAndView("cozinha");
         
-        if(pc.getStatus() != StatusPedido.PRONTO) {
-        
-        	cozinha.addObject("erros",erros);
-       
-        
-        }
-        
-        
-        
-        return cozinha;
-        
+          return new ModelAndView("redirect:/");
        
         
         }
     
     
-    @RequestMapping(value = "/cancelado", method = RequestMethod.GET)
+    @RequestMapping(value = "/item/cancelar", method = RequestMethod.GET)
     public ModelAndView CanceladoPedidovENDA(HttpServletRequest request) {
     	
-    	String mensagem = "Pedido Venda Cancelado com Sucesso";
-    	String erros = "Erro no Cancelamento";
-    	
+    	UUID idf = UUID.fromString(request.getParameter("id"));
+          
+          
+          String keyy = request.getParameter("key");
+          
+      
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
+          PedidoVenda pv = getservice().findOne(idf);
+          
 
-        PedidoVenda pc = getservice().findOne(idf);
+          Map<Item,String> pcitens = pv.getItems();
+          
+          
+          
+          for (Item key : pcitens.keySet()) {
+          	
+          	
+          	if(key.getNome().equals(keyy)){
+          		
+          		key.setSituacao(SituacaoItem.INTERROMPIDO);
+          		
+          	}
+          	
 
-        pc.setStatus(StatusPedido.CANCELADO);
+          }
+          
+          pv.setItems(pcitens);
+          
+//          pc.setStatus(StatusPedido.PRONTO);
+          
+          getservice().edit(pv);
 
-        getservice().save(pc);
-
-        ModelAndView cozinha = new ModelAndView("cozinha");
         
-        if(pc.getStatus() != StatusPedido.CANCELADO) {
-        
-        	cozinha.addObject("erros",erros);
+          return new ModelAndView("redirect:/");
        
         
         }
+    
+    
+    @RequestMapping(value = "/item/preparar", method = RequestMethod.GET)
+    public ModelAndView PrepararItemPedidovENDA(HttpServletRequest request) {
+    	
+    	  UUID idf = UUID.fromString(request.getParameter("id"));
+          
+          
+          String keyy = request.getParameter("key");
+          
+      
+
+          PedidoVenda pv = getservice().findOne(idf);
+          
+
+          Map<Item,String> pcitens = pv.getItems();
+          
+          
+          
+          for (Item key : pcitens.keySet()) {
+          	
+          	
+          	if(key.getNome().equals(keyy)){
+          		
+          		key.setSituacao(SituacaoItem.EM_EXECUCAO);
+          		
+          	}
+          	
+
+          }
+          
+          pv.setItems(pcitens);
+          
+//          pc.setStatus(StatusPedido.PRONTO);
+          
+          getservice().edit(pv);
+
         
-        return cozinha;
-        
+          return new ModelAndView("redirect:/cozinha");
        
         
         }

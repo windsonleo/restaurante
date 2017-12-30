@@ -15,7 +15,7 @@
          <span class="icon-bar"></span>
          </button>
          
-       <span>  <i class="fa fa-paw"> </i> </span>
+       <h4 class="simple-text"> <i class="fa fa-paw"> </i> Tecsoluction </h4>
 <!--          <img class="image-responsive" -->
 <%--             src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/> --%>
       </div>
@@ -73,7 +73,7 @@
             <li>
                <%--                                 <a href="${pageContext.request.contextPath}/usuario/profile" class="dropdown-toggle" data-toggle="dropdown"> --%>
                <a href="${pageContext.request.contextPath}/usuario/profile?id=${usuarioAtt.id}">
-                  <i class="material-icons">person</i>
+                  <i class="material-icons">face</i>
                   <p class="hidden-lg hidden-md">Profile</p>
                </a>
             </li>

@@ -53,7 +53,7 @@ public class PedidoCompra extends Pedido implements Serializable {
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name = "itens_pedidocompra", joinColumns = @JoinColumn(name = "id"))
     @JsonManagedReference
-    @Lob
+//    @Lob
     @Column(name = "qtd")
     @MapKeyColumn(name = "idit")
     private Map<Item, String> items = new HashMap<>();

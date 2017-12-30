@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
 import com.tecsoluction.restaurante.util.StatusMesa;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -73,7 +74,10 @@ public class Mesa extends BaseEntity implements Serializable {
     	  
          for (PedidoVenda pedidoVenda : getPedidos()) {
 
+        	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)&&(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)){
              total = total.add(pedidoVenda.getTotal());
+        	 
+        	 }
 
          }
          

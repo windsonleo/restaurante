@@ -334,13 +334,44 @@ public class CaixaController extends AbstractController<Caixa> {
     @RequestMapping(value = "rapido", method = RequestMethod.GET)
     public ModelAndView CaixaRapido(HttpServletRequest request) {
 
+        List<FormaPagamento> pagdinheiro = new ArrayList<>();
 
+        List<FormaPagamento> pagcartaocredito = new ArrayList<>();
+
+        List<FormaPagamento> pagcartaodebito = new ArrayList<>();
+        
+        
     	List<PedidoVenda> ls = pedidovendaService.findAll();
-    	
     	
         ModelAndView caixarapido = new ModelAndView("caixarapido");
         
+        for (PedidoVenda pv : ls) {
+
+            List<Pagamento> pags = pv.getPagamento();
+            
+            for (Pagamento pagamento : pags) {
+                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
+                for (FormaPagamento valor : formapag) {
+                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
+                        pagdinheiro.add(valor);
+                    }
+
+                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
+                        pagcartaocredito.add(valor);
+                    }
+
+                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
+                        pagcartaodebito.add(valor);
+                    }
+//                    total = pagamento.getValorPago().plus(total);
+                }
+            }
+        }
+        
         caixarapido.addObject("ls",ls);
+        caixarapido.addObject("pagdinheiro",pagdinheiro);
+        caixarapido.addObject("pagcartaodebito",pagcartaodebito);
+        caixarapido.addObject("pagcartaocredito",pagcartaocredito);
 
 
         return caixarapido;

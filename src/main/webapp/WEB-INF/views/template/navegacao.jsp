@@ -43,7 +43,7 @@
 
                 <li class="">
                     <a href="${pageContext.request.contextPath}/usuario/movimentacao">
-                        <i class="material-icons">person</i>
+                        <i class="material-icons">face</i>
                         Usuario
                     </a>
                 </li>

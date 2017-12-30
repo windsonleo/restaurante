@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Garcon;
+import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
@@ -15,7 +16,10 @@ import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.DadosGerenciais;
+import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.StatusMesa;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,7 +35,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -178,6 +186,7 @@ public class MesaController extends AbstractController<Mesa> {
     public ModelAndView AbrirMesa(HttpServletRequest request) {
     	
     	String mensagem = "Mesa Aberta com Sucesso";
+    	String qtdpessoas = "0";
 
 //
     	ModelAndView salao = new ModelAndView("salao");
@@ -205,6 +214,8 @@ public class MesaController extends AbstractController<Mesa> {
         mesa.setStatus(StatusMesa.ABERTA);
         
         getservice().edit(mesa);
+        
+        qtdpessoas = qtd;
     	
     	
         
@@ -215,6 +226,9 @@ public class MesaController extends AbstractController<Mesa> {
 
         salao.addObject("mesasList", mesas);
         salao.addObject("mensagem", mensagem);
+        salao.addObject("qtdpessoas", qtdpessoas);
+
+        
 
 //        mesasocupadas.addObject("vendasmesa", vendasmesa);
 
@@ -252,6 +266,34 @@ public class MesaController extends AbstractController<Mesa> {
        	        
        	        mesa.setStatus(StatusMesa.FECHADA);
        	        
+       	        //guardará os pedido pronto da mesa
+       	        List<PedidoVenda> pedidos = new ArrayList<>();
+       	        
+       	     for (PedidoVenda pv : mesa.getPedidos()) {
+       	    	 
+       	    	 
+       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
+       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+       	    		 
+       	    		pedidos.add(pv);
+       	    		 
+       	    		 
+       	    	 }
+       	    	 
+       	    	 
+       	     }
+       	     
+       	     for (PedidoVenda pv : pedidos) {
+       	    	 
+       	    		 
+       	    		pv.setStatus(StatusPedido.FECHADO);
+       	    		 
+       	    		pedidovendaService.edit(pv);
+       	    	 
+       	     }
+       	     
+       	     
+       	        
        	        getservice().edit(mesa);
        	    	
        	    	
@@ -267,8 +309,115 @@ public class MesaController extends AbstractController<Mesa> {
 //       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
 
 
+       	        return new ModelAndView("redirect:/mesa/salao");
+       	        
+    }
+    
+    
+    
+    @RequestMapping(value = "addPedidoSalao", method = RequestMethod.POST)
+    public ModelAndView AddPedidoMesa(HttpServletRequest request) {
+
+       	String mensagem = "Pedido Adicionado com Sucesso";
+
+       	//
+       	    	ModelAndView salao = new ModelAndView("salao");
+
+       	    	//ID DA MESA A SER ADD O PEDIDO
+       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+       	      
+       	        Mesa mesa = getservice().findOne(idfm);
+
+       	        
+       	        if(mesa.getStatus() != StatusMesa.ABERTA) {
+       	        	
+       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Adicionado o Pedido";
+       	       
+       	        	salao.addObject("erros", erros);
+       	        	
+       	        	return salao;
+       	        	
+       	        }
+       	        
+       	        //garcon
+       	        UUID idfg = UUID.fromString(request.getParameter("idgar"));
+    	        Garcon garcon = garconService.findOne(idfg);
+       	       
+    	        //cliente
+    	        UUID idfc = UUID.fromString(request.getParameter("idcli"));
+    	        Cliente cliente = clienteService.findOne(idfc);
+    	        
+    	        
+       	        //produto para virar item
+    	        UUID idprod = UUID.fromString(request.getParameter("idprod"));
+    	        Produto produto = produtoService.findOne(idprod);
+    	        
+    	        //quantidade do item
+    	        String qtd = request.getParameter("qtd");
+
+    	        CriarPedido(cliente, mesa, garcon, produto, qtd);
+    	        
+    	        
+    	        List<Mesa> mesaslist = getservice().findAll();
+       	       
+    	        salao.addObject("mesasList", mesaslist);
+       	        salao.addObject("mensagem", mensagem);
+       	        salao.addObject("mensagem", mensagem);
+
+
+
        	        return salao;
        	        
+    }
+    
+    
+    public void CriarPedido(Cliente cliente, Mesa mesa, Garcon garcon,Produto produto, String qtd){
+    	
+    	PedidoVenda pedidovenda = new PedidoVenda();
+    	pedidovenda.setCliente(cliente);
+    	pedidovenda.setMesa(mesa);
+    	pedidovenda.setGarcon(garcon);
+    	pedidovenda.setData(new Date());
+    	pedidovenda.setIspago(false);
+    	pedidovenda.setOrigempedido(OrigemPedido.MESA);
+    	pedidovenda.setStatus(StatusPedido.ABERTO);
+    	
+    	
+    	pedidovenda.setItems(AddItemPedido(pedidovenda,qtd,produto));
+    	
+    	pedidovenda.setTotal(pedidovenda.CalcularTotal(pedidovenda.getItems()));
+    	
+    	pedidovenda.setStatus(StatusPedido.PENDENTE);
+    	
+    	pedidovendaService.save(pedidovenda);
+    	
+    	
+    }
+    
+    public Map<Item,String> AddItemPedido(PedidoVenda pedidovenda,String qtd,Produto produto) {
+    	
+    	Map<Item,String> itenspedido = pedidovenda.getItems();
+    	
+    	
+    	 Produto produtoaux = produto;
+    	 
+    	 Item item = new Item(produtoaux);
+         item.setId(produtoaux.getId());
+ 		 item.setNome(produtoaux.getNome()); 
+ 		 item.setCodigo(produtoaux.getCodebar()); 
+ 		 item.setPrecoUnitario(produtoaux.getPrecovenda()); 
+
+ 		 item.setDescricao(produtoaux.getDescricao()); 
+ 		 item.setSituacao(SituacaoItem.AGUARDANDO);
+ 		 item.setUn_medida(produtoaux.getUn_medida());
+ 		 
+ 		 itenspedido.put(item, qtd);
+ 		 
+ 	
+ 		 
+ 		 
+ 		 return itenspedido;
+    	
     }
 
 }

@@ -219,7 +219,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         this.pv = getservice().findOne(idfpedcomp);
 
-        Item item = new Item();
+        Item item = new Item(produto);
        
         item.setId(produto.getId());
 		item.setNome(produto.getNome()); 
@@ -303,29 +303,55 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     @RequestMapping(value = "/item/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
     	
-    	String mensagem = "Item do Pedido Compra Aprovado com Sucesso";
-    	String erros = "Erro na Aprovacao do Item";
+//    	String mensagem = "Item do Pedido Compra Aprovado com Sucesso";
+//    	String erros = "Erro na Aprovacao do Item";
     	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
+        
+        
+        String keyy = request.getParameter("key");
+        
+    
 
         PedidoCompra pc = pedidocompraService.findOne(idf);
         
-//        pc.getItems().containsKey(key)
 
-        pc.setStatus(StatusPedido.PRONTO);
+        Map<Item,String> pcitens = pc.getItems();
+        
+        
+        
+        for (Item key : pcitens.keySet()) {
+        	
+        	System.out.println("key" + key.getNome());
+        	System.out.println("keyy" + keyy);
+        	
+        	if(key.getNome().equals(keyy)){
+        		
+        		key.setSituacao(SituacaoItem.PRONTO);
+        		
+        	}
+        	
 
-        pedidocompraService.save(pc);
-
-        ModelAndView home = new ModelAndView("home");
-        
-        if(pc.getStatus() != StatusPedido.PRONTO){
-        
-        home.addObject("erros",erros);
-       
-        return home;
-        
         }
+        
+        pc.setItems(pcitens);
+        
+//        pc.setStatus(StatusPedido.PRONTO);
+        
+        pedidocompraService.edit(pc);
+
+      
+        
+//        ModelAndView home = new ModelAndView("home");
+        
+//        if(pc.getStatus() != StatusPedido.PRONTO){
+//        
+//        home.addObject("erros",erros);
+//       
+//        return home;
+//        
+//        }
         
 //        home.addObject("mensagem",mensagem);
 
@@ -342,19 +368,80 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         UUID idf = UUID.fromString(request.getParameter("id"));
 
         PedidoCompra pc = pedidocompraService.findOne(idf);
+        String keyy = request.getParameter("key");
 
-        pc.setStatus(StatusPedido.CANCELADO);
+        
+        
+        Map<Item,String> pcitens = pc.getItems();
+        
+        
+        
+        for (Item key : pcitens.keySet()) {
+        	
+        	System.out.println("key" + key.getNome());
+        	System.out.println("keyy" + keyy);
+        	
+        	if(key.getNome().equals(keyy)){
+        		
+        		key.setSituacao(SituacaoItem.CANCELADO);
+        		
+        	}
+        	
 
-        pedidocompraService.save(pc);
-
-        ModelAndView home = new ModelAndView("home");
+        }
+        
+        pc.setItems(pcitens);
+        
+        getservice().edit(pc);
+   
         
         logger.info("Cancelar Status  Pedido Compra !", pc);
 
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
 
     }
 
+    @RequestMapping(value = "/aprovar", method = RequestMethod.GET)
+    public ModelAndView AprovarPedidoCompraAll(HttpServletRequest request) {
+
+        UUID idf = UUID.fromString(request.getParameter("id"));
+
+        PedidoCompra pc = pedidocompraService.findOne(idf);
+//        String keyy = request.getParameter("key");
+
+        
+        
+        Map<Item,String> pcitens = pc.getItems();
+        
+        
+        
+        for (Item key : pcitens.keySet()) {
+        	
+//        	System.out.println("key" + key.getNome());
+//        	System.out.println("keyy" + keyy);
+        	
+//        	if(key.getNome().equals(keyy)){
+        		
+        		key.setSituacao(SituacaoItem.PRONTO);
+        		
+        	}
+        	
+
+//        }
+        
+        pc.setStatus(StatusPedido.PRONTO);
+        
+        pc.setItems(pcitens);
+        
+        getservice().edit(pc);
+   
+        
+        logger.info("Cancelar Status  Pedido Compra !", pc);
+
+        return new ModelAndView("redirect:/");
+
+    }
+    
     @Override
     protected PedidoCompraServicoImpl getservice() {
         return pedidocompraService;
