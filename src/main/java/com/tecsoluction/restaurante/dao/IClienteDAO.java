@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tecsoluction.restaurante.entidade.Cliente;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -14,7 +15,8 @@ public interface IClienteDAO extends JpaRepository<Cliente, UUID> {
 
 
     @Query("SELECT p FROM Cliente p where p.telefone=:telefone")
-    public Cliente getClienteporTelefone(@Param("telefone") String tel);
+    Cliente getClienteporTelefone(@Param("telefone") String tel);
 
+    List<Cliente> findClientesByListaPedidoVendaIsNotNull();
 
 }

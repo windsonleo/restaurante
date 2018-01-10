@@ -1,9 +1,10 @@
 package com.tecsoluction.restaurante.rest;
 
 
+import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +19,13 @@ public class ChartControllerRest {
 
     private final PedidoVendaServicoImpl pedidoVendaServico;
 
+    private final ClienteServicoImpl clienteServico;
+
+
     @Autowired
-    public ChartControllerRest(PedidoVendaServicoImpl pedidoVendaServico) {
+    public ChartControllerRest(PedidoVendaServicoImpl pedidoVendaServico, ClienteServicoImpl clienteServico) {
         this.pedidoVendaServico = pedidoVendaServico;
+        this.clienteServico = clienteServico;
     }
 
     @GetMapping(value = "/status/{status}")
@@ -30,11 +35,11 @@ public class ChartControllerRest {
                 findAllByStatusIsAndSituacaoIs(status);
         return pedidovenda;
     }
-    
-    @GetMapping(value = "/clientesdiarios")
-    public long clientesDia() {
 
-       long countCliente = 1;//pedidoVendaServico.findClienteByPedidoVenda();
-        return countCliente;
+    @GetMapping(value = "/clientesdiarios")
+    public List<Cliente> clientesDia() {
+
+        List<Cliente> clientes = clienteServico.findClientesByListaPedidoVendaIsNotNull();
+        return clientes;
     }
 }

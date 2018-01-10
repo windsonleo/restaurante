@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,7 +81,7 @@ public class ProdutoController extends AbstractController<Produto> {
         categoriaList = categoriaService.findAll();
 
         fornecedorList = fornecedorService.findAll();
-       
+
         produtoList = getservice().findAll();
 
         model.addAttribute("usuarioAtt", usuario);
@@ -121,9 +119,9 @@ public class ProdutoController extends AbstractController<Produto> {
         return detalhesproduto;
     }
 
-    @RequestMapping(value = "salvarfotoproduto", method = RequestMethod.POST)
-    public String SalvarFotoProduto(@RequestParam CommonsMultipartFile file, HttpSession session, HttpServletRequest request,
-                             Model model) {
+    @PostMapping(value = "salvarfotoproduto")
+    public String SalvarFotoProduto(@RequestParam CommonsMultipartFile file, HttpSession session,
+                                    HttpServletRequest request, Model model) {
 
         String mensagem = "Sucesso ao salvar foto";
         String erros = "Falha ao salvar foto";
@@ -171,7 +169,7 @@ public class ProdutoController extends AbstractController<Produto> {
     public ModelAndView gerenciarProduto(HttpServletRequest request) {
 
         ModelAndView gerencia = new ModelAndView("gerenciaproduto");
-               
+
         gerencia.addObject("produtoList", produtoList);
 
         return gerencia;
@@ -192,7 +190,7 @@ public class ProdutoController extends AbstractController<Produto> {
 //        dadosgerenciais.setCusto(produto.getPrecocusto().setScale(4, RoundingMode.UP));
 //        dadosgerenciais.setDespesafixa(new BigDecimal(5.00).setScale(4, RoundingMode.UP));
 //        dadosgerenciais.setDespesavariavel(new BigDecimal(10.00).setScale(4, RoundingMode.UP));
-      
+
 //        BigDecimal precosugerido = dadosgerenciais.getPrecovenda();
 //                
 //        BigDecimal margemlucro = dadosgerenciais.getMargemlucro();

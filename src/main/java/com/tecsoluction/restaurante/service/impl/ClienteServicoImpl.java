@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
@@ -35,6 +36,10 @@ public class ClienteServicoImpl extends AbstractEntityService<Cliente> {
 
         return dao.getClienteporTelefone(tel);
     }
+
+    public List<Cliente> findClientesByListaPedidoVendaIsNotNull(){
+        return dao.findClientesByListaPedidoVendaIsNotNull();
+    };
 
     @Override
     protected void validateDelete(UUID id) {
