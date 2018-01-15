@@ -36,8 +36,8 @@ public class ChartControllerRest {
         return pedidovenda;
     }
 
-    @GetMapping(value = "/clientesdiarios")
-    public List<Cliente> clientesDia() {
+    @GetMapping(value = "/clientescompedidos")
+    public List<Cliente> clientesComPedidos() {
 
         List<Cliente> clientes = clienteServico.findClientesByListaPedidoVendaIsNotNull();
         return clientes;
