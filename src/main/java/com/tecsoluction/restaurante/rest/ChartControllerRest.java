@@ -42,4 +42,12 @@ public class ChartControllerRest {
         List<Cliente> clientes = clienteServico.findClientesByListaPedidoVendaIsNotNull();
         return clientes;
     }
+    
+    @GetMapping(value = "/rankingprodutos")
+    public long rankingProdutos() {
+
+        //List<Cliente> clientes = clienteServico.findClientesByListaPedidoVendaIsNotNull();
+        return 1;
+    }
+    
 }
