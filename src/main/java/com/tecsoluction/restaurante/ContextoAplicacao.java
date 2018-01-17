@@ -1,5 +1,7 @@
 package com.tecsoluction.restaurante;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -40,11 +42,13 @@ public class ContextoAplicacao {
 	}
 
 	@ExceptionHandler(CustomGenericException.class)
-	public ModelAndView handleCustomException(CustomGenericException ex) {
-
+	public ModelAndView handleCustomException(Exception ex) {
+//TODO: Remover o new após implementar os erros no controllers
+		//https://www.mkyong.com/spring-mvc/spring-mvc-exceptionhandler-example/
+		CustomGenericException ex1 = new CustomGenericException(ex.getCause().toString(), ex.getMessage());
 		ModelAndView model = new ModelAndView("erro");
-		model.addObject("errCode", ex.getErrCode());
-		model.addObject("errMsg", ex.getErrMsg());
+		model.addObject("errCode", ex1.getErrCode());
+		model.addObject("errMsg", ex1.getErrMsg());
 
 		return model;
 
