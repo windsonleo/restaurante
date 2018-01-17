@@ -43,7 +43,7 @@ public class ContextoAplicacao {
 
 	@ExceptionHandler(CustomGenericException.class)
 	public ModelAndView handleCustomException(Exception ex) {
-//TODO: Remover o new após implementar os erros no controllers
+//TODO: Remover o new apos implementar os erros no controllers
 		//https://www.mkyong.com/spring-mvc/spring-mvc-exceptionhandler-example/
 		CustomGenericException ex1 = new CustomGenericException(ex.getCause().toString(), ex.getMessage());
 		ModelAndView model = new ModelAndView("erro");
