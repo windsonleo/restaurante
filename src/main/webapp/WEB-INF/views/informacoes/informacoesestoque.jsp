@@ -229,11 +229,11 @@
 
       								
       								<a
-									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
+									href="${pageContext.request.contextPath}/item/informacao?id=${item.key.id}"
 									title="informa��o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
 									
 										<a
-									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
+									href="${pageContext.request.contextPath}/item/editar?id=${item.key.id}"
 									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
 									
 <!-- 																			<a -->
@@ -251,7 +251,7 @@
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
               </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
            
             </div>		
 								
