@@ -230,23 +230,23 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key.id}"
-									title="informaï¿½ï¿½o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informação" class="fa fa-2x"><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key.id}"
-									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
+									title="editar" class="fa fa-2x"><i class="icon-edit"></i></a>
 									
 <!-- 																			<a -->
 <%-- 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}" --%>
 <!-- 									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a> -->
 									
 									
-									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa"><i class="icon-remove-sign"></i></a>
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">ï¿½</button>
-                <h3>Alerta de Exclusï¿½o</h3>
+                <button data-dismiss="modal" class="close" type="button"><i class="icon-remove-sign"></i></button>
+                <h3>Alerta de Exclusão</h3>
               </div>
               <div class="modal-body">
                 <p>Deseja Realmente Excluir esse Registro</p>
