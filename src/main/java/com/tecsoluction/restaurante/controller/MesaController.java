@@ -419,5 +419,82 @@ public class MesaController extends AbstractController<Mesa> {
  		 return itenspedido;
     	
     }
+    
+    
+    @RequestMapping(value = "transferirmesa", method = RequestMethod.GET)
+    public ModelAndView TransferirMesa(HttpServletRequest request) {
+
+       	String mensagem = "Mesa Tranferida com Sucesso";
+
+       	//
+       	    	ModelAndView salao = new ModelAndView("salao");
+
+//       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+//       	       
+//
+//       	        
+//       	        Mesa mesa = getservice().findOne(idfm);
+//       	        
+//       	        
+//       	        
+//       	        if(mesa.getStatus() != StatusMesa.ABERTA){
+//       	        	
+//       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
+//       	       
+//       	        	salao.addObject("erros", erros);
+//       	        	
+//       	        	return salao;
+//       	        	
+//       	        }
+//       	        
+//       	        mesa.setStatus(StatusMesa.FECHADA);
+//       	        
+//       	        //guardara os pedido pronto da mesa
+//       	        List<PedidoVenda> pedidos = new ArrayList<>();
+//       	        
+//       	     for (PedidoVenda pv : mesa.getPedidos()) {
+//       	    	 
+//       	    	 
+//       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
+//       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+//       	    		 
+//       	    		pedidos.add(pv);
+//       	    		 
+//       	    		 
+//       	    	 }
+//       	    	 
+//       	    	 
+//       	     }
+//       	     
+//       	     for (PedidoVenda pv : pedidos) {
+//       	    	 
+//       	    		 
+//       	    		pv.setStatus(StatusPedido.FECHADO);
+//       	    		 
+//       	    		pedidovendaService.edit(pv);
+//       	    	 
+//       	     }
+//       	     
+//       	     
+//       	        
+//       	        getservice().edit(mesa);
+//       	    	
+//       	    	
+//       	        
+////       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+//       	        
+//
+//       	        List<Mesa> mesas = mesaService.findAll();
+
+       	        salao.addObject("mesasList", mesas);
+       	        salao.addObject("mensagem", mensagem);
+
+//       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
+
+
+       	        return new ModelAndView("redirect:/mesa/salao");
+       	        
+    }
+    
 
 }

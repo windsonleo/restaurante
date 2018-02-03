@@ -86,12 +86,12 @@
 						</a>
 					</li>
 					
-<!-- 					<li class="active" > -->
-<!-- 						<a href="#" role="tab" data-toggle="tab" > -->
-<!-- 							<i class="material-icons"> timer</i> -->
-<!-- 							Tempo Médio Preparo -->
-<!-- 						</a> -->
-<!-- 					</li> -->
+					<li class="" >
+						<a href="#exampleModal3" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa">
+							<i class="material-icons"> compare_arrows</i>
+							Transferir Mesa
+						</a>
+					</li>
 		</ul>
 		
   
@@ -608,6 +608,89 @@
 
 
 
+<!-- transferir mesa -->
+<div class="modal fade" id="ModalTransferirMesa" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Transferir Mesa</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="transferirmesa" method="get">
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa Origem</label>
+									<input id="idmesaorigem" name="idmesaorigem" list="${mesasList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesasList}">
+
+                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                
+
+         
+          </div>
+          
+            		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa Destino</label>
+									<input id="idmesadestino" name="idmesadestino" list="${mesasList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesasList}">
+
+                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                
+
+         
+          </div>
+          
+                  <button type="submit" class="btn btn-info">Tranferir Mesa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 
 

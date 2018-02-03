@@ -270,7 +270,7 @@
               </div>  
               </div>
               
-                             <div class="form-group label-floating ">
+               <div class="form-group label-floating ">
                   <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">					<input id="foto" class="form-control"

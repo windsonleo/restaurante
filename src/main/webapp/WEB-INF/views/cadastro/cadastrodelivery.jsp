@@ -6,6 +6,7 @@
  <div id="content">
  
  </br>
+ 
   <div id="content-header">
   
 
@@ -14,6 +15,7 @@
             <div class="container-fluid">
             
             <c:if test="${erros != null }">
+             <hr>
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -86,12 +88,24 @@
                 <label class="control-label">Nome</label>
                 <div class="controls">
 						<input id="nome"  name="nome" type="text" class="form-control" value="${cliente.nome}" placeholder="" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
+                
+                
+                </div>
+              </div>
+              </div>
+              
+              
+            <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Telefone</label>
+                <div class="controls">
                 		<input id="telefone" name="telefone" class="form-control"  type="text" value="${cliente.telefone}" readonly="readonly"/>
                 
                 
                 </div>
               </div>
               </div>
+              
 			 
 			 <div class="form-group label-floating ">
               <div class="control-group">
@@ -100,28 +114,106 @@
 				
 				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder=" " readonly="readonly"/>
 				
-				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
-				
-				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="" readonly="readonly"/>
-				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> />
-				
-				
-           		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
 
-           		<input id="cidade" name="cidade" class="form-control"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
-
-           		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="" readonly="readonly"/>
            		
-           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder=""  />
 				
-				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="" />
 				
-				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/>
+<!-- 				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/> -->
 								
 				
                 </div>
               </div>
 				</div>
+				
+				            <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Cep</label>
+                <div class="controls">
+				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
+                
+                
+                </div>
+              </div>
+              </div>
+              
+              
+                          <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Logradouro</label>
+                <div class="controls">
+				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="" readonly="readonly"/>
+                
+                
+                </div>
+              </div>
+              </div>
+              
+              
+                          <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">numero</label>
+                <div class="controls">
+				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> />
+                
+                
+                </div>
+              </div>
+              </div>
+              
+              
+                          <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Bairro</label>
+                <div class="controls">
+           		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/>
+                
+                
+                </div>
+              </div>
+              </div>
+              
+            <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Cidade</label>
+                <div class="controls">
+           		<input id="cidade" name="cidade" class="form-control"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/>
+                
+                
+                </div>
+              </div>
+              </div>
+              
+            <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Uf</label>
+                <div class="controls">
+           		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="" readonly="readonly"/>
+                
+                
+                </div>
+              </div>
+              </div>              
+              <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Complemento</label>
+                <div class="controls">
+				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="" />
+                
+                
+                </div>
+              </div>
+              </div>
+              
+              <div class="form-group label-floating ">
+ 			<div class="control-group">
+                <label class="control-label">Ponto de Referencia</label>
+                <div class="controls">
+           		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder=""  />
+                
+                
+                </div>
+              </div>
+              </div>
 
 
 

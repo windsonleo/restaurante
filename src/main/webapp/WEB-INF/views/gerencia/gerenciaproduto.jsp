@@ -195,7 +195,7 @@
 
 						<div class="form-group label-floating">
                               <label class="control-label">Produto</label>
-                                <input type="text" list="${produtoList}" id="id"
+                                <input type="text" list="${produtosList}" id="id"
                                        placeholder="" name="id" autocomplete="off"
                                        class="form-control">
                                        
@@ -205,9 +205,9 @@
 
 
 
-                                <datalist id="${produtoList}">
+                                <datalist id="${produtosList}">
 
-                                    <c:forEach var="client" items="${produtoList}" varStatus="id">
+                                    <c:forEach var="client" items="${produtosList}" varStatus="id">
 
                                         <option value="${client.id }"> ${client.nome } </option>
 

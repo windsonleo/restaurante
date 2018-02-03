@@ -23,12 +23,12 @@
                         <div class="card-header" data-background-color="blue">
 
                             <h4 class="title">Movimentacao Delivery</h4>
-                            <p class="category">Todos
-                            <button type="submit" class="btn btn-sm btn-success pull-right"
-                                    onClick="window.location='AdicionarDelivery'">Add
-                            </button></p>
-                            <%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/delivery/cadastro"><i --%>
-                            <!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                            <p class="category">Todos</p>
+<!--                             <button type="submit" class="btn btn-sm btn-success pull-right" -->
+<!--                                     onClick="window.location='AdicionarDelivery'">Add -->
+<!--                             </button> -->
+                                       <span class="icon "><a href="${pageContext.request.contextPath}/delivery/AdicionarDelivery"><i
+                                       class="icon-plus pull-right" color="blue"></i></a> </span>
                         </div>
 
                         </br>
