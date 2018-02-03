@@ -353,7 +353,7 @@
                             <source>
                                 <directory>${project.basedir}/src/main/webapp/resources/sass</directory>
                             </source>
-                            <destination>${project.basedir}/src/main/webapp/resources/sass_compiled</destination>
+                            <destination>${project.basedir}/src/main/webapp/resources/md/sass_compiled</destination>
                         </resource>
                     </resources>
                 </configuration>
