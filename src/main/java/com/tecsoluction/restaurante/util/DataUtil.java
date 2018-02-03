@@ -64,7 +64,7 @@ public class DataUtil {
 	    }
 	    case 3:
 	    {
-	      diaSemana = "Terça";
+	      diaSemana = "Terca";
 	      break;
 	    }
 	    case 4:
@@ -84,7 +84,7 @@ public class DataUtil {
 	    }
 	    case 7:
 	    {
-	      diaSemana = "Sábado";
+	      diaSemana = "Sabado";
 	      break;
 	    }
 	 
