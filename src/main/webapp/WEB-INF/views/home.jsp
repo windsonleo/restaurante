@@ -706,13 +706,13 @@
           				
           				<div class="row">
           				
-          		<div class="widget-content" style="margin-left:2em;">                
+          				<div class="widget-content" style="margin-left:2em;">                
 				                    
 				 <ul class="nav nav-pills nav-pills-icons nav-pills-info" role="tablist">
 					
 					<sec:authorize access="hasRole('ROLE_COZINHA')">
 					<li class="active" >
-						<a href="${pageContext.request.contextPath}/cozinha" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta">
 							<i class="material-icons">room_service</i>
 							Cozinha
 						</a>
@@ -721,7 +721,7 @@
 					
 					
 					<li >
-						<a href="${pageContext.request.contextPath}/mesas/salao" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
 							<i class="material-icons">table</i>
 							Salao
 						</a>
@@ -729,7 +729,7 @@
 					
 					<sec:authorize access="hasRole('ROLE_CAIXA')">
 					<li>
-						<a href="${pageContext.request.contextPath}/caixa/rapido" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta">
 							<i class="material-icons">money</i>
 							Caixa
 						</a>
@@ -749,7 +749,7 @@
 					</sec:authorize>
 					
 					<li>
-						<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="tab" data-toggle="ta">
 							<i class="material-icons">money</i>
 							Reserva
 						</a>
@@ -769,7 +769,7 @@
 					<sec:authorize access="hasRole('ROLE_VENDA')">
 					
 					<li>
-						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
 							<i class="material-icons">money</i>
 							Vendas
 						</a>
@@ -779,7 +779,7 @@
 					
 					
 					<li>
-						<a href="${pageContext.request.contextPath}/estoque/consulta" role="tab" data-toggle="tab">
+						<a href="${pageContext.request.contextPath}/estoque/consulta" role="ta" data-toggle="ta">
 							<i class="material-icons">view_list</i>
 							Estoque
 						</a>
