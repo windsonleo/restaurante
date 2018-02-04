@@ -32,7 +32,7 @@
 
         <div class="sidebar-wrapper">
             
-            <ul class="nav">
+            <ul class="nav navbar-footer" id="menu">
              
                 <li class="active">
                     <a href="${pageContext.request.contextPath}/">
@@ -106,10 +106,9 @@
 
                     </a>
                     
-                    <ul class="dropdown-menu dropdown-menu-right">
+                    <ul class="dropdown-menu">
 
-                        <li class="dropdown-header"> 
-                        <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
+                        <li> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
                        
 	                        <i class="material-icons">shopping_basket</i>
 	                        Pedido Compra
