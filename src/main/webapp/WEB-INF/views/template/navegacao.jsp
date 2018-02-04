@@ -106,7 +106,7 @@
 
                     </a>
                     
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-right">
 
                         <li> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
                        

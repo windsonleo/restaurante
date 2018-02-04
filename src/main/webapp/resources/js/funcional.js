@@ -1,4 +1,4 @@
-// $(document).ready(function() {
+ $(document).ready(function() {
 //
 //	$('#searchnow').autocomplete({
 //		serviceUrl: '${pageContext.request.contextPath}/cliente/',
@@ -19,14 +19,14 @@
 //
 //	 });
 //	
-//	 $('.nav navbar-nav side-nav li').click(function(e) {
-//	        $('.navbar li.active').removeClass('active');
-//	        var $this = $(this);
-//	        if (!$this.hasClass('active')) {
-//	            $this.addClass('active');
-//	        }
-//
-//	    });
+	 $('.nav navbar-nav side-nav li').click(function(e) {
+	        $('.navbar li.active').removeClass('active');
+	        var $this = $(this);
+	        if (!$this.hasClass('active')) {
+	            $this.addClass('active');
+	        }
+
+	    });
 //	 
 //	 
 //		 
@@ -105,4 +105,4 @@
 //       	
 //       });
 //   
-// });
+ });
