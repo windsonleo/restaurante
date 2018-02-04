@@ -45,6 +45,7 @@
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/customizado.css"
           type="text/css"/>
 
+<jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
 
@@ -74,13 +75,13 @@
          </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> --%>
 
 <%--  <jwr:script src="${pageContext.request.contextPath}/bundle/js/jQuery.js"/> --%>
  
 <%--   <jwr:script src="${pageContext.request.contextPath}/bundle/js/bootstrap.js"/> --%>
 
-	<jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
+	
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
 
