@@ -47,13 +47,7 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
- <jwr:script src="${pageContext.request.contextPath}/bundle/js/jQuery.js"/>
-  <jwr:script src="${pageContext.request.contextPath}/bundle/js/bootstrap.js"/>
 
-	<jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
-  
-   
-    
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
 
@@ -80,7 +74,13 @@
          </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> --%>
+
+ <jwr:script src="${pageContext.request.contextPath}/bundle/js/jQuery.js"/>
+ 
+  <jwr:script src="${pageContext.request.contextPath}/bundle/js/bootstrap.js"/>
+
+	<jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> --%>
 
