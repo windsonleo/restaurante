@@ -65,8 +65,8 @@
 <%--              <script src="${pageContext.request.contextPath}/resources/js/material.min.js" type="text/javascript" --%>
 <!--         ></script> -->
         
-<%--               <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"  --%>
-<!--        ></script>  -->
+              <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
+       ></script> 
 
 <%--  <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js" type="text/javascript"></script> --%>
 
