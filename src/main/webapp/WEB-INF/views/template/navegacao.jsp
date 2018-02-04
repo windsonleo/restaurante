@@ -32,7 +32,7 @@
 
         <div class="sidebar-wrapper">
             
-            <ul class="nav navbar-footer" id="menu">
+            <ul class="nav navbar-footer" id="menu" role="menu">
              
                 <li class="active">
                     <a href="${pageContext.request.contextPath}/">
