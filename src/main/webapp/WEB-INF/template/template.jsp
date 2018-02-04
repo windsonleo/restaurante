@@ -47,8 +47,12 @@
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
 
+ <jwr:script src="${pageContext.request.contextPath}/bundle/js/jQuery.js"/>
+  <jwr:script src="${pageContext.request.contextPath}/bundle/js/bootstrap.js"/>
+
+	<jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
   
-    <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
+   
     
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css"/>
