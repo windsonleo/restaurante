@@ -46,7 +46,7 @@
           type="text/css"/>
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
-
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
     <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
     
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
@@ -74,7 +74,7 @@
             
          </div>
 </div>
-
+<script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script> --%>
 
@@ -88,7 +88,7 @@
 
 <!-- <script src="https://www.gstatic.com/charts/loader.js"></script> -->
 <%--<script src="${pageContext.request.contextPath}/resources/js/funcional.js"></script>--%>
-<%--<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>--%>
+
 
 </body>
 </html>
