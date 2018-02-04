@@ -108,7 +108,8 @@
                     
                     <ul class="dropdown-menu dropdown-menu-right">
 
-                        <li> <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
+                        <li class="dropdown-header"> 
+                        <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
                        
 	                        <i class="material-icons">shopping_basket</i>
 	                        Pedido Compra
