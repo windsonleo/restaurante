@@ -46,7 +46,8 @@
           type="text/css"/>
 
     <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logosup.png"/>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+
+  
     <jwr:script src="${pageContext.request.contextPath}/bundle/js/material-dash.js"/>
     
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/funcional.css"/>
@@ -74,13 +75,16 @@
             
          </div>
 </div>
-<script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
-<%-- <script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 
-<%-- <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script> --%>
 
-<%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/material.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script>
+
+
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script> --%>
 <%-- <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js"></script> --%>
