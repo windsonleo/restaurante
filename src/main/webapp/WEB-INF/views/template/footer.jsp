@@ -57,7 +57,7 @@
 
     <div id="script">
     
-<%--         <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script>  --%>
+        <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script> 
         
      
 <%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script> --%>
