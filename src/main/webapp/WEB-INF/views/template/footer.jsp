@@ -74,7 +74,7 @@
 <%--  <script src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js" type="text/javascript"></script> --%>
 
  
-<%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js" type="text/javascript"></script>  --%>
+<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js" type="text/javascript"></script> 
  
 
         
