@@ -96,7 +96,7 @@
 <!--        																		maps			AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8 -->
 <!-- 																				matrix distance	AIzaSyDmetyiOpMKNnJtkmWEMVYduRKj5DSBXmY -->
         
-<%--         <script src="${pageContext.request.contextPath}/resources/js/demo.js" type="text/javascript"></script>  --%>
+        <script src="${pageContext.request.contextPath}/resources/js/demo.js" type="text/javascript"></script> 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8"></script>
        
        
