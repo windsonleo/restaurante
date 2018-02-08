@@ -76,69 +76,122 @@
       	
       	<div class="span8">
       	
-      	         <div class="card">
+<div class="card">
                     <div class="card-content">
                        
                                 <div class="card-header" data-background-color="blue">
                                 
-                                    <h4 class="title">Venda Rapida</h4>
-                                    <p class="category">Insira os Dados</p>
-<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/caixa/cadastro"><i --%>
-<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                    <h4 class="title"> <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5></h4>
+                                    <p class="category">Todos</p>
+
                                 </div>
                                 
                                 </br>
-         
-         
-          <div class="widget-content">
+           
+           
+          </div>
+     
+     <div class="widget-content ">               
+       <div class="container-fluid">
+     
+          <div class="card-content table-responsive">
+            <table class="table table-hover table-bordered data-table">
+                                        <thead class="card-header" data-background-color="blue">
+                                    <tr>
+                                        <th>Descricao</th>
+<!-- 									    <th>Código</th> -->
+<!-- 									    <th>Descrição</th> -->
+									    <th>Qtd</th>
+									    
+									    <th>Preco Unitario</th>
+<!-- 									    <th>Total</th> -->
+<!-- 									    <th>Total Item</th> -->
+									    <th>Situacao</th>
+									    
+<!-- 									     <th>Ativo?</th> -->
+<!-- 									     <th>Pagamentos</th> -->
+<!-- 									     <th>Ativo</th> -->
+<!-- 									     <th>Obs</th> -->
+									    <th>Acao</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                
+                                <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
 
+  
+  		<tr class="gradeX">
+  					
+			      <td>${item.key}</td>
 
- 				<div class="control-group">
-                <label class="control-label">Nome</label>
-                <div class="controls">
-						<input id="nome"  name="nome" type="text" class="form-control" value="${cliente.nome}" placeholder="Digite o nome" <c:if test="${mensagem == null }"> readonly="readonly"</c:if> />
-                		<input id="telefone" name="telefone" class="form-control"  type="text" value="${cliente.telefone}" readonly="readonly"/>
-                
-                
-                </div>
+			     <td>${item.value}</td>
+			     
+			 	<td>
+			     <fmt:formatNumber type="currency"
+                       value="${item.key.precoUnitario}"/>
+                       
+                </td>
+			     
+<!--   				<td> -->
+<%--   				 <fmt:formatNumber type="currency" --%>
+<%--                        value="${item.key.totalItem}"/> --%>
+  				
+  				
+<!--   				</td> -->
+
+			     <td>${item.key.situacao}</td>
+
+  				
+								<td class="options-width">
+      								
+      								<a
+									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
+									title="informação" class="fa fa-info fa-2x"></a>
+									
+										<a
+									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
+									title="editar" class="fa fa-pencil fa-2x"></a>
+									
+									
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									
+			<div id="myAlert${item.key}" class="modal hide">
+              <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">x</button>
+                <h3>Alerta de Exclusao</h3>
               </div>
-			 
-              <div class="control-group">
-                <label class="control-label">Endereco </label>
-                <div class="controls">
-				
-				<input id="id" name="id"class="form-control" type="text" value="${cliente.endereco.id}"placeholder="Digite " readonly="readonly"/>
-				
-				<input id="cep" name="cep"class="form-control" type="text" value="${cliente.endereco.cep}"placeholder="Digite a Cep" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> onblur="pesquisacep(this.value);" />
-				
-<%-- 				<input id="logradouro" name="logradouro"class="form-control" type="text" value="${cliente.endereco.logradouro}"placeholder="Digite a Loradouro" readonly="readonly"/> --%>
-<%-- 				<input id="numero" name="numero"class="form-control" type="text" value="${cliente.endereco.numero}"placeholder="Digite o Numero" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> /> --%>
-				
-				
-<%--            		<input id="bairro" name="bairro" class="form-control"  type="text" value="${cliente.endereco.bairro}" readonly="readonly"/> --%>
-
-<%--            		<input id="cidade" name="cidade" class="form-control"  type="text" value="${cliente.endereco.cidade}" readonly="readonly"/> --%>
-
-<%--            		<input id="uf" name="uf"class="form-control" type="text" value="${cliente.endereco.uf}"placeholder="Digite a Uf" readonly="readonly"/> --%>
-           		
-<%--            		<input id="pontoreferencia" name="pontoreferencia" class="form-control"  type="text" value="${cliente.endereco.pontoreferencia}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o ponto de referencia"  /> --%>
-				
-<%-- 				<input id="complemento" name="complemento" class="form-control"  type="text" value="${cliente.endereco.complemento}" <c:if test="${mensagem != null }"> readonly="readonly"</c:if> placeholder="Digite o complemento" /> --%>
-				
-<!-- 				 <input id="ibge" name="ibge" class="form-control" type="text" value=""/> -->
+              <div class="modal-body">
+                <p>Deseja Realmente Excluir esse Registro</p>
+              </div>
+              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/item/delete?id=${item.key}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+           
+            </div>		
 								
-				
-                </div>
-              </div>
+								
+								</td>
+								
+								</tr>
+			  
+			 
 
-
-
-
-
-
-</div>
-</div>
-</div>
+                </c:forEach>                    
+                                
+                                
+                                
+                                
+                                
+                           
+                                </tbody>
+                            </table>
+                        </div>
+			
+			
+			</div>
+		
+	</div>
+	
+	</div>
 </div>
 <!-- </div> -->
 </br>
@@ -153,35 +206,57 @@
 
                                 </div>
                       
-                        <form action="LocalizarClienteFone" method="GET" class="form-horizontal">
+                        <form action="addPedidoRapido" method="GET" class="form-horizonta">
 
 
-						<div class="form-group label-floating">
-<!--                               <label class="control-label">Cliente</label> -->
-                                <input type="text" list="${clientesList}" id="telefone"
-                                       placeholder="Digite o Codigo do Cliente" name="telefone" autocomplete="off"
-                                       class="form-control">
+<!-- 						<div class="form-group label-floating"> -->
+<!-- <!--                               <label class="control-label">Cliente</label> --> 
+<%--                                 <input type="text" list="${clientesList}" id="telefone" --%>
+<!--                                        placeholder="Digite o Codigo do Cliente" name="telefone" autocomplete="off" -->
+<!--                                        class="form-control"> -->
                                        
-                                 <span class="material-input"></span>
-                         </div>
+<!--                                  <span class="material-input"></span> -->
+<!--                          </div> -->
 
 
 
 
-                                <datalist id="${clientesList}">
+<%--                                 <datalist id="${clientesList}"> --%>
 
-                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
+<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
 
-                                        <option value="${client.telefone}"> ${client.nome} </option>
+<%--                                         <option value="${client.telefone}"> ${client.nome} </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist> -->
+                                
+                                  <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Produto</label>
+									<input id="idprod" name="idprod" list="${produtosList}" class="form-control" type="text" autocomplete="off"
+                                    		  />
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                                <datalist id="${produtosList}">
+
+                                    <c:forEach var="produto" items="${produtosList}" varStatus="id">
+
+                                        <option value="${produto.id }"> ${produto.nome } </option>
 
                                     </c:forEach>
 
 
                                 </datalist>
                                    
-                               <div class="form-group">
-<!--                               <label class="control-label">Cliente</label> -->
+                                  <div class="form-group label-floating is-empty">
 
+ 								<label class="control-label">Qtd</label>
+ 								                               
+                               <input id="qtd"  name="qtd" value="" placeholder="" class="form-control"/>
+                               <span class="material-input"></span>
+                               
 <!-- </br></br> -->
                                    
 <%--   									<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-danger btn-round btn-md">Localizar</button> --%>

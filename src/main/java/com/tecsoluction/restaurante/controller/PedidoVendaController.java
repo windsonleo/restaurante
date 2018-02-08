@@ -41,6 +41,7 @@ import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusMesa;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Controller
@@ -219,8 +220,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         totalpedido = pv.getTotalVenda();
 
-        DecimalFormat df = new DecimalFormat("0.##");
-        String totalformatado = df.format(totalpedido);
+//        DecimalFormat df = new DecimalFormat("0.##");
+//        String totalformatado = df.format(totalpedido);
+        
+        getservice().edit(pv);
 
         additempedidovenda.addObject("pedidovenda", pv);
         additempedidovenda.addObject("produtosList", produtosList);
@@ -358,14 +361,88 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
 
         ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
+        
+        itens.clear();
+        
+        produtosList = produtoService.findAll();
 
-        // List<PedidoVenda> vendas = pedidovendaService.findAll();
-
-        // novospedidos.addObject("pedidovendasList", vendas);
+         novospedidos.addObject("produtosList", produtosList);
+         novospedidos.addObject("pedidovenda", pv = new PedidoVenda());
 
         return novospedidos;
     }
     
+    
+    
+    
+    
+    
+    @RequestMapping(value = "addPedidoRapido", method = RequestMethod.GET)
+    public ModelAndView AddPedidoRapido(HttpServletRequest request) {
+
+    			String mensagem = "Pedido Adicionado com Sucesso";
+    			
+    			String erros = "Erro ao Adicionar Item";
+
+    			
+       	    	ModelAndView salao = new ModelAndView("pedidovendarapido");
+
+       	    	
+       	    	UUID prodid = UUID.fromString(request.getParameter("idprod"));
+
+       	        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
+
+       	        BigDecimal qtdbd = BigDecimal.valueOf(prodqtd);
+       	        
+       	     Produto produto;
+
+             produto = produtoService.findOne(prodid);
+
+             if (produto == null) {
+
+//                 ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+
+//                 String erros = "Nao Existe esse Produto";
+
+                 salao.addObject("erros", erros);
+                 salao.addObject("pv", pv);
+                 salao.addObject("produtosList", produtosList);
+
+                 return salao;
+             }
+       	      
+             Item item = new Item(produto);
+
+             item.setId(produto.getId());
+     		 item.setNome(produto.getNome()); 
+     		 item.setCodigo(produto.getCodebar()); 
+     		 item.setPrecoUnitario(produto.getPrecovenda()); 
+
+     		 item.setDescricao(produto.getDescricao()); 
+     		 item.setSituacao(SituacaoItem.AGUARDANDO);
+           
+     		
+     		 
+     		 
+     		 itens.put(item, qtdbd.toString());
+     		 
+     		 pv.setItems(itens);
+
+//     		 pv.addItem(item, qtdbd.toString());
+     	    
+     		 pv.setTotal(pv.getTotalVenda());
+     		 
+     	     pv.setStatus(StatusPedido.PENDENTE);
+     			
+     		 getservice().edit(pv);
+     		 
+     		salao.addObject("pedidovenda", pv);
+     		salao.addObject("produtosList", produtosList);
+
+     		 
+     		 return salao;
+       	        
+    }
     
     @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
