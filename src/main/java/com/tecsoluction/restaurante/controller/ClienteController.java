@@ -45,8 +45,6 @@ public class ClienteController extends AbstractController<Cliente> {
 
     private final EnderecoServicoImpl enderecoService;
 
-    private final UsuarioServicoImpl userservice;
-
     private List<Cliente> clientes;
 
     private Cliente cliente;
@@ -54,11 +52,10 @@ public class ClienteController extends AbstractController<Cliente> {
     private Endereco endereco;
 
     @Autowired
-    public ClienteController(ClienteServicoImpl dao, UsuarioServicoImpl daousu, EnderecoServicoImpl enddao) {
+    public ClienteController(ClienteServicoImpl dao, EnderecoServicoImpl enddao) {
         super("cliente");
 
         this.clienteService = dao;
-        this.userservice = daousu;
         this.enderecoService = enddao;
     }
 
@@ -77,11 +74,11 @@ public class ClienteController extends AbstractController<Cliente> {
          cliente = new Cliente();
 //        cliente.setDatanascimento( new Date());
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clientesList", clienteList);
 //        model.addAttribute("cliente",cliente);        
 

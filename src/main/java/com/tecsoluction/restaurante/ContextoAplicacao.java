@@ -2,7 +2,10 @@ package com.tecsoluction.restaurante;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,38 +20,38 @@ import com.tecsoluction.restaurante.exception.CustomGenericException;
 @ControllerAdvice
 public class ContextoAplicacao {
 
-	// @Autowired
-	// private
-	// UsuarioServicoImpl userservice;
+	 @Autowired
+	 private
+	 UsuarioServicoImpl userservice;
 
-	// @Autowired
-	// public ContextoAplicacao(UsuarioServicoImpl sevice) {
-	//
-	// this.userservice = sevice;
-	// }
+	 @Autowired
+	 public ContextoAplicacao(UsuarioServicoImpl sevice) {
 
-	@Autowired
-	public ContextoAplicacao() {
+	 this.userservice = sevice;
+	 }
 
-		// this.userservice = sevice;
-	}
+//	@Autowired
+//	public ContextoAplicacao() {
+//
+//		// this.userservice = sevice;
+//	}
 
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
-		// Usuario usuarioAtt = dao.PegarPorId(100L);
-		//
-		// model.addAttribute("usuarioAtt", usuarioAtt);
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = userservice.findByUsername(usuario.getUsername());
+		model.addAttribute("usuarioAtt", usuario);
 	}
 
 	@ExceptionHandler(CustomGenericException.class)
-	public ModelAndView handleCustomException(Exception ex) {
+	public ModelAndView handleCustomException(CustomGenericException ex) {
 //TODO: Remover o new apos implementar os erros no controllers
 		//https://www.mkyong.com/spring-mvc/spring-mvc-exceptionhandler-example/
-		CustomGenericException ex1 = new CustomGenericException(ex.getCause().toString(), ex.getMessage());
 		ModelAndView model = new ModelAndView("erro");
-		model.addObject("errCode", ex1.getErrCode());
-		model.addObject("errMsg", ex1.getErrMsg());
+		model.addObject("errCode", ex.getErrCode());
+		model.addObject("errMsg", ex.getErrMsg());
 
 		return model;
 
