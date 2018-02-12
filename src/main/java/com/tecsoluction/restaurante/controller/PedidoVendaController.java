@@ -484,7 +484,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	        
     	        if ((cliente == null)||(mesa == null)||(garcon == null)) {
     	        	
-    	        	String erros = "O cliente/A mesa/ O garcon é de preenchimento Obrigatorio!";
+    	        	String erros = "O cliente/A mesa/ O garcon e de preenchimento Obrigatorio!";
     	       	       
        	        	salao.addObject("erros", erros);
        	        	salao.addObject("itens", itens);
