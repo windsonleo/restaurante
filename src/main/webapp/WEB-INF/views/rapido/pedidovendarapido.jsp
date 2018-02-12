@@ -1,8 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
-
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page session="true" %>
@@ -118,7 +114,7 @@
                                 <tbody>
                                 
                                 
-                                <c:forEach var="item" items="${pedidovenda.items}" varStatus="id">
+                                <c:forEach var="item" items="${itens}" varStatus="id">
 
   
   		<tr class="gradeX">
@@ -194,8 +190,8 @@
 	</div>
 </div>
 <!-- </div> -->
-</br>
-</br>
+<!-- </br> -->
+<!-- </br> -->
 							<div class="span4">
                             <div class="card card-profile">
                                 <div class="card-avatar">
@@ -206,7 +202,7 @@
 
                                 </div>
                       
-                        <form action="addPedidoRapido" method="GET" class="form-horizonta">
+                        <form action="addItem" method="POST" class="form-horizonta">
 
 
 <!-- 						<div class="form-group label-floating"> -->
@@ -279,16 +275,109 @@
                                     <p class="card-content">
                                     
                                     	<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-danger btn-round btn-md">AddItem</button>
+									
+									</p>
+									
+									</form>
+                                   
+                                   <form action="addPedidoRapido" method="POST" class="form-horizonta">
+                                    
+                                   <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa</label>
+									<input id="idmesa" name="idmesa" list="${mesaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesaList}">
 
-                                   <button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">SalvarPedido</button>
+                                    <c:forEach var="mesa" items="${mesaList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                 
+                              <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Garcon</label>
+									<input id="idgar" name="idgar" list="${garconList}" class="form-control" type="text"
+                                    		autocomplete="off"/>
+                            				  <span class="material-input"></span>
+                                 </div>
+                                 
+                                 
+                                 <datalist id="${garconList}">
+
+                                    <c:forEach var="garcon" items="${garconList}" varStatus="id">
+
+                                        <option value="${garcon.id }"> ${garcon.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist> 
+                                 		
+
+						<div class="form-group label-floating  is-empty">
+                              <label class="control-label">Cliente</label>
+                                <input type="text" list="${clienteList}" id="idcli"
+                                       placeholder="" name="idcli" autocomplete="off"
+                                       class="form-control">
+                                       
+                                 <span class="material-input"></span>
+                         </div>
+
+
+
+
+                                <datalist id="${clienteList}">
+
+                                    <c:forEach var="client" items="${clienteList}" varStatus="id">
+
+                                        <option value="${client.id }"> ${client.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                           
+                                   
+<!--     <div class="form-group label-floating "> -->
+<!--               <div class="control-group"> -->
+<!--                 <label class="control-label">Itens</label> -->
+<!--                 <div class="controls"> -->
+<!-- 	 <select id="itens"name="itens" multiple="multiple" class="form-control" > -->
+<!-- 	                                  <optgroup label=""> -->
+		           				
+<%-- <%-- 		           					<option value="${usuario.roles}" selected="selected">${usuario.roles}</option> --%> 
+		           				
+		           				
+<%-- 		           					<c:forEach var="item" items="${itens}"> --%>
+		           			
+<%-- 		           				<option value="${item.key.id}" selected="selected">${item.key.nome}</option> --%>
+<%-- <%-- 		           				 <option value="${item.value}" selected="selected">${item.value}</option> --%> 
+		           				      				
+		           				
+<%-- 		       				</c:forEach> --%>
+<!-- 		                </optgroup> -->
+<!-- 	                    </select>			 -->
+				
+<!--                 </div> -->
+<!--               </div> -->
+<!-- 			</div> -->
+                                   
+                                   
+                                   
+                                   <button type="submit"  class="btn btn-primary btn-round btn-md">SalvarPedido</button>
                           
                                     
-                                    
-                                    </p>
+                                     </form>
                                      
                                      </div>
                                     
-                                     </form>
+                                    
                                    
                                 </div>
                                 

@@ -70,7 +70,7 @@
            
 <!--           </div> -->
 <!--           <div class="widget-content">                -->
-			<form action="salvaritempedido" method="GET" class="">		
+			<form action="salvaritempedido" method="POST" class="">		
   
 				<div class="control-group">
                 <label class="control-label"></label>

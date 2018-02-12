@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.controller;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,6 +134,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         	
             pv = new PedidoVenda();
 
+//            itens = new HashMap<>();
         	
 //        }
 
@@ -232,7 +234,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         return additempedidovenda;
     }
 
-    @RequestMapping(value = "salvaritempedido", method = RequestMethod.GET)
+    @RequestMapping(value = "salvaritempedido", method = RequestMethod.POST)
     public ModelAndView salvaritempedido(HttpServletRequest request) {
 
         UUID prodid = UUID.fromString(request.getParameter("produtoescolhido"));
@@ -284,7 +286,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 //        itemService.save(item);
 		 
-		 itens = new HashMap<>();
+//		 itens = new HashMap<>();
 
 		 pedidov.addItem(item, qtdbd.toString());
 	    
@@ -367,7 +369,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         produtosList = produtoService.findAll();
 
          novospedidos.addObject("produtosList", produtosList);
-         novospedidos.addObject("pedidovenda", pv = new PedidoVenda());
+         novospedidos.addObject("itens", itens);
+//         novospedidos.addObject("pedidovenda", pv = new PedidoVenda());
 
         return novospedidos;
     }
@@ -377,10 +380,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     
     
     
-    @RequestMapping(value = "addPedidoRapido", method = RequestMethod.GET)
-    public ModelAndView AddPedidoRapido(HttpServletRequest request) {
+    @RequestMapping(value = "addItem", method = RequestMethod.POST)
+    public ModelAndView AddItemRapido(HttpServletRequest request) {
 
-    			String mensagem = "Pedido Adicionado com Sucesso";
+    			String mensagem = "Item Adicionado com Sucesso";
     			
     			String erros = "Erro ao Adicionar Item";
 
@@ -402,10 +405,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
 //                 ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
-//                 String erros = "Nao Existe esse Produto";
+                 String erross = "sELECIONE UM Produto";
 
-                 salao.addObject("erros", erros);
-                 salao.addObject("pv", pv);
+                 salao.addObject("erros", erross);
+//                 salao.addObject("pv", pv);
                  salao.addObject("produtosList", produtosList);
 
                  return salao;
@@ -424,25 +427,107 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
      		
      		 
      		 
-     		 itens.put(item, qtdbd.toString());
+     		 this.itens.put(item, qtdbd.toString());
      		 
-     		 pv.setItems(itens);
+//     		 pv.setItems(itens);
 
 //     		 pv.addItem(item, qtdbd.toString());
      	    
-     		 pv.setTotal(pv.getTotalVenda());
+//     		 pv.setTotal(pv.getTotalVenda());
      		 
-     	     pv.setStatus(StatusPedido.PENDENTE);
+//     	     pv.setStatus(StatusPedido.PENDENTE);
      			
-     		 getservice().edit(pv);
+//     		 getservice().edit(pv);
      		 
-     		salao.addObject("pedidovenda", pv);
+     		salao.addObject("itens", itens);
      		salao.addObject("produtosList", produtosList);
 
      		 
      		 return salao;
        	        
     }
+    
+    
+    @RequestMapping(value = "addPedidoRapido", method = RequestMethod.POST)
+    public ModelAndView AddPedidoRapido(HttpServletRequest request) {
+
+       	String mensagem = "Pedido Adicionado com Sucesso";
+
+       	//
+       	    	ModelAndView salao = new ModelAndView("pedidovendarapido");
+
+       	    	//ID DA MESA A SER ADD O PEDIDO
+       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+       	      
+       	        Mesa mesa = mesaService.findOne(idfm);
+
+       	        
+       	        if(mesa.getStatus() != StatusMesa.ABERTA) {
+       	        	
+       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Adicionado o Pedido";
+       	       
+       	        	salao.addObject("erros", erros);
+       	        	salao.addObject("itens", itens);
+
+       	        	return salao;
+       	        	
+       	        }
+       	        
+       	        //garcon
+       	        UUID idfg = UUID.fromString(request.getParameter("idgar"));
+    	        Garcon garcon = garconService.findOne(idfg);
+       	       
+    	        //cliente
+    	        UUID idfc = UUID.fromString(request.getParameter("idcli"));
+    	        Cliente cliente = clienteService.findOne(idfc);
+    	        
+    	        
+    	        if ((cliente == null)||(mesa == null)||(garcon == null)) {
+    	        	
+    	        	String erros = "O cliente/A mesa/ O garcon é de preenchimento Obrigatorio!";
+    	       	       
+       	        	salao.addObject("erros", erros);
+       	        	salao.addObject("itens", itens);
+
+       	        	return salao;
+    	        	
+    	        }
+    	        
+    	        
+    	        if (itens.isEmpty()) {
+    	        	
+    	        	String erros = "Nao Existe Item no Pedido,Adicione !";
+    	       	       
+       	        	salao.addObject("erros", erros);
+       	        	salao.addObject("itens", itens);
+
+       	        	return salao;
+    	        	
+    	        }
+    	        
+    	        
+       	        //produto para virar item
+//    	        UUID idprod = UUID.fromString(request.getParameter("idprod"));
+//    	        Produto produto = produtoService.findOne(idprod);
+//    	        
+//    	        //quantidade do item
+//    	        String qtd = request.getParameter("qtd");
+
+    	        CriarPedido(cliente, mesa, garcon, this.itens);
+    	        
+    	        
+    	        List<Mesa> mesaslist = mesaService.findAll();
+       	       
+    	        salao.addObject("mesasList", mesaslist);
+       	        salao.addObject("mensagem", mensagem);
+       	        salao.addObject("mensagem", mensagem);
+
+
+
+       	        return salao;
+       	        
+    }
+    
     
     @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
@@ -570,6 +655,60 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
         
         }
+    
+    
+    
+ public void CriarPedido(Cliente cliente, Mesa mesa, Garcon garcon,Map<Item,String> itens){
+    	
+    	PedidoVenda pedidovenda = new PedidoVenda();
+    	pedidovenda.setCliente(cliente);
+    	pedidovenda.setMesa(mesa);
+    	pedidovenda.setGarcon(garcon);
+    	pedidovenda.setData(new Date());
+    	pedidovenda.setIspago(false);
+    	pedidovenda.setOrigempedido(OrigemPedido.MESA);
+    	pedidovenda.setStatus(StatusPedido.ABERTO);
+    	
+    	
+    	pedidovenda.setItems(itens);
+    	
+    	pedidovenda.setTotal(pedidovenda.CalcularTotal(pedidovenda.getItems()));
+    	
+    	pedidovenda.setStatus(StatusPedido.PENDENTE);
+    	
+    	getservice().save(pedidovenda);
+    	
+    	
+    }
+    
+//    public Map<Item,String> AddItemPedido(PedidoVenda pedidovenda,Map<Item,String> itens) {
+//    	
+//    	Map<Item,String> itenspedido = itens;
+//    	
+//    	
+//    	pedidovenda.setItems(itenspedido);
+    	
+//    	 Produto produtoaux = produto;
+    	 
+//    	 Item item = new Item(produtoaux);
+//         item.setId(produtoaux.getId());
+// 		 item.setNome(produtoaux.getNome()); 
+// 		 item.setCodigo(produtoaux.getCodebar()); 
+// 		 item.setPrecoUnitario(produtoaux.getPrecovenda()); 
+//
+// 		 item.setDescricao(produtoaux.getDescricao()); 
+// 		 item.setSituacao(SituacaoItem.AGUARDANDO);
+// 		 item.setUn_medida(produtoaux.getUn_medida());
+// 		 
+// 		 itenspedido.put(item, qtd);
+ 		 
+ 	
+ 		 
+ 		 
+// 		 return itenspedido;
+//    	
+//    }
+    
 
     @Override
     protected PedidoVendaServicoImpl getservice() {
