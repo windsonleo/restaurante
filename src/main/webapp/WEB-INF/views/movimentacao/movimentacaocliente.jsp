@@ -18,13 +18,13 @@
                 <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
 
                                 
                                     <h4 class="title">Movimentacao Cliente</h4>
                                     <p class="category">Todos</p>
                                 <span class="icon "><a href="${pageContext.request.contextPath}/cliente/cadastro"><i
-                                class="icon-plus pull-right" color="blue"></i></a> </span>
+                                class="icon-plus pull-right" color="red"></i></a> </span>
                                 </div>
                                 
                                 </br>

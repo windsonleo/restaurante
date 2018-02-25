@@ -28,7 +28,7 @@
                             <h4 class="title">Movimentacao Usuario</h4>
                             <p class="category">Todos</p>
                             <span class="icon "><a href="${pageContext.request.contextPath}/usuario/cadastro"><i
-                                    class="icon-plus pull-right" color="blue"></i></a> </span>
+                                    class="icon-plus pull-right" color=""></i></a> </span>
                         </div>
 
                         </br>

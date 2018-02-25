@@ -415,7 +415,7 @@
       					<div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="card card-nav-tabs">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
                                             <span class="nav-tabs-title">Compras:</span>
