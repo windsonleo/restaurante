@@ -641,7 +641,7 @@
 
 	</definition>
 	
-						<definition name="informacaousuario" extends="TemplateD">
+	<definition name="informacaousuario" extends="TemplateD">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/informacoes/informacaousuario.jsp" />
 

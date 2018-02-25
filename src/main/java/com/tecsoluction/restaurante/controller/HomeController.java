@@ -379,7 +379,7 @@ public class HomeController {
         return login;
     }
     
-    @RequestMapping(value = "/enviaremail", method = RequestMethod.GET)
+    @RequestMapping(value = "/enviaremail", method = RequestMethod.POST)
     public ModelAndView enviaremail(Locale locale, Model model, HttpServletRequest request) {
        
     	
@@ -413,7 +413,7 @@ public class HomeController {
             return home;
         } catch (Exception e) {
             e.printStackTrace();
-            home.addObject("erro", erro + e);
+            home.addObject("erros", erro + e);
             return home;
         }
         

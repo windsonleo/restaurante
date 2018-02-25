@@ -1,60 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-
-<!--         <div id="loginbox">   -->
-<%--         	<div class="control-group normal_text"> <h3><img src="${pageContext.request.contextPath}/resources/images/logologin.png" alt="Logo" /></h3></div> --%>
-                  
-<!--             <form id="loginform" class="form-vertical" action="login" method="post"> -->
-                
-                
-                
-                
-<!--                 <div class="form-group label-floating is-empty"> -->
-<!--                 <label class="control-label"></label> -->
-<!--                     <div class="controls"> -->
-<!--                         <div class="main_input_box"> -->
-<!--                             <span class="add-on"><i class="icon-user"> </i></span> -->
-<!--                             <input type="text" id="username" name="username" placeholder="" style="margin-left:-5px;" /> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-                
-                
-<!--                 <div class="form-group label-floating is-empty"> -->
-<!--                 <label class="control-label"></label> -->
-<!--                     <div class="controls"> -->
-<!--                         <div class="main_input_box"> -->
-<!--                             <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="senha" name="senha" placeholder="" /> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-                
-<!--                 <div class="form-actions"> -->
-<!--                     <span class=""><a href="#" class="flip-link btn btn-inverse" name="lost" id="to-recover">Lost password?</a></span> -->
-<!--                     <span class=""><button type="submit" class="btn btn-danger" > Login</button></span> -->
-<%--                 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
-                
-<!--                 </div> -->
-<!--             </form> -->
-            
-            
-<!--             <form id="recoverform" action="#" class="form-vertical" hidden=""> -->
-<!-- 				<h3><p class="normal_texte">Enter your e-mail address below and we will send you instructions how to recover a password.</p></h3> -->
-				
-<!-- 				</br> -->
-<!--                     <div class="controls"> -->
-<!--                         <div class="main_input_box"> -->
-<!--                             <span class="add-on"><i class="icon-envelope"></i></span><input type="text" name ="emailrecovery" placeholder="E-mail address" /> -->
-<!--                         </div> -->
-<!--                     </div> -->
-               
-<!--                 <div class="form-actions"> -->
-<!--                     <span class=""><a href="#" class="flip-link btn btn-inverse" id="to-login">&laquo;Voltar para login</a></span> -->
-<!--                     <span class=""><a class="btn btn-danger" name="recovery">Recuperar</a></span> -->
-<!--                 </div> -->
-<!--             </form> -->
-<!--         </div> -->
+<%@ page session="true" %>
 
 
 
@@ -113,7 +58,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup">
-							<form class="form" method="get" action="enviaremail">
+							<form class="form" method="POST" action="enviaremail">
 								<div class="header header-danger text-center">
 									<img class="image-responsive"
             src="${pageContext.request.contextPath}/resources/images/logosenpaii.png"/>
@@ -137,7 +82,7 @@
 										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-										<input name="email" id="email" type="text" class="form-control" placeholder="Email...">
+										<input name="email" id="email" type="text" class="form-control" placeholder="Digite seu Email Cadastrado">
 									</div>
 
 									<!-- If you want to add a checkbox to this form, uncomment this code
@@ -195,6 +140,46 @@
 <!-- 		    </footer> -->
 
 		</div>
+		
+		<c:if test="${erros != null }">
+<!-- </br> -->
+			<div class="alert alert-danger">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">error_outline</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Error:</b> ${erros}
+				</div>
+			</div>
+
+
+		</c:if>
+    
+    
+    
+    
+
+    
+      <c:if test="${sucesso != null }">
+<!--       </br> -->
+			<div class="alert alert-success">
+				<div class="container-fluid">
+					<div class="alert-icon">
+						<i class="material-icons">check</i>
+					</div>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true"><i class="material-icons">clear</i></span>
+					</button>
+					<b>Sucesso:</b> ${sucesso}
+				</div>
+			</div>
+
+		</c:if>
 
     </div>
         
