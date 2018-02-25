@@ -236,7 +236,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.pv = pedidovendaService.findOne(idf);
         
         
-        //verifica se o pedido já esta pronto ou foi canceldo ou foi pago
+        //verifica se o pedido ja esta pronto ou foi canceldo ou foi pago
         
         if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
         	
@@ -598,7 +598,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           VerificaTodosItens(pv);
           
-          //VERIFICAR SE TODOS OS ITENS ESTÃO PRONTOS
+          //VERIFICAR SE TODOS OS ITENS ESTao PRONTOS
           
           if  (todosprontos){
         	  
