@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-content">
 
-                        <div class="card-header" data-background-color="blue">
+                        <div class="card-header" data-background-color="red">
 
 
                             <h4 class="title">Movimentacao Usuario</h4>
@@ -36,7 +36,7 @@
 
           <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-                                        <thead class="card-header" data-background-color="blue">
+                                        <thead class="card-header" data-background-color="red">
                                 <tr>
                                     <th>Id</th>
                                     <th>Username</th>
