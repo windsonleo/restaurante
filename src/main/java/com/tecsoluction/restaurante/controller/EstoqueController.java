@@ -35,16 +35,16 @@ public class EstoqueController extends AbstractController<Estoque> {
     // private
     // ProdutoServicoImpl produtoService;
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
 //    private final ItemServicoImpl itemService;
 
     @Autowired
-    public EstoqueController(EstoqueServicoImpl dao, UsuarioServicoImpl daousu,
+    public EstoqueController(EstoqueServicoImpl dao,
                              ProdutoServicoImpl pdao) {
         super("estoque");
         this.estoqueService = dao;
-        this.userservice = daousu;
+//        this.userservice = daousu;
 //        this.itemService = itdao;
         // this.produtoService = pdao;
     }
@@ -61,11 +61,11 @@ public class EstoqueController extends AbstractController<Estoque> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
 
     }
 

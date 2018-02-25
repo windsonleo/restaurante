@@ -34,8 +34,8 @@ public class ReservaController extends AbstractController<Reserva> {
     private final
     ReservaServicoImpl reservaService;
 
-    private final
-    UsuarioServicoImpl userservice;
+//    private final
+//    UsuarioServicoImpl userservice;
     
     
     private final 
@@ -47,10 +47,10 @@ public class ReservaController extends AbstractController<Reserva> {
 
 
     @Autowired
-    public ReservaController(ReservaServicoImpl bancoService, UsuarioServicoImpl userservice,MesaServicoImpl mes,ClienteServicoImpl cli) {
+    public ReservaController(ReservaServicoImpl bancoService,MesaServicoImpl mes,ClienteServicoImpl cli) {
         super("reserva");
         this.reservaService = bancoService;
-        this.userservice = userservice;
+//        this.userservice = userservice;
         this.mesaService = mes;
         this.clienteService = cli;
     }
@@ -72,9 +72,9 @@ public class ReservaController extends AbstractController<Reserva> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         
         List<Cliente> clienteList = clienteService.findAll();
@@ -85,7 +85,7 @@ public class ReservaController extends AbstractController<Reserva> {
         StatusReserva[] status = StatusReserva.values();
         
         
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("clienteList", clienteList);
         model.addAttribute("mesaList", mesaList);
         model.addAttribute("status", status);

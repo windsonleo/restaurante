@@ -48,7 +48,7 @@ import java.util.UUID;
 public class MesaController extends AbstractController<Mesa> {
 
 	
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private final MesaServicoImpl mesaService;
     
@@ -73,12 +73,12 @@ public class MesaController extends AbstractController<Mesa> {
 
 
     @Autowired
-    public MesaController(MesaServicoImpl dao, PedidoVendaServicoImpl pv, UsuarioServicoImpl daousu,ProdutoServicoImpl prod,ClienteServicoImpl cli,GarconServicoImpl gar) {
+    public MesaController(MesaServicoImpl dao, PedidoVendaServicoImpl pv, ProdutoServicoImpl prod,ClienteServicoImpl cli,GarconServicoImpl gar) {
         super("mesas");
        
         this.mesaService = dao;
         this.pedidovendaService = pv;
-        this.userservice = daousu;
+//        this.userservice = daousu;
         this.clienteService = cli;
         this.garconService = gar;
         this.produtoService = prod;
@@ -95,11 +95,11 @@ public class MesaController extends AbstractController<Mesa> {
     	
     	StatusMesa[] status = StatusMesa.values();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("mesasList", mesas);
         model.addAttribute("clientesList", clientes);
         model.addAttribute("garconsList", garcons);

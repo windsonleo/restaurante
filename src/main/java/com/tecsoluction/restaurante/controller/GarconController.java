@@ -31,24 +31,24 @@ public class GarconController extends AbstractController<Garcon> {
 
 	private final GarconServicoImpl garconService;
 
-	private final UsuarioServicoImpl userservice;
+//	private final UsuarioServicoImpl userservice;
 
 	@Autowired
-	public GarconController(GarconServicoImpl dao, UsuarioServicoImpl daousu) {
+	public GarconController(GarconServicoImpl dao) {
 		super("garcon");
 		this.garconService = dao;
-		this.userservice = daousu;
+//		this.userservice = daousu;
 	}
 
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
 		List<Garcon> garconList = getservice().findAll();
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = userservice.findByUsername(usuario.getUsername());
-
-		model.addAttribute("usuarioAtt", usuario);
+//		Usuario usuario = new Usuario();
+//		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//		usuario = userservice.findByUsername(usuario.getUsername());
+//
+//		model.addAttribute("usuarioAtt", usuario);
 		model.addAttribute("garconsList", garconList);
 
 	}

@@ -28,24 +28,24 @@ public class EnderecoController extends AbstractController<Endereco> {
 
     private final ClienteServicoImpl clienteService;
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     @Autowired
-    public EnderecoController(EnderecoServicoImpl dao, UsuarioServicoImpl daousu, ClienteServicoImpl clidao) {
+    public EnderecoController(EnderecoServicoImpl dao, ClienteServicoImpl clidao) {
         super("endereco");
         this.enderecoService = dao;
-        this.userservice = daousu;
+//        this.userservice = daousu;
         this.clienteService = clidao;
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
 
     }
 

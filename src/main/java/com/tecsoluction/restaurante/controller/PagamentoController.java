@@ -36,7 +36,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
 
     private final FormaPagamentoServicoImpl formapagamentoService;
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private Pagamento pagamento = new Pagamento();
 
@@ -47,11 +47,11 @@ public class PagamentoController extends AbstractController<Pagamento> {
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     @Autowired
-    public PagamentoController(PagamentoServicoImpl dao, UsuarioServicoImpl daousu, CaixaServicoImpl CDAO, FormaPagamentoServicoImpl formdao, PedidoVendaServicoImpl peddao) {
+    public PagamentoController(PagamentoServicoImpl dao, CaixaServicoImpl CDAO, FormaPagamentoServicoImpl formdao, PedidoVendaServicoImpl peddao) {
         // TODO Auto-generated constructor stub
         super("pagamento");
         this.pagamentoService = dao;
-        this.userservice = daousu;
+//        this.userservice = daousu;
         this.caixaService = CDAO;
         this.formapagamentoService = formdao;
         this.pedidovendaService = peddao;
@@ -80,9 +80,9 @@ public class PagamentoController extends AbstractController<Pagamento> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
@@ -91,7 +91,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         model.addAttribute("caixaList", caixaList);
         model.addAttribute("pedidoList", pedidoList);
         model.addAttribute("formapagamentoList", formapagamentoList);
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("acao", "add");
 
 

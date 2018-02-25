@@ -53,7 +53,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     private static final Logger logger = LoggerFactory.getLogger(ProdutoCompostoController.class);
 
 	
-	private final  UsuarioServicoImpl userservice;
+//	private final  UsuarioServicoImpl userservice;
 
 	private final  ProdutoServicoImpl produtoService;
 
@@ -78,13 +78,13 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 	@Autowired
 	public ProdutoCompostoController(ProdutoCompostoServicoImpl dao, CategoriaServicoImpl categoriaDao,
-			FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao, ProdutoServicoImpl daoprod) {
+			FornecedorServicoImpl fornecedorDao, ProdutoServicoImpl daoprod) {
 		super("produtocomposto");
 		
 		this.produtocompostoService = dao;
 		this.categoriaService = categoriaDao;
 		this.fornecedorService = fornecedorDao;
-		this.userservice = usudao;
+//		this.userservice = usudao;
 		this.produtoService = daoprod;
 //		this.itemService = it;
 		this.items.clear();
@@ -124,11 +124,11 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 		UnidadeMedida[] umList = UnidadeMedida.values();
 
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = userservice.findByUsername(usuario.getUsername());
-
-		model.addAttribute("usuarioAtt", usuario);
+//		Usuario usuario = new Usuario();
+//		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//		usuario = userservice.findByUsername(usuario.getUsername());
+//
+//		model.addAttribute("usuarioAtt", usuario);
 
 
 		model.addAttribute("produtosList", produtoList);

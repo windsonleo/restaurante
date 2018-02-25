@@ -408,7 +408,7 @@
                                     
                                     	<button type="submit" onclick="window.location='${pageContext.request.contextPath}/delivery/LocalizarClienteFone'" class="btn btn-info btn-round btn-md">Find Cliente</button>
 
-                                   		<button type="submit" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button>
+                                   		<button type="button" onclick="window.location='${pageContext.request.contextPath}/cliente/cadastro'"  class="btn btn-primary btn-round btn-md">Adicionar</button>
                                          
                                          <button type="button" onclick="window.location='${pageContext.request.contextPath}/delivery/findmotoqueiro'"  class="btn btn-red btn-round btn-md">Find Moto</button>
                           

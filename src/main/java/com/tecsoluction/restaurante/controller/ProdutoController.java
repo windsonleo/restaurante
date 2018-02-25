@@ -32,7 +32,7 @@ import java.util.UUID;
 @RequestMapping(value = "produto/")
 public class ProdutoController extends AbstractController<Produto> {
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private final ProdutoServicoImpl produtoService;
 
@@ -49,12 +49,12 @@ public class ProdutoController extends AbstractController<Produto> {
 
     @Autowired
     public ProdutoController(ProdutoServicoImpl dao, CategoriaServicoImpl categoriaDao,
-                             FornecedorServicoImpl fornecedorDao, UsuarioServicoImpl usudao) {
+                             FornecedorServicoImpl fornecedorDao) {
         super("produto");
         this.produtoService = dao;
         this.categoriaService = categoriaDao;
         this.fornecedorService = fornecedorDao;
-        this.userservice = usudao;
+//        this.userservice = usudao;
     }
 
 
@@ -74,9 +74,9 @@ public class ProdutoController extends AbstractController<Produto> {
 
         UnidadeMedida[] umList = UnidadeMedida.values();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         categoriaList = categoriaService.findAll();
 
@@ -84,7 +84,7 @@ public class ProdutoController extends AbstractController<Produto> {
 
         produtoList = getservice().findAll();
 
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("produtosList", produtoList);
         model.addAttribute("fornecedorList", fornecedorList);
         model.addAttribute("categoriaList", categoriaList);

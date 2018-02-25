@@ -38,17 +38,17 @@ public class ContasReceberController extends AbstractController<ContasReceber> {
     private final 
     PedidoVendaServicoImpl pedidovendaService;
 
-    private final
-    UsuarioServicoImpl userservice;
+//    private final
+//    UsuarioServicoImpl userservice;
     
     
 
 
     @Autowired
-    public ContasReceberController(ContasReceberServicoImpl bancoService, UsuarioServicoImpl userservice,PedidoVendaServicoImpl venda) {
+    public ContasReceberController(ContasReceberServicoImpl bancoService,PedidoVendaServicoImpl venda) {
         super("contasreceber");
         this.contasreceberService = bancoService;
-        this.userservice = userservice;
+//        this.userservice = userservice;
         this.pedidovendaService = venda;
     }
     
@@ -64,9 +64,9 @@ public class ContasReceberController extends AbstractController<ContasReceber> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         
         List<PedidoVenda> pedidovendaList = pedidovendaService.findAll();
@@ -74,7 +74,7 @@ public class ContasReceberController extends AbstractController<ContasReceber> {
         StatusConta[] status = StatusConta.values();  
         
         
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidovendaList", pedidovendaList);
         model.addAttribute("status", status);
 

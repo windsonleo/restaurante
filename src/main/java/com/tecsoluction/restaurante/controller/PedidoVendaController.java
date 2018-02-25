@@ -49,7 +49,7 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private final PedidoVendaServicoImpl pedidovendaService;
 
@@ -74,11 +74,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private Map<Item, String> itens = new HashMap<>();
 
     private Estoque estoque;
+    
+    private boolean todosprontos = false;
 
     @Autowired
     public PedidoVendaController(PedidoVendaServicoImpl dao, ProdutoServicoImpl produtodao,
                                  ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
-                                 UsuarioServicoImpl daousu, EstoqueServicoImpl estdao) {
+                                  EstoqueServicoImpl estdao) {
         super("pedidovenda");
 
         this.pedidovendaService = dao;
@@ -87,7 +89,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.clienteService = daocliente;
         this.mesaService = daomesa;
         this.garconService = daogarcon;
-        this.userservice = daousu;
+//        this.userservice = daousu;
         this.estoqueService = estdao;
 
 
@@ -138,12 +140,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         	
 //        }
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
 
         model.addAttribute("pedidoVendaList", pedidoVendaList);
         model.addAttribute("origemPedidoList", origemPedidoList);
@@ -160,7 +162,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @RequestMapping(value = "finalizacaovenda", method = RequestMethod.GET)
     public ModelAndView FinalizarVenda(HttpServletRequest request) {
 
-        this.estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
+       
+    	
+    	
+    	this.estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
@@ -168,6 +173,20 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
+       
+        //verifica se o pedido esta pronto
+        
+        if(pv.getStatus() != StatusPedido.PRONTO){
+        	
+            String erros = "Esse Pedido nao pode ser FiNALIZADO, ele ainda nao foi PRONTO";
+        	
+            return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
+        	
+        }
+        
+        
+        
+        
         for (Item key : pv.getItems().keySet()) {
 
             Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
@@ -192,7 +211,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         }
         
 
-        pv.setStatus(StatusPedido.FECHADO);
+        pv.setStatus(StatusPedido.FINALIZADO);
         pv.setIspago(true);
         pv.getTotalVenda();
 
@@ -215,6 +234,20 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
         this.pv = pedidovendaService.findOne(idf);
+        
+        
+        //verifica se o pedido já esta pronto ou foi canceldo ou foi pago
+        
+        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
+        	
+        	
+        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou foi pago";
+         	
+             return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
+        	
+        	
+        }
+        
 
         produtosList = produtoService.findAll();
 
@@ -562,18 +595,59 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           pv.setItems(pcitens);
           
+          
+          VerificaTodosItens(pv);
+          
+          //VERIFICAR SE TODOS OS ITENS ESTÃO PRONTOS
+          
+          if  (todosprontos){
+        	  
+        	  pv.setStatus(StatusPedido.PRONTO);
+        	  
+          }
+          
 //          pc.setStatus(StatusPedido.PRONTO);
           
           getservice().edit(pv);
 
         
-          return new ModelAndView("redirect:/");
+          return new ModelAndView("redirect:/cozinha");
        
         
         }
     
     
-    @RequestMapping(value = "/item/cancelar", method = RequestMethod.GET)
+    private void VerificaTodosItens(PedidoVenda pv2) {
+		// TODO Auto-generated method stub
+    	 int qtditempedido = pv2.getItems().size();
+    	 
+    	 int qtditempronto= 0;
+    	 
+    	 System.out.println("Qtd Item no Pedido: " + qtditempedido);
+    	 System.out.println("Qtd Item Pronto no Pedido: " + qtditempronto);
+         for (Item key : pv2.getItems().keySet()) {
+           	
+//           	System.out.println("key" + key.getNome());
+//           	System.out.println("keyy" + keyy);
+           	
+           	if(key.getSituacao()==SituacaoItem.PRONTO){
+           		
+           		qtditempronto = qtditempronto +1;
+           		
+           	}
+           	
+           	if(qtditempedido == qtditempronto){
+           		
+           		todosprontos = true;
+           		
+           	}
+           	
+
+           }
+		
+	}
+
+	@RequestMapping(value = "/item/cancelar", method = RequestMethod.GET)
     public ModelAndView CanceladoPedidovENDA(HttpServletRequest request) {
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
@@ -609,7 +683,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           getservice().edit(pv);
 
         
-          return new ModelAndView("redirect:/");
+          return new ModelAndView("redirect:/cozinha");
        
         
         }

@@ -29,7 +29,7 @@
         <security:intercept-url pattern="/login**" access="permitAll"/>
         <security:intercept-url pattern="/erro**" access="permitAll"/>
         <security:intercept-url pattern="/acessonegado**" access="permitAll"/>
-        <security:intercept-url pattern="/cardapio**" access="permitAll"/>
+        <security:intercept-url pattern="/cardapio/inicio/**" access="permitAll"/>
         <security:intercept-url pattern="/**" access="hasRole('ROLE_MEMBRO')"/>
         <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>

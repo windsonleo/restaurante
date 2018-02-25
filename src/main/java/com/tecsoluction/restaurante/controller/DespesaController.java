@@ -21,13 +21,13 @@ public class DespesaController extends AbstractController<Despesa> {
 
 	private DespesaServicoImpl despesaService;
 
-	private UsuarioServicoImpl userservice;
+//	private UsuarioServicoImpl userservice;
 
 	@Autowired
-	public DespesaController(DespesaServicoImpl dao, UsuarioServicoImpl daousu) {
+	public DespesaController(DespesaServicoImpl dao) {
 		super("despesa");
 		this.despesaService = dao;
-		this.userservice = daousu;
+//		this.userservice = daousu;
 	}
 
 	// @InitBinder
@@ -45,14 +45,14 @@ public class DespesaController extends AbstractController<Despesa> {
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
-		Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = userservice.findByUsername(usuario.getUsername());
+//		Usuario usuario = new Usuario();
+//		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//		usuario = userservice.findByUsername(usuario.getUsername());
 
 		List<Despesa> despesaList = getservice().findAll();
 
 		model.addAttribute("despesaList", despesaList);
-		model.addAttribute("usuarioAtt", usuario);
+//		model.addAttribute("usuarioAtt", usuario);
 
 	}
 

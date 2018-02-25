@@ -40,6 +40,8 @@
                         Dashbord
                     </a>
                 </li>
+                
+                <sec:authorize access="hasRole('ROLE_ADM')">
 
                 <li class="">
                     <a href="${pageContext.request.contextPath}/usuario/movimentacao">
@@ -47,7 +49,12 @@
                         Usuario
                     </a>
                 </li>
-
+                
+                </sec:authorize>
+                
+                
+			<sec:authorize access="hasRole('ROLE_ADM') OR hasRole('ROLE_COMPRA')">
+			
                 <li class="focus">
                     <a href="${pageContext.request.contextPath}/cliente/movimentacao">
                         <i class="material-icons">person</i>
@@ -143,6 +150,10 @@
                 </li>
 
 
+			</sec:authorize>
+			
+			<sec:authorize access="hasRole('ROLE_ADM') OR hasRole('ROLE_FINANCEIRO')">
+
                 <li class="dropdown">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -169,6 +180,9 @@
                 </li>
 
 
+</sec:authorize>
+
+		<sec:authorize access="hasRole('ROLE_ADM') OR hasRole('ROLE_COMPRA')">
                 <li class="dropdown">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -188,6 +202,12 @@
                     </ul>
 
                 </li>
+                
+                
+                </sec:authorize>
+                
+                
+                <sec:authorize access="hasRole('ROLE_ADM')OR hasRole('ROLE_COMPRA') OR hasRole('ROLE_FINANCEIRO')">
 
                 <li class="dropdown">
 
@@ -208,6 +228,8 @@
                     </ul>
 
                 </li>
+                
+                </sec:authorize>
 
 
                 <!-- 									                   <li class=""> -->

@@ -29,8 +29,8 @@ import com.tecsoluction.restaurante.util.UnidadeMedida;
 public class DeliveryController {
 
    
-	private
-	UsuarioServicoImpl userservice;
+//	private
+//	UsuarioServicoImpl userservice;
 
 
     private
@@ -53,8 +53,8 @@ public class DeliveryController {
 
 
     @Autowired
-    public DeliveryController(UsuarioServicoImpl daousu,PedidoVendaServicoImpl vdao,ClienteServicoImpl cdao) {
-        this.userservice = daousu;
+    public DeliveryController(PedidoVendaServicoImpl vdao,ClienteServicoImpl cdao) {
+//        this.userservice = daousu;
         this.pedidovendaService = vdao;
         this.clienteService = cdao;
     }
@@ -74,12 +74,12 @@ public class DeliveryController {
     	pedidosvendaList = pedidovendaService.getAllPedidoDelivery();
     	
     	clientesList = clienteService.findAll();
-        
-        Usuario usuario = new Usuario();
-		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		usuario = userservice.findByUsername(usuario.getUsername());
-        
-		model.addAttribute("usuarioAtt", usuario);
+//        
+//        Usuario usuario = new Usuario();
+//		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//		usuario = userservice.findByUsername(usuario.getUsername());
+//        
+//		model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidovendaList", pedidosvendaList);
         model.addAttribute("clientesList", clientesList);
 

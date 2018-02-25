@@ -392,7 +392,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
 //    	  pedvenda.getPagamento().add(pagamento);
 
-        pedvenda.setStatus(StatusPedido.FECHADO);
+        pedvenda.setStatus(StatusPedido.FINALIZADO);
 
 
 //    	  pagamentoService.save(pagamento);

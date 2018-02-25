@@ -34,13 +34,13 @@ public class FornecedorController extends AbstractController<Fornecedor> {
 
     private final FornecedorServicoImpl fornecedorService;
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     @Autowired
-    public FornecedorController(FornecedorServicoImpl dao, UsuarioServicoImpl daousu) {
+    public FornecedorController(FornecedorServicoImpl dao) {
         super("fornecedor");
         this.fornecedorService = dao;
-        this.userservice = daousu;
+//        this.userservice = daousu;
     }
 
     @ModelAttribute
@@ -48,11 +48,11 @@ public class FornecedorController extends AbstractController<Fornecedor> {
 
         List<Fornecedor> fornecedorList = getservice().findAll();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("fornecedorList", fornecedorList);
 
     }

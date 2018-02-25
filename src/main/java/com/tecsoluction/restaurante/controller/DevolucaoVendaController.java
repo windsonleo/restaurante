@@ -32,8 +32,8 @@ public class DevolucaoVendaController extends AbstractController<DevolucaoVenda>
     private final
     DevolucaoVendaServicoImpl devolucaovendaService;
 
-    private final
-    UsuarioServicoImpl userservice;
+//    private final
+//    UsuarioServicoImpl userservice;
     
     
     private final 
@@ -42,10 +42,10 @@ public class DevolucaoVendaController extends AbstractController<DevolucaoVenda>
 
 
     @Autowired
-    public DevolucaoVendaController(DevolucaoVendaServicoImpl bancoService, UsuarioServicoImpl userservice,PedidoVendaServicoImpl venda) {
+    public DevolucaoVendaController(DevolucaoVendaServicoImpl bancoService,PedidoVendaServicoImpl venda) {
         super("devolucaovenda");
         this.devolucaovendaService = bancoService;
-        this.userservice = userservice;
+//        this.userservice = userservice;
         this.pedidovendaService = venda;
     }
     
@@ -64,15 +64,15 @@ public class DevolucaoVendaController extends AbstractController<DevolucaoVenda>
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         List<PedidoVenda> pedidovendaList = pedidovendaService.findAll();
         
         StatusDevolucao[] status = StatusDevolucao.values();
         
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidovendaList", pedidovendaList);
         model.addAttribute("status", status);
 

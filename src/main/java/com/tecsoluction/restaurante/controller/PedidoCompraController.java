@@ -38,7 +38,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     private static final Logger logger = LoggerFactory.getLogger(PedidoCompraController.class);
 
 	
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private final PedidoCompraServicoImpl pedidocompraService;
 
@@ -66,8 +66,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     @Autowired
     public PedidoCompraController(PedidoCompraServicoImpl dao, ProdutoServicoImpl produtodao,
-                                  FornecedorServicoImpl fdao, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
-                                  UsuarioServicoImpl daousu) {
+                                  FornecedorServicoImpl fdao, MesaServicoImpl daomesa, GarconServicoImpl daogarcon) {
 
         super("pedidocompra");
         this.pedidocompraService = dao;
@@ -76,7 +75,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         this.fornecedorService = fdao;
         this.mesaService = daomesa;
         this.garconService = daogarcon;
-        this.userservice = daousu;
+//        this.userservice = daousu;
 
     }
 
@@ -116,13 +115,13 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         fornecedores = fornecedorService.findAll();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-        
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//        
         
 
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidoCompraList", pedidoCompraList);
         model.addAttribute("fornecedores", fornecedores);
         model.addAttribute("tipoStatusList", tipoStatusList);

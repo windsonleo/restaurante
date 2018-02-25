@@ -36,7 +36,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     private static final Logger logger = LoggerFactory.getLogger(RecebimentoController.class);
 
 	
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     private Estoque estoque = new Estoque();
 
@@ -71,7 +71,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     BigDecimal totalpedido = new BigDecimal(0.000).setScale(3, RoundingMode.UP);
 
     @Autowired
-    public RecebimentoController(UsuarioServicoImpl usudao, EstoqueServicoImpl estdao, RecebimentoServicoImpl recdao, PedidoCompraServicoImpl pcdao,
+    public RecebimentoController( EstoqueServicoImpl estdao, RecebimentoServicoImpl recdao, PedidoCompraServicoImpl pcdao,
                                   ProdutoServicoImpl proddao, FornecedorServicoImpl fordao) {
 
         super("recebimento");
@@ -79,7 +79,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //        this.itemService = itdao;
         this.produtoService = proddao;
         this.fornecedorService = fordao;
-        this.userservice = usudao;
+//        this.userservice = usudao;
         this.recebimentoService = recdao;
         this.estoqueService = estdao;
     }
@@ -121,10 +121,10 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
 //        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
 			if(recebimento == null){
 				recebimento = new Recebimento();
@@ -141,7 +141,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         
         
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
 //        model.addAttribute("RecebimentoList", recebimentoList);
         model.addAttribute("origemPedidoList", origemPedidoList);
 //        model.addAttribute("situacaoPedidoList", situacaoPedidoList);

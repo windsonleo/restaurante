@@ -22,23 +22,23 @@ public class FormaPagamentoController extends AbstractController<FormaPagamento>
 
     private final FormaPagamentoServicoImpl formapagamentoService;
 
-    private final UsuarioServicoImpl userservice;
+//    private final UsuarioServicoImpl userservice;
 
     @Autowired
-    public FormaPagamentoController(FormaPagamentoServicoImpl dao, UsuarioServicoImpl daousu) {
+    public FormaPagamentoController(FormaPagamentoServicoImpl dao) {
         super("formapagamento");
         this.formapagamentoService = dao;
-        this.userservice = daousu;
+//        this.userservice = daousu;
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
 
     }
 
