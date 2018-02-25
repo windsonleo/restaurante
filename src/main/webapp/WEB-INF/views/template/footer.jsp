@@ -60,13 +60,12 @@
         <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js" type="text/javascript"></script> 
         
      
-<%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
 
              <script src="${pageContext.request.contextPath}/resources/js/material.min.js" type="text/javascript"
         ></script>
         
-              <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
-       ></script> 
+
 
  <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js" type="text/javascript"></script>
 
@@ -76,22 +75,27 @@
  
 <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js" type="text/javascript"></script> 
  
-
+       <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script>
         
          <script src="${pageContext.request.contextPath}/resources/js/perfect-scrollbar.jquery.min.js" type="text/javascript"
           ></script> 
           
-<%--              <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js" type="text/javascript" --%>
-<!--       ></script> -->
+                       <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js" type="text/javascript"
+      ></script>
+          
+                        <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
+       ></script> 
+          
+
 
 
 <%-- <script src="${pageContext.request.contextPath}/resources/sass/material-dashboard.scss" ></script>  --%>
 
 
        
-       <script src="https://www.gstatic.com/charts/loader.js"></script>
+<!--        <script src="https://www.gstatic.com/charts/loader.js"></script> -->
        
-<%--        <script src="${pageContext.request.contextPath}/resources/js/arrive.min.js"></script> --%>
+
        
 <!--        																		maps			AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8 -->
 <!-- 																				matrix distance	AIzaSyDmetyiOpMKNnJtkmWEMVYduRKj5DSBXmY -->
@@ -317,10 +321,10 @@
         $(document).ready(function () {
 
 
-            $('#menu li a').click(function () {
+            $('.nav li a').click(function () {
 
 
-                $('#menu li').removeClass('active');
+                $('#nav li').removeClass('active');
 //                 $(this).closest("li").addClass('active');
                 $(this).addClass('active');
 

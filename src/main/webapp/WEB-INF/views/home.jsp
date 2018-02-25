@@ -7,18 +7,19 @@
 <!--main-container-part-->
 <!--   <div id="content"> -->
     
-        <div id="content-header" class="content-header">
+<!--         <div id="content-header" class="content-header"> -->
    
    
-    </div>
+<!--     </div> -->
 
+<div class="content">
   <div class="container-fluid">
   
-  </br>
-  </br>
+<!--   </br> -->
+<!--   </br> -->
   
                   <c:if test="${erros != null }">
-</br>
+<!-- </br> -->
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -41,7 +42,7 @@
 
     
       <c:if test="${mensagem != null }">
-      </br>
+<!--       </br> -->
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -59,8 +60,8 @@
 		
         <hr>
 
-        <div class="card">
-            <div class="card-content">
+<!--         <div class="card"> -->
+<!--             <div class="card-content"> -->
             
 
 
@@ -842,7 +843,7 @@
                 </c:forEach>
 
 			</ul>
-          </div>
+<!--           </div> -->
       
       
       
