@@ -20,25 +20,21 @@ public class BancoController extends AbstractController<Banco> {
     private final
     BancoServicoImpl bancoService;
 
-    private final
-    UsuarioServicoImpl userservice;
-
 
     @Autowired
-    public BancoController(BancoServicoImpl bancoService, UsuarioServicoImpl userservice) {
+    public BancoController(BancoServicoImpl bancoService) {
         super("banco");
         this.bancoService = bancoService;
-        this.userservice = userservice;
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
-
-        model.addAttribute("usuarioAtt", usuario);
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
+//
+//        model.addAttribute("usuarioAtt", usuario);
     }
 
     @Override

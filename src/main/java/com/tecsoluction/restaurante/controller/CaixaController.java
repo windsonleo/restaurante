@@ -7,7 +7,6 @@ import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -41,23 +40,23 @@ public class CaixaController extends AbstractController<Caixa> {
     private
     DespesaServicoImpl despesaService;
 
+//
+//    private
+//    UsuarioServicoImpl userservice;
 
-    private
-    UsuarioServicoImpl userservice;
 
+    List<PedidoVenda> pedidoVendaLista = new ArrayList<>();
 
-    List<PedidoVenda> pedidoVendaLista = new ArrayList<PedidoVenda>();
+    List<FormaPagamento> formapagamentoLista = new ArrayList<>();
 
-    List<FormaPagamento> formapagamentoLista = new ArrayList<FormaPagamento>();
-    
     private Pagamento pagamento;
 
 
     @Autowired
-    public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService, UsuarioServicoImpl pedidovendaServiceusu, FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService) {
+    public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService
+            , FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService) {
         super("caixa");
         this.pedidovendaService = pedidovendaService;
-        this.userservice = pedidovendaServiceusu;
         this.caixaService = CpedidovendaService;
         this.formapagamentoService = formpedidovendaService;
         this.pagamentoService = ppedidovendaService;
@@ -91,9 +90,9 @@ public class CaixaController extends AbstractController<Caixa> {
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
         List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
@@ -105,7 +104,7 @@ public class CaixaController extends AbstractController<Caixa> {
         model.addAttribute("caixaList", caixaList);
         model.addAttribute("pedidoVendaLista", pedidoVendaLista);
         model.addAttribute("formapagamentoList", formapagamentoList);
-        model.addAttribute("usuarioAtt", usuario);
+//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
 
 
@@ -126,7 +125,7 @@ public class CaixaController extends AbstractController<Caixa> {
         return fecharcaixa;
 
     }
-    
+
     @RequestMapping(value = "abrircaixa", method = RequestMethod.GET)
     public ModelAndView AbrirCaixa(HttpServletRequest request) {
 
@@ -339,16 +338,16 @@ public class CaixaController extends AbstractController<Caixa> {
         List<FormaPagamento> pagcartaocredito = new ArrayList<>();
 
         List<FormaPagamento> pagcartaodebito = new ArrayList<>();
-        
-        
-    	List<PedidoVenda> ls = pedidovendaService.findAll();
-    	
+
+
+        List<PedidoVenda> ls = pedidovendaService.findAll();
+
         ModelAndView caixarapido = new ModelAndView("caixarapido");
-        
+
         for (PedidoVenda pv : ls) {
 
             List<Pagamento> pags = pv.getPagamento();
-            
+
             for (Pagamento pagamento : pags) {
                 Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
                 for (FormaPagamento valor : formapag) {
@@ -367,72 +366,69 @@ public class CaixaController extends AbstractController<Caixa> {
                 }
             }
         }
-        
-        caixarapido.addObject("ls",ls);
-        caixarapido.addObject("pagdinheiro",pagdinheiro);
-        caixarapido.addObject("pagcartaodebito",pagcartaodebito);
-        caixarapido.addObject("pagcartaocredito",pagcartaocredito);
+
+        caixarapido.addObject("ls", ls);
+        caixarapido.addObject("pagdinheiro", pagdinheiro);
+        caixarapido.addObject("pagcartaodebito", pagcartaodebito);
+        caixarapido.addObject("pagcartaocredito", pagcartaocredito);
 
 
         return caixarapido;
     }
-    
-    
- 
-    
+
+
     @RequestMapping(value = "receberpagamento", method = RequestMethod.GET)
     public ModelAndView CaixaRapidoRceberPagamento(HttpServletRequest request) {
 
-    	
-    	  UUID idf = UUID.fromString(request.getParameter("id"));
-    	  
-    	  PedidoVenda pedvenda = pedidovendaService.findOne(idf);
-    	  
-    	  pagamento = new Pagamento();
-    	  
-    	  pagamento.setStatus("ABERTO");
-    	  pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
-    	  
+
+        UUID idf = UUID.fromString(request.getParameter("id"));
+
+        PedidoVenda pedvenda = pedidovendaService.findOne(idf);
+
+        pagamento = new Pagamento();
+
+        pagamento.setStatus("ABERTO");
+        pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
+
 //    	  pedvenda.getPagamento().add(pagamento);
-    	  
-    	  pedvenda.setStatus(StatusPedido.FECHADO);
-    	  
-    	  
+
+        pedvenda.setStatus(StatusPedido.FECHADO);
+
+
 //    	  pagamentoService.save(pagamento);
-    	  pedidovendaService.edit(pedvenda);
-    	  
-    	
+        pedidovendaService.edit(pedvenda);
+
 
 //    	List<PedidoVenda> ls = pedidovendaService.findAll();
-    	
-    	
+
+
         ModelAndView caixarapido = new ModelAndView("caixarapido");
-        
+
 //        caixarapido.addObject("ls",ls);
 
 
         return caixarapido;
-        
-        
+
+
     }
-    
+
     @RequestMapping(value = "recusarpagamento", method = RequestMethod.GET)
     public ModelAndView CaixaRapidoRecusarPagamento(HttpServletRequest request) {
 
 
-    	List<PedidoVenda> ls = pedidovendaService.findAll();
-    	
-    	
+        List<PedidoVenda> ls = pedidovendaService.findAll();
+
+
         ModelAndView caixarapido = new ModelAndView("caixarapido");
-        
-        caixarapido.addObject("ls",ls);
+
+        caixarapido.addObject("ls", ls);
 
 
         return caixarapido;
-        
-        
+
+
     }
-    
+
 
     @Override
     protected CaixaServicoImpl getservice() {

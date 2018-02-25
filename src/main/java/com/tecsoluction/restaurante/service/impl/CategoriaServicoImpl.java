@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.service.impl;
 
 import com.tecsoluction.restaurante.dao.ICategoriaDAO;
 import com.tecsoluction.restaurante.entidade.Categoria;
+import com.tecsoluction.restaurante.entidade.Produto;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,13 +18,17 @@ import java.util.UUID;
 @Transactional
 public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
-    @Autowired
-    private ICategoriaDAO dao;
+    private final ICategoriaDAO dao;
 
-    public CategoriaServicoImpl() {
+    private ProdutoServicoImpl produtoServico;
+
+    @Autowired
+    public CategoriaServicoImpl(ICategoriaDAO dao, ProdutoServicoImpl produtoServico) {
 
         super(Categoria.class, "categoria");
 
+        this.dao = dao;
+        this.produtoServico = produtoServico;
     }
 
     @Override
@@ -54,11 +59,17 @@ public class CategoriaServicoImpl extends AbstractEntityService<Categoria> {
 
     @Override
     protected void validateDelete(UUID id) {
-
-//        Categoria catGenericaPai = dao.getOnlyCategoriaPai();
-//        List<Categoria> categoriasFilha = dao.getCategoriasFilho(id);
+//
+//        Categoria catGenericaPai = getOnlyCategoriaPai();
+//        List<Categoria> categoriasFilha = getCategoriasFilho(id);
 //        for (Categoria cat : categoriasFilha) {
 //            cat.setCatpai(catGenericaPai);
+//            List<Produto> produtos = cat.getProdutos();
+//            for (Produto prod : produtos) {
+//                prod.setCategoria(catGenericaPai);
+//                produtoServico.edit(prod);
+//            }
+//            edit(cat);
 //        }
 
     }
