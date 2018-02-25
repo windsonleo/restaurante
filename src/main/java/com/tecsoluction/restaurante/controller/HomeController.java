@@ -402,7 +402,7 @@ public class HomeController {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setText("Olá Voce Recebeu este Email do Sushi Senpai");
+        message.setText("Ola Voce Recebeu este Email do Sushi Senpai");
         message.setTo(email);
         message.setFrom(empresa.getEmail());
         message.setSubject("Recuperar Senha");
