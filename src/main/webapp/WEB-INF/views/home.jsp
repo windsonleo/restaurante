@@ -73,10 +73,10 @@
 <!--                </br> -->
 <!--                </br> -->
          <sec:authorize access="hasRole('ROLE_ADM')">
-               <div class="span12">
+               <div class="row">
                      
                        
-                         <div class="span2.5">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
 									<i class="icon-barcode"></i>
@@ -97,7 +97,7 @@
                         </div>
                         
                         
-                         <div class="span2.5">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
                                     <i class="icon icon-shopping-cart"></i>
@@ -118,7 +118,7 @@
                         </div>
                         
                         
-                         <div class="span2.5">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
                                     <i class="icon icon-table"></i>
@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         
-                           <div class="span2.5">
+                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
                                     <i class="icon icon-truck"></i>
@@ -179,9 +179,9 @@
 						</div>
 						
 						
-						  <div class="span12">
+						  <div class="row">
                        
-                        <div class="span3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header card-chart" data-background-color="green">
                                     <div class="ct-chart" id="dailySalesChart"></div>
@@ -199,7 +199,7 @@
                             </div>
                         </div>
                      
-                        <div class="span3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header card-chart" data-background-color="orange">
                                     <div class="ct-chart" id="emailsSubscriptionChart"></div>
@@ -216,7 +216,7 @@
                             </div>
                         </div>
                        
-                        <div class="span3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header card-chart" data-background-color="red">
                                     <div class="ct-chart" id="completedTasksChart"></div>
@@ -241,9 +241,9 @@
   
      <div class="row">
   
-      <div class="span12">
+<!--       <div class="span12"> -->
 
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
@@ -259,7 +259,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -275,7 +275,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -291,7 +291,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -307,7 +307,7 @@
         </div>
         
         
-                <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -323,7 +323,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -341,7 +341,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -357,7 +357,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -372,7 +372,7 @@
           </div>
         </div>
         
-                <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -388,7 +388,7 @@
         </div>
         <!-- ./col -->
       
-        <div class="span2">
+        <div class="col-lg-2 col-md-4 col-sm-4">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
@@ -406,7 +406,7 @@
 
         
         <!-- ./span -->
-        </div>
+<!--         </div> -->
       
       </div>
       
@@ -415,7 +415,7 @@
       					<div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="card card-nav-tabs">
-                                <div class="card-header" data-background-color="red">
+                                <div class="card-header" data-background-color="green">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
                                             <span class="nav-tabs-title">Compras:</span>
@@ -692,110 +692,111 @@
                         </div>
 					
               </sec:authorize>
-				 	<div class="card">
-                    <div class="card-content">
+              
+<!-- 				 	<div class="card"> -->
+<!--                     <div class="card-content"> -->
                        
-                                <div class="card-header" data-background-color="red">
+<!--                                 <div class="card-header" data-background-color="red"> -->
                                 
-                                    <h4 class="title">Acesso Rapido</h4>
-                                    <p class="category">...</p>
+<!--                                     <h4 class="title">Acesso Rapido</h4> -->
+<!--                                     <p class="category">...</p> -->
 
-                                </div>
+<!--                                 </div> -->
                                 
-                                </br>
+<!--                                 </br> -->
           				
           				
-          				<div class="row">
+<!--           				<div class="row"> -->
           				
-          				<div class="widget-content" style="margin-left:2em;">                
+<!--           				<div class="widget-content" style="margin-left:2em;">                 -->
 				                    
-				 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
+<!-- 				 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist"> -->
 					
-					<sec:authorize access="hasRole('ROLE_COZINHA')">
-					<li class="active" >
-						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta">
-							<i class="material-icons">room_service</i>
-							Cozinha
-						</a>
-					</li>
-					</sec:authorize>
-					
-					
-					<li >
-						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta">
-							<i class="material-icons">table</i>
-							Salao
-						</a>
-					</li>
-					
-					<sec:authorize access="hasRole('ROLE_CAIXA')">
-					<li>
-						<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta">
-							<i class="material-icons">money</i>
-							Caixa
-						</a>
-					</li>
-					
-					</sec:authorize>
-					
-					<sec:authorize access="hasRole('ROLE_FINANCEIRO')">
-					
-					<li >
-						<a href="#schedule" role="tab" data-toggle="tab">
-							<i class="material-icons">attach_money</i>
-							Financeiro
-						</a>
-					</li>
-					
-					</sec:authorize>
-					
-					<li>
-						<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="tab" data-toggle="ta">
-							<i class="material-icons">money</i>
-							Reserva
-						</a>
-					</li>
-					
-				<sec:authorize access="hasRole('ROLE_COMPRA')">
-					
-					<li >
-						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="tab" data-toggle="tab">
-							<i class="material-icons">shopping_cart</i>
-							Compras
-						</a>
-					</li>
-					
-					</sec:authorize>
-					
-					<sec:authorize access="hasRole('ROLE_VENDA')">
-					
-					<li>
-						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta">
-							<i class="material-icons">money</i>
-							Vendas
-						</a>
-					</li>
-					
-					</sec:authorize>
+<%-- 					<sec:authorize access="hasRole('ROLE_COZINHA')"> --%>
+<!-- 					<li class="active" > -->
+<%-- 						<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">room_service</i> -->
+<!-- 							Cozinha -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+<%-- 					</sec:authorize> --%>
 					
 					
-					<li>
-						<a href="${pageContext.request.contextPath}/estoque/consulta" role="ta" data-toggle="ta">
-							<i class="material-icons">view_list</i>
-							Estoque
-						</a>
-					</li>
+<!-- 					<li > -->
+<%-- 						<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">table</i> -->
+<!-- 							Salao -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 					<sec:authorize access="hasRole('ROLE_CAIXA')"> --%>
+<!-- 					<li> -->
+<%-- 						<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">money</i> -->
+<!-- 							Caixa -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 					</sec:authorize> --%>
+					
+<%-- 					<sec:authorize access="hasRole('ROLE_FINANCEIRO')"> --%>
+					
+<!-- 					<li > -->
+<!-- 						<a href="#schedule" role="tab" data-toggle="tab"> -->
+<!-- 							<i class="material-icons">attach_money</i> -->
+<!-- 							Financeiro -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 					</sec:authorize> --%>
+					
+<!-- 					<li> -->
+<%-- 						<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="tab" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">money</i> -->
+<!-- 							Reserva -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 				<sec:authorize access="hasRole('ROLE_COMPRA')"> --%>
+					
+<!-- 					<li > -->
+<%-- 						<a href="${pageContext.request.contextPath}/pedidocompra/rapido" role="tab" data-toggle="tab"> --%>
+<!-- 							<i class="material-icons">shopping_cart</i> -->
+<!-- 							Compras -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 					</sec:authorize> --%>
+					
+<%-- 					<sec:authorize access="hasRole('ROLE_VENDA')"> --%>
+					
+<!-- 					<li> -->
+<%-- 						<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">money</i> -->
+<!-- 							Vendas -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+					
+<%-- 					</sec:authorize> --%>
+					
+					
+<!-- 					<li> -->
+<%-- 						<a href="${pageContext.request.contextPath}/estoque/consulta" role="ta" data-toggle="ta"> --%>
+<!-- 							<i class="material-icons">view_list</i> -->
+<!-- 							Estoque -->
+<!-- 						</a> -->
+<!-- 					</li> -->
 				
 				
-				</ul>
+<!-- 				</ul> -->
 				 
-				 </div> 
+<!-- 				 </div>  -->
           				
           				
-          				</div>
+<!--           				</div> -->
           				            
-            </div>
-            </div>
+<!--             </div> -->
+<!--             </div> -->
             
             
             
@@ -843,297 +844,95 @@
                 </c:forEach>
 
 			</ul>
-<!--           </div> -->
-      
-      
-      
-      
-      
-  
-      
-      
+			
+			
+			                <nav class="navbar navbar-info">
+						<div class="container">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-default">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#pablo">Acesso Rapido</a>
+							</div>
 
-      
-<!--       <div class="form-group is-empty is-fileinput"> -->
-<!--     <input type="file" id="inputFile4" multiple=""> -->
-<!--     <div class="input-group"> -->
-<!--       <input type="text" readonly="" class="form-control" placeholder="Placeholder w/file chooser..."> -->
-<!--         <span class="input-group-btn input-group-sm"> -->
-<!--           <button type="button" class="btn btn-fab btn-fab-mini"> -->
-<!--             <i class="material-icons">attach_file</i> -->
-<!--           </button> -->
-<!--         </span> -->
-<!--     </div> -->
-<!-- </div> -->
-      
-      
-      
-      
-      
-      
-      
-<!--       </div> -->
-      
-      
-      
-      
-<!--       </div>                     -->
-   
-                    
-<!--                     </div> -->
-	
-		
-<!--                        <div class="row"> -->
-                     
-<!--                     </div> -->
-
-  	
-<!--   	<div class="row-fluid"> -->
-      
-<!--         	<div class="widget-box collapsible"> -->
-<!--          		 <div class="widget-title"> -->
-<!--          		 <a href="#collapseaprove" data-toggle="collapse"> -->
-<!--          		 <span class="icon"> -->
-<!--          		  <i class="icon-check"></i> -->
-<!--          		   </span> -->
-<!--            			 <h5>Pedidos de Compras Pedente de Aprovação</h5> -->
-<!--            			 </a> -->
-<%--            			   <span class="label label bg_lg">${pedidocomprasnovos.size()}</span> --%>
-<!--           		</div> -->
-          		
-<!--           <div class="collapse" id="collapseaprove"> -->
-			           		
-<!-- 			           		<ul class="recent-posts"> -->
-			           
-<%-- 			           			<c:forEach var="pedidocompra" items="${pedidocomprasnovos }"> --%>
-			           		
-
-										 
-										
-<%-- 								<c:choose> --%>
-<%-- 								    <c:when test="${pedidocompra.status=='PENDENTE'}"> --%>
-<!-- 								       <li> -->
-<!-- 						                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
-<!-- 							                <div class="article-post"> -->
-<%-- 							                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
-<%-- 							                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span> --%>
-<%-- 							                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> </span></p> --%>
-<%-- 							                  <p><a href="#"></a> Itens : ${pedidocompra.items}</p> --%>
-<!-- 							                </div> -->
-<!-- 						                </li> -->
-								
-<%-- 								    </c:when>     --%>
-								    
-<%-- 								    <c:otherwise> --%>
-
-
-<%-- 								    </c:otherwise> --%>
-								
-<%-- 								</c:choose> --%>
-			              	
-			              	
-<%-- 			              	</c:forEach> --%>
-			              
-
+							<div class="collapse navbar-collapse" id="example-navbar-default">
+								<ul class="nav navbar-nav navbar-left">
 									
-<!-- 			               <li> -->
-<!-- 			                <button class="btn btn-warning btn-mini">View All</button> -->
-<!-- 			              </li> -->
-<!-- 			            </ul> -->
-<!--         </div> -->
-        
-<!--         </div> -->
-<!--         </div> -->
-     	
-              
+									<li class="active">
+		                                <a href="${pageContext.request.contextPath}/cozinha">
+											<i class="material-icons">room_service</i>
+											Cozinha
+		                                </a>
+		                            </li>
+		                            
+		                            <li>
+		                                <a href="${pageContext.request.contextPath}/mesas/salao">
+											<i class="material-icons">table</i>
+		                                    Salao
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="${pageContext.request.contextPath}/caixa/rapido">
+											<i class="material-icons">money</i>
+		                                    Caixa
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="#pablo">
+											<i class="material-icons">money</i>
+		                                    Financeiro
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="${pageContext.request.contextPath}/reserva/movimentacao">
+											<i class="material-icons">account_circle</i>
+		                                    Reserva
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
+											<i class="material-icons">account_circle</i>
+		                                    Compras
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="${pageContext.request.contextPath}/pedidovenda/rapido">
+											<i class="material-icons">account_circle</i>
+		                                    Vendas
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+		                            		                            <li>
+		                                <a href="${pageContext.request.contextPath}/estoque/movimentacao">
+											<i class="material-icons">account_circle</i>
+		                                    Estoque
+		                                <div class="ripple-container"></div></a>
+		                            </li>
+		                            
+<!-- 		                            <li> -->
+<!-- 		                                <a href="#pablo"> -->
+<!-- 											<i class="material-icons">settings</i> -->
+<!-- 											Settings -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
+								</ul>
+							</div>
+						</div>
+					</nav>
 
-<%--   <sec:authorize access="hasRole('ROLE_COZINHA')"> --%>
-       
-<!-- <div class="row-fluid"> -->
-<!--     <div class="widget-box collapsible"> -->
-<!-- 	      <div class="widget-title">  -->
-<!-- 	      <span class="icon"> -->
-<!-- 	      <i class="icon-icon"> -->
-<%-- 	      <img src="${pageContext.request.contextPath}/resources/images/icons/16/chef.png"> --%>
-<!-- 	      </i> -->
-<!-- 	      </span> -->
-<!-- 	      <a href="#collapsecozinha" data-toggle="collapse"> -->
-	      
-<!-- 	             <h5>Cozinha </h5> -->
-<!-- 	             </a> -->
-<%-- 	      <span class="label label">${pedidocomprasnovos.size()}</span> --%>
-	             
-<!-- 	      </div> -->
-	             
-<!--           <div class="collapse" id="collapsecozinha"> -->
-          
-<!-- 				<div class="container-fluid"> -->
-<!-- 			       <div class="quick-actions_homepage"> -->
-<!-- 			      	<ul class="quick-actions"> -->
-<%-- 			        <li class="label"> <a href="${pageContext.request.contextPath}/cozinha"> <i class="icon-icon" > <img src="${pageContext.request.contextPath}/resources/images/icons/32/chef.png"></i>Chef</a> </li> --%>
-<%-- 					 <li class="label"> <a href="${pageContext.request.contextPath}/cozinha"> <i class="icon-icon" > <img src="${pageContext.request.contextPath}/resources/images/icons/32/chef.png"></i>Preparacao</a> </li> --%>
-					
-					
-<!-- 					</ul> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-		
-		
-		
-		
-		
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
-	
-
-<%-- 	</sec:authorize> --%>
-  
-		 
-
-          
-        
-
-          
- 
-<%--  <sec:authorize access="hasRole('ROLE_GARCON')"> --%>
-          
-<!--     <div class="row-fluid"> -->
-<!--          		<div class="widget-box collapsible"> -->
-          
-<!-- 	          <div class="widget-title"><span class="icon"> -->
-<!-- 				  <i class="icon-icon"> -->
-<%--                       <img src="${pageContext.request.contextPath}/resources/images/icons/16/mesa.png"/> --%>
-<!--                   </i> -->
-<!-- 	          </span> -->
-<!-- 	           <a href="#collapsesalao" data-toggle="collapse"> -->
-	          
-<!-- 	             <h5>Salão </h5> -->
-<!-- 	             </a> -->
-	             
-<%-- 	             <span class="label label bg_lo">${pedidocomprasnovos.size()}</span> --%>
-	             
-	             
-	             
-<!-- 	             </div> -->
-	             
-<!--           <div class="collapse" id="collapsesalao"> -->
-          
-<!-- 			   <div class="container-fluid"> -->
-<!--                    <div class="quick-actions_homepage"> -->
-                
-<!-- 	                	<ul class="quick-actions"> -->
-			
-			              
-<%-- 			           		<c:forEach var="mesa" items="${mesas}" varStatus="id"> --%>
-			              
-<%-- 			                <li class="bg_lo"> <a href="${pageContext.request.contextPath}/mesas/detalhes?id=${mesa.id}"> --%>
-<%-- 			         		<i class="icon-icon"><img src="${pageContext.request.contextPath}/resources/images/icons/32/mesa.png" ></i> --%>
-			         	
-<%-- 			         		 <div class="huge">${mesa.id}</div> --%>
-<%-- 			                 <div>${mesa.numero}</div> --%>
-<%-- 			                  <div> ${mesa.status}</div>  --%>
-<%-- 			                                     	<span class="label label-success">${mesa.pedidos.size()}</span>  --%>
-<!-- 			                                      </a>  -->
-			                                      
-<!-- 			                 </li> -->
-			       
-			                
-<%-- 			                </c:forEach> --%>
-			
-<!-- 						</ul> -->
-                
-                
-<!--                 </div> -->
-                
-<!--                 </div> -->
-<!--                 </div> -->
-                
-<!--                 </div> -->
-                
-<!--                 </div> -->
-                
-<%--        </sec:authorize> --%>
-       
-       
-       
-<%--      <sec:authorize access="hasRole('ROLE_CAIXA')"> --%>
-       
-<!-- <div class="row-fluid"> -->
-<!--     <div class="widget-box collapsible"> -->
-<!-- 	      <div class="widget-title"> <span class="icon"><i class="icon-money"></i></span> -->
-<!-- 	      	     <a href="#collapsecaixa" data-toggle="collapse"> -->
-	      
-<!-- 	             <h5>Caixa </h5> -->
-	             
-<!-- 	             </a> -->
-	             
-<%-- 	            <span class="label label bg_ly">${pedidocomprasnovos.size()}</span> --%>
-	             
-<!-- 	             </div> -->
-	             
-<!--           <div class="collapse" id="collapsecaixa"> -->
-          
-<!-- 	<div class="container-fluid"> -->
-<!--        <div class="quick-actions_homepage"> -->
-<!--       	<ul class="quick-actions"> -->
-<%--         <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Caixa</a> </li> --%>
-<%-- 		        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Abrir Caixa</a> </li> --%>
-<%-- 		        <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Fechar Caixa</a> </li> --%>
-<%-- 				 <li class="bg_ly"> <a href="${pageContext.request.contextPath}/caixa/rapido"> <i class="icon icon-money" ></i>Add Despesa</a> </li> --%>
-		
-<!-- 		</ul> -->
-<!-- 		</div> -->
-<!-- 		</div> -->
-<!-- 		</div> -->
-<!-- 		</div> -->
-<!-- 		</div> -->
-	
-
-<%-- 	</sec:authorize> --%>
-	
-	
-	
-<%-- <sec:authorize access="hasRole('ROLE_FINANCEIRO')"> --%>
-       
-<!-- <div class="row-fluid"> -->
-<!--     <div class="widget-box collapsible"> -->
-<!-- 	      <div class="widget-title"> <span class="icon"><i class="icon-money"></i></span> -->
-<!-- 	      	           <a href="#collapsefinanceiro" data-toggle="collapse"> -->
-	      
-<!-- 	             <h5>Financeiro </h5> -->
-<!-- 	             </a> -->
-	             
-<%-- 	           <span class="label label bg_ls">${pedidocomprasnovos.size()}</span> --%>
-	             
-<!-- 	      </div> -->
-	             
-<!--           <div class="collapse" id="collapsefinanceiro"> -->
-          
-<!-- 				<div class="container-fluid"> -->
-<!-- 			       <div class="quick-actions_homepage"> -->
-<!-- 			      	<ul class="quick-actions"> -->
-			        
-<%-- 			        <li class="bg_ls"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png"/></i>Financeiro</a> </li> --%>
-<%-- 					<li class="bg_ls"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png"/></i>A Pagar</a> </li> --%>
-<%-- 					<li class="bg_ls"> <a href="${pageContext.request.contextPath}/banco/movimentacao"> <i class="icon-icon" ><img src="${pageContext.request.contextPath}/resources/images/icons/32/pagamento.png"/></i>A Receber</a> </li> --%>
-					
-<!-- 					</ul> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-		
-		
-		
-		
-		
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
-	
-
-<%-- 	</sec:authorize> --%>
                 
                 </div>
+                
+
+                
                 </div>
  
-<!--                 </div> -->
+
