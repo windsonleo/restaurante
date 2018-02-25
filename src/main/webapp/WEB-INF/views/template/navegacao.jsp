@@ -5,7 +5,7 @@
 
 
 
-    <div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/images/sidebar-3.png"
+    <div class="sidebar" data-color="red" data-image="${pageContext.request.contextPath}/resources/images/sidebar-3.png"
         >
         <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -24,7 +24,7 @@
                 <a href="${pageContext.request.contextPath}/" class="simple-text">
                    
              <img class="image-responsive"
-            src="${pageContext.request.contextPath}/resources/images/logosenpai.png"/>
+            src="${pageContext.request.contextPath}/resources/images/logo3dd.png"/>
                     
                 </a>
             </div>

@@ -195,7 +195,7 @@ public class ClienteController extends AbstractController<Cliente> {
 //  	cadastrocliente.addObject("cliente",cliente);
 
 
-        return new ModelAndView("redirect:/cliente/movimentacao");
+        return new ModelAndView("forward:/cliente/movimentacao");
     }
 
 

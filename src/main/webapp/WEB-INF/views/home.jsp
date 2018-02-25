@@ -708,7 +708,7 @@
           				
           				<div class="widget-content" style="margin-left:2em;">                
 				                    
-				 <ul class="nav nav-pills nav-pills-icons nav-pills-info" role="tablist">
+				 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
 					
 					<sec:authorize access="hasRole('ROLE_COZINHA')">
 					<li class="active" >
