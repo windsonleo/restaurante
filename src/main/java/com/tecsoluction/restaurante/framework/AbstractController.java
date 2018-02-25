@@ -127,6 +127,20 @@ public abstract class AbstractController<Entity> {
 
         return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
     }
+    
+    
+    @Transactional
+    @GetMapping(value = "informacao")
+    public ModelAndView InformacaoEntity(HttpServletRequest request) {
+
+        UUID idf = UUID.fromString(request.getParameter("id"));
+       Entity entity =  getservice().findOne(idf);
+        
+        ModelAndView informacaoEntity = new ModelAndView("informacao" + entityAlias);
+        informacaoEntity.addObject("entity", entity);
+
+        return informacaoEntity;
+    }
 
     private void trataErro(BindingResult result, RedirectAttributes attributes) {
         System.out.println("erro ao add Entidade: " + entityAlias + " erro: " + result.getObjectName());

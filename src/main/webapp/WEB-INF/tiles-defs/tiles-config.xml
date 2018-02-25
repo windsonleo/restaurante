@@ -28,6 +28,14 @@
 <!--                 <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/> -->
         
     </definition>
+    
+        <definition name="TemplateD" template="/WEB-INF/template/templateinformacao.jsp">
+               <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+                <put-attribute name="navegacao" value="/WEB-INF/views/template/navegacao.jsp"/>
+                <put-attribute name="conteudo" value=""/>
+                <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+        
+    </definition>
 
 
 <!--     <definition name="login" extends="TemplateB"> -->
@@ -621,6 +629,28 @@
 				<definition name="findmotoqueiro" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/informacoes/findmotoqueiro.jsp" />
+
+	</definition>
+	
+	
+<!-- 	INFORMACAO -->
+	
+					<definition name="informacaocliente" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaocliente.jsp" />
+
+	</definition>
+	
+						<definition name="informacaousuario" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaousuario.jsp" />
+
+	</definition>
+	
+	
+	<definition name="esqueceu" extends="TemplateB">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/esqueceu.jsp" />
 
 	</definition>
 	

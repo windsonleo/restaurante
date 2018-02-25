@@ -6,12 +6,6 @@
 
 <div id="content">
 
-    <div id="content-header">
-
-</br>
-</br>
-<!--         <h3>Salão</h3> -->
-    </div>
 
 
     <div class="container-fluid">
@@ -21,7 +15,6 @@
         <div class="row-fluid">
         
           <c:if test="${erros != null }">
-</br>
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -44,7 +37,7 @@
 
     
       <c:if test="${mensagem != null }">
-      </br>
+    
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -65,7 +58,7 @@
       <div class="row-fluid">
 
 		
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
 					
 					
 					<li class="active" >
@@ -102,14 +95,12 @@
 				<div class="card">
                     <div class="card-content">
 
-                        <div class="card-header" data-background-color="blue">
+                        <div class="card-header" data-background-color="red">
   							<h3 class="title">Salao</h3>
                             <p class="category">Todas as mesas </p>
 
                         </div>
                         
-					</br>
-					</br>
 
 			<div class="row">
 

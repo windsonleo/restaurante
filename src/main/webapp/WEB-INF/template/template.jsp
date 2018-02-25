@@ -37,6 +37,9 @@
           type="text/css"/>
     <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/material-dashboard.css"
           type="text/css"/>
+          
+<%--               <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/material-kit.css" --%>
+<!--           type="text/css"/> -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"
           type='text/css'/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'

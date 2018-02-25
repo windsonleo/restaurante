@@ -5,17 +5,12 @@
 
 <div id="content">
 
-  <div id="content-header">
-
-	<br>
-	</br>
-<!--      <h3>Movimentação de Cozinha</h3>  -->
-     </div>    
+  
       
   
   
            <c:if test="${erros != null }">
-</br>
+
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -38,7 +33,7 @@
 
     
       <c:if test="${mensagem != null }">
-      </br>
+  
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -62,7 +57,7 @@
          <div class="row-fluid">
 
 		
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-left:2.5em;">
+		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" >
 					
 					
 					<li class="active" >
@@ -103,14 +98,14 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
-                                    <h4 class="title"><h5>Movimentação Cozinha</h5></h4>
+                                    <h4 class="title">Movimentação Cozinha</h4>
                                     <p class="category">Todos</p>
 
                                 </div>
                                 
-                                </br>
+                               
                                 
                                   			 <div class="span12">                       
                          <div class="span2">
@@ -201,7 +196,7 @@
 					 <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="card card-nav-tabs">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="green">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
                                             <span class="nav-tabs-title">Vendas:</span>

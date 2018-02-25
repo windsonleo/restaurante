@@ -113,7 +113,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup">
-							<form class="form" method="post" action="login">
+							<form class="form" method="get" action="enviaremail">
 								<div class="header header-danger text-center">
 									<img class="image-responsive"
             src="${pageContext.request.contextPath}/resources/images/logosenpaii.png"/>
@@ -135,23 +135,9 @@
 
 									<div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">face</i>
+											<i class="material-icons">email</i>
 										</span>
-										<input id="username" name="username" type="text" class="form-control" placeholder="UserName...">
-									</div>
-
-<!-- 									<div class="input-group"> -->
-<!-- 										<span class="input-group-addon"> -->
-<!-- 											<i class="material-icons">email</i> -->
-<!-- 										</span> -->
-<!-- 										<input type="text" class="form-control" placeholder="Senha..."> -->
-<!-- 									</div> -->
-
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">lock_outline</i>
-										</span>
-										<input type="password" id="senha" name="senha" placeholder="Password..." class="form-control" />
+										<input name="email" id="email" type="text" class="form-control" placeholder="Email...">
 									</div>
 
 									<!-- If you want to add a checkbox to this form, uncomment this code
@@ -164,8 +150,8 @@
 									</div> -->
 								</div>
 								<div class="footer text-center">
-								<button class="btn btn-simple btn-danger btn-lg" type="submit">Entrar</button>
-									<a href="${pageContext.request.contextPath}/esqueceu" class="btn btn-simple btn-primary btn-lg">Esqueceu</a>
+								<button class="btn btn-simple btn-danger btn-lg" type="submit">Resgatar</button>
+<%-- 									<a href="${pageContext.request.contextPath}/esqueceu" class="btn btn-simple btn-primary btn-lg">Esqueceu</a> --%>
 									
 									
 									

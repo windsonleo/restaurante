@@ -95,7 +95,7 @@
 				<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title"><h5>Caixa Rapido</h5></h4>
                                     <p class="category">Todos</p>

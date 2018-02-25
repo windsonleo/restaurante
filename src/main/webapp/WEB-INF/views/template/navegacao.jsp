@@ -24,7 +24,7 @@
                 <a href="${pageContext.request.contextPath}/" class="simple-text">
                    
              <img class="image-responsive"
-            src="${pageContext.request.contextPath}/resources/images/logo3dd.png"/>
+            src="${pageContext.request.contextPath}/resources/images/logo3ddd.png"/>
                     
                 </a>
             </div>

@@ -85,6 +85,9 @@
           
                         <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
        ></script> 
+       
+<%--                                <script src="${pageContext.request.contextPath}/resources/js/material-kit.js"  --%>
+<!--        ></script>  -->
           
 
 
@@ -364,6 +367,21 @@
 
 
     </script>
+    
+    		<script>
+        $( document ).ready(function(){
+            $('.alert').fadeIn('slow', function(){
+               $('.alert').delay(2000).fadeOut(); 
+           
+               demo.showNotification('top','center','${erros}');
+            
+            });
+    
+    
+    		
+            
+        });
+        </script>
     
     </div>
 

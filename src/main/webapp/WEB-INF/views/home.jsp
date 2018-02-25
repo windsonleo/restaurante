@@ -855,7 +855,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<a class="navbar-brand" href="#pablo">Acesso Rapido</a>
+								<a class="navbar-brand" href="#pablo"></a>
 							</div>
 
 							<div class="collapse navbar-collapse" id="example-navbar-default">

@@ -3,9 +3,12 @@ package com.tecsoluction.restaurante.controller;
 import com.tecsoluction.restaurante.entidade.*;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.StatusPedido;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Handles requests for the application home page.
@@ -61,6 +67,12 @@ public class HomeController {
     
     private final 
     EstoqueServicoImpl estoqueService;
+    
+    @Autowired 
+    private JavaMailSender mailSender;
+	   
+    @Autowired 
+    private EmpresaServicoImpl empresaServico;
 
     private
     List<Cliente> clientesnovos;
@@ -94,6 +106,8 @@ public class HomeController {
 
     private
     List<Pagamento> pagamentos;
+    
+    
 
 
     @Autowired
@@ -347,6 +361,64 @@ public class HomeController {
         	
         	return cozinha;
     }
+    
+    
+    @RequestMapping(value = "/esqueceu", method = RequestMethod.GET)
+    public ModelAndView EsqueceuForm(Locale locale, Model model) {
+        logger.info("Welcome esqueceu! The client locale is {}.", locale);
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView login = new ModelAndView("esqueceu");
+
+        login.addObject("serverTime", formattedDate);
+
+        return login;
+    }
+    
+    @RequestMapping(value = "/enviaremail", method = RequestMethod.GET)
+    public ModelAndView enviaremail(Locale locale, Model model, HttpServletRequest request) {
+       
+    	
+    	logger.info("Welcome enviaremail ! The client locale is {}.", locale);
+    	
+    	String sucesso = "Email enviado com sucesso!";
+    	
+    	String erro = "Erro ao enviar email.";
+    	
+    	UUID idf = UUID.fromString("acde2198-68c5-4ef3-831e-62e9514d432a");
+    	
+    	Empresa empresa = empresaServico.findOne(idf);
+    
+    	
+    	String email = request.getParameter("email");
+    	
+
+        ModelAndView home = new ModelAndView("esqueceu");
+       
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setText("Olá Voce Recebeu este Email do Sushi Senpai");
+        message.setTo(email);
+        message.setFrom(empresa.getEmail());
+        message.setSubject("Recuperar Senha");
+
+        try {
+            mailSender.send(message);
+            home.addObject("sucesso", sucesso);
+            return home;
+        } catch (Exception e) {
+            e.printStackTrace();
+            home.addObject("erro", erro + e);
+            return home;
+        }
+        
+    } 
+    
     
     }
         

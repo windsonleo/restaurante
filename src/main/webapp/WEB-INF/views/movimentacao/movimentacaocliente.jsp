@@ -2,11 +2,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="true" %>
 
-</br>
-<div id="content">
-    <div id="content-header">
 
- </br>
+<div id="content">
+
  
 <!--         <h2>Listagem e Visão Geral</h2> -->
     </div>
@@ -27,7 +25,7 @@
                                 class="icon-plus pull-right" color="red"></i></a> </span>
                                 </div>
                                 
-                                </br>
+                             
 
 
           <div class="card-content table-responsive">
@@ -38,7 +36,7 @@
                                 <th>Nome</th>
                                 <th>Telefone</th>
                                 <th>Email</th>
-                                <th>Data Nasciemnto</th>
+                                <th>Nasciemnto</th>
                                 <th>Genero</th>
                                 <!-- 									     <th>Preferencia</th> -->
                                 <th>Ativo</th>
@@ -85,7 +83,7 @@
                                                         title="Add Endereco"><i class="icon-edit"></i> </a>
 
                                                 <a
-                                                        href="${pageContext.request.contextPath}/cliente/informacoes?id=${cliente.id}"
+                                                        href="${pageContext.request.contextPath}/cliente/informacao?id=${cliente.id}"
                                                         title="Informacoes"><i class="icon-info-sign"></i></a>
 
 
@@ -139,7 +137,7 @@
 
 
 <div class="pagination alternate"></div>
-</div>
+
 
 
         

@@ -43,6 +43,8 @@ public class Empresa extends BaseEntity implements Serializable {
     @Column(name = "inscricaoestadual")
     private String inscricaoestadual;
     
+    @Column(name = "email")
+    private String email;
     
     
     public Empresa() {

@@ -27,10 +27,15 @@
         <security:intercept-url pattern="/bundle**" access="permitAll"/>
          <security:intercept-url pattern="/sass**" access="permitAll"/>
         <security:intercept-url pattern="/login**" access="permitAll"/>
+         <security:intercept-url pattern="/esqueceu/**" access="permitAll"/>
         <security:intercept-url pattern="/erro**" access="permitAll"/>
         <security:intercept-url pattern="/acessonegado**" access="permitAll"/>
         <security:intercept-url pattern="/cardapio/inicio/**" access="permitAll"/>
+                <security:intercept-url pattern="/enviaremail/**" access="permitAll"/>
+        
         <security:intercept-url pattern="/**" access="hasRole('ROLE_MEMBRO')"/>
+         <security:intercept-url pattern="/cliente/informacao/**" access="hasRole('ROLE_ADM')"/>
+                <security:intercept-url pattern="/usuario/informacao/**" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/pedidocompra/movimentacao" access="hasRole('ROLE_COMPRA')"/>

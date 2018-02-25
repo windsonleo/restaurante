@@ -6,8 +6,8 @@
 
 <div id="content">
   <div id="content-header">
-  </br>
-  </br>
+<!--   </br> -->
+<!--   </br> -->
 <!--     <h2>Listagem e Visao Geral</h2> -->
   </div>
   <div class="container-fluid">
@@ -15,7 +15,7 @@
     <div class="row-fluid">
       <div class="span12">
                <c:if test="${erros != null }">
-</br>
+<!-- </br> -->
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -38,7 +38,7 @@
 
     
       <c:if test="${mensagem != null }">
-      </br>
+<!--       </br> -->
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -67,7 +67,7 @@
                                 class="icon-plus pull-right" color="red"></i></a> </span>
                                 </div>
                                 
-                                </br>
+<!--                                 </br> -->
           
           
           <div class="card-content table-responsive">

@@ -4,14 +4,6 @@
 
 <div id="content">
 
-    <div id="content-header">
-
-	</br>
-	</br>
-	</br>
-<!--         <h3>Listagem e Visao Geral</h3> -->
-    </div>
-
 
     <div class="container-fluid">
         <hr>
@@ -31,7 +23,7 @@
                                     class="icon-plus pull-right" color=""></i></a> </span>
                         </div>
 
-                        </br>
+<!--                         </br> -->
 
 
           <div class="card-content table-responsive">
@@ -77,7 +69,7 @@
                                                             title="Editar"><i class="icon-edit"></i> </a>
 
                                                     <a
-                                                            href="${pageContext.request.contextPath}/usuario/informacoes?id=${usuario.id}"
+                                                            href="${pageContext.request.contextPath}/usuario/informacao?id=${usuario.id}"
                                                             title="Informacoes"><i class="icon-info-sign"></i></a>
 
 

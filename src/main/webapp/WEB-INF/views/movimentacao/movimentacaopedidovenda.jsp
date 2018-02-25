@@ -5,16 +5,11 @@
 
 
 <div id="content">
-  <div id="content-header">
-	</br>
-	 </br>
-<!--     <h2>Listagem e Visao Geral</h2> -->
-  </div>
+
   <div class="container-fluid">
     <hr>
     
 <c:if test="${erros != null }">
-</br>
 			<div class="alert alert-danger">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -37,7 +32,6 @@
 
     
       <c:if test="${mensagem != null }">
-      </br>
 			<div class="alert alert-success">
 				<div class="container-fluid">
 					<div class="alert-icon">
@@ -53,7 +47,7 @@
 
 		</c:if>
 		
-        <hr>
+      
     
     
     
@@ -71,7 +65,7 @@
                                 class="icon-plus pull-right" color="blue"></i></a> </span>
                                 </div>
                                 
-                                </br>
+                            
           
           
           <div class="card-content table-responsive">

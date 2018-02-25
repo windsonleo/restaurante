@@ -7,11 +7,7 @@
 
 
 <div id="content">
-  <div id="content-header">
-  	</br>
-  	 </br>
-<!--     <h2>Listagem e Visao Geral</h2> -->
-  </div>
+
   <div class="container-fluid">
     <hr>
     <div class="row-fluid">
@@ -28,7 +24,7 @@
                                 class="icon-plus pull-right" color="blue"></i></a> </span>
                                 </div>
                                 
-                                </br>
+                            
           
           
           <div class="card-content table-responsive">

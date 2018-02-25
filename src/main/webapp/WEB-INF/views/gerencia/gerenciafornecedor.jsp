@@ -44,7 +44,7 @@
                     <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                     <h3 class="title">Gerencia de Fornecedores</h3>
                                     <p class="category">Informacoes Pessoais</p>
                                 </div>
