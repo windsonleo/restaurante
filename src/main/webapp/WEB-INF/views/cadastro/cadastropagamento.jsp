@@ -100,7 +100,7 @@
                 <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Cadastro Pagamento</h4>
                                     <p class="category">Insira os Dados</p>
@@ -134,7 +134,7 @@
                   <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Detalhes Pedido de Venda</h4>
                                     <p class="category">Confira os Dados</p>
@@ -187,7 +187,7 @@
         <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Adicionar Forma de Pagamento</h4>
                                     <p class="category">Insira os Dados</p>
@@ -229,7 +229,7 @@
 			
           <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-                                        <thead class="card-header" data-background-color="blue">
+                                        <thead class="card-header" data-background-color="red">
                                     <tr>
                                         <th>Id</th>
 									    <th>Nome</th>
@@ -296,7 +296,7 @@
          <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Detalhes Pagamento</h4>
                                     <p class="category">Confira os Dados</p>

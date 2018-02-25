@@ -18,7 +18,7 @@
   		<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Movimentacao Pagamento</h4>
                                     <p class="category">Todos</p>
@@ -30,7 +30,7 @@
           
           <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-                                        <thead class="card-header" data-background-color="blue">
+                                        <thead class="card-header" data-background-color="">
                <tr>
                                         <th>Id</th>
 <!--    									    <th>Data</th> -->

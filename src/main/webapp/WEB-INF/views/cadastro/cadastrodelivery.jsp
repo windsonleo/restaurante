@@ -73,7 +73,7 @@
       	         <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Cadastro Delivery</h4>
                                     <p class="category">Insira os Dados</p>
@@ -221,7 +221,7 @@
         <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Dados do Pedido</h4>
                                     <p class="category">Confira os Dados</p>

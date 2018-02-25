@@ -138,25 +138,25 @@
                             </div>
                         </div>
                         
-<!--                            <div class="span2.5"> -->
-<!--                             <div class="card card-stats"> -->
-<!--                                 <div class="card-header" data-background-color="purple"> -->
-<!--                                     <i class="icon icon-truck"></i> -->
-<!--                                 </div> -->
-<!--                                 <div class="card-content"> -->
-<!--                                     <p class="category"> Delivery</p> -->
-<%--                                     <h3 class="title">${pedidovendasnovos.size()} --%>
-<!-- <!--                                         <small>hoje</small> --> 
-<!--                                     </h3> -->
-<!--                                 </div> -->
-<!--                                 <div class="card-footer"> -->
-<!--                                     <div class="stats"> -->
-<!--                                         <i class="material-icons text-danger">clique aqui</i> -->
-<!--                                         <a href="#pablo">Detalhes..</a> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
+                           <div class="span2.5">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+                                    <i class="icon icon-truck"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category"> Reservas</p>
+                                    <h3 class="title">${pedidovendasnovos.size()}
+                                         <small>hoje</small> 
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">clique aqui</i>
+                                        <a href="#pablo">Detalhes..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                         
 <!--                           <div class="span2"> -->
@@ -695,7 +695,7 @@
 				 	<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Acesso Rapido</h4>
                                     <p class="category">...</p>
