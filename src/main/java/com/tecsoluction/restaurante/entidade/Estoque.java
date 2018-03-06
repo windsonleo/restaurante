@@ -96,14 +96,14 @@ public class Estoque extends BaseEntity implements Serializable {
 
             novo = novo.add(antigo).subtract(vnovo);
 
-            this.items.replace(produto,vantigo,novo.toString());
+            items.replace(produto,vantigo,novo.toString());
         	
         	
         }else {
         	
 //        	
         	novo = novo.add(antigo).subtract(vnovo);
-        	  this.items.replace(produto,antigo.toString(), novo.toString());
+        	  this.items.put(produto, novo.toString());
         	
 //        	AddProdutoEstoque(produto, qtd);
         	
