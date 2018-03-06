@@ -64,6 +64,7 @@ demo = {
       	var activity_array=[
     		$.ajax({
     		url: "/restaurante/chart/vendasDias/",
+    		url: "/chart/vendasDias/",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array.push(parseInt(data));
@@ -74,7 +75,8 @@ demo = {
     	
     	var activity_array_dom=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/dom",
+//    		url: "/restaurante/chart/vendasDias/dom",
+    			url: "/chart/vendasDias/dom",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_dom.push(parseInt(data));
@@ -84,7 +86,8 @@ demo = {
     	
     	var activity_array_seg=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/seg",
+//    		url: "/restaurante/chart/vendasDias/seg",
+    			url:"/chart/vendasDias/seg",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_seg.push(parseInt(data));
@@ -95,7 +98,8 @@ demo = {
     	
     	var activity_array_ter=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/ter",
+//    		url: "/restaurante/chart/vendasDias/ter",
+    			url: "/chart/vendasDias/ter",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_ter.push(parseInt(data));
@@ -105,7 +109,7 @@ demo = {
     	
     	var activity_array_quar=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/quar",
+    		url: "/chart/vendasDias/quar",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_quar.push(parseInt(data));
@@ -115,7 +119,7 @@ demo = {
     	
     	var activity_array_quin=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/quin",
+    		url: "/chart/vendasDias/quin",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_quin.push(parseInt(data));
@@ -125,7 +129,7 @@ demo = {
     	
     	var activity_array_sex=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/sex",
+    		url: "/chart/vendasDias/sex",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_sex.push(parseInt(data));
@@ -135,7 +139,7 @@ demo = {
     	
     	var activity_array_sab=[
     		$.ajax({
-    		url: "/restaurante/chart/vendasDias/sab",
+    		url: "/chart/vendasDias/sab",
     		success: function(data) {
     			//add new ajax data to existing array
     			activity_array_sab.push(parseInt(data));
