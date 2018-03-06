@@ -147,6 +147,7 @@ demo = {
     		}
     	})];
     	
+    	console.log("activy" + activity_array);
     	console.log("seg" + activity_array_seg);
     	console.log("ter" + activity_array_ter);
     	console.log("quar" + activity_array_quar);
@@ -162,9 +163,11 @@ demo = {
         		labels:	['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
             series: [
             	
-            	[activity_array_seg,activity_array_ter,activity_array_quar,
-            	activity_array_quin,activity_array_sex,activity_array_sab,
-            	activity_array_dom]
+            	[activity_array]
+            	
+//            	[activity_array_seg,activity_array_ter,activity_array_quar,
+//            	activity_array_quin,activity_array_sex,activity_array_sab,
+//            	activity_array_dom]
             	
 //            	[activity_array,activity_array_ter,activity_array_dom]
             	
