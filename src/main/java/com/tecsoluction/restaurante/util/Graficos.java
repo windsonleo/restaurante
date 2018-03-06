@@ -169,7 +169,7 @@ public class Graficos implements Serializable{
 		for (Item key : itens.keySet()) {
 	        
 			//se existir o item na lista, soma o valores,senao add
-			if(produtoQuantidadesSoma.containsKey(key)){
+//			if(produtoQuantidadesSoma.containsKey(key)){
 				
 				String qtdant = itens.get(key);
 				
@@ -185,9 +185,9 @@ public class Graficos implements Serializable{
 				 novo = novo.add(antigo).add(vdepois);
 				 
 				
-				produtoQuantidadesSoma.put(key, novo.toString());
+				produtoQuantidadesSoma.replace(key,qtdant, novo.toString());
 				
-			} 
+//			} 
 			
 			
 //			else {
