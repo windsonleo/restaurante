@@ -165,10 +165,10 @@ public class Graficos implements Serializable{
 	public Map<Item,String> ProdutosMaisVendidosOperacaoSoma(Map<Item,String> itens){
 
 
-	//percorre toda lista e compara se o item já existe na outra lista
+	//percorre toda lista e compara se o item ja existe na outra lista
 		for (Item key : itens.keySet()) {
 	        
-			//se existir o item na lista, soma o valores,senão add
+			//se existir o item na lista, soma o valores,senao add
 			if(produtoQuantidadesSoma.containsKey(key)){
 				
 				String qtdant = itens.get(key);
