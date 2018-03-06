@@ -59,6 +59,19 @@ public class Graficos implements Serializable{
 		// TODO Auto-generated constructor stub
 		
 		this.vendas = new ArrayList<PedidoVenda>();
+	this.seg=0;
+	this.ter=0;
+
+	this.quart=0;
+
+	this.quin=0;
+
+	this.sex=0;
+
+	this.sab=0;
+
+
+	this.dom=0;
 		
 	}
 	
@@ -165,6 +178,8 @@ public class Graficos implements Serializable{
 	public Map<Item,String> ProdutosMaisVendidosOperacaoSoma(Map<Item,String> itens){
 
 
+		
+		
 	//percorre toda lista e compara se o item ja existe na outra lista
 		for (Item key : itens.keySet()) {
 	        
@@ -173,7 +188,18 @@ public class Graficos implements Serializable{
 				
 				String qtdant = itens.get(key);
 				
-				String qtdafter = produtoQuantidadesSoma.get(key);
+				String qtdafter;
+				
+				if(produtoQuantidadesSoma.containsKey(key)){
+					
+					 qtdafter = produtoQuantidadesSoma.get(key);
+					
+				}else {
+				
+				qtdafter = "0.00";
+				
+				}
+				
 				
 				
 				BigDecimal antigo = new BigDecimal(qtdant);

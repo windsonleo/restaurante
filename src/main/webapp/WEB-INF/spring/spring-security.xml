@@ -35,7 +35,9 @@
                 <security:intercept-url pattern="/pedidovenda/status/FECHADO" access="permitAll"/>
                    <security:intercept-url pattern="/chart/dias**" access="permitAll"/>
          <security:intercept-url pattern="/chart/vendasDias/**" access="permitAll"/>
-        
+            <security:intercept-url pattern="/chart/produtosmais/**" access="permitAll"/>
+            
+            
         <security:intercept-url pattern="/**" access="hasRole('ROLE_MEMBRO')"/>
          <security:intercept-url pattern="/cliente/informacao/**" access="hasRole('ROLE_ADM')"/>
                 <security:intercept-url pattern="/usuario/informacao/**" access="hasRole('ROLE_ADM')"/>

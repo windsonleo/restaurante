@@ -7,7 +7,7 @@
 		<div class="login-form">
 			<h1>Erro</h1>
 					<div class="head">
-						<img src="resources/images/userlogin.png" alt=""/>
+						<img src="/restaurante/resources/images/vazio.jpg" alt=""/>
 					</div>
 				<form id="formlogin" action="home" method="post">
 						<h6>lalalalalalalalala</h6>

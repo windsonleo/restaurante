@@ -105,16 +105,16 @@ public class ChartControllerRest {
        grafico.VendasPorDiaSemana(pedidovendas);
        
        
-      itens = grafico.ProdutosVendidosTodos(pedidovendas);
+//      itens = grafico.ProdutosVendidosTodos(pedidovendas);
 //      
-      System.out.println("ItensTodos" + itens);
-      
-      logger.info("Itens vENDIDOS!", itens);
+//      System.out.println("ItensTodos" + itens);
+//      
+//      logger.info("Itens vENDIDOS!", itens);
        
-       itensSomados = grafico.ProdutosMaisVendidosOperacaoSoma(itens);
+//       itensSomados = grafico.ProdutosMaisVendidosOperacaoSoma(itens);
     
-       logger.info("Itens SOMADOS!", itensSomados);
-       System.out.println("ItensSOMADOS" + itensSomados);
+//       logger.info("Itens SOMADOS!", itensSomados);
+//       System.out.println("ItensSOMADOS" + itensSomados);
       
        
        VendasInt.add(grafico.getDom());
@@ -130,175 +130,33 @@ public class ChartControllerRest {
    }
     
     
+	///retornar labels com o nome do produto
+	// e qtd vendida
     
-	@GetMapping(value = "/vendasDias/dom")
-     public List<Integer> VendasIntDomGetMethod() {
+	@GetMapping(value = "/produtosmais/")
+     public Map<Item,String> VendasLabelDados() {
     	
-        logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-        VendasInt.clear();
-
+        logger.info("Welcome Produtos Mais LABELS E dADOS! The client locale is {}.", "seila");
 
         List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-        
+               
         grafico = new Graficos();
-        grafico.VendasPorDiaSemana(pedidovendas);
         
-        VendasInt.add(grafico.getDom());
-//        VendasInt.add(grafico.getSeg());
-//        VendasInt.add(grafico.getTer());
-//        VendasInt.add(grafico.getQuart());
-//        VendasInt.add(grafico.getQuin());
-//        VendasInt.add(grafico.getSex());
-//        VendasInt.add(grafico.getSab());
+        itens=new HashMap<Item,String>();
+        
+        
+        itens = grafico.ProdutosVendidosTodos(pedidovendas);
+
+        itensSomados = new HashMap<>();
+        
+        itensSomados = grafico.ProdutosMaisVendidosOperacaoSoma(itens);
 
     	
-        return VendasInt;
+        return itensSomados;
     }
 	
 	
-	@GetMapping(value = "/vendasDias/seg")
-    public List<Integer> VendasIntSegGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-       VendasInt.add(grafico.getSeg());
-//       VendasInt.add(grafico.getTer());
-//       VendasInt.add(grafico.getQuart());
-//       VendasInt.add(grafico.getQuin());
-//       VendasInt.add(grafico.getSex());
-//       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
 	
-	@GetMapping(value = "/vendasDias/ter")
-    public List<Integer> VendasIntTerGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-//       VendasInt.add(grafico.getSeg());
-       VendasInt.add(grafico.getTer());
-//       VendasInt.add(grafico.getQuart());
-//       VendasInt.add(grafico.getQuin());
-//       VendasInt.add(grafico.getSex());
-//       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
-	
-	@GetMapping(value = "/vendasDias/quar")
-    public List<Integer> VendasIntquarGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-//       VendasInt.add(grafico.getSeg());
-//       VendasInt.add(grafico.getTer());
-       VendasInt.add(grafico.getQuart());
-//       VendasInt.add(grafico.getQuin());
-//       VendasInt.add(grafico.getSex());
-//       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
-	
-	@GetMapping(value = "/vendasDias/quin")
-    public List<Integer> VendasIntquinGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-//       VendasInt.add(grafico.getSeg());
-//       VendasInt.add(grafico.getTer());
-//       VendasInt.add(grafico.getQuart());
-       VendasInt.add(grafico.getQuin());
-//       VendasInt.add(grafico.getSex());
-//       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
-	
-	@GetMapping(value = "/vendasDias/sex")
-    public List<Integer> VendasIntsexGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-//       VendasInt.add(grafico.getSeg());
-//       VendasInt.add(grafico.getTer());
-//       VendasInt.add(grafico.getQuart());
-//       VendasInt.add(grafico.getQuin());
-       VendasInt.add(grafico.getSex());
-//       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
-	
-	@GetMapping(value = "/vendasDias/sab")
-    public List<Integer> VendasIntsabGetMethod() {
-   	
-       logger.info("Welcome Venda Dias! The client locale is {}.", "seila");
-       VendasInt.clear();
-
-
-       List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
-       
-       grafico = new Graficos();
-       grafico.VendasPorDiaSemana(pedidovendas);
-       
-//       VendasInt.add(grafico.getDom());
-//       VendasInt.add(grafico.getSeg());
-//       VendasInt.add(grafico.getTer());
-//       VendasInt.add(grafico.getQuart());
-//       VendasInt.add(grafico.getQuin());
-//       VendasInt.add(grafico.getSex());
-       VendasInt.add(grafico.getSab());
-
-   	
-       return VendasInt;
-   }
 
 	/**
 	 * @return the pedidoVendaServico
