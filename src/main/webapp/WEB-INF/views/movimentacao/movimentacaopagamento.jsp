@@ -68,7 +68,7 @@
 									title="Editar"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/pagamento/informacoes?id=${pagamento.id}"
+									href="${pageContext.request.contextPath}/pagamento/informacao?id=${pagamento.id}"
 									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 

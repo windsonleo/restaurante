@@ -113,7 +113,7 @@
 									title="Fechardevolucaovenda"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/devolucaovenda/informacoes?id=${devolucaovenda.id}"
+									href="${pageContext.request.contextPath}/devolucaovenda/informacao?id=${devolucaovenda.id}"
 									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 									

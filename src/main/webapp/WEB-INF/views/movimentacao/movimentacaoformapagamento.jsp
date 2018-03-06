@@ -59,32 +59,32 @@
                   <td>${formapagamento.parcelas}</td>
                    <td>${formapagamento.percdesconto}</td>
                    <td><span class="label label-success">${formapagamento.ativo}</span></td>
-                 <td class="options-width">
+                 <td class="td-actions">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+<!-- 								<a -->
+<%-- 									href="${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}" --%>
+<!-- 									title="Editar"><i class="icon-edit"></i> </a> -->
 									
-										<a
-									href="${pageContext.request.contextPath}/formapagamento/informacoes?id=${formapagamento.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+<!-- 										<a -->
+<%-- 									href="${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}" --%>
+<!-- 									title="Informações" ><i class="icon-info-sign"></i></a> -->
 									
 
 
-	<a href="#myAlert${formapagamento.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+<%-- 	<a href="#myAlert${formapagamento.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a> --%>
 									
-			<div id="myAlert${formapagamento.id}" class="modal hide">
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusão</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Excluir esse Registro</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+<%-- 			<div id="myAlert${formapagamento.id}" class="modal hide"> --%>
+<!--               <div class="modal-header"> -->
+<!--                 <button data-dismiss="modal" class="close" type="button">×</button> -->
+<!--                 <h3>Alerta de Exclusão</h3> -->
+<!--               </div> -->
+<!--               <div class="modal-body"> -->
+<!--                 <p>Deseja Realmente Excluir esse Registro</p> -->
+<!--               </div> -->
+<%--               <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div> --%>
            
-            </div>	
+<!--             </div>	 -->
 
 
 
@@ -96,7 +96,15 @@
 									
 									
 									
-									
+			<button type="button" rel="tooltip" title="Ver Informa��es" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/formapagamento/informacao?id=${formapagamento.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar Categoria" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/formapagamento/editar?id=${formapagamento.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/formapagamento/delete?id=${formapagamento.id}'">
+                    <i class="fa fa-times"></i>
+                </button>			
 									
 										
 					</td>

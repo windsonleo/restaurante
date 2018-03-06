@@ -374,6 +374,7 @@
                $('.alert').delay(2000).fadeOut(); 
            
                demo.showNotification('top','center','${erros}');
+               demo.showNotification('top','center','${mensagem}');
             
             });
     

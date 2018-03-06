@@ -59,16 +59,16 @@
 	                <div class="row">
 	                    <div class="profile">
 	                        <div class="avatar">
-	                            <img src="${pageContext.request.contextPath}/resources/images/cliente/sof.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
+	                            <img src="${pageContext.request.contextPath}/resources/images/cliente/${cliente.foto}.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
-	                            <h3 class="title">Christian Louboutin</h3>
-								<h6>Designer</h6>
+	                            <h3 class="title">${cliente.nome}</h3>
+								<h6>${cliente.email}</h6>
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                        <p>${cliente.endereco } </p>
 	                </div>
 
 					<div class="row">
@@ -79,19 +79,19 @@
 										<li class="active">
 											<a href="#studio" role="tab" data-toggle="tab">
 												<i class="material-icons">camera</i>
-												Studio
+												Dados Pessoais
 											</a>
 										</li>
 										<li>
 				                            <a href="#work" role="tab" data-toggle="tab">
 												<i class="material-icons">palette</i>
-												Work
+												Pedidos de Venda
 				                            </a>
 				                        </li>
 				                        <li>
 				                            <a href="#shows" role="tab" data-toggle="tab">
 												<i class="material-icons">favorite</i>
-				                                Favorite
+				                                Favoritos
 				                            </a>
 				                        </li>
 				                    </ul>

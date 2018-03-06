@@ -114,7 +114,7 @@
 									title="Fechardevolucaocompra"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/devolucaocompra/informacoes?id=${devolucaocompra.id}"
+									href="${pageContext.request.contextPath}/devolucaocompra/informacao?id=${devolucaocompra.id}"
 									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 									

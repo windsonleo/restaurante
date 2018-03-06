@@ -647,10 +647,143 @@
 
 	</definition>
 	
+		<definition name="informacaocaixa" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaocaixa.jsp" />
+
+	</definition>
+	
+		<definition name="informacaocategoria" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaocategoria.jsp" />
+
+	</definition>
+	
+		<definition name="informacaobanco" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaobanco.jsp" />
+
+	</definition>
+	
+		<definition name="informacaofornecedor" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaofornecedor.jsp" />
+
+	</definition>
+	
+		<definition name="informacaogarcon" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaogarcon.jsp" />
+
+	</definition>
+	
+		<definition name="informacaomesa" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaomesa.jsp" />
+
+	</definition>
+	
+		<definition name="informacaoempresa" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaoempresa.jsp" />
+
+	</definition>
+	
+		<definition name="informacaodespesa" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaodespesa.jsp" />
+
+	</definition>
+	
+		<definition name="informacaoproduto" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaoproduto.jsp" />
+
+	</definition>
+	
+		<definition name="informacaoprodutocomposto" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaoprodutocomposto.jsp" />
+
+	</definition>
+	
+		<definition name="informacaopedidovenda" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaopedidovenda.jsp" />
+
+	</definition>
+	
+		<definition name="informacaopedidocompra" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaopedidocompra.jsp" />
+
+	</definition>
+		<definition name="informacaodevolucaovenda" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaodevolucaovenda.jsp" />
+
+	</definition>	<definition name="informacaodevolucaocompra" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaodevolucaocompra.jsp" />
+
+	</definition>
+		<definition name="informacaomesa" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaomesa.jsp" />
+
+	</definition>
+		<definition name="informacaoformapagamento" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaoformapagamento.jsp" />
+
+	</definition>
+		<definition name="informacaopagamento" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaopagamento.jsp" />
+
+	</definition>
+	
+	
+		<definition name="informacaocontaspagar" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaocontaspagar.jsp" />
+
+	</definition>
+	
+			<definition name="informacaocontasreceber" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaocontasreceber.jsp" />
+
+	</definition>
+	
+				<definition name="informacaorecebimento" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaorecebimento.jsp" />
+
+	</definition>
+	
+	
+					<definition name="informacaoreserva" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/informacoes/informacaoreserva.jsp" />
+
+	</definition>
+	
+	
 	
 	<definition name="esqueceu" extends="TemplateB">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/esqueceu.jsp" />
+
+	</definition>
+	
+	
+	
+<!-- 	FINANCEIRO -->
+
+	<definition name="inicio" extends="TemplateB">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/financeiro/inicio.jsp" />
 
 	</definition>
 	

@@ -95,44 +95,52 @@
                   <td>${banco.nome}</td>
                   <td >${banco.numero}</td>
                   <td><span class="label label-success">${banco.ativo}</span></td>
-                 <td class="options-width">
+                 <td class="td-actions">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/banco/editar?id=${banco.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+<!-- 								<a -->
+<%-- 									href="${pageContext.request.contextPath}/banco/editar?id=${banco.id}" --%>
+<!-- 									title="Editar"><i class="icon-edit"></i> </a> -->
 									
-										<a
-									href="${pageContext.request.contextPath}/banco/informacoes?id=${banco.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+<!-- 										<a class="btn btn-info btn-simple btn-lg" -->
+<%-- 									href="${pageContext.request.contextPath}/banco/informacoes?id=${banco.id}" --%>
+<!-- 									title="Informações" ><i class="icon-info-sign"></i></a> -->
 									
 
-									<a href="#" data-toggle="modal"  data-target="#myAlert${banco.id}" class="fa fa-remove"></a>
+<%-- 									<a href="#" data-toggle="modal"  data-target="#myAlert${banco.id}" class="fa fa-remove"></a> --%>
 									
 			
-			<div id="myAlert${banco.id}" class="modal fade" role="dialog" tabindex="-1">
-               <div class="modal-dialog" role="document">
-                 <div class="modal-content">
+<%-- 			<div id="myAlert${banco.id}" class="modal fade" role="dialog" tabindex="-1"> --%>
+<!--                <div class="modal-dialog" role="document"> -->
+<!--                  <div class="modal-content"> -->
              
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">x</button>
-                <h3>Alerta de Exclusao</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Excluir esse Registro?</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/banco/delete?id=${banco.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+<!--               <div class="modal-header"> -->
+<!--                 <button data-dismiss="modal" class="close" type="button">x</button> -->
+<!--                 <h3>Alerta de Exclusao</h3> -->
+<!--               </div> -->
+<!--               <div class="modal-body"> -->
+<!--                 <p>Deseja Realmente Excluir esse Registro?</p> -->
+<!--               </div> -->
+<%--               <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/banco/delete?id=${banco.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div> --%>
            
-           </div>
-            </div>
-            </div>									
+<!--            </div> -->
+<!--             </div> -->
+<!--             </div>									 -->
 <!-- 									 <a -->
 <%-- 									href="${pageContext.request.contextPath}/banco/delete?id=${banco.id}" --%>
 <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 									
 									
 									
-									
+				<button type="button" rel="tooltip" title="Ver Informa��es" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/banco/informacao?id=${banco.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar Banco" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/banco/editar?id=${banco.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/banco/delete?id=${banco.id}'">
+                    <i class="fa fa-times"></i>
+                </button>			
 									
 										
 					</td>

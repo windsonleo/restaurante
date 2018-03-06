@@ -1,16 +1,17 @@
 package com.tecsoluction.restaurante.service.impl;
 
-import com.tecsoluction.restaurante.dao.IPedidoVendaDAO;
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.util.StatusPedido;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.UUID;
+import com.tecsoluction.restaurante.dao.IPedidoVendaDAO;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
@@ -84,6 +85,12 @@ public class PedidoVendaServicoImpl extends AbstractEntityService<PedidoVenda> {
         // TODO Auto-generated method stub
 
     }
+
+	@Override
+	public List<PedidoVenda> findAllNew() {
+		// TODO Auto-generated method stub
+		return dao.findAllNew();
+	}
 
 
 }

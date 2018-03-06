@@ -4,13 +4,7 @@
 
 <%@ page session="true" %>
 
-<!--main-container-part-->
-<!--   <div id="content"> -->
-    
-<!--         <div id="content-header" class="content-header"> -->
-   
-   
-<!--     </div> -->
+
 
 <div class="content">
   <div class="container-fluid">
@@ -83,17 +77,19 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Produtos</p>
-                                    <h3 class="title">${produtosnovos}
-<!--                                         <small>Total</small> -->
+                                    <h3 class="title">${produtosnovos.size()}
+                                        <small>Novos</small>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
+                                        <a href="#" data-toggle="modal"  data-target="#myAlertProd" >Detalhes..</a>
                                     </div>
                                 </div>
                             </div>
+                            
+
                         </div>
                         
                         
@@ -105,13 +101,13 @@
                                 <div class="card-content">
                                     <p class="category"> Vendas</p>
                                     <h3 class="title">${pedidovendasnovos.size()}
-<!--                                         <small>hoje</small> -->
+                                        <small>Hoje</small>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
+                                        <a href="#" data-toggle="modal"  data-target="#myAlertVendas" >Detalhes..</a>
                                     </div>
                                 </div>
                             </div>
@@ -121,18 +117,20 @@
                          <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
-                                    <i class="icon icon-table"></i>
+<!--                                     <i class="icon icon-table"></i> -->
+                                    <i class="material-icons">school</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Mesas</p>
-                                    <h3 class="title">${mesasocupadas.size()}
+                                    <h3 class="title">${mesas.size()}
 <!--                                         <small>Ocupadas</small> -->
+  										 <small>Ocupadas</small> 
                                     </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
+                                         <a href="#" data-toggle="modal"  data-target="#myAlertMesas" >Detalhes..</a>
                                     </div>
                                 </div>
                             </div>
@@ -145,14 +143,18 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Reservas</p>
-                                    <h3 class="title">${pedidovendasnovos.size()}
+<%--                                     <h3 class="title">${pedidovendasnovos.size()} --%>
+<!--                                          <small>hoje</small>  -->
+<!--                                     </h3> -->
+                                    
+                                     <h3 class="title">${reservas.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
+                                         <a href="#" data-toggle="modal"  data-target="#myAlertReservas" >Detalhes..</a>
                                     </div>
                                 </div>
                             </div>
@@ -175,6 +177,274 @@
 <!--                                 </div> -->
 <!--                             </div> -->
 <!--                         </div> -->
+
+
+<!--                              modal novos  produtos-->
+<div class="modal fade" id="myAlertProd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Produtos Novos</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Nome</th>
+            <th>Categoria</th>
+			<th>Preco</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="produto" items="${produtosnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${produto.nome }</td>
+            <td>${produto.categoria }</td>
+<!--             <td></td> -->
+            <td >&euro; ${produto.precovenda }</td>
+                    <td>${produto.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--                              modal novos  vendas-->
+<div class="modal fade" id="myAlertVendas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Modal title</h4>
+			</div>
+			<div class="modal-body">
+
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Id</th>
+            <th>Data</th>
+			<th>Total</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="pedidovenda" items="${pedidovendasnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${pedidovenda.data }</td>
+            <td>${pedidovenda.total }</td>
+<!--             <td></td> -->
+            <td >&euro; ${pedidovenda.total }</td>
+                    <td>${pedidovenda.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--                              modal novos  mesas-->
+<div class="modal fade" id="myAlertMesas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Mesas Ocupadas</h4>
+			</div>
+			<div class="modal-body">
+
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Numero</th>
+            <th>Status</th>
+<!-- 			<th>Preco</th> -->
+<!--             <th>Cadastro por</th> -->
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="mesa" items="${mesas}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${mesa.numero }</td>
+            <td>${mesa.status }</td>
+<!--             <td></td> -->
+<%--             <td class="text-right">&euro; ${produto.precovenda }</td> --%>
+<%--                     <td>${produto.criado_por}</td>  --%>
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--                              modal novos  reservas-->
+<div class="modal fade" id="myAlertReservas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Reservas Hoje</h4>
+			</div>
+			<div class="modal-body">
+
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Cliente</th>
+			<th>Mesa</th>
+			<th>Status</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="reserva" items="${reservas}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${reserva.data }</td>
+            <td>${reserva.hora }</td>
+<!--             <td></td> -->
+            <td> ${reserva.cliente }</td>
+                    <td>${reserva.mesa}</td> 
+                     <td>${reserva.status}</td> 
+                      <td>${reserva.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 						</div>
 						
@@ -247,7 +517,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>${clientesnovos}</h3>
+              <h3>${clientess.size()}</h3>
 
               <p>Clientes</p>
             </div>
@@ -263,7 +533,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${produtosnovos}<sup style="font-size: 20px"></sup></h3>
+              <h3>${produtos.size()}<sup style="font-size: 20px"></sup></h3>
 
               <p>Produtos</p>
             </div>
@@ -279,7 +549,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>${pedidovendasnovos.size()}</h3>
+              <h3>${pedidovendas.size()}</h3>
 
               <p>Vendas</p>
             </div>
@@ -295,12 +565,13 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>${mesasocupadas.size()}</h3>
+              <h3>${mesas.size()}</h3>
 
               <p>Mesas</p>
             </div>
             <div class="icon">
-              <i class="icon icon-th-large"></i>
+<!--               <i class="icon icon-th-large"></i> -->
+             <p class="icon icon-th-large"> <i class="material-icons">school</i> </p>
             </div>
             <a href="${pageContext.request.contextPath}/mesas/salao" class="small-box-footer">Mais info</a>
           </div>
@@ -311,7 +582,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${garcons}</h3>         
+              <h3>${garcons.size()}</h3>         
 
               <p>Garcon</p>
             </div>
@@ -361,7 +632,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>${estoques}</h3>
+              <h3>${estoques.size()}</h3>
 
               <p>Estoque</p>
             </div>
@@ -376,7 +647,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${pedidovendasnovos.size()}</h3>
+              <h3>${pedidovendas.size()}</h3>
 
               <p>Delivery</p>
             </div>
@@ -392,7 +663,7 @@
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
-              <h3>${produtosnovos}</h3>
+              <h3>${caixas.size()}</h3>
 
               <p>Caixa</p>
             </div>
@@ -883,7 +1154,7 @@
 		                            </li>
 		                            
 		                            		                            <li>
-		                                <a href="#pablo">
+		                                <a href="${pageContext.request.contextPath}/financeiro/inicio">
 											<i class="material-icons">money</i>
 		                                    Financeiro
 		                                <div class="ripple-container"></div></a>
@@ -917,12 +1188,12 @@
 		                                <div class="ripple-container"></div></a>
 		                            </li>
 		                            
-<!-- 		                            <li> -->
-<!-- 		                                <a href="#pablo"> -->
-<!-- 											<i class="material-icons">settings</i> -->
-<!-- 											Settings -->
-<!-- 		                                <div class="ripple-container"></div></a> -->
-<!-- 		                            </li> -->
+		                            <li>
+		                                <a href="#pablo">
+											<i class="material-icons">settings</i>
+											Settings
+		                                <div class="ripple-container"></div></a>
+		                            </li>
 								</ul>
 							</div>
 						</div>

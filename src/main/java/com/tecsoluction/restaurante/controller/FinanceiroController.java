@@ -5,27 +5,33 @@ import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.service.impl.BancoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "banco/")
-public class BancoController extends AbstractController<Banco> {
+@RequestMapping(value = "financeiro/")
+public class FinanceiroController {
+
+    private static final Logger logger = LoggerFactory.getLogger(FinanceiroController.class);
 
 
     private final
-    BancoServicoImpl bancoService;
+    BancoServicoImpl bancoService = new BancoServicoImpl();
 
 
-    @Autowired
-    public BancoController(BancoServicoImpl bancoService) {
-        super("banco");
-        this.bancoService = bancoService;
-    }
 
     @ModelAttribute
     public void addAttributes(Model model) {
@@ -39,11 +45,19 @@ public class BancoController extends AbstractController<Banco> {
     
     }
 
-    @Override
-    protected BancoServicoImpl getservice() {
+    @RequestMapping(value = "/inicio", method = RequestMethod.GET)
+    public ModelAndView FinanceiroInicioForm(Locale locale, Model model) {
+        logger.info("Welcome Inicio! The client locale is {}.", locale);
 
-        return bancoService;
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+
+        ModelAndView login = new ModelAndView("inicio");
+
+//        login.addObject("serverTime", formattedDate);
+
+        return login;
     }
-
-
 }

@@ -99,7 +99,7 @@
                 <li class="">
                     <a href="${pageContext.request.contextPath}/mesas/movimentacao">
                         <p>
-                            <i class="material-icons">table</i>
+                            <i class="material-icons">school</i>
                             Mesas</p>
                     </a>
                 </li>

@@ -43,22 +43,34 @@ public abstract class AbstractController<Entity> {
     public ModelAndView AdicionarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                         RedirectAttributes attributes) {
 
+    	String mensagem = entityAlias+"Adicionada com Sucesso";
+    	String erros = entityAlias+"Adicionada com Falhas";
+
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
         if (result.hasErrors()) {
             trataErro(result, attributes);
+            cadastroEntity.addObject("erros", erros);
+
+            
         } else {
             entity = getservice().save(entity);
             System.out.println("add: " + entityAlias);
 
+            cadastroEntity.addObject("mensagem", mensagem);
+
             attributes.addFlashAttribute("mensagem", "Sucesso ao Salvar.");
             attributes.addFlashAttribute("entity", entity);
+            
+            
         }
 
         cadastroEntity.addObject("entity", entity);
+        
         cadastroEntity.addObject("acao", "add");
 
-        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro"); // cadastroEntity;
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "cadastro")
+        		.addObject("mensagem", mensagem); // cadastroEntity;
     }
 
 
@@ -96,8 +108,8 @@ public abstract class AbstractController<Entity> {
     public ModelAndView editarEntity(@ModelAttribute @Valid Entity entity, BindingResult result,
                                      RedirectAttributes attributes) {
 
-        String mensagem = "Sucesso ao editar! ";
-        String erros = "Erros ao Editar! ";
+    	String mensagem = entityAlias+"Editado com Sucesso";
+    	String erros = entityAlias+"Editado com Falhas";
 
         ModelAndView cadastroEntity = new ModelAndView("cadastro" + entityAlias);
 
@@ -115,17 +127,22 @@ public abstract class AbstractController<Entity> {
 
 //        return cadastroEntity;
 //        return new ModelAndView("cadastro" + entityAlias, entityAlias, entity);
-        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity));
+        return new ModelAndView("redirect:/" + entityAlias + "/" + "editar?id=" + getservice().getIdEntity(entity))
+        		.addObject("mensagem", mensagem);
     }
 
     @Transactional
     @GetMapping(value = "delete")
     public ModelAndView deletarEntity(HttpServletRequest request) {
+    	
+    	String mensagem = entityAlias+"Excluido com Sucesso";
+    	String erros = entityAlias+"Excluido com Falhas";
 
         UUID idf = UUID.fromString(request.getParameter("id"));
         getservice().delete(idf);
 
-        return new ModelAndView("redirect:/" + entityAlias + "/movimentacao");
+        return new ModelAndView("redirect:/" + entityAlias + "/movimentacao")
+        		.addObject("mensagem", mensagem);
     }
     
     
@@ -134,10 +151,10 @@ public abstract class AbstractController<Entity> {
     public ModelAndView InformacaoEntity(HttpServletRequest request) {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
-       Entity entity =  getservice().findOne(idf);
+        Entity entity =  getservice().findOne(idf);
         
         ModelAndView informacaoEntity = new ModelAndView("informacao" + entityAlias);
-        informacaoEntity.addObject("entity", entity);
+        informacaoEntity.addObject(entityAlias, entity);
 
         return informacaoEntity;
     }

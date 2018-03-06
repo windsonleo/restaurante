@@ -176,13 +176,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
         //verifica se o pedido esta pronto
         
-        if(pv.getStatus() != StatusPedido.PRONTO){
-        	
-            String erros = "Esse Pedido nao pode ser FiNALIZADO, ele ainda nao foi PRONTO";
-        	
-            return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
-        	
-        }
+//        if(pv.getStatus() != StatusPedido.PRONTO){
+//        	
+//            String erros = "Esse Pedido nao pode ser FiNALIZADO, ele ainda nao foi PRONTO";
+//        	
+//            return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
+//        	
+//        }
         
         
         
@@ -195,14 +195,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
             BigDecimal qtdb = new BigDecimal(qtd);
 
             
-            Item item = new Item(produto);
-            item.setSituacao(SituacaoItem.PRONTO);
+//            Item item = new Item(produto);
+//            item.setSituacao(SituacaoItem.FECHADO);
 
 //            item.setQtd(qtd);
 //            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
 
 
-            estoque.RetirarProdutoEstoque(item, qtdb);
+            estoque.RetirarProdutoEstoque(key, qtdb);
 
 //            estoqueService.save(estoque);
 
@@ -232,6 +232,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         UUID idf = UUID.fromString(request.getParameter("id"));
 
         ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
+        ModelAndView movpedidovenda = new ModelAndView("movimentacaopedidovenda");
+
 
         this.pv = pedidovendaService.findOne(idf);
         
@@ -241,9 +243,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
         	
         	
-        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou foi pago";
+        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
          	
-             return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
+        	 movpedidovenda.addObject("erros", erros);
+        	 
+        	 
+        	 return movpedidovenda;
         	
         	
         }

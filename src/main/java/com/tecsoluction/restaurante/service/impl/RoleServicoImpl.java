@@ -1,14 +1,16 @@
 package com.tecsoluction.restaurante.service.impl;
 
-import com.tecsoluction.restaurante.dao.IRoleDAO;
-import com.tecsoluction.restaurante.entidade.Role;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import com.tecsoluction.restaurante.dao.IRoleDAO;
+import com.tecsoluction.restaurante.entidade.Role;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 
 
 @Service("roleService")
@@ -54,6 +56,12 @@ public class RoleServicoImpl extends AbstractEntityService<Role> {
 	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Role> findAllNew() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

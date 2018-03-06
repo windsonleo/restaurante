@@ -61,7 +61,7 @@
         <div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title">Add Item ao Recebimento</h4>
                                     <p class="category">Todos</p>
@@ -93,7 +93,7 @@
 				<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title"><h5>Detalhes do Pedido Compra : ${recebimento.pedidocompra.id}</h5></h4>
                                     <p class="category">Todos</p>
@@ -131,7 +131,7 @@
      
 				<div class="card">
                     		<div class="card-content">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title"> <h5>Itens do Pedido de Compra  : <strong> ${recebimento.pedidocompra.id }</strong></h5></h4>
                                     <p class="category">Todos</p>
@@ -148,7 +148,7 @@
      
           <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-                                        <thead class="card-header" data-background-color="blue">
+                                        <thead class="card-header" data-background-color="">
                                     <tr>
                                         <th>Descricao</th>
 									    <th>Qtd</th>
@@ -263,7 +263,7 @@
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title"><h5>Itens Confirmados do Recebimento  : <strong> ${recebimento.id }</strong></h5></h4>
                                     <p class="category">Todos</p>
@@ -280,7 +280,7 @@
      
           <div class="card-content table-responsive">
             <table class="table table-hover table-bordered data-table">
-                                        <thead class="card-header" data-background-color="blue">
+                                        <thead class="card-header" data-background-color="">
                                     <tr>
                                        <th>Descricao</th>
 									    <th>Qtd</th>

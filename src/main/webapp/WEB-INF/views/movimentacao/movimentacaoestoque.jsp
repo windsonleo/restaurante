@@ -61,32 +61,32 @@
                    <td >${estoque.items}</td>
                   
                   <td><span class="label label-success">${estoque.ativo}</span></td>
-                 <td class="options-width">
+                 <td class="td-actions">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/estoque/editar?id=${estoque.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+<!-- 								<a -->
+<%-- 									href="${pageContext.request.contextPath}/estoque/editar?id=${estoque.id}" --%>
+<!-- 									title="Editar"><i class="icon-edit"></i> </a> -->
 									
-										<a
-									href="${pageContext.request.contextPath}/estoque/informacoes?id=${estoque.id}"
-									title="Informações" ><i class="icon-info-sign"></i></a>
+<!-- 										<a -->
+<%-- 									href="${pageContext.request.contextPath}/estoque/informacao?id=${estoque.id}" --%>
+<!-- 									title="Informações" ><i class="icon-info-sign"></i></a> -->
 									
 
 
-	<a href="#myAlert${estoque.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+<%-- 	<a href="#myAlert${estoque.id}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a> --%>
 									
-			<div id="myAlert${estoque.id}" class="modal hide">
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">×</button>
-                <h3>Alerta de Exclusao</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Excluir esse Registro</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/estoque/delete?id=${estoque.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div>
+<%-- 			<div id="myAlert${estoque.id}" class="modal hide"> --%>
+<!--               <div class="modal-header"> -->
+<!--                 <button data-dismiss="modal" class="close" type="button">×</button> -->
+<!--                 <h3>Alerta de Exclusao</h3> -->
+<!--               </div> -->
+<!--               <div class="modal-body"> -->
+<!--                 <p>Deseja Realmente Excluir esse Registro</p> -->
+<!--               </div> -->
+<%--               <div class="modal-footer"> <a data-dismiss="" class="btn btn-danger" href="${pageContext.request.contextPath}/estoque/delete?id=${estoque.id}">Confirma</a> <a data-dismiss="modal" class="btn" href="#">Cancela</a> </div> --%>
            
-            </div>	
+<!--             </div>	 -->
 
 
 
@@ -97,7 +97,15 @@
 <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 									
 									
-									
+			<button type="button" rel="tooltip" title="Ver Informa��es" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/estoque/informacoes?id=${estoque.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar Categoria" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/estoque/editar?id=${estoque.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/estoque/delete?id=${estoque.id}'">
+                    <i class="fa fa-times"></i>
+                </button>			
 									
 									
 										

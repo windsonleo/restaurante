@@ -1,14 +1,16 @@
 package com.tecsoluction.restaurante.service.impl;
 
-import com.tecsoluction.restaurante.dao.IEstoqueDAO;
-import com.tecsoluction.restaurante.entidade.Estoque;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import com.tecsoluction.restaurante.dao.IEstoqueDAO;
+import com.tecsoluction.restaurante.entidade.Estoque;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
@@ -54,6 +56,12 @@ public class EstoqueServicoImpl extends AbstractEntityService<Estoque> {
 	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Estoque> findAllNew() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

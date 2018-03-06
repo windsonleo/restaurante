@@ -143,52 +143,62 @@
 
                                                 <!--                 </td> -->
 
-                                                <td class="options-width">
+                                                <td class="td-actions">
 
 
-                                                    <a
+                                                    <a rel="tooltip" title="Add Item Recebimento"
                                                             href="${pageContext.request.contextPath}/recebimento/additem?id=${recebimento.id}"
                                                             title="Add Item"><i class="icon-edit"></i> </a>
 
-                                                    <a
-                                                            href="${pageContext.request.contextPath}/recebimento/addpagamento?id=${recebimento.id}"
-                                                            title="Pagamento"><i class="icon-info-sign"></i></a>
+<!--                                                     <a -->
+<%--                                                             href="${pageContext.request.contextPath}/recebimento/addpagamento?id=${recebimento.id}" --%>
+<!--                                                             title="Pagamento"><i class="icon-info-sign"></i></a> -->
 
 
-                                                    <a
-                                                            href="${pageContext.request.contextPath}/recebimento/editar?id=${recebimento.id}"
-                                                            title="Editar"><i class="icon-edit"></i> </a>
+<!--                                                     <a -->
+<%--                                                             href="${pageContext.request.contextPath}/recebimento/editar?id=${recebimento.id}" --%>
+<!--                                                             title="Editar"><i class="icon-edit"></i> </a> -->
 
-                                                    <a
-                                                            href="${pageContext.request.contextPath}/recebimento/informacoes?id=${recebimento.id}"
-                                                            title="InformaÔøΩÔøΩes"><i class="icon-info-sign"></i></a>
+<!--                                                     <a -->
+<%--                                                             href="${pageContext.request.contextPath}/recebimento/informacao?id=${recebimento.id}" --%>
+<!--                                                             title="InformaÔøΩÔøΩes"><i class="icon-info-sign"></i></a> -->
 
 
-                                                    <a href="#myAlert${recebimento.id}" data-toggle="modal"
-                                                       class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+<%--                                                     <a href="#myAlert${recebimento.id}" data-toggle="modal" --%>
+<!--                                                        class="fa fa-remove"><i class="icon-remove-sign"></i></a> -->
 
-                                                    <div id="myAlert${recebimento.id}" class="modal hide">
-                                                        <div class="modal-header">
-                                                            <button data-dismiss="modal" class="close" type="button">x
-                                                            </button>
-                                                            <h3>Alerta de Exclus√£o</h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Deseja Realmente Excluir esse Registro</p>
-                                                        </div>
-                                                        <div class="modal-footer"><a data-dismiss=""
-                                                                                     class="btn btn-danger"
-                                                                                     href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}">Confirma</a>
-                                                            <a data-dismiss="modal" class="btn" href="#">Cancela</a>
-                                                        </div>
+<%--                                                     <div id="myAlert${recebimento.id}" class="modal hide"> --%>
+<!--                                                         <div class="modal-header"> -->
+<!--                                                             <button data-dismiss="modal" class="close" type="button">x -->
+<!--                                                             </button> -->
+<!--                                                             <h3>Alerta de Exclus√£o</h3> -->
+<!--                                                         </div> -->
+<!--                                                         <div class="modal-body"> -->
+<!--                                                             <p>Deseja Realmente Excluir esse Registro</p> -->
+<!--                                                         </div> -->
+<!--                                                         <div class="modal-footer"><a data-dismiss="" -->
+<!--                                                                                      class="btn btn-danger" -->
+<%--                                                                                      href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}">Confirma</a> --%>
+<!--                                                             <a data-dismiss="modal" class="btn" href="#">Cancela</a> -->
+<!--                                                         </div> -->
 
-                                                    </div>
+<!--                                                     </div> -->
 
 
                                                     <!-- 									 <a -->
                                                         <%-- 									href="${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}" --%>
                                                     <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 
+
+					<button type="button" rel="tooltip" title="Ver InformaÁıes" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/recebimento/informacao?id=${recebimento.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar recebimento" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/recebimento/editar?id=${recebimento.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/recebimento/delete?id=${recebimento.id}'">
+                    <i class="fa fa-times"></i>
+                </button>
 
                                                 </td>
 

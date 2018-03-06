@@ -99,23 +99,23 @@
 <%--                    <td>${caixa.preferencia}</td> --%>
                    <td> <span class="label label-success">${caixa.ativo}</span></td>
 <%--                    <td> ${caixa.obs}</td> --%>
-                 <td class="options-widt">
+                 <td class="td-actions">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+<!-- 								<a -->
+<%-- 									href="${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}" --%>
+<!-- 									title="Editar"><i class="icon-edit"></i> </a> -->
 									
-																	<a
+																	<a rel="tooltip" title="Fechar Caixa"
 									href="${pageContext.request.contextPath}/caixa/fecharcaixa?id=${caixa.id}"
-									title="FecharCaixa"><i class="icon-edit"></i> </a>
+									title="FecharCaixa"><i class="material-icons">vpn_lock</i></a>
 									
-										<a
-									href="${pageContext.request.contextPath}/caixa/informacoes?id=${caixa.id}"
-									title="Informacoes" ><i class="icon-info-sign"></i></a>
+<!-- 										<a -->
+<%-- 									href="${pageContext.request.contextPath}/caixa/informacoes?id=${caixa.id}" --%>
+<!-- 									title="Informacoes" ><i class="icon-info-sign"></i></a> -->
 									
 									
-	<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${caixa.id}"></a>
+<%-- 	<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${caixa.id}"></a> --%>
 									
 			<div id="myAlert${caixa.id}" class="modal fade" role="dialog" tabindex="-1">
               <div class="modal-dialog" role="document">
@@ -139,7 +139,15 @@
 									
 									
 									
-									
+					<button type="button" rel="tooltip" title="Ver Informações" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/informacao?id=${caixa.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar Banco" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/editar?id=${caixa.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/delete?id=${caixa.id}'">
+                    <i class="fa fa-times"></i>
+                </button>				
 									
 										
 					</td>

@@ -14,6 +14,7 @@ import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.framework.AbstractRestController;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 @RestController
 @RequestMapping(value = "pedidovenda")
@@ -35,7 +36,16 @@ public class PedidoVendaControllerRest extends AbstractRestController<PedidoVend
     	return pedidovendaService.getAllPedidoPorMesa(idf);
 
     }
+    
+    @RequestMapping(value="/status/{status}",method = RequestMethod.GET)
+    public List<PedidoVenda> listarPedidoPorStatus(@PathVariable String status) {
+//    	UUID idf = UUID.fromString(id);
+//    	String statusped = "FECHADO";
+    	return pedidovendaService.findAllByStatusIsAndSituacaoIs(status);
 
+    }
+
+    
 
 
 	@Override

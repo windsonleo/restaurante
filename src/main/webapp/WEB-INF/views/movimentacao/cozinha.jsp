@@ -4,10 +4,11 @@
 <%@ page session="true" %>
 
 <div id="content">
+</br>
+</br>
 
-  
-      
-  
+<div class="container-fluid">
+
   
            <c:if test="${erros != null }">
 
@@ -52,7 +53,7 @@
         <hr>
 
     
-      <div class="container-fluid">
+<!--       <div class="container-fluid"> -->
     
          <div class="row-fluid">
 
@@ -91,24 +92,14 @@
 
     </div>
     
+    </br>
+    </br>
     
-    <div class="row-fluid">
-      <div class="span12">
-      
-			<div class="card">
-                    <div class="card-content">
+    <div class="row">
+                     
                        
-                                <div class="card-header" data-background-color="red">
-                                
-                                    <h4 class="title">Movimentação Cozinha</h4>
-                                    <p class="category">Todos</p>
-
-                                </div>
-                                
-                               
-                                
-                                  			 <div class="span12">                       
-                         <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
+                         
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
 									<i class="fa fa-money"></i>
@@ -129,7 +120,7 @@
                         </div>
                         
                         
-                        <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
 									<i class="fa fa-credit-card"></i>
@@ -150,7 +141,7 @@
                         </div>
                         
                         
-                          <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
 									<i class="fa fa-credit-card-alt"></i>
@@ -171,7 +162,7 @@
                         </div>
                         
                         
-                          <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
 									<i class="material-icons">account_balance_wallet</i>
@@ -199,7 +190,7 @@
                                 <div class="card-header" data-background-color="green">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
-                                            <span class="nav-tabs-title">Vendas:</span>
+                                            <span class="nav-tabs-title">Itens:</span>
                                           
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                               
@@ -456,7 +447,7 @@
 
         </div>
         </div>
-        </div>
+<!--         </div> -->
         
            <!--                         modal da abertura e fechamento de mesa -->
 
@@ -561,11 +552,10 @@
       
     </div>
   </div>
+  
+
 </div>
-        
-        
-        </div>
-        
-        </div>
-        </div>
+
+  
+    
         

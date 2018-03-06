@@ -173,15 +173,15 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //            BigDecimal qtd = key.getQtd();
             String qtd = recebimento.getItems().get(key);
             BigDecimal qtdb = new BigDecimal(qtd);
-            Item item = new Item(produto);
+//            Item item = new Item(produto);
 //            item.setQtd(qtd);
 //            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
-            item.setSituacao(SituacaoItem.PRONTO);
+//            item.setSituacao(SituacaoItem.PRONTO);
 
 
 //            key.setEstoque(estoque);
 
-            estoque.AddProdutoEstoque(item, qtdb);
+            estoque.AddProdutoEstoque(key, qtdb);
 
 
 //            itemService.save(key);

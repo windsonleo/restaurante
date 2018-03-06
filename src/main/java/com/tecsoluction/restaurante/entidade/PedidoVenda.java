@@ -68,7 +68,7 @@ public class PedidoVenda extends Pedido implements Serializable {
 //    @Lob
     @Column(name = "qtd")
     @MapKeyColumn(name = "idit")
-    private Map<Item, String> items = new HashMap<>();
+    private Map<Item, String> items = new HashMap<Item, String>();
 
 
     public PedidoVenda() {

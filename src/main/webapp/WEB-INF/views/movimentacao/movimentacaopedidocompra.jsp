@@ -145,7 +145,7 @@
 								
 								<a
 									href="${pageContext.request.contextPath}/pedidocompra/saveitem?id=${pedidocompra.id}"
-									title="Add Item"><i class="icon-edit"></i> </a>
+									title="Add Item"><i class="fa fa-plus-square fa-2x"></i> </a>
 									
 										<a
 									href="${pageContext.request.contextPath}/pedidocompra/addpagamento?id=${pedidocompra.id}"
@@ -157,7 +157,7 @@
 									title="Editar"><i class="icon-edit"></i> </a>
 									
 										<a
-									href="${pageContext.request.contextPath}/pedidocompra/informacoes?id=${pedidocompra.id}"
+									href="${pageContext.request.contextPath}/pedidocompra/informacao?id=${pedidocompra.id}"
 									title="Informacoes" ><i class="icon-info-sign"></i></a>
 									
 									

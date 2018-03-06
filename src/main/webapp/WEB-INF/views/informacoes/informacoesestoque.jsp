@@ -5,11 +5,10 @@
 
 
 <div id="content">
-  <div id="content-header">
-	
-	</br>
-    <h3>Informacoes do Estoque <strong> ${estoque.nome }</strong></h3>
-  </div>
+</br>
+</br>
+
+<div class="container-fluid">
 
   
              <c:if test="${erros != null }">
@@ -54,26 +53,12 @@
 		
         <hr>
   
-    <div class="container-fluid"><hr>
-    <div class="row-fluid">
-      <div class="span12">
-			<div class="card">
-                    <div class="card-content">
+   <div class="row">
+                     
                        
-                                <div class="card-header" data-background-color="blue">
-                                
-                                    <h4 class="title">  <h5>Detalhes do Estoque : ${estoque.nome}</h5></h4>
-                                    <p class="category">Todos</p>
-                                </div>
-                                
-                                </br>
-                                
-                                
-                                 <div class="span12">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
+                         
                     
-                        
-                       
-                         <div class="span2" style="margin-left:7em;">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
 									<i class="icon icon-barcode"></i>
@@ -94,9 +79,9 @@
                         </div>
                         
                         
-                        <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="orange">
 									<i class="material-icons">style</i>
                                 </div>
                                 <div class="card-content">
@@ -115,9 +100,9 @@
                         </div>
                         
                         
-                          <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="green">
 									<i class="fa fa-money"></i>
                                 </div>
                                 <div class="card-content">
@@ -137,9 +122,9 @@
                         </div>
                         
                         
-                          <div class="span2">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
 									<i class="material-icons">money</i>
                                 </div>
                                 <div class="card-content">
@@ -160,15 +145,14 @@
                         </div>
                         
                         </div>
-          
-             <div class="widget-content">
+         
 		
 
-
+<!-- <div class="row"> -->
 			<div class="card">
                     <div class="card-content">
                        
-                                <div class="card-header" data-background-color="blue">
+                                <div class="card-header" data-background-color="red">
                                 
                                     <h4 class="title"><h5>Itens do Estoque : <strong> ${estoque.nome }</strong></h5></h4>
                                     <p class="category">Todos</p>
@@ -176,19 +160,14 @@
                                 </div>
                                 
                                 </br>
-          
-          
-          <div class="">
+
+          <div class="card-content table-responsive">
+
             <table class="table table-hover table-bordered data-table">
             
-           
-          </div>
+      
      
-     <div class="widget-content nopadding">               
-<!--        <div class="container-fluid"> -->
-     
-<!-- 		 <div class="table-responsive"> -->
-                            <table class="table table-bordered data-table">
+
                             
                                 <thead>
                                     <tr>
@@ -228,13 +207,13 @@
 								<td class="options-width">
 
       								
-      								<a
+      								<a  rel="tooltip" title="Ver Informações"
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key.id}"
-									title="informação" class="fa fa-2x"><i class="icon-info-sign"></i></a>
+									 class="fa fa-2x"><i class="icon-info-sign"></i></a>
 									
-										<a
+										<a  rel="tooltip" title="Ver Edciao"
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key.id}"
-									title="editar" class="fa fa-2x"><i class="icon-edit"></i></a>
+									 class="fa fa-2x"><i class="icon-edit"></i></a>
 									
 <!-- 																			<a -->
 <%-- 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}" --%>
@@ -276,10 +255,7 @@
                            
                                 </tbody>
                             </table>
-                        </div>
-			
-			
-			</div>
+
           
           
           
@@ -287,14 +263,13 @@
 	
 	</div>
 	</div>
-	</div>
+	
+<!-- 	</div> -->
 	
 
 </div>
 </div>
-</div>
-</div>
-</div>
+
 
 
 

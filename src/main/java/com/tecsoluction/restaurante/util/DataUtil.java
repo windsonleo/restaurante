@@ -1,26 +1,56 @@
 package com.tecsoluction.restaurante.util;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-public class DataUtil {
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.entidade.Produto;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper=false)
+public class DataUtil  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
+	private Date data;
 	
+	private Dias dia;
 	
+	private String dataString;
 	
-	
-	
+
+
 	public DataUtil() {
 		// TODO Auto-generated constructor stub
+		
+		
+	}
+	
+	public DataUtil(Date data) {
+		// TODO Auto-generated constructor stub
+		
+		this.data = data;
+		this.dataString = TransformarData(data);
+		this.dia = retornarDiaSemana(data);
 	}
 	
 	
 	
 	
-	
-	
-	public static String TransformarData(Date data) {
+	public  String TransformarData(Date data) {
 		
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		
@@ -35,7 +65,8 @@ public class DataUtil {
 	
 	
 	//retorna o dia da semana dada uma data
-	  public String retornarDiaSemana(Date data)
+	  public Dias retornarDiaSemana(Date data)
+	 
 	  {
 	 
 	    int diaSemana = data.getDay();
@@ -44,53 +75,60 @@ public class DataUtil {
 	  }
 	
 	 //faz a pesquisa, dado um inteiro de 1 a 7
-	  public String pesquisarDiaSemana(int _diaSemana)
+	  public Dias pesquisarDiaSemana(int _diaSemana)
 	
 	  {
-	    String diaSemana = null;
+	    dia = null;
 	 
 	    switch (_diaSemana)
 	    {
 	 
+	    case 0:
+	    {
+	    	dia = Dias.DOMINGO;
+	      break;
+	    }
 	    case 1:
 	    {
-	      diaSemana = "Domingo";
+	    	dia = Dias.SEGUNDA_FEIRA;
 	      break;
 	    }
 	    case 2:
 	    {
-	      diaSemana = "Segunda";
+	    	dia = Dias.TERCA_FEIRA;
 	      break;
 	    }
 	    case 3:
 	    {
-	      diaSemana = "Terca";
+	    	dia = Dias.QUARTA_FEIRA;
 	      break;
 	    }
 	    case 4:
 	    {
-	      diaSemana = "Quarta";
+	    	dia = Dias.QUINTA_FEIRA;
 	      break;
 	    }
 	    case 5:
 	    {
-	      diaSemana = "Quinta";
+	    	dia = Dias.SEXTA_FEIERA;
 	      break;
 	    }
 	    case 6:
 	    {
-	      diaSemana = "Sexta";
-	      break;
-	    }
-	    case 7:
-	    {
-	      diaSemana = "Sabado";
+	    	dia = Dias.SABADO;
 	      break;
 	    }
 	 
 	    }
-	    return diaSemana;
+	    return dia;
 	 
 	  }
+	  
+	  
+	  @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return   dia.toString();
+	}
 
 }

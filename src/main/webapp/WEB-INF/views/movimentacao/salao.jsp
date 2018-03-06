@@ -6,7 +6,8 @@
 
 <div id="content">
 
-
+  </br>
+  </br>
 
     <div class="container-fluid">
     
@@ -53,6 +54,8 @@
 
 		</c:if>
 		
+		</div>
+		
         <hr>
         
       <div class="row-fluid">
@@ -61,9 +64,9 @@
 		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
 					
 					
-					<li class="active" >
+					<li class="" >
 <%-- 						<a href="${pageContext.request.contextPath}/mesa/abrirmesa" role="modal" data-toggle="modal" data-target="#exampleModal"> --%>
-													<a href="#" role="tab" data-toggle="modal" data-target="#ModalAbrirMesa">
+							<a href="#ModalAbrirMesa" role="tab" data-toggle="modal" aria-expanded="true" data-target="#ModalAbrirMesa">
 							
 							<i class="fa fa-cutlery"></i>
 							Abrir Mesa
@@ -72,7 +75,7 @@
 					
 					<li >
 <%-- 						<a href="${pageContext.request.contextPath}/mesa/fecharmesa" role="modal" data-toggle="modal" data-target="#exampleModal2"> --%>
-							<a href="#exampleModal2" role="tab" data-toggle="modal" data-target="#ModalFecharMesa">
+							<a href="#ModalFecharMesa" role="tab" data-toggle="modal" aria-expanded="false">
 							
 							<i class="fa fa-cutlery"></i>
 							Fechar Mesa
@@ -80,47 +83,39 @@
 					</li>
 					
 					<li class="" >
-						<a href="#exampleModal3" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa">
+						<a href="#ModalTransferirMesa" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa" aria-expanded="false">
 							<i class="material-icons"> compare_arrows</i>
 							Transferir Mesa
 						</a>
 					</li>
 		</ul>
 		
-  
+
 
     </div>
-            <div class="span12">
-				<div class="span8">
-				<div class="card">
-                    <div class="card-content">
-
-                        <div class="card-header" data-background-color="red">
-  							<h3 class="title">Salao</h3>
-                            <p class="category">Todas as mesas </p>
-
-                        </div>
-                        
-
-			<div class="row">
-
-            <div class="span12">
-
-
-
-                 <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+    
+  </br>
+  </br>
+             <div class="row-fluid">
+             
+<!--              <div class="span8"> -->
+                   
+                     <c:forEach var="mesa" items="${mesasList}" varStatus="id">
                        
+                        
+                         
                        
                     <c:choose>
 
 
                           <c:when test="${mesa.status=='ABERTA'}">
 
-                             <div class="span4">
+                          <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
 									<i class="icon-table"></i>
                                 </div>
+                                
                                 <div class="card-content">
                                     <p class="category">${mesa.id}</p>
                                     <h3 class="title">${mesa.numero}
@@ -151,7 +146,7 @@
                                     
                                     <span class="label label-danger"> ${mesa.pedidos.size()}</span>
                                                                          
-<!--                                         <a href="#pablo">Detalhes..</a> -->
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido </a>
                                         
                                     </div>
                                 </div>
@@ -163,7 +158,7 @@
 
                    <c:when test="${mesa.status=='FECHADA'}">
 
-                        <div class="span4">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
 									<i class="icon-table"></i>
@@ -198,7 +193,7 @@
                                     
                                     <span class="label label-success"> ${mesa.pedidos.size()}</span>
                                                                          
-<!--                                         <a href="#pablo">Detalhes..</a> -->
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido  </a>
                                         
                                     </div>
                                 </div>
@@ -210,8 +205,8 @@
 
                      <c:otherwise>
                      
-                        <div class="span4">
-                            <div class="card card-stats">
+ 						<div class="col-lg-3 col-md-6 col-sm-6">
+                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="">
 									<i class="icon-table"></i>
                                 </div>
@@ -245,7 +240,7 @@
                                     
                                     <span class="label label-success"> ${mesa.pedidos.size()}</span>
                                                                          
-<!--                                         <a href="#pablo">Detalhes..</a> -->
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido  </a>
                                         
                                     </div>
                                 </div>
@@ -277,146 +272,146 @@
 <!--                                 </ul> -->
                             </div>
 <!--                         </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
         
-        	<div class="span4">
+<!--         	<div class="span4"> -->
 					
                      
 					
-                            <div class="card card-profile">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="../resources/images/cliente/vazio.jpg">
-                                    </a>
+<!--                             <div class="card card-profile"> -->
+<!--                                 <div class="card-avatar"> -->
+<!--                                     <a href="#pablo"> -->
+<!--                                         <img class="img" src="../resources/images/cliente/vazio.jpg"> -->
+<!--                                     </a> -->
                                     
 
-                                </div>
+<!--                                 </div> -->
                         
-                        <form action="addPedidoSalao" method="POST" class="">
+<!--                         <form action="addPedidoSalao" method="POST" class=""> -->
 
 
-				    <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Mesa</label>
-									<input id="idmesa" name="idmesa" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
-                            				  <span class="material-input"></span>
-                                 </div> 
+<!-- 				    <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Mesa</label> -->
+<%-- 									<input id="idmesa" name="idmesa" list="${mesasList}" class="form-control" type="text" --%>
+<!--                                     		  autocomplete="on"/> -->
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div>  -->
                                  
-                              <datalist id="${mesasList}">
+<%--                               <datalist id="${mesasList}"> --%>
 
-                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+<%--                                     <c:forEach var="mesa" items="${mesasList}" varStatus="id"> --%>
 
-                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+<%--                                         <option value="${mesa.id }"> ${mesa.numero } </option> --%>
 
-                                    </c:forEach>
+<%--                                     </c:forEach> --%>
 
 
-                                </datalist>
+<!--                                 </datalist> -->
                                  
-                              <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Garcon</label>
-									<input id="idgar" name="idgar" list="${garconsList}" class="form-control" type="text"
-                                    		autocomplete="off"/>
-                            				  <span class="material-input"></span>
-                                 </div>
-                                 
-                                 
-                                 <datalist id="${garconsList}">
-
-                                    <c:forEach var="garcon" items="${garconsList}" varStatus="id">
-
-                                        <option value="${garcon.id }"> ${garcon.nome } </option>
-
-                                    </c:forEach>
-
-
-                                </datalist> 
-                                 
-                                  <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Produto</label>
-									<input id="idprod" name="idprod" list="${produtosList}" class="form-control" type="text" autocomplete="off"
-                                    		  />
-                            				  <span class="material-input"></span>
-                                 </div> 
-                                 
-                                <datalist id="${produtosList}">
-
-                                    <c:forEach var="produto" items="${produtosList}" varStatus="id">
-
-                                        <option value="${produto.id }"> ${produto.nome } </option>
-
-                                    </c:forEach>
-
-
-                                </datalist>
+<!--                               <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Garcon</label> -->
+<%-- 									<input id="idgar" name="idgar" list="${garconsList}" class="form-control" type="text" --%>
+<!--                                     		autocomplete="off"/> -->
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div> -->
                                  
                                  
+<%--                                  <datalist id="${garconsList}"> --%>
+
+<%--                                     <c:forEach var="garcon" items="${garconsList}" varStatus="id"> --%>
+
+<%--                                         <option value="${garcon.id }"> ${garcon.nome } </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist>  -->
                                  
-                                <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Qtd</label>
-									<input id="qtd" name="qtd" class="form-control" type="text"
-                                    		placeholder="" />
-                            				  <span class="material-input"></span>
-                                 </div> 
+<!--                                   <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Produto</label> -->
+<%-- 									<input id="idprod" name="idprod" list="${produtosList}" class="form-control" type="text" autocomplete="off" --%>
+<!--                                     		  /> -->
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div>  -->
+                                 
+<%--                                 <datalist id="${produtosList}"> --%>
+
+<%--                                     <c:forEach var="produto" items="${produtosList}" varStatus="id"> --%>
+
+<%--                                         <option value="${produto.id }"> ${produto.nome } </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist> -->
+                                 
+                                 
+                                 
+<!--                                 <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Qtd</label> -->
+<!-- 									<input id="qtd" name="qtd" class="form-control" type="text" -->
+<!--                                     		placeholder="" /> -->
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div>  -->
 
 
 								
 
-						<div class="form-group label-floating  is-empty">
-                              <label class="control-label">Cliente</label>
-                                <input type="text" list="${clientesList}" id="idcli"
-                                       placeholder="" name="idcli" autocomplete="off"
-                                       class="form-control">
-                                       
-                                 <span class="material-input"></span>
-                         </div>
-
-
-
-
-                                <datalist id="${clientesList}">
-
-                                    <c:forEach var="client" items="${clientesList}" varStatus="id">
-
-                                        <option value="${client.id }"> ${client.nome } </option>
-
-                                    </c:forEach>
-
-
-                                </datalist>
-                                
-                                
-                                    
-                               <div class="form-group label-floating is-empty">
+<!-- 						<div class="form-group label-floating  is-empty"> -->
 <!--                               <label class="control-label">Cliente</label> -->
+<%--                                 <input type="text" list="${clientesList}" id="idcli" --%>
+<!--                                        placeholder="" name="idcli" autocomplete="off" -->
+<!--                                        class="form-control"> -->
+                                       
+<!--                                  <span class="material-input"></span> -->
+<!--                          </div> -->
+
+
+
+
+<%--                                 <datalist id="${clientesList}"> --%>
+
+<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
+
+<%--                                         <option value="${client.id }"> ${client.nome } </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist> -->
+                                
+                                
+                                    
+<!--                                <div class="form-group label-floating is-empty"> -->
+<!-- <!--                               <label class="control-label">Cliente</label> --> 
                                    
-                                   <button type="submit"  class="btn btn-info btn-round btn-md">AddPedidoMesa</button>
+<!--                                    <button type="submit"  class="btn btn-info btn-round btn-md">AddPedidoMesa</button> -->
 
                                        
-                                 <span class="material-input"></span>
-                         		</div>
+<!--                                  <span class="material-input"></span> -->
+<!--                          		</div> -->
                                     
-                                  </form>
+<!--                                   </form> -->
                                   
-                                <div class="content">
+<!--                                 <div class="content"> -->
                                     
-                                    <h4><p class="card-content text-gray">${mesa.numero} ${mesa.status}
-                                     <p class="card-content pull-left">${mesa.id} </p> </h4> </p>
-<!--                                     <p class="card-content"> -->
-<!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is... -->
-<!--                                     </p> -->
+<%--                                     <h4><p class="card-content text-gray">${mesa.numero} ${mesa.status} --%>
+<%--                                      <p class="card-content pull-left">${mesa.id} </p> </h4> </p> --%>
+<!-- <!--                                     <p class="card-content"> --> 
+<!-- <!--                                         Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...  -->
+<!-- <!--                                     </p> --> 
                                     
                                     
-                                </div>
-                            </div>
-                        </div>
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
                         
 <!--                         modal da abertura e fechamento de mesa -->
 
-<div class="modal fade" id="ModalAbrirMesa" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="ModalAbrirMesa" tabindex="1" role="tab" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -533,7 +528,7 @@
 
 
 
-<div class="modal fade" id="ModalFecharMesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="ModalFecharMesa" tabindex="2" role="toggle" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -600,7 +595,7 @@
 
 
 <!-- transferir mesa -->
-<div class="modal fade" id="ModalTransferirMesa" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="ModalTransferirMesa" tabindex="3" role="tab" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

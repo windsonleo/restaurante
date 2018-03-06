@@ -59,43 +59,50 @@
                    <td>${fornecedor.inscricaoestadual}</td>
                    <td><span class="label label-success">${fornecedor.ativo}</span></td>
                
-                 <td class="options-width">
+                 <td class="td-actions">
 								
 								
-								<a
-									href="${pageContext.request.contextPath}/fornecedor/editar?id=${fornecedor.id}"
-									title="Editar"><i class="icon-edit"></i> </a>
+<!-- 								<a -->
+<%-- 									href="${pageContext.request.contextPath}/fornecedor/editar?id=${fornecedor.id}" --%>
+<!-- 									title="Editar"><i class="icon-edit"></i> </a> -->
 									
-										<a
-									href="${pageContext.request.contextPath}/fornecedor/informacoes?id=${fornecedor.id}"
-									title="Informacoes" ><i class="icon-info-sign"></i></a>
+<!-- 										<a -->
+<%-- 									href="${pageContext.request.contextPath}/fornecedor/informacao?id=${fornecedor.id}" --%>
+<!-- 									title="Informacoes" ><i class="icon-info-sign"></i></a> -->
 									
 
-	<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${fornecedor.id}"></a>
+<%-- 	<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${fornecedor.id}"></a> --%>
 
-                <div id="myAlert${fornecedor.id}" class="modal fade" role="dialog" tabindex="-1">
-					<div class="modal-dialog" role="document">
-						 <div class="modal-content">
+<%--                 <div id="myAlert${fornecedor.id}" class="modal fade" role="dialog" tabindex="-1"> --%>
+<!-- 					<div class="modal-dialog" role="document"> -->
+<!-- 						 <div class="modal-content"> -->
 
-              <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">x</button>
-                <h3>Alerta de Exclusao</h3>
-              </div>
-              <div class="modal-body">
-                <p>Deseja Realmente Excluir esse Registro</p>
-              </div>
-              <div class="modal-footer"> <a data-dismiss="" class="btn-sm btn-danger" href="${pageContext.request.contextPath}/fornecedor/delete?id=${fornecedor.id}">Confirma</a> <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a> </div>
+<!--               <div class="modal-header"> -->
+<!--                 <button data-dismiss="modal" class="close" type="button">x</button> -->
+<!--                 <h3>Alerta de Exclusao</h3> -->
+<!--               </div> -->
+<!--               <div class="modal-body"> -->
+<!--                 <p>Deseja Realmente Excluir esse Registro</p> -->
+<!--               </div> -->
+<%--               <div class="modal-footer"> <a data-dismiss="" class="btn-sm btn-danger" href="${pageContext.request.contextPath}/fornecedor/delete?id=${fornecedor.id}">Confirma</a> <a data-dismiss="modal" class="btn-sm" href="#">Cancela</a> </div> --%>
            
-            </div>	
-</div>
-</div>
+<!--             </div>	 -->
+<!-- </div> -->
+<!-- </div> -->
 									
 <!-- 									 <a -->
 <%-- 									href="${pageContext.request.contextPath}/fornecedor/delete?id=${fornecedor.id}" --%>
 <!-- 									title="deletar" class="fa fa-remove fa-2x" ><i class="icon-minus-sign"></i> </a> -->
 									
-									
-									
+				<button type="button" rel="tooltip" title="Ver Informações" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/fornecedor/informacao?id=${fornecedor.id}'" >
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Editar Categoria" class="btn btn-success btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/fornecedor/editar?id=${fornecedor.id}'">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/fornecedor/delete?id=${fornecedor.id}'">
+                    <i class="fa fa-times"></i>
+                </button>		
 									
 									
 										

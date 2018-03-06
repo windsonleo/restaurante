@@ -24,13 +24,13 @@ public abstract class AbstractRestController<Entity> {
 
     @Transactional
     @PostMapping
-    public ResponseEntity AdicionarEntity(Entity entity) {
+    public ResponseEntity<Entity> AdicionarEntity(Entity entity) {
         try {
             getservice().validateSave(entity);
             getservice().save(entity);
-            return new ResponseEntity<>(entity, HttpStatus.OK);
+            return new ResponseEntity<Entity>(entity, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.SERVICE_UNAVAILABLE);
+            return new ResponseEntity<Entity>(entity, HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
 

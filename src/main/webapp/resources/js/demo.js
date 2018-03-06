@@ -2,7 +2,10 @@ type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 
 demo = {
-    initPickColor: function() {
+   
+
+		
+		initPickColor: function() {
         $('.pick-class-label').click(function() {
             var new_class = $(this).attr('new-class');
             var old_class = $('#display-buttons').attr('data-class');
@@ -18,11 +21,16 @@ demo = {
 
     initDocumentationCharts: function() {
         /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+       
+    	
+    	dataDailySalesChart = {
+        		
+//            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        		labels:	['SEG', 'TER', 'QUAR', 'QUIN', 'SEX', 'SAB', 'DOM'],
 
-        dataDailySalesChart = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+//        		 labels: [din],
             series: [
-                [12, 17, 7, 17, 23, 18, 38]
+            	[12, 17, 7, 17, 23, 18, 38]
             ]
         };
 
@@ -51,14 +59,119 @@ demo = {
     initDashboardPageCharts: function() {
 
         /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+    	
+    	
+      	var activity_array=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	
+    	var activity_array_dom=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/dom",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_dom.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	var activity_array_seg=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/seg",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_seg.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	
+    	var activity_array_ter=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/ter",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_ter.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	var activity_array_quar=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/quar",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_quar.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	var activity_array_quin=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/quin",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_quin.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	var activity_array_sex=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/sex",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_sex.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	var activity_array_sab=[
+    		$.ajax({
+    		url: "/restaurante/chart/vendasDias/sab",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			activity_array_sab.push(parseInt(data));
+    			
+    		}
+    	})];
+    	
+    	console.log("seg" + activity_array_seg);
+    	console.log("ter" + activity_array_ter);
+    	console.log("quar" + activity_array_quar);
+    	console.log("quin" + activity_array_quin);
+    	console.log("sex" + activity_array_sex);
+    	console.log("sab" + activity_array_sab);
+    	console.log("dom" + activity_array_dom);
 
         dataDailySalesChart = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        		
+//              labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+//            labels: [din],
+        		labels:	['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
             series: [
-                [12, 17, 7, 17, 23, 18, 38]
+            	
+            	[activity_array_seg,activity_array_ter,activity_array_quar,
+            	activity_array_quin,activity_array_sex,activity_array_sab,
+            	activity_array_dom]
+            	
+//            	[activity_array,activity_array_ter,activity_array_dom]
+            	
+//            	[activity_array_seg],[activity_array_ter],[activity_array_quar],
+//                	[activity_array_quin],[activity_array_sex],[activity_array_sab],
+//                	[activity_array_dom]
+  	
             ]
         };
-
+        
+        
         optionsDailySalesChart = {
             lineSmooth: Chartist.Interpolation.cardinal({
                 tension: 0
@@ -93,7 +206,7 @@ demo = {
                 tension: 0
             }),
             low: 0,
-            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -270,7 +383,25 @@ demo = {
                 align: align
             }
         });
+    },
+    
+    Refresh : function() {
+    	
+    	$.ajax({
+    		url: "/restaurante/chart/vendasDias",
+    		success: function(data) {
+    			//add new ajax data to existing array
+    			dataDailySalesChart.series[0].push(parseInt(data));
+    			//remove first array entry
+    			activity_array.splice(1, 1);
+    			//update data object with new array
+    			var data = {
+    				series: [activity_array],
+    			};
+    			//update and refresh chart
+    			activity.update(data);
+    		}
+    	});
     }
-
-
+    
 }

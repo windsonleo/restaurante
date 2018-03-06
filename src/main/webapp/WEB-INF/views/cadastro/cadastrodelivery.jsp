@@ -125,7 +125,7 @@
               </div>
 				</div>
 				
-				            <div class="form-group label-floating ">
+		<div class="form-group label-floating ">
  			<div class="control-group">
                 <label class="control-label">Cep</label>
                 <div class="controls">

@@ -37,6 +37,9 @@ public class HomeController {
 
     private final
     UsuarioServicoImpl userservice;
+    
+    private final
+    BancoServicoImpl bancoService;
 
     private final
     GarconServicoImpl garconservice;
@@ -68,6 +71,12 @@ public class HomeController {
     private final 
     EstoqueServicoImpl estoqueService;
     
+    private final 
+    ReservaServicoImpl reservaService;
+    
+    private final 
+    CaixaServicoImpl caixaService;
+    
     @Autowired 
     private JavaMailSender mailSender;
 	   
@@ -75,25 +84,41 @@ public class HomeController {
     private EmpresaServicoImpl empresaServico;
 
     private
-    List<Cliente> clientesnovos;
+    List<Cliente> clientess;
+    
+    private
+    List<Caixa> caixas;
+    
+    private
+    List<Cliente> clientesNovos;
 
+    private
+    List<PedidoVenda> pedidovendas;
+    
     private
     List<PedidoVenda> pedidovendasnovos;
 
     private
-    List<Mesa> mesasocupadas;
+    List<Mesa> mesasocupadass;
+    
+    private
+    List<Mesa> mesas;
 
     private
-    List<Produto> produtosnovos;
+    List<Produto> produtos;
+    
+
+    private
+    List<Produto> produtosNovos;
 
     private
     List<Usuario> usuarios;
 
     private
-    List<PedidoCompra> pedidocomprasnovos;
+    List<PedidoCompra> pedidocompras;
 
     private
-    List<Recebimento> recebimentosnovos;
+    List<Recebimento> recebimentos;
 
     private
     List<Cliente> resultsearch;
@@ -108,13 +133,17 @@ public class HomeController {
     List<Pagamento> pagamentos;
     
     
+    private
+    List<Banco> bancos;
+    
 
 
     @Autowired
     public HomeController(PedidoCompraServicoImpl compradao, RecebimentoServicoImpl recdao,
     		UsuarioServicoImpl dao, PedidoVendaServicoImpl vendadao, ClienteServicoImpl clienteService,
     		MesaServicoImpl mesaService, ProdutoServicoImpl proddao, GarconServicoImpl ga, 
-    		FornecedorServicoImpl fo, PagamentoServicoImpl pag,EstoqueServicoImpl est) {
+    		FornecedorServicoImpl fo, PagamentoServicoImpl pag,EstoqueServicoImpl est,
+    		BancoServicoImpl bc,ReservaServicoImpl rsv,CaixaServicoImpl cx) {
 
         this.userservice = dao;
         this.pedidovendaService = vendadao;
@@ -127,44 +156,63 @@ public class HomeController {
         this.fornecedorservice = fo;
         this.pagamentoservice = pag;
         this.estoqueService =est;
-
+        this.bancoService = bc;
+        this.reservaService = rsv;
+        this.caixaService = cx;
     }
 
 
     @ModelAttribute
     public void addAttributes(Model model) {
 
-        List<Mesa> mesas = mesaService.findAll();
-        clientesnovos = clienteService.findAll();
-        pedidovendasnovos = pedidovendaService.findAll();
-        mesasocupadas = mesaService.findAll();
-        produtosnovos = produtoService.findAll();
+       mesasocupadass = mesaService.findAll();
+        mesas = mesaService.findAll();
+        produtos = produtoService.findAll();
         usuarios = userservice.findAll();
-        pedidocomprasnovos = pedidocompraService.findAll();
-        recebimentosnovos = recebimentoService.findAll();
+        pedidocompras = pedidocompraService.findAll();
+        recebimentos = recebimentoService.findAll();
         garcons = garconservice.findAll();
         fornecedores = fornecedorservice.findAll();
         pagamentos = pagamentoservice.findAll();
+        List<Estoque> estqueprod = estoqueService.findAll();
+        List<Usuario> users = userservice.findAll();
+        List<Garcon> garconsCount = garconservice.findAll();
+        clientess = clienteService.findAll();
+        pedidovendas = pedidovendaService.findAll();
+        caixas = caixaService.findAll();
 
-        //Count
-        long produtosNovos = produtoService.count();
-        long users = userservice.count();
-        long clientesNovos = clienteService.count();
-        long garconsCount = garconservice.count();
-        long estqueprod = estoqueService.count();
 
+        //News
+        List<Produto> produtosNovos = produtoService.findAllNew();
+        pedidovendasnovos = pedidovendaService.findAllNew();
+        List<Cliente> clientesNovos = clienteService.findAllNew();
+        List<Reserva> reservaNovas = reservaService.findAllNew();
+        
+
+        
+        
+        long bancosNovos = bancoService.findAllNew().size();
+        
+       
+        
         model.addAttribute("clientesnovos", clientesNovos);
+        model.addAttribute("clientess", clientess);
         model.addAttribute("pedidovendasnovos", pedidovendasnovos);
-        model.addAttribute("pedidocomprasnovos", pedidocomprasnovos);
-        model.addAttribute("recebimentosnovos", recebimentosnovos);
-        model.addAttribute("mesasocupadas", mesasocupadas);
+        model.addAttribute("pedidovendas", pedidovendas);
+        model.addAttribute("pedidocomprasnovos", pedidocompras);
+        model.addAttribute("recebimentosnovos", recebimentos);
+        model.addAttribute("mesasocupadass", mesasocupadass);
         model.addAttribute("produtosnovos", produtosNovos);
+        model.addAttribute("produtos", produtos);
         model.addAttribute("usuarios", users);
         model.addAttribute("mesas", mesas);
         model.addAttribute("garcons", garconsCount);
         model.addAttribute("fornecedores", fornecedores);
         model.addAttribute("pagamentos", pagamentos);
         model.addAttribute("estoques", estqueprod);
+        model.addAttribute("bancos", bancosNovos);
+        model.addAttribute("reservas", reservaNovas);
+        model.addAttribute("caixas", caixas);
 
     }
 

@@ -5,6 +5,7 @@
          pageEncoding="UTF-8" %>
 
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib uri="http://jawr.net/tags" prefix="jwr" %>
 
 <html>
 <head>

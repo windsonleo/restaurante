@@ -82,6 +82,8 @@ public  class Item implements Serializable, Comparable<Item>{
         
 
     }
+    
+    
 
     public BigDecimal getTotalItem() {
     	
@@ -118,6 +120,9 @@ public BigDecimal CalcularTotaItem(String qtd) {
   return precoUnitario.multiply(qtdAuxBig);
 
 }
+
+
+
 
 
 }

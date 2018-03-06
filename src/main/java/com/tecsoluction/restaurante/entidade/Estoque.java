@@ -31,7 +31,7 @@ public class Estoque extends BaseEntity implements Serializable {
  
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "itens_estoque", joinColumns = @JoinColumn(name = "id"))
-    @Lob
+//    @Lob
     @Column(name = "qtd")
     @MapKeyColumn(name = "idit")
     @JsonManagedReference
@@ -60,28 +60,25 @@ public class Estoque extends BaseEntity implements Serializable {
         BigDecimal antigo = new BigDecimal("0.00");
 
 
-        for (Item key : getItems().keySet()) {
-          
-        	if (key.getId() == (produto.getId())) {
+        if (this.getItems().containsKey(produto)) {
+            
+            vantigo = this.getItems().get(produto);
 
-        		//qtd
-                vantigo = getItems().get(key);
-                	
-                antigo = new BigDecimal(vantigo);
-                
+            antigo = new BigDecimal(vantigo);
 
-                novo = novo.add(antigo).add(vnovo);
+            novo = novo.add(antigo).add(vnovo);
 
-
-                items.put(key, novo.toString());
-            }
+            items.replace(produto,antigo.toString(),novo.toString());
+        	
+        	
+        }else {
+        	
+        	
+        	novo = novo.add(antigo).add(vnovo);	
+        	  this.items.put(produto, novo.toString());
         	
         }
-        
-        if (!getItems().containsKey(produto)) {
 
-            items.put(produto, vnovo.toString());
-        }
     }
 
     public void RetirarProdutoEstoque(Item produto, BigDecimal qtd) {
@@ -90,28 +87,53 @@ public class Estoque extends BaseEntity implements Serializable {
         BigDecimal vnovo = qtd;
         BigDecimal novo = new BigDecimal("0.00");
         BigDecimal antigo = new BigDecimal("0.00");
+        
+        if (this.getItems().containsKey(produto)) {
+        
+            vantigo = this.getItems().get(produto);
 
-        for (Item key : getItems().keySet()) {
+            antigo = new BigDecimal(vantigo);
 
-            if (key.getId() == (produto.getId())) {
+            novo = novo.add(antigo).subtract(vnovo);
 
-                vantigo = getItems().get(key);
-
-                antigo = new BigDecimal(vantigo);
-
-                novo = novo.add(antigo).subtract(vnovo);
-
-                items.put(key, novo.toString());
-            }
-
+            this.items.replace(produto,vantigo,novo.toString());
+        	
+        	
+        }else {
+        	
+//        	
+        	novo = novo.add(antigo).subtract(vnovo);
+        	  this.items.replace(produto,antigo.toString(), novo.toString());
+        	
+//        	AddProdutoEstoque(produto, qtd);
+        	
         }
 
-        if (!getItems().containsKey(produto)) {
-
-//            vnovo = qtd;
-//            BigDecimal qtdnegativa = vnovo;
-            items.put(produto, vnovo.toString());
-        }
+//        for (Item key : getItems().keySet()) {
+//
+////            if (key.getId() == (produto.getId())) {
+//        	
+//        	
+//        	
+//        	if (getItems().containsKey(produto)) {
+//
+//                vantigo = getItems().get(key);
+//
+//                antigo = new BigDecimal(vantigo);
+//
+//                novo = antigo.add(vnovo).subtract(vnovo);
+//
+//                items.put(key, novo.toString());
+//            }
+//
+//        }
+//
+//        if (!getItems().containsKey(produto)) {
+//
+////            vnovo = qtd;
+////            BigDecimal qtdnegativa = vnovo;
+//            items.put(produto, vnovo.toString());
+//        }
     }
 
 

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 
 @org.springframework.stereotype.Repository
 public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
@@ -21,10 +22,17 @@ public interface IPedidoVendaDAO extends JpaRepository<PedidoVenda, UUID> {
 
     @Query("SELECT p FROM PedidoVenda p where p.origempedido='INTERNET' OR p.origempedido='TELEVENDAS'")
     List<PedidoVenda> getAllPedidoDelivery();
+    
+//    @Query("SELECT p FROM PedidoVenda p where p.origempedido='INTERNET' OR p.origempedido='TELEVENDAS'")
+//    List<PedidoVenda> getAllPedidos();
 
 
     List<PedidoVenda> findAllByStatusIsOrderByDataAsc(StatusPedido status);
     
 //    @Query("SELECT count(c) FROM PedidoVenda p, Cliente c where p.cliente = c.id order by p.data desc")
 //    long findClienteByPedidoVenda();
+    
+    
+    @Query("SELECT p FROM PedidoVenda p where p.novo='TRUE'")
+    List<PedidoVenda> findAllNew();
 }

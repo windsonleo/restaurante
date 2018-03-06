@@ -64,9 +64,10 @@ public abstract class AbstractEntityService<Entity> {
         return getDao().count();
     }
 
+    public abstract List<Entity> findAllNew();
+    
+    
     protected abstract void validateDelete(UUID id);
-    
-    
    
 
 }

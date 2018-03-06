@@ -1,14 +1,16 @@
 package com.tecsoluction.restaurante.service.impl;
 
-import com.tecsoluction.restaurante.dao.IPagamentoDAO;
-import com.tecsoluction.restaurante.entidade.Pagamento;
-import com.tecsoluction.restaurante.framework.AbstractEntityService;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import com.tecsoluction.restaurante.dao.IPagamentoDAO;
+import com.tecsoluction.restaurante.entidade.Pagamento;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 
@@ -54,6 +56,12 @@ public class PagamentoServicoImpl extends AbstractEntityService<Pagamento> {
 	protected void validateDelete(UUID id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Pagamento> findAllNew() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
