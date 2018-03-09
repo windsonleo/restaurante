@@ -5,11 +5,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import com.tecsoluction.restaurante.entidade.Banco;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
 
@@ -32,6 +34,11 @@ public class Graficos implements Serializable{
 	private List<PedidoVenda> vendas =null;
 	
 	private List<Produto> produtosVendidos;
+	
+	private List<Mesa> mesas;
+
+    public List<Integer> mesastempo = new ArrayList<Integer>();
+
 	
 	private int seg=0,ter=0,quart=0,quin=0,sex=0,sab=0,dom=0;
 	 
@@ -228,5 +235,28 @@ public class Graficos implements Serializable{
 		
 		return produtoQuantidadesSoma;
 }
+	
+	
+	// retorna todas as mesas
+		public List<Integer> MesasTodas(List<Mesa>  mesas){
+			
+			int conv = 0;
+			
+			for (Mesa mesa : mesas) {
+				
+				conv = Integer.parseInt(mesa.getNumero());
+				
+				mesastempo.add(conv);
+				
+				
+			}
+			
+			
+			return mesastempo;
+		
+
+	}	
+	
+	
 	
 }

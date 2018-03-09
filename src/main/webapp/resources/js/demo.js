@@ -63,99 +63,20 @@ demo = {
     	var dailySalesChart;
     	
     	 var emailsSubscriptionChart;
+    	 
+    	 var completedTasksChart;
        	
-    	 var activity_array_produto=[11,2,6,16,5,9,20];
+    	 var activity_array_produto=[51,29,36];
 
-       	var activity_array_produto_labels=['teste1','teste2','teste3'];
+//       	var activity_array_produto_labels=['SUSHI','TEMAKI','CERVEJA'];
     	
       	var activity_array=[15,8,22,4,9,25,11];
+      	
+      	var activity_array_mesa=[29,15,4,9,21];
+      	
+      	var activity_array_mesa_labels=['001', '002', '003', '004', '005'];
     	
-    	
-//    	var activity_array_dom=[
-//    		$.ajax({
-////    		url: "/restaurante/chart/vendasDias/dom",
-//    			url: "chart/vendasDias/dom",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_dom.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	var activity_array_seg=[
-//    		$.ajax({
-////    		url: "/restaurante/chart/vendasDias/seg",
-//    			url:"chart/vendasDias/seg",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_seg.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	
-//    	var activity_array_ter=[
-//    		$.ajax({
-////    		url: "/restaurante/chart/vendasDias/ter",
-//    			url: "chart/vendasDias/ter",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_ter.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	var activity_array_quar=[
-//    		$.ajax({
-//    		url: "chart/vendasDias/quar",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_quar.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	var activity_array_quin=[
-//    		$.ajax({
-//    		url: "chart/vendasDias/quin",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_quin.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	var activity_array_sex=[
-//    		$.ajax({
-//    		url: "chart/vendasDias/sex",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_sex.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	var activity_array_sab=[
-//    		$.ajax({
-//    		url: "chart/vendasDias/sab",
-//    		success: function(data) {
-//    			//add new ajax data to existing array
-//    			activity_array_sab.push(parseInt(data));
-//    			
-//    		}
-//    	})];
-//    	
-//    	console.log("activy" + activity_array);
-////    	console.log("dados" + dados);
-//    	console.log("seg" + activity_array_seg);
-//    	console.log("ter" + activity_array_ter);
-//    	console.log("quar" + activity_array_quar);
-//    	console.log("quin" + activity_array_quin);
-//    	console.log("sex" + activity_array_sex);
-//    	console.log("sab" + activity_array_sab);
-//    	console.log("dom" + activity_array_dom);
-//
-//     
+ 
         
         
         optionsDailySalesChart = {
@@ -177,33 +98,37 @@ demo = {
         		
 
 			labels:['DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
-        		series: [activity_array]
+        	series:[activity_array],
             	
   	
             
-        }, optionsDailySalesChart);
+        }, optionsDailySalesChart,responsiveOptions);
 
 //        Refresh();
 //        dailySalesChart.update(data);
         md.startAnimationForLineChart(dailySalesChart);
         
         
+        function compararNumeros(a, b) {
+        	  return a - b;
+        	}
+        
         
         function Refresh() {
         	
         	$.ajax({
-        		url: "/chart/vendasDias/",
+        		url: "/restaurante/chart/vendasDias/",
         		success: function(data) {
         			//add new ajax data to existing array
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
         			activity_array.push(parseInt(data));
         			//remove first array entry
-        			activity_array.splice(1, 1);
+        			activity_array.splice(0,1);
         			//update data object with new array
         			var data = {
         				
         					labels:['DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
-        					series: [activity_array]
+        					series: [activity_array],
         			};
         			//update and refresh chart
         			dailySalesChart.update(data);
@@ -215,21 +140,21 @@ demo = {
         	//segundo grafico
         	
         	$.ajax({
-        		url: "/chart/produtosmais/",
+        		url: "/restaurante/chart/produtosmais/",
         		success: function(data) {
         			//add new ajax data to existing array
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
-        			activity_array_produto_labels.push(data);
+//        			activity_array_produto_labels.push({y:data});
         			
         			activity_array_produto.push(parseInt(data));
         			
         			//remove first array entry
-        			activity_array_produto.splice(1, 1);
+//        			activity_array_produto.splice(1, 1);
         			//update data object with new array
         			var data = {
         				
-        					labels:[activity_array_produto_labels],
-        					series: [activity_array_produto]
+        					labels:['TEMAKI', 'SUSHI', 'BEBIDAS'],
+        					series: [activity_array_produto],
         			};
         			//update and refresh chart
         			 emailsSubscriptionChart.update(data);
@@ -237,9 +162,56 @@ demo = {
         	});
         	
         	
+        	
+        	
+        	$.ajax({
+        		url: "/restaurante/chart/mesasTempo2/",
+        		success: function(data) {
+        			//add new ajax data to existing array
+        		
+//        			activity_array_mesa_labels.push(data.normalized["numero"]);
+        			
+//        			activity_array_mesa_labels.push({x:data});
+        			
+//        			var dataa = [JSON.parse(data)];
+        			
+//        			var json = [data];
+        			activity_array_mesa_labels.push(data);
+        			activity_array_mesa_labels.splice(0,4,data.toString());
+//        			activity_array_mesa_labels.sort(compararNumeros);
+        			
+        			activity_array_mesa.push(parseInt(data));
+//        			activity_array_mesa.splice(0,5);
+        			
+//        			for (var i in data) { 
+//        			
+//        				var num = data[i]["numero"];
+//        				
+//        				activity_array_mesa_labels.push(num);
+//        			}
+        			
+        			
+        			
+        			
+        			
+        			//remove first array entry
+//        			activity_array_mesa.splice(1, 1);
+        			//update data object with new array
+        			var data = {
+        				
+        					labels:[activity_array_mesa_labels],
+        					series:[activity_array_mesa],
+        			};
+        			//update and refresh chart
+        			completedTasksChart.update(data);
+        		}
+        	});
+        	
+        	
+        	
         }
         
-        setInterval(Refresh, 15000);
+        setInterval(Refresh, 30000);
        
 //        var dataa = {
 //				series: [activity_array],
@@ -251,12 +223,12 @@ demo = {
 
         /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
-        dataCompletedTasksChart = {
-            labels: ['15min', '30min', '60min', '120min'],
-            series: [
-                [01, 02, 03, 04]
-            ]
-        };
+//        dataCompletedTasksChart = {
+//            labels: ['15min', '30min', '60min', '120min'],
+//            series: [
+//                [01, 02, 03, 04]
+//            ]
+//        };
 
         optionsCompletedTasksChart = {
             lineSmooth: Chartist.Interpolation.cardinal({
@@ -272,7 +244,13 @@ demo = {
             },
         }
 
-        var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+         completedTasksChart = new Chartist.Line('#completedTasksChart',
+        		
+        		{
+        		labels:[activity_array_mesa_labels],
+        		series:[activity_array_mesa],
+        			
+        }, optionsCompletedTasksChart,responsiveOptions);
 
         // start animation for the Completed Tasks Chart - Line Chart
         md.startAnimationForLineChart(completedTasksChart);
@@ -306,7 +284,7 @@ demo = {
                 seriesBarDistance: 5,
                 axisX: {
                     labelInterpolationFnc: function(value) {
-                        return value;
+                        return value[0];
                     }
                 }
             }]
@@ -314,9 +292,9 @@ demo = {
         
         emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart',
         		{
-            labels: [activity_array_produto_labels],
-            series: 
-                [activity_array_produto]
+			labels:['TEMAKI', 'SUSHI', 'BEBIDAS'],
+
+            series:[activity_array_produto],
 
             
         }, optionsEmailsSubscriptionChart, responsiveOptions);

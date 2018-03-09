@@ -4,8 +4,10 @@ package com.tecsoluction.restaurante.rest;
 
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.util.Graficos;
 import com.tecsoluction.restaurante.util.StatusPedido;
@@ -31,9 +33,11 @@ public class ChartControllerRest {
 
 	
     private final PedidoVendaServicoImpl pedidoVendaServico;
+    
 
     private ClienteServicoImpl clienteServico;
     
+    private final MesaServicoImpl mesaServico;
     
     private ArrayList<String> dias = new ArrayList<String>() ;
     
@@ -43,16 +47,21 @@ public class ChartControllerRest {
     
     public List<Integer> VendasInt = new ArrayList<Integer>();
     
+    public List<Mesa> mesas = new ArrayList<Mesa>();
+    
     public Map<Item,String> itens = new HashMap<Item,String>();
     
     public Map<Item,String> itensSomados = new HashMap<Item,String>();
     
+    public List<Integer> mesastempo = new ArrayList<Integer>();
+    
 
 
     @Autowired
-    public ChartControllerRest(PedidoVendaServicoImpl pedidoVendaServico, ClienteServicoImpl clienteServico) {
+    public ChartControllerRest(PedidoVendaServicoImpl pedidoVendaServico, ClienteServicoImpl clienteServico,MesaServicoImpl mesaserv) {
         this.pedidoVendaServico = pedidoVendaServico;
         this.clienteServico = clienteServico;
+        this.mesaServico = mesaserv;
         this.VendasInt.clear();
     }
 
@@ -150,12 +159,45 @@ public class ChartControllerRest {
         itensSomados = new HashMap<>();
         
         itensSomados = grafico.ProdutosMaisVendidosOperacaoSoma(itens);
+        
+        System.out.println("itens:" + itens);
+        System.out.println("itensSomados:" + itensSomados);
 
     	
-        return itensSomados;
+        return itens;
     }
 	
+	@GetMapping(value = "/mesasTempo/")
+    public List<Mesa> MesaTempoDados() {
+   	
+
+		mesas = mesaServico .findAll();
+		
+		grafico = new Graficos();
+		
+		mesastempo = grafico.MesasTodas(mesas);
+		
+		System.out.println("mesasTemppo" + mesastempo);
+		
+   	
+       return mesas;
+   }
 	
+	@GetMapping(value = "/mesasTempo2/")
+    public List<Integer> MesaTempoDadosS() {
+   	
+
+		mesas = mesaServico .findAll();
+		
+		grafico = new Graficos();
+		
+		mesastempo = grafico.MesasTodas(mesas);
+		
+		System.out.println("mesasTemppo" + mesastempo);
+		
+   	
+       return mesastempo;
+   }
 	
 
 	/**

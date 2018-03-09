@@ -2,6 +2,7 @@ package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.*;
 import com.tecsoluction.restaurante.service.impl.*;
+import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.slf4j.Logger;
@@ -136,6 +137,9 @@ public class HomeController {
     private
     List<Banco> bancos;
     
+    private
+    List<Item> itemsProntos = new ArrayList<Item> ();
+    
 
 
     @Autowired
@@ -180,6 +184,8 @@ public class HomeController {
         clientess = clienteService.findAll();
         pedidovendas = pedidovendaService.findAll();
         caixas = caixaService.findAll();
+        
+//        itemsProntos = buscarItemPronto(pedidovendas);
 
 
         //News
@@ -213,7 +219,7 @@ public class HomeController {
         model.addAttribute("bancos", bancosNovos);
         model.addAttribute("reservas", reservaNovas);
         model.addAttribute("caixas", caixas);
-
+//        model.addAttribute("itemsprontos", itemsProntos);
     }
 
 
@@ -466,6 +472,36 @@ public class HomeController {
         }
         
     } 
+    
+    
+    
+//    public List<Item> buscarItemPronto(List<PedidoVenda> vendas) {
+//
+//    	List<Item> itensProntos = new ArrayList<Item>();
+//        
+//    	
+//    	
+//        for (PedidoVenda v : vendas) {
+//
+//        	
+//        	  for (Item key : v.getItems().keySet()) {
+//        	
+//        		  if(key.getSituacao() == SituacaoItem.PRONTO){
+//        			  
+//        			  itensProntos.add(key);
+//        			  
+//        		  }
+//        		  
+//        		  
+//        	  }
+//        	
+//     
+//	            
+//        }
+//        
+//        
+//        return itensProntos;
+//    } 
     
     
     }
