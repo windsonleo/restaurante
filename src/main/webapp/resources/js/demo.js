@@ -117,7 +117,8 @@ demo = {
         function Refresh() {
         	
         	$.ajax({
-        		url: "/restaurante/chart/vendasDias/",
+//        		url: "/restaurante/chart/vendasDias/",
+        		url: "/chart/vendasDias/",
         		success: function(data) {
         			//add new ajax data to existing array
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
@@ -140,7 +141,8 @@ demo = {
         	//segundo grafico
         	
         	$.ajax({
-        		url: "/restaurante/chart/produtosmais/",
+//        		url: "/restaurante/chart/produtosmais/",
+        		url: "/chart/produtosmais/",
         		success: function(data) {
         			//add new ajax data to existing array
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
@@ -165,7 +167,8 @@ demo = {
         	
         	
         	$.ajax({
-        		url: "/restaurante/chart/mesasTempo2/",
+//        		url: "/restaurante/chart/mesasTempo2/",
+        		url: "/chart/mesasTempo2/",
         		success: function(data) {
         			//add new ajax data to existing array
         		
