@@ -775,7 +775,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           getservice().edit(pv);
 
         
-          return new ModelAndView("redirect:/item/detalhes?id=" + pv.getId());
+          return new ModelAndView("redirect:/pedidovenda/item/detalhes?id=" + pv.getId());
        
         
         }
