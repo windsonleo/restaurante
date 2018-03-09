@@ -128,6 +128,13 @@
 				
 				    </c:when> 
 				    
+				<c:when test="${pedidovenda.status=='ENTREGUE'}">
+
+                  <td><span class="label label-success">${pedidovenda.status}</span></td>
+
+				
+				    </c:when> 
+				    
 				    <c:when test="${pedidovenda.status=='CANCELADO'}">
 
                   <td><span class="label label-danger">${pedidovenda.status}</span></td>

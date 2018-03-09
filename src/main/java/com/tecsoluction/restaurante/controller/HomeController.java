@@ -504,6 +504,28 @@ public class HomeController {
 //    } 
     
     
+//    @RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+//    public ModelAndView ItemDetalhes(Locale locale, Model model, HttpServletRequest request) {
+//       
+//    	
+//    	logger.info("Welcome item detalhes ! The client locale is {}.", locale);
+//    	
+//    	
+//    	UUID idf = UUID.fromString(request.getParameter("id"));
+//    	
+//    	PedidoVenda pv = pedidovendaService.findOne(idf);
+//    	
+//        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+//        
+//        
+//        detalhesitem.addObject("pedidovenda",pv);
+//       
+//
+//        return detalhesitem;
+//    } 
+    
+    
+    
     }
         
         

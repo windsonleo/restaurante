@@ -26,10 +26,10 @@
         <security:intercept-url pattern="/resources/**" access="permitAll"/>
         <security:intercept-url pattern="/bundle**" access="permitAll"/>
          <security:intercept-url pattern="/sass**" access="permitAll"/>
-        <security:intercept-url pattern="/login**" access="permitAll"/>
+        <security:intercept-url pattern="/login/**" access="permitAll"/>
          <security:intercept-url pattern="/esqueceu/**" access="permitAll"/>
-        <security:intercept-url pattern="/erro**" access="permitAll"/>
-        <security:intercept-url pattern="/acessonegado**" access="permitAll"/>
+        <security:intercept-url pattern="/erro/**" access="permitAll"/>
+        <security:intercept-url pattern="/acessonegado/**" access="permitAll"/>
         <security:intercept-url pattern="/cardapio/inicio/**" access="permitAll"/>
                 <security:intercept-url pattern="/enviaremail/**" access="permitAll"/>
                 <security:intercept-url pattern="/pedidovenda/status/FECHADO" access="permitAll"/>
@@ -45,8 +45,10 @@
         <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/pedidocompra/movimentacao" access="hasRole('ROLE_COMPRA')"/>
         <security:intercept-url pattern="/formapagamento/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
-
-
+       <security:intercept-url pattern="/item/detalhes/**" access="hasRole('ROLE_MEMBRO')"/>
+ <security:intercept-url pattern="/pedidovenda/item/entregar/**" access="hasRole('ROLE_MEMBRO')"/>
+ 
+ 
         <security:logout logout-url="/logout"   logout-success-url="/login"  invalidate-session="true" delete-cookies="true"/>
         <!--         		<security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 

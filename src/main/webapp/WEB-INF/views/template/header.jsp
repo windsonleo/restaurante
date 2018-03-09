@@ -55,14 +55,14 @@
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="material-icons">notifications</i>
-                  <span class="notification" >${itemsprontos.size()}</span>
+                  <span class="notification" >${itemsprontospv.size()}</span>
                   <p class="hidden-lg hidden-md">Notifications</p>
                </a>
                <ul class="dropdown-menu">
                   
-               <c:forEach var="item" items="${itemsprontos}">
+               <c:forEach var="pedv" items="${itemsprontospv}">
                   <li>
-                     <a href="#">${item.nome}</a>
+                     <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${pedv.id}">${pedv.items}</a>
                   </li>
                  </c:forEach>
 

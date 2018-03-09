@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -734,6 +735,70 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
         
         }
+    
+    
+    
+    @RequestMapping(value = "/item/entregar", method = RequestMethod.GET)
+    public ModelAndView ItemEntrgue(HttpServletRequest request) {
+    	
+    	  UUID idf = UUID.fromString(request.getParameter("id"));
+          
+          
+          String keyy = request.getParameter("key");
+          
+      
+
+          PedidoVenda pv = getservice().findOne(idf);
+          
+
+          Map<Item,String> pcitens = pv.getItems();
+          
+          
+          
+          for (Item key : pcitens.keySet()) {
+          	
+          	System.out.println("key" + key.getNome());
+          	System.out.println("keyy" + keyy);
+          	
+          	if(key.getNome().equals(keyy)){
+          		
+          		key.setSituacao(SituacaoItem.ENTREGUE);
+          		
+          	}
+          	
+
+          }
+          
+          pv.setItems(pcitens);
+          
+          
+          getservice().edit(pv);
+
+        
+          return new ModelAndView("redirect:/item/detalhes?id=" + pv.getId());
+       
+        
+        }
+    
+    
+    @RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
+    public ModelAndView ItemDetalhes(Locale locale, Model model, HttpServletRequest request) {
+       
+    	
+    	
+    	
+    	UUID idf = UUID.fromString(request.getParameter("id"));
+    	
+    	PedidoVenda pv = pedidovendaService.findOne(idf);
+    	
+        ModelAndView detalhesitem = new ModelAndView("detalhesitem");
+        
+        
+        detalhesitem.addObject("pedidovenda",pv);
+       
+
+        return detalhesitem;
+    } 
     
     
     

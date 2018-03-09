@@ -708,6 +708,14 @@
                                                 </li>
                                                 
                                                 <li class="">
+                                                    <a href="#entregue" data-toggle="tab">
+                                                        <i class="material-icons">room_service</i> ENTREGUE
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                
+                                                </li>
+                                                
+                                                <li class="">
                                                     <a href="#settings" data-toggle="tab">
                                                         <i class="material-icons">warning</i> RECUSADA
                                                         <div class="ripple-container"></div>
@@ -862,6 +870,65 @@
 															                  <span class="user-info"> Fornecedor : ${pedidocompra.fornecedor} </span>
 															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidocompra.data}" /> 
 															                  <a href="#"></a> Itens : ${pedidocompra.items} </span></p>
+															                  
+<%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
+															                  
+															                </div>
+															                
+														                </td>
+														                
+<!-- 														 <td class="td-actions text-right"> -->
+<!--                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+<!--                                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"> -->
+<!--                                                                 <i class="material-icons">close</i> -->
+<!--                                                             </button> -->
+<!--                                                         </td> -->
+																
+																    </c:when>    
+																    
+																    <c:otherwise>
+								
+								
+																    </c:otherwise>
+																
+																</c:choose>
+			              	
+			              	
+                                                         </tr>
+			              								</c:forEach>
+             
+                                                       
+			              								</tbody>
+			              								</table>
+			              								</div>
+			              								
+			              			<div class="tab-pane" id="entregue">
+                                            <table class="table">
+                                                <tbody>
+                                                  <c:forEach var="pv" items="${pedidocomprasnovos}">
+                                                    			<tr>
+                                                           
+                                                       		
+								                                  <c:choose> 
+																    <c:when test="${pv.status=='ENTREGUE'}">
+																    
+																    <td>
+			                                                            <div class="image-responsive">
+																			<i class="material-icons" style="color:green;"> shopping_cart</i>
+			                                                            </div>
+			                                                        </td> 																    
+																    
+																       <td>
+<!-- 														                <div class="user-thumb"> <img width="40" height="40" alt="User" src="resources/images/demo/av3.jpg"> </div> -->
+															                
+															                <div class="article-post">
+															                
+															                 <span class="user-info"> ${pv.id} </span></br>
+															                  <span class="user-info"> fornecedor : ${pv.fornecedor} </span>
+															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pv.data}" /> 
+															                  <a href="#"></a> Itens : ${pv.items} </span></p>
 															                  
 <%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
 															                  
