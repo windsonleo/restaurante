@@ -56,10 +56,6 @@
 
 
 <div class="wrapper">
-        
-<!--         <div class="main-panel ps-container ps-theme-default ps-active-y"> -->
-
-        <div class="main-panel">
 
 
             <tiles:insertAttribute name="header"/>
@@ -68,7 +64,6 @@
 
             <tiles:insertAttribute name="footer"/>
             
-         </div>
 </div>
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script> --%>
