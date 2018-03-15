@@ -28,12 +28,12 @@
 						<div class="col-md-6 col-md-offset-3">
 							<div class="profile-tabs">
 			                    <div class="nav-align-center">
-									<ul class="nav nav-pills" role="tablist">
+									<ul class="nav nav-pills-danger" role="tablist">
 										
 										<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 										
 										<li class="">
-											<a href=# ${categoria.nome} role="tab" data-toggle="tab">
+											<a href=#${categoria.nome} role="tab" data-toggle="tab">
 												<i class="material-icons">camera</i>
 												${categoria.nome}
 											</a>
