@@ -12,7 +12,7 @@
 	                <div class="row">
 	                    <div class="profile">
 	                        <div class="avatar">
-	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/${empresa.logo}.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
+	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/${empresa.logo}.png" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
 	                            <h3 class="title">${usuario.username}</h3>
@@ -29,28 +29,25 @@
 							<div class="profile-tabs">
 			                    <div class="nav-align-center">
 									<ul class="nav nav-pills" role="tablist">
+										
+										<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
+										
 										<li class="active">
-											<a href="#studio" role="tab" data-toggle="tab">
+											<a href=#"${categoria.nome }" role="tab" data-toggle="tab">
 												<i class="material-icons">camera</i>
-												Dados Pessoais
+												${categoria.nome }
 											</a>
 										</li>
-										<li>
-				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">palette</i>
-												Roles
-				                            </a>
-				                        </li>
-				                        <li>
-				                            <a href="#shows" role="tab" data-toggle="tab">
-												<i class="material-icons">favorite</i>
-				                                Favoritos
-				                            </a>
-				                        </li>
+										
+										</c:forEach>
+
 				                    </ul>
 
+
+							<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
+									
 				                    <div class="tab-content gallery">
-										<div class="tab-pane active" id="studio">
+										<div class="tab-pane active" id="${categoria.nome }">
 				                            <div class="row">
 												<div class="col-md-6">
 													<img src="../assets/img/examples/chris1.jpg" class="img-rounded" />
@@ -62,6 +59,8 @@
 												</div>
 				                            </div>
 				                        </div>
+				                        
+				                        
 				                        <div class="tab-pane text-center" id="work">
 											<div class="row">
 												<div class="col-md-6">
@@ -90,6 +89,11 @@
 				                        </div>
 
 				                    </div>
+				                    
+				                    </c:forEach>
+				                    
+				                    
+				                    
 								</div>
 							</div>
 							<!-- End Profile Tabs -->
