@@ -12,11 +12,11 @@
 	                <div class="row">
 	                    <div class="profile">
 	                        <div class="avatar">
-	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/${empresa.logo}.png" alt="Circle Image" class="img-circle img-responsive img-raised">
+	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/logo3ddd.png" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
-	                            <h3 class="title">${usuario.username}</h3>
-								<h6>${usuario.email}</h6>
+	                            <h3 class="title">Cardápio</h3>
+								<h6>${categoria.nome}</h6>
 	                        </div>
 	                    </div>
 	                </div>
@@ -39,14 +39,17 @@
 											</a>
 										</li>
 										
+									
+									
 										</c:forEach>
 
 				                    </ul>
 
 
-							<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 									
 				                    <div class="tab-content gallery">
+				                    <c:forEach var="categoria" items="${categoriaList}" varStatus="id">
+				                    
 										<div class="tab-pane active" id="${categoria.nome }">
 				                            <div class="row">
 												<div class="col-md-6">
@@ -60,39 +63,9 @@
 				                            </div>
 				                        </div>
 				                        
-				                        
-				                        <div class="tab-pane text-center" id="work">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris8.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
-										<div class="tab-pane text-center" id="shows">
-											<div class="row">
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris4.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris6.jpg" class="img-rounded" />
-												</div>
-												<div class="col-md-6">
-													<img src="../assets/img/examples/chris7.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris5.jpg" class="img-rounded" />
-													<img src="../assets/img/examples/chris9.jpg" class="img-rounded" />
-												</div>
-											</div>
-				                        </div>
+				                            </c:forEach>
 
 				                    </div>
-				                    
-				                    </c:forEach>
-				                    
-				                    
 				                    
 								</div>
 							</div>
