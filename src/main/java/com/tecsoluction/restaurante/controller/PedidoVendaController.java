@@ -614,7 +614,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          this.pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -730,7 +730,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          this.pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -772,7 +772,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          this.pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -815,7 +815,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          this.pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -866,7 +866,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
-    	PedidoVenda pv = pedidovendaService.findOne(idf);
+    	this.pv = pedidovendaService.findOne(idf);
     	
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");
         
