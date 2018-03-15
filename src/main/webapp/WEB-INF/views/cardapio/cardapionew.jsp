@@ -4,7 +4,7 @@
 <%@ page session="true" %>
 
     <div class="wrapper">
-		<div class="header header-filter" style="background-image: url('../resources/images/city.jpg');"></div>
+		<div class="header header-filter" style="background-image: url('../resources/images/cardapio.jpg');"></div>
 
 		<div class="main main-raised">
 			<div class="profile-content">
@@ -12,7 +12,7 @@
 	                <div class="row">
 	                    <div class="profile">
 	                        <div class="avatar">
-	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/logosup.png" alt="Circle Image" class="img-circle img-responsive img-raised">
+	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/logo3ddd.png" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
 	                            <h3 class="title">Cardápio</h3>
@@ -32,8 +32,8 @@
 										
 										<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 										
-										<li class="active">
-											<a href=${categoria.nome} role="tab" data-toggle="tab">
+										<li class="">
+											<a href=# ${categoria.nome} role="tab" data-toggle="tab">
 												<i class="material-icons">camera</i>
 												${categoria.nome}
 											</a>
