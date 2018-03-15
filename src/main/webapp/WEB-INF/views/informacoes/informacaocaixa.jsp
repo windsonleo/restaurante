@@ -5,6 +5,9 @@
 
 
 <body class="profile-page">
+</br>
+</br>
+</br>
 <!-- 	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll"> -->
 <!--     	<div class="container"> -->
 <!--         	Brand and toggle get grouped for better mobile display -->
@@ -51,7 +54,7 @@
 <!--     </nav> -->
 
     <div class="wrapper">
-		<div class="header header-filter" style="background-image: url('../resources/images/city.jpg');"></div>
+<!-- 		<div class="header header-filter" style="background-image: url('../resources/images/city.jpg');"></div> -->
 
 		<div class="main main-raised">
 			<div class="profile-content">

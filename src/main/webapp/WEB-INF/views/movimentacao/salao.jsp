@@ -6,8 +6,6 @@
 
 <div id="content">
 
-  </br>
-  </br>
 
     <div class="container-fluid">
     
@@ -58,10 +56,12 @@
 		
         <hr>
         
-      <div class="row-fluid">
+      <div class="row" style="margin-top:-5em;">
+
+		<div class="col-md-6 col-md-offset-8">
 
 		
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
+		 <ul class="nav nav-pills" role="tablist">
 					
 					
 					<li class="" >
@@ -94,9 +94,10 @@
 
     </div>
     
-  </br>
-  </br>
-             <div class="row-fluid">
+    </div>
+    
+    
+             <div class="row">
              
 <!--              <div class="span8"> -->
                    

@@ -245,18 +245,18 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         //verifica se o pedido ja esta pronto ou foi canceldo ou foi pago
         
-//        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
-//        	
-//        	
-//        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
-//         	
-//        	 movpedidovenda.addObject("erros", erros);
-//        	 
-//        	 
-//        	 return movpedidovenda;
-//        	
-//        	
-//        }
+        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
+        	
+        	
+        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
+         	
+        	 movpedidovenda.addObject("erros", erros);
+        	 
+        	 
+        	 return movpedidovenda;
+        	
+        	
+        }
         
 
         produtosList = produtoService.findAll();
@@ -426,14 +426,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
-    	PedidoVenda pv= getservice().findOne(idf);
+    	PedidoVenda pv= pedidovendaService.findOne(idf);
         
     	VerificaTodosItensEntregues(pv);
     	
     	if(todosentregues){
     		
     		pv.setStatus(StatusPedido.FECHADO);
-    		getservice().edit(pv);
+    		pedidovendaService.edit(pv);
     		todosentregues = false;
     		
     		//mudar status dos itens do pedido de venda para fechado
@@ -616,7 +616,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          PedidoVenda pv = pedidovendaService.findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -653,7 +653,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
 //          pc.setStatus(StatusPedido.PRONTO);
           
-          getservice().edit(pv);
+          pedidovendaService.edit(pv);
 
         
           return new ModelAndView("redirect:/cozinha");
@@ -712,6 +712,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
            		
            	}
            	
+           	
            	if(qtditempedido == qtditementregue){
            		
            		todosentregues = true;
@@ -720,6 +721,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
            	
 
            }
+         
+         
 		
 	}
 
@@ -733,7 +736,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          PedidoVenda pv = pedidovendaService.findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -756,7 +759,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
 //          pc.setStatus(StatusPedido.PRONTO);
           
-          getservice().edit(pv);
+          pedidovendaService.edit(pv);
 
         
           return new ModelAndView("redirect:/cozinha");
@@ -775,7 +778,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          PedidoVenda pv = pedidovendaService.findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -798,7 +801,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
 //          pc.setStatus(StatusPedido.PRONTO);
           
-          getservice().edit(pv);
+          pedidovendaService.edit(pv);
 
         
           return new ModelAndView("redirect:/cozinha");
@@ -818,7 +821,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          PedidoVenda pv = getservice().findOne(idf);
+          PedidoVenda pv =pedidovendaService.findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -853,7 +856,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           }
           
           
-          getservice().edit(pv);
+          pedidovendaService.edit(pv);
 
         
           return new ModelAndView("redirect:/pedidovenda/item/detalhes?id=" + pv.getId());

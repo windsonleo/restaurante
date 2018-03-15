@@ -7,10 +7,6 @@
 <div id="content">
     <div id="content-header">
 
-     </br>
-	</br>
-	</br>
-
     </div>
     <div class="container-fluid">
         <hr>

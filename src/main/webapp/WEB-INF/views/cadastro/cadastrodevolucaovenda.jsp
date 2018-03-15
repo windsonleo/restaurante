@@ -7,8 +7,7 @@
 
 <div id="content">
   <div id="content-header">
-	</br>
-	 </br>
+	
 <!--     <h2>Cadastro de Devolucao de Venda</h2> -->
   </div>
   <div class="container-fluid"><hr>

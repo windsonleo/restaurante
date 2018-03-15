@@ -8,7 +8,6 @@
   <div id="content-header">
 	
 	</br>
-	 </br>
 <%-- 	 <p>${mesas.id}</p> --%>
 
   </div>

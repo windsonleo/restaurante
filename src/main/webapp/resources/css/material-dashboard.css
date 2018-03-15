@@ -860,7 +860,7 @@ h2.title {
 
 .sidebar:before,
 .off-canvas-sidebar:before {
-    opacity: .33;
+    opacity: .55;
 }
 
 .sidebar:after,
@@ -873,7 +873,7 @@ h2.title {
 .sidebar.has-image:after,
 .off-canvas-sidebar[data-image]:after,
 .off-canvas-sidebar.has-image:after {
-    opacity: .77;
+    opacity: .88;
 }
 
 .sidebar[data-color="blue"] .nav li.active a,
@@ -4062,7 +4062,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     font-weight: 500;
     min-width: 100px;
     text-align: center;
-    color: #555555;
+    color: linear-gradient(60deg, #26c6da, #00acc1);
     transition: all .3s;
 }
 
@@ -4456,7 +4456,7 @@ fieldset[disabled] .navbar .btn-link:focus {
 .navbar,
 .navbar.navbar-default {
     background-color: #FFFFFF;
-    color: #555555;
+    color: #FFFFFF;
 }
 
 .navbar .navbar-form .form-group input.form-control::-moz-placeholder,

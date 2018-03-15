@@ -61,7 +61,7 @@ public class PedidoServicoImpl extends AbstractEntityService<Pedido> {
 	@Override
 	public List<Pedido> findAllNew() {
 		// TODO Auto-generated method stub
-		return null;
+		return getDao().findAll();
 	}
 
 

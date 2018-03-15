@@ -72,7 +72,7 @@
 												</div>
 				                            </div>
 				                            
-				                            <span class="divider"></span>
+											<div class="space-30"></div>
 				                            
 				                            </c:forEach>
 				                        </div>

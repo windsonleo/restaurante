@@ -4,8 +4,8 @@
 <%@ page session="true" %>
 
 
-
-<nav class="navbar navbar-transparent navbar-absolute">
+<div class="navigation-example">
+<nav class="navbar navbar-transparent">
    <div class="container-fluid">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -37,9 +37,9 @@
                   <li>
                      <a href="${pageContext.request.contextPath}/empresa/cadastro">Cadastro</a>
                   </li>
-                  <li>
-                     <a href="#">Fiscal</a>
-                  </li>
+<!--                   <li> -->
+<!--                      <a href="#">Fiscal</a> -->
+<!--                   </li> -->
                   <!--                             <li> -->
                   <!--                                 <a href="#">Another Notification</a> -->
                   <!--                             </li> -->
@@ -98,3 +98,4 @@
       </div>
    </div>
 </nav>
+</div>

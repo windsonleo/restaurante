@@ -6,12 +6,8 @@
 
 
 <div id="content">
-</br>
-</br>
 
 <div class="container-fluid">
-	
-		<hr>
 
 		         <c:if test="${erros != null }">
 
@@ -53,8 +49,6 @@
 
 		</c:if>
 		
-        <hr>
-		
 		
 <!-- <div class="row-fluid"> -->
 		
@@ -90,9 +84,6 @@
   
 
 <!--     </div> -->
-    
-    </br>
-    </br>
 
 				 <div class="row">
                      

@@ -3,16 +3,11 @@
 
 <%@ page session="true" %>
 
-</br>
-</br>
-
 <div id="content">
 
+</br>
     <div id="content-header">
 
-</br>
-</br>
-</br>
 
     </div>
 

@@ -52,7 +52,7 @@
 
 		</c:if>
 		
-        <hr>
+<!--         <hr> -->
 
 <!--         <div class="card"> -->
 <!--             <div class="card-content"> -->
@@ -66,6 +66,121 @@
                
 <!--                </br> -->
 <!--                </br> -->
+
+
+
+						<div class="row" style="margin-top:-6em;">
+						
+							<div class="col-md-8 col-md-offset-3">
+						
+
+								<div class="nav">
+
+									<ul class="nav nav-pills" role="tablist">
+										
+										
+<!-- 																														<li class=""> -->
+<%-- 											<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta" aria-expanded="false"> --%>
+<!-- 												<i class="material-icons">money</i> -->
+<!-- 												Caixa -->
+<!-- 											</a> -->
+<!-- 										</li> -->
+										
+<!-- 											<li class=""> -->
+<%-- 											<a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" role="ta" data-toggle="ta" aria-expanded="false"> --%>
+<!-- 												<i class="material-icons">shopping_basket</i> -->
+<!-- 												Compras -->
+<!-- 											</a> -->
+<!-- 										</li> -->
+										
+																				
+										<li class="">
+											<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta" aria-expanded="true">
+												<i class="material-icons">room_service</i>
+												Cozinha
+											</a>
+										</li>
+										
+																				<li class="">
+											<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="ta" data-toggle="ta" aria-expanded="true">
+												<i class="material-icons">camera</i>
+												Reservas
+											</a>
+										</li>
+										
+
+																				<li class="">
+											<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta" aria-expanded="false">
+												<i class="material-icons">school</i>
+												Salao
+											</a>
+										</li>
+										
+
+<!-- 																														<li class=""> -->
+<%-- 											<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta" aria-expanded="false"> --%>
+<!-- 												<i class="material-icons">shopping_cart</i> -->
+<!-- 												Vendas -->
+<!-- 											</a> -->
+<!-- 										</li> -->
+										
+									
+				                    </ul>
+
+
+								</div>
+
+								</div>
+
+						</div>
+						
+						<div class="space-30"></div>
+
+
+<!-- <div class="row"> -->
+
+<!-- 	<div class="col-md-12"> -->
+	
+<!-- 		<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 				<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 				<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 						<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 				<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 						<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 								<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 										<button class="btn btn-primary btn-fab btn-fab-mini btn-round"> -->
+<!-- 		<i class="material-icons">favorite</i>  -->
+<!-- 		</button> -->
+		
+<!-- 	</div> -->
+
+<!-- </div> -->
+
+
+
+
+
          <sec:authorize access="hasRole('ROLE_ADM')">
                <div class="row">
                      
@@ -73,7 +188,7 @@
                          <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
-									<i class="icon-barcode"></i>
+									<i class="material-icons">business_center</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Produtos</p>
@@ -96,7 +211,7 @@
                          <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="orange">
-                                    <i class="icon icon-shopping-cart"></i>
+                                    <i class="material-icons">shopping_cart</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Vendas</p>
@@ -139,7 +254,7 @@
                            <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="blue">
-                                    <i class="icon icon-truck"></i>
+                                    <i class="material-icons">camera</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Reservas</p>
@@ -838,7 +953,7 @@
                                 <div class="card-content">
                                     <h4 class="title">Vendas Diarias</h4>
                                     <p class="category">
-                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> aumento em relaÃ§Ã£o Semana Anterior.</p>
+                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> relação a  Semana Anterior.</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -952,7 +1067,7 @@
 <!--               <i class="icon icon-th-large"></i> -->
              <p class="icon icon-th-large"> <i class="material-icons">school</i> </p>
             </div>
-            <a href="${pageContext.request.contextPath}/mesas/salao" class="small-box-footer">Mais info</a>
+            <a href="${pageContext.request.contextPath}/mesas/movimentacao" class="small-box-footer">Mais info</a>
           </div>
         </div>
         
@@ -1050,6 +1165,36 @@
               <i class="icon icon-money"></i>
             </div>
             <a href="${pageContext.request.contextPath}/caixa/rapido" class="small-box-footer">Mais Info </a>
+          </div>
+        </div>
+        
+                <div class="col-lg-2 col-md-4 col-sm-4">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>${caixas.size()}</h3>
+
+              <p>Compras</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-money"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao" class="small-box-footer">Mais Info </a>
+          </div>
+        </div>
+        
+                <div class="col-lg-2 col-md-4 col-sm-4">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>${caixas.size()}</h3>
+
+              <p>Financeiro</p>
+            </div>
+            <div class="icon">
+              <i class="icon icon-money"></i>
+            </div>
+            <a href="${pageContext.request.contextPath}/financeiro/inicio" class="small-box-footer">Mais Info </a>
           </div>
         </div>
         <!-- ./col -->
@@ -1563,87 +1708,87 @@
 			</ul>
 			
 			
-			                <nav class="navbar navbar-info">
-						<div class="container">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-default">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="#pablo"></a>
-							</div>
+<!-- 			           <nav class="navbar navbar-info"> -->
+<!-- 						<div class="container"> -->
+<!-- 							<div class="navbar-header"> -->
+<!-- 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-default"> -->
+<!-- 									<span class="sr-only">Toggle navigation</span> -->
+<!-- 									<span class="icon-bar"></span> -->
+<!-- 									<span class="icon-bar"></span> -->
+<!-- 									<span class="icon-bar"></span> -->
+<!-- 								</button> -->
+<!-- 								<a class="navbar-brand" href="#pablo"></a> -->
+<!-- 							</div> -->
 
-							<div class="collapse navbar-collapse" id="example-navbar-default">
-								<ul class="nav navbar-nav navbar-left">
+<!-- 							<div class="collapse navbar-collapse" id="example-navbar-default"> -->
+<!-- 								<ul class="nav navbar-nav navbar-left"> -->
 									
-									<li class="active">
-		                                <a href="${pageContext.request.contextPath}/cozinha">
-											<i class="material-icons">room_service</i>
-											Cozinha
-		                                </a>
-		                            </li>
+<!-- 									<li class="active"> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/cozinha"> --%>
+<!-- 											<i class="material-icons">room_service</i> -->
+<!-- 											Cozinha -->
+<!-- 		                                </a> -->
+<!-- 		                            </li> -->
 		                            
-		                            <li>
-		                                <a href="${pageContext.request.contextPath}/mesas/salao">
-											<i class="material-icons">table</i>
-		                                    Salao
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/mesas/salao"> --%>
+<!-- 											<i class="material-icons">table</i> -->
+<!-- 		                                    Salao -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/caixa/rapido">
-											<i class="material-icons">money</i>
-		                                    Caixa
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/caixa/rapido"> --%>
+<!-- 											<i class="material-icons">money</i> -->
+<!-- 		                                    Caixa -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/financeiro/inicio">
-											<i class="material-icons">money</i>
-		                                    Financeiro
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/financeiro/inicio"> --%>
+<!-- 											<i class="material-icons">money</i> -->
+<!-- 		                                    Financeiro -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/reserva/movimentacao">
-											<i class="material-icons">account_circle</i>
-		                                    Reserva
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/reserva/movimentacao"> --%>
+<!-- 											<i class="material-icons">account_circle</i> -->
+<!-- 		                                    Reserva -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao">
-											<i class="material-icons">account_circle</i>
-		                                    Compras
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/pedidocompra/movimentacao"> --%>
+<!-- 											<i class="material-icons">account_circle</i> -->
+<!-- 		                                    Compras -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/pedidovenda/rapido">
-											<i class="material-icons">account_circle</i>
-		                                    Vendas
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/pedidovenda/rapido"> --%>
+<!-- 											<i class="material-icons">account_circle</i> -->
+<!-- 		                                    Vendas -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            		                            <li>
-		                                <a href="${pageContext.request.contextPath}/estoque/movimentacao">
-											<i class="material-icons">account_circle</i>
-		                                    Estoque
-		                                <div class="ripple-container"></div></a>
-		                            </li>
+<!-- 		                            		                            <li> -->
+<%-- 		                                <a href="${pageContext.request.contextPath}/estoque/movimentacao"> --%>
+<!-- 											<i class="material-icons">account_circle</i> -->
+<!-- 		                                    Estoque -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
 		                            
-		                            <li>
-		                                <a href="#pablo">
-											<i class="material-icons">settings</i>
-											Settings
-		                                <div class="ripple-container"></div></a>
-		                            </li>
-								</ul>
-							</div>
-						</div>
-					</nav>
+<!-- 		                            <li> -->
+<!-- 		                                <a href="#pablo"> -->
+<!-- 											<i class="material-icons">settings</i> -->
+<!-- 											Settings -->
+<!-- 		                                <div class="ripple-container"></div></a> -->
+<!-- 		                            </li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</nav> -->
 
                 
                 </div>

@@ -6,8 +6,6 @@
 
 
 <div id="content">
-</br>
-</br>
 
 <div class="container-fluid">
 	
@@ -56,12 +54,15 @@
         <hr>
 		
 		
-<div class="row-fluid">
+<div class="row" style="margin-top:-5em;">
+
+	<div class="col-md-8 col-md-offset-9">
+
 		
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist">
+		 <ul class="nav nav-pills" role="tablist">
 					
 					
-					<li class="active" >
+					<li class="" >
 <%-- 						<a href="${pageContext.request.contextPath}/caixa/abrircaixa" role="ta" data-toggle="ta"> --%>
 							<a href="#" role="ta" data-toggle="modal" data-target="#ModalAbrirCaixa">
 							
@@ -91,8 +92,8 @@
 
     </div>
     
-    </br>
-    </br>
+    </div>
+    
 
 				 <div class="row">
                      

@@ -55,13 +55,14 @@
     
 <!--       <div class="container-fluid"> -->
     
-         <div class="row-fluid">
+         <div class="row" style="margin-top:-6em;">
 
+		<div class="col-md-8 col-md-offset-6">
 		
-		 <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" >
+		 <ul class="nav nav-pills" role="tablist" >
 					
 					
-					<li class="active" >
+					<li class="" >
 					
 <%-- 						<a href="${pageContext.request.contextPath}/produtocomposto/produzirprodutocomposto" role="tab" data-toggle="ta"> --%>
 						<a href="#" role="ta" data-toggle="modal" data-target="#ModalProduzirComposto">
@@ -91,9 +92,8 @@
   
 
     </div>
+    </div>
     
-    </br>
-    </br>
     
     <div class="row">
                      
