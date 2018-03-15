@@ -796,7 +796,7 @@
 
 
 
-	<definition name="cardapionew" extends="TemplateD">
+	<definition name="cardapionew" extends="TemplateE">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/cardapio/cardapionew.jsp" />
 
