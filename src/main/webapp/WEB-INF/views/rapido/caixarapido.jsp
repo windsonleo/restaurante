@@ -112,8 +112,7 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
-                                    </div>
+ <a href="#" data-toggle="modal"  data-target="#myAlertDinheiro" >Detalhes..</a>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -134,8 +133,7 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
-                                    </div>
+ <a href="#" data-toggle="modal"  data-target="#myAlertCcredito" >Detalhes..</a>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -155,8 +153,7 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
-                                    </div>
+ <a href="#" data-toggle="modal"  data-target="#myAlertCdebito" >Detalhes..</a>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,11 +173,293 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
-                                        <a href="#pablo">Detalhes..</a>
-                                    </div>
+ <a href="#" data-toggle="modal"  data-target="#myAlertDespesa" >Detalhes..</a>                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                       <div class="modal fade" id="myAlertDinheiro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Dinheiro</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Nome</th>
+            <th>Categoria</th>
+			<th>Preco</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="produto" items="${produtosnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${produto.nome }</td>
+            <td>${produto.categoria }</td>
+<!--             <td></td> -->
+            <td >&euro; ${produto.precovenda }</td>
+                    <td>${produto.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="myAlertCcredito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Cartao Credito</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Nome</th>
+            <th>Categoria</th>
+			<th>Preco</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="produto" items="${produtosnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${produto.nome }</td>
+            <td>${produto.categoria }</td>
+<!--             <td></td> -->
+            <td >&euro; ${produto.precovenda }</td>
+                    <td>${produto.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="myAlertCdebito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Cartao Debito</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Nome</th>
+            <th>Categoria</th>
+			<th>Preco</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="produto" items="${produtosnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${produto.nome }</td>
+            <td>${produto.categoria }</td>
+<!--             <td></td> -->
+            <td >&euro; ${produto.precovenda }</td>
+                    <td>${produto.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myAlertDespesa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Despesas</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Nome</th>
+            <th>Categoria</th>
+			<th>Preco</th>
+            <th>Cadastro por</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="produto" items="${produtosnovos}">
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${produto.nome }</td>
+            <td>${produto.categoria }</td>
+<!--             <td></td> -->
+            <td >&euro; ${produto.precovenda }</td>
+                    <td>${produto.criado_por}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div> 
+                        
+                        
+                        
+                        
                         
                         </div>
           
