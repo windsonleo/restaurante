@@ -12,7 +12,7 @@
 	                <div class="row">
 	                    <div class="profile">
 	                        <div class="avatar">
-	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/logo3ddd.png" alt="Circle Image" class="img-circle img-responsive img-raised">
+	                            <img src="${pageContext.request.contextPath}/resources/images/empresa/logosup.png" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
 	                            <h3 class="title">Cardápio</h3>
@@ -33,9 +33,9 @@
 										<c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 										
 										<li class="active">
-											<a href=#"${categoria.nome }" role="tab" data-toggle="tab">
+											<a href=${categoria.nome} role="tab" data-toggle="tab">
 												<i class="material-icons">camera</i>
-												${categoria.nome }
+												${categoria.nome}
 											</a>
 										</li>
 										
@@ -50,7 +50,7 @@
 				                    <div class="tab-content gallery">
 				                    <c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 				                    
-										<div class="tab-pane active" id="${categoria.nome }">
+										<div class="tab-pane" id="${categoria.nome}">
 				                            <div class="row">
 												<div class="col-md-6">
 													<img src="../assets/img/examples/chris1.jpg" class="img-rounded" />
