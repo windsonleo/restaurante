@@ -52,7 +52,7 @@
 															 <td class="td-actions text-right">
                                                            
                                                            
-                                                            <button type="button" rel="tooltip" title="Entregar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/entregar?id=${pedidovenda.id}&key=${item.key }' " >
+                                                            <button type="button" rel="tooltip" title="Entregar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/entregar?id=${pedidovenda.id}&key=${item.key }'">
                                                                 <i class="material-icons">done_all</i>
                                                             </button>                                                           
                                                            

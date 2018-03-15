@@ -20,6 +20,7 @@ import com.tecsoluction.restaurante.exception.CustomGenericException;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 /**
  * Created by clebr on 01/09/2016.
@@ -111,7 +112,13 @@ public class ContextoAplicacao {
     	
     	
         for (PedidoVenda v : vendas) {
-
+        	
+    	if(v.getStatus()==StatusPedido.PRONTO || (Ehoje(v.getData()))){
+    		
+    		itensProntosPedidoVenda.add(v);
+    		
+    	}
+        	
         	
         	  for (Item key : v.getItems().keySet()) {
         	
@@ -119,7 +126,7 @@ public class ContextoAplicacao {
         			  
         			  itensProntos.add(key);
         			  
-        			  itensProntosPedidoVenda.add(v);
+        			  
         			  
         		  }
         		  

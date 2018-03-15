@@ -645,6 +645,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           if  (todosprontos){
         	  
         	  pv.setStatus(StatusPedido.PRONTO);
+        	  todosprontos=false;
         	  
           }
           
@@ -845,6 +846,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           if  (todosentregues){
         	  
         	  pv.setStatus(StatusPedido.ENTREGUE);
+        	  todosentregues=false;
         	  
           }
           
