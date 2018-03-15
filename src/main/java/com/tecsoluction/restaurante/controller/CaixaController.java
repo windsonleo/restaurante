@@ -39,6 +39,9 @@ public class CaixaController extends AbstractController<Caixa> {
 
     private
     DespesaServicoImpl despesaService;
+    
+    private
+    ContasReceberServicoImpl contasreceberService;
 
 //
 //    private
@@ -54,13 +57,14 @@ public class CaixaController extends AbstractController<Caixa> {
 
     @Autowired
     public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService
-            , FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService) {
+            , FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService,ContasReceberServicoImpl aeceber) {
         super("caixa");
         this.pedidovendaService = pedidovendaService;
         this.caixaService = CpedidovendaService;
         this.formapagamentoService = formpedidovendaService;
         this.pagamentoService = ppedidovendaService;
         this.despesaService = desppedidovendaService;
+        this.contasreceberService=aeceber;
     }
 
     @InitBinder
@@ -157,102 +161,102 @@ public class CaixaController extends AbstractController<Caixa> {
     @RequestMapping(value = "/fechamentocaixa", method = RequestMethod.GET)
     public ModelAndView FechamentoCaixa(HttpServletRequest request) {
 
-        formapagamentoLista = formapagamentoService.findAll();
+//        formapagamentoLista = formapagamentoService.findAll();
+//
+//        List<PedidoVenda> pedidoVendaListamesa = new ArrayList<>();
+//
+//        List<PedidoVenda> pedidoVendaListainternet = new ArrayList<>();
+//
+//        List<PedidoVenda> pedidoVendaListabalcao = new ArrayList<>();
+//
+//        List<PedidoVenda> pedidoVendaListatelevendas = new ArrayList<>();
+//
+//        List<PedidoVenda> pedidoVendaListacancelados = new ArrayList<>();
+//
+//        List<FormaPagamento> pagdinheiro = new ArrayList<>();
+//
+//        List<FormaPagamento> pagcartaocredito = new ArrayList<>();
+//
+//        List<FormaPagamento> pagcartaodebito = new ArrayList<>();
+//
+////        Money total = Money.of(DadosGerenciais.usd, 0.0);
+//
+//
+//        String Dti = request.getParameter("dataini");
+//
+//        List<PedidoVenda> pvListData = pedidovendaService.getAllPedidoPorData(Dti);
+//
+//
+//        for (PedidoVenda aPvListData : pvListData) {
+//
+//
+//            PedidoVenda pv = new PedidoVenda();
+//
+//            pv = aPvListData;
+//
+//            OrigemPedido origem = pv.getOrigempedido();
+//            StatusPedido status = pv.getStatus();
+//
+//            if (origem == OrigemPedido.MESA) {
+//                pedidoVendaListamesa.add(pv);
+//
+//            } else if (origem == OrigemPedido.INTERNET) {
+//
+//                pedidoVendaListainternet.add(pv);
+//
+//            } else if (origem == OrigemPedido.BALCAO) {
+//
+//                pedidoVendaListabalcao.add(pv);
+//
+//
+//            } else if (origem == OrigemPedido.TELEVENDAS) {
+//
+//                pedidoVendaListatelevendas.add(pv);
+//
+//            } else if (status == StatusPedido.CANCELADO) {
+//
+//                pedidoVendaListacancelados.add(pv);
+//
+//            }
+//
+//
+//        }
+//        for (PedidoVenda pv : pvListData) {
+//
+//            List<Pagamento> pags = pv.getPagamento();
+//            for (Pagamento pagamento : pags) {
+//                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
+//                for (FormaPagamento valor : formapag) {
+//                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
+//                        pagdinheiro.add(valor);
+//                    }
+//
+//                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
+//                        pagcartaocredito.add(valor);
+//                    }
+//
+//                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
+//                        pagcartaodebito.add(valor);
+//                    }
+////                    total = pagamento.getValorPago().plus(total);
+//                }
+//            }
+//        }
+//
+//        ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
+//
+//        fecharcaixa.addObject("pedidovendaList", pvListData);
+//        fecharcaixa.addObject("pedidoVendaListacancelados", pedidoVendaListacancelados);
+//        fecharcaixa.addObject("pedidoVendaListatelevendas", pedidoVendaListatelevendas);
+//        fecharcaixa.addObject("pedidoVendaListabalcao", pedidoVendaListabalcao);
+//        fecharcaixa.addObject("pedidoVendaListainternet", pedidoVendaListainternet);
+//        fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
+////        fecharcaixa.addObject("total", total);
+//        fecharcaixa.addObject("pagdinheiro", pagdinheiro);
+//        fecharcaixa.addObject("pagcartaocredito", pagcartaocredito);
+//        fecharcaixa.addObject("pagcartaodebito", pagcartaodebito);
 
-        List<PedidoVenda> pedidoVendaListamesa = new ArrayList<>();
-
-        List<PedidoVenda> pedidoVendaListainternet = new ArrayList<>();
-
-        List<PedidoVenda> pedidoVendaListabalcao = new ArrayList<>();
-
-        List<PedidoVenda> pedidoVendaListatelevendas = new ArrayList<>();
-
-        List<PedidoVenda> pedidoVendaListacancelados = new ArrayList<>();
-
-        List<FormaPagamento> pagdinheiro = new ArrayList<>();
-
-        List<FormaPagamento> pagcartaocredito = new ArrayList<>();
-
-        List<FormaPagamento> pagcartaodebito = new ArrayList<>();
-
-//        Money total = Money.of(DadosGerenciais.usd, 0.0);
-
-
-        String Dti = request.getParameter("dataini");
-
-        List<PedidoVenda> pvListData = pedidovendaService.getAllPedidoPorData(Dti);
-
-
-        for (PedidoVenda aPvListData : pvListData) {
-
-
-            PedidoVenda pv = new PedidoVenda();
-
-            pv = aPvListData;
-
-            OrigemPedido origem = pv.getOrigempedido();
-            StatusPedido status = pv.getStatus();
-
-            if (origem == OrigemPedido.MESA) {
-                pedidoVendaListamesa.add(pv);
-
-            } else if (origem == OrigemPedido.INTERNET) {
-
-                pedidoVendaListainternet.add(pv);
-
-            } else if (origem == OrigemPedido.BALCAO) {
-
-                pedidoVendaListabalcao.add(pv);
-
-
-            } else if (origem == OrigemPedido.TELEVENDAS) {
-
-                pedidoVendaListatelevendas.add(pv);
-
-            } else if (status == StatusPedido.CANCELADO) {
-
-                pedidoVendaListacancelados.add(pv);
-
-            }
-
-
-        }
-        for (PedidoVenda pv : pvListData) {
-
-            List<Pagamento> pags = pv.getPagamento();
-            for (Pagamento pagamento : pags) {
-                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
-                for (FormaPagamento valor : formapag) {
-                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
-                        pagdinheiro.add(valor);
-                    }
-
-                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
-                        pagcartaocredito.add(valor);
-                    }
-
-                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
-                        pagcartaodebito.add(valor);
-                    }
-//                    total = pagamento.getValorPago().plus(total);
-                }
-            }
-        }
-
-        ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
-
-        fecharcaixa.addObject("pedidovendaList", pvListData);
-        fecharcaixa.addObject("pedidoVendaListacancelados", pedidoVendaListacancelados);
-        fecharcaixa.addObject("pedidoVendaListatelevendas", pedidoVendaListatelevendas);
-        fecharcaixa.addObject("pedidoVendaListabalcao", pedidoVendaListabalcao);
-        fecharcaixa.addObject("pedidoVendaListainternet", pedidoVendaListainternet);
-        fecharcaixa.addObject("pedidoVendaListamesa", pedidoVendaListamesa);
-//        fecharcaixa.addObject("total", total);
-        fecharcaixa.addObject("pagdinheiro", pagdinheiro);
-        fecharcaixa.addObject("pagcartaocredito", pagcartaocredito);
-        fecharcaixa.addObject("pagcartaodebito", pagcartaodebito);
-
-        return fecharcaixa;
+        return null;
 
     }
 
@@ -344,34 +348,34 @@ public class CaixaController extends AbstractController<Caixa> {
 
         ModelAndView caixarapido = new ModelAndView("caixarapido");
 
-        for (PedidoVenda pv : ls) {
+//        for (PedidoVenda pv : ls) {
 
-            List<Pagamento> pags = pv.getPagamento();
+//            List<Pagamento> pags = pv.getPagamento();
 
-            for (Pagamento pagamento : pags) {
-                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
-                for (FormaPagamento valor : formapag) {
-                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
-                        pagdinheiro.add(valor);
-                    }
-
-                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
-                        pagcartaocredito.add(valor);
-                    }
-
-                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
-                        pagcartaodebito.add(valor);
-                    }
-//                    total = pagamento.getValorPago().plus(total);
-                }
-            }
-        }
+//            for (Pagamento pagamento : pags) {
+//                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
+//                for (FormaPagamento valor : formapag) {
+//                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
+//                        pagdinheiro.add(valor);
+//                    }
+//
+//                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
+//                        pagcartaocredito.add(valor);
+//                    }
+//
+//                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
+//                        pagcartaodebito.add(valor);
+//                    }
+////                    total = pagamento.getValorPago().plus(total);
+//                }
+//            }
+//        }
 
         caixarapido.addObject("ls", ls);
         caixarapido.addObject("pagdinheiro", pagdinheiro);
         caixarapido.addObject("pagcartaodebito", pagcartaodebito);
         caixarapido.addObject("pagcartaocredito", pagcartaocredito);
-
+//
 
         return caixarapido;
     }
@@ -382,21 +386,36 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idforma = UUID.fromString(request.getParameter("idforma"));
+        
+        FormaPagamento formapag;
+        
+        formapag=formapagamentoService.findOne(idforma);
 
         PedidoVenda pedvenda = pedidovendaService.findOne(idf);
 
         pagamento = new Pagamento();
-
         pagamento.setStatus("ABERTO");
         pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
 
 //    	  pedvenda.getPagamento().add(pagamento);
+//        pagamento.getPedidos().add(pedvenda);
+        
+        pagamento.setFormaPagamentos(formapag);
+        
+       
 
         pedvenda.setStatus(StatusPedido.FINALIZADO);
-
-
-//    	  pagamentoService.save(pagamento);
+        
+        ContasReceber areceber = new ContasReceber(pedvenda);
+        
+        contasreceberService.save(areceber);
+  	  
         pedidovendaService.edit(pedvenda);
+        pagamento.setConta(areceber);
+        
+        
+        pagamentoService.save(pagamento);
 
 
 //    	List<PedidoVenda> ls = pedidovendaService.findAll();

@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.tecsoluction.restaurante.util.StatusConta;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -52,6 +54,24 @@ public class ContasPagar extends Conta implements Serializable {
     //CONSTRUTOR PADRAO
     public ContasPagar() {
         super();
+
+        
+    }
+    
+    
+    public ContasPagar(Recebimento recebimento) {
+        super();
+        
+//        FormaPagamento formapag = new FormaPagamento();
+
+        this.recebimento = recebimento;
+        
+        this.setValor(recebimento.getTotal());
+        this.setAtivo(true);
+        this.setNovo(true);
+        this.setPago(false);
+        this.setStatus(StatusConta.ABERTA);
+        this.setData_criacao(new Date());
 
         
     }

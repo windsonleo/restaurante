@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +49,7 @@ public class Caixa extends BaseEntity implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "caixa")
-    private List<Despesa> despesas;
+    private Set<Despesa> despesas;
     
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

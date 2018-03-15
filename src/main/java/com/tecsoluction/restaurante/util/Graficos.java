@@ -22,7 +22,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode
 public class Graficos implements Serializable{
 	
 	
@@ -44,9 +44,9 @@ public class Graficos implements Serializable{
 	 
 	private Map<Dias, BigDecimal> diasQuantidadeVenda;
 	
-	private Map<Item, String> produtoQuantidadeVendaAll;
+	private Map<Item, String> produtoQuantidadeVendaAll =new HashMap<Item, String>();;
 	
-	private Map<Item, String> produtoQuantidadesSoma = new HashMap<Item, String>();
+	private List<Item> produtoQuantidadesSoma = new ArrayList<Item>();
 	
 	private DataUtil datautil;
 	
@@ -57,6 +57,22 @@ public class Graficos implements Serializable{
 		
 		
 		this.vendas = lpv;
+        ProdutosVendidosTodos(vendas);
+		ProdutosMaisVendidosOperacaoSoma(getProdutoQuantidadeVendaAll());
+		
+		this.seg=0;
+		this.ter=0;
+
+		this.quart=0;
+
+		this.quin=0;
+
+		this.sex=0;
+
+		this.sab=0;
+
+
+		this.dom=0;
 		
 		
 	}
@@ -65,7 +81,7 @@ public class Graficos implements Serializable{
 	public Graficos() {
 		// TODO Auto-generated constructor stub
 		
-		this.vendas = new ArrayList<PedidoVenda>();
+	this.vendas = new ArrayList<PedidoVenda>();
 	this.seg=0;
 	this.ter=0;
 
@@ -158,9 +174,9 @@ public class Graficos implements Serializable{
 	
 	
 	// retorna todos os items vendidos e suas quantidades
-	public Map<Item,String> ProdutosVendidosTodos(List<PedidoVenda> vendas){
+	public void ProdutosVendidosTodos(List<PedidoVenda> vendas){
 		
-		produtoQuantidadeVendaAll = new HashMap<Item,String>();
+//		produtoQuantidadeVendaAll = new HashMap<Item,String>();
 		
 		for (int i = 0; i < vendas.size(); i++) {
 			
@@ -168,7 +184,7 @@ public class Graficos implements Serializable{
 			
 			for (Item key : pv.getItems().keySet()) {
 			
-				produtoQuantidadeVendaAll.put(key, pv.getItems().get(key));
+				getProdutoQuantidadeVendaAll().put(key, pv.getItems().get(key));
 			
 			
 		}
@@ -176,64 +192,47 @@ public class Graficos implements Serializable{
 		//retornar um objeto com os produtos mais vendidos e suas quantidades
 		
 	}
-		
-		return produtoQuantidadeVendaAll;
 	
 
 }
 	
-	public Map<Item,String> ProdutosMaisVendidosOperacaoSoma(Map<Item,String> itens){
+	public void ProdutosMaisVendidosOperacaoSoma(Map<Item,String> itens){
 
-
+		boolean tem=false;
 		
 		
 	//percorre toda lista e compara se o item ja existe na outra lista
 		for (Item key : itens.keySet()) {
 	        
-			//se existir o item na lista, soma o valores,senao add
-//			if(produtoQuantidadesSoma.containsKey(key)){
 				
-				String qtdant = itens.get(key);
-				
-				String qtdafter;
-				
-				if(produtoQuantidadesSoma.containsKey(key)){
-					
-					 qtdafter = produtoQuantidadesSoma.get(key);
-					
-				}else {
-				
-				qtdafter = "0.00";
-				
-				}
-				
-				
-				
-				BigDecimal antigo = new BigDecimal(qtdant);
+				BigDecimal antigo = new BigDecimal(itens.get(key));
 				 
-				BigDecimal vdepois = new BigDecimal(qtdafter);
 				
 				BigDecimal novo = new BigDecimal("0.00");
 				 
-				 novo = novo.add(antigo).add(vdepois);
+				 novo = novo.add(antigo);
 				 
 				
-				produtoQuantidadesSoma.replace(key,qtdant, novo.toString());
+			
+//				 tem=getProdutoQuantidadesSoma().containsKey(key);
+				 
 				
-//			} 
-			
-			
-//			else {
-//				
-//				produtoQuantidadesSoma.put(key,itens.get(key));
-//				
-//			}
+				if(tem){
+					
+					getProdutoQuantidadesSoma().add(key);
+					
+				}else{
+					
+					getProdutoQuantidadesSoma().add(key);
+					
+				}
+				
+					tem=false;
 			
 			
 		}
 		
-		
-		return produtoQuantidadesSoma;
+
 }
 	
 	
@@ -255,7 +254,10 @@ public class Graficos implements Serializable{
 			return mesastempo;
 		
 
-	}	
+	}
+		
+		
+		
 	
 	
 	

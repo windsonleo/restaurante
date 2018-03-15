@@ -216,8 +216,8 @@
 <!-- 									title="Informacoes" ><i class="icon-info-sign"></i></a> -->
 									
 									<a  rel="tooltip" title="Fechar Pedido"
-									href="${pageContext.request.contextPath}/pedidovenda/finalizacaovenda?id=${pedidovenda.id}"
-									title="Finalizar"  ><i class="icon-bolt"></i></a>
+									href="${pageContext.request.contextPath}/pedidovenda/fecharpedido?id=${pedidovenda.id}"
+									title="Finalizar"  ><i class="icon-bolt fa-2x"></i></a>
 									
 									
 <%-- 									<a href="#" data-toggle="modal" class="fa fa-remove" data-target="#myAlert${pedidovenda.id}"></a> --%>

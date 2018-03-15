@@ -42,7 +42,7 @@ public class Mesa extends BaseEntity implements Serializable {
     
     // recebe a hora de abertura menos a hora de fechamento da mesa
     
-    @ElementCollection(fetch=FetchType.EAGER)
+    @ElementCollection(fetch=FetchType.LAZY)
     @CollectionTable(name = "mesa_permanencia", joinColumns = @JoinColumn(name = "id"))
     private Set<Integer> minutos;
     

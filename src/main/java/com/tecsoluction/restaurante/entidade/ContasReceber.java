@@ -3,6 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.tecsoluction.restaurante.util.StatusConta;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,8 +44,8 @@ public class ContasReceber extends Conta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private PedidoVenda pedidovenda;
-
+    
+    
     
    
     //CONSTRUTOR PADRAO
@@ -53,34 +55,55 @@ public class ContasReceber extends Conta implements Serializable {
         
     }
     
-    
-    
-    
-    public BigDecimal CalcularTotal() {
+    public ContasReceber(PedidoVenda pv) {
+        super();
 
-    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
-    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
-
-
-        for (Item key : pedidovenda.getItems().keySet()) {
-        	
-        	//QTD ITEM
-        	String total = pedidovenda.getItems().get(key);
-        	
-        	totalpedidoaux = new  BigDecimal(total);
-        	
-        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
-        	
-        	totalped = totalped.multiply(totalpedidoaux);
-        	
-
-        	totalpedido = totalpedido.add(totalped);
-        }
-
-
-
-        return totalpedido;
+        
+        
+        this.setValor(pv.getTotalVenda());
+        this.setAtivo(true);
+        this.setNovo(true);
+        this.setPago(false);
+        this.setStatus(StatusConta.ABERTA);
+        this.setData_criacao(new Date());
+        this.setData(new Date());
+        this.setDatavencimento(new Date());
+        this.getPedidosAll().add(pv);
+        pv.setConta(this);
+        
+//        this.setFormapagamento(pv.getPagament);
+       
+        
     }
+    
+    
+    
+    
+//    public BigDecimal CalcularTotal() {
+//
+//    	BigDecimal totalpedido = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+//    	BigDecimal totalpedidoaux = new BigDecimal("0.00").setScale(2, RoundingMode.UP);
+//
+//
+//        for (Item key : getPedidos().get().keySet()) {
+//        	
+//        	//QTD ITEM
+//        	String total = pedidovenda.getItems().get(key);
+//        	
+//        	totalpedidoaux = new  BigDecimal(total);
+//        	
+//        	BigDecimal totalped = new BigDecimal(key.getPrecoUnitario().toString());
+//        	
+//        	totalped = totalped.multiply(totalpedidoaux);
+//        	
+//
+//        	totalpedido = totalpedido.add(totalped);
+//        }
+//
+//
+//
+//        return totalpedido;
+//    }
 
     @Override
     public String toString() {

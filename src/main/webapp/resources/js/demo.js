@@ -68,13 +68,13 @@ demo = {
        	
     	 var activity_array_produto=[51,29,36];
 
-//       	var activity_array_produto_labels=['SUSHI','TEMAKI','CERVEJA'];
+       	var activity_array_produto_labels="SUSHI,TEMAKI,CERVEJA";
     	
       	var activity_array=[15,8,22,4,9,25,11];
       	
       	var activity_array_mesa=[29,15,4,9,21];
       	
-      	var activity_array_mesa_labels=['001', '002', '003', '004', '005'];
+      	var activity_array_mesa_labels="001, 002, 003, 004, 005";
     	
  
         
@@ -98,7 +98,7 @@ demo = {
         		
 
 			labels:['DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
-        	series:[activity_array],
+        	series:[activity_array]
             	
   	
             
@@ -124,12 +124,12 @@ demo = {
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
         			activity_array.push(parseInt(data));
         			//remove first array entry
-        			activity_array.splice(0,1);
+        			activity_array.splice(1,1);
         			//update data object with new array
         			var data = {
         				
         					labels:['DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'],
-        					series: [activity_array],
+        					series: [activity_array]
         			};
         			//update and refresh chart
         			dailySalesChart.update(data);
@@ -146,17 +146,19 @@ demo = {
         		success: function(data) {
         			//add new ajax data to existing array
 //        			activity_array.labels['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'],
-//        			activity_array_produto_labels.push({y:data});
         			
-        			activity_array_produto.push(parseInt(data));
+//        			var nome = data;
+        			activity_array_produto_labels=data;
+        			activity_array_produto.push(data);      			
+        		
         			
         			//remove first array entry
 //        			activity_array_produto.splice(1, 1);
         			//update data object with new array
         			var data = {
         				
-        					labels:['TEMAKI', 'SUSHI', 'BEBIDAS'],
-        					series: [activity_array_produto],
+        					labels:activity_array_produto_labels,
+        					series: [activity_array_produto]
         			};
         			//update and refresh chart
         			 emailsSubscriptionChart.update(data);
@@ -179,12 +181,12 @@ demo = {
 //        			var dataa = [JSON.parse(data)];
         			
 //        			var json = [data];
-        			activity_array_mesa_labels.push(data);
-        			activity_array_mesa_labels.splice(0,4,data.toString());
+        			activity_array_mesa_labels=data;
+//        			activity_array_mesa_labels.splice(0,4,data.toString());
 //        			activity_array_mesa_labels.sort(compararNumeros);
         			
         			activity_array_mesa.push(parseInt(data));
-//        			activity_array_mesa.splice(0,5);
+        			activity_array_mesa.splice(1,1);
         			
 //        			for (var i in data) { 
 //        			
@@ -202,8 +204,8 @@ demo = {
         			//update data object with new array
         			var data = {
         				
-        					labels:[activity_array_mesa_labels],
-        					series:[activity_array_mesa],
+        					labels:activity_array_mesa_labels,
+        					series:[activity_array_mesa]
         			};
         			//update and refresh chart
         			completedTasksChart.update(data);
@@ -251,7 +253,7 @@ demo = {
         		
         		{
         		labels:[activity_array_mesa_labels],
-        		series:[activity_array_mesa],
+        		series:[activity_array_mesa]
         			
         }, optionsCompletedTasksChart,responsiveOptions);
 
@@ -295,9 +297,9 @@ demo = {
         
         emailsSubscriptionChart = Chartist.Bar('#emailsSubscriptionChart',
         		{
-			labels:['TEMAKI', 'SUSHI', 'BEBIDAS'],
+			labels:[activity_array_produto_labels],
 
-            series:[activity_array_produto],
+            series:[activity_array_produto]
 
             
         }, optionsEmailsSubscriptionChart, responsiveOptions);

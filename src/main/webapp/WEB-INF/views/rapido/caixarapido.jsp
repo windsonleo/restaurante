@@ -332,7 +332,7 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}'">
+                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}&idforma=2b0a3f0c-5f53-472e-b618-6e0ee7a81256&idcx=${caixa.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            

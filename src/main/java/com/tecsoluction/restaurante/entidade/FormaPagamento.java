@@ -40,7 +40,7 @@ public class FormaPagamento extends BaseEntity implements Serializable {
 
     private float percdesconto;
 
-    @ManyToMany(mappedBy = "formaPagamentos",fetch=FetchType.EAGER)
+    @ManyToMany(mappedBy = "formaPagamentos",fetch=FetchType.LAZY)
     private Set<Pagamento> pagamentos;
 
     //

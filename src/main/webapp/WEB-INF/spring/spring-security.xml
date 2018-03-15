@@ -43,6 +43,8 @@
                 <security:intercept-url pattern="/usuario/informacao/**" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
         <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
+        <security:intercept-url pattern="/contasreceber/**" access="hasRole('ROLE_FINANCEIRO')"/>
+        <security:intercept-url pattern="/contaspagar/**" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/pedidocompra/movimentacao" access="hasRole('ROLE_COMPRA')"/>
         <security:intercept-url pattern="/formapagamento/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
        <security:intercept-url pattern="/item/detalhes/**" access="hasRole('ROLE_MEMBRO')"/>

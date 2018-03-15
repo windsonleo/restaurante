@@ -13,7 +13,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -42,9 +45,9 @@ public abstract class Pedido extends BaseEntity {
     @Column(name = "total")
     private BigDecimal  total ;
 
-    @ManyToMany(mappedBy = "pedidos",fetch=FetchType.EAGER)
-    @JsonIgnore
-    private List<Pagamento> pagamento;
+//    @ManyToMany(mappedBy = "pedidos",fetch=FetchType.EAGER)
+//    @JsonIgnore
+//    private List<Pagamento> pagamento;
 
     //aberto,pendente,fechado,cancelado
     @Enumerated(EnumType.STRING)
@@ -52,6 +55,10 @@ public abstract class Pedido extends BaseEntity {
 
     
     private boolean ispago = false;
+    
+    @ManyToOne
+    @JoinColumn(name="conta_id")
+    private Conta conta;
 
     
     public Pedido() {

@@ -30,11 +30,16 @@ public class Pagamento extends BaseEntity implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date datapagamento;
 
-    @ManyToMany(fetch=FetchType.EAGER)
-    private List<PedidoVenda> pedidos;
+//    @OneToMany(fetch=FetchType.EAGER)
+//    private List<Pedido> pedidos;
 
-    @ManyToMany(fetch=FetchType.EAGER)
-    private Set<FormaPagamento> formaPagamentos;
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "formapagamentos_id")
+    private FormaPagamento formaPagamentos;
+    
+    @OneToOne(mappedBy = "pagamento")
+    @JoinColumn(name = "conta_id", referencedColumnName = "id")
+    private Conta conta ;
 
     private BigDecimal valorTotalPagamento = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 

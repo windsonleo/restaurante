@@ -51,7 +51,7 @@ public class ChartControllerRest {
     
     public Map<Item,String> itens = new HashMap<Item,String>();
     
-    public Map<Item,String> itensSomados = new HashMap<Item,String>();
+    public List<Item> itensSomados = new ArrayList<Item>();
     
     public List<Integer> mesastempo = new ArrayList<Integer>();
     
@@ -143,28 +143,28 @@ public class ChartControllerRest {
 	// e qtd vendida
     
 	@GetMapping(value = "/produtosmais/")
-     public Map<Item,String> VendasLabelDados() {
+     public List<Item> VendasLabelDados() {
     	
         logger.info("Welcome Produtos Mais LABELS E dADOS! The client locale is {}.", "seila");
 
         List<PedidoVenda> pedidovendas = pedidoVendaServico.findAll();
                
-        grafico = new Graficos();
-        
-        itens=new HashMap<Item,String>();
-        
-        
-        itens = grafico.ProdutosVendidosTodos(pedidovendas);
+        grafico = new Graficos(pedidovendas);
+//        
+//        itens=new HashMap<Item,String>();
+//        
+//        
+//        itens = grafico.ProdutosVendidosTodos(pedidovendas);
 
-        itensSomados = new HashMap<>();
+//        itensSomados = new HashMap<Item,String>();
         
-        itensSomados = grafico.ProdutosMaisVendidosOperacaoSoma(itens);
+        itensSomados = grafico.getProdutoQuantidadesSoma();
         
-        System.out.println("itens:" + itens);
+//        System.out.println("itens:" + itens);
         System.out.println("itensSomados:" + itensSomados);
 
     	
-        return itens;
+        return itensSomados;
     }
 	
 	@GetMapping(value = "/mesasTempo/")

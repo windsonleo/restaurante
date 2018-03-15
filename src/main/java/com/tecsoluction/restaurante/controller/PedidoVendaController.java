@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -77,6 +78,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private Estoque estoque;
     
     private boolean todosprontos = false;
+    
+    private boolean todosentregues = false;
+
 
     @Autowired
     public PedidoVendaController(PedidoVendaServicoImpl dao, ProdutoServicoImpl produtodao,
@@ -241,18 +245,18 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         
         //verifica se o pedido ja esta pronto ou foi canceldo ou foi pago
         
-        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
-        	
-        	
-        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
-         	
-        	 movpedidovenda.addObject("erros", erros);
-        	 
-        	 
-        	 return movpedidovenda;
-        	
-        	
-        }
+//        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
+//        	
+//        	
+//        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
+//         	
+//        	 movpedidovenda.addObject("erros", erros);
+//        	 
+//        	 
+//        	 return movpedidovenda;
+//        	
+//        	
+//        }
         
 
         produtosList = produtoService.findAll();
@@ -415,7 +419,39 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     }
     
     
-    
+    @RequestMapping(value = "fecharpedido", method = RequestMethod.GET)
+    public ModelAndView Fecharpedidos(HttpServletRequest request) {
+
+//        ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
+    	
+    	UUID idf = UUID.fromString(request.getParameter("id"));
+    	
+    	this.pv= getservice().findOne(idf);
+        
+    	VerificaTodosItensEntregues(pv);
+    	
+    	if(todosentregues){
+    		
+    		pv.setStatus(StatusPedido.FECHADO);
+    		
+    		//mudar status dos itens do pedido de venda para fechado
+    		
+    	}else
+    		
+    	{
+    		System.out.println("Nem todos itens estão fechados");
+    		
+    	}
+    	
+    	getservice().edit(pv);
+     
+
+//         novospedidos.addObject("produtosList", produtosList);
+//         novospedidos.addObject("itens", itens);
+//         novospedidos.addObject("pedidovenda", pv = new PedidoVenda());
+
+        return new ModelAndView("redirect:/pedidovenda/movimentacao");
+    }
     
     
     
@@ -652,6 +688,37 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
            }
 		
 	}
+    
+    
+    private void VerificaTodosItensEntregues(PedidoVenda pv2) {
+		// TODO Auto-generated method stub
+    	 int qtditempedido = pv2.getItems().size();
+    	 
+    	 int qtditementregue= 0;
+    	 
+    	 System.out.println("Qtd Item no Pedido: " + qtditempedido);
+    	 System.out.println("Qtd Item Pronto no Pedido: " + qtditementregue);
+         for (Item key : pv2.getItems().keySet()) {
+           	
+//           	System.out.println("key" + key.getNome());
+//           	System.out.println("keyy" + keyy);
+           	
+           	if(key.getSituacao()==SituacaoItem.ENTREGUE){
+           		
+           		qtditementregue = qtditementregue +1;
+           		
+           	}
+           	
+           	if(qtditempedido == qtditementregue){
+           		
+           		todosentregues = true;
+           		
+           	}
+           	
+
+           }
+		
+	}
 
 	@RequestMapping(value = "/item/cancelar", method = RequestMethod.GET)
     public ModelAndView CanceladoPedidovENDA(HttpServletRequest request) {
@@ -675,7 +742,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           	
           	if(key.getNome().equals(keyy)){
           		
-          		key.setSituacao(SituacaoItem.INTERROMPIDO);
+          		key.setSituacao(SituacaoItem.CANCELADO);
           		
           	}
           	
@@ -770,6 +837,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           }
           
           pv.setItems(pcitens);
+          
+          VerificaTodosItensEntregues(pv);
+          
+          //VERIFICAR SE TODOS OS ITENS ESTao PRONTOS
+          
+          if  (todosentregues){
+        	  
+        	  pv.setStatus(StatusPedido.ENTREGUE);
+        	  
+          }
           
           
           getservice().edit(pv);

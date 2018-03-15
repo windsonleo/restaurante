@@ -162,7 +162,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         
         	this.formas.add(formapag);
         	
-        	this.pagamento.setFormaPagamentos(formas);
+//        	this.pagamento.setFormaPagamentos(formapag);
         	this.pagamento.setStatus("ABERTO");
         
 //        getservice().save(pagamento);
