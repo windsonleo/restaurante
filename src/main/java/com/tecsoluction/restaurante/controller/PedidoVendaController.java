@@ -439,7 +439,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	}else
     		
     	{
-    		System.out.println("Nem todos itens estão fechados");
+    		System.out.println("Nem todos itens estao fechados");
     		
     	}
     	
