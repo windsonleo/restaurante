@@ -36,6 +36,13 @@
                 <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
         
     </definition>
+    
+            <definition name="TemplateE" template="/WEB-INF/template/templatecardapionew.jsp">
+               <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+                <put-attribute name="conteudo" value=""/>
+                <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+        
+    </definition>
 
 
 <!--     <definition name="login" extends="TemplateB"> -->
@@ -786,7 +793,14 @@
 			value="/WEB-INF/views/financeiro/inicio.jsp" />
 
 	</definition>
-	
+
+
+
+	<definition name="cardapionew" extends="TemplateD">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/cardapio/cardapionew.jsp" />
+
+	</definition>	
 	
 
 </tiles-definitions>

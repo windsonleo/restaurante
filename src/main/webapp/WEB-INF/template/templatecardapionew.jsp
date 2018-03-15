@@ -56,8 +56,6 @@
 
 
 <div class="wrapper">
-         
-        <tiles:insertAttribute name="navegacao"/>
         
 <!--         <div class="main-panel ps-container ps-theme-default ps-active-y"> -->
 
@@ -80,7 +78,7 @@
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js"></script> --%>
 
-<%-- <%-- <script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script> --%> 
+<%-- <%-- <script src="${pageContext.request.contextPath}/resources/js/matrix.login.js"></script> --%>
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> --%>
 

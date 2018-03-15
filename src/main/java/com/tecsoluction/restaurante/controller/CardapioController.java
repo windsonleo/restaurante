@@ -105,5 +105,16 @@ public class CardapioController   {
 		
 		return cardapio;
 	}
+	
+	@RequestMapping(value = "/cardapio/new", method = RequestMethod.GET)
+	public ModelAndView CardapioP(Locale locale, Model model,HttpServletRequest request) {
+		
+		ModelAndView cardapio = new ModelAndView("cardapionew");
+		
+		return cardapio;
+	}
+	
+	
+	
 }
 

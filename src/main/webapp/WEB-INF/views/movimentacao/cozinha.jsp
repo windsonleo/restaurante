@@ -270,15 +270,15 @@
 															 <td class="td-actions text-right">
                                                            
                                                            
-                                                            <button type="button" rel="tooltip" title="preparando" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/preparar?id=${pv.id}&key=${item.key }' " >
+                                                            <button type="button" rel="tooltip" title="preparando" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/preparar?id=${pv.id}&key=${item.key}'" >
                                                                 <i class="material-icons">done_all</i>
                                                             </button>                                                           
                                                            
-                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/pronto?id=${pv.id}&key=${item.key }' ">
+                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/pronto?id=${pv.id}&key=${item.key}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
-                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/cancelar?id=${pv.id}&key=${item.key }' " >
+                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/cancelar?id=${pv.id}&key=${item.key}'" >
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>

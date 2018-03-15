@@ -31,6 +31,7 @@
         <security:intercept-url pattern="/erro/**" access="permitAll"/>
         <security:intercept-url pattern="/acessonegado/**" access="permitAll"/>
         <security:intercept-url pattern="/cardapio/inicio/**" access="permitAll"/>
+         <security:intercept-url pattern="/cardapionew/**" access="permitAll"/>
                 <security:intercept-url pattern="/enviaremail/**" access="permitAll"/>
                 <security:intercept-url pattern="/pedidovenda/status/FECHADO" access="permitAll"/>
                    <security:intercept-url pattern="/chart/dias**" access="permitAll"/>

@@ -426,13 +426,15 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
-    	this.pv= getservice().findOne(idf);
+    	PedidoVenda pv= getservice().findOne(idf);
         
     	VerificaTodosItensEntregues(pv);
     	
     	if(todosentregues){
     		
     		pv.setStatus(StatusPedido.FECHADO);
+    		getservice().edit(pv);
+    		todosentregues = false;
     		
     		//mudar status dos itens do pedido de venda para fechado
     		
@@ -443,7 +445,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     		
     	}
     	
-    	getservice().edit(pv);
+    	
      
 
 //         novospedidos.addObject("produtosList", produtosList);
@@ -614,7 +616,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          this.pv = getservice().findOne(idf);
+          PedidoVenda pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -731,7 +733,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          this.pv = getservice().findOne(idf);
+          PedidoVenda pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -773,7 +775,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          this.pv = getservice().findOne(idf);
+          PedidoVenda pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -816,7 +818,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
       
 
-          this.pv = getservice().findOne(idf);
+          PedidoVenda pv = getservice().findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -868,7 +870,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
-    	this.pv = pedidovendaService.findOne(idf);
+    	PedidoVenda pv = pedidovendaService.findOne(idf);
     	
         ModelAndView detalhesitem = new ModelAndView("detalhesitem");
         
