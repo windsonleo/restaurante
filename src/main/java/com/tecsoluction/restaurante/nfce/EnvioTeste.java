@@ -47,7 +47,6 @@ public class EnvioTeste {
 	
 		try {
 
-            // Inicia As Configurações - ver https://github.com/Samuel-Oliveira/Java_NFe/wiki/1-:-Configuracoes
             iniciaConfigurações();
 
             TNFe nfe = new TNFe();
@@ -55,7 +54,6 @@ public class EnvioTeste {
             infNFe.setId("XXX");
             infNFe.setVersao("4.00");
 
-            // Informações NFCe
             Ide ide = new Ide();
             ide.setCUF("XXX");
             ide.setCNF("XXX");
