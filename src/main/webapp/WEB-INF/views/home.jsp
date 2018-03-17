@@ -286,7 +286,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${apagars.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -310,7 +310,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${recebers.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -334,7 +334,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${pagamentos.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -358,7 +358,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${despesas.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -476,7 +476,7 @@
     <thead>
         <tr>
 <!--             <th class="text-center">#</th> -->
-            <th>Id</th>
+<!--             <th>Id</th> -->
             <th>Data</th>
 			<th>Total</th>
             <th>Cadastro por</th>
@@ -489,9 +489,9 @@
         
 <!--             <td class="text-center">1</td> -->
             <td>${pedidovenda.data }</td>
-            <td>${pedidovenda.total }</td>
+<%--             <td>${pedidovenda.total }</td> --%>
 <!--             <td></td> -->
-            <td >&euro; ${pedidovenda.total }</td>
+            <td >&#8360; ${pedidovenda.total }</td>
                     <td>${pedidovenda.criado_por}</td> 
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
@@ -673,23 +673,23 @@
     <thead>
         <tr>
 <!--             <th class="text-center">#</th> -->
-            <th>Nome</th>
-            <th>Categoria</th>
-			<th>Preco</th>
-            <th>Cadastro por</th>
+            <th>Data</th>
+            <th>DataVencimento</th>
+			<th>Valor</th>
+            <th>Status por</th>
             <th class="text-right">Acao</th>
         </tr>
     </thead>
     <tbody>
-    <c:forEach var="produto" items="${produtosnovos}">
+    <c:forEach var="apagar" items="${apagars}">
         <tr>
         
 <!--             <td class="text-center">1</td> -->
-            <td>${produto.nome }</td>
-            <td>${produto.categoria }</td>
+            <td>${apagar.data }</td>
+            <td>${apagar.datavencimento }</td>
 <!--             <td></td> -->
-            <td >&euro; ${produto.precovenda }</td>
-                    <td>${produto.criado_por}</td> 
+            <td >&#8360; ${apagar.valor }</td>
+                    <td>${apagar.status}</td> 
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                     <i class="fa fa-user"></i>
@@ -743,23 +743,23 @@
     <thead>
         <tr>
 <!--             <th class="text-center">#</th> -->
-            <th>Nome</th>
-            <th>Categoria</th>
-			<th>Preco</th>
-            <th>Cadastro por</th>
+            <th>Data</th>
+            <th>DataVencimento</th>
+			<th>Valor</th>
+            <th>Status por</th>
             <th class="text-right">Acao</th>
         </tr>
     </thead>
     <tbody>
-    <c:forEach var="produto" items="${produtosnovos}">
+    <c:forEach var="receber" items="${recebers}">
         <tr>
         
 <!--             <td class="text-center">1</td> -->
-            <td>${produto.nome }</td>
-            <td>${produto.categoria }</td>
+            <td>${receber.data }</td>
+            <td>${receber.datavencimento }</td>
 <!--             <td></td> -->
-            <td >&euro; ${produto.precovenda }</td>
-                    <td>${produto.criado_por}</td> 
+            <td >&#8360; ${receber.valor }</td>
+                    <td>${receber.status}</td> 
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                     <i class="fa fa-user"></i>
@@ -812,23 +812,23 @@
     <thead>
         <tr>
 <!--             <th class="text-center">#</th> -->
-            <th>Nome</th>
-            <th>Categoria</th>
-			<th>Preco</th>
-            <th>Cadastro por</th>
+            <th>Data</th>
+            <th>Forma Pagamento</th>
+			<th>Valor</th>
+            <th>Conta</th>
             <th class="text-right">Acao</th>
         </tr>
     </thead>
     <tbody>
-    <c:forEach var="produto" items="${produtosnovos}">
+    <c:forEach var="pagamento" items="${pagamentos}">
         <tr>
         
 <!--             <td class="text-center">1</td> -->
-            <td>${produto.nome }</td>
-            <td>${produto.categoria }</td>
+            <td>${pagamento.datapagamento }</td>
+            <td>${pagamento.formaPagamentos }</td>
 <!--             <td></td> -->
-            <td >&euro; ${produto.precovenda }</td>
-                    <td>${produto.criado_por}</td> 
+            <td >&#8360; ${pagamento.valorTotalPagamento }</td>
+                    <td>${pagamento.conta}</td> 
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                     <i class="fa fa-user"></i>
@@ -882,22 +882,22 @@
         <tr>
 <!--             <th class="text-center">#</th> -->
             <th>Nome</th>
-            <th>Categoria</th>
-			<th>Preco</th>
-            <th>Cadastro por</th>
+            <th>Caixa</th>
+<!-- 			<th>Preco</th> -->
+<!--             <th>Cadastro por</th> -->
             <th class="text-right">Acao</th>
         </tr>
     </thead>
     <tbody>
-    <c:forEach var="produto" items="${produtosnovos}">
+    <c:forEach var="despesa" items="${despesas}">
         <tr>
         
 <!--             <td class="text-center">1</td> -->
-            <td>${produto.nome }</td>
-            <td>${produto.categoria }</td>
+            <td>${despesa.nome }</td>
+            <td>${despesa.caixa }</td>
 <!--             <td></td> -->
-            <td >&euro; ${produto.precovenda }</td>
-                    <td>${produto.criado_por}</td> 
+<%--             <td >&euro; ${produto.precovenda }</td> --%>
+<%--                     <td>${produto.criado_por}</td>  --%>
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                     <i class="fa fa-user"></i>
@@ -1065,7 +1065,7 @@
             </div>
             <div class="icon">
 <!--               <i class="icon icon-th-large"></i> -->
-             <p class="icon icon-th-large"> <i class="material-icons">school</i> </p>
+             <i class="icon icon-th-large"></i>
             </div>
             <a href="${pageContext.request.contextPath}/mesas/movimentacao" class="small-box-footer">Mais info</a>
           </div>
@@ -1172,7 +1172,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${caixas.size()}</h3>
+              <h3>${pedidocomprasnovos.size()}</h3>
 
               <p>Compras</p>
             </div>
@@ -1187,7 +1187,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${caixas.size()}</h3>
+              <h3>1</h3>
 
               <p>Financeiro</p>
             </div>

@@ -52,7 +52,7 @@
 						<div class="form-group label-floating  ">
                          <div class="checkbox">
                 <label>
-				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${fornecedor.ativo}" class="checkbox"/>Ativo?
+				<input readonly="readonly" id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${fornecedor.ativo}" class="checkbox"/>Ativo?
 				</label>
               </div>
                          </div>
@@ -61,7 +61,7 @@
 
 									<div class="form-group label-floating  ">
                                                     <label class="control-label">Nome Fantasia</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.nomefantasia}"
                                                                             placeholder"/>
@@ -73,7 +73,7 @@
 
 									<div class="form-group label-floating  ">
                                                     <label class="control-label">Razao Social</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.razaosocial}"
                                                                             placeholder=""/>
@@ -83,7 +83,7 @@
 
 									<div class="form-group label-floating  ">
                                                     <label class="control-label">Cnpj</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.cnpj}"
                                                                             placeholder=""/>
@@ -93,7 +93,7 @@
 
 									<div class="form-group label-floating  ">
                                                     <label class="control-label">Inscricao Estaduala</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${fornecedor.inscricaoestadual}"
                                                                             placeholder=""/>
@@ -134,8 +134,8 @@
                                     
                                     
                                     <div class="form-group label-floating  ">
-                                          <label class="control-label">Total de Pedidos Compras</label>
-  										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
+                                          <label class="control-label">Total de Recebimentos</label>
+  										<input id="pedidos" name="pedidos" class="form-control" type="text" value="${fornecedor.recebimento.size() }"
                                        		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div>                                    

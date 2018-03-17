@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tecsoluction.restaurante.dao.IRecebimentoDAO;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
 import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 
@@ -63,6 +64,11 @@ public class RecebimentoServicoImpl extends AbstractEntityService<Recebimento> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+//	
+//	public List<Fornecedor> getRecebimentosAll() {
+//	// TODO Auto-generated method stub
+//	return dao.getFornecedores();
+//}
 
 
 }

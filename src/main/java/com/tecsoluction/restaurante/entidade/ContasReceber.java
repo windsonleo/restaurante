@@ -44,7 +44,7 @@ public class ContasReceber extends Conta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    
+    private PedidoVenda pedidovenda;
     
     
    
@@ -59,7 +59,7 @@ public class ContasReceber extends Conta implements Serializable {
         super();
 
         
-        
+        this.pedidovenda = pv;
         this.setValor(pv.getTotalVenda());
         this.setAtivo(true);
         this.setNovo(true);

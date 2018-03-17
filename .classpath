@@ -34,5 +34,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/Bematech.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/java-nfe-4.00.3.jar" sourcepath="C:/Users/winds/Downloads/java-nfe-4.00.3.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

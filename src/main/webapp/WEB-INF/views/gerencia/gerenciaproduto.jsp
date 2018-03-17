@@ -49,7 +49,7 @@
  							<div class="form-group label-floating  ">
                                           <div class="checkbox">
                 <label>
-				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
+				<input readonly="readonly" id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
 				</label>
               </div>
                          </div>
@@ -57,7 +57,7 @@
                                        
 									<div class="form-group label-floating">
                                                     <label class="control-label">Nome</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.nome}"
                                                                             placeholder=""/>
@@ -68,7 +68,7 @@
                                     
 									<div class="form-group label-floating">
                                                     <label class="control-label">CodeBar</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.codebar}"
                                                                             placeholder=""/>
@@ -78,7 +78,7 @@
                                     
                                     <div class="form-group label-floating  ">
                                                     <label class="control-label">Fornecedor</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${produto.fornecedor}"
                                                                             placeholder=""/>
@@ -88,7 +88,7 @@
                                     
                                     <div class="form-group label-floating  ">
                                                     <label class="control-label">Preco Custo</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="<fmt:formatNumber type="currency"
                 															 value="${produto.precocusto}"/>"
@@ -100,7 +100,7 @@
                                     
                                     <div class="form-group label-floating  ">
                                                     <label class="control-label">Preco Venda</label>
-                                                    <input id="nome" class="form-control" name="nome"
+                                                    <input readonly="readonly" id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="<fmt:formatNumber type="currency"
                  															value="${produto.precovenda}"/>"
@@ -142,8 +142,8 @@
                                     
                                     <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos</label>
-  										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
-                                       		placeholder="" disabled="true"/>
+  										<input id="pedidos" name="pedidos" class="form-control" type="text" value="${produto.fornecedor }"
+                                       		placeholder="" disabled="true" />
                                				  <span class="material-input"></span>
                                     </div>                                    
 

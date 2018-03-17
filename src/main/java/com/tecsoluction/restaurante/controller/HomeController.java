@@ -83,6 +83,18 @@ public class HomeController {
 	   
     @Autowired 
     private EmpresaServicoImpl empresaServico;
+    
+    @Autowired 
+    private DespesaServicoImpl despesaServico;
+    
+    @Autowired 
+    private ContasReceberServicoImpl contareceberServico;
+    
+    @Autowired 
+    private ContasPagarServicoImpl contapagarServico;
+    
+    @Autowired 
+    private PagamentoServicoImpl pagamentoServico;
 
     private
     List<Cliente> clientess;
@@ -132,6 +144,7 @@ public class HomeController {
 
     private
     List<Pagamento> pagamentos;
+    
     
     
     private
@@ -194,6 +207,12 @@ public class HomeController {
         List<Cliente> clientesNovos = clienteService.findAllNew();
         List<Reserva> reservaNovas = reservaService.findAllNew();
         
+        
+        List<Despesa> despesas = despesaServico.findAll();
+        List<ContasReceber> contasreceber = contareceberServico.findAll();
+        List<ContasPagar> contaspagar = contapagarServico.findAll();
+        List<Pagamento> pagamento = pagamentoServico.findAll();
+
 
         
         
@@ -219,7 +238,11 @@ public class HomeController {
         model.addAttribute("bancos", bancosNovos);
         model.addAttribute("reservas", reservaNovas);
         model.addAttribute("caixas", caixas);
-//        model.addAttribute("itemsprontos", itemsProntos);
+        model.addAttribute("despesas", despesas);
+        model.addAttribute("apagars", contaspagar);
+        model.addAttribute("recebers", contasreceber);
+        model.addAttribute("pagamentos", pagamento);
+
     }
 
 
@@ -373,32 +396,42 @@ public class HomeController {
 //        String formattedDate = dateFormat.format(date);
         
         
-        List<PedidoVenda> padaberto = new ArrayList<>();
+        List<Item> padaguardando = new ArrayList<>();
 
-        List<PedidoVenda> padpendente = new ArrayList<>();
+        List<Item> padexecucao = new ArrayList<>();
 
-        List<PedidoVenda> padpronto = new ArrayList<>();
+        List<Item> padpronto = new ArrayList<>();
         
-        List<PedidoVenda> padcancelado = new ArrayList<>();
+        List<Item> padentregue = new ArrayList<>();
+        
+        List<Item> paditerompido = new ArrayList<>();
         
         for (PedidoVenda pv : pedidovendasnovos) {
+        	
+        	for(Item item : pv.getItems().keySet()){
 
             
-                    if (pv.getStatus() == StatusPedido.ABERTO) {
-                    	padaberto.add(pv);
+                    if (item.getSituacao() == SituacaoItem.AGUARDANDO) {
+                    	padaguardando.add(item);
                     }
 
-                    if (pv.getStatus() == StatusPedido.PENDENTE) {
-                        padpendente.add(pv);
+                    if (item.getSituacao() == SituacaoItem.EM_EXECUCAO) {
+                        padexecucao.add(item);
                     }
 
-                    if (pv.getStatus() == StatusPedido.PRONTO) {
-                        padpronto.add(pv);
+                    if (item.getSituacao() == SituacaoItem.ENTREGUE) {
+                        padentregue.add(item);
                     }
                     
-                    if (pv.getStatus() == StatusPedido.CANCELADO) {
-                        padcancelado.add(pv);
+                    if (item.getSituacao() == SituacaoItem.PRONTO) {
+                    	padpronto.add(item);
                     }
+                    
+                    if (item.getSituacao() == SituacaoItem.INTERROMPIDO) {
+                        paditerompido.add(item);
+                    }
+                    
+        	}
 //                    total = pagamento.getValorPago().plus(total);
                 }
             
@@ -407,10 +440,10 @@ public class HomeController {
         
 
         	cozinha.addObject("pedidovendasList", pedidovendasnovos);
-        	cozinha.addObject("padaberto", padaberto);
-        	cozinha.addObject("padpendente", padpendente);
+        	cozinha.addObject("padaberto", padaguardando);
+        	cozinha.addObject("padpendente", padexecucao);
         	cozinha.addObject("padpronto", padpronto);
-        	cozinha.addObject("padcancelado", padcancelado);
+        	cozinha.addObject("padcancelado", paditerompido);
 
         	
         	return cozinha;

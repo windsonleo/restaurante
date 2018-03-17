@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tecsoluction.restaurante.dao.IFornecedorDAO;
 import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
@@ -63,6 +64,13 @@ public class FornecedorServicoImpl extends AbstractEntityService<Fornecedor> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+//	public List<Recebimento> getRecebimentosAll() {
+//		// TODO Auto-generated method stub
+//		return dao.getRecebimentosAll();
+//	}
+	
+	
 
 
 }

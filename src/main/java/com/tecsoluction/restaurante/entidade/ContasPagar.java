@@ -72,6 +72,10 @@ public class ContasPagar extends Conta implements Serializable {
         this.setPago(false);
         this.setStatus(StatusConta.ABERTA);
         this.setData_criacao(new Date());
+        this.setData(new Date());
+        this.setDatavencimento(new Date());
+        this.setStatus(StatusConta.ABERTA);
+        this.getPedidosAll().add(recebimento.getPedidocompra());
 
         
     }

@@ -72,10 +72,11 @@ public class Mesa extends BaseEntity implements Serializable {
          
     	  if(this.status == StatusMesa.ABERTA){
     	  
-         for (PedidoVenda pedidoVenda : getPedidos()) {
+         for (PedidoVenda pedidoVenda : this.getPedidos()) {
 
-        	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)||(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)||(pedidoVenda.getStatus()!= StatusPedido.FECHADO)){
-             total = total.add(pedidoVenda.getTotal());
+        	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)||(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)||(pedidoVenda.getStatus()!= StatusPedido.FECHADO)&&(!pedidoVenda.isIspago())){
+            
+        		 total = total.add(pedidoVenda.getTotal());
         	 
         	 }
 

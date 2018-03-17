@@ -50,7 +50,7 @@
 						<div class="form-group label-floating  ">
               <div class="checkbox">
                 <label>
-				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox"/>Ativo?
+				<input id="ativo" name="optionsCheckboxes"  type="checkbox" checked="${produto.ativo}" class="checkbox" readonly="readonly"/>Ativo?
 				</label>
               </div>
                          </div>
@@ -61,7 +61,7 @@
                                                     <input id="nome" class="form-control" name="nome"
                                                                             type="text"
                                                                             value="${cliente.nome}"
-                                                                            placeholder=""/>
+                                                                            placeholder="" readonly="readonly"/>
 
                                                 <span class="material-input"></span>
                                     </div>
@@ -73,15 +73,15 @@
 															<input id="mask-mail" class="form-control" name="email"
                                                                              type="text"
                                                                              value="${cliente.email}"
-                                                                             placeholder=""/>                                                <span class="material-input"></span>
+                                                                             placeholder="" readonly="readonly"/>                                                <span class="material-input"></span>
                                     </div>
 
 
 									<div class="form-group label-floating  ">
                                           <label class="form-control">Genero</label>
-											<select id="genero" name="genero" class="">
+											<select id="genero" name="genero" class="" readonly="readonly">
                                    
-												<option selected="selected" value="${cliente.genero}">${cliente.genero}</option>
+												<option selected="selected" value="${cliente.genero}" readonly="readonly">${cliente.genero}</option>
 
 
                                   
@@ -94,7 +94,7 @@
 											<input id="mask-phone" class="form-control" name="telefone"
                                                                                 type="text"
                                                                                 value="${cliente.telefone}"
-                                                                                placeholder=""/>
+                                                                                placeholder="" readonly="readonly"/>
                                				  <span class="material-input"></span>
                                     </div>
 
@@ -103,7 +103,7 @@
 											 <input id="datanascimento" type="text" data-date="01-02-2013"
                                            data-date-format="dd-mm-yyyy"
                                            value="<fmt:formatDate pattern="dd/MM/yyyy"
-                                             value="${cliente.datanascimento}"/>" class="datepicker form-control" name="datanascimento">
+                                             value="${cliente.datanascimento}"/>" class="datepicker form-control" name="datanascimento" readonly="readonly">
                                				  <span class="material-input"></span>
                                     </div>
                                     
@@ -141,7 +141,7 @@
                                     
                                     <div class="form-group label-floating  ">
                                           <label class="control-label">Total de Pedidos</label>
-  										<input id="pedidos" name="pedidos" class="form-control" type="text" value=""
+  										<input id="pedidos" name="pedidos" class="form-control" type="text" value="${cliente.listaPedidoVenda.size() }"
                                        		placeholder="" disabled="true"/>
                                				  <span class="material-input"></span>
                                     </div>                                    

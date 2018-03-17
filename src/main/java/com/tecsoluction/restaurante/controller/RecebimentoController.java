@@ -45,6 +45,8 @@ public class RecebimentoController extends AbstractController<Recebimento> {
     private final RecebimentoServicoImpl recebimentoService;
 
     private final PedidoCompraServicoImpl pedidocompraService;
+    
+    private final ContasPagarServicoImpl contasapagarService;
 
 //    private final ItemServicoImpl itemService;
 
@@ -72,7 +74,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
     @Autowired
     public RecebimentoController( EstoqueServicoImpl estdao, RecebimentoServicoImpl recdao, PedidoCompraServicoImpl pcdao,
-                                  ProdutoServicoImpl proddao, FornecedorServicoImpl fordao) {
+                                  ProdutoServicoImpl proddao, FornecedorServicoImpl fordao,ContasPagarServicoImpl cap) {
 
         super("recebimento");
         this.pedidocompraService = pcdao;
@@ -82,6 +84,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //        this.userservice = usudao;
         this.recebimentoService = recdao;
         this.estoqueService = estdao;
+        this.contasapagarService = cap;
     }
 
 
@@ -189,6 +192,9 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 
         }
         
+        
+        ContasPagar apagar = new ContasPagar(recebimento);
+        contasapagarService.save(apagar);
 
         pv = pedidocompraService.findOne(recebimento.getPedidocompra().getId());
         pv.setStatus(StatusPedido.FECHADO);

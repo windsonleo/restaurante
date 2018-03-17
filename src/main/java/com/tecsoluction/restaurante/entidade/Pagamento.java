@@ -59,6 +59,8 @@ public class Pagamento extends BaseEntity implements Serializable {
     private Caixa caixa;
 
     public Pagamento() {
+    	
+    	this.datapagamento = new Date();
 
     }
 

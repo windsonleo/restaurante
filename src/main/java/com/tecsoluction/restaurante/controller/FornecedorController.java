@@ -1,10 +1,12 @@
 package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Recebimento;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,13 +35,16 @@ import java.util.UUID;
 public class FornecedorController extends AbstractController<Fornecedor> {
 
     private final FornecedorServicoImpl fornecedorService;
+    
+    private final RecebimentoServicoImpl recebimentoService;
 
 //    private final UsuarioServicoImpl userservice;
 
     @Autowired
-    public FornecedorController(FornecedorServicoImpl dao) {
+    public FornecedorController(FornecedorServicoImpl dao,RecebimentoServicoImpl rec) {
         super("fornecedor");
         this.fornecedorService = dao;
+        this.recebimentoService = rec;
 //        this.userservice = daousu;
     }
 
@@ -65,8 +70,20 @@ public class FornecedorController extends AbstractController<Fornecedor> {
         ModelAndView gerencia = new ModelAndView("gerenciafornecedor");
 
         Fornecedor fornecedor = getservice().findOne(idf);
+        
+
+        
+        
+        
+//        Fornecedor fornecedor = recebimentoService.
+        
+//        Recebimento  rec = recebimentoService.
+        
+      
 
         gerencia.addObject("fornecedor", fornecedor);
+     
+
 
         return gerencia;
     }

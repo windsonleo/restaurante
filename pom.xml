@@ -340,6 +340,17 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
+		
+		
+<!-- 		teste nfce -->
+
+<!-- 	    <repository> -->
+<!-- 			<name>Repositorio Autocom</name> -->
+<!-- 			<id>Release</id> -->
+<!-- 			<url>http://www.autocomsistemas.com.br:8081/nexus/content/repositories/autocom/</url> -->
+<!-- 		</repository> -->
+	
+
 
 
     </dependencies>

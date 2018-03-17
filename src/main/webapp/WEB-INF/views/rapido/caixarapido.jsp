@@ -54,9 +54,9 @@
         <hr>
 		
 		
-<div class="row" style="margin-top:-5em;">
+<div class="row" style="margin-top:-6em;">
 
-	<div class="col-md-8 col-md-offset-9">
+	<div class="col-md-5 col-md-offset-8">
 
 		
 		 <ul class="nav nav-pills" role="tablist">
@@ -80,12 +80,12 @@
 						</a>
 					</li>
 					
-<!-- 					<li class="active" > -->
-<!-- 						<a href="#" role="tab" data-toggle="tab" > -->
-<!-- 							<i class="material-icons"> timer</i> -->
-<!-- 							Tempo Médio Preparo -->
-<!-- 						</a> -->
-<!-- 					</li> -->
+					<li class="" > 
+						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddDespesa" >
+							<i class="material-icons"> add</i>
+							Despesa
+						</a>
+					</li>
 		</ul>
 		
   
@@ -612,7 +612,7 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}&idforma=2b0a3f0c-5f53-472e-b618-6e0ee7a81256&idcx=${caixa.id}'">
+                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}&idforma=2b0a3f0c-5f53-472e-b618-6e0ee7a81256&idcx=a2fa34a0-4771-4edc-a5d3-ede2890418f5'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
@@ -860,6 +860,70 @@
 <!--           </div> -->
 
         <button type="submit" class="btn btn-info">Fechar Caixa</button>
+
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+         
+         
+         
+         <div class="modal fade" id="ModalAddDespesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Selecione a Despesa</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="inserirdespesacaixa" method="get">
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Despesa</label>
+									<input id="id" name="id" list="${despesaList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                                 </div> 
+                                 
+                                 
+                                                 <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Despesa</label>
+									<input id="idcx" name="idcx" value="${caixa.id}" class="form-control" type="text"
+                                    		 />
+                                 </div> 
+                                 
+                              <datalist id="${despesaList}">
+
+                                    <c:forEach var="despesa" items="${despesaList}" varStatus="id">
+
+                                        <option value="${despesa.id }"> ${despesa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+
+        <button type="submit" class="btn btn-info">Add Despesa</button>
 
           
         </form>

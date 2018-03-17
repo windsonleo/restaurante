@@ -5,6 +5,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.StatusMesa;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,12 @@ public class CaixaController extends AbstractController<Caixa> {
     private
     ContasReceberServicoImpl contasreceberService;
 
-//
+
+    private
+    MesaServicoImpl mesaService;
+    
+    
+    //
 //    private
 //    UsuarioServicoImpl userservice;
 
@@ -53,11 +59,13 @@ public class CaixaController extends AbstractController<Caixa> {
     List<FormaPagamento> formapagamentoLista = new ArrayList<>();
 
     private Pagamento pagamento;
+    
+    private Caixa caixa;
 
 
     @Autowired
     public CaixaController(CaixaServicoImpl CpedidovendaService, PedidoVendaServicoImpl pedidovendaService, DespesaServicoImpl desppedidovendaService
-            , FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService,ContasReceberServicoImpl aeceber) {
+            , FormaPagamentoServicoImpl formpedidovendaService, PagamentoServicoImpl ppedidovendaService,ContasReceberServicoImpl aeceber,MesaServicoImpl ms) {
         super("caixa");
         this.pedidovendaService = pedidovendaService;
         this.caixaService = CpedidovendaService;
@@ -65,6 +73,7 @@ public class CaixaController extends AbstractController<Caixa> {
         this.pagamentoService = ppedidovendaService;
         this.despesaService = desppedidovendaService;
         this.contasreceberService=aeceber;
+        this.mesaService = ms;
     }
 
     @InitBinder
@@ -87,6 +96,8 @@ public class CaixaController extends AbstractController<Caixa> {
         binder.registerCustomEditor(Despesa.class, new AbstractEditor<Despesa>(this.despesaService) {
 
         });
+        
+        
 
 
     }
@@ -98,6 +109,15 @@ public class CaixaController extends AbstractController<Caixa> {
 //        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 //        usuario = userservice.findByUsername(usuario.getUsername());
 
+    	
+    	
+    	if(caixa == null){
+    		
+    		
+    		this.caixa = new Caixa();
+    		
+    	}
+    	
         List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
         List<Caixa> caixaList = caixaService.findAll();
@@ -110,6 +130,8 @@ public class CaixaController extends AbstractController<Caixa> {
         model.addAttribute("formapagamentoList", formapagamentoList);
 //        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
+        model.addAttribute("caixa", caixa);
+
 
 
     }
@@ -120,11 +142,11 @@ public class CaixaController extends AbstractController<Caixa> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 //
-        Caixa cx = caixaService.findOne(idf);
+        this.caixa = caixaService.findOne(idf);
 
         ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
 
-        fecharcaixa.addObject("caixa", cx);
+        fecharcaixa.addObject("caixa", caixa);
 
         return fecharcaixa;
 
@@ -134,9 +156,9 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView AbrirCaixa(HttpServletRequest request) {
 
 
-//        UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("id"));
 //
-//        Caixa cx = caixaService.findOne(idf);
+        this.caixa = caixaService.findOne(idf);
 
         ModelAndView abrircaixa = new ModelAndView("abrircaixa");
 
@@ -296,7 +318,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        Caixa caixa = caixaService.findOne(idf);
+        this.caixa = caixaService.findOne(idf);
 
 
         ModelAndView adddespesacaixa = new ModelAndView("adddespesacaixa");
@@ -312,20 +334,21 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView AddDespesaCaixa(HttpServletRequest request) {
 
 
-        UUID idf = UUID.fromString(request.getParameter("despesaescolhido"));
+        UUID idf = UUID.fromString(request.getParameter("id"));
 
-        UUID idfc = UUID.fromString(request.getParameter("caixa"));
+        UUID idfc = UUID.fromString(request.getParameter("idcx"));
 
         Despesa desp = despesaService.findOne(idf);
-
-        Caixa caixa = caixaService.findOne(idfc);
+        
+        this.caixa = caixaService.findOne(idfc);
 
 
         ModelAndView adddespesacaixa = new ModelAndView("adddespesacaixa");
 
         caixa.getDespesas().add(desp);
 
-        caixaService.save(caixa);
+        caixaService.edit(caixa);
+        despesaService.edit(desp);
 
         adddespesacaixa.addObject("caixa", caixa);
 
@@ -388,12 +411,19 @@ public class CaixaController extends AbstractController<Caixa> {
         UUID idf = UUID.fromString(request.getParameter("id"));
         UUID idforma = UUID.fromString(request.getParameter("idforma"));
         
+        UUID idcx = UUID.fromString(request.getParameter("idcx"));
+        
         FormaPagamento formapag;
+        
+        this.caixa =getservice().findOne(idcx);
         
         formapag=formapagamentoService.findOne(idforma);
 
         PedidoVenda pedvenda = pedidovendaService.findOne(idf);
-
+        
+        Mesa mesa = pedvenda.getMesa();
+        mesa.setStatus(StatusMesa.DISPONIVEL);
+        
         pagamento = new Pagamento();
         pagamento.setStatus("ABERTO");
         pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
@@ -406,14 +436,23 @@ public class CaixaController extends AbstractController<Caixa> {
        
 
         pedvenda.setStatus(StatusPedido.FINALIZADO);
+        pedvenda.setIspago(true);
         
         ContasReceber areceber = new ContasReceber(pedvenda);
         
+//        areceber.setPagamento(pagamento);
+        
         contasreceberService.save(areceber);
   	  
+        getservice().edit(caixa);
+        
         pedidovendaService.edit(pedvenda);
+       
         pagamento.setConta(areceber);
         
+        pagamento.setCaixa(caixa);
+        
+        mesaService.edit(mesa);
         
         pagamentoService.save(pagamento);
 

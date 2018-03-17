@@ -273,25 +273,19 @@ public class MesaController extends AbstractController<Mesa> {
        	    	 
        	    	 
        	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
-       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+       	    	 if((pv.getStatus() == StatusPedido.PRONTO) ||(pv.getStatus() == StatusPedido.ENTREGUE)) {
        	    		 
+       	    		
+       	    		pv.setStatus(StatusPedido.FECHADO);
        	    		pedidos.add(pv);
+       	    		pedidovendaService.edit(pv);
        	    		 
        	    		 
        	    	 }
        	    	 
        	    	 
        	     }
-       	     
-       	     for (PedidoVenda pv : pedidos) {
-       	    	 
-       	    		 
-       	    		pv.setStatus(StatusPedido.FECHADO);
-       	    		 
-       	    		pedidovendaService.edit(pv);
-       	    	 
-       	     }
-       	     
+
        	     
        	        
        	        getservice().edit(mesa);
@@ -309,7 +303,7 @@ public class MesaController extends AbstractController<Mesa> {
 //       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
 
 
-       	        return new ModelAndView("redirect:/mesa/salao");
+       	        return new ModelAndView("redirect:/mesas/salao");
        	        
     }
     
