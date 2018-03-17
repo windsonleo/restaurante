@@ -47,7 +47,7 @@
 //	
 //		try {
 //
-//            iniciaConfigurações();
+//            iniciaConfiguracoes();
 //
 //            TNFe nfe = new TNFe();
 //            InfNFe infNFe = new InfNFe();
@@ -265,7 +265,7 @@
 //    }
 //
 //	
-//	 public static ConfiguracoesIniciaisNfe iniciaConfigurações() throws NfeException, CertificadoException {
+//	 public static ConfiguracoesIniciaisNfe iniciaConfiguracoes() throws NfeException, CertificadoException {
 //			// Certificado Windows
 //		 
 //			Certificado certificado = CertificadoService.certificadoPfx("C:\\NFCE\\CERT\\Associacao.pfx", "associacao");
