@@ -85,7 +85,7 @@ public class ContextoAplicacao {
     		
     		empresa.setAtivo(true);
 	        empresa.setCnpj("9999999");
-	        empresa.setNomefantasia("Empresa Padrão");
+	        empresa.setNomefantasia("Empresa Padrao");
 	        empresa.setLogo("logo3ddd.png");
 	        empresa.setEmail("windson.m.bezerra@gmail.com");
 
