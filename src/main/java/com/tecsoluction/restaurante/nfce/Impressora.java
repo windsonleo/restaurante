@@ -32,7 +32,7 @@ public class Impressora extends HttpServlet {
 		       //f.setMaximumSize(null);
 		       // pega o Toolkit do Frame     
 		       Toolkit tk = f.getToolkit();      
-		       // Pega os serviços de impressao existentes no computador,     
+		       // Pega os servicos de impressao existentes no computador,     
 		       // para que seja escolhida uma impressora.    
 		       // Tambem pode ser uma impressora de rede   
 		       PrintJob pj = tk.getPrintJob(f,  "recibo" , null);  
