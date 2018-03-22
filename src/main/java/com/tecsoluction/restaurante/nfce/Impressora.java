@@ -64,13 +64,13 @@ public class Impressora extends HttpServlet {
 		          g.drawLine(05,390,390,390);
 		          //g.setFont(new Font("Arial",Font.PLAIN,10));             
 		          //g.setFont(new Font("Courier New",Font.BOLD,8));  
-		          //g.drawString( "página 1" , 500, 810);    
-		          // libera os recursos gráficos    
+		          //g.drawString( "pagina 1" , 500, 810);    
+		          // libera os recursos graficos    
 		          g.dispose();      
-		          // encerra a impressão    
+		          // encerra a impressao    
 		          pj.end();   
 		       }    
-		       // desfaz o frame temporário   
+		       // desfaz o frame temporario   
 		       f.dispose();   
 		       } 
 		    }
