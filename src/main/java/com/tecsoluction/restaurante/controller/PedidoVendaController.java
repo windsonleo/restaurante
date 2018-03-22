@@ -137,13 +137,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         List<Mesa> mesaList = mesaService.findAll();
     
-//        if(pv == null) {
+        if(pv == null) {
         	
             pv = new PedidoVenda();
 
 //            itens = new HashMap<>();
         	
-//        }
+        }
 
 //        Usuario usuario = new Usuario();
 //        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -170,7 +170,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        
     	
     	
-    	this.estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
+    	estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
@@ -240,7 +240,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         ModelAndView movpedidovenda = new ModelAndView("movimentacaopedidovenda");
 
 
-        this.pv = pedidovendaService.findOne(idf);
+        pv = pedidovendaService.findOne(idf);
         
         
         //verifica se o pedido ja esta pronto ou foi canceldo ou foi pago
@@ -598,6 +598,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	        salao.addObject("mesasList", mesaslist);
        	        salao.addObject("mensagem", mensagem);
        	        salao.addObject("mensagem", mensagem);
+       	        salao.addObject("produtosList", produtosList);
 
 
 
@@ -606,7 +607,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     }
     
     
-    @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
+    @RequestMapping(value = "item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
     	  UUID idf = UUID.fromString(request.getParameter("id"));
@@ -614,9 +615,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           String keyy = request.getParameter("key");
           
-      
+          estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
-          PedidoVenda pv = pedidovendaService.findOne(idf);
+
+          pv = pedidovendaService.findOne(idf);
           
 
           Map<Item,String> pcitens = pv.getItems();
@@ -627,11 +629,23 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           	
           	System.out.println("key" + key.getNome());
           	System.out.println("keyy" + keyy);
+        	System.out.println("keyyy" + pcitens.get(key));
+        	
+        	String qtdstring = pcitens.get(key);
           	
           	if(key.getNome().equals(keyy)){
           		
           		key.setSituacao(SituacaoItem.PRONTO);
           		
+//          	  String qtd = pv.getItems().get(key);
+//              String qtdd = pcitens.get(key);
+//              String qtddd = itens.get(key);
+              BigDecimal qtdb = new BigDecimal(qtdstring);
+
+              
+              estoque.RetirarProdutoEstoque(key, qtdb);
+          	
+          	
           	}
           	
 
@@ -651,9 +665,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         	  
           }
           
-//          pc.setStatus(StatusPedido.PRONTO);
           
-          pedidovendaService.edit(pv);
+//          pv.setItems(pcitens);
+          
+          getservice().edit(pv);
+        
+         estoqueService.edit(estoque);
+
+
+//         itens.clear();
+          
 
         
           return new ModelAndView("redirect:/cozinha");

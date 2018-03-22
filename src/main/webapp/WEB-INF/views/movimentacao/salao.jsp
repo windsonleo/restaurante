@@ -136,7 +136,7 @@
                                     <div class="stats">
                                    <i class="material-icons">shopping_basket</i>
                                     
-                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-danger"> ${mesa.pedidosnow.size()}</span>
                                     
                                      <i class="material-icons">supervisor_account</i>
                                     
@@ -145,7 +145,7 @@
                                     
                                     <i class="material-icons">list</i>
                                     
-                                    <span class="label label-danger"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-danger"> ${mesa.pedidosnow.size()}</span>
                                                                          
             <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido </a>
                                         
@@ -183,16 +183,16 @@
                                     <div class="stats">
                                    <i class="material-icons">shopping_basket</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                     
                                      <i class="material-icons">supervisor_account</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${qtdpessoas}</span>
                                     
                                     
                                     <i class="material-icons">list</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                                                          
             <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido  </a>
                                         
@@ -230,16 +230,16 @@
                                     <div class="stats">
                                    <i class="material-icons">shopping_basket</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                     
                                      <i class="material-icons">supervisor_account</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${qtdpessoas}</span>
                                     
                                     
                                     <i class="material-icons">list</i>
                                     
-                                    <span class="label label-success"> ${mesa.pedidos.size()}</span>
+                                    <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                                                          
             <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">Add Pedido  </a>
                                         

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tecsoluction.restaurante.entidade.Empresa;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.exception.CustomGenericException;
+import com.tecsoluction.restaurante.service.impl.EmpresaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.SituacaoItem;
@@ -35,6 +37,11 @@ public class ContextoAplicacao {
 	    private final
 	    PedidoVendaServicoImpl pedidovendaService;
 	    
+	    private final
+	    EmpresaServicoImpl empresaService;
+	    
+	    private Empresa empresa;
+	    
 	    private
 	    List<Item> itemsProntos = new ArrayList<Item> ();
 	    
@@ -46,10 +53,11 @@ public class ContextoAplicacao {
 	 
 
 	 @Autowired
-	 public ContextoAplicacao(UsuarioServicoImpl sevice,PedidoVendaServicoImpl pvservice) {
+	 public ContextoAplicacao(UsuarioServicoImpl sevice,PedidoVendaServicoImpl pvservice,EmpresaServicoImpl emp) {
 
 	 this.userservice = sevice;
 	 this.pedidovendaService = pvservice;
+	 this.empresaService = emp;
 	 }
 
 //	@Autowired
@@ -66,15 +74,34 @@ public class ContextoAplicacao {
 		usuario = userservice.findByUsername(usuario.getUsername());
 		
         pedidovendas = pedidovendaService.findAll();
-
-		
         itensProntosPedidoVenda = buscarItemPronto(pedidovendas);
+        
+        
+        List<Empresa> empresas = empresaService.findAll();
+       
+        if(empresas.isEmpty()) {
+    		model.addAttribute("erro", "Nao Existe Empresa Cadastrada");
+    		empresa = new Empresa();
+    		
+    		empresa.setAtivo(true);
+	        empresa.setCnpj("9999999");
+	        empresa.setNomefantasia("Empresa Padrão");
+	        empresa.setLogo("logo3ddd.png");
+	        empresa.setEmail("windson.m.bezerra@gmail.com");
 
+        
+        }else{
+        
+        empresa = empresas.get(0);
+        
+        }
 		
 		
 		model.addAttribute("usuarioAtt", usuario);
 		model.addAttribute("itemsprontos", itemsProntos);
 		model.addAttribute("itemsprontospv", itensProntosPedidoVenda);
+		model.addAttribute("empresa", empresa);
+
 	}
 
 	@ExceptionHandler(CustomGenericException.class)

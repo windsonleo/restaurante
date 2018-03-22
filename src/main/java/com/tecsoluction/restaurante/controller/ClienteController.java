@@ -124,6 +124,8 @@ public class ClienteController extends AbstractController<Cliente> {
 
 
         cadastroendereco.addObject("cliente", cliente);
+        cadastroendereco.addObject("acao", "add");
+
 
 
         return cadastroendereco;
@@ -192,7 +194,7 @@ public class ClienteController extends AbstractController<Cliente> {
 //  	cadastrocliente.addObject("cliente",cliente);
 
 
-        return new ModelAndView("forward:/cliente/movimentacao");
+        return new ModelAndView("redirect:/cliente/movimentacao");
     }
 
 

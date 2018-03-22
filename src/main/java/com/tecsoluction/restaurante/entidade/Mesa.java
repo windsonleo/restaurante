@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -48,6 +49,9 @@ public class Mesa extends BaseEntity implements Serializable {
     
     @Transient
     private BigDecimal total ;
+    
+    @Transient
+    private List<PedidoVenda> pedidosnow = new ArrayList<PedidoVenda>();
 
     
     
@@ -67,6 +71,7 @@ public class Mesa extends BaseEntity implements Serializable {
     public BigDecimal CalcularTotal(){
     	
     	  total =  new BigDecimal(0.00);
+    	 
 
          // mudar para trazer pelo id da mesa e pelo status da mesa
          
@@ -74,9 +79,10 @@ public class Mesa extends BaseEntity implements Serializable {
     	  
          for (PedidoVenda pedidoVenda : this.getPedidos()) {
 
-        	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)||(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)||(pedidoVenda.getStatus()!= StatusPedido.FECHADO)&&(!pedidoVenda.isIspago())){
+        	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)&&(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)&&(pedidoVenda.getStatus()!= StatusPedido.FECHADO)&&(!pedidoVenda.isIspago())){
             
         		 total = total.add(pedidoVenda.getTotal());
+        		 pedidosnow.add(pedidoVenda);
         	 
         	 }
 
@@ -86,5 +92,28 @@ public class Mesa extends BaseEntity implements Serializable {
     	
     	return total;
     }
+    
+    
+    public List<PedidoVenda> PedidoNow(){
+    	
+
+       // mudar para trazer pelo id da mesa e pelo status da mesa
+       
+  	  if(this.status == StatusMesa.ABERTA || this.status == StatusMesa.FECHADA){
+  	  
+       for (PedidoVenda pedidoVenda : this.getPedidos()) {
+
+      	 if((pedidoVenda.getStatus()!= StatusPedido.CANCELADO)&&(pedidoVenda.getStatus()!= StatusPedido.FINALIZADO)&&(pedidoVenda.getStatus()!= StatusPedido.FECHADO)&&(!pedidoVenda.isIspago())){
+          
+      		 pedidosnow.add(pedidoVenda);
+      	 
+      	 }
+
+       }
+       
+  	  } // if
+  	
+  	return pedidosnow;
+  }
 
 }

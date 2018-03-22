@@ -60,7 +60,7 @@ public class Estoque extends BaseEntity implements Serializable {
         BigDecimal antigo = new BigDecimal("0.00");
 
 
-        if (this.getItems().containsKey(produto)) {
+        if (getItems().containsKey(produto)) {
             
             vantigo = this.getItems().get(produto);
 
@@ -88,9 +88,9 @@ public class Estoque extends BaseEntity implements Serializable {
         BigDecimal novo = new BigDecimal("0.00");
         BigDecimal antigo = new BigDecimal("0.00");
         
-        if (this.getItems().containsKey(produto)) {
+        if (getItems().containsKey(produto)) {
         
-            vantigo = this.getItems().get(produto);
+            vantigo = getItems().get(produto);
 
             antigo = new BigDecimal(vantigo);
 

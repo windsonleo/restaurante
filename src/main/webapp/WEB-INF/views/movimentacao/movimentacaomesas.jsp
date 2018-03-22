@@ -31,7 +31,7 @@
                   <th>Id</th>
                   <th>Numero</th>
                   <th>Status</th>
-                  
+<!--                   <th>Pedidos</th> -->
                   <th>Acao(s)</th>
                   
                   
@@ -73,6 +73,8 @@
                   </c:when>
                   
                   </c:choose>
+                  
+<%--                     <td>${mesa.pedidos }</td> --%>
                   
                  <td class="td-actions">
 								

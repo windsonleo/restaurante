@@ -415,7 +415,7 @@ public class CaixaController extends AbstractController<Caixa> {
         
         FormaPagamento formapag;
         
-        this.caixa =getservice().findOne(idcx);
+        Caixa caixa =getservice().findOne(idcx);
         
         formapag=formapagamentoService.findOne(idforma);
 
@@ -457,15 +457,21 @@ public class CaixaController extends AbstractController<Caixa> {
         pagamentoService.save(pagamento);
 
 
-//    	List<PedidoVenda> ls = pedidovendaService.findAll();
+    	List<PedidoVenda> ls = pedidovendaService.findAll();
 
 
-        ModelAndView caixarapido = new ModelAndView("caixarapido");
+        ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
-//        caixarapido.addObject("ls",ls);
+        finalizacaovenda.addObject("ls",ls);
+        
+        finalizacaovenda.addObject("pv",pedvenda);
+        
+//        Impressora impressora = new Impressora();
+       
+//        impressora.imprimir();
 
 
-        return caixarapido;
+        return finalizacaovenda;
 
 
     }
