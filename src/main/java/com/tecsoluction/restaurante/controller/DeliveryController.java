@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
-import com.tecsoluction.restaurante.entidade.constants.OrigemPedido;
-import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
-import com.tecsoluction.restaurante.entidade.constants.UnidadeMedida;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.util.UnidadeMedida;
 
 @Controller
 @RequestMapping(value = "delivery/")

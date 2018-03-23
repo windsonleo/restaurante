@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.tecsoluction.restaurante.entidade.Pedido;
 import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.PedidoServicoImpl;
-import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
-import com.tecsoluction.restaurante.entidade.constants.TipoPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.util.TipoPedido;
 
 @Controller
 @RequestMapping(value = "pedido/")

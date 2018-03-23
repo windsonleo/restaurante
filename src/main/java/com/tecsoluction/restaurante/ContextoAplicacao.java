@@ -21,8 +21,8 @@ import com.tecsoluction.restaurante.exception.CustomGenericException;
 import com.tecsoluction.restaurante.service.impl.EmpresaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
-import com.tecsoluction.restaurante.entidade.constants.SituacaoItem;
-import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
+import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 /**
  * Created by clebr on 01/09/2016.

@@ -1,11 +1,11 @@
-package com.tecsoluction.restaurante.entidade.constants;
+package com.tecsoluction.restaurante.util;
 
-public enum StatusMesa {
+public enum StatusPedido {
 
-    ABERTA, FECHADA, INDISPONIVEL, RESERVADA, DISPONIVEL;
+    ABERTO, PENDENTE,PRONTO, FECHADO, CANCELADO,FINALIZADO,ENTREGUE;
 
 
-    StatusMesa() {
+    StatusPedido() {
         // TODO Auto-generated constructor stub
 
     }

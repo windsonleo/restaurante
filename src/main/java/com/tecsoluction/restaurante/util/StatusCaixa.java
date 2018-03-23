@@ -1,4 +1,4 @@
-package com.tecsoluction.restaurante.entidade.constants;
+package com.tecsoluction.restaurante.util;
 
 public enum StatusCaixa {
 

@@ -6,11 +6,11 @@ import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.constants.Dias;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.util.Graficos;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,11 +89,11 @@ public class ChartControllerRest {
     
     
     @GetMapping(value = "/dias")
-    public Dias[] Dias() {
+    public com.tecsoluction.restaurante.util.Dias[] Dias() {
 
         //List<Cliente> clientes = clienteServico.findClientesByListaPedidoVendaIsNotNull();
     
-    	Dias[] diasEnum = Dias.values();
+    	com.tecsoluction.restaurante.util.Dias[] diasEnum = com.tecsoluction.restaurante.util.Dias.values();
     	
         return diasEnum;
     }

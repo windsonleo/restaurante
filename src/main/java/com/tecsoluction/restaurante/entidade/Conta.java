@@ -13,15 +13,17 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.entidade.constants.StatusConta;
+import com.tecsoluction.restaurante.util.StatusConta;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

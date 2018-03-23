@@ -1,22 +1,20 @@
-package com.tecsoluction.restaurante.entidade.constants;
+package com.tecsoluction.restaurante.util;
 
-public enum TipoPedido {
+public enum StatusMesa {
 
-    COMPRA, VENDA;
+    ABERTA, FECHADA, INDISPONIVEL, RESERVADA, DISPONIVEL;
 
 
-    TipoPedido() {
+    StatusMesa() {
         // TODO Auto-generated constructor stub
 
-//	}
+    }
 
 //	public List<TipoUsuario> TipoUsuario() {
 //		List<Integer>TipoUsuario.values();
 //		return null;
 //		
 //	}
-    }
-
 }
 
 

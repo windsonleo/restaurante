@@ -2,8 +2,8 @@ package com.tecsoluction.restaurante.entidade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.entidade.constants.StatusMesa;
-import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
+import com.tecsoluction.restaurante.util.StatusMesa;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

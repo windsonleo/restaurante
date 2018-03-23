@@ -2,11 +2,12 @@ package com.tecsoluction.restaurante.dao;
 
 import java.util.List;
 import java.util.UUID;
-import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
+import com.tecsoluction.restaurante.util.StatusPedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 
 @org.springframework.stereotype.Repository

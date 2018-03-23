@@ -13,7 +13,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.entidade.constants.StatusDevolucao;
+import com.tecsoluction.restaurante.util.StatusDevolucao;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

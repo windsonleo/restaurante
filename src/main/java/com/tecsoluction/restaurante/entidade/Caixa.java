@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.entidade.constants.StatusCaixa;
+import com.tecsoluction.restaurante.util.StatusCaixa;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

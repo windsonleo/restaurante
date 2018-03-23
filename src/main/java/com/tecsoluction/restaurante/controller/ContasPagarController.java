@@ -6,7 +6,7 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.ContasPagarServicoImpl;
 import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
-import com.tecsoluction.restaurante.entidade.constants.StatusConta;
+import com.tecsoluction.restaurante.util.StatusConta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
