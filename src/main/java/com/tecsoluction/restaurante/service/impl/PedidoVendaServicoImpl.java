@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tecsoluction.restaurante.dao.IPedidoVendaDAO;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
-import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
 
 /*  criar validacaoes para que o servico as chamem caso nao haja erros execute a acao  */
 

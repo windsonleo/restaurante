@@ -1,11 +1,11 @@
-package com.tecsoluction.restaurante.util;
+package com.tecsoluction.restaurante.entidade.constants;
 
-public enum TipoPedido {
+public enum OrigemPedido {
 
-    COMPRA, VENDA;
+    BALCAO,MESA,INTERNET,TELEVENDAS;
 
 
-    TipoPedido() {
+    OrigemPedido() {
         // TODO Auto-generated constructor stub
 
 //	}

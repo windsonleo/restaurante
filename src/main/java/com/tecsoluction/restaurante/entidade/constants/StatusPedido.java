@@ -1,11 +1,11 @@
-package com.tecsoluction.restaurante.util;
+package com.tecsoluction.restaurante.entidade.constants;
 
-public enum StatusDevolucao {
+public enum StatusPedido {
 
-    PENDENTE, CONCLUIDA, CANCELADA, BLOQUEADA;
+    ABERTO, PENDENTE,PRONTO, FECHADO, CANCELADO,FINALIZADO,ENTREGUE;
 
 
-    StatusDevolucao() {
+    StatusPedido() {
         // TODO Auto-generated constructor stub
 
     }

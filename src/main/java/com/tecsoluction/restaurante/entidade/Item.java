@@ -3,26 +3,14 @@ package com.tecsoluction.restaurante.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Map;
 import java.util.UUID;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.UnidadeMedida;
+import com.tecsoluction.restaurante.entidade.constants.SituacaoItem;
+import com.tecsoluction.restaurante.entidade.constants.UnidadeMedida;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -2,8 +2,8 @@ package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.*;
 import com.tecsoluction.restaurante.service.impl.*;
-import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.entidade.constants.SituacaoItem;
+import com.tecsoluction.restaurante.entidade.constants.StatusPedido;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;

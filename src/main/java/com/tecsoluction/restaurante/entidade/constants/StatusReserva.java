@@ -1,22 +1,20 @@
-package com.tecsoluction.restaurante.util;
+package com.tecsoluction.restaurante.entidade.constants;
 
-public enum OrigemPedido {
+public enum StatusReserva {
 
-    BALCAO,MESA,INTERNET,TELEVENDAS;
+    PENDENTE, CONCLUIDA, CANCELADA, CONFIRMADA;
 
 
-    OrigemPedido() {
+    StatusReserva() {
         // TODO Auto-generated constructor stub
 
-//	}
+    }
 
 //	public List<TipoUsuario> TipoUsuario() {
 //		List<Integer>TipoUsuario.values();
 //		return null;
 //		
 //	}
-    }
-
 }
 
 

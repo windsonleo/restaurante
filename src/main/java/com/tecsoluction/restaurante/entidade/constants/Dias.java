@@ -1,4 +1,4 @@
-package com.tecsoluction.restaurante.util;
+package com.tecsoluction.restaurante.entidade.constants;
 
 public enum Dias {
 	

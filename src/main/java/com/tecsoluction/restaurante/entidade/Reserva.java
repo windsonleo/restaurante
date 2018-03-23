@@ -3,8 +3,7 @@ package com.tecsoluction.restaurante.entidade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
-import com.tecsoluction.restaurante.util.StatusMesa;
-import com.tecsoluction.restaurante.util.StatusReserva;
+import com.tecsoluction.restaurante.entidade.constants.StatusReserva;
 
 import lombok.Getter;
 import lombok.Setter;

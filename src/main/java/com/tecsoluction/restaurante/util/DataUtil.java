@@ -1,15 +1,10 @@
 package com.tecsoluction.restaurante.util;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
-import com.tecsoluction.restaurante.entidade.PedidoVenda;
-import com.tecsoluction.restaurante.entidade.Produto;
-
+import com.tecsoluction.restaurante.entidade.constants.Dias;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
