@@ -126,7 +126,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         model.addAttribute("caixaList", caixaList);
-        model.addAttribute("pedidoVendaLista", pedidoVendaLista);
+        model.addAttribute("ls", pedidoVendaLista);
         model.addAttribute("formapagamentoList", formapagamentoList);
 //        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
