@@ -64,9 +64,10 @@ public class Caixa extends BaseEntity implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return nome.toUpperCase();
-    }
+@Override
+public String toString() {
+	// TODO Auto-generated method stub
+	return super.toString();
+}
 
 }

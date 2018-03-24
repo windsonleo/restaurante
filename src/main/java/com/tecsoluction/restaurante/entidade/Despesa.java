@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,7 +33,7 @@ public class Despesa extends BaseEntity implements Serializable {
 
     ////    (cascade = { CascadeType.ALL })
     @ManyToOne
-//	@JoinColumn(name = "catpai_id", nullable = true)
+	@JoinColumn(name = "caixa_id")
     private Caixa caixa;
 
 //    @JsonIgnore
