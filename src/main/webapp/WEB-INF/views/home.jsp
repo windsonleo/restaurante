@@ -93,14 +93,14 @@
 <!-- 											</a> -->
 <!-- 										</li> -->
 										
-																				
+									 <sec:authorize access="hasRole('ROLE_COZINHA')">											
 										<li class="">
 											<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta" aria-expanded="true">
 												<i class="material-icons">room_service</i>
 												Cozinha
 											</a>
 										</li>
-										
+										</sec:authorize>
 																				<li class="">
 											<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="ta" data-toggle="ta" aria-expanded="true">
 												<i class="material-icons">camera</i>
@@ -108,14 +108,35 @@
 											</a>
 										</li>
 										
-
-																				<li class="">
+									 <sec:authorize access="hasRole('ROLE_GARCON')">
+										<li class="">
 											<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta" aria-expanded="false">
 												<i class="material-icons">school</i>
 												Salao
 											</a>
 										</li>
 										
+										</sec:authorize>
+										
+										 <sec:authorize access="hasRole('ROLE_CAIXA')">
+										
+										<li class="">
+											<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta" aria-expanded="false">
+												<i class="material-icons">money</i>
+												Caixa
+											</a>
+										</li>
+										</sec:authorize>
+										
+								 <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
+										
+										<li class="">
+											<a href="${pageContext.request.contextPath}/financeiro/inicio" role="ta" data-toggle="ta" aria-expanded="false">
+												<i class="material-icons">money</i>
+												Financeiro
+											</a>
+										</li>
+										</sec:authorize>
 
 <!-- 																														<li class=""> -->
 <%-- 											<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta" aria-expanded="false"> --%>
@@ -179,10 +200,10 @@
 
 
 
-
+ <div class="row">
 
          <sec:authorize access="hasRole('ROLE_ADM')">
-               <div class="row">
+              
                      
                        
                          <div class="col-lg-3 col-md-6 col-sm-6">
@@ -274,7 +295,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+                       </sec:authorize> 
+                       
+                          <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
                         
                                                    <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
@@ -370,6 +393,8 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        </sec:authorize>
                         
                         
 <!--                           <div class="span2"> -->
@@ -942,7 +967,7 @@
 
 						</div>
 						
-						
+						<sec:authorize access="hasRole('ROLE_ADM')">
 						  <div class="row">
                        
                         <div class="col-md-4">
@@ -1553,8 +1578,8 @@
                         </div>
                         </div>
 					
-              </sec:authorize>
-              
+</sec:authorize>
+
 <!-- 				 	<div class="card"> -->
 <!--                     <div class="card-content"> -->
                        

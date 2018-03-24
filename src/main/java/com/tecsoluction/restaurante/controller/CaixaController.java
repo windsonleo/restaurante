@@ -366,6 +366,7 @@ public class CaixaController extends AbstractController<Caixa> {
 
         List<FormaPagamento> pagcartaodebito = new ArrayList<>();
 
+        List<Despesa> despesaList = despesaService.findAll();
 
         List<PedidoVenda> ls = pedidovendaService.findAll();
 
@@ -395,6 +396,8 @@ public class CaixaController extends AbstractController<Caixa> {
 //        }
 
         caixarapido.addObject("ls", ls);
+        caixarapido.addObject("despesaList", despesaList);
+
         caixarapido.addObject("pagdinheiro", pagdinheiro);
         caixarapido.addObject("pagcartaodebito", pagcartaodebito);
         caixarapido.addObject("pagcartaocredito", pagcartaocredito);

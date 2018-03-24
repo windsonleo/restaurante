@@ -98,7 +98,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${apagars.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -122,7 +122,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${recebers.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -146,7 +146,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${pagamentos.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>
@@ -170,7 +170,7 @@
 <!--                                          <small>hoje</small>  -->
 <!--                                     </h3> -->
                                     
-                                     <h3 class="title">${reservas.size()}
+                                     <h3 class="title">${despesas.size()}
                                          <small>hoje</small> 
                                     </h3>
                                 </div>

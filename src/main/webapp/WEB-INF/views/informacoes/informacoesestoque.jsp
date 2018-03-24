@@ -209,18 +209,18 @@
       								
       								<a  rel="tooltip" title="Ver Informações"
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key.id}"
-									 class="fa fa-2x"><i class="icon-info-sign"></i></a>
+									><i class="icon-info-sign"></i></a>
 									
 										<a  rel="tooltip" title="Ver Edciao"
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key.id}"
-									 class="fa fa-2x"><i class="icon-edit"></i></a>
+									><i class="icon-edit"></i></a>
 									
 <!-- 																			<a -->
 <%-- 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}&idrec=${recebimento.id}" --%>
 <!-- 									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a> -->
 									
 									
-									<a href="#myAlert${item.key}" data-toggle="modal" class="fa"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal" ><i class="icon-remove-sign"></i></a>
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">

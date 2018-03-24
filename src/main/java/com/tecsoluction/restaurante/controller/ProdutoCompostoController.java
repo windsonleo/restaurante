@@ -367,11 +367,15 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public ModelAndView ProduzirProdutoCompsotoForm(HttpServletRequest request) {
 
 
-//        UUID idf = (UUID.fromString(request.getParameter("id")));
+        UUID idf = (UUID.fromString(request.getParameter("idprod")));
+        
+        String qtd= (request.getParameter("qtd"));
 
-        ModelAndView produzirprodutocomposto = new ModelAndView("produzirprodutocomposto");
+        
+//        ModelAndView produzirprodutocomposto = new ModelAndView("cozinha");
 
-
+//        produzirprodutocomposto.addObject("produtos", produtoList);
+        
 //        ProdutoComposto produto = produtocompostoService.findOne(idf);
 
 //        detalhesproduto.addObject("produto", produto);
@@ -380,9 +384,34 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 //        		+ "Gerencia  Produto Composto !", produto);
 
 
-        return produzirprodutocomposto;
+        return new ModelAndView("redirect:/cozinha");
     }
     
+    
+    @RequestMapping(value = "retirar", method = RequestMethod.GET)
+    public ModelAndView RetirarProdutoCompsotoForm(HttpServletRequest request) {
+
+
+        UUID idf = (UUID.fromString(request.getParameter("idprod")));
+        
+        String qtd= (request.getParameter("qtd"));
+
+        
+//        ModelAndView produzirprodutocomposto = new ModelAndView("cozinha");
+//
+//        produzirprodutocomposto.addObject("produtos", produtoList);
+        
+        
+//        ProdutoComposto produto = produtocompostoService.findOne(idf);
+
+//        detalhesproduto.addObject("produto", produto);
+
+//        logger.info(""
+//        		+ "Gerencia  Produto Composto !", produto);
+
+
+        return new ModelAndView("redirect:/cozinha");
+    }
     
     
 

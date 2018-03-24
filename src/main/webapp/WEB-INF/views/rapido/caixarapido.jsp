@@ -890,7 +890,7 @@
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Despesa</label>
 									<input id="id" name="id" list="${despesaList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                    		  autocomplete="off"/>
                                  </div> 
                                  
                                  

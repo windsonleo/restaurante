@@ -249,7 +249,7 @@
 									title="editar" class="fa fa-pencil fa-2x"></a>
 									
 									
-									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"></a>
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">

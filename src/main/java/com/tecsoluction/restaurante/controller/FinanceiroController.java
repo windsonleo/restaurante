@@ -1,13 +1,22 @@
 package com.tecsoluction.restaurante.controller;
 
 import com.tecsoluction.restaurante.entidade.Banco;
+import com.tecsoluction.restaurante.entidade.ContasPagar;
+import com.tecsoluction.restaurante.entidade.ContasReceber;
+import com.tecsoluction.restaurante.entidade.Despesa;
+import com.tecsoluction.restaurante.entidade.Pagamento;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.service.impl.BancoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ContasPagarServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ContasReceberServicoImpl;
+import com.tecsoluction.restaurante.service.impl.DespesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -30,6 +39,20 @@ public class FinanceiroController {
 
     private final
     BancoServicoImpl bancoService = new BancoServicoImpl();
+    
+    @Autowired 
+    private DespesaServicoImpl despesaServico;
+    
+    @Autowired 
+    private ContasReceberServicoImpl contareceberServico;
+    
+    @Autowired 
+    private ContasPagarServicoImpl contapagarServico;
+    
+    @Autowired 
+    private PagamentoServicoImpl pagamentoServico;
+    
+    
 
 
 
@@ -41,6 +64,8 @@ public class FinanceiroController {
 //        usuario = userservice.findByUsername(usuario.getUsername());
 //
 //        model.addAttribute("usuarioAtt", usuario);
+    	
+    	
     
     
     }
@@ -53,8 +78,20 @@ public class FinanceiroController {
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
         String formattedDate = dateFormat.format(date);
+        
+        List<Despesa> despesas = despesaServico.findAll();
+        List<ContasReceber> contasreceber = contareceberServico.findAll();
+        List<ContasPagar> contaspagar = contapagarServico.findAll();
+        List<Pagamento> pagamento = pagamentoServico.findAll();
+        
+
 
         ModelAndView login = new ModelAndView("inicio");
+        
+        login.addObject("despesas", despesas);
+        login.addObject("apagars", contaspagar);
+        login.addObject("recebers", contasreceber);
+        login.addObject("pagamentos", pagamento);
 
 //        login.addObject("serverTime", formattedDate);
 

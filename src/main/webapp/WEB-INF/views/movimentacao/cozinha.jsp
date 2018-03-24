@@ -740,19 +740,25 @@
         <h4 class="modal-title" id="exampleModalLabel">Selecione o Produto</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="produtocomposto/retirar">
           
             		<div class="form-group">
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Produto</label>
-									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
+									<input id="idprod" name="idprod" list="${produtos}" class="form-control" type="text"
                                     		  autocomplete="on"/>
                             				  <span class="material-input"></span>
-                                 </div> 
-                                 
-                              <datalist id="${caixaList}">
+                </div> 
+                           
+                                           <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Quantidade</label>
+									<input id="qtd" name="qtd"  class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                            				  <span class="material-input"></span>
+                </div>       
+                              <datalist id="${produtos}">
 
-                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+                                    <c:forEach var="caixa" items="${produtos}" varStatus="id">
 
                                         <option value="${caixa.id }"> ${caixa.nome } </option>
 
@@ -764,7 +770,7 @@
           </div>
           
 
-                 <button type="button" class="btn btn-info" >Retirar Insumo</button>
+                 <button type="submit" class="btn btn-info" >Retirar Insumo</button>
          
           
         </form>
@@ -789,19 +795,25 @@
       </div>
       <div class="modal-body">
        
-        <form>
+        <form action="produtocomposto/produzirprodutocomposto">
           
   		<div class="form-group">
                 <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Caixa</label>
-									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
+                                                                          <label class="control-label">Produto</label>
+									<input id="idprod" name="idprod" list="${produtos}" class="form-control" type="text"
                                     		  autocomplete="on"/>
                             				  <span class="material-input"></span>
-                                 </div> 
-                                 
-                              <datalist id="${caixaList}">
+                </div> 
+                           
+                                           <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Quantidade</label>
+									<input id="qtd" name="qtd"  class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                            				  <span class="material-input"></span>
+                </div>       
+                              <datalist id="${produtos}">
 
-                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+                                    <c:forEach var="caixa" items="${produtos}" varStatus="id">
 
                                         <option value="${caixa.id }"> ${caixa.nome } </option>
 
@@ -822,7 +834,7 @@
 <!--             <input class="form-control" id="message-text"></input> -->
 <!--           </div> -->
           
-                  <button type="button" class="btn btn-info">Produzir Produto Composto</button>
+                  <button type="submit" class="btn btn-info">Produzir Produto Composto</button>
           
         </form>
       </div>

@@ -204,18 +204,18 @@
       								
       								<a
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informa��o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informa��o" ><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
-									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
+									title="editar" ><i class="icon-edit"></i></a>
 									
 																			<a
 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key.id}&idrec=${recebimento.id}&qtd=${item.value}"
-									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a>
+									title="confirmarItens" ><i class="icon-ok"></i></a>
 									
 									
-									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal"><i class="icon-remove-sign"></i></a>
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
@@ -335,18 +335,18 @@
       								
       								<a 
 									href="${pageContext.request.contextPath}/item/informacao?id=${item.key}"
-									title="informa��o" class="fa fa-info fa-2x"><i class="icon-info-sign"></i></a>
+									title="informa��o" ><i class="icon-info-sign"></i></a>
 									
 										<a
 									href="${pageContext.request.contextPath}/item/editar?id=${item.key}"
-									title="editar" class="fa fa-pencil fa-2x"><i class="icon-edit"></i></a>
+									title="editar" ><i class="icon-edit"></i></a>
 									
 																			<a
 									href="${pageContext.request.contextPath}/recebimento/confirmaritem?id=${item.key}"
-									title="confirmarItens" class="fa fa-pencil fa-2x"><i class="icon-ok"></i></a>
+									title="confirmarItens" ><i class="icon-ok"></i></a>
 									
 									
-									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"><i class="icon-remove-sign"></i></a>
+									<a href="#myAlert${item.key}" data-toggle="modal" class="fa fa-remove"></a>
 									
 			<div id="myAlert${item.key}" class="modal hide">
               <div class="modal-header">
