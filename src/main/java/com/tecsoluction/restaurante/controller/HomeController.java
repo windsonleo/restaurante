@@ -280,7 +280,7 @@ public class HomeController {
         ModelAndView home = new ModelAndView("home");
 
         home.addObject("serverTime", formattedDate);
-        home.addObject("usuarioAtt", usuario);
+//        home.addObject("usuarioAtt", usuario);
 
         return home;
     }

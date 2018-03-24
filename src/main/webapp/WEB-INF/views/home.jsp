@@ -295,7 +295,8 @@
                                 </div>
                             </div>
                         </div>
-                       </sec:authorize> 
+                       </sec:authorize>
+                       
                        
                           <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
                         
