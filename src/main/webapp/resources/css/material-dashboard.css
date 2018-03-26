@@ -942,9 +942,9 @@ h2.title {
 }
 
 .main-panel>.content {
-    margin-top: 70px;
-    padding: 30px 15px;
-    min-height: calc(100% - 123px);
+    margin-top: 20px;
+    padding: 5px 8px;
+    min-height: calc(100% - 80px);
 }
 
 .main-panel>.footer {
@@ -2454,12 +2454,12 @@ h6,
 }
 
 a {
-    color: #337ab7;
+    color: #333;
 }
 
 a:hover,
 a:focus {
-    color: #89229b;
+    color: red;
     text-decoration: none;
 }
 
@@ -4085,7 +4085,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .nav-pills:not(.nav-pills-icons)>li>a {
-    border-radius: 30px;
+    border-radius: 4px;
 }
 
 .nav-pills.nav-stacked>li+li {

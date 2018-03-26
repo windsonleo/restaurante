@@ -5,6 +5,8 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
+import com.tecsoluction.restaurante.util.StatusPagamento;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -115,7 +117,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         // LocalDate dataDeInscricao = LocalDate.now();
 
         this.pagamento.setDatapagamento(new Date());
-        this.pagamento.setStatus("ABERTO");
+        this.pagamento.setStatus(StatusPagamento.ABERTO);
 
 //		totalpedido = Money.of(usd, 0.00);
 
@@ -163,7 +165,7 @@ public class PagamentoController extends AbstractController<Pagamento> {
         	this.formas.add(formapag);
         	
 //        	this.pagamento.setFormaPagamentos(formapag);
-        	this.pagamento.setStatus("ABERTO");
+        	this.pagamento.setStatus(StatusPagamento.ABERTO);
         
 //        getservice().save(pagamento);
 

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="true" %>
 
 
@@ -75,7 +76,8 @@
                                     <tr>
                                         <th>Id</th>
 									    <th>Nome</th>
-<!-- 									    <th>Telefone</th> -->
+									    <th>Status</th>
+									    <th>Saldo Inicial</th>
 <!-- 									    <th>Email</th> -->
 <!-- 									    <th>Data Nasciemnto</th> -->
 <!-- 									     <th>Genero</th> -->
@@ -92,6 +94,9 @@
                 <tr class="gradeX">
                     <td>${caixa.id}</td>
                   <td>${caixa.nome}</td>
+                  <td>${caixa.status}</td>
+                   <td> <fmt:formatNumber type="currency"
+                 value="${caixa.saldoinicial}"/></td>
 <%--                   <td ><input type="tel" value="${caixa.telefone}"></td> --%>
 <%--                   <td><input type="email" value="${caixa.email}"></td> --%>
 <%--                    <td>${caixa.datanascimento}</td> --%>

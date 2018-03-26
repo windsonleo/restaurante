@@ -291,7 +291,7 @@
   				
   				</td>
   					
-<%--   					 <td>${}</td> --%>
+<%--   					 <td>${item.TotalizacaoPoritem(item.value)}</td> --%>
   					
   				<td>
 <%--   				 <fmt:formatNumber type="currency" --%>

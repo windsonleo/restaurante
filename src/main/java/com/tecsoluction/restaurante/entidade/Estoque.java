@@ -69,13 +69,13 @@ public class Estoque extends BaseEntity implements Serializable {
             novo = novo.add(antigo).add(vnovo);
 
             items.replace(produto,antigo.toString(),novo.toString());
-        	
+//            items.remove(produto);
         	
         }else {
         	
         	
         	novo = novo.add(antigo).add(vnovo);	
-        	  this.items.put(produto, novo.toString());
+        	  items.put(produto, novo.toString());
         	
         }
 
@@ -97,13 +97,14 @@ public class Estoque extends BaseEntity implements Serializable {
             novo = novo.add(antigo).subtract(vnovo);
 
             items.replace(produto,vantigo,novo.toString());
+//            items.remove(produto);
         	
         	
         }else {
         	
 //        	
         	novo = novo.add(antigo).subtract(vnovo);
-        	  this.items.put(produto, novo.toString());
+        	  items.put(produto, novo.toString());
         	
 //        	AddProdutoEstoque(produto, qtd);
         	
@@ -150,7 +151,7 @@ public class Estoque extends BaseEntity implements Serializable {
 
             BigDecimal quantidadef = new BigDecimal(qtd);
 
-            totalpedido = totalpedido.add(key.getPrecoUnitario().multiply(quantidadef));
+            totalpedido = totalpedido.add(key.getPrecoCusto().multiply(quantidadef));
         }
 
         return totalpedido;

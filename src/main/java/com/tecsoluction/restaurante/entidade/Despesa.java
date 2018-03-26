@@ -35,6 +35,9 @@ public class Despesa extends BaseEntity implements Serializable {
     @ManyToOne
 	@JoinColumn(name = "caixa_id")
     private Caixa caixa;
+    
+    
+    private String valor;
 
 //    @JsonIgnore
 ////	@LazyCollection(LazyCollectionOption.TRUE)

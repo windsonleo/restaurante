@@ -1,9 +1,13 @@
 package com.tecsoluction.restaurante.controller;
 
-import com.tecsoluction.restaurante.entidade.*;
-import com.tecsoluction.restaurante.service.impl.*;
-import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.StatusPedido;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,19 +17,51 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
+import com.tecsoluction.restaurante.entidade.Caixa;
+import com.tecsoluction.restaurante.entidade.Cliente;
+import com.tecsoluction.restaurante.entidade.ContasPagar;
+import com.tecsoluction.restaurante.entidade.ContasReceber;
+import com.tecsoluction.restaurante.entidade.Despesa;
+import com.tecsoluction.restaurante.entidade.Empresa;
+import com.tecsoluction.restaurante.entidade.Estoque;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Garcon;
+import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.Pagamento;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
+import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.Recebimento;
+import com.tecsoluction.restaurante.entidade.Reserva;
+import com.tecsoluction.restaurante.entidade.Usuario;
+import com.tecsoluction.restaurante.service.impl.BancoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.CaixaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ContasPagarServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ContasReceberServicoImpl;
+import com.tecsoluction.restaurante.service.impl.DespesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.EmpresaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.EstoqueServicoImpl;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PagamentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.RecebimentoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ReservaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 /**
  * Handles requests for the application home page.
@@ -35,46 +71,46 @@ public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-
+    @Autowired 
     private final
     UsuarioServicoImpl userservice;
-    
+    @Autowired 
     private final
     BancoServicoImpl bancoService;
-
+    @Autowired 
     private final
     GarconServicoImpl garconservice;
-
+    @Autowired 
     private final
     FornecedorServicoImpl fornecedorservice;
-
+    @Autowired 
     private final
     PagamentoServicoImpl pagamentoservice;
-
+    @Autowired 
     private final
     PedidoVendaServicoImpl pedidovendaService;
-
+    @Autowired 
     private final
     ProdutoServicoImpl produtoService;
-
+    @Autowired 
     private final
     MesaServicoImpl mesaService;
-
+    @Autowired 
     private final
     ClienteServicoImpl clienteService;
-
+    @Autowired 
     private final
     RecebimentoServicoImpl recebimentoService;
-
+    @Autowired 
     private final
     PedidoCompraServicoImpl pedidocompraService;
-    
+    @Autowired 
     private final 
     EstoqueServicoImpl estoqueService;
-    
+    @Autowired 
     private final 
     ReservaServicoImpl reservaService;
-    
+    @Autowired 
     private final 
     CaixaServicoImpl caixaService;
     
@@ -101,9 +137,7 @@ public class HomeController {
     
     private
     List<Caixa> caixas;
-    
-    private
-    List<Cliente> clientesNovos;
+   
 
     private
     List<PedidoVenda> pedidovendas;
@@ -122,12 +156,6 @@ public class HomeController {
     
 
     private
-    List<Produto> produtosNovos;
-
-    private
-    List<Usuario> usuarios;
-
-    private
     List<PedidoCompra> pedidocompras;
 
     private
@@ -136,8 +164,6 @@ public class HomeController {
     private
     List<Cliente> resultsearch;
 
-    private
-    List<Garcon> garcons;
 
     private
     List<Fornecedor> fornecedores;
@@ -146,12 +172,6 @@ public class HomeController {
     List<Pagamento> pagamentos;
     
     
-    
-    private
-    List<Banco> bancos;
-    
-    private
-    List<Item> itemsProntos = new ArrayList<Item> ();
     
 
 
@@ -185,10 +205,8 @@ public class HomeController {
        mesasocupadass = mesaService.findAll();
         mesas = mesaService.findAll();
         produtos = produtoService.findAll();
-        usuarios = userservice.findAll();
         pedidocompras = pedidocompraService.findAll();
         recebimentos = recebimentoService.findAll();
-        garcons = garconservice.findAll();
         fornecedores = fornecedorservice.findAll();
         pagamentos = pagamentoservice.findAll();
         List<Estoque> estqueprod = estoqueService.findAll();
@@ -267,19 +285,19 @@ public class HomeController {
     public ModelAndView Login(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
 
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//        Date date = new Date();
+//        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+//
+//        String formattedDate = dateFormat.format(date);
 
-        String formattedDate = dateFormat.format(date);
-
-        Usuario usuario = new Usuario();
-        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        usuario = userservice.findByUsername(usuario.getUsername());
+//        Usuario usuario = new Usuario();
+//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        usuario = userservice.findByUsername(usuario.getUsername());
 
 
         ModelAndView home = new ModelAndView("home");
 
-        home.addObject("serverTime", formattedDate);
+//        home.addObject("serverTime", formattedDate);
 //        home.addObject("usuarioAtt", usuario);
 
         return home;
@@ -439,7 +457,7 @@ public class HomeController {
         
         
 
-        	cozinha.addObject("pedidovendasList", pedidovendasnovos);
+        	cozinha.addObject("pedidovendasnovos", pedidovendasnovos);
         	cozinha.addObject("padaberto", padaguardando);
         	cozinha.addObject("padpendente", padexecucao);
         	cozinha.addObject("padpronto", padpronto);

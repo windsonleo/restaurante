@@ -30,6 +30,7 @@
         <property name="minIdle" value="2"/>
         <property name="initialSize" value="5"/>
         <property name="removeAbandoned" value="true"/>
+        
     </bean>
 
     <bean class="org.apache.commons.dbcp.BasicDataSource"

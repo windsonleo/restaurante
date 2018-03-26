@@ -125,7 +125,7 @@ public class MesaController extends AbstractController<Mesa> {
 
         ModelAndView detalhesmesa = new ModelAndView("detalhesmesa");
 
-        Mesa mesa = mesaService.findOne(idf);
+        Mesa mesa = getservice().findOne(idf);
 
         BigDecimal total =  new BigDecimal(0.00);
 
@@ -415,80 +415,107 @@ public class MesaController extends AbstractController<Mesa> {
     }
     
     
-    @RequestMapping(value = "transferirmesa", method = RequestMethod.GET)
-    public ModelAndView TransferirMesa(HttpServletRequest request) {
-
-       	String mensagem = "Mesa Tranferida com Sucesso";
-
-       	//
-       	    	ModelAndView salao = new ModelAndView("salao");
-
-//       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
-//       	       
+//    @RequestMapping(value = "transferirmesa", method = RequestMethod.GET)
+//    public ModelAndView TransferirMesa(HttpServletRequest request) {
 //
+//       			String mensagem = "Mesa Tranferida com Sucesso";
+//
+//       			List<PedidoVenda> vendasDestino = null;
+//       			List<PedidoVenda> vendasDestinoAux = null;
+//
+//       	        UUID idfmorigem = UUID.fromString(request.getParameter("idmesaorigem"));
+//       	        UUID idfmdestino = UUID.fromString(request.getParameter("idmesadestino"));
+//
+//     	        
+//       	        Mesa mesaOrigem = getservice().findOne(idfmorigem);
+//       	        Mesa mesaDestino = getservice().findOne(idfmdestino);
 //       	        
-//       	        Mesa mesa = getservice().findOne(idfm);
-//       	        
-//       	        
-//       	        
-//       	        if(mesa.getStatus() != StatusMesa.ABERTA){
-//       	        	
-//       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
-//       	       
-//       	        	salao.addObject("erros", erros);
-//       	        	
-//       	        	return salao;
-//       	        	
-//       	        }
-//       	        
-//       	        mesa.setStatus(StatusMesa.FECHADA);
-//       	        
-//       	        //guardara os pedido pronto da mesa
-//       	        List<PedidoVenda> pedidos = new ArrayList<>();
-//       	        
-//       	     for (PedidoVenda pv : mesa.getPedidos()) {
-//       	    	 
-//       	    	 
-//       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
-//       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
-//       	    		 
-//       	    		pedidos.add(pv);
-//       	    		 
-//       	    		 
-//       	    	 }
-//       	    	 
-//       	    	 
+//       	        vendasDestino = mesaDestino.getPedidos();
+//
+//       	     for (PedidoVenda pv : mesaOrigem.getPedidos()) {
+//   	    	 
+//   	    	 
+//   	    	 //PEGO OS PEDIDO ABERTOS,PENDENTES,PRONTOS,ENTREGUE E INCLUO NA MESA DESTINO
+//   	    	 if((pv.getStatus() != StatusPedido.FINALIZADO)&&(pv.getStatus() != StatusPedido.CANCELADO)&&(pv.getStatus() != StatusPedido.FECHADO)) {
+//   	    		 
+////   	    		vendasDestino.add(pv);
+//   	    		 mesaOrigem.getPedidos().remove(pv);
+//   	    		 mesaDestino.getPedidos().add(pv);
+//
+//   	    		 
+//   	    	 }
+//   	    	 
 //       	     }
 //       	     
-//       	     for (PedidoVenda pv : pedidos) {
-//       	    	 
-//       	    		 
-//       	    		pv.setStatus(StatusPedido.FECHADO);
-//       	    		 
-//       	    		pedidovendaService.edit(pv);
-//       	    	 
-//       	     }
-//       	     
-//       	     
+//       	   
+////       	  mesaDestino.setPedidos(vendasDestino);
+//       	  
+//       	  getservice().edit(mesaOrigem);
+//       	  getservice().edit(mesaDestino);
 //       	        
-//       	        getservice().edit(mesa);
-//       	    	
-//       	    	
 //       	        
-////       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
 //       	        
+////       	        
+////       	        
+////       	        
+////       	        if(mesa.getStatus() != StatusMesa.ABERTA){
+////       	        	
+////       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
+////       	       
+////       	        	salao.addObject("erros", erros);
+////       	        	
+////       	        	return salao;
+////       	        	
+////       	        }
+////       	        
+////       	        mesa.setStatus(StatusMesa.FECHADA);
+////       	        
+////       	        //guardara os pedido pronto da mesa
+////       	        List<PedidoVenda> pedidos = new ArrayList<>();
+////       	        
+////       	     for (PedidoVenda pv : mesa.getPedidos()) {
+////       	    	 
+////       	    	 
+////       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
+////       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+////       	    		 
+////       	    		pedidos.add(pv);
+////       	    		 
+////       	    		 
+////       	    	 }
+////       	    	 
+////       	    	 
+////       	     }
+////       	     
+////       	     for (PedidoVenda pv : pedidos) {
+////       	    	 
+////       	    		 
+////       	    		pv.setStatus(StatusPedido.FECHADO);
+////       	    		 
+////       	    		pedidovendaService.edit(pv);
+////       	    	 
+////       	     }
+////       	     
+////       	     
+////       	        
+////       	        getservice().edit(mesa);
+////       	    	
+////       	    	
+////       	        
+//////       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+////       	        
+////
+////       	        List<Mesa> mesas = mesaService.findAll();
 //
-//       	        List<Mesa> mesas = mesaService.findAll();
-
-       	        salao.addObject("mesasList", mesas);
-       	        salao.addObject("mensagem", mensagem);
-
-//       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
-
-
-       	        return new ModelAndView("redirect:/mesa/salao");
-       	        
-    }
+////       	        salao.addObject("mesasList", mesas);
+////       	        salao.addObject("mensagem", mensagem);
+//
+////       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
+//
+//
+//       	        return new ModelAndView("redirect:/mesa/salao");
+//       	        
+//    }
     
 
 }

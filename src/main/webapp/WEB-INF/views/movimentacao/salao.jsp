@@ -56,9 +56,9 @@
 		
         <hr>
         
-      <div class="row" style="margin-top:-5em;">
+      <div class="row" style="margin-top:-4em;">
 
-		<div class="col-md-6 col-md-offset-8">
+		<div class="col-md-8 col-md-offset-3">
 
 		
 		 <ul class="nav nav-pills" role="tablist">
@@ -68,8 +68,8 @@
 <%-- 						<a href="${pageContext.request.contextPath}/mesa/abrirmesa" role="modal" data-toggle="modal" data-target="#exampleModal"> --%>
 							<a href="#ModalAbrirMesa" role="tab" data-toggle="modal" aria-expanded="true" data-target="#ModalAbrirMesa">
 							
-							<i class="fa fa-cutlery"></i>
-							Abrir Mesa
+							<i class="material-icons">lock_open</i>
+							Abrir
 						</a>
 					</li>
 					
@@ -77,15 +77,15 @@
 <%-- 						<a href="${pageContext.request.contextPath}/mesa/fecharmesa" role="modal" data-toggle="modal" data-target="#exampleModal2"> --%>
 							<a href="#ModalFecharMesa" role="tab" data-toggle="modal" aria-expanded="false">
 							
-							<i class="fa fa-cutlery"></i>
-							Fechar Mesa
+							<i class="material-icons">lock</i>
+							Fechar
 						</a>
 					</li>
 					
 					<li class="" >
 						<a href="#ModalTransferirMesa" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa" aria-expanded="false">
 							<i class="material-icons"> compare_arrows</i>
-							Transferir Mesa
+							Transferir
 						</a>
 					</li>
 		</ul>
@@ -114,7 +114,7 @@
                           <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="green">
-									<i class="icon-table"></i>
+									<i class="material-icons">layers</i>
                                 </div>
                                 
                                 <div class="card-content">
@@ -170,7 +170,7 @@
                          <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
-									<i class="icon-table"></i>
+								<i class="material-icons">layers</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category">${mesa.id}</p>
@@ -223,7 +223,7 @@
  						<div class="col-lg-3 col-md-6 col-sm-6">
                              <div class="card card-stats">
                                 <div class="card-header" data-background-color="">
-									<i class="icon-table"></i>
+								<i class="material-icons">layers</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category">${mesa.id}</p>
@@ -630,7 +630,7 @@
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Mesa Origem</label>
 									<input id="idmesaorigem" name="idmesaorigem" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                    		  autocomplete="off"/>
                             				  <span class="material-input"></span>
                                  </div> 
                                  
@@ -654,7 +654,7 @@
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Mesa Destino</label>
 									<input id="idmesadestino" name="idmesadestino" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                    		  autocomplete="off"/>
                             				  <span class="material-input"></span>
                                  </div> 
                                  
@@ -711,17 +711,17 @@
           
   		<div class="form-group">
                 <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Mesa Origem</label>
-									<input id="idmesaorigem" name="idmesaorigem" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                       <label class="control-label">Pedido</label>
+									<input id="idmesaorigem" name="idmesaorigem" list="${pedidoList}" class="form-control" type="text"
+                                    		  autocomplete="off"/>
                             				  <span class="material-input"></span>
                                  </div> 
                                  
-                              <datalist id="${mesasList}">
+                              <datalist id="${pedidoList}">
 
-                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+                                    <c:forEach var="pedido" items="${mesa.pedidos}" varStatus="id">
 
-                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+                                        <option value="${pedido.id }"> ${pedido.items } </option>
 
                                     </c:forEach>
 

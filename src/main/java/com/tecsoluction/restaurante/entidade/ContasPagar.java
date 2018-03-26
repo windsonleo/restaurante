@@ -23,6 +23,7 @@ import javax.persistence.MapKeyClass;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -47,7 +48,7 @@ public class ContasPagar extends Conta implements Serializable {
     
 //    private Fornecedor fornecedor;
     
-
+    @Transient
     private Recebimento recebimento;
     
    
@@ -64,7 +65,7 @@ public class ContasPagar extends Conta implements Serializable {
         
 //        FormaPagamento formapag = new FormaPagamento();
 
-        this.recebimento = recebimento;
+     
         
         this.setValor(recebimento.getTotal());
         this.setAtivo(true);

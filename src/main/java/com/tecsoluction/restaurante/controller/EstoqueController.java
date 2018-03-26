@@ -80,7 +80,7 @@ public class EstoqueController extends AbstractController<Estoque> {
         double totalitens = 0.0;
         BigDecimal totalcusto = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
         BigDecimal totalvenda = new BigDecimal(0.000).setScale(4, RoundingMode.UNNECESSARY);
-        ;
+        
 
         Collection<String> itenstotal = estoque.getItems().values();
 

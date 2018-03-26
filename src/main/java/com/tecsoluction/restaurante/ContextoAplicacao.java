@@ -33,10 +33,10 @@ public class ContextoAplicacao {
 	 @Autowired
 	 private
 	 UsuarioServicoImpl userservice;
-	 
+	 @Autowired
 	    private final
 	    PedidoVendaServicoImpl pedidovendaService;
-	    
+	 @Autowired
 	    private final
 	    EmpresaServicoImpl empresaService;
 	    
@@ -49,7 +49,7 @@ public class ContextoAplicacao {
 	    List<PedidoVenda> itensProntosPedidoVenda = new ArrayList<PedidoVenda> ();
 	    
 	    private
-	    List<PedidoVenda> pedidovendas;
+	    List<PedidoVenda> pedidovendas = new ArrayList<PedidoVenda>();
 	 
 
 	 @Autowired
@@ -60,11 +60,6 @@ public class ContextoAplicacao {
 	 this.empresaService = emp;
 	 }
 
-//	@Autowired
-//	public ContextoAplicacao() {
-//
-//		// this.userservice = sevice;
-//	}
 
 	@ModelAttribute
 	public void addAttributes(Model model) {
@@ -129,29 +124,23 @@ public class ContextoAplicacao {
 	
     public List<PedidoVenda> buscarItemPronto(List<PedidoVenda> vendas) {
 
-    	List<Item> itensProntos = new ArrayList<Item>();
+    	itemsProntos = new ArrayList<Item>();
     	List<PedidoVenda> itensProntosPedidoVenda = new ArrayList<PedidoVenda>();
-        
-//    	 LocalDate hoje = LocalDate.now();
-//    	 
-//    	 Date data = new Date();
     	
-    	
+    	 SituacaoItem situacaopronto = SituacaoItem.PRONTO;
     	
         for (PedidoVenda v : vendas) {
         	
-    	if(v.getStatus()==StatusPedido.PRONTO || (Ehoje(v.getData()))){
+    	if((v.getStatus().equals(StatusPedido.PRONTO ))||(Ehoje(v.getData()))){
     		
-    		itensProntosPedidoVenda.add(v);
-    		
-    	}
-        	
+    		 itensProntosPedidoVenda.add(v);
         	
         	  for (Item key : v.getItems().keySet()) {
         	
-        		  if((key.getSituacao() == SituacaoItem.PRONTO) || (Ehoje(v.getData()))){
+        		  if(key.getSituacao()==(situacaopronto)){
         			  
-        			  itensProntos.add(key);
+        			  itemsProntos.add(key);
+        			 
         			  
         			  
         			  
@@ -159,6 +148,8 @@ public class ContextoAplicacao {
         		  
         		  
         	  }
+        	  
+    	}
         	
      
 	            

@@ -7,6 +7,7 @@ import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusConta;
 import com.tecsoluction.restaurante.util.StatusPedido;
 import com.tecsoluction.restaurante.util.TipoPedido;
 
@@ -172,7 +173,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
         for (Item key : recebimento.getItems().keySet()) {
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
+//            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
 //            BigDecimal qtd = key.getQtd();
             String qtd = recebimento.getItems().get(key);
             BigDecimal qtdb = new BigDecimal(qtd);
@@ -194,6 +195,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
         
         ContasPagar apagar = new ContasPagar(recebimento);
+        apagar.setStatus(StatusConta.ABERTA);
         contasapagarService.save(apagar);
 
         pv = pedidocompraService.findOne(recebimento.getPedidocompra().getId());
@@ -344,7 +346,7 @@ public class RecebimentoController extends AbstractController<Recebimento> {
         
 //        it.setQtd(new BigDecimal(qtd));
 //        it.setTotalItem(prod.getPrecovenda().multiply(new BigDecimal(qtd)));
-		 it.setSituacao(SituacaoItem.EM_EXECUCAO);
+		 it.setSituacao(SituacaoItem.ENTREGUE);
 
         
         recebimento.addItem(it, qtd);

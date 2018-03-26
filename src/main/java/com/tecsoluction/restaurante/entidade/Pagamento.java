@@ -1,6 +1,9 @@
 package com.tecsoluction.restaurante.entidade;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.StatusPagamento;
+import com.tecsoluction.restaurante.util.TipoFormaPagamento;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,7 +53,8 @@ public class Pagamento extends BaseEntity implements Serializable {
 
 
     // REJEITADO,CANCELADO,FINALIZADO,PENDENTE,ATRASADO,
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusPagamento status;
 
     private BigDecimal valorPago = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 

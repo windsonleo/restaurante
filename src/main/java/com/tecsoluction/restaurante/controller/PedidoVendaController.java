@@ -2,10 +2,8 @@ package com.tecsoluction.restaurante.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -14,7 +12,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -29,10 +26,8 @@ import com.tecsoluction.restaurante.entidade.Estoque;
 import com.tecsoluction.restaurante.entidade.Garcon;
 import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
-import com.tecsoluction.restaurante.entidade.PedidoCompra;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
-import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
@@ -41,7 +36,6 @@ import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
-import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.StatusMesa;
@@ -51,20 +45,17 @@ import com.tecsoluction.restaurante.util.StatusPedido;
 @RequestMapping(value = "pedidovenda/")
 public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
-//    private final UsuarioServicoImpl userservice;
-
+	 @Autowired
     private final PedidoVendaServicoImpl pedidovendaService;
-
-//    private final ItemServicoImpl itemService;
-
+    @Autowired
     private final ProdutoServicoImpl produtoService;
-
+    @Autowired
     private final MesaServicoImpl mesaService;
-
+    @Autowired
     private final ClienteServicoImpl clienteService;
-
+    @Autowired
     private final GarconServicoImpl garconService;
-
+    @Autowired
     private final EstoqueServicoImpl estoqueService;
 
     private List<Produto> produtosList;
@@ -89,12 +80,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         super("pedidovenda");
 
         this.pedidovendaService = dao;
-//        this.itemService = daoitem;
         this.produtoService = produtodao;
         this.clienteService = daocliente;
         this.mesaService = daomesa;
         this.garconService = daogarcon;
-//        this.userservice = daousu;
         this.estoqueService = estdao;
 
 
@@ -115,9 +104,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         });
 
-//        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
-//
-//        });
 
     }
 
@@ -125,11 +111,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     public void addAttributes(Model model) {
 
         List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
-
-        // TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
         OrigemPedido[] origemPedidoList = OrigemPedido.values();
-//        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
 
         List<Cliente> clienteList = clienteService.findAll();
 
@@ -141,22 +124,15 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         	
             pv = new PedidoVenda();
 
-//            itens = new HashMap<>();
+            itens = new HashMap<>();
         	
         }
 
-//        Usuario usuario = new Usuario();
-//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//
-//        usuario = userservice.findByUsername(usuario.getUsername());
-
-//        model.addAttribute("usuarioAtt", usuario);
 
         model.addAttribute("pedidoVendaList", pedidoVendaList);
         model.addAttribute("origemPedidoList", origemPedidoList);
         model.addAttribute("garconList", garconList);
         model.addAttribute("mesaList", mesaList);
-//        model.addAttribute("situacaoPedidoList", situacaoPedidoList);
         model.addAttribute("tipoStatusList", tipoStatusList);
         model.addAttribute("clienteList", clienteList);
         model.addAttribute("pedidovenda", pv);
@@ -174,44 +150,21 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        this.pv = getservice().findOne(idf);
+        pv = getservice().findOne(idf);
 
         ModelAndView finalizacaovenda = new ModelAndView("finalizacaovenda");
 
-       
-        //verifica se o pedido esta pronto
-        
-//        if(pv.getStatus() != StatusPedido.PRONTO){
-//        	
-//            String erros = "Esse Pedido nao pode ser FiNALIZADO, ele ainda nao foi PRONTO";
-//        	
-//            return new ModelAndView("redirect:/pedidovenda/movimentacao").addObject("erros", erros);
-//        	
-//        }
-        
-        
         
         
         for (Item key : pv.getItems().keySet()) {
 
-            Produto produto = produtoService.getProdutoPorCodebar(key.getCodigo());
-//            BigDecimal qtd = key.getQtd();
+
             String qtd = pv.getItems().get(key);
             BigDecimal qtdb = new BigDecimal(qtd);
-
-            
-//            Item item = new Item(produto);
-//            item.setSituacao(SituacaoItem.FECHADO);
-
-//            item.setQtd(qtd);
-//            item.setTotalItem(produto.getPrecovenda().multiply(item.getQtd()));
 
 
             estoque.RetirarProdutoEstoque(key, qtdb);
 
-//            estoqueService.save(estoque);
-
-//            itemService.save(key);
 
         }
         
@@ -240,23 +193,23 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         ModelAndView movpedidovenda = new ModelAndView("movimentacaopedidovenda");
 
 
-        pv = pedidovendaService.findOne(idf);
+        pv = getservice().findOne(idf);
         
         
         //verifica se o pedido ja esta pronto ou foi canceldo ou foi pago
         
-        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
-        	
-        	
-        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
-         	
-        	 movpedidovenda.addObject("erros", erros);
-        	 
-        	 
-        	 return movpedidovenda;
-        	
-        	
-        }
+//        if(pv.getStatus()==StatusPedido.PRONTO || pv.getStatus()==StatusPedido.CANCELADO||pv.getStatus()==StatusPedido.FINALIZADO){
+//        	
+//        	
+//        	 String erros = "Esse Pedido nao pode ser Add Item, ele ja esta  PRONTO ou foi cancelado ou ja esta foi pago";
+//         	
+//        	 movpedidovenda.addObject("erros", erros);
+//        	 
+//        	 
+//        	 return movpedidovenda;
+//        	
+//        	
+//        }
         
 
         produtosList = produtoService.findAll();
@@ -307,29 +260,14 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
             return additempedidovenda;
         }
 
-        PedidoVenda pedidov = pedidovendaService.findOne(idfpedvend);
+        PedidoVenda pedidov = getservice().findOne(idfpedvend);
 
-        // System.out.println("windson ped"+pedidov.toString());
 
         Item item = new Item(produto);
 
-        item.setId(produto.getId());
-		item.setNome(produto.getNome()); 
-		 item.setCodigo(produto.getCodebar()); 
-//		 item.setQtd(qtdbd); 
-		 item.setPrecoUnitario(produto.getPrecovenda()); 
-
-		 item.setDescricao(produto.getDescricao()); 
-//		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
+       
 		 item.setSituacao(SituacaoItem.AGUARDANDO);
       
-//        itens = pedidov.getItems();
-
-//        itens.put(item, item.getQtd().toString());
-
-//        itemService.save(item);
-		 
-//		 itens = new HashMap<>();
 
 		 pedidov.addItem(item, qtdbd.toString());
 	    
@@ -339,10 +277,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 			
 		getservice().edit(pedidov);
 
-//        pedidov.setItems(itens);
-
-
-//        pedidovendaService.save(pedidov);
 
         return new ModelAndView("redirect:/pedidovenda/additem?id=" + pedidov.getId());
     }
@@ -354,28 +288,13 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView detalhespedidovenda = new ModelAndView("detalhespedido");
 
-        PedidoVenda pedido = pedidovendaService.findOne(idf);
+        PedidoVenda pedido = getservice().findOne(idf);
 
         detalhespedidovenda.addObject("pedido", pedido);
 
         return detalhespedidovenda;
     }
 
-//	@RequestMapping(value = "/item/detalhes", method = RequestMethod.GET)
-//	public ModelAndView detalhesItem(HttpServletRequest request) {
-//
-//        Double prodqtd = Double.parseDouble(request.getParameter("qtd"));
-//        
-//        BigDecimal qtdbc = BigDecimal.valueOf(prodqtd);
-//
-//		ModelAndView detalhesitem = new ModelAndView("detalhesitem");
-//
-//		Item item = itemService.findOne(idf);
-//
-//		detalhesitem.addObject("item", item);
-//
-//		return detalhesitem;
-//	}
 
     @RequestMapping(value = "/item/delete", method = RequestMethod.GET)
     public ModelAndView deleteItemPedidoVenda(HttpServletRequest request) {
@@ -388,19 +307,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     }
 
-//	@RequestMapping(value = "/entregas", method = RequestMethod.GET)
-//	public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
-//		List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
-//
-//		ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
-//		entregas.addObject("pedidovendaList", pedidoVendaList);
-//
-//        item.setQtd(qtdbc);
-//        item.setTotalItem(item.getTotalItem());
-//        item.setPedido(pedidov);
-
-//	}
 
     @RequestMapping(value = "rapido", method = RequestMethod.GET)
     public ModelAndView NovosPedidosRapido(HttpServletRequest request) {
@@ -422,18 +329,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @RequestMapping(value = "fecharpedido", method = RequestMethod.GET)
     public ModelAndView Fecharpedidos(HttpServletRequest request) {
 
-//        ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
     	
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
-    	PedidoVenda pv= pedidovendaService.findOne(idf);
+    	PedidoVenda pv= getservice().findOne(idf);
         
     	VerificaTodosItensEntregues(pv);
     	
     	if(todosentregues){
     		
     		pv.setStatus(StatusPedido.FECHADO);
-    		pedidovendaService.edit(pv);
+    		getservice().edit(pv);
     		todosentregues = false;
     		
     		//mudar status dos itens do pedido de venda para fechado
@@ -441,7 +347,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	}else
     		
     	{
-    		System.out.println("Nem todos itens estao fechados");
+    		System.out.println("Nem todos itens estao Entregues");
     		
     	}
     	
@@ -460,10 +366,6 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @RequestMapping(value = "addItem", method = RequestMethod.POST)
     public ModelAndView AddItemRapido(HttpServletRequest request) {
 
-    			String mensagem = "Item Adicionado com Sucesso";
-    			
-    			String erros = "Erro ao Adicionar Item";
-
     			
        	    	ModelAndView salao = new ModelAndView("pedidovendarapido");
 
@@ -480,12 +382,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
              if (produto == null) {
 
-//                 ModelAndView additempedidovenda = new ModelAndView("additempedidovenda");
 
                  String erross = "sELECIONE UM Produto";
 
                  salao.addObject("erros", erross);
-//                 salao.addObject("pv", pv);
                  salao.addObject("produtosList", produtosList);
 
                  return salao;
@@ -493,18 +393,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        	      
              Item item = new Item(produto);
 
-             item.setId(produto.getId());
-     		 item.setNome(produto.getNome()); 
-     		 item.setCodigo(produto.getCodebar()); 
-     		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
-     		 item.setDescricao(produto.getDescricao()); 
      		 item.setSituacao(SituacaoItem.AGUARDANDO);
            
-     		
-     		 
-     		 
-     		 this.itens.put(item, qtdbd.toString());
+ 
+     		 itens.put(item, qtdbd.toString());
      		 
 //     		 pv.setItems(itens);
 
@@ -530,7 +423,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
        	String mensagem = "Pedido Adicionado com Sucesso";
 
-       	//
+       	
        	    	ModelAndView salao = new ModelAndView("pedidovendarapido");
 
        	    	//ID DA MESA A SER ADD O PEDIDO
@@ -590,56 +483,61 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 //    	        //quantidade do item
 //    	        String qtd = request.getParameter("qtd");
 
-    	        CriarPedido(cliente, mesa, garcon, this.itens);
+    	        CriarPedido(cliente, mesa, garcon, itens);
     	        
     	        
     	        List<Mesa> mesaslist = mesaService.findAll();
        	       
     	        salao.addObject("mesasList", mesaslist);
        	        salao.addObject("mensagem", mensagem);
-       	        salao.addObject("mensagem", mensagem);
        	        salao.addObject("produtosList", produtosList);
 
-
+       	        
+       	        itens.clear();
 
        	        return salao;
        	        
     }
     
     
-    @RequestMapping(value = "item/pronto", method = RequestMethod.GET)
+    @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
     	  UUID idf = UUID.fromString(request.getParameter("id"));
           
           
-          String keyy = request.getParameter("key");
+    	  UUID keyy = UUID.fromString(request.getParameter("key"));
+
           
+    	  Item item = new Item();
+    	  item.setId(keyy);
+    	  item.setSituacao(SituacaoItem.EM_EXECUCAO);
+    	  
           estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
 
-          pv = pedidovendaService.findOne(idf);
+         PedidoVenda pv = pedidovendaService.findOne(idf);
           
+          SituacaoItem situacaopronto = SituacaoItem.PRONTO;
 
           Map<Item,String> pcitens = pv.getItems();
           
           
           
           for (Item key : pcitens.keySet()) {
-          	
-          	System.out.println("key" + key.getNome());
-          	System.out.println("keyy" + keyy);
-        	System.out.println("keyyy" + pcitens.get(key));
         	
-        	String qtdstring = pcitens.get(key);
+          	  String qtdstring = pcitens.get(key);
+        	
           	
-          	if(key.getNome().equals(keyy)){
+          	if(key.equals(item)){
           		
-          		key.setSituacao(SituacaoItem.PRONTO);
+          			key.setSituacao(SituacaoItem.PRONTO);
+          			key.setSituacao(situacaopronto);
+            	
+
+//                   pv.getItems().put(key, qtdstring);
+//                   pcitens.put(key, qtdstring);
           		
-//          	  String qtd = pv.getItems().get(key);
-//              String qtdd = pcitens.get(key);
-//              String qtddd = itens.get(key);
               BigDecimal qtdb = new BigDecimal(qtdstring);
 
               
@@ -647,6 +545,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           	
           	
           	}
+          	
           	
 
           }
@@ -665,15 +564,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         	  
           }
           
-          
-//          pv.setItems(pcitens);
-          
-          getservice().edit(pv);
+                    
+          pedidovendaService.edit(pv);
         
          estoqueService.edit(estoque);
-
-
-//         itens.clear();
           
 
         
@@ -684,19 +578,18 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     
     
     private void VerificaTodosItens(PedidoVenda pv2) {
-		// TODO Auto-generated method stub
+	
     	 int qtditempedido = pv2.getItems().size();
     	 
     	 int qtditempronto= 0;
     	 
-    	 System.out.println("Qtd Item no Pedido: " + qtditempedido);
-    	 System.out.println("Qtd Item Pronto no Pedido: " + qtditempronto);
+    	 SituacaoItem situacaopronto = SituacaoItem.PRONTO;
+    	 
+
          for (Item key : pv2.getItems().keySet()) {
            	
-//           	System.out.println("key" + key.getNome());
-//           	System.out.println("keyy" + keyy);
            	
-           	if(key.getSituacao()==SituacaoItem.PRONTO){
+           	if(key.getSituacao()==(situacaopronto)){
            		
            		qtditempronto = qtditempronto +1;
            		
@@ -715,19 +608,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     
     
     private void VerificaTodosItensEntregues(PedidoVenda pv2) {
-		// TODO Auto-generated method stub
+	
     	 int qtditempedido = pv2.getItems().size();
     	 
     	 int qtditementregue= 0;
     	 
-    	 System.out.println("Qtd Item no Pedido: " + qtditempedido);
-    	 System.out.println("Qtd Item Pronto no Pedido: " + qtditementregue);
+    	 SituacaoItem situacaoentregue = SituacaoItem.ENTREGUE;
+
          for (Item key : pv2.getItems().keySet()) {
+
            	
-//           	System.out.println("key" + key.getNome());
-//           	System.out.println("keyy" + keyy);
-           	
-           	if(key.getSituacao()==SituacaoItem.ENTREGUE){
+           	if(key.getSituacao()==(situacaoentregue)){
            		
            		qtditementregue = qtditementregue +1;
            		
@@ -753,9 +644,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	UUID idf = UUID.fromString(request.getParameter("id"));
           
           
-          String keyy = request.getParameter("key");
+    	UUID keyy = UUID.fromString(request.getParameter("key"));
           
-      
+    	  Item item = new Item();
+    	  item.setId(keyy);
+
+    	  SituacaoItem situacaocancelado = SituacaoItem.CANCELADO;
 
           PedidoVenda pv = pedidovendaService.findOne(idf);
           
@@ -763,13 +657,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           Map<Item,String> pcitens = pv.getItems();
           
           
-          
           for (Item key : pcitens.keySet()) {
           	
           	
-          	if(key.getNome().equals(keyy)){
+          	if(key.equals(item)){
           		
-          		key.setSituacao(SituacaoItem.CANCELADO);
+          		key.setSituacao(situacaocancelado);
           		
           	}
           	
@@ -795,9 +688,15 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	  UUID idf = UUID.fromString(request.getParameter("id"));
           
           
-          String keyy = request.getParameter("key");
+    	  UUID keyy = UUID.fromString(request.getParameter("key"));
+    	  
+      	  Item item = new Item();
+      	  item.setId(keyy);
+      	  item.setSituacao(SituacaoItem.AGUARDANDO);
+
+
           
-      
+    	  SituacaoItem situacaopreparacao = SituacaoItem.EM_EXECUCAO;
 
           PedidoVenda pv = pedidovendaService.findOne(idf);
           
@@ -809,9 +708,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           for (Item key : pcitens.keySet()) {
           	
           	
-          	if(key.getNome().equals(keyy)){
+          	if(key.equals(item)){
           		
-          		key.setSituacao(SituacaoItem.EM_EXECUCAO);
+          		key.setSituacao(situacaopreparacao);
           		
           	}
           	
@@ -838,10 +737,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	  UUID idf = UUID.fromString(request.getParameter("id"));
           
           
-          String keyy = request.getParameter("key");
+    	  UUID keyy = UUID.fromString(request.getParameter("key"));
           
-      
+      	  Item item = new Item();
+      	  item.setId(keyy);
+      	  //forcando mudar o status
+      	  item.setSituacao(SituacaoItem.PRONTO);
+      	  
+      	 SituacaoItem situacaoentregue = SituacaoItem.ENTREGUE;
 
+    	  
           PedidoVenda pv =pedidovendaService.findOne(idf);
           
 
@@ -851,12 +756,10 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           for (Item key : pcitens.keySet()) {
           	
-          	System.out.println("key" + key.getNome());
-          	System.out.println("keyy" + keyy);
           	
-          	if(key.getNome().equals(keyy)){
+          	if(key.equals(item)){
           		
-          		key.setSituacao(SituacaoItem.ENTREGUE);
+          		key.setSituacao(situacaoentregue);
           		
           	}
           	
@@ -916,7 +819,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     	pedidovenda.setData(new Date());
     	pedidovenda.setIspago(false);
     	pedidovenda.setOrigempedido(OrigemPedido.MESA);
-    	pedidovenda.setStatus(StatusPedido.ABERTO);
+//    	pedidovenda.setStatus(StatusPedido.ABERTO);
     	
     	
     	pedidovenda.setItems(itens);
@@ -961,7 +864,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     @Override
     protected PedidoVendaServicoImpl getservice() {
-        // TODO Auto-generated method stub
+        
         return pedidovendaService;
     }
 

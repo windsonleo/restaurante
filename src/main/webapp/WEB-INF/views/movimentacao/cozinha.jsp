@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page session="true" %>
@@ -57,7 +57,7 @@
     
          <div class="row" style="margin-top:-6em;">
 
-		<div class="col-md-8 col-md-offset-6">
+		<div class="col-md-8 col-md-offset-3">
 		
 		 <ul class="nav nav-pills" role="tablist" >
 					
@@ -67,8 +67,8 @@
 <%-- 						<a href="${pageContext.request.contextPath}/produtocomposto/produzirprodutocomposto" role="tab" data-toggle="ta"> --%>
 						<a href="#" role="ta" data-toggle="modal" data-target="#ModalProduzirComposto">
 							
-							<i class="fa fa-cutlery"></i>
-							Produzir Produto Composto
+							<i class="material-icons">extension</i>
+							Criar Composto
 						</a>
 					</li>
 					
@@ -76,7 +76,7 @@
 					
 					
 						<a href="#" role="ta" data-toggle="modal" data-target="#ModalRetirarInsumo">
-							<i class="fa fa-cutlery"></i>
+						<i class="material-icons">pan_tool</i>
 							Retirar Insumo
 						</a>
 					</li>
@@ -84,7 +84,7 @@
 					<li >
 						<a href="#" role="tab" data-toggle="tab" >
 							<i class="material-icons"> timer</i>
-							Tempo Médio Preparo
+							TMP
 						</a>
 					</li>
 		</ul>
@@ -471,7 +471,7 @@
                                 <div class="card-header" data-background-color="green">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
-                                            <span class="nav-tabs-title">Itens:</span>
+                                            <span class="nav-tabs-title">Pedidos:</span>
                                           
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                               
@@ -509,7 +509,7 @@
                                             <table class="table">
                                                 <tbody>
                                                    
-                                                       		<c:forEach var="pv" items="${pedidovendasList }">
+                                                       		<c:forEach var="pv" items="${pedidovendasnovos }">
                                                        		 <tr>
                                                        		
                                                       		
@@ -544,6 +544,10 @@
 																	                  ${item.value }
 																	                  </td>
 																	                  
+																	                  		                 <td>
+																	                  ${item.key.id }
+																	                  </td>
+																	                  
 																	                 <td >
 																	                 <label class="label label-warning"> ${item.key.situacao }</label> 
 																	                  </td> 
@@ -551,15 +555,15 @@
 															 <td class="td-actions text-right">
                                                            
                                                            
-                                                            <button type="button" rel="tooltip" title="preparando" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/preparar?id=${pv.id}&key=${item.key}'" >
+                                                            <button type="button" rel="tooltip" title="preparando" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/preparar?id=${pv.id}&key=${item.key.id}'" >
                                                                 <i class="material-icons">done_all</i>
                                                             </button>                                                           
                                                            
-                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/pronto?id=${pv.id}&key=${item.key}'">
+                                                            <button type="button" rel="tooltip" title="Pronto" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/pronto?id=${pv.id}&key=${item.key.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            
-                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/cancelar?id=${pv.id}&key=${item.key}'" >
+                                                            <button type="button" rel="tooltip" title="Cancelado" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidovenda/item/cancelar?id=${pv.id}&key=${item.key.id}'" >
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
@@ -666,7 +670,7 @@
                                                                  <tr>
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.status=='CANCELADO'}">
+																    <c:when test="${pv.status=='FECHADO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
@@ -740,7 +744,7 @@
         <h4 class="modal-title" id="exampleModalLabel">Selecione o Produto</h4>
       </div>
       <div class="modal-body">
-        <form action="produtocomposto/retirar">
+        <form action="produtocomposto/retirar" method="get">
           
             		<div class="form-group">
                 <div class="form-group label-floating is-empty">
@@ -795,7 +799,7 @@
       </div>
       <div class="modal-body">
        
-        <form action="produtocomposto/produzirprodutocomposto">
+        <form action="produtocomposto/produzirprodutocomposto" method="get">
           
   		<div class="form-group">
                 <div class="form-group label-floating is-empty">

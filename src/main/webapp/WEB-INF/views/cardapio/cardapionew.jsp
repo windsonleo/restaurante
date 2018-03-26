@@ -15,17 +15,17 @@
 	                            <img src="${pageContext.request.contextPath}/resources/images/logocard.png" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
-	                            <h3 class="title-text-danger">Cardápio</h3>
+	                            <h3 class="title-text-danger">Chef:Fabrício Barbosa</h3>
 								<h6>${categoria.nome}</h6>
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="description text-center">
-                        <p>${usuario.roles}</p>
+                        <p>${usuario.roles} hfghgfghfh</p>
 	                </div>
 
 					<div class="row">
-						<div class="col-md-12 col-md-offset-3">
+						<div class="col-lg-9 col-lg-offset-1">
 							<div class="profile-tabs">
 			                    <div class="nav">
 									<ul class="nav nav-pills nav-pills-danger" role="tablist">
@@ -34,7 +34,7 @@
 										
 										<li class="">
 											<a href=#${categoria.nome} role="tab" data-toggle="tab">
-												<i class="material-icons">camera</i>
+												<i class="material-icons">restaurant_menu</i>
 												${categoria.nome}
 											</a>
 										</li>
@@ -56,7 +56,7 @@
 											
 				                           
 											<div class="row">
-												<div class="col-md-6 col-md-offset-0">
+												<div class="col-lg-6 col-lg-offset-2">
 <%-- 													<img src="${pageContext.request.contextPath}/resources/images/chris1.jpg" class="img-rounded img-responsive" /> --%>
 <%-- 													<img src="${pageContext.request.contextPath}/resources/images/chris1.jpg" class="img-rounded img-responsive" /> --%>
 												<div class="title">
@@ -72,7 +72,7 @@
 												</div>
 				                            </div>
 				                            
-											<div class="space-30"></div>
+											<div class="space-300"></div>
 				                            
 				                            </c:forEach>
 				                        </div>

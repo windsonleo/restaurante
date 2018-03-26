@@ -3,10 +3,6 @@
 
 <%@ page session="true" %>
 
-<!-- <div class="row-fluid"> -->
-<!-- <div id="footer" class="span12"> 2017 &copy; Tecsoluction LTDA <a href="http://themedesigner.in">Solu��es em Tecnologia</a> </div> -->
-<!-- </div> -->
-
 
 <footer id="footer" class = "footer">
 

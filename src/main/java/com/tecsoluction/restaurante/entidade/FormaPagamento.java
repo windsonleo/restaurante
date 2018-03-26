@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.tecsoluction.restaurante.framework.BaseEntity;
+import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.util.TipoFormaPagamento;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,8 +35,8 @@ public class FormaPagamento extends BaseEntity implements Serializable {
     private String nome;
 
     // avista,cartao credito, cartao debito,boleto,crediario
-    @NotBlank
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private TipoFormaPagamento tipo;
 
 
     private int parcelas;

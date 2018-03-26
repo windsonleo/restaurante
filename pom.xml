@@ -15,6 +15,11 @@
         <org.springsecurity-version>4.2.3.RELEASE</org.springsecurity-version>
         <org.tiles-version>2.2.2</org.tiles-version>
         <org.hibernate-version>5.2.12.Final</org.hibernate-version>
+        	
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	
+	
     </properties>
     <dependencies>
         <!-- Spring -->

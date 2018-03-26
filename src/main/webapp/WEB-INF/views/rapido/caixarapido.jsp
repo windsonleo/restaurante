@@ -55,8 +55,12 @@
 		
 		
 <div class="row" style="margin-top:-6em;">
-
-	<div class="col-md-5 col-md-offset-8">
+<h3>
+<span>${caixa.id }</span>
+<span>${caixa.nome }</span>
+<span>${caixa.status }</span>
+</h3>
+	<div class="col-md-8 col-md-offset-3">
 
 		
 		 <ul class="nav nav-pills" role="tablist">
@@ -66,8 +70,8 @@
 <%-- 						<a href="${pageContext.request.contextPath}/caixa/abrircaixa" role="ta" data-toggle="ta"> --%>
 							<a href="#" role="ta" data-toggle="modal" data-target="#ModalAbrirCaixa">
 							
-							<i class="fa fa-cutlery"></i>
-							Abrir Caixa
+							<i class="material-icons">lock_open</i>
+							Abrir
 						</a>
 					</li>
 					
@@ -75,8 +79,8 @@
 <%-- 						<a href="${pageContext.request.contextPath}/caixa/fecharcaixa" role="ta" data-toggle="ta"> --%>
 							<a href="#" role="ta" data-toggle="modal" data-target="#ModalFecharCaixa">
 							
-							<i class="fa fa-cutlery"></i>
-							Fechar Caixa
+							<i class="material-icons">lock</i>
+							Fechar
 						</a>
 					</li>
 					
@@ -84,6 +88,13 @@
 						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddDespesa" >
 							<i class="material-icons"> add</i>
 							Despesa
+						</a>
+					</li>
+					
+										<li class="" > 
+						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddSangria" >
+							<i class="material-icons"> add</i>
+							Sangria
 						</a>
 					</li>
 		</ul>
@@ -167,7 +178,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p class="category">Despesas</p>
-                                    <h3 class="title">${pagcartaodebito.size()}
+                                    <h3 class="title">${despesaList.size()}
 <!--                                         <small>Total</small> -->
                                     </h3>
                                 </div>
@@ -777,13 +788,13 @@
         <h4 class="modal-title" id="exampleModalLabel">Selecione o Caixa</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="abrircaixa" method="get">
           
             		<div class="form-group">
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Caixa</label>
 									<input id="idcaixa" name="idcaixa" list="${caixaList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                    		  autocomplete="off"/>
                             				  <span class="material-input"></span>
                                  </div> 
                                  
@@ -797,16 +808,23 @@
 
 
                                 </datalist>
+                                
+                                                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Saldo Inicial</label>
+									<input id="saldo" name="saldo" class="form-control" type="text" value="0.00"
+                                    		 />
+                            				  <span class="material-input"></span>
+                                 </div> 
          
           </div>
           
 
-         
+          <button type="submit" class="btn btn-info" >Abrir Caixa</button>
           
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" >Abrir Caixa</button>
+       
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         
       </div>
@@ -832,7 +850,7 @@
                 <div class="form-group label-floating is-empty">
                                        <label class="control-label">Caixa</label>
 									<input id="id" name="id" list="${caixaList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
+                                    		  autocomplete="off"/>
                             				  <span class="material-input"></span>
                                  </div> 
                                  
@@ -884,7 +902,7 @@
       </div>
       <div class="modal-body">
        
-        <form action="inserirdespesacaixa" method="get">
+        <form action="inserirdespesa" method="get">
           
   		<div class="form-group">
                 <div class="form-group label-floating is-empty">
@@ -895,9 +913,9 @@
                                  
                                  
                                                  <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Despesa</label>
-									<input id="idcx" name="idcx" value="${caixa.id}" class="form-control" type="text"
-                                    		 />
+                                       <label class="control-label">Caixa</label>
+									<input id="idcx" name="idcx" list="${caixaList}" class="form-control" type="text"
+                                    	 autocomplete="off"	 />
                                  </div> 
                                  
                               <datalist id="${despesaList}">
@@ -910,6 +928,23 @@
 
 
                                 </datalist>
+                                
+                                                             <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                             <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Quantidade</label>
+									<input id="qtd" name="qtd" value="0" class="form-control" type="text"
+                                    		 />
+                                 </div> 
          
           </div>
           
@@ -924,6 +959,86 @@
 <!--           </div> -->
 
         <button type="submit" class="btn btn-info">Add Despesa</button>
+
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="ModalAddSangria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Add Sangria</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="sangria" method="get">
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Banco</label>
+									<input id="id" name="id" list="${bancoList}" class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                                 </div> 
+                                 
+                                 
+                                                 <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Caixa</label>
+									<input id="idcx" name="idcx" list="${caixaList}" class="form-control" type="text"
+                                    	 autocomplete="off"	 />
+                                 </div> 
+                                 
+                              <datalist id="${bancoList}">
+
+                                    <c:forEach var="despesa" items="${bancoList}" varStatus="id">
+
+                                        <option value="${despesa.id }"> ${despesa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                   <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                             <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Valor</label>
+									<input id="valor" name="valor" value="0" class="form-control" type="text"
+                                    		 />
+                                 </div> 
+         
+          </div>
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+
+        <button type="submit" class="btn btn-info">Add Sangria</button>
 
           
         </form>

@@ -1,18 +1,16 @@
 package com.tecsoluction.restaurante.controller;
 
-import com.tecsoluction.restaurante.entidade.*;
-import com.tecsoluction.restaurante.framework.AbstractController;
-import com.tecsoluction.restaurante.framework.AbstractEditor;
-import com.tecsoluction.restaurante.service.impl.*;
-import com.tecsoluction.restaurante.util.OrigemPedido;
-import com.tecsoluction.restaurante.util.SituacaoItem;
-import com.tecsoluction.restaurante.util.StatusPedido;
-import com.tecsoluction.restaurante.util.TipoPedido;
-import org.apache.commons.collections.map.HashedMap;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -22,13 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import com.tecsoluction.restaurante.entidade.Fornecedor;
+import com.tecsoluction.restaurante.entidade.Garcon;
+import com.tecsoluction.restaurante.entidade.Item;
+import com.tecsoluction.restaurante.entidade.Mesa;
+import com.tecsoluction.restaurante.entidade.PedidoCompra;
+import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
+import com.tecsoluction.restaurante.service.impl.FornecedorServicoImpl;
+import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
+import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
+import com.tecsoluction.restaurante.service.impl.PedidoCompraServicoImpl;
+import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.util.SituacaoItem;
+import com.tecsoluction.restaurante.util.StatusPedido;
 
 @Controller
 @RequestMapping(value = "pedidocompra/")
@@ -38,20 +44,16 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     private static final Logger logger = LoggerFactory.getLogger(PedidoCompraController.class);
 
 	
-//    private final UsuarioServicoImpl userservice;
-
+    @Autowired
     private final PedidoCompraServicoImpl pedidocompraService;
-
+    @Autowired
     private final ProdutoServicoImpl produtoService;
-
+    @Autowired
     private final MesaServicoImpl mesaService;
-
-//    private final ItemServicoImpl itemService;
-
-    private Map<Item, String> itens = new HashMap<>();
-
+    
+    @Autowired
     private final FornecedorServicoImpl fornecedorService;
-
+    @Autowired
     private final GarconServicoImpl garconService;
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(3, RoundingMode.FLOOR);
@@ -61,7 +63,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     private List<Fornecedor> fornecedores;
 
 
-    private PedidoCompra pv = new PedidoCompra();
+    private PedidoCompra pv ;
 
 
     @Autowired
@@ -94,9 +96,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         });
 
-//        binder.registerCustomEditor(Item.class, new AbstractEditor<Item>(itemService) {
-//
-//        });
+
 
     }
 
@@ -106,22 +106,17 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
        List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
         
 
-        TipoPedido[] tipoList = TipoPedido.values();
         StatusPedido[] tipoStatusList = StatusPedido.values();
-        OrigemPedido[] origemPedidoList = OrigemPedido.values();
-//        SituacaoPedido[] situacaoPedidoList = SituacaoPedido.values();
+
         
-        pv =new PedidoCompra();
+        if(pv==null){
+        	
+        	pv =new PedidoCompra();
+        }
         
         fornecedores = fornecedorService.findAll();
 
-//        Usuario usuario = new Usuario();
-//        usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-//        usuario = userservice.findByUsername(usuario.getUsername());
-//        
-        
 
-//        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("pedidoCompraList", pedidoCompraList);
         model.addAttribute("fornecedores", fornecedores);
         model.addAttribute("tipoStatusList", tipoStatusList);
@@ -131,7 +126,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     }
 
-    @RequestMapping(value = "finalizacaovenda", method = RequestMethod.POST)
+    @RequestMapping(value = "finalizacaocompra", method = RequestMethod.POST)
     public ModelAndView FinalizarCompra(HttpServletRequest request) {
     	
         long idf = Long.parseLong(request.getParameter("idpedido"));
@@ -146,7 +141,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         ModelAndView novospedidos = new ModelAndView("novospedidos");
 
-        List<PedidoCompra> compras = pedidocompraService.findAll();
+        List<PedidoCompra> compras = getservice().findAll();
 
         novospedidos.addObject("pedidocomprasList", compras);
        
@@ -163,7 +158,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         ModelAndView saveitempedidovenda = new ModelAndView("additempedidocompra");
         
 
-        this.pv = getservice().findOne(idf);
+        pv = getservice().findOne(idf);
         
 
         produtosList = produtoService.findAll();
@@ -183,9 +178,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     @RequestMapping(value = "salvaritempedidocompra", method = RequestMethod.POST)
     public ModelAndView salvaritempedidocompra(HttpServletRequest request) {
-//    	itens.clear();
-       
-//    	this.itens = getservice().EncontraItensPorId(pv);
+
         
     	UUID idf = UUID.fromString(request.getParameter("id"));
     	
@@ -214,26 +207,17 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         }
         
 
+        SituacaoItem situacaoaguardando = SituacaoItem.AGUARDANDO;
 
-
-        this.pv = getservice().findOne(idfpedcomp);
+        pv = getservice().findOne(idfpedcomp);
 
         Item item = new Item(produto);
        
-        item.setId(produto.getId());
-		item.setNome(produto.getNome()); 
-		 item.setCodigo(produto.getCodebar()); 
-//		 item.setQtd(qtdbd); 
-		 item.setPrecoUnitario(produto.getPrecovenda()); 
 
-		 item.setDescricao(produto.getDescricao()); 
-//		 item.setTotalItem(produto.getPrecovenda().multiply(qtdbd)); 
-		 item.setSituacao(SituacaoItem.AGUARDANDO);
+		 item.setSituacao(situacaoaguardando);
 
 		
       
-			itens = new HashMap<>();
-
 			pv.addItem(item, qtdbd.toString());
 			pv.setStatus(StatusPedido.PENDENTE);
 			pv.setTotal(pv.CalcularTotal(pv.getItems()));
@@ -260,7 +244,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         ModelAndView detalhespedidocompra = new ModelAndView("detalhespedidocompra");
 
-        PedidoCompra pedido = pedidocompraService.findOne(idf);
+        PedidoCompra pedido = getservice().findOne(idf);
 
         detalhespedidocompra.addObject("pedido", pedido);
         
@@ -276,7 +260,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        pedidocompraService.delete(idf);
+        getservice().delete(idf);
         
         logger.info("Delete Pedido Compra !", idf);
 
@@ -288,7 +272,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
     @RequestMapping(value = "/entregas", method = RequestMethod.GET)
     public ModelAndView entregasPedidoVenda(HttpServletRequest request) {
 
-        List<PedidoCompra> pedidoCompraList = pedidocompraService.findAll();
+        List<PedidoCompra> pedidoCompraList = getservice().findAll();
 
         ModelAndView entregas = new ModelAndView("movimentacaopedidovendaentregas");
         entregas.addObject("pedidovendaList", pedidoCompraList);
@@ -301,20 +285,20 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
     @RequestMapping(value = "/item/aprovar", method = RequestMethod.GET)
     public ModelAndView AprovarPedidoCompra(HttpServletRequest request) {
-    	
-//    	String mensagem = "Item do Pedido Compra Aprovado com Sucesso";
-//    	String erros = "Erro na Aprovacao do Item";
+
     	
 
         UUID idf = UUID.fromString(request.getParameter("id"));
         
         
-        String keyy = request.getParameter("key");
+        UUID keyy = UUID.fromString(request.getParameter("key"));
         
-    
+	    Item item = new Item();
+	    item.setId(keyy);
 
-        PedidoCompra pc = pedidocompraService.findOne(idf);
+        PedidoCompra pc = getservice().findOne(idf);
         
+        SituacaoItem situacaopronto = SituacaoItem.PRONTO;
 
         Map<Item,String> pcitens = pc.getItems();
         
@@ -322,12 +306,14 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         for (Item key : pcitens.keySet()) {
         	
-        	System.out.println("key" + key.getNome());
-        	System.out.println("keyy" + keyy);
+//        	String qtd = pcitens.get(key);
         	
-        	if(key.getNome().equals(keyy)){
+        	
+        	if(key.equals(item)){
         		
         		key.setSituacao(SituacaoItem.PRONTO);
+        		key.setSituacao(situacaopronto);
+//        		pc.addItem(key, qtd);
         		
         	}
         	
@@ -338,7 +324,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
 //        pc.setStatus(StatusPedido.PRONTO);
         
-        pedidocompraService.edit(pc);
+        getservice().edit(pc);
 
       
         
@@ -355,7 +341,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 //        home.addObject("mensagem",mensagem);
 
         
-        logger.info("Aprovar  Pedido Compra !", pc);
+        logger.debug("Aprovar  Pedido Compra !", pc.toString());
 
         return new ModelAndView("redirect:/");
 
@@ -366,10 +352,16 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        PedidoCompra pc = pedidocompraService.findOne(idf);
-        String keyy = request.getParameter("key");
-
+        PedidoCompra pc = getservice().findOne(idf);
         
+        
+        UUID keyy = UUID.fromString(request.getParameter("key"));
+        
+    	  Item item = new Item();
+    	  item.setId(keyy);
+
+
+        SituacaoItem situacaocancelado = SituacaoItem.CANCELADO;
         
         Map<Item,String> pcitens = pc.getItems();
         
@@ -377,12 +369,10 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
         for (Item key : pcitens.keySet()) {
         	
-        	System.out.println("key" + key.getNome());
-        	System.out.println("keyy" + keyy);
         	
-        	if(key.getNome().equals(keyy)){
+        	if(key.equals(item)){
         		
-        		key.setSituacao(SituacaoItem.CANCELADO);
+        		key.setSituacao(situacaocancelado);
         		
         	}
         	
@@ -405,28 +395,23 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 
         UUID idf = UUID.fromString(request.getParameter("id"));
 
-        PedidoCompra pc = pedidocompraService.findOne(idf);
-//        String keyy = request.getParameter("key");
+        PedidoCompra pc = getservice().findOne(idf);
 
-        
+        SituacaoItem situacaopronto = SituacaoItem.PRONTO;
         
         Map<Item,String> pcitens = pc.getItems();
         
         
         
         for (Item key : pcitens.keySet()) {
-        	
-//        	System.out.println("key" + key.getNome());
-//        	System.out.println("keyy" + keyy);
-        	
-//        	if(key.getNome().equals(keyy)){
+
         		
-        		key.setSituacao(SituacaoItem.PRONTO);
+        		key.setSituacao(situacaopronto);
         		
-        	}
+
         	
 
-//        }
+        }	
         
         pc.setStatus(StatusPedido.PRONTO);
         

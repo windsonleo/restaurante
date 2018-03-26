@@ -55,6 +55,8 @@ public class Caixa extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusCaixa status;
     
+    private String saldoinicial;
+    
     
 
 

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -371,17 +372,11 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
         String qtd= (request.getParameter("qtd"));
 
-        
-//        ModelAndView produzirprodutocomposto = new ModelAndView("cozinha");
-
-//        produzirprodutocomposto.addObject("produtos", produtoList);
-        
-//        ProdutoComposto produto = produtocompostoService.findOne(idf);
-
-//        detalhesproduto.addObject("produto", produto);
-
-//        logger.info(""
-//        		+ "Gerencia  Produto Composto !", produto);
+       ProdutoComposto produtocomposto = getservice().findOne(idf);
+       
+       ProduzirComposto(produtocomposto, qtd);
+       
+        	
 
 
         return new ModelAndView("redirect:/cozinha");
@@ -396,23 +391,62 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
         
         String qtd= (request.getParameter("qtd"));
 
-        
-//        ModelAndView produzirprodutocomposto = new ModelAndView("cozinha");
-//
-//        produzirprodutocomposto.addObject("produtos", produtoList);
-        
-        
-//        ProdutoComposto produto = produtocompostoService.findOne(idf);
+        ProdutoComposto produtocomposto = getservice().findOne(idf);
 
-//        detalhesproduto.addObject("produto", produto);
-
-//        logger.info(""
-//        		+ "Gerencia  Produto Composto !", produto);
-
+        	Retirar(produtocomposto, qtd);
 
         return new ModelAndView("redirect:/cozinha");
     }
     
+    
+    
+    public void ProduzirComposto(ProdutoComposto produtocomposto, String qtd){
+    	
+    	Map<Item,String> itens = produtocomposto.getItens_prodcomp();
+    	Map<Item,String> itensaux = new HashMap<>();
+    	BigDecimal qtdb = new BigDecimal(qtd);
+    	
+    	for(Item it : itens.keySet()){
+    		
+    		String qtd_aux = itens.get(it);
+    		BigDecimal qtd_auxb = new BigDecimal(qtd_aux);
+    		BigDecimal qtd_aux_final = new BigDecimal("0.00");
+    		qtd_aux_final = qtd_auxb.multiply(qtdb);
+    		itensaux.put(it, qtd_aux_final.toString());
+    		
+    		
+    	}
+    	
+    	//retirar essa quantidade do estoque e inserir na Bandeja(tipo outro estoque)
+    	
+    	System.out.println("Produzir Composto:" + itensaux.toString());
+        logger.debug("Produzir Composto:" , itensaux.toString());
+
+    	
+    }
+    
+    public void Retirar(ProdutoComposto produtocomposto, String qtd){
+    	
+    	Map<Item,String> itens = produtocomposto.getItens_prodcomp();
+    	Map<Item,String> itensaux = null;
+    	BigDecimal qtdb = new BigDecimal(qtd);
+    	
+    	for(Item it : itens.keySet()){
+    		
+    		String qtd_aux = itens.get(it);
+    		BigDecimal qtd_auxb = new BigDecimal(qtd_aux);
+    		BigDecimal qtd_aux_final = new BigDecimal("0.00");
+    		qtd_aux_final = qtd_auxb.multiply(qtdb);
+    		itensaux.put(it, qtd_aux_final.toString());
+    		
+    		
+    	}
+    	
+    	//retirar essa quantidade do estoque
+    	
+    	System.out.println("Retirar Composto:" + itensaux.toString());
+    	
+    }
     
 
     @Override

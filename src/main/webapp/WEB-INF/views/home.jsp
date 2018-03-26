@@ -69,14 +69,15 @@
 
 
 
-						<div class="row" style="margin-top:-6em;">
+						<div class="row">
 						
-							<div class="col-md-8 col-md-offset-3">
-						
+							<div class="col-sm-12 col-sm-offset-1">
+							
+						<div class="profile-tabs">
 
 								<div class="nav">
 
-									<ul class="nav nav-pills" role="tablist">
+									<ul class="nav nav-pills nav-pills-danger" role="tablist">
 										
 										
 <!-- 																														<li class=""> -->
@@ -93,16 +94,16 @@
 <!-- 											</a> -->
 <!-- 										</li> -->
 										
-									 <sec:authorize access="hasRole('ROLE_COZINHA')">											
+									 <sec:authorize access="hasAnyRole('ROLE_COZINHA','ROLE_ADM')">											
 										<li class="">
-											<a href="${pageContext.request.contextPath}/cozinha" role="ta" data-toggle="ta" aria-expanded="true">
+											<a href="${pageContext.request.contextPath}/cozinha" role="tab" data-toggle="toogle" aria-expanded="true">
 												<i class="material-icons">room_service</i>
 												Cozinha
 											</a>
 										</li>
 										</sec:authorize>
-																				<li class="">
-											<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="ta" data-toggle="ta" aria-expanded="true">
+										<li class="">
+											<a href="${pageContext.request.contextPath}/reserva/movimentacao" role="toogle" data-toggle="toogle" aria-expanded="true">
 												<i class="material-icons">camera</i>
 												Reservas
 											</a>
@@ -111,7 +112,7 @@
 									 <sec:authorize access="hasRole('ROLE_GARCON')">
 										<li class="">
 											<a href="${pageContext.request.contextPath}/mesas/salao" role="ta" data-toggle="ta" aria-expanded="false">
-												<i class="material-icons">school</i>
+											<i class="material-icons">layers</i>
 												Salao
 											</a>
 										</li>
@@ -122,7 +123,7 @@
 										
 										<li class="">
 											<a href="${pageContext.request.contextPath}/caixa/rapido" role="ta" data-toggle="ta" aria-expanded="false">
-												<i class="material-icons">money</i>
+												<i class="material-icons">local_atm</i> 
 												Caixa
 											</a>
 										</li>
@@ -132,13 +133,51 @@
 										
 										<li class="">
 											<a href="${pageContext.request.contextPath}/financeiro/inicio" role="ta" data-toggle="ta" aria-expanded="false">
-												<i class="material-icons">money</i>
+												
+												<i class="material-icons">monetization_on</i>
 												Financeiro
 											</a>
 										</li>
 										</sec:authorize>
+										
+									<sec:authorize access="hasRole('ROLE_ADM')">
+										
+										<li class="">
+											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+												<i class="material-icons">local_offer</i>
+												Cupom
+											</a>
+										</li>
+										</sec:authorize>
+										
+									<sec:authorize access="hasRole('ROLE_ADM')">
+										
+										<li class="">
+											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+												<i class="material-icons">gps_fixed</i>	
+												MBOY
+											</a>
+										</li>
+										</sec:authorize>
+										
+																				<li class="">
+											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+													<i class="material-icons">assignment</i>
+												ATIVIDADES
+											</a>
+										</li>
+										
+										
+																														<li class="">
+											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+													<i class="material-icons">movie_filter</i>
+												MKT
+											</a>
+										</li>
+									
+										
 
-<!-- 																														<li class=""> -->
+<!-- 																													<li class=""> -->
 <%-- 											<a href="${pageContext.request.contextPath}/pedidovenda/rapido" role="ta" data-toggle="ta" aria-expanded="false"> --%>
 <!-- 												<i class="material-icons">shopping_cart</i> -->
 <!-- 												Vendas -->
@@ -149,6 +188,8 @@
 				                    </ul>
 
 
+								</div>
+								
 								</div>
 
 								</div>
@@ -254,7 +295,7 @@
                             <div class="card card-stats">
                                 <div class="card-header" data-background-color="red">
 <!--                                     <i class="icon icon-table"></i> -->
-                                    <i class="material-icons">school</i>
+                                    <i class="material-icons">layers</i>
                                 </div>
                                 <div class="card-content">
                                     <p class="category"> Mesas</p>
@@ -1354,11 +1395,11 @@
 																	                  </td> 
 																	                  
 															<td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/aprovar?id=${pedidocompra.id}&key=${item.key}'">
+                                                            <button type="button" rel="tooltip" title="Aprovar" class="btn btn-info btn-simple btn-xs"  onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/aprovar?id=${pedidocompra.id}&key=${item.key.id}'">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                            															
-                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/cancelar?id=${pedidocompra.id}&key=${item.key}'">
+                                                            <button type="button" rel="tooltip" title="Recusar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/pedidocompra/item/cancelar?id=${pedidocompra.id}&key=${item.key.id}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
@@ -1367,10 +1408,7 @@
 															                  
 															                 </c:forEach>
 															                 
-															                 </div>
-															                 
-															                  
-															                 </td>
+															          
 															                  
 															                  </c:when>
 															                  
@@ -1381,11 +1419,11 @@
 																    
 															                  </c:choose>
 															                 
-															                  </tr>
+															                 
 															                  
 															                  </c:forEach>
 															                 
-			              								
+			              								 </tr>
 			              								
 			              								</tbody>
 			              								</table>

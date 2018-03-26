@@ -5,8 +5,13 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.*;
 import com.tecsoluction.restaurante.util.OrigemPedido;
+import com.tecsoluction.restaurante.util.StatusCaixa;
+import com.tecsoluction.restaurante.util.StatusConta;
 import com.tecsoluction.restaurante.util.StatusMesa;
+import com.tecsoluction.restaurante.util.StatusPagamento;
 import com.tecsoluction.restaurante.util.StatusPedido;
+import com.tecsoluction.restaurante.util.TipoFormaPagamento;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.math.BigDecimal;
 import java.util.*;
 
 @Controller
@@ -111,12 +118,12 @@ public class CaixaController extends AbstractController<Caixa> {
 
     	
     	
-    	if(caixa == null){
-    		
-    		
-    		this.caixa = new Caixa();
-    		
-    	}
+//    	if(caixa == null){
+//    		
+//    		
+//    		caixa = new Caixa();
+//    		
+//    	}
     	
         List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
@@ -130,7 +137,7 @@ public class CaixaController extends AbstractController<Caixa> {
         model.addAttribute("formapagamentoList", formapagamentoList);
 //        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
-        model.addAttribute("caixa", caixa);
+//        model.addAttribute("caixa", caixa);
 
 
 
@@ -140,43 +147,50 @@ public class CaixaController extends AbstractController<Caixa> {
     public ModelAndView FecharCaixaForm(HttpServletRequest request) {
 
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("idcaixa"));
 //
-        this.caixa = caixaService.findOne(idf);
+        Caixa caixa = getservice().findOne(idf);
 
-        ModelAndView fecharcaixa = new ModelAndView("fecharcaixa");
+        caixa.setStatus(StatusCaixa.FECHADO);
+        
+        getservice().edit(caixa);
 
-        fecharcaixa.addObject("caixa", caixa);
-
-        return fecharcaixa;
+        return new ModelAndView("redirect:/caixa/rapido");
 
     }
 
     @RequestMapping(value = "abrircaixa", method = RequestMethod.GET)
-    public ModelAndView AbrirCaixa(HttpServletRequest request) {
+    public ModelAndView AbrirCaixa(HttpServletRequest request, Model model) {
 
 
-        UUID idf = UUID.fromString(request.getParameter("id"));
+        UUID idf = UUID.fromString(request.getParameter("idcaixa"));
+        
+        String saldo = request.getParameter("saldo");
+        
+        
 //
-        this.caixa = caixaService.findOne(idf);
+        Caixa caixa = getservice().findOne(idf);
 
-        ModelAndView abrircaixa = new ModelAndView("abrircaixa");
+        caixa.setStatus(StatusCaixa.ABERTO);
+        caixa.setSaldoinicial(saldo);
+        
+        getservice().edit(caixa);
+        
+//        model.addAttribute("caixa", caixa);
 
-//        fecharcaixa.addObject("caixa", cx);
 
-        return abrircaixa;
+
+        return new ModelAndView("redirect:/caixa/rapido");
 
     }
 
-    @RequestMapping(value = "/addpagamento", method = RequestMethod.GET)
-    public ModelAndView AddPagamentoCaixa(HttpServletRequest request) {
+    @RequestMapping(value = "/sangria", method = RequestMethod.GET)
+    public ModelAndView AddSangria(HttpServletRequest request) {
 
 
-        ModelAndView cadastropagamento = new ModelAndView("cadastropagamento");
 
 
-        return cadastropagamento;
-
+    	return new ModelAndView("redirect:/caixa/rapido");
     }
 
 
@@ -317,16 +331,31 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         UUID idf = UUID.fromString(request.getParameter("id"));
+        
+        UUID idcx = UUID.fromString(request.getParameter("idcx"));
+        
+        String qtd = (request.getParameter("qtd"));
+        
+        BigDecimal qtdb = new BigDecimal(qtd);
+      
 
-        this.caixa = caixaService.findOne(idf);
+        Caixa caixa = getservice().findOne(idcx);
+
+        Despesa despesa = despesaService.findOne(idf);
+                
+        BigDecimal valordespesa = new BigDecimal(despesa.getValor());
+        
+        despesa.setValor(valordespesa.multiply(qtdb).toString());
+        
+        caixa.getDespesas().add(despesa);
+        
+        despesaService.edit(despesa);
+        
+        getservice().edit(caixa);
+        
 
 
-        ModelAndView adddespesacaixa = new ModelAndView("adddespesacaixa");
-
-        adddespesacaixa.addObject("caixa", caixa);
-
-
-        return adddespesacaixa;
+        return new ModelAndView("redirect:/caixa/rapido");
 
     }
 
@@ -360,40 +389,59 @@ public class CaixaController extends AbstractController<Caixa> {
     @RequestMapping(value = "rapido", method = RequestMethod.GET)
     public ModelAndView CaixaRapido(HttpServletRequest request) {
 
-        List<FormaPagamento> pagdinheiro = new ArrayList<>();
+        List<TipoFormaPagamento> pagdinheiro = new ArrayList<>();
 
-        List<FormaPagamento> pagcartaocredito = new ArrayList<>();
+        List<TipoFormaPagamento> pagcartaocredito = new ArrayList<>();
 
-        List<FormaPagamento> pagcartaodebito = new ArrayList<>();
+        List<TipoFormaPagamento> pagcartaodebito = new ArrayList<>();
+        
+        List<TipoFormaPagamento> pagcheque = new ArrayList<>();
+        
+        List<TipoFormaPagamento> pagtickt = new ArrayList<>();
 
         List<Despesa> despesaList = despesaService.findAll();
 
         List<PedidoVenda> ls = pedidovendaService.findAll();
+        
+        List<ContasReceber> receberList = contasreceberService.findAll();
+        
+        List<Pagamento> pagamentos = pagamentoService.findAll();
 
         ModelAndView caixarapido = new ModelAndView("caixarapido");
 
-//        for (PedidoVenda pv : ls) {
+        for (Pagamento pv : pagamentos) {
 
 //            List<Pagamento> pags = pv.getPagamento();
 
-//            for (Pagamento pagamento : pags) {
-//                Set<FormaPagamento> formapag = pagamento.getFormaPagamentos();
-//                for (FormaPagamento valor : formapag) {
-//                    if (Objects.equals(valor.getTipo(), "AVISTA")) {
-//                        pagdinheiro.add(valor);
-//                    }
-//
-//                    if (Objects.equals(valor.getTipo(), "CCREDITO")) {
-//                        pagcartaocredito.add(valor);
-//                    }
-//
-//                    if (Objects.equals(valor.getTipo(), "CDEBITO")) {
-//                        pagcartaodebito.add(valor);
-//                    }
-////                    total = pagamento.getValorPago().plus(total);
-//                }
-//            }
-//        }
+//            Conta conta= pv.getConta();
+//            
+//            Pagamento pagamento = conta.getPagamento();
+            
+            TipoFormaPagamento tipo = pv.getFormaPagamentos().getTipo();
+            
+            if (Objects.equals(tipo, TipoFormaPagamento.DINHEIRO)) {
+                pagdinheiro.add(tipo);
+            }
+
+            if (Objects.equals(tipo, TipoFormaPagamento.CREDITO)) {
+                pagcartaocredito.add(tipo);
+            }
+
+            if (Objects.equals(tipo, TipoFormaPagamento.DEBITO)) {
+                pagcartaodebito.add(tipo);
+            }
+            
+            if (Objects.equals(tipo, TipoFormaPagamento.CHEQUE)) {
+                pagcheque.add(tipo);
+            }
+            
+            if (Objects.equals(tipo, TipoFormaPagamento.TICKET)) {
+                pagtickt.add(tipo);
+            }
+            
+          
+            
+        }
 
         caixarapido.addObject("ls", ls);
         caixarapido.addObject("despesaList", despesaList);
@@ -401,6 +449,8 @@ public class CaixaController extends AbstractController<Caixa> {
         caixarapido.addObject("pagdinheiro", pagdinheiro);
         caixarapido.addObject("pagcartaodebito", pagcartaodebito);
         caixarapido.addObject("pagcartaocredito", pagcartaocredito);
+        caixarapido.addObject("pagcheque", pagcheque);
+        caixarapido.addObject("pagtickt", pagtickt);
 //
 
         return caixarapido;
@@ -426,9 +476,10 @@ public class CaixaController extends AbstractController<Caixa> {
         
         Mesa mesa = pedvenda.getMesa();
         mesa.setStatus(StatusMesa.DISPONIVEL);
+        mesaService.edit(mesa);
         
         pagamento = new Pagamento();
-        pagamento.setStatus("ABERTO");
+        pagamento.setStatus(StatusPagamento.PAGO);
         pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
 
 //    	  pedvenda.getPagamento().add(pagamento);
@@ -452,12 +503,22 @@ public class CaixaController extends AbstractController<Caixa> {
         pedidovendaService.edit(pedvenda);
        
         pagamento.setConta(areceber);
+       
+//        areceber.setPagamento(pagamento);
         
         pagamento.setCaixa(caixa);
         
-        mesaService.edit(mesa);
+        
         
         pagamentoService.save(pagamento);
+        
+        areceber.setPagamento(pagamento);
+        areceber.setPago(true);
+        areceber.setStatus(StatusConta.PAGA);
+        
+     contasreceberService.edit(areceber);
+        
+//        contasreceberService.edit(areceber);
 
 
     	List<PedidoVenda> ls = pedidovendaService.findAll();

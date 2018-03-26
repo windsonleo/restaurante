@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
  						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
+    <security:global-method-security pre-post-annotations="enabled"  secured-annotations="enabled"/>
 
-    <security:http auto-config="true" use-expressions="true">
+    <security:http auto-config="true"  use-expressions="true">
         <security:csrf disabled="true"/>
 
 
@@ -24,17 +24,18 @@
 
         <!--     	 <security:logout logout-success-url="/" /> -->
         <security:intercept-url pattern="/resources/**" access="permitAll"/>
-        <security:intercept-url pattern="/bundle**" access="permitAll"/>
-         <security:intercept-url pattern="/sass**" access="permitAll"/>
-        <security:intercept-url pattern="/login/**" access="permitAll"/>
-         <security:intercept-url pattern="/esqueceu/**" access="permitAll"/>
-        <security:intercept-url pattern="/erro/**" access="permitAll"/>
-        <security:intercept-url pattern="/acessonegado/**" access="permitAll"/>
+        <security:intercept-url pattern="/bundle/**" access="permitAll"/>
+         <security:intercept-url pattern="/sass/**" access="permitAll"/>
+        <security:intercept-url pattern="/login**" access="permitAll"/>
+         <security:intercept-url pattern="/esqueceu**" access="permitAll"/>
+        <security:intercept-url pattern="/erro**" access="permitAll"/>
+        <security:intercept-url pattern="/acessonegado**" access="permitAll"/>
         <security:intercept-url pattern="/cardapio/inicio/**" access="permitAll"/>
          <security:intercept-url pattern="/cardapio/new/**" access="permitAll"/>
-                <security:intercept-url pattern="/enviaremail/**" access="permitAll"/>
-                <security:intercept-url pattern="/pedidovenda/status/FECHADO" access="permitAll"/>
-                   <security:intercept-url pattern="/chart/dias**" access="permitAll"/>
+          <security:intercept-url pattern="/cardapio/bip1/**" access="permitAll"/>
+           <security:intercept-url pattern="/enviaremail/**" access="permitAll"/>
+            <security:intercept-url pattern="/pedidovenda/status/FECHADO" access="permitAll"/>
+            <security:intercept-url pattern="/chart/dias/**" access="permitAll"/>
          <security:intercept-url pattern="/chart/vendasDias/**" access="permitAll"/>
             <security:intercept-url pattern="/chart/produtosmais/**" access="permitAll"/>
              <security:intercept-url pattern="/chart/mesasTempo/**" access="permitAll"/>
@@ -42,14 +43,14 @@
         <security:intercept-url pattern="/**" access="hasRole('ROLE_MEMBRO')"/>
          <security:intercept-url pattern="/cliente/informacao/**" access="hasRole('ROLE_ADM')"/>
                 <security:intercept-url pattern="/usuario/informacao/**" access="hasRole('ROLE_ADM')"/>
-        <security:intercept-url pattern="/usuario/movimentacao" access="hasRole('ROLE_ADM')"/>
-        <security:intercept-url pattern="/financeiro/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
+        <security:intercept-url pattern="/usuario/movimentacao/**" access="hasRole('ROLE_ADM')"/>
+        <security:intercept-url pattern="/financeiro/**" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/contasreceber/**" access="hasRole('ROLE_FINANCEIRO')"/>
         <security:intercept-url pattern="/contaspagar/**" access="hasRole('ROLE_FINANCEIRO')"/>
-        <security:intercept-url pattern="/pedidocompra/movimentacao" access="hasRole('ROLE_COMPRA')"/>
-        <security:intercept-url pattern="/formapagamento/movimentacao" access="hasRole('ROLE_FINANCEIRO')"/>
-       <security:intercept-url pattern="/item/detalhes/**" access="hasRole('ROLE_MEMBRO')"/>
- <security:intercept-url pattern="/pedidovenda/item/entregar/**" access="hasRole('ROLE_MEMBRO')"/>
+        <security:intercept-url pattern="/pedidocompra/item/aprovar**" access="hasRole('ROLE_ADM')"/>
+        <security:intercept-url pattern="/formapagamento/**" access="hasRole('ROLE_FINANCEIRO')"/>
+       <security:intercept-url pattern="/pedidovenda/item/detalhes**" access="hasRole('ROLE_MEMBRO')"/>
+ 		<security:intercept-url pattern="/pedidovenda/item/entregar**" access="hasRole('ROLE_MEMBRO')"/>
  
  
         <security:logout logout-url="/logout"   logout-success-url="/login"  invalidate-session="true" delete-cookies="true"/>
@@ -83,7 +84,7 @@
 
         <security:authentication-provider>
 
-            <security:jdbc-user-service data-source-ref="dataSourceHeroku"
+            <security:jdbc-user-service data-source-ref="dataSourceHeroku" 
 
                                         users-by-username-query="SELECT username, senha ,'true' as enable FROM usuario WHERE username=?"
 
