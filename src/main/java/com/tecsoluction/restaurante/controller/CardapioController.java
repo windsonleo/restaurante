@@ -21,7 +21,7 @@ import com.tecsoluction.restaurante.service.impl.ProdutoCompostoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 
 @Controller
-@RequestMapping(value = "cardapio")
+@RequestMapping(value = "cardapio/")
 public class CardapioController   {
 
 	private 
@@ -80,7 +80,7 @@ public class CardapioController   {
     }
     
     
-	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
+	@RequestMapping(value = "inicio", method = RequestMethod.GET)
 	public ModelAndView Cardapio(Locale locale, Model model,HttpServletRequest request) {
 		
 		
@@ -98,7 +98,7 @@ public class CardapioController   {
 		return null;
 	}
 
-	@RequestMapping(value = "/cardapio/produtoporcategoria", method = RequestMethod.GET)
+	@RequestMapping(value = "produtoporcategoria", method = RequestMethod.GET)
 	public ModelAndView CardapioProdutoPorCatgeeoria(Locale locale, Model model,HttpServletRequest request) {
 		
 		ModelAndView cardapio = new ModelAndView("produtoporcategoria");
@@ -106,7 +106,7 @@ public class CardapioController   {
 		return cardapio;
 	}
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "new", method = RequestMethod.GET)
 	public ModelAndView CardapioP(Locale locale, Model model,HttpServletRequest request) {
 		
 		ModelAndView cardapio = new ModelAndView("cardapionew");
