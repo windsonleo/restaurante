@@ -68,7 +68,7 @@ public class ContextoAplicacao {
 		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		usuario = userservice.findByUsername(usuario.getUsername());
 		
-        pedidovendas = pedidovendaService.findAll();
+        pedidovendas = pedidovendaService.findAllNew();
         itensProntosPedidoVenda = buscarItemPronto(pedidovendas);
         
         
@@ -125,19 +125,20 @@ public class ContextoAplicacao {
     public List<PedidoVenda> buscarItemPronto(List<PedidoVenda> vendas) {
 
     	itemsProntos = new ArrayList<Item>();
+    	
     	List<PedidoVenda> itensProntosPedidoVenda = new ArrayList<PedidoVenda>();
     	
     	 SituacaoItem situacaopronto = SituacaoItem.PRONTO;
     	
         for (PedidoVenda v : vendas) {
         	
-    	if((v.getStatus().equals(StatusPedido.PRONTO ))||(Ehoje(v.getData()))){
+    	if((v.getStatus()==(StatusPedido.PRONTO)||(v.getStatus()==(StatusPedido.PENDENTE)))||(Ehoje(v.getData()))){
     		
     		 itensProntosPedidoVenda.add(v);
         	
         	  for (Item key : v.getItems().keySet()) {
         	
-        		  if(key.getSituacao()==(situacaopronto)){
+        		  if(key.getSituacao().equals(SituacaoItem.PRONTO)){
         			  
         			  itemsProntos.add(key);
         			 

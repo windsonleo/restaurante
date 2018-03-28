@@ -295,6 +295,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         
 	    Item item = new Item();
 	    item.setId(keyy);
+	    item.setSituacao(SituacaoItem.AGUARDANDO);
 
         PedidoCompra pc = getservice().findOne(idf);
         
@@ -309,7 +310,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
 //        	String qtd = pcitens.get(key);
         	
         	
-        	if(key.equals(item)){
+        	if(key.getId().equals(item.getId())){
         		
         		key.setSituacao(SituacaoItem.PRONTO);
         		key.setSituacao(situacaopronto);
@@ -370,7 +371,7 @@ public class PedidoCompraController extends AbstractController<PedidoCompra> {
         for (Item key : pcitens.keySet()) {
         	
         	
-        	if(key.equals(item)){
+        	if(key.getId().equals(item.getId())){
         		
         		key.setSituacao(situacaocancelado);
         		

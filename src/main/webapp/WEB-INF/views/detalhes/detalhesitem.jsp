@@ -27,14 +27,14 @@
                                                
                                                 <li class="">
                                                     <a href="#messages" data-toggle="tab">
-                                                        <i class="material-icons">money</i> EM EXECUCAO
+                                                        <i class="material-icons">money</i> ENTREGUE
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 </li>
                                                 
                                                 <li class="">
                                                     <a href="#settings" data-toggle="tab">
-                                                        <i class="material-icons">delete</i> AGUARDANDO EXECUCAO
+                                                        <i class="material-icons">delete</i> EM EXECUCAO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 
@@ -81,7 +81,7 @@
 															                  
 															                  <tr>
 																	                  <td>
-																	                  ${pv.key }
+																	                  ${pv.key.nome }
 																	                  </td>
 																	                  
 																	                 <td>
@@ -147,7 +147,7 @@
                                                            
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.key.situacao=='EM_EXECUCAO'}">
+																    <c:when test="${pv.key.situacao=='ENTREGUE'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
@@ -165,7 +165,7 @@
 															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidovenda.data}" /> 
 															                  <a href="#"></a> Itens :</span></p>
 															                  
-															                  <p>${pv.key}</p>
+															                  <p>${pv.key.nome}</p>
 															                  
 <%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
 															                  
@@ -209,7 +209,7 @@
                                                                  <tr>
                                                        		
 								                                  <c:choose> 
-																    <c:when test="${pv.key.situacao=='AGUARDANDO'}">
+																    <c:when test="${pv.key.situacao=='EM_EXECUCAO'}">
 																    
 																    <td>
 			                                                            <div class="image-responsive">
@@ -226,7 +226,7 @@
 															                  <p><span class="user-info"> Data: <fmt:formatDate pattern="dd/MM/yyyy" value="${pedidovenda.data}" /> 
 															                  <a href="#"></a> Itens :  </span></p>
 															                  
-															                  <p> ${pv.key }</p>
+															                  <p> ${pv.key.nome }</p>
 <%-- 															                  <div class="fr"> <a href="${pageContext.request.contextPath}/pedidocompra/aprovar?id=${pedidocompra.id}" class="btn btn-success btn-mini">Aprovar</a> <a href="${pageContext.request.contextPath}/pedidocompra/cancelar?id=${pedidocompra.id}" class="btn btn-danger btn-mini">Cancelar</a></div> --%>
 															                  
 															                </div>

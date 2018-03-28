@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.tecsoluction.restaurante.entidade.Caixa;
 import com.tecsoluction.restaurante.entidade.Cliente;
 import com.tecsoluction.restaurante.entidade.ContasPagar;
@@ -405,7 +405,7 @@ public class HomeController {
 
     @RequestMapping(value = "/cozinha", method = RequestMethod.GET)
     public ModelAndView cozinha(Locale locale, Model model) {
-        logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info("Welcome cozinha! The client locale is {}.", locale);
 
 //        Date date = new Date();
 //        
@@ -424,12 +424,14 @@ public class HomeController {
         
         List<Item> paditerompido = new ArrayList<>();
         
+//        List<PedidoVenda> pedvend = pedidovendaService.findAllNew();
+        
         for (PedidoVenda pv : pedidovendasnovos) {
         	
         	for(Item item : pv.getItems().keySet()){
 
             
-                    if (item.getSituacao() == SituacaoItem.AGUARDANDO) {
+                    if (item.getSituacao().equals(SituacaoItem.AGUARDANDO)) {
                     	padaguardando.add(item);
                     }
 
@@ -441,7 +443,7 @@ public class HomeController {
                         padentregue.add(item);
                     }
                     
-                    if (item.getSituacao() == SituacaoItem.PRONTO) {
+                    if (item.getSituacao().equals(SituacaoItem.PRONTO)) {
                     	padpronto.add(item);
                     }
                     
@@ -457,7 +459,7 @@ public class HomeController {
         
         
 
-        	cozinha.addObject("pedidovendasnovos", pedidovendasnovos);
+//        	cozinha.addObject("pedidovendasnovoss", pedvend);
         	cozinha.addObject("padaberto", padaguardando);
         	cozinha.addObject("padpendente", padexecucao);
         	cozinha.addObject("padpronto", padpronto);

@@ -51,7 +51,8 @@
         <security:intercept-url pattern="/formapagamento/**" access="hasRole('ROLE_FINANCEIRO')"/>
        <security:intercept-url pattern="/pedidovenda/item/detalhes**" access="hasRole('ROLE_MEMBRO')"/>
  		<security:intercept-url pattern="/pedidovenda/item/entregar**" access="hasRole('ROLE_MEMBRO')"/>
- 
+  		<security:intercept-url pattern="/marketing/**" access="hasRole('ROLE_ADM')"/>
+  		 		<security:intercept-url pattern="/atividades/minhas**" access="hasRole('ROLE_MEMBRO')"/>
  
         <security:logout logout-url="/logout"   logout-success-url="/login"  invalidate-session="true" delete-cookies="true"/>
         <!--         		<security:intercept-url pattern="/**" access="isAnonymous()"/> -->

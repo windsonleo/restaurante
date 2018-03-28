@@ -196,7 +196,7 @@
   
   <tr class="gradeX">
 
-			      <td>${item.key}</td>
+			      <td>${item.key.nome}</td>
                   <td>${item.value}</td>
 
 

@@ -58,6 +58,7 @@
                   <span class="notification" >${itemsprontos.size()}</span>
                   <p class="hidden-lg hidden-md">Notifications</p>
                </a>
+               
                <ul class="dropdown-menu">
                   
                <c:forEach var="pedv" items="${itemsprontospv}">

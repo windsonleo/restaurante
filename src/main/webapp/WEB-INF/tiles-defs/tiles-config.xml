@@ -802,6 +802,24 @@
 
 	</definition>	
 	
+	
+	
+	
+<!-- 	MARKETING -->
+		<definition name="inicio" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/marketing/inicio.jsp" />
+
+	</definition>
+	
+	
+	
+	<!-- 	ATIVIDADES -->
+		<definition name="minhas" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/atividades/minhas.jsp" />
+
+	</definition>
 
 </tiles-definitions>
 

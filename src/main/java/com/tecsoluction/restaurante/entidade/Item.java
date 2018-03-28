@@ -36,8 +36,8 @@ import lombok.ToString;
 @Setter
 //@EqualsAndHashCode(exclude={"codigo","nome","descricao","precoUnitario","precoCusto","un_medida","totalItem","situacao"})
 //@ToString(includeFieldNames=false,exclude={"id", "codigo","descricao","precoUnitario","precoCusto","un_medida","totalItem","situacao"})
-
-@EqualsAndHashCode(exclude={"codigo","nome","descricao","precoUnitario","precoCusto","un_medida","situacao","totalItem"})
+//@EqualsAndHashCode(exclude={"codigo","nome","descricao","precoUnitario","precoCusto","un_medida","situacao","totalItem"})
+@EqualsAndHashCode
 public  class Item implements Serializable, Comparable<Item>{
 
 
@@ -63,8 +63,7 @@ public  class Item implements Serializable, Comparable<Item>{
     @Transient
     private BigDecimal totalItem ;
     
-    @HashCodeExclude
-    @EqualsExclude
+
     @Enumerated(EnumType.STRING)
     private SituacaoItem situacao;
 
@@ -98,7 +97,7 @@ public  class Item implements Serializable, Comparable<Item>{
     
 @Override
 public String toString() {
-	// TODO Auto-generated method stub
+
 	return id.toString();
 }
 

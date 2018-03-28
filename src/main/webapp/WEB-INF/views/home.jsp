@@ -140,41 +140,36 @@
 										</li>
 										</sec:authorize>
 										
-									<sec:authorize access="hasRole('ROLE_ADM')">
-										
-										<li class="">
-											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
-												<i class="material-icons">local_offer</i>
-												Cupom
-											</a>
-										</li>
-										</sec:authorize>
+
 										
 									<sec:authorize access="hasRole('ROLE_ADM')">
 										
 										<li class="">
-											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+											<a href="${pageContext.request.contextPath}/delivery/findmotoqueiro" role="ta" data-toggle="ta" aria-expanded="false">
 												<i class="material-icons">gps_fixed</i>	
 												MBOY
 											</a>
 										</li>
-										</sec:authorize>
 										
-																				<li class="">
-											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+									</sec:authorize>
+										
+									<li class="">
+										<span class="label label-info pull-right" >6</span>
+													  <p class="hidden-lg hidden-md">Notifications</p>
+											<a href="${pageContext.request.contextPath}/atividades/minhas" role="ta" class="dropdown-toggle" data-toggle="ta" aria-expanded="false">
 													<i class="material-icons">assignment</i>
 												ATIVIDADES
 											</a>
 										</li>
 										
-										
-																														<li class="">
-											<a href=# role="ta" data-toggle="ta" aria-expanded="false">
+											<sec:authorize access="hasRole('ROLE_ADM')">
+												<li class="">
+											<a href="${pageContext.request.contextPath}/marketing/inicio" role="ta" data-toggle="ta" aria-expanded="false">
 													<i class="material-icons">movie_filter</i>
 												MKT
 											</a>
 										</li>
-									
+									</sec:authorize>
 										
 
 <!-- 																													<li class=""> -->

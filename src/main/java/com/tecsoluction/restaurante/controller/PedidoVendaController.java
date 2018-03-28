@@ -503,6 +503,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     @RequestMapping(value = "/item/pronto", method = RequestMethod.GET)
     public ModelAndView pRONTOPedidovENDA(HttpServletRequest request) {
     	
+    	
+//    	ModelAndView cozinha = new ModelAndView("cozinha");
+    	
     	  UUID idf = UUID.fromString(request.getParameter("id"));
           
           
@@ -511,7 +514,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
     	  Item item = new Item();
     	  item.setId(keyy);
-    	  item.setSituacao(SituacaoItem.EM_EXECUCAO);
+    	  item.setSituacao(SituacaoItem.AGUARDANDO);
     	  
           estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
 
@@ -526,22 +529,19 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           for (Item key : pcitens.keySet()) {
         	
-          	  String qtdstring = pcitens.get(key);
         	
           	
-          	if(key.equals(item)){
+          	if(key.getId().equals(item.getId())){
           		
-          			key.setSituacao(SituacaoItem.PRONTO);
           			key.setSituacao(situacaopronto);
+          			key.setSituacao(SituacaoItem.PRONTO);
+          			
             	
 
 //                   pv.getItems().put(key, qtdstring);
 //                   pcitens.put(key, qtdstring);
           		
-              BigDecimal qtdb = new BigDecimal(qtdstring);
 
-              
-              estoque.RetirarProdutoEstoque(key, qtdb);
           	
           	
           	}
@@ -568,6 +568,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           pedidovendaService.edit(pv);
         
          estoqueService.edit(estoque);
+         
+//         cozinha.addObject("");
           
 
         
@@ -589,7 +591,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
          for (Item key : pv2.getItems().keySet()) {
            	
            	
-           	if(key.getSituacao()==(situacaopronto)){
+           	if(key.getSituacao() ==situacaopronto){
            		
            		qtditempronto = qtditempronto +1;
            		
@@ -618,7 +620,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
          for (Item key : pv2.getItems().keySet()) {
 
            	
-           	if(key.getSituacao()==(situacaoentregue)){
+           	if(key.getSituacao()==situacaoentregue){
            		
            		qtditementregue = qtditementregue +1;
            		
@@ -648,6 +650,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
     	  Item item = new Item();
     	  item.setId(keyy);
+    	  item.setSituacao(SituacaoItem.AGUARDANDO);
 
     	  SituacaoItem situacaocancelado = SituacaoItem.CANCELADO;
 
@@ -660,9 +663,11 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           for (Item key : pcitens.keySet()) {
           	
           	
-          	if(key.equals(item)){
+          	if(key.getId().equals(item.getId())){
           		
+          	
           		key.setSituacao(situacaocancelado);
+          		key.setSituacao(SituacaoItem.CANCELADO);
           		
           	}
           	
@@ -708,8 +713,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           for (Item key : pcitens.keySet()) {
           	
           	
-          	if(key.equals(item)){
+          	if(key.getId().equals(item.getId())){
           		
+          		key.setSituacao(SituacaoItem.EM_EXECUCAO);
           		key.setSituacao(situacaopreparacao);
           		
           	}
@@ -738,6 +744,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           
     	  UUID keyy = UUID.fromString(request.getParameter("key"));
+    	  
+    	  estoque = estoqueService.findOne(UUID.fromString("a2fa34a0-4771-4edc-a5d3-ede2890417d4"));
           
       	  Item item = new Item();
       	  item.setId(keyy);
@@ -756,10 +764,18 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           for (Item key : pcitens.keySet()) {
           	
+         	  String qtdstring = pcitens.get(key);
           	
-          	if(key.equals(item)){
+          	if(key.getId().equals(item.getId())){
           		
+          		key.setSituacao(SituacaoItem.ENTREGUE);
           		key.setSituacao(situacaoentregue);
+          		
+          		
+                BigDecimal qtdb = new BigDecimal(qtdstring);
+
+                
+                estoque.RetirarProdutoEstoque(key, qtdb);
           		
           	}
           	
@@ -781,7 +797,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
           
           
           pedidovendaService.edit(pv);
-
+          estoqueService.edit(estoque);
         
           return new ModelAndView("redirect:/pedidovenda/item/detalhes?id=" + pv.getId());
        

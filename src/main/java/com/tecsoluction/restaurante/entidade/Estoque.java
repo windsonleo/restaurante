@@ -35,7 +35,7 @@ public class Estoque extends BaseEntity implements Serializable {
     @Column(name = "qtd")
     @MapKeyColumn(name = "idit")
     @JsonManagedReference
-    private Map<Item, String> items = new HashMap<Item, String>();
+    private Map<Item, String> items;
 
 
     public Estoque() {
@@ -54,15 +54,43 @@ public class Estoque extends BaseEntity implements Serializable {
     
     public void AddProdutoEstoque(Item produto, BigDecimal qtd) {
 
-        String vantigo;
+        String vantigo="0.00";
         BigDecimal vnovo = qtd;
         BigDecimal novo = new BigDecimal("0.00");
         BigDecimal antigo = new BigDecimal("0.00");
+        
+//        Map<Item,String> pcitens = getItems();
+//        
+//        for (Item key : pcitens.keySet()) {
+//        	
+//       	 vantigo = pcitens.get(key);
+//
+//            antigo = new BigDecimal(vantigo);
+//
+//            novo = novo.add(antigo).subtract(vnovo);
+//
+//       	
+//      	            if (key.getId().equals(produto.getId())) {
+//      	            	
+//      	            	pcitens.replace(produto,vantigo,novo.toString());
+//      	            	
+//      	            }else{
+//      	            	
+//      	         	novo = novo.add(antigo).subtract(vnovo);
+//      	         	pcitens.put(produto, novo.toString());
+//      	        	
+//      	        	       	            	
+//      	            }
+//      	            
+//       }
+//        
+//        setItems(pcitens);
+//        items.putAll(pcitens);
 
 
         if (getItems().containsKey(produto)) {
             
-            vantigo = this.getItems().get(produto);
+            vantigo = getItems().get(produto);
 
             antigo = new BigDecimal(vantigo);
 
@@ -74,7 +102,7 @@ public class Estoque extends BaseEntity implements Serializable {
         }else {
         	
         	
-        	novo = novo.add(antigo).add(vnovo);	
+        	  novo = novo.add(antigo).add(vnovo);	
         	  items.put(produto, novo.toString());
         	
         }
@@ -83,29 +111,29 @@ public class Estoque extends BaseEntity implements Serializable {
 
     public void RetirarProdutoEstoque(Item produto, BigDecimal qtd) {
 
-        String vantigo;
+        String vantigo="0.00";
         BigDecimal vnovo = qtd;
         BigDecimal novo = new BigDecimal("0.00");
         BigDecimal antigo = new BigDecimal("0.00");
         
         if (getItems().containsKey(produto)) {
-        
+//        
             vantigo = getItems().get(produto);
-
+//
             antigo = new BigDecimal(vantigo);
-
+//
             novo = novo.add(antigo).subtract(vnovo);
-
+//
             items.replace(produto,vantigo,novo.toString());
-//            items.remove(produto);
-        	
-        	
-        }else {
-        	
+////            items.remove(produto);
 //        	
-        	novo = novo.add(antigo).subtract(vnovo);
-        	  items.put(produto, novo.toString());
-        	
+//        	
+       }else {
+//        	
+////        	
+       	  novo = novo.add(antigo).subtract(vnovo);
+       	  items.put(produto, novo.toString());
+//        	
 //        	AddProdutoEstoque(produto, qtd);
         	
         }
@@ -135,6 +163,34 @@ public class Estoque extends BaseEntity implements Serializable {
 ////            BigDecimal qtdnegativa = vnovo;
 //            items.put(produto, vnovo.toString());
 //        }
+        
+//        Map<Item,String> pcitens = getItems();
+//        for (Item key : pcitens.keySet()) {
+//        	
+//        	 vantigo = pcitens.get(key);
+//
+//             antigo = new BigDecimal(vantigo);
+//
+//             novo = novo.add(antigo).subtract(vnovo);
+//
+//        	
+//       	            if (key.getId() == (produto.getId())) {
+//       	            	
+//       	            	pcitens.replace(produto,vantigo,novo.toString());
+//       	            	
+//       	            }else{
+//       	            	
+//       	         	novo = novo.add(antigo).subtract(vnovo);
+//       	         	pcitens.put(produto, novo.toString());
+//       	        	
+//       	        	       	            	
+//       	            }
+//       	            
+//        }
+//       
+//        setItems(pcitens);
+//        items.putAll(pcitens);
+        
     }
 
 
