@@ -88,7 +88,6 @@
 
 <%-- <script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/resources/js/material-kit.js"></script>
 
 
 </body>

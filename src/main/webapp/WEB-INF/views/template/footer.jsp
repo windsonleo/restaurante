@@ -82,6 +82,8 @@
                         <script src="${pageContext.request.contextPath}/resources/js/material-dashboard.js" 
        ></script> 
        
+       <script src="${pageContext.request.contextPath}/resources/js/material-kit.js"></script>
+       
 <%--                                <script src="${pageContext.request.contextPath}/resources/js/material-kit.js"  --%>
 <!--        ></script>  -->
           
@@ -103,6 +105,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEEHTuWU99vzB3diFQqZmbNki3xpWz2b8"></script>
        
        
+
        
         <script type="text/javascript">
         
