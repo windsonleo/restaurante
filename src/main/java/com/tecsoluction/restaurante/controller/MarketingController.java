@@ -65,7 +65,7 @@ public class MarketingController {
     
     }
 
-    @RequestMapping(value = "inicio", method = RequestMethod.GET)
+    @RequestMapping(value = "iniciomkt", method = RequestMethod.GET)
     public ModelAndView FinanceiroInicioForm(Locale locale, Model model) {
         logger.info("Welcome Inicio! The client locale is {}.", locale);
 
@@ -81,7 +81,7 @@ public class MarketingController {
         
 
 
-        ModelAndView login = new ModelAndView("inicio");
+        ModelAndView login = new ModelAndView("iniciomkt");
         
 //        login.addObject("despesas", despesas);
 //        login.addObject("apagars", contaspagar);

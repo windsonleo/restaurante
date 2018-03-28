@@ -70,7 +70,7 @@ public class FinanceiroController {
     
     }
 
-    @RequestMapping(value = "/inicio", method = RequestMethod.GET)
+    @RequestMapping(value = "iniciofinanceiro", method = RequestMethod.GET)
     public ModelAndView FinanceiroInicioForm(Locale locale, Model model) {
         logger.info("Welcome Inicio! The client locale is {}.", locale);
 
@@ -86,7 +86,7 @@ public class FinanceiroController {
         
 
 
-        ModelAndView login = new ModelAndView("inicio");
+        ModelAndView login = new ModelAndView("iniciofinanceiro");
         
         login.addObject("despesas", despesas);
         login.addObject("apagars", contaspagar);

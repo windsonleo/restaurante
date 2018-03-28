@@ -428,7 +428,7 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
     public void Retirar(ProdutoComposto produtocomposto, String qtd){
     	
     	Map<Item,String> itens = produtocomposto.getItens_prodcomp();
-    	Map<Item,String> itensaux = null;
+    	Map<Item,String> itensaux = new HashMap<Item,String>();
     	BigDecimal qtdb = new BigDecimal(qtd);
     	
     	for(Item it : itens.keySet()){

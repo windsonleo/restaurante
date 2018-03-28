@@ -132,7 +132,7 @@
 								 <sec:authorize access="hasRole('ROLE_FINANCEIRO')">
 										
 										<li class="">
-											<a href="${pageContext.request.contextPath}/financeiro/inicio" role="ta" data-toggle="ta" aria-expanded="false">
+											<a href="${pageContext.request.contextPath}/financeiro/iniciofinanceiro" role="ta" data-toggle="ta" aria-expanded="false">
 												
 												<i class="material-icons">monetization_on</i>
 												Financeiro
@@ -164,7 +164,7 @@
 										
 											<sec:authorize access="hasRole('ROLE_ADM')">
 												<li class="">
-											<a href="${pageContext.request.contextPath}/marketing/inicio" role="ta" data-toggle="ta" aria-expanded="false">
+											<a href="${pageContext.request.contextPath}/marketing/iniciomkt" role="ta" data-toggle="ta" aria-expanded="false">
 													<i class="material-icons">movie_filter</i>
 												MKT
 											</a>

@@ -788,7 +788,7 @@
 	
 <!-- 	FINANCEIRO -->
 
-	<definition name="inicio" extends="defaultTemplate">
+	<definition name="iniciofinanceiro" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/financeiro/inicio.jsp" />
 
@@ -806,7 +806,7 @@
 	
 	
 <!-- 	MARKETING -->
-		<definition name="inicio" extends="defaultTemplate">
+		<definition name="iniciomkt" extends="defaultTemplate">
 		<put-attribute name="conteudo"
 			value="/WEB-INF/views/marketing/inicio.jsp" />
 
