@@ -13,7 +13,7 @@ import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 
 @RestController
-@RequestMapping(value = "cardapio")
+@RequestMapping(value = "cardapio/")
 public class CardapioControllerRest {
 
     private static final Logger logger = LoggerFactory.getLogger(CardapioControllerRest.class);
@@ -31,7 +31,7 @@ public class CardapioControllerRest {
    
     }
 
-    @GetMapping(value = "/bip1/")
+    @GetMapping(value = "bip1")
     public void ChamarAtendimentoCardapio() {
     	
     	logger.debug("Chamar Atendimento","bip1");
