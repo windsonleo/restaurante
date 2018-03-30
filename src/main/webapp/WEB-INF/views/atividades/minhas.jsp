@@ -63,7 +63,7 @@
 							<a href="#" role="ta" data-toggle="modal" data-target="#ModalAbrirCaixa">
 							
 							<i class="material-icons">lock_open</i>
-							Abrir
+							Nova
 						</a>
 					</li>
 					
@@ -72,26 +72,26 @@
 							<a href="#" role="ta" data-toggle="modal" data-target="#ModalFecharCaixa">
 							
 							<i class="material-icons">lock</i>
-							Fechar
+							Cancelar
 						</a>
 					</li>
 					
 <%-- 									<sec:authorize access="hasRole('ROLE_ADM')"> --%>
 										
-					<li class="">
-						<a href=# role="ta" data-toggle="ta" aria-expanded="false">
-							<i class="material-icons">local_offer</i>
-							Cupom
-						</a>
-					</li>
-<%-- 										</sec:authorize> --%>
+<!-- 					<li class=""> -->
+<!-- 						<a href=# role="ta" data-toggle="ta" aria-expanded="false"> -->
+<!-- 							<i class="material-icons">local_offer</i> -->
+<!-- 							Cupom -->
+<!-- 						</a> -->
+<!-- 					</li> -->
+<%-- <%-- 										</sec:authorize> --%> --%>
 					
-										<li class="" > 
-						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddSangria" >
-							<i class="material-icons"> add</i>
-							Sangria
-						</a>
-					</li>
+<!-- 										<li class="" >  -->
+<!-- 						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddSangria" > -->
+<!-- 							<i class="material-icons"> add</i> -->
+<!-- 							Sangria -->
+<!-- 						</a> -->
+<!-- 					</li> -->
 		</ul>
 		
   
@@ -489,7 +489,7 @@
                                 <div class="card-header" data-background-color="green">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
-                                            <span class="nav-tabs-title">Pagamentos:</span>
+                                            <span class="nav-tabs-title">Atividades:</span>
                                           
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                               

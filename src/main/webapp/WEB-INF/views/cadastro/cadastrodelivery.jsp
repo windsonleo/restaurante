@@ -422,16 +422,7 @@
                                    
                                 </div>
                                 
-<!--            <ul class="nav nav-pills nav-pills-icons nav-pills-warning" role="tablist" style="margin-top:auto;"> -->
-					
-					
-<!-- 					<li class="active"> -->
-<%-- 						<a href="${pageContext.request.contextPath}/delivery/findmotoqueiro" role="tab" data-toggle="ta"> --%>
-<!-- 							<i class="material-icons">place</i> -->
-<!-- 							Find Moto -->
-<!-- 						</a> -->
-<!-- 					</li> -->
-<!-- 				</ul>  -->
+
                             </div>
 </div>
 </div>

@@ -491,7 +491,7 @@
                                                 
                                                 <li class="">
                                                     <a href="#settings" data-toggle="tab">
-                                                        <i class="material-icons">delete</i> CANCELADO
+                                                        <i class="material-icons">delete</i> FECHADO
                                                         <div class="ripple-container"></div>
                                                     </a>
                                                 

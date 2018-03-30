@@ -37,6 +37,11 @@ public class Atividade extends BaseEntity implements Serializable {
     @Column(name = "nome")
     @NotBlank(message = "Nome do Banco obrigatorio")
     private String descricao;
+    
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotBlank(message = "Numero do Banco  obrigatorio")
+    private Date datainicio;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")

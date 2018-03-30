@@ -63,7 +63,7 @@
                   
                <c:forEach var="pedv" items="${itemsprontospv}">
                   <li>
-                     <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${pedv.id}">${pedv.mesa}</a>
+                     <a href="${pageContext.request.contextPath}/pedidovenda/item/detalhes?id=${pedv.id}">Mesa: ${pedv.mesa}</a>
                   </li>
                  </c:forEach>
 

@@ -603,6 +603,13 @@
 			value="/WEB-INF/views/rapido/caixarapido.jsp" />
 
 	</definition>
+	
+	
+			<definition name="adddelivery" extends="defaultTemplate">
+		<put-attribute name="conteudo"
+			value="/WEB-INF/views/delivery/adddelivery.jsp" />
+
+	</definition>
 
 
 

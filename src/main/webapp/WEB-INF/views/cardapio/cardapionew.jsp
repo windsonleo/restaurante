@@ -46,7 +46,7 @@
 				                    </ul>
 
 
-									
+									<div class="space"></div>
 				                    <div class="tab-content">
 				                    <c:forEach var="categoria" items="${categoriaList}" varStatus="id">
 				                    
@@ -72,7 +72,6 @@
 												</div>
 				                            </div>
 				                            
-											<div class="space-300"></div>
 				                            
 				                            </c:forEach>
 				                        </div>

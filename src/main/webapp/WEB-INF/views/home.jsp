@@ -152,6 +152,14 @@
 										</li>
 										
 									</sec:authorize>
+									
+									<li class="">
+
+											<a href="${pageContext.request.contextPath}/delivery/adddelivery" role="ta" class="dropdown-toggle" data-toggle="ta" aria-expanded="false">
+											<i class="material-icons">local_shipping</i>
+												DELIVERY
+											</a>
+										</li>
 										
 									<li class="">
 										<span class="label label-info pull-right" >6</span>
@@ -1203,14 +1211,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${pedidovendas.size()}</h3>
+              <h3>1</h3>
 
-              <p>Delivery</p>
+              <p>Banco</p>
             </div>
             <div class="icon">
               <i class="icon icon-truck"></i>
             </div>
-            <a href="${pageContext.request.contextPath}/delivery/movimentacao" class="small-box-footer">Mais info </a>
+            <a href="${pageContext.request.contextPath}/banco/movimentacao" class="small-box-footer">Mais info </a>
           </div>
         </div>
         <!-- ./col -->

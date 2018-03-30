@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -31,21 +32,21 @@ public class Banco extends BaseEntity implements Serializable {
 
     @NotBlank(message = "Numero do Banco  obrigatorio")
     private String numero;
+    
+    @OneToOne(mappedBy="banco")
+    private ContaCorrente contacorrente;
 
 
     public Banco() {
-        // TODO Auto-generated constructor stub
-//        pedidos = new ArrayList<>();
+
+    	//        pedidos = new ArrayList<>();
     }
 
-//    public List<PedidoVenda> getPedidos() {
-//        return pedidos;
-//    }
-//
-//
-//    public void setPedidos(List<PedidoVenda> pedidos) {
-//        this.pedidos = pedidos;
-//    }
+
+    
+    
+    
+
 
     @Override
     public String toString() {
