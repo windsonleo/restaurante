@@ -40,9 +40,9 @@ import java.util.UUID;
 public class ClienteController extends AbstractController<Cliente> {
 
     private static final Logger logger = LoggerFactory.getLogger(ClienteController.class);
-
+    @Autowired
     private final ClienteServicoImpl clienteService;
-
+    @Autowired
     private final EnderecoServicoImpl enderecoService;
 
     private List<Cliente> clientes;

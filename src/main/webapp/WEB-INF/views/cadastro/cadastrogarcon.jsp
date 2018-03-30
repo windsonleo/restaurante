@@ -123,6 +123,28 @@
               </div>
               </div>
               
+                             <div class="form-group label-floating">
+ 				<div class="control-group">
+                	<label class="control-label">Usuario</label>	
+                <select id="usuario" name="usuario" class="form-control">
+								<optgroup label="Usuario">
+
+
+				<option value="${garcon.usuario.id}" selected="selected"> ${garcon.usuario.username } </option>
+
+
+									<c:forEach var="usuario" items="${usuarioList}">
+
+										<option value="${usuario.id}">${usuario.username}</option>
+
+
+									</c:forEach>
+								</optgroup>
+						</select>
+						
+						</div>
+						</div>
+              
 
               <div class="form-actions">
                 <input type="submit" value="${acao}" class="btn btn-success">

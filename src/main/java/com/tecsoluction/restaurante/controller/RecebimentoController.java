@@ -40,19 +40,19 @@ public class RecebimentoController extends AbstractController<Recebimento> {
 //    private final UsuarioServicoImpl userservice;
 
     private Estoque estoque = new Estoque();
-
+    @Autowired
     private final EstoqueServicoImpl estoqueService;
-
+    @Autowired
     private final RecebimentoServicoImpl recebimentoService;
-
+    @Autowired
     private final PedidoCompraServicoImpl pedidocompraService;
-    
+    @Autowired
     private final ContasPagarServicoImpl contasapagarService;
 
 //    private final ItemServicoImpl itemService;
-
+    @Autowired
     private final ProdutoServicoImpl produtoService;
-
+    @Autowired
     private final FornecedorServicoImpl fornecedorService;
 
     private List<Item> itens = new ArrayList<Item>();

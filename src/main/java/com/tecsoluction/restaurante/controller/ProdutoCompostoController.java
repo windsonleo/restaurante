@@ -55,13 +55,13 @@ public class ProdutoCompostoController extends AbstractController<ProdutoCompost
 
 	
 //	private final  UsuarioServicoImpl userservice;
-
+    @Autowired
 	private final  ProdutoServicoImpl produtoService;
-
+    @Autowired
 	private final  FornecedorServicoImpl fornecedorService;
-
+    @Autowired
 	private final  CategoriaServicoImpl categoriaService;
-
+    @Autowired
 	private final  ProdutoCompostoServicoImpl produtocompostoService;
 
 	private List<ProdutoComposto> produtoList;

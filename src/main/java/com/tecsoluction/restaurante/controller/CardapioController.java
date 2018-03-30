@@ -23,19 +23,19 @@ import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
 @Controller
 @RequestMapping(value = "cardapio/")
 public class CardapioController   {
-
+	 @Autowired
 	private 
 	CategoriaServicoImpl categoriaService;
 	       
-    
+	 @Autowired
     private
 	ProdutoServicoImpl produtoService;
    
-    
+	 @Autowired
     private 
     ProdutoCompostoServicoImpl produtocompostoService;
 
-    
+	
     private List<Produto> produtos;
 
     

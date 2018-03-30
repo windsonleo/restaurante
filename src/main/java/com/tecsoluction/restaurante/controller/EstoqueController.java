@@ -29,7 +29,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping(value = "estoque/")
 public class EstoqueController extends AbstractController<Estoque> {
-
+	 @Autowired
     private final EstoqueServicoImpl estoqueService;
 
     // private

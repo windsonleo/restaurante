@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -28,6 +29,7 @@ import com.tecsoluction.restaurante.entidade.Item;
 import com.tecsoluction.restaurante.entidade.Mesa;
 import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Produto;
+import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.service.impl.ClienteServicoImpl;
@@ -36,6 +38,7 @@ import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
 import com.tecsoluction.restaurante.service.impl.MesaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.PedidoVendaServicoImpl;
 import com.tecsoluction.restaurante.service.impl.ProdutoServicoImpl;
+import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 import com.tecsoluction.restaurante.util.OrigemPedido;
 import com.tecsoluction.restaurante.util.SituacaoItem;
 import com.tecsoluction.restaurante.util.StatusMesa;
@@ -57,12 +60,17 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private final GarconServicoImpl garconService;
     @Autowired
     private final EstoqueServicoImpl estoqueService;
+    
+    @Autowired
+    private final UsuarioServicoImpl usuService;
 
     private List<Produto> produtosList;
 
     private BigDecimal totalpedido = new BigDecimal(0.000).setScale(4, RoundingMode.UP);
 
     private PedidoVenda pv;
+    
+    private Mesa mesa;
 
     private Map<Item, String> itens = new HashMap<>();
 
@@ -71,12 +79,16 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
     private boolean todosprontos = false;
     
     private boolean todosentregues = false;
+    
+    private Garcon garcon;
+    
+    private Usuario usuario;
 
 
     @Autowired
     public PedidoVendaController(PedidoVendaServicoImpl dao, ProdutoServicoImpl produtodao,
                                  ClienteServicoImpl daocliente, MesaServicoImpl daomesa, GarconServicoImpl daogarcon,
-                                  EstoqueServicoImpl estdao) {
+                                  EstoqueServicoImpl estdao,UsuarioServicoImpl usu) {
         super("pedidovenda");
 
         this.pedidovendaService = dao;
@@ -85,6 +97,7 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
         this.mesaService = daomesa;
         this.garconService = daogarcon;
         this.estoqueService = estdao;
+        this.usuService = usu;
 
 
     }
@@ -109,6 +122,12 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
     @ModelAttribute
     public void addAttributes(Model model) {
+    	
+		Usuario usuario = new Usuario();
+		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		usuario = usuService.findByUsername(usuario.getUsername());
+		
+		this.garcon = garconService.getGarconByUser(usuario);
 
         List<PedidoVenda> pedidoVendaList = pedidovendaService.findAll();
         StatusPedido[] tipoStatusList = StatusPedido.values();
@@ -314,13 +333,20 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
 
         ModelAndView novospedidos = new ModelAndView("pedidovendarapido");
         
+        UUID idf = UUID.fromString(request.getParameter("idmesa"));
+        
+         this.mesa= mesaService.findOne(idf);
+         
+//         garcon = garconService.getGarconByUser(usuario);
+
+        
         itens.clear();
         
         produtosList = produtoService.findAll();
 
          novospedidos.addObject("produtosList", produtosList);
          novospedidos.addObject("itens", itens);
-//         novospedidos.addObject("pedidovenda", pv = new PedidoVenda());
+//         novospedidos.addObject("mesa", mesa);
 
         return novospedidos;
     }
@@ -427,9 +453,9 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        	    	ModelAndView salao = new ModelAndView("pedidovendarapido");
 
        	    	//ID DA MESA A SER ADD O PEDIDO
-       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
+//       	        UUID idfm = UUID.fromString(request.getParameter("idmesa"));
        	      
-       	        Mesa mesa = mesaService.findOne(idfm);
+//       	        Mesa mesa = mesaService.findOne(idfm);
 
        	        
        	        if(mesa.getStatus() != StatusMesa.ABERTA) {
@@ -444,8 +470,8 @@ public class PedidoVendaController extends AbstractController<PedidoVenda> {
        	        }
        	        
        	        //garcon
-       	        UUID idfg = UUID.fromString(request.getParameter("idgar"));
-    	        Garcon garcon = garconService.findOne(idfg);
+//       	        UUID idfg = UUID.fromString(request.getParameter("idgar"));
+//    	        Garcon garcon = garconService.findOne(idfg);
        	       
     	        //cliente
     	        UUID idfc = UUID.fromString(request.getParameter("idcli"));

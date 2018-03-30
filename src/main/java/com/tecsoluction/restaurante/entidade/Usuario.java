@@ -50,6 +50,7 @@ public class Usuario extends BaseEntity implements Serializable {
     @OneToMany(mappedBy="usuario",fetch=FetchType.EAGER)
     private Set<Atividade> atividades;
 
+    
 
     public Usuario() {
 

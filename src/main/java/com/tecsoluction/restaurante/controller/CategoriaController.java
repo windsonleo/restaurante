@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "categoria/")
 public class CategoriaController extends AbstractController<Categoria> {
-
+	 @Autowired
     private CategoriaServicoImpl categoriaService;
 
 

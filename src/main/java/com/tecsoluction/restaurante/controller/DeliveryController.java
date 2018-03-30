@@ -83,7 +83,7 @@ public class DeliveryController {
 //       
 //       OrigemPedido[] origemList = OrigemPedido.values();
     	
-        if(pv == null) {
+        if(pv != null) {
         	
             pv = new PedidoVenda();
 
@@ -139,6 +139,7 @@ public class DeliveryController {
 		delivery.addObject("acao","add");
 		delivery.addObject("itens",itens);
 		delivery.addObject("cliente",cliente);
+		delivery.addObject("pedidovenda",pv);
     	
   		return delivery;
   	}
@@ -170,21 +171,25 @@ public class DeliveryController {
     		delivery.addObject("mensagem",mensagem);
     		delivery.addObject("cliente",cliente);
     		delivery.addObject("acao","add");
+    		delivery.addObject("pedidovenda",pv);
 
 
     		return delivery;
     	}
     	
-    	PedidoVenda pedido = new PedidoVenda();
+//    	PedidoVenda pedido = new PedidoVenda();
+//    	
+//    	pedido.setCliente(this.cliente);
+//    	pedido.setData(new Date());
+//    	pedido.setOrigempedido(OrigemPedido.TELEVENDAS);
+//    	pedido.setStatus(StatusPedido.ABERTO);
+//    	BigDecimal total = pedido.CalcularTotal(itens);
+//    	pedido.setTotal(total);
     	
-    	pedido.setCliente(this.cliente);
-    	pedido.setData(new Date());
-    	pedido.setOrigempedido(OrigemPedido.TELEVENDAS);
-    	pedido.setStatus(StatusPedido.ABERTO);
-//    	pedido.setSituacao(SituacaoPedido.AGUARDANDO_PREPARACAO);
-    
+    	
+    	
     	delivery.addObject("cliente", this.cliente);
-    	delivery.addObject("pedidovenda", pedido);
+    	delivery.addObject("pedidovenda", pv);
 		delivery.addObject("acao","add");
 
 
@@ -227,6 +232,11 @@ public class DeliveryController {
            
  
      		 itens.put(item, qtdbd.toString());
+//     		 pv.addItem(item, qtdbd.toString());
+     		 
+     		 
+     		 
+//     		 BigDecimal total = this.pv.CalcularTotal(itens);
      		 
      		 
      		 
@@ -243,6 +253,7 @@ public class DeliveryController {
      		salao.addObject("itens", itens);
      		salao.addObject("produtosList", produtosList);
      		salao.addObject("cliente", this.cliente);
+//     		salao.addObject("total", total);
 
      		 
      		 return salao;
@@ -275,6 +286,8 @@ public class DeliveryController {
     	       
 
     	        CriarPedido(itens);
+    	        
+    	       
   
        	       
     	     
@@ -291,21 +304,21 @@ public class DeliveryController {
     
  public void CriarPedido(Map<Item,String> itens){
     	
-    	PedidoVenda pedidovenda = new PedidoVenda();
-    	pedidovenda.setCliente(this.cliente);
-    	pedidovenda.setData(new Date());
-    	pedidovenda.setIspago(false);
-    	pedidovenda.setOrigempedido(OrigemPedido.TELEVENDAS);
+    
+    pv.setCliente(this.cliente);
+    pv.setData(new Date());
+    pv.setIspago(false);
+    pv.setOrigempedido(OrigemPedido.TELEVENDAS);
 //    	pedidovenda.setStatus(StatusPedido.ABERTO);
     	
     	
-    	pedidovenda.setItems(itens);
+    pv.setItems(itens);
     	
-    	pedidovenda.setTotal(pedidovenda.CalcularTotal(pedidovenda.getItems()));
+    pv.setTotal(pv.CalcularTotal(pv.getItems()));
     	
-    	pedidovenda.setStatus(StatusPedido.PENDENTE);
+    pv.setStatus(StatusPedido.PENDENTE);
     	
-    	pedidovendaService.save(pedidovenda);
+    	pedidovendaService.save(pv);
     	
     	
     }

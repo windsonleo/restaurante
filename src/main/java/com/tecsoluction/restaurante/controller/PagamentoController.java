@@ -29,13 +29,13 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "pagamento")
 public class PagamentoController extends AbstractController<Pagamento> {
-
+	 @Autowired
     private final PagamentoServicoImpl pagamentoService;
-
+	 @Autowired
     private final PedidoVendaServicoImpl pedidovendaService;
-
+	 @Autowired
     private final CaixaServicoImpl caixaService;
-
+	 @Autowired
     private final FormaPagamentoServicoImpl formapagamentoService;
 
 //    private final UsuarioServicoImpl userservice;

@@ -30,18 +30,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "reserva/")
 public class ReservaController extends AbstractController<Reserva> {
 
-
+	 @Autowired
     private final
     ReservaServicoImpl reservaService;
 
 //    private final
 //    UsuarioServicoImpl userservice;
     
-    
+	 @Autowired
     private final 
     MesaServicoImpl mesaService;
 
-    
+	 @Autowired
     private final 
     ClienteServicoImpl clienteService;
 

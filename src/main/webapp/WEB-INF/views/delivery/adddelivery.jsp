@@ -210,7 +210,7 @@
              <div class="input-prepend">
                  <span class="add-on">Ibge</span>
                  <input id="ibge" name="ibge"
-                        class="form-control" type="text" value=""/>
+                        class="form-control" type="text" value="" hidden="true"/>
              </div>
          </div>
      </div>
@@ -328,8 +328,12 @@
                        
                                 <div class="card-header" data-background-color="red">
                                 
-                                    <h4 class="title"> <h5>Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h5></h4>
-                                    <p class="category">Todos</p>
+                                    <h4 class="title"> Itens do Pedido Venda : <strong> ${pedidovenda.id }</strong></h4>
+                                    <p class="category">Todos
+                                    
+<%--                                     <span>${total}</span> --%>
+                                    
+                                    </p>
 
                                 </div>
                                 
@@ -370,7 +374,7 @@
   
   		<tr class="gradeX">
   					
-			      <td>${item.key}</td>
+			      <td>${item.key.descricao}</td>
 
 			     <td>${item.value}</td>
 			     
@@ -589,7 +593,7 @@
 
  								<label class="control-label">Qtd</label>
  								                               
-                               <input id="qtd"  name="qtd" value="" placeholder="" class="form-control"/>
+                               <input id="qtd"  name="qtd" value="1" placeholder="" class="form-control"/>
                                <span class="material-input"></span>
                                
 

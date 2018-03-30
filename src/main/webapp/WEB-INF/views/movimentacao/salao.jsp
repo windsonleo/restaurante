@@ -82,12 +82,7 @@
 						</a>
 					</li>
 					
-					<li class="" >
-						<a href="#ModalTransferirMesa" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa" aria-expanded="false">
-							<i class="material-icons"> compare_arrows</i>
-							Transferir
-						</a>
-					</li>
+	
 		</ul>
 		
 
@@ -147,16 +142,21 @@
                                     
                                     <span class="label label-danger"> ${mesa.pedidosnow.size()}</span>
                                                                          
-            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido?idmesa=${mesa.id}" class="small-box-footer">
              <i class="material-icons">add</i>
               </a><%--                         <a href="${pageContext.request.contextPath}/pedidovenda/fecharpedido" class="small-box-footer">Fechar </a> --%>
                       <a href="#ModalFecharPedido" role="tab" data-toggle="modal" data-target="#ModalFecharPedido" aria-expanded="false">
                       <i class="material-icons"> lock</i>
                       
                       </a>
+                     
+                      <c:if test="${mesa.status != 'DISPONIVEL'}">
+                     <a href="#ModalPedidos" role="tab" data-toggle="modal" data-target="#ModalPedidos" aria-expanded="false">
+                      <i class="material-icons"> lock</i>
+                      
+                      </a>      
                                   
-                                  
-                                        
+                         </c:if>                
                                     </div>
                                 </div>
                             </div>
@@ -202,14 +202,22 @@
                                     
                                     <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                                                          
-            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido?idmesa=${mesa.id}" class="small-box-footer">
              <i class="material-icons">add</i>
               </a>
 
 <a href="#ModalFecharPedido" role="tab" data-toggle="modal" data-target="#ModalFecharPedido" aria-expanded="false">
                       <i class="material-icons"> lock</i>
                       
-                      </a>                                     
+                      </a>  
+                      
+                      <c:if test="${mesa.status != 'DISPONIVEL'}">
+                     <a href="#ModalPedidos" role="tab" data-toggle="modal" data-target="#ModalPedidos" aria-expanded="false">
+                      <i class="material-icons"> lock</i>
+                      
+                      </a>      
+                                  
+                         </c:if>                                    
                                     </div>
                                 </div>
                             </div>
@@ -255,13 +263,20 @@
                                     
                                     <span class="label label-success"> ${mesa.pedidosnow.size()}</span>
                                                                          
-            <a href="${pageContext.request.contextPath}/pedidovenda/rapido" class="small-box-footer">
+            <a href="${pageContext.request.contextPath}/pedidovenda/rapido?idmesa=${mesa.id}" class="small-box-footer">
              <i class="material-icons">add</i>
               </a>
 <a href="#ModalFecharPedido" role="tab" data-toggle="modal" data-target="#ModalFecharPedido" aria-expanded="false">
                       <i class="material-icons"> lock</i>
                       
-                      </a>                                        
+                      </a>  
+                      <c:if test="${mesa.status != 'DISPONIVEL'}">
+                     <a href="#ModalPedidos" role="tab" data-toggle="modal" data-target="#ModalPedidos" aria-expanded="false">
+                      <i class="material-icons"> lock</i>
+                      
+                      </a>      
+                                  
+                         </c:if>                                       
                                     </div>
                                 </div>
                             </div>
@@ -462,54 +477,7 @@
          
           </div>
           
-<!--           <div class="form-group"> -->
-<!-- <!--             <label for="message-text" class="control-label">Cliente:</label> --> 
-<!-- <!--             <input class="form-control" id="message-text"></input> --> 
 
-<!-- 				<div class="form-group label-floating  is-empty"> -->
-<!--                               <label class="control-label">Cliente</label> -->
-<%--                                 <input type="text" list="${clientesList}" id="id" --%>
-<!--                                        placeholder="" name="id" autocomplete="off" -->
-<!--                                        class="form-control"> -->
-                                       
-<!--                                  <span class="material-input"></span> -->
-<!--                          </div> -->
-
-
-
-
-<%--                                 <datalist id="${clientesList}"> --%>
-
-<%--                                     <c:forEach var="client" items="${clientesList}" varStatus="id"> --%>
-
-<%--                                         <option value="${client.id }"> ${client.nome } </option> --%>
-
-<%--                                     </c:forEach> --%>
-
-
-<!--                                 </datalist> -->
-<!--           </div> -->
-          
-<!--             <div class="form-group"> -->
-<!--                     <div class="form-group label-floating is-empty"> -->
-<!--                         <label class="control-label">Garcon</label> -->
-<%-- 							<input id="idgar" name="idgar" list="${garconsList}" class="form-control" type="text" --%>
-<!--                              		autocomplete="off"/> -->
-<!--                      				  <span class="material-input"></span> -->
-<!--                     </div> -->
-                                 
-                                 
-<%--                    <datalist id="${garconsList}"> --%>
-
-<%--                       <c:forEach var="garcon" items="${garconsList}" varStatus="id"> --%>
-
-<%--                           <option value="${garcon.id }"> ${garcon.nome } </option> --%>
-
-<%--                       </c:forEach> --%>
-
-
-<!--                   </datalist>  -->
-<!--           </div> -->
           
           <div class="form-group">
                     <div class="form-group label-floating is-empty">
@@ -614,89 +582,7 @@
 
 
 
-<!-- transferir mesa -->
-<div class="modal fade" id="ModalTransferirMesa" tabindex="3" role="tab" >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Transferir Mesa</h4>
-      </div>
-      <div class="modal-body">
-       
-        <form action="transferirmesa" method="get">
-          
-  		<div class="form-group">
-                <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Mesa Origem</label>
-									<input id="idmesaorigem" name="idmesaorigem" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="off"/>
-                            				  <span class="material-input"></span>
-                                 </div> 
-                                 
-                              <datalist id="${mesasList}">
 
-                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
-
-                                        <option value="${mesa.id }"> ${mesa.numero } </option>
-
-                                    </c:forEach>
-
-
-                                </datalist>
-                                
-                                
-
-         
-          </div>
-          
-            		<div class="form-group">
-                <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Mesa Destino</label>
-									<input id="idmesadestino" name="idmesadestino" list="${mesasList}" class="form-control" type="text"
-                                    		  autocomplete="off"/>
-                            				  <span class="material-input"></span>
-                                 </div> 
-                                 
-                              <datalist id="${mesasList}">
-
-                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
-
-                                        <option value="${mesa.id }"> ${mesa.numero } </option>
-
-                                    </c:forEach>
-
-
-                                </datalist>
-                                
-                                
-
-         
-          </div>
-          
-                  <button type="submit" class="btn btn-info">Tranferir Mesa</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          
-          
-<!--           <div class="form-group"> -->
-<!--             <label for="message-text" class="control-label">Cliente:</label> -->
-<!--             <input class="form-control" id="message-text"></input> -->
-<!--           </div> -->
-          
-<!--             <div class="form-group"> -->
-<!--             <label for="message-text" class="control-label">Garcon:</label> -->
-<!--             <input class="form-control" id="message-text"></input> -->
-<!--           </div> -->
-          
-        </form>
-      </div>
-      <div class="modal-footer">
-      
-      </div>
-      
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="ModalFecharPedido" tabindex="3" role="tab" >
   <div class="modal-dialog" role="document">
@@ -779,6 +665,79 @@
       
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="ModalPedidos" tabindex="-1" role="dialog" aria-labelledby="ModalPedidos" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="material-icons">clear</i>
+				</button>
+				<h4 class="modal-title">Pedidos Mesa</h4>
+			</div>
+			<div class="modal-body">
+<table class="table">
+    <thead>
+        <tr>
+<!--             <th class="text-center">#</th> -->
+            <th>Id</th>
+            <th>Status</th>
+			<th>Total</th>
+            <th>Mesa</th>
+            <th class="text-right">Acao</th>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="mesa" items="${mesasList}">
+          <c:forEach var="pedido" items="${mesa.pedidosnow}">
+      
+      
+        <tr>
+        
+<!--             <td class="text-center">1</td> -->
+            <td>${pedido.id }</td>
+            <td>${pedido.status }</td>
+<!--             <td></td> -->
+            <td >&euro; ${pedido.total }</td>
+                    <td>${mesa.numero}</td> 
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+            
+         
+        </tr>
+        </c:forEach>
+           </c:forEach>
+        
+
+    </tbody>
+</table>
+			
+			
+			
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-simple">Nice Button</button>
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 

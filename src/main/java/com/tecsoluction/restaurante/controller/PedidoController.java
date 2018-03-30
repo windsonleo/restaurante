@@ -15,7 +15,7 @@ import com.tecsoluction.restaurante.util.TipoPedido;
 @Controller
 @RequestMapping(value = "pedido/")
 public class PedidoController extends AbstractController<Pedido> {
-
+	 @Autowired
 	private final PedidoServicoImpl pedidoService;
 
 	@Autowired

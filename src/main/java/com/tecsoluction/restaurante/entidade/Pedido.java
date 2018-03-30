@@ -54,6 +54,9 @@ public abstract class Pedido extends BaseEntity {
     @ManyToOne
     @JoinColumn(name="conta_id")
     private Conta conta;
+    
+    
+    private String obs;
 
     
     public Pedido() {

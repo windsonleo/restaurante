@@ -30,28 +30,28 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "caixa/")
 public class CaixaController extends AbstractController<Caixa> {
-
+	  @Autowired
     private
     PedidoVendaServicoImpl pedidovendaService;
 
-
+    @Autowired
     private
     CaixaServicoImpl caixaService;
-
+    @Autowired
     private
     FormaPagamentoServicoImpl formapagamentoService;
-
+    @Autowired
     private
     PagamentoServicoImpl pagamentoService;
 
-
+    @Autowired
     private
     DespesaServicoImpl despesaService;
-    
+    @Autowired
     private
     ContasReceberServicoImpl contasreceberService;
 
-
+    @Autowired
     private
     MesaServicoImpl mesaService;
     
@@ -64,6 +64,8 @@ public class CaixaController extends AbstractController<Caixa> {
     List<PedidoVenda> pedidoVendaLista = new ArrayList<>();
 
     List<FormaPagamento> formapagamentoLista = new ArrayList<>();
+    
+    List<Mesa> mesasList = new ArrayList<>();
 
     private Pagamento pagamento;
     
@@ -125,18 +127,21 @@ public class CaixaController extends AbstractController<Caixa> {
 //    		
 //    	}
     	
-        List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
+       formapagamentoLista = formapagamentoService.findAll();
         List<PedidoVenda> pedidoList = pedidovendaService.findAll();
         List<Caixa> caixaList = caixaService.findAll();
         List<Despesa> despesaList = despesaService.findAll();
         this.pedidoVendaLista = pedidovendaService.findAll();
+        mesasList= mesaService.findAll();
+        
 
 
         model.addAttribute("caixaList", caixaList);
         model.addAttribute("ls", pedidoVendaLista);
-        model.addAttribute("formapagamentoList", formapagamentoList);
+        model.addAttribute("formapagamentoLista", formapagamentoLista);
 //        model.addAttribute("usuarioAtt", usuario);
         model.addAttribute("despesaList", despesaList);
+        model.addAttribute("mesasList", mesasList);
 //        model.addAttribute("caixa", caixa);
 
 
@@ -400,6 +405,9 @@ public class CaixaController extends AbstractController<Caixa> {
         List<TipoFormaPagamento> pagtickt = new ArrayList<>();
 
         List<Despesa> despesaList = despesaService.findAll();
+        
+        List<FormaPagamento> formapagamentoList = formapagamentoService.findAll();
+
 
         List<PedidoVenda> ls = pedidovendaService.findAll();
         
@@ -445,8 +453,8 @@ public class CaixaController extends AbstractController<Caixa> {
 
         caixarapido.addObject("ls", ls);
         caixarapido.addObject("despesaList", despesaList);
-
         caixarapido.addObject("pagdinheiro", pagdinheiro);
+        caixarapido.addObject("formapagamentoLista", formapagamentoLista);
         caixarapido.addObject("pagcartaodebito", pagcartaodebito);
         caixarapido.addObject("pagcartaocredito", pagcartaocredito);
         caixarapido.addObject("pagcheque", pagcheque);
@@ -462,9 +470,14 @@ public class CaixaController extends AbstractController<Caixa> {
 
 
         UUID idf = UUID.fromString(request.getParameter("id"));
+      
         UUID idforma = UUID.fromString(request.getParameter("idforma"));
         
         UUID idcx = UUID.fromString(request.getParameter("idcx"));
+        
+        String valorpago = request.getParameter("valor");
+        
+        BigDecimal valor = new BigDecimal(valorpago);
         
         FormaPagamento formapag;
         
@@ -481,7 +494,7 @@ public class CaixaController extends AbstractController<Caixa> {
         pagamento = new Pagamento();
         pagamento.setStatus(StatusPagamento.PAGO);
         pagamento.setValorTotalPagamento(pedvenda.getTotalVenda());
-
+        pagamento.setValorPago(valor);
 //    	  pedvenda.getPagamento().add(pagamento);
 //        pagamento.getPedidos().add(pedvenda);
         
@@ -555,6 +568,211 @@ public class CaixaController extends AbstractController<Caixa> {
         return caixarapido;
 
 
+    }
+    
+    @RequestMapping(value = "transferirmesa", method = RequestMethod.GET)
+    public ModelAndView TransferirMesa(HttpServletRequest request) {
+
+       			String mensagem = "Mesa Tranferida com Sucesso";
+
+       			List<PedidoVenda> vendasDestino = null;
+       			List<PedidoVenda> vendasDestinoAux = null;
+
+       	        UUID idfmorigem = UUID.fromString(request.getParameter("idmesaorigem"));
+       	        UUID idfmdestino = UUID.fromString(request.getParameter("idmesadestino"));
+
+     	        
+       	        Mesa mesaOrigem = mesaService.findOne(idfmorigem);
+       	        Mesa mesaDestino = mesaService.findOne(idfmdestino);
+       	        
+       	        vendasDestino = mesaDestino.getPedidos();
+
+       	     for (PedidoVenda pv : mesaOrigem.getPedidos()) {
+   	    	 
+   	    	 
+   	    	 //PEGO OS PEDIDO ABERTOS,PENDENTES,PRONTOS,ENTREGUE E INCLUO NA MESA DESTINO
+   	    	 if((pv.getStatus() != StatusPedido.FINALIZADO)&&(pv.getStatus() != StatusPedido.CANCELADO)&&(pv.getStatus() != StatusPedido.FECHADO)) {
+   	    		 
+//   	    		vendasDestino.add(pv);
+   	    		 mesaOrigem.getPedidos().remove(pv);
+   	    		 mesaDestino.getPedidos().add(pv);
+
+   	    		 
+   	    	 }
+   	    	 
+       	     }
+       	     
+       	   
+//       	  mesaDestino.setPedidos(vendasDestino);
+       	  
+       	  mesaService.edit(mesaOrigem);
+       	  mesaService.edit(mesaDestino);
+       	        
+       	        
+       	        
+//       	        
+//       	        
+//       	        
+//       	        if(mesa.getStatus() != StatusMesa.ABERTA){
+//       	        	
+//       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
+//       	       
+//       	        	salao.addObject("erros", erros);
+//       	        	
+//       	        	return salao;
+//       	        	
+//       	        }
+//       	        
+//       	        mesa.setStatus(StatusMesa.FECHADA);
+//       	        
+//       	        //guardara os pedido pronto da mesa
+//       	        List<PedidoVenda> pedidos = new ArrayList<>();
+//       	        
+//       	     for (PedidoVenda pv : mesa.getPedidos()) {
+//       	    	 
+//       	    	 
+//       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
+//       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+//       	    		 
+//       	    		pedidos.add(pv);
+//       	    		 
+//       	    		 
+//       	    	 }
+//       	    	 
+//       	    	 
+//       	     }
+//       	     
+//       	     for (PedidoVenda pv : pedidos) {
+//       	    	 
+//       	    		 
+//       	    		pv.setStatus(StatusPedido.FECHADO);
+//       	    		 
+//       	    		pedidovendaService.edit(pv);
+//       	    	 
+//       	     }
+//       	     
+//       	     
+//       	        
+//       	        getservice().edit(mesa);
+//       	    	
+//       	    	
+//       	        
+////       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+//       	        
+//
+//       	        List<Mesa> mesas = mesaService.findAll();
+
+//       	        salao.addObject("mesasList", mesas);
+//       	        salao.addObject("mensagem", mensagem);
+
+//       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
+
+
+       	        return new ModelAndView("redirect:/mesa/salao");
+       	        
+    }
+    
+    
+    @RequestMapping(value = "reabrirmesa", method = RequestMethod.GET)
+    public ModelAndView ReabrirMesa(HttpServletRequest request) {
+
+       			String mensagem = "Mesa Tranferida com Sucesso";
+
+       			List<PedidoVenda> vendasDestino = null;
+       			List<PedidoVenda> vendasDestinoAux = null;
+
+       	        UUID idfmorigem = UUID.fromString(request.getParameter("idmesaorigem"));
+       	        UUID idfmdestino = UUID.fromString(request.getParameter("idmesadestino"));
+
+     	        
+       	        Mesa mesaOrigem = mesaService.findOne(idfmorigem);
+       	        Mesa mesaDestino = mesaService.findOne(idfmdestino);
+       	        
+       	        vendasDestino = mesaDestino.getPedidos();
+
+       	     for (PedidoVenda pv : mesaOrigem.getPedidos()) {
+   	    	 
+   	    	 
+   	    	 //PEGO OS PEDIDO ABERTOS,PENDENTES,PRONTOS,ENTREGUE E INCLUO NA MESA DESTINO
+   	    	 if((pv.getStatus() != StatusPedido.FINALIZADO)&&(pv.getStatus() != StatusPedido.CANCELADO)&&(pv.getStatus() != StatusPedido.FECHADO)) {
+   	    		 
+//   	    		vendasDestino.add(pv);
+   	    		 mesaOrigem.getPedidos().remove(pv);
+   	    		 mesaDestino.getPedidos().add(pv);
+
+   	    		 
+   	    	 }
+   	    	 
+       	     }
+       	     
+       	   
+//       	  mesaDestino.setPedidos(vendasDestino);
+       	  
+       	  mesaService.edit(mesaOrigem);
+       	  mesaService.edit(mesaDestino);
+       	        
+       	        
+       	        
+//       	        
+//       	        
+//       	        
+//       	        if(mesa.getStatus() != StatusMesa.ABERTA){
+//       	        	
+//       	        	String erros = "Mesa Ainda Nao Foi Aberta ou esta Reservada para outro Cliente nao pode ser Fechada";
+//       	       
+//       	        	salao.addObject("erros", erros);
+//       	        	
+//       	        	return salao;
+//       	        	
+//       	        }
+//       	        
+//       	        mesa.setStatus(StatusMesa.FECHADA);
+//       	        
+//       	        //guardara os pedido pronto da mesa
+//       	        List<PedidoVenda> pedidos = new ArrayList<>();
+//       	        
+//       	     for (PedidoVenda pv : mesa.getPedidos()) {
+//       	    	 
+//       	    	 
+//       	    	 //PEGO OS PEDIDO PRONTOS DA MESA PARA FECHAR
+//       	    	 if(pv.getStatus() == StatusPedido.PRONTO) {
+//       	    		 
+//       	    		pedidos.add(pv);
+//       	    		 
+//       	    		 
+//       	    	 }
+//       	    	 
+//       	    	 
+//       	     }
+//       	     
+//       	     for (PedidoVenda pv : pedidos) {
+//       	    	 
+//       	    		 
+//       	    		pv.setStatus(StatusPedido.FECHADO);
+//       	    		 
+//       	    		pedidovendaService.edit(pv);
+//       	    	 
+//       	     }
+//       	     
+//       	     
+//       	        
+//       	        getservice().edit(mesa);
+//       	    	
+//       	    	
+//       	        
+////       	        List<PedidoVenda> vendasmesa = pedidovendaService.getAllPedidoPorMesa();
+//       	        
+//
+//       	        List<Mesa> mesas = mesaService.findAll();
+
+//       	        salao.addObject("mesasList", mesas);
+//       	        salao.addObject("mensagem", mensagem);
+
+//       	        mesasocupadas.addObject("vendasmesa", vendasmesa);
+
+
+       	        return new ModelAndView("redirect:/mesa/salao");
+       	        
     }
 
 

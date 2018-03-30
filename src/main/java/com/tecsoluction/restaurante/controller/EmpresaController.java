@@ -26,7 +26,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Controller
 @RequestMapping(value = "empresa/")
 public class EmpresaController extends AbstractController<Empresa> {
-
+	 @Autowired
     private final EmpresaServicoImpl empresaService;
 
 //    private final UsuarioServicoImpl userservice;

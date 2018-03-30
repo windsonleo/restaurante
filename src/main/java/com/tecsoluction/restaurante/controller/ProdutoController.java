@@ -33,11 +33,11 @@ import java.util.UUID;
 public class ProdutoController extends AbstractController<Produto> {
 
 //    private final UsuarioServicoImpl userservice;
-
+	 @Autowired
     private final ProdutoServicoImpl produtoService;
-
+	 @Autowired
     private final FornecedorServicoImpl fornecedorService;
-
+	 @Autowired
     private final CategoriaServicoImpl categoriaService;
 
     private List<Produto> produtoList;

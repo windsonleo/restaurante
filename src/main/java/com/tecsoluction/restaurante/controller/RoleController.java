@@ -27,9 +27,9 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 public class RoleController extends AbstractController<Role> {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
-
+	 @Autowired
 	private final UsuarioServicoImpl userService;
-
+	 @Autowired
 	private final RoleServicoImpl roleService;
 
 	@Autowired

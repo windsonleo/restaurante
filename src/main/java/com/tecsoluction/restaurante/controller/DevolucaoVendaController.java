@@ -28,14 +28,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "devolucaovenda/")
 public class DevolucaoVendaController extends AbstractController<DevolucaoVenda> {
 
-
+	 @Autowired
     private final
     DevolucaoVendaServicoImpl devolucaovendaService;
 
 //    private final
 //    UsuarioServicoImpl userservice;
     
-    
+	 @Autowired
     private final 
     PedidoVendaServicoImpl pedidovendaService;
 

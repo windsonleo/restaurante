@@ -18,7 +18,7 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @Controller
 @RequestMapping(value = "despesa/")
 public class DespesaController extends AbstractController<Despesa> {
-
+	 @Autowired
 	private DespesaServicoImpl despesaService;
 
 //	private UsuarioServicoImpl userservice;

@@ -105,11 +105,10 @@
 	                                  <optgroup label="Tipos de Formas de Pagamento">
 		           				
 		           					<option value="${formapagamento.tipo}">${formapagamento.tipo}</option>
-		           						           			
-		           				<option value="AVISTA">AVISTA</option>
-		           				<option value="CCREDITO">CCREDITO</option>
-		           				<option value="CDEBITO">CDEBITO</option>
-		           				      				
+		           					<c:forEach var="tpForma"  items="${tipo }">           			
+		           				<option value="${tpForma }">${tpForma}</option>
+		           			
+		           				      	</c:forEach>				
 		           			
 		                </optgroup>
 	                    </select>

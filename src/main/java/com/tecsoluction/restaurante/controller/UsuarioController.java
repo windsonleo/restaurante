@@ -42,11 +42,11 @@ import java.util.UUID;
 public class UsuarioController extends AbstractController<Usuario> {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
-
+    @Autowired
     private final UsuarioServicoImpl usudao;
-
+    @Autowired
     private final UsuarioServicoImpl ususervice;
-
+    @Autowired
     private final RoleServicoImpl roleservico;
     
     private Usuario usuario = new Usuario();

@@ -31,10 +31,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "contasreceber/")
 public class ContasReceberController extends AbstractController<ContasReceber> {
 
-
+	 @Autowired
     private final
     ContasReceberServicoImpl contasreceberService;
-    
+	 @Autowired
     private final 
     PedidoVendaServicoImpl pedidovendaService;
 

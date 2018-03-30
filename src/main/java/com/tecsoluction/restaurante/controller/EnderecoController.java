@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "endereco/")
 public class EnderecoController extends AbstractController<Endereco> {
-
+	 @Autowired
     private final EnderecoServicoImpl enderecoService;
-
+	 @Autowired
     private final ClienteServicoImpl clienteService;
 
 //    private final UsuarioServicoImpl userservice;

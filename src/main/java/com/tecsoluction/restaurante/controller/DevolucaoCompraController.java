@@ -31,12 +31,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DevolucaoCompraController extends AbstractController<DevolucaoCompra> {
 
 // devolucoes de compra so podera ser efetuada em pedido de compra Finalizados
-    private final
+	 @Autowired
+	private final
     DevolucaoCompraServicoImpl devolucaocompraService;
 
 //    private final
 //    UsuarioServicoImpl userservice;
-    
+	 @Autowired
     private final 
     PedidoCompraServicoImpl pedidocompraService;
 

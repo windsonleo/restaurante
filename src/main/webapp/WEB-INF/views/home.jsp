@@ -68,15 +68,29 @@
 <!--                </br> -->
 
 
-
+						<div class="card">
+                    <div class="card-content">
+                       
+                                <div class="card-header" data-background-color="">
+                                
+                                    <h4 class="title">Acesso Rápido</h4>
+                                    <p class="category">Insira os Dados</p>
+<%--                                 <span class="icon "><a href="${pageContext.request.contextPath}/banco/cadastro"><i --%>
+<!--                                 class="icon-plus pull-right" color="blue"></i></a> </span> -->
+                                </div>
+                                
 						<div class="row">
+						</br>
 						
-							<div class="col-sm-12 col-sm-offset-1">
+						
+							<div class="col-sm-12">
 							
 						<div class="profile-tabs">
 
 								<div class="nav">
-
+								<div class="field">
+								
+								
 									<ul class="nav nav-pills nav-pills-danger" role="tablist">
 										
 										
@@ -161,6 +175,14 @@
 											</a>
 										</li>
 										
+										<li class="">
+
+											<a href="${pageContext.request.contextPath}/cardapio/new" role="ta" class="dropdown-toggle" data-toggle="ta" aria-expanded="false">
+											<i class="material-icons">import_contacts</i>												
+											CARDAPIO
+											</a>
+										</li>
+										
 									<li class="">
 										<span class="label label-info pull-right" >6</span>
 													  <p class="hidden-lg hidden-md">Notifications</p>
@@ -189,7 +211,7 @@
 										
 									
 				                    </ul>
-
+									</div>
 
 								</div>
 								
@@ -198,6 +220,9 @@
 								</div>
 
 						</div>
+						</div>
+						</div>
+						
 						
 						<div class="space-30"></div>
 

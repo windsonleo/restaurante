@@ -1,11 +1,12 @@
-.modal {
-     z-index: 99999 !important;
-     position: absolute;
-     background-color: rgba(0, 0, 0, 0.3);
-     height: 0 auto;
+/* .modal { */
+/*      z-index: 99999 !important; */
+/*      position: relative; */
+/*      background-color: rgba(0, 0, 0, 0.3); */
+/*      height: 0 auto; */
      
      
-}
+/* } */
+
 
 
 .login {

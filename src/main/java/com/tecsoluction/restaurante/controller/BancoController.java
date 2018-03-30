@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "banco/")
 public class BancoController extends AbstractController<Banco> {
 
-
+	 @Autowired
     private final
     BancoServicoImpl bancoService;
 

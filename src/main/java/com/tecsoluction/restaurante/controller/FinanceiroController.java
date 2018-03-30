@@ -36,7 +36,7 @@ public class FinanceiroController {
 
     private static final Logger logger = LoggerFactory.getLogger(FinanceiroController.class);
 
-
+    @Autowired
     private final
     BancoServicoImpl bancoService = new BancoServicoImpl();
     

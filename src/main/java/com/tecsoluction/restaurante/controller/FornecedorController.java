@@ -33,9 +33,9 @@ import java.util.UUID;
 @Controller
 @RequestMapping(value = "fornecedor/")
 public class FornecedorController extends AbstractController<Fornecedor> {
-
+	 @Autowired
     private final FornecedorServicoImpl fornecedorService;
-    
+	 @Autowired
     private final RecebimentoServicoImpl recebimentoService;
 
 //    private final UsuarioServicoImpl userservice;

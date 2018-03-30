@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -38,6 +39,9 @@ public class Garcon extends BaseEntity implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "garcon",fetch=FetchType.EAGER)
     private List<PedidoVenda> pedidos;
+    
+    @OneToOne
+    private Usuario usuario;
 
 
     public Garcon() {

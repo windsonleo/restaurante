@@ -22,10 +22,10 @@ import java.util.List;
 @RequestMapping(value = "contaspagar/")
 public class ContasPagarController extends AbstractController<ContasPagar> {
 
-
+	 @Autowired
     private final
     ContasPagarServicoImpl contaspagarService;
-
+	 @Autowired
     private final
     RecebimentoServicoImpl recebimentoService;
 

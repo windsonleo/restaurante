@@ -6,6 +6,8 @@ import com.tecsoluction.restaurante.framework.AbstractController;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.FormaPagamentoServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
+import com.tecsoluction.restaurante.util.TipoFormaPagamento;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "formapagamento/")
 public class FormaPagamentoController extends AbstractController<FormaPagamento> {
-
+	 @Autowired
     private final FormaPagamentoServicoImpl formapagamentoService;
 
 //    private final UsuarioServicoImpl userservice;
@@ -39,6 +41,9 @@ public class FormaPagamentoController extends AbstractController<FormaPagamento>
 //        usuario = userservice.findByUsername(usuario.getUsername());
 //
 //        model.addAttribute("usuarioAtt", usuario);
+    	
+    	TipoFormaPagamento[] tipo = TipoFormaPagamento.values();
+    	model.addAttribute("tipo", tipo);
 
     }
 

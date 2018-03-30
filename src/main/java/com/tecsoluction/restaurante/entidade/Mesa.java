@@ -11,6 +11,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,6 +50,7 @@ public class Mesa extends BaseEntity implements Serializable {
     
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name = "mesa_permanencia", joinColumns = @JoinColumn(name = "id"))
+    
     private Set<Integer> permanencia;
     
     @Transient

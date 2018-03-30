@@ -250,7 +250,7 @@
 
  								<label class="control-label">Qtd</label>
  								                               
-                               <input id="qtd"  name="qtd" value="" placeholder="" class="form-control"/>
+                               <input id="qtd"  name="qtd" value="1" placeholder="" class="form-control"/>
                                <span class="material-input"></span>
                                
 <!-- </br></br> -->
@@ -282,42 +282,42 @@
                                    
                                    <form action="addPedidoRapido" method="POST" class="form-horizonta">
                                     
-                                   <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Mesa</label>
-									<input id="idmesa" name="idmesa" list="${mesaList}" class="form-control" type="text"
-                                    		  autocomplete="on"/>
-                            				  <span class="material-input"></span>
-                                 </div> 
+<!--                                    <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Mesa</label> -->
+<%-- 									<input id="idmesa" name="idmesa" list="${mesaList}" class="form-control" type="text" --%>
+<%--                                     		  autocomplete="off" value="${mesa}" /> --%>
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div>  -->
                                  
-                              <datalist id="${mesaList}">
+<%--                               <datalist id="${mesaList}"> --%>
 
-                                    <c:forEach var="mesa" items="${mesaList}" varStatus="id">
+<%--                                     <c:forEach var="mesa" items="${mesaList}" varStatus="id"> --%>
 
-                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+<%--                                         <option value="${mesa.id }"> ${mesa.numero } </option> --%>
 
-                                    </c:forEach>
+<%--                                     </c:forEach> --%>
 
 
-                                </datalist>
+<!--                                 </datalist> -->
                                  
-                              <div class="form-group label-floating is-empty">
-                                       <label class="control-label">Garcon</label>
-									<input id="idgar" name="idgar" list="${garconList}" class="form-control" type="text"
-                                    		autocomplete="off"/>
-                            				  <span class="material-input"></span>
-                                 </div>
+<!--                               <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Garcon</label> -->
+<%-- 									<input id="idgar" name="idgar" list="${garconList}" class="form-control" type="text" --%>
+<!--                                     		autocomplete="off"/> -->
+<!--                             				  <span class="material-input"></span> -->
+<!--                                  </div> -->
                                  
                                  
-                                 <datalist id="${garconList}">
+<%--                                  <datalist id="${garconList}"> --%>
 
-                                    <c:forEach var="garcon" items="${garconList}" varStatus="id">
+<%--                                     <c:forEach var="garcon" items="${garconList}" varStatus="id"> --%>
 
-                                        <option value="${garcon.id }"> ${garcon.nome } </option>
+<%--                                         <option value="${garcon.id }"> ${garcon.nome } </option> --%>
 
-                                    </c:forEach>
+<%--                                     </c:forEach> --%>
 
 
-                                </datalist> 
+<!--                                 </datalist>  -->
                                  		
 
 						<div class="form-group label-floating  is-empty">

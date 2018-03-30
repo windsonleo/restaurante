@@ -84,6 +84,21 @@
 						</a>
 					</li>
 					
+									<li class="" >
+						<a href="#ModalTransferirMesa" role="tab" data-toggle="modal" data-target="#ModalTransferirMesa" aria-expanded="false">
+							<i class="material-icons"> compare_arrows</i>
+							Trans.Mesa
+						</a>
+					</li>
+					
+					
+					<li class="" >
+						<a href="#ModalReabrirMesa" role="tab" data-toggle="modal" data-target="#ModalReabrirMesa" aria-expanded="false">
+							<i class="material-icons"> lock_open</i>
+							Reabbrir.Mesa
+						</a>
+					</li>
+					
 					<li class="" > 
 						<a href="#" role="ta"  data-toggle="modal" data-target="#ModalAddDespesa" >
 							<i class="material-icons"> add</i>
@@ -124,7 +139,7 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">clique aqui</i>
- <a href="#" data-toggle="modal"  data-target="#myAlertDinheiro" >Detalhes..</a>                                    </div>
+ 					<a href="#" data-toggle="modal"  data-target="#myAlertDinheiro" >Detalhes..</a>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -623,14 +638,96 @@
 														                </td>
 														                
 														 <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}&idforma=2b0a3f0c-5f53-472e-b618-6e0ee7a81256&idcx=a2fa34a0-4771-4edc-a5d3-ede2890418f5'">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
+<%--                                                             <button type="button" rel="tooltip" title="Pagar" class="btn btn-info btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/receberpagamento?id=${pv.id}&idforma=2b0a3f0c-5f53-472e-b618-6e0ee7a81256&idcx=a2fa34a0-4771-4edc-a5d3-ede2890418f5'"> --%>
+<!--                                                                 <i class="material-icons">edit</i> -->
+<!--                                                             </button> -->
+
+																 <a href="#" class="btn btn-info btn-simple btn-xs" data-toggle="modal"  data-target="#myAlertPagar" >
+																  <i class="material-icons">edit</i> 
+																 </a>  
                                                            
                                                             <button type="button" rel="tooltip" title="Cancelar" class="btn btn-danger btn-simple btn-xs" onclick="window.location='${pageContext.request.contextPath}/caixa/recusarpagamento?id=${pv.id}'">
                                                                 <i class="material-icons">close</i>
                                                             </button>
                                                         </td>
+                                                        
+  <div class="modal fade" id="myAlertPagar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Pagamento</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="receberpagamento" method="get">
+          
+  		<div class="form-group">
+  		
+  		                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Pedido Venda</label>
+									<input id="id" name="id" class="form-control" type="text"
+                                    		   value="${pv.id}"/>
+                                 </div> 
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Forma de Pagamento</label>
+									<input id="idforma" name="idforma" list="${formapagamentoLista}" class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                                 </div> 
+                                 
+                                 
+                                  <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Caixa</label>
+									<input id="idcx" name="idcx" list="${caixaList}" class="form-control" type="text"
+                                    	 autocomplete="off"	 />
+                                 </div> 
+                                 
+                              <datalist id="${formapagamentoLista}">
+
+                                    <c:forEach var="forma" items="${formapagamentoLista}" varStatus="id">
+
+                                        <option value="${forma.id }"> ${forma.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                 <datalist id="${caixaList}">
+
+                                    <c:forEach var="caixa" items="${caixaList}" varStatus="id">
+
+                                        <option value="${caixa.id }"> ${caixa.nome } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+
+                                
+                             <div class="form-group label-floating is-empty">
+                                       <label class="control-label">ValorPago</label>
+									<input id="valor" name="valor" value="0" class="form-control" type="text"
+                                    		 />
+                                 </div> 
+         
+          </div>
+          
+
+        <button type="submit" class="btn btn-info">Add Pagamento</button>
+
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
 																
 																    </c:when>    
 																    
@@ -973,6 +1070,158 @@
 </div>
 
 
+<!-- transferir mesa -->
+<div class="modal fade" id="ModalTransferirMesa" tabindex="3" role="tab" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Transferir Mesa</h4>
+      </div>
+      <div class="modal-body">
+       
+        <form action="transferirmesa" method="get">
+          
+  		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa Origem</label>
+									<input id="idmesaorigem" name="idmesaorigem" list="${mesasList}" class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesasList}">
+
+                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                
+
+         
+          </div>
+          
+            		<div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa Destino</label>
+									<input id="idmesadestino" name="idmesadestino" list="${mesasList}" class="form-control" type="text"
+                                    		  autocomplete="off"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesasList}">
+
+                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+                                
+                                
+
+         
+          </div>
+          
+                  <button type="submit" class="btn btn-info">Tranferir Mesa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          
+          
+<!--           <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Cliente:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+<!--             <div class="form-group"> -->
+<!--             <label for="message-text" class="control-label">Garcon:</label> -->
+<!--             <input class="form-control" id="message-text"></input> -->
+<!--           </div> -->
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ModalReabrirMesa" tabindex="1" role="tab" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">REAbrir Mesa</h4>
+      </div>
+      <div class="modal-body">
+        <form action="reabrirmesa" method="get" >
+          
+          <div class="form-group">
+                <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Mesa</label>
+									<input id="idmesa" name="idmesa" list="${mesasList}" class="form-control" type="text"
+                                    		  autocomplete="on"/>
+                            				  <span class="material-input"></span>
+                                 </div> 
+                                 
+                              <datalist id="${mesasList}">
+
+                                    <c:forEach var="mesa" items="${mesasList}" varStatus="id">
+
+                                        <option value="${mesa.id }"> ${mesa.numero } </option>
+
+                                    </c:forEach>
+
+
+                                </datalist>
+         
+          </div>
+          
+
+          
+          <div class="form-group">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Qtd Pessoas</label>
+							<input id="qtd" name="qtd"  class="form-control" type="text" value=""
+                             		autocomplete="off"/>
+                     				  <span class="material-input"></span>
+                    </div>
+                                 
+                                 
+
+          </div>
+          
+                                          <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Hora</label>
+									<input id="hora" name="hora" class="form-control" type="text"
+                                    		placeholder="" />
+                            				  <span class="material-input"></span>
+                                 </div> 
+          
+          <button type="submit"  class="btn btn-info" >REAbrir Mesa</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          
+        </form>
+        
+      </div>
+      
+      <div class="modal-footer">
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
   <div class="modal fade" id="ModalAddSangria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1051,6 +1300,93 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="modal fade" id="myAlertPagar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"> -->
+<!--   <div class="modal-dialog" role="document"> -->
+<!--     <div class="modal-content"> -->
+<!--       <div class="modal-header"> -->
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+<!--         <h4 class="modal-title" id="exampleModalLabel">Pagamento</h4> -->
+<!--       </div> -->
+<!--       <div class="modal-body"> -->
+       
+<!--         <form action="receberpagamento" method="get"> -->
+          
+<!--   		<div class="form-group"> -->
+  		
+<!--   		                <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Pedido Venda</label> -->
+<!-- 									<input id="id" name="id" class="form-control" type="text" -->
+<%--                                     		   value="${pv.id}"/> --%>
+<!--                                  </div>  -->
+<!--                 <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Forma de Pagamento</label> -->
+<%-- 									<input id="idforma" name="idforma" list="${formapagamentoLista}" class="form-control" type="text" --%>
+<!--                                     		  autocomplete="off"/> -->
+<!--                                  </div>  -->
+                                 
+                                 
+<!--                                   <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">Caixa</label> -->
+<%-- 									<input id="idcx" name="idcx" list="${caixaList}" class="form-control" type="text" --%>
+<!--                                     	 autocomplete="off"	 /> -->
+<!--                                  </div>  -->
+                                 
+<%--                               <datalist id="${formapagamentoLista}"> --%>
+
+<%--                                     <c:forEach var="forma" items="${formapagamentoLista}" varStatus="id"> --%>
+
+<%--                                         <option value="${forma.id }"> ${forma.nome } </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist> -->
+                                
+<%--                                  <datalist id="${caixaList}"> --%>
+
+<%--                                     <c:forEach var="caixa" items="${caixaList}" varStatus="id"> --%>
+
+<%--                                         <option value="${caixa.id }"> ${caixa.nome } </option> --%>
+
+<%--                                     </c:forEach> --%>
+
+
+<!--                                 </datalist> -->
+                                
+
+                                
+<!--                              <div class="form-group label-floating is-empty"> -->
+<!--                                        <label class="control-label">ValorPago</label> -->
+<!-- 									<input id="valor" name="valor" value="0" class="form-control" type="text" -->
+<!--                                     		 /> -->
+<!--                                  </div>  -->
+         
+<!--           </div> -->
+          
+<!-- <!--           <div class="form-group"> --> -->
+<!-- <!--             <label for="message-text" class="control-label">Cliente:</label> --> -->
+<!-- <!--             <input class="form-control" id="message-text"></input> --> -->
+<!-- <!--           </div> --> -->
+          
+<!-- <!--             <div class="form-group"> --> -->
+<!-- <!--             <label for="message-text" class="control-label">Garcon:</label> --> -->
+<!-- <!--             <input class="form-control" id="message-text"></input> --> -->
+<!-- <!--           </div> --> -->
+
+<!--         <button type="submit" class="btn btn-info">Add Pagamento</button> -->
+
+          
+<!--         </form> -->
+<!--       </div> -->
+<!--       <div class="modal-footer"> -->
+      
+<!--           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+<!--       </div> -->
+      
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
           
           
           </div>

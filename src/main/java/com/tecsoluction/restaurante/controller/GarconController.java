@@ -12,15 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.tecsoluction.restaurante.entidade.Despesa;
+import com.tecsoluction.restaurante.entidade.FormaPagamento;
 import com.tecsoluction.restaurante.entidade.Garcon;
+import com.tecsoluction.restaurante.entidade.Pagamento;
+import com.tecsoluction.restaurante.entidade.PedidoVenda;
 import com.tecsoluction.restaurante.entidade.Usuario;
 import com.tecsoluction.restaurante.framework.AbstractController;
+import com.tecsoluction.restaurante.framework.AbstractEditor;
 import com.tecsoluction.restaurante.framework.AbstractEntityService;
 import com.tecsoluction.restaurante.service.impl.GarconServicoImpl;
 import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
@@ -28,27 +36,41 @@ import com.tecsoluction.restaurante.service.impl.UsuarioServicoImpl;
 @Controller
 @RequestMapping(value = "garcon/")
 public class GarconController extends AbstractController<Garcon> {
-
+	 @Autowired
 	private final GarconServicoImpl garconService;
-
-//	private final UsuarioServicoImpl userservice;
+	 @Autowired
+	private final UsuarioServicoImpl userservice;
 
 	@Autowired
-	public GarconController(GarconServicoImpl dao) {
+	public GarconController(GarconServicoImpl dao,UsuarioServicoImpl usu) {
 		super("garcon");
 		this.garconService = dao;
-//		this.userservice = daousu;
+		this.userservice = usu;
 	}
+	
+	
+	  @InitBinder
+	    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+
+	        binder.registerCustomEditor(Usuario.class, new AbstractEditor<Usuario>(this.userservice) {
+
+	        });
+	        
+	        
+
+
+	    }
 
 	@ModelAttribute
 	public void addAttributes(Model model) {
 
 		List<Garcon> garconList = getservice().findAll();
+		List<Usuario>usuarioList = userservice.findAll();
 //		Usuario usuario = new Usuario();
 //		usuario.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 //		usuario = userservice.findByUsername(usuario.getUsername());
 //
-//		model.addAttribute("usuarioAtt", usuario);
+		model.addAttribute("usuarioList", usuarioList);
 		model.addAttribute("garconsList", garconList);
 
 	}
